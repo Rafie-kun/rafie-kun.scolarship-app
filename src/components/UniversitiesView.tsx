@@ -3,6 +3,7 @@ import { School, MapPin, Coins, Award, Sparkles, Search, SlidersHorizontal, Chec
 import { University, Profile } from '../types';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 
 interface RecommendedUni {
   university: University;
@@ -12,6 +13,7 @@ interface RecommendedUni {
 
 export default function UniversitiesView() {
   const { profile, authorizedFetch } = useAuth();
+  const { convertAmount, currency, setCurrency } = useTheme();
   
   // Tab states
   const [activeSubTab, setActiveSubTab] = useState<'all' | 'recommender'>('all');
@@ -135,6 +137,28 @@ export default function UniversitiesView() {
         <p className="text-xs text-stone-350 font-mono mt-2">
           Explore elite global academies, benchmark admittance GPAs, calculate tuition rates, and unlock custom AI-matched recommendation criteria based on your active stats.
         </p>
+      </div>
+
+      {/* Currency Selector Toggle Toggle bar */}
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-stone-900 border-4 border-black p-3 font-mono text-xs text-stone-300">
+        <div className="flex items-center gap-1.5 label text-[10px] font-press uppercase text-stone-400">
+          <Coins className="w-4 h-4 text-[#ffff55]" /> Currency Standard:
+        </div>
+        <div className="flex gap-1.5">
+          {(['USD', 'EUR', 'GBP', 'BDT'] as const).map((curr) => (
+            <button
+              key={`curr-toggle-${curr}`}
+              onClick={() => { playClickSound(); setCurrency(curr); }}
+              className={`px-3 py-1 font-mono text-[11px] font-bold border-2 ${
+                currency === curr
+                  ? 'bg-[#ffff55] border-black text-black'
+                  : 'bg-[#141414] border-stone-800 text-stone-300 hover:border-[#ffff55] cursor-pointer'
+              }`}
+            >
+              {curr}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Sub tabs selectors */}
@@ -306,9 +330,9 @@ export default function UniversitiesView() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-stone-400 text-[11px]">Est. Annual Tuition:</span>
-                        <span className="font-bold text-[#ffff55] flex items-center gap-0.5 truncate max-w-[120px]" title={`$${uni.tuitionMin.toLocaleString()} - $${uni.tuitionMax.toLocaleString()}`}>
+                        <span className="font-bold text-[#ffff55] flex items-center gap-0.5 truncate max-w-lg" title={`$${uni.tuitionMin.toLocaleString()} - $${uni.tuitionMax.toLocaleString()}`}>
                           <Coins className="w-3.5 h-3.5 text-[#ffaa00] shrink-0" /> 
-                          {uni.tuitionMin === 0 ? "Free / Public" : `$${(uni.tuitionMin/1000).toFixed(0)}k - ${(uni.tuitionMax/1000).toFixed(0)}k`}
+                          {uni.tuitionMin === 0 ? "Free / Public" : `${convertAmount(uni.tuitionMin)} - ${convertAmount(uni.tuitionMax)}`}
                         </span>
                       </div>
                     </div>
@@ -620,7 +644,7 @@ export default function UniversitiesView() {
                 <div className="space-y-1">
                   <span className="text-stone-400 text-[10px] block">ESTIMATED TUITION RANGE:</span>
                   <span className="font-bold text-[#ffff55]">
-                    {selectedUni.tuitionMin === 0 ? "Free Nodes (German/Nordic model)" : `$${selectedUni.tuitionMin.toLocaleString()} - $${selectedUni.tuitionMax.toLocaleString()} / Year`}
+                    {selectedUni.tuitionMin === 0 ? "Free Nodes (German/Nordic model)" : `${convertAmount(selectedUni.tuitionMin)} - ${convertAmount(selectedUni.tuitionMax)} / Year`}
                   </span>
                 </div>
                 <div className="space-y-1">

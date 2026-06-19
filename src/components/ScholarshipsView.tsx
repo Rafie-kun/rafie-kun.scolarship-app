@@ -37,15 +37,25 @@ export default function ScholarshipsView() {
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
   const [selectedSch, setSelectedSch] = useState<Scholarship | null>(null);
   const [trackingSchId, setTrackingSchId] = useState<string | null>(null);
+  const [modalTab, setModalTab] = useState<'specs' | 'apply'>('specs');
+  const [checkedSteps, setCheckedSteps] = useState<Record<number, boolean>>({});
 
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  const modalAppLink = selectedSch ? ((selectedSch as any).appLink || `https://scholarpath-portal.org/fellowships/${selectedSch.id}/apply`) : '';
+  const modalAppLink = selectedSch ? ((selectedSch as any).officialWebsite || (selectedSch as any).appLink || `https://scholarpath-portal.org/fellowships/${selectedSch.id}/apply`) : '';
   const modalContactEmail = selectedSch ? ((selectedSch as any).contactEmail || `inquiries@${selectedSch.provider.toLowerCase().replace(/[^a-z0-9]/g, '') || 'scholarship-board'}.org`) : '';
-  const modalAppFee = selectedSch ? (((selectedSch as any).appFee !== undefined ? (selectedSch as any).appFee : "$0 (Free Portal Application)")) : '';
+  const modalAppFee = selectedSch ? (((selectedSch as any).applicationFee || (selectedSch as any).appFee || "Free Portal Application")) : '';
   const modalReqDocs = selectedSch ? ((selectedSch as any).requiredDocuments || ["Academic Transcripts (Validated)", "Letters of Recommendation (x2)", "Statement of Purpose (Crafted)", "Curriculum Vitae / Resume", "Proof of Nationality / Passport"]) : [];
   const modalLangReq = selectedSch ? ((selectedSch as any).languageRequirement || "IELTS Overalls ≥ 6.5 or TOEFL iBT ≥ 88 (or English-Medium instruction certificate)") : '';
+  const modalSteps = selectedSch ? ((selectedSch as any).applicationSteps || [
+    "Verify your eligibility against the target GPA threshold requirements",
+    "Draft your high-leverage Statement of Purpose standard blueprint in Scroll Vault",
+    "Request recommendation files from active collegiate advisors or research mentors",
+    "Verify your official English / target language transcripts of validation",
+    "Translate secondary attachments as per active fellowship regulations",
+    "Lock-in your submissions to the official registry before the deadline count expires"
+  ]) : [];
 
   useEffect(() => {
     return () => {
@@ -706,103 +716,182 @@ export default function ScholarshipsView() {
               </button>
             </div>
 
+            {/* Modal Sub Tab Selectors */}
+            <div className="flex gap-2 border-b-2 border-black pb-2 mt-3 select-none">
+              <button
+                onClick={() => { playClickSound(); setModalTab('specs'); }}
+                className={`flex-1 py-2 px-3 font-press text-[8.5px] uppercase border-2 border-black cursor-pointer ${
+                  modalTab === 'specs' ? 'bg-[#3b3b8c] text-[#ffff55]' : 'bg-stone-800 text-stone-400 hover:text-stone-200'
+                }`}
+              >
+                📊 General Specs
+              </button>
+              <button
+                onClick={() => { playClickSound(); setModalTab('apply'); }}
+                className={`flex-1 py-2 px-3 font-press text-[8.5px] uppercase border-2 border-black cursor-pointer ${
+                  modalTab === 'apply' ? 'bg-[#eab308]/20 border-[#eab308] text-[#ffff55]' : 'bg-stone-800 text-stone-400 hover:text-stone-200'
+                }`}
+              >
+                📝 How to Apply Checklist
+              </button>
+            </div>
+
             {/* Body scroll compartment */}
             <div className="my-4 py-1 space-y-4 font-mono text-xs max-h-[60vh] overflow-y-auto pr-1">
               
-              {/* Short coverage details banner */}
-              <div className="grid grid-cols-2 gap-3 bg-black/45 p-3.5 border-2 border-black">
-                <div>
-                  <span className="text-stone-400 text-[10px] uppercase block">Loot Coverage Class:</span>
-                  <span className="font-bold text-[#55ff55]">💎 {selectedSch.fundingCoverage}</span>
-                </div>
-                <div>
-                  <span className="text-stone-400 text-[10px] uppercase block">Active Target GPA Threshold:</span>
-                  <span className="font-bold text-[#ffaa00]">≥ {selectedSch.gpaRequirement.toFixed(2)}</span>
-                </div>
-                <div>
-                  <span className="text-stone-400 text-[10px] uppercase block">Submissions Deadline:</span>
-                  <span className="font-bold text-stone-200">📅 {selectedSch.deadline}</span>
-                </div>
-                <div>
-                  <span className="text-stone-400 text-[10px] uppercase block">Total Eligibility Rating:</span>
-                  <span className="font-bold text-[#64e3ff]">🎖️ {selectedSch.competitivenessScore}% Compatibility</span>
-                </div>
-              </div>
-
-              {/* Main description quote */}
-              <div className="p-3 bg-stone-900 border border-stone-800 rounded-none leading-relaxed text-stone-300 text-xs italic">
-                "{selectedSch.description}"
-              </div>
-
-              {/* Additional detailed requirements requested */}
-              <div className="space-y-3 p-3 bg-black/25 border border-stone-800 rounded-none">
-                
-                {/* Lang and toll */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="space-y-1">
-                    <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
-                      <Globe className="w-3.5 h-3.5 text-[#ffff55]" /> Language metrics:
-                    </span>
-                    <span className="text-[#a586ff] text-xs font-semibold block bg-black/40 px-2 py-1 select-none border border-black">{modalLangReq}</span>
+              {modalTab === 'specs' ? (
+                <>
+                  {/* Short coverage details banner */}
+                  <div className="grid grid-cols-2 gap-3 bg-black/45 p-3.5 border-2 border-black">
+                    <div>
+                      <span className="text-stone-400 text-[10px] uppercase block">Loot Coverage Class:</span>
+                      <span className="font-bold text-[#55ff55]">💎 {selectedSch.fundingCoverage}</span>
+                    </div>
+                    <div>
+                      <span className="text-stone-400 text-[10px] uppercase block">Active Target GPA Threshold:</span>
+                      <span className="font-bold text-[#ffaa00]">≥ {selectedSch.gpaRequirement.toFixed(2)}</span>
+                    </div>
+                    <div>
+                      <span className="text-stone-400 text-[10px] uppercase block">Submissions Deadline:</span>
+                      <span className="font-bold text-stone-200">📅 {selectedSch.deadline}</span>
+                    </div>
+                    <div>
+                      <span className="text-stone-400 text-[10px] uppercase block">Total Eligibility Rating:</span>
+                      <span className="font-bold text-[#64e3ff]">🎖️ {selectedSch.competitivenessScore}% Compatibility</span>
+                    </div>
                   </div>
+
+                  {/* Main description quote */}
+                  <div className="p-3 bg-stone-900 border border-stone-800 rounded-none leading-relaxed text-stone-300 text-xs italic">
+                    "{selectedSch.description}"
+                  </div>
+
+                  {/* Additional detailed requirements requested */}
+                  <div className="space-y-3 p-3 bg-black/25 border border-stone-800 rounded-none">
+                    {/* Lang and toll */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="space-y-1">
+                        <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
+                          <Globe className="w-3.5 h-3.5 text-[#ffff55]" /> Language metrics:
+                        </span>
+                        <span className="text-[#a586ff] text-xs font-semibold block bg-black/40 px-2 py-1 select-none border border-black">{modalLangReq}</span>
+                      </div>
+                      <div className="space-y-1">
+                        <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
+                          <Coins className="w-3.5 h-3.5 text-[#55ff55]" /> Submission Toll (Fee):
+                        </span>
+                        <span className="text-[#55ff55] text-xs font-semibold block bg-black/40 px-2 py-1 select-none border border-black">{modalAppFee}</span>
+                      </div>
+                    </div>
+
+                    {/* Required Inventory items */}
+                    <div className="space-y-1.5 pt-1">
+                      <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
+                        <FileText className="w-3.5 h-3.5 text-stone-300" /> Required inventory documents:
+                      </span>
+                      <ul className="list-none space-y-1 pl-1">
+                        {modalReqDocs.map((doc: string, dIdx: number) => (
+                          <li key={dIdx} className="text-stone-300 text-xs flex items-center gap-2">
+                            <CheckCircle className="w-3.5 h-3.5 text-green-500 shrink-0" />
+                            <span>{doc}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Contact Inquiry email */}
+                    <div className="space-y-1 border-t border-stone-800 pt-3">
+                      <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
+                        <Mail className="w-3.5 h-3.5 text-[#ff4f4f]" /> Support guild inquiry email:
+                      </span>
+                      <a href={`mailto:${modalContactEmail}`} className="text-blue-300 hover:underline select-all flex items-center gap-1 leading-none text-xs">
+                        {modalContactEmail}
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Eligible Majors */}
                   <div className="space-y-1">
-                    <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
-                      <Coins className="w-3.5 h-3.5 text-[#55ff55]" /> Submission Toll (Fee):
-                    </span>
-                    <span className="text-[#55ff55] text-xs font-semibold block bg-black/40 px-2 py-1 select-none border border-black">{modalAppFee}</span>
+                    <span className="text-[10px] font-bold text-stone-400 block uppercase">Eligible Majors Registry:</span>
+                    <div className="flex flex-wrap gap-1">
+                      {selectedSch.eligibleMajors.map((m, mIdx) => (
+                        <span key={mIdx} className="bg-stone-900 border border-stone-800 text-[11px] text-stone-300 px-2 py-0.5 select-none font-sans">
+                          {m}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Eligible Nations */}
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-bold text-stone-400 block uppercase">Eligible Nations Registry:</span>
+                    <div className="flex flex-wrap gap-1">
+                      {selectedSch.eligibleCountries.map((c, cIdx) => (
+                        <span key={cIdx} className="bg-stone-900 border border-stone-800 text-[11px] text-[#55ffff] px-2 py-0.5 font-sans select-none">
+                          {c}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="space-y-4">
+                  <div className="bg-amber-950/20 border border-amber-500/30 p-3 text-stone-300 text-xs rounded-none">
+                    🚀 Follow these chronological blueprints to organize and submit your application folder successfully. Check off steps as you secure them!
+                  </div>
+
+                  {/* Iterative Checkboxes checklist */}
+                  <div className="space-y-3 pl-1">
+                    {modalSteps.map((step: string, idx: number) => {
+                      const isDone = !!checkedSteps[idx];
+                      return (
+                        <div
+                          key={`step-${idx}`}
+                          onClick={() => {
+                            playClickSound();
+                            setCheckedSteps(prev => ({ ...prev, [idx]: !prev[idx] }));
+                          }}
+                          className={`flex items-start gap-3 p-3 border-2 cursor-pointer transition-colors ${
+                            isDone 
+                              ? 'bg-green-950/20 border-[#55ff55]/40 text-stone-200' 
+                              : 'bg-black/30 border-stone-800 text-stone-300 hover:border-[#ffff55]'
+                          }`}
+                        >
+                          <div className={`w-5 h-5 flex items-center justify-center border-2 shrink-0 ${
+                            isDone ? 'border-[#55ff55] bg-green-950 text-[#55ff55]' : 'border-stone-500 bg-black/40'
+                          }`}>
+                            {isDone && "✔"}
+                          </div>
+                          <div className="space-y-1 text-xs">
+                            <span className="text-[10px] uppercase font-bold text-stone-500 block">Stage {idx + 1}</span>
+                            <p className={isDone ? 'line-through text-stone-400' : 'text-stone-200'}>{step}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Fee status indicator bar */}
+                  <div className="bg-black/45 p-3.5 border-2 border-black flex justify-between items-center text-xs">
+                    <span className="text-stone-400 block text-[10px] uppercase font-bold">Estimated Submission Toll:</span>
+                    <span className="font-bold text-[#55ff55]">{modalAppFee}</span>
+                  </div>
+
+                  {/* Official URL bar */}
+                  <div className="bg-stone-900 border border-stone-800 p-3 space-y-1 text-xs">
+                    <span className="text-stone-400 block text-[9px] uppercase font-bold">Official Gateway Domain:</span>
+                    <a
+                      href={modalAppLink}
+                      target="_blank"
+                      referrerPolicy="no-referrer"
+                      rel="noreferrer"
+                      className="text-[#64e3ff] hover:underline flex items-center gap-1.5 break-all"
+                    >
+                      <Globe className="w-4 h-4 text-[#64e3ff] shrink-0" /> {modalAppLink}
+                    </a>
                   </div>
                 </div>
-
-                {/* Required Inventory items */}
-                <div className="space-y-1.5 pt-1">
-                  <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
-                    <FileText className="w-3.5 h-3.5 text-stone-300" /> Required inventory documents:
-                  </span>
-                  <ul className="list-none space-y-1 pl-1">
-                    {modalReqDocs.map((doc: string, dIdx: number) => (
-                      <li key={dIdx} className="text-stone-300 text-xs flex items-center gap-2">
-                        <CheckCircle className="w-3.5 h-3.5 text-green-500 shrink-0" />
-                        <span>{doc}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Contact Inquiry email */}
-                <div className="space-y-1 border-t border-stone-800 pt-3">
-                  <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
-                    <Mail className="w-3.5 h-3.5 text-[#ff4f4f]" /> Support guild inquiry email:
-                  </span>
-                  <a href={`mailto:${modalContactEmail}`} className="text-blue-300 hover:underline select-all flex items-center gap-1 leading-none text-xs">
-                    {modalContactEmail}
-                  </a>
-                </div>
-
-              </div>
-
-              {/* Eligible Majors */}
-              <div className="space-y-1">
-                <span className="text-[10px] font-bold text-stone-400 block uppercase">Eligible Majors Registry:</span>
-                <div className="flex flex-wrap gap-1">
-                  {selectedSch.eligibleMajors.map((m, mIdx) => (
-                    <span key={mIdx} className="bg-stone-900 border border-stone-800 text-[11px] text-stone-300 px-2 py-0.5 select-none font-sans">
-                      {m}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Eligible Nations */}
-              <div className="space-y-1">
-                <span className="text-[10px] font-bold text-stone-400 block uppercase">Eligible Nations Registry:</span>
-                <div className="flex flex-wrap gap-1">
-                  {selectedSch.eligibleCountries.map((c, cIdx) => (
-                    <span key={cIdx} className="bg-stone-900 border border-stone-800 text-[11px] text-[#55ffff] px-2 py-0.5 font-sans select-none">
-                      {c}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              )}
 
             </div>
 

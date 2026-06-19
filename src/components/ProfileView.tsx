@@ -20,6 +20,12 @@ export default function ProfileView() {
   const [nationality, setNationality] = useState('');
   const [ielts, setIelts] = useState('');
   const [gre, setGre] = useState('');
+  
+  // 🔬 SAT & O/A-Levels and Profile Picture States 🔬
+  const [satScore, setSatScore] = useState<number | ''>('');
+  const [oLevelInput, setOLevelInput] = useState('');
+  const [aLevelInput, setALevelInput] = useState('');
+  const [profilePicture, setProfilePicture] = useState('');
 
   // 🚨 Dynamic Integrated DB Fields 🚨
   const [educationLevel, setEducationLevel] = useState('undergraduate');
@@ -78,6 +84,12 @@ export default function ProfileView() {
 
       setLeadership(data.leadershipExperience || []);
       setProjects(data.projects || []);
+
+      // 🔬 Hydrate SAT, O/A Levels, and profile picture states 🔬
+      setSatScore(data.satScore !== undefined && data.satScore !== null ? data.satScore : '');
+      setOLevelInput(data.oLevelSubjects ? data.oLevelSubjects.join(', ') : '');
+      setALevelInput(data.aLevelSubjects ? data.aLevelSubjects.join(', ') : '');
+      setProfilePicture(data.profilePicture || '');
     } catch (e) {
       console.error("Failed to load active user profile record:", e);
     } finally {
@@ -117,7 +129,13 @@ export default function ProfileView() {
       resumePdfName,
 
       leadershipExperience: leadership,
-      projects
+      projects,
+
+      // 🔬 SAT score, O/A-Levels and profile picture details 🔬
+      satScore: satScore !== '' ? Number(satScore) : null,
+      oLevelSubjects: oLevelInput.split(',').map(item => item.trim()).filter(Boolean),
+      aLevelSubjects: aLevelInput.split(',').map(item => item.trim()).filter(Boolean),
+      profilePicture
     };
 
     try {
@@ -260,6 +278,22 @@ export default function ProfileView() {
     setPdfUploadStatus('Dossier CV Deleted.');
   };
 
+  const handlePfpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    playClickSound();
+    const reader = new FileReader();
+    reader.onload = () => {
+      setProfilePicture(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleDeletePfp = () => {
+    playClickSound();
+    setProfilePicture('');
+  };
+
   return (
     <div className="space-y-6" id="scholarpath-candidate-profile">
       
@@ -335,6 +369,46 @@ export default function ProfileView() {
                 <div className="space-y-4">
                   <h4 className="font-press text-[9px] text-[#ffff55] mc-text-shadow uppercase pb-2 border-b-2 border-black">PRIMARY DOSSIER CONFIG</h4>
                   
+                  {/* Portrait Avatar config */}
+                  <div className="flex flex-col sm:flex-row items-center gap-4 bg-black/35 p-3 border-2 border-black">
+                    <div className="w-16 h-16 bg-black border-4 border-stone-600 rounded-none flex items-center justify-center shrink-0 overflow-hidden relative">
+                      {profilePicture ? (
+                        <img 
+                          src={profilePicture} 
+                          alt="Applicant Portrait Avatar" 
+                          className="w-full h-full object-cover" 
+                          referrerPolicy="no-referrer"
+                        />
+                      ) : (
+                        <div className="text-[28px] select-none text-stone-500">👾</div>
+                      )}
+                    </div>
+                    <div className="flex-1 space-y-1 text-center sm:text-left font-mono">
+                      <span className="text-stone-300 font-bold uppercase text-[9px] block">CANDIDATE PORTRAIT AVATAR:</span>
+                      <p className="text-[10px] text-stone-400">Apply a portrait avatar or identity photo to finalize your passport dossier file.</p>
+                      <div className="flex flex-wrap gap-2 justify-center sm:justify-start pt-1.5">
+                        <label className="bg-stone-800 hover:bg-stone-750 border-2 border-black text-stone-200 text-[9px] uppercase font-bold py-1 px-2.5 cursor-pointer select-none leading-none inline-block font-sans rounded-none">
+                          Upload Portrait
+                          <input 
+                            type="file" 
+                            accept="image/*" 
+                            onChange={handlePfpChange} 
+                            className="hidden" 
+                          />
+                        </label>
+                        {profilePicture && (
+                          <button
+                            type="button"
+                            onClick={handleDeletePfp}
+                            className="bg-red-950/45 hover:bg-red-900/60 border border-red-500 text-red-100 text-[9px] uppercase font-bold py-1 px-2.5 cursor-pointer select-none rounded-none font-sans"
+                          >
+                            Delete
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
                     <div className="flex flex-col gap-1.5">
                       <span className="text-stone-300 uppercase text-[9px] font-bold">Full Applicant Name:</span>
@@ -535,6 +609,41 @@ export default function ProfileView() {
                         onChange={(e) => setGre(e.target.value)}
                         className="bg-[#141414] border-2 border-black p-2 outline-none"
                         placeholder="e.g. 320"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 col-span-1">
+                      <span className="text-stone-300 uppercase text-[9px] font-bold">SAT Cumulative Score:</span>
+                      <input
+                        type="number"
+                        value={satScore}
+                        onChange={(e) => setSatScore(e.target.value !== '' ? Number(e.target.value) : '')}
+                        className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
+                        placeholder="e.g. 1520 (Max 1600)"
+                        min="400"
+                        max="1600"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 col-span-1">
+                      <span className="text-stone-300 uppercase text-[9px] font-bold">O-Level Certification Results:</span>
+                      <input
+                        type="text"
+                        value={oLevelInput}
+                        onChange={(e) => setOLevelInput(e.target.value)}
+                        className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
+                        placeholder="e.g. Math: A*, English: A, Physics: A*"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 col-span-full">
+                      <span className="text-stone-300 uppercase text-[9px] font-bold">A-Level Certification Results:</span>
+                      <input
+                        type="text"
+                        value={aLevelInput}
+                        onChange={(e) => setALevelInput(e.target.value)}
+                        className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
+                        placeholder="e.g. Math: A*, Chemistry: A, Physics: A*"
                       />
                     </div>
                   </div>

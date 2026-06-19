@@ -27,6 +27,10 @@ export interface Profile {
   resumePdf?: string;
   lastDailyCheckin?: string;
   rewardedActions?: string[];
+  oLevelSubjects?: string[];
+  aLevelSubjects?: string[];
+  satScore?: number | null;
+  profilePicture?: string;
 }
 
 export interface Scholarship {
@@ -44,6 +48,12 @@ export interface Scholarship {
 
   // 🚨 NEW DB FIELDS 🚨
   minimumEducationLevel?: string; // 'high_school' | 'college' | 'undergraduate' | 'graduate' | 'phd'
+  applicationSteps?: string[];
+  requiredDocuments?: string[];
+  applicationFee?: string;
+  contactEmail?: string;
+  officialWebsite?: string;
+  applicationUrl?: string;
 }
 
 export interface University {

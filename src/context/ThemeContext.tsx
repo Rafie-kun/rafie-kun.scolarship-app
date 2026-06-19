@@ -1,21 +1,42 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { playClickSound } from '../utils/sound';
 
-type ThemeId = 'overworld' | 'nether' | 'end' | 'aether';
-type ThemeMode = 'light' | 'dark' | 'minecraft';
+export type ThemeId = 'overworld' | 'nether' | 'end' | 'aether';
+export type ThemeMode = 'light' | 'dark' | 'minecraft';
+export type CurrencyId = 'USD' | 'EUR' | 'GBP' | 'BDT';
 
 interface ThemeContextType {
   themeMode: ThemeMode;
   theme: ThemeId;
   soundEnabled: boolean;
   textGlow: boolean;
+  currency: CurrencyId;
+  rates: Record<CurrencyId, number>;
+  threeDActive: boolean;
   setThemeMode: (mode: ThemeMode) => void;
   setTheme: (theme: ThemeId) => void;
   toggleSound: () => void;
   toggleGlow: () => void;
+  setCurrency: (currency: CurrencyId) => void;
+  toggleThreeD: () => void;
+  convertAmount: (amountUSD: number) => string;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+const DEFAULT_RATES: Record<CurrencyId, number> = {
+  USD: 1.0,
+  EUR: 0.92,
+  GBP: 0.79,
+  BDT: 117.5
+};
+
+const CURRENCY_SYMBOLS: Record<CurrencyId, string> = {
+  USD: '$',
+  EUR: '€',
+  GBP: '£',
+  BDT: '৳'
+};
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [themeMode, setThemeModeState] = useState<ThemeMode>(() => {
@@ -33,6 +54,39 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [textGlow, setTextGlow] = useState<boolean>(() => {
     return localStorage.getItem('scholarpath_glow') !== 'false';
   });
+
+  const [currency, setCurrencyState] = useState<CurrencyId>(() => {
+    return (localStorage.getItem('scholarpath_currency') as CurrencyId) || 'USD';
+  });
+
+  const [rates, setRates] = useState<Record<CurrencyId, number>>(DEFAULT_RATES);
+
+  const [threeDActive, setThreeDActive] = useState<boolean>(() => {
+    return localStorage.getItem('scholarpath_3d') !== 'false';
+  });
+
+  // Fetch live exchange rates from open source repository
+  useEffect(() => {
+    async function fetchRates() {
+      try {
+        const response = await fetch('https://open.er-api.com/v6/latest/USD');
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.rates) {
+            setRates({
+              USD: 1.0,
+              EUR: data.rates.EUR || DEFAULT_RATES.EUR,
+              GBP: data.rates.GBP || DEFAULT_RATES.GBP,
+              BDT: data.rates.BDT || DEFAULT_RATES.BDT
+            });
+          }
+        }
+      } catch (e) {
+        console.warn("Could not fetch active rates, utilizing offline backup matrices.", e);
+      }
+    }
+    fetchRates();
+  }, []);
 
   // Apply theme to HTML classList and set CSS variables on the root element
   useEffect(() => {
@@ -116,16 +170,48 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     playClickSound();
   };
 
+  const setCurrency = (nextCurr: CurrencyId) => {
+    playClickSound();
+    setCurrencyState(nextCurr);
+    localStorage.setItem('scholarpath_currency', nextCurr);
+  };
+
+  const toggleThreeD = () => {
+    const nextState = !threeDActive;
+    setThreeDActive(nextState);
+    localStorage.setItem('scholarpath_3d', String(nextState));
+    playClickSound();
+  };
+
+  const convertAmount = (amountUSD: number): string => {
+    const rate = rates[currency] || 1.0;
+    const multiplied = Math.round(amountUSD * rate);
+    const symbol = CURRENCY_SYMBOLS[currency] || '$';
+    
+    // Nice layout formatter (e.g. 15,200 € or ৳ 1,75,000)
+    const formattedNum = multiplied.toLocaleString();
+    if (currency === 'BDT') {
+      return `${symbol} ${formattedNum}`;
+    }
+    return `${symbol}${formattedNum}`;
+  };
+
   return (
     <ThemeContext.Provider value={{
       themeMode,
       theme,
       soundEnabled,
       textGlow,
+      currency,
+      rates,
+      threeDActive,
       setThemeMode,
       setTheme,
       toggleSound,
-      toggleGlow
+      toggleGlow,
+      setCurrency,
+      toggleThreeD,
+      convertAmount
     }}>
       {children}
     </ThemeContext.Provider>
@@ -139,4 +225,3 @@ export function useTheme() {
   }
   return context;
 }
-export type { ThemeId };

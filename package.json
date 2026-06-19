@@ -13,6 +13,7 @@
     "bcryptjs": "^3.0.3",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.3",
+    "jspdf": "^4.2.1",
     "lucide-react": "^0.435.0",
     "motion": "^11.11.17",
     "react": "^19.0.0",
