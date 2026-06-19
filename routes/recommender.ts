@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { authenticateToken } from './auth';
-import { profilesMap, scholarshipsData, universitiesData } from './db';
+import { scholarshipsData, universitiesData } from './db';
+import { getProfileByUsername } from '../db/index';
 
 const router = express.Router();
 
@@ -9,7 +10,7 @@ router.get('/best-scholarships', authenticateToken, (req: Request, res: Response
   try {
     const user = (req as any).user;
     const username = user.username;
-    const profile = profilesMap[username] || profilesMap["arif"];
+    const profile = getProfileByUsername(username) || getProfileByUsername("arif");
 
     if (!profile) {
       return res.status(404).json({ error: "Profile not found for recommendation metrics." });
@@ -88,7 +89,7 @@ router.get('/best-universities', authenticateToken, (req: Request, res: Response
   try {
     const user = (req as any).user;
     const username = user.username;
-    const profile = profilesMap[username] || profilesMap["arif"];
+    const profile = getProfileByUsername(username) || getProfileByUsername("arif");
 
     if (!profile) {
       return res.status(404).json({ error: "Profile not found for university matching." });

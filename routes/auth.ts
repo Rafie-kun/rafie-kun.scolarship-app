@@ -1,7 +1,9 @@
 import express, { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { profilesMap, passwordsMap, JWT_SECRET, userApplicationsMap } from './db';
+import { JWT_SECRET } from './db';
+import { getUserByUsername, createNewUser, getProfileByUsername } from '../db/index';
+import { Profile } from '../src/types';
 
 const router = express.Router();
 
@@ -110,7 +112,7 @@ router.get('/me', (req: Request, res: Response) => {
       return res.status(401).json({ error: "Expired session." });
     }
     const username = decoded.username;
-    const profile = profilesMap[username];
+    const profile = getProfileByUsername(username);
     if (!profile) {
       return res.status(404).json({ error: "Profile not found." });
     }
@@ -125,7 +127,22 @@ router.get('/me', (req: Request, res: Response) => {
 
 // Register as a real candidate
 router.post('/register', (req: Request, res: Response) => {
-  const { username, password, fullName, gpa, intendedMajor, intendedDegree } = req.body;
+  const { 
+    username, 
+    password, 
+    fullName, 
+    gpa, 
+    intendedMajor, 
+    intendedDegree, 
+    educationLevel,
+    highSchoolName,
+    collegeName,
+    primaryMajor,
+    secondaryMajor,
+    minor,
+    graduationYear,
+    additionalSkills
+  } = req.body;
 
   if (!username || !password) {
     return res.status(400).json({ error: "Player Username and Password are required!" });
@@ -133,21 +150,22 @@ router.post('/register', (req: Request, res: Response) => {
 
   const cleanUser = String(username).trim().toLowerCase();
 
-  if (profilesMap[cleanUser] || passwordsMap[cleanUser]) {
+  if (getUserByUsername(cleanUser)) {
     return res.status(400).json({ error: "This player name is already registered under Admissions Command!" });
   }
 
   // Salt & Hash password
   const salt = bcrypt.genSaltSync(8);
   const hashedPassword = bcrypt.hashSync(password, salt);
-  passwordsMap[cleanUser] = hashedPassword;
+
+  const mainMajor = primaryMajor || intendedMajor || "Computer Science";
 
   // Initialize beautiful player profile card
-  profilesMap[cleanUser] = {
+  const newProfile: Profile = {
     fullName: String(fullName || username).trim(),
     level: 1,
     points: 40, // standard setup starter XP
-    intendedMajor: intendedMajor || "Computer Science",
+    intendedMajor: mainMajor,
     intendedDegree: intendedDegree || "Master's Degree",
     country: "Worldwide",
     nationality: "Global Explorer",
@@ -159,19 +177,19 @@ router.post('/register', (req: Request, res: Response) => {
     projects: [],
     volunteerExperience: [],
     badges: ["Starter Ground", "Fresh Spawn"],
-    educationLevel: "undergraduate",
-    highSchoolName: "",
-    collegeName: "",
-    primaryMajor: intendedMajor || "Computer Science",
-    secondaryMajor: "",
-    minor: "",
-    graduationYear: 2026,
-    additionalSkills: ["TypeScript", "Python"],
+    educationLevel: educationLevel || "Undergraduate (Bachelor's)",
+    highSchoolName: highSchoolName || "",
+    collegeName: collegeName || "",
+    primaryMajor: mainMajor,
+    secondaryMajor: secondaryMajor || "",
+    minor: minor || "",
+    graduationYear: graduationYear ? parseInt(String(graduationYear)) : 2026,
+    additionalSkills: additionalSkills || ["TypeScript", "Python"],
     resumePdf: "",
     rewardedActions: []
   };
 
-  userApplicationsMap[cleanUser] = [];
+  createNewUser(cleanUser, hashedPassword, newProfile.fullName, newProfile);
 
   // Respond with cookie and JSON
   const token = jwt.sign({ username: cleanUser, isGuest: false }, JWT_SECRET, { expiresIn: '7d' });
@@ -180,7 +198,7 @@ router.post('/register', (req: Request, res: Response) => {
   res.status(201).json({
     success: true,
     username: cleanUser,
-    profile: profilesMap[cleanUser]
+    profile: newProfile
   });
 });
 
@@ -194,10 +212,12 @@ router.post('/login', (req: Request, res: Response) => {
 
   const cleanUser = String(username).trim().toLowerCase();
 
-  const storedHash = passwordsMap[cleanUser];
-  if (!storedHash || !bcrypt.compareSync(password, storedHash)) {
+  const userRecord = getUserByUsername(cleanUser);
+  if (!userRecord || !bcrypt.compareSync(password, userRecord.password)) {
     return res.status(401).json({ error: "Invalid player signature credentials." });
   }
+
+  const profile = getProfileByUsername(cleanUser);
 
   // Create token
   const token = jwt.sign({ username: cleanUser, isGuest: false }, JWT_SECRET, { expiresIn: '7d' });
@@ -206,7 +226,7 @@ router.post('/login', (req: Request, res: Response) => {
   res.json({
     success: true,
     username: cleanUser,
-    profile: profilesMap[cleanUser]
+    profile
   });
 });
 
@@ -216,11 +236,37 @@ router.post('/guest', (req: Request, res: Response) => {
   const guestUser = `guest_${Math.floor(1000 + Math.random() * 9000)}`;
   
   // Clone starter guest profile
-  profilesMap[guestUser] = {
-    ...profilesMap["guest"],
-    fullName: `Guest Explorer #${guestUser.split('_')[1]}`
+  const guestProfile: Profile = {
+    fullName: `Guest Explorer #${guestUser.split('_')[1]}`,
+    level: 1,
+    points: 40,
+    intendedMajor: "Information Technology",
+    intendedDegree: "Master's Degree",
+    country: "Canada",
+    nationality: "Explorer Space",
+    gpa: 3.50,
+    maxGpa: 4.0,
+    ieltsScore: "7.0",
+    greScore: "310",
+    leadershipExperience: ["Novice Camp Counselor"],
+    projects: ["Procedural Map Builder"],
+    volunteerExperience: ["Local Highschool Coding Club Support"],
+    badges: ["Fresh Spawn"],
+    educationLevel: "high_school",
+    highSchoolName: "Explorer Secondary Academy",
+    collegeName: "",
+    primaryMajor: "Information Technology",
+    secondaryMajor: "",
+    minor: "",
+    graduationYear: 2026,
+    additionalSkills: ["Java", "HTML/CSS", "Python Basics"],
+    resumePdf: "",
+    rewardedActions: []
   };
-  userApplicationsMap[guestUser] = [];
+
+  const guestSalt = bcrypt.genSaltSync(8);
+  const guestHash = bcrypt.hashSync("guest_" + guestUser, guestSalt);
+  createNewUser(guestUser, guestHash, guestProfile.fullName, guestProfile);
 
   const token = jwt.sign({ username: guestUser, isGuest: true }, JWT_SECRET, { expiresIn: '2h' });
   setAuthCookie(req, res, token, true);
@@ -228,7 +274,7 @@ router.post('/guest', (req: Request, res: Response) => {
   res.json({
     success: true,
     username: guestUser,
-    profile: profilesMap[guestUser]
+    profile: guestProfile
   });
 });
 

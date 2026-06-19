@@ -32,6 +32,24 @@ export default function ScholarshipsView() {
   const [upcomingOnly, setUpcomingOnly] = useState(false);
   const [sortBy, setSortBy] = useState('score_desc');
   const [savedSuccess, setSavedSuccess] = useState('');
+  const [trackedScholarships, setTrackedScholarships] = useState<Set<string>>(new Set());
+
+  const fetchTrackedApps = async () => {
+    try {
+      const res = await authorizedFetch('/api/applications');
+      if (res.ok) {
+        const data = await res.json();
+        const names = new Set<string>((data || []).map((a: any) => a.name.toLowerCase()));
+        setTrackedScholarships(names);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchTrackedApps();
+  }, []);
 
   // UI state
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
@@ -180,6 +198,12 @@ export default function ScholarshipsView() {
       });
 
       if (res.ok) {
+        setTrackedScholarships(prev => {
+          const updated = new Set(prev);
+          updated.add(sch.name.toLowerCase());
+          return updated;
+        });
+
         // Claim XP points and auto-clear state after set duration
         const actionName = `Tracked Scholarship: ${sch.name}`;
         if (!rewardedActionsRef.current.has(actionName)) {
@@ -504,10 +528,19 @@ export default function ScholarshipsView() {
                           </button>
                           <button
                             onClick={() => handleSaveApp(sch)}
-                            disabled={trackingSchId === sch.id}
-                            className="w-full mc-btn py-2 text-[8px] uppercase text-[#55ff55] disabled:opacity-50"
+                            disabled={trackingSchId === sch.id || trackedScholarships.has(sch.name.toLowerCase())}
+                            className={`w-full mc-btn py-2 text-[8px] uppercase ${
+                              trackedScholarships.has(sch.name.toLowerCase())
+                                ? "text-[#ffff55] bg-emerald-950/60 border-emerald-500"
+                                : "text-[#55ff55]"
+                            } disabled:opacity-50`}
                           >
-                            {trackingSchId === sch.id ? "TRACKING..." : "Track Quest Loot"}
+                            {trackingSchId === sch.id 
+                              ? "TRACKING..." 
+                              : trackedScholarships.has(sch.name.toLowerCase())
+                                ? "Tracked ✓"
+                                : "Track Quest Loot"
+                            }
                           </button>
                         </div>
                       </div>
@@ -680,9 +713,14 @@ export default function ScholarshipsView() {
                         </button>
                         <button
                           onClick={() => handleSaveApp(sch)}
-                          className="w-full bg-[#555] hover:bg-stone-750 text-white border-2 border-black text-[8px] font-press py-1.5 cursor-pointer uppercase py-1"
+                          disabled={trackedScholarships.has(sch.name.toLowerCase())}
+                          className={`w-full border-2 border-black text-[8px] font-press py-1.5 cursor-pointer uppercase ${
+                            trackedScholarships.has(sch.name.toLowerCase())
+                              ? "bg-emerald-955/60 text-[#ffff55] border-[#55ff55]"
+                              : "bg-[#555] hover:bg-stone-750 text-white"
+                          } disabled:opacity-60`}
                         >
-                          Track Quest
+                          {trackedScholarships.has(sch.name.toLowerCase()) ? "Tracked ✓" : "Track Quest"}
                         </button>
                       </div>
                     </div>

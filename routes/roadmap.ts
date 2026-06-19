@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { GoogleGenAI } from "@google/genai";
 import { authenticateToken } from './auth';
-import { profilesMap } from './db';
+import { getProfileByUsername, getRoadmap, saveRoadmap } from '../db/index';
 
 const router = express.Router();
 
@@ -25,20 +25,21 @@ function hasGeminiKey(): boolean {
   return !!process.env.GEMINI_API_KEY;
 }
 
-// In-memory persistent map of generated roadmaps (keys based on user name)
-export const userRoadmapsMap: Record<string, any[]> = {};
-
 // 1. Generate Personalized Roadmap
 router.post('/', authenticateToken, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
-  const profile = profilesMap[username] || profilesMap['arif'];
+  const profile = getProfileByUsername(username) || getProfileByUsername('arif');
+  if (!profile) {
+    return res.status(404).json({ error: "Profile not found" });
+  }
 
   try {
     // If the user already has a generated roadmap, check if they want to force regenerate
     const { forceRegenerate } = req.body;
-    if (userRoadmapsMap[username] && !forceRegenerate) {
-      return res.json({ roadmap: userRoadmapsMap[username] });
+    const existingRoadmap = getRoadmap(username);
+    if (existingRoadmap && !forceRegenerate) {
+      return res.json({ roadmap: existingRoadmap });
     }
 
     let roadmapData: any[] = [];
@@ -128,7 +129,7 @@ Provide outstanding, customized tasks directly applicable to their major, e.g., 
       ];
     }
 
-    userRoadmapsMap[username] = roadmapData;
+    saveRoadmap(username, roadmapData);
     res.json({ roadmap: roadmapData });
   } catch (err: any) {
     console.error("Personalized Roadmap creation failed:", err);
@@ -159,7 +160,7 @@ router.post('/save', authenticateToken, (req: Request, res: Response) => {
     return res.status(400).json({ error: "Invalid roadmap object format." });
   }
 
-  userRoadmapsMap[username] = roadmap;
+  saveRoadmap(username, roadmap);
   res.json({ success: true, roadmap });
 });
 

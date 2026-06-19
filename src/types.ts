@@ -117,3 +117,33 @@ export interface Mentor {
   avatarUrl?: string;
   availability: string[];
 }
+
+export interface WorkExperience {
+  jobTitle: string;
+  company: string;
+  dates: string;
+  description: string;
+}
+
+export interface Internship {
+  title: string;
+  organization: string;
+  dates: string;
+  description: string;
+}
+
+export interface ProjectListItem {
+  name: string;
+  description: string;
+  link: string;
+}
+
+export interface CVData {
+  workExperience: WorkExperience[];
+  internships: Internship[];
+  projects: ProjectListItem[];
+  skills: string[];
+  certifications: string[];
+  extracurriculars: string[];
+}
+

@@ -256,6 +256,15 @@ export default function App() {
     return <LoginScreen />;
   }
 
+  if (!profile) {
+    return (
+      <div className="min-h-screen bg-[#110f0d] flex flex-col items-center justify-center font-press text-[11px] text-[#ffff55] gap-3">
+        <Sparkles className="w-8 h-8 animate-spin text-[#ffff55]" />
+        <span className="mc-text-shadow">LOADING HERO STATS SHEET...</span>
+      </div>
+    );
+  }
+
   const currentWeapon = getEquipmentWeapon();
 
   return (
@@ -304,15 +313,15 @@ export default function App() {
           <div className="flex flex-col items-center gap-2 w-full max-w-sm shrink-0">
             <div className="flex justify-between w-full text-[10px] sm:text-[12px] font-mono text-[#55ff55] font-bold uppercase select-none gap-2">
               <span className="font-press text-[8px] sm:text-[9px] text-[#ffea00] mc-text-shadow flex items-center gap-1 leading-none pt-1">
-                <Trophy className="w-3.5 h-3.5" /> Level {profile.level} Player
+                <Trophy className="w-3.5 h-3.5" /> Level {profile?.level ?? 1} Player
               </span>
-              <span>{profile.points} / {profile.level * 100} XP</span>
+              <span>{profile?.points ?? 0} / {(profile?.level ?? 1) * 100} XP</span>
             </div>
             
             <div className="w-full mc-xp-bar border-4 border-black max-h-[16px] h-3">
               <div 
                 className={`${currentThemeConfig.hudXpFill} h-full transition-all duration-700 ease-out`} 
-                style={{ width: `${Math.min(100, Math.max(8, (profile.points % 100)))}%` }} 
+                style={{ width: `${Math.min(100, Math.max(8, ((profile?.points ?? 0) % 100)))}%` }} 
               />
             </div>
           </div>
@@ -365,7 +374,7 @@ export default function App() {
           <div className="hidden lg:flex items-center gap-4 font-mono text-xs bg-black/40 px-3.5 py-2 border-2 border-black rounded-none">
             <div className="text-left space-y-1">
               <span className="text-[#ffaa00] font-bold block text-[10px] leading-none uppercase">PLAYER IDENT:</span>
-              <span className="font-bold text-[#e1e1e1] block leading-none pt-1">{profile.fullName}</span>
+              <span className="font-bold text-[#e1e1e1] block leading-none pt-1">{profile?.fullName ?? ""}</span>
             </div>
             
             {/* Logout button */}
@@ -493,7 +502,7 @@ export default function App() {
           <div className="pt-4 border-t-4 border-black font-mono text-xs text-[#aaa] space-y-2 mt-4">
             <div className="flex justify-between text-[#ffaa00] font-bold px-1 select-none">
               <span>METADATA COINS:</span>
-              <span className="font-press text-[9px]">{(profile.points || 0) * 2} 🪙</span>
+              <span className="font-press text-[9px]">{(profile?.points || 0) * 2} 🪙</span>
             </div>
             
             <p className="text-[10px] text-stone-500 uppercase leading-normal text-center bg-black/30 py-1.5 font-bold font-mono tracking-wider">

@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { GoogleGenAI } from "@google/genai";
 import { authenticateToken } from './auth';
-import { profilesMap } from './db';
+import { getProfileByUsername } from '../db/index';
 
 const router = express.Router();
 
@@ -30,7 +30,10 @@ function hasGeminiKey(): boolean {
 router.post('/review-document', authenticateToken, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
-  const profile = profilesMap[username] || profilesMap['arif'];
+  const profile = getProfileByUsername(username) || getProfileByUsername('arif');
+  if (!profile) {
+    return res.status(404).json({ error: "Candidate profile not found." });
+  }
 
   const { documentText, major, targetDegree } = req.body;
   if (!documentText) {
@@ -85,7 +88,10 @@ Respond in clean, modern formatting.`;
 router.post('/study-chat', authenticateToken, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
-  const profile = profilesMap[username] || profilesMap['arif'];
+  const profile = getProfileByUsername(username) || getProfileByUsername('arif');
+  if (!profile) {
+    return res.status(404).json({ error: "Candidate profile not found." });
+  }
 
   const { message, chatHistory } = req.body;
   if (!message) {
@@ -134,7 +140,10 @@ Answer their query: "${message}"`
 router.post('/mock-interview', authenticateToken, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
-  const profile = profilesMap[username] || profilesMap['arif'];
+  const profile = getProfileByUsername(username) || getProfileByUsername('arif');
+  if (!profile) {
+    return res.status(404).json({ error: "Candidate profile not found." });
+  }
   const { message } = req.body;
 
   try {
