@@ -242,17 +242,17 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
             <h4 className="font-press text-[9px] text-[#ffff55] mc-text-shadow uppercase border-b-4 border-black pb-2">HERO ARTIFACTS</h4>
             
             <div className="space-y-2 text-xs font-mono">
-              <div className="p-3 bg-[#2a2a2a] border-2 border-black flex justify-between rounded-none [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
-                <span className="text-[#ffaa00]">GPA CAP LIMIT:</span>
-                <span className="font-press text-[9px] text-[#55ff55]">{profile?.gpa?.toFixed(2) ?? '—'} / {profile?.maxGpa?.toFixed(1) ?? '—'}</span>
+              <div className="p-3 bg-[#2a2a2a] border-2 border-black flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4 rounded-none [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
+                <span className="text-[#ffaa00] font-bold">GPA CAP LIMIT:</span>
+                <span className="font-press text-[8px] sm:text-[9px] text-[#55ff55]">{profile?.gpa?.toFixed(2) ?? '—'} / {profile?.maxGpa?.toFixed(1) ?? '—'}</span>
               </div>
-              <div className="p-3 bg-[#2a2a2a] border-2 border-black flex justify-between rounded-none [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
-                <span className="text-[#ffaa00]">TARGET CLASS:</span>
-                <span className="font-mono text-xs text-stone-200 uppercase font-semibold">{profile?.intendedMajor || 'Computing Science'}</span>
+              <div className="p-3 bg-[#2a2a2a] border-2 border-black flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4 rounded-none [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
+                <span className="text-[#ffaa00] font-bold">TARGET CLASS:</span>
+                <span className="font-mono text-xs text-stone-200 uppercase font-semibold truncate max-w-full">{profile?.intendedMajor || 'Computing Science'}</span>
               </div>
-              <div className="p-3 bg-[#2a2a2a] border-2 border-black flex justify-between rounded-none [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
-                <span className="text-[#ffaa00]">ENROLLED PATH:</span>
-                <span className="font-mono text-xs text-stone-200 uppercase font-semibold">{profile?.intendedDegree || 'Master'}</span>
+              <div className="p-3 bg-[#2a2a2a] border-2 border-black flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4 rounded-none [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
+                <span className="text-[#ffaa00] font-bold">ENROLLED PATH:</span>
+                <span className="font-mono text-xs text-stone-200 uppercase font-semibold truncate max-w-full">{profile?.intendedDegree || 'Master'}</span>
               </div>
             </div>
           </div>

@@ -240,12 +240,26 @@ app.post("/api/profile/reward", authenticateToken, (req, res) => {
 
   const profile = profilesMap[username] || profilesMap["arif"];
 
+  if (!profile.rewardedActions) {
+    profile.rewardedActions = [];
+  }
+
+  // Double-Check Deduplication (Server-side defense)
+  if (actionName && profile.rewardedActions.includes(actionName)) {
+    // Already rewarded for this action name. Return unaltered profile config immediately.
+    return res.json(profile);
+  }
+
   if (actionName === 'Daily Exploration Fellowship') {
     const todayStr = new Date().toISOString().split('T')[0];
     if (profile.lastDailyCheckin === todayStr) {
       return res.status(400).json({ error: "Daily exploration bounty already claimed for today!" });
     }
     profile.lastDailyCheckin = todayStr;
+  }
+
+  if (actionName) {
+    profile.rewardedActions.push(actionName);
   }
 
   if (points) {

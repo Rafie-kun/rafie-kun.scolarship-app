@@ -145,10 +145,36 @@ export default function ApplicationsView() {
       if (res.ok) {
         const data = await res.json();
         setApps(data);
-        setSelectedApp(newApp);
+        setSelectedApp(newHeaderApp => data.find((a: Application) => a.name === newHeaderApp?.name) || newApp);
       }
     } catch (e) {
       console.error(e);
+    }
+  };
+
+  const handleDeleteApp = async (id: string) => {
+    playClickSound();
+    if (!window.confirm("⚠️ Are you sure you want to abandon/delete this admissions quest tracker? All research logbooks for this slot will be swept away.")) {
+      return;
+    }
+    try {
+      const res = await authorizedFetch(`/api/applications/${id}`, {
+        method: 'DELETE'
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setApps(data);
+        if (data.length > 0) {
+          setSelectedApp(data[0]);
+        } else {
+          setSelectedApp(null);
+        }
+        setSuccess('🌿 Tracking quest abandoned successfully.');
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(() => setSuccess(''), 4000);
+      }
+    } catch (e) {
+      console.error("Failed to delete application tracker:", e);
     }
   };
 
@@ -231,9 +257,18 @@ export default function ApplicationsView() {
           {/* Detailed item workbench */}
           {selectedApp ? (
             <div className="md:col-span-7 bg-[#2c2c2c] border-4 border-black p-5 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555] space-y-5">
-              <div className="border-b-2 border-black pb-3">
-                <h4 className="font-press text-[12px] text-[#ffff55] leading-normal mc-text-shadow">{selectedApp.name}</h4>
-                <p className="text-xs text-stone-300 font-mono mt-1">Issuer: {selectedApp.providerOrUni} | Due: {selectedApp.deadline}</p>
+              <div className="border-b-2 border-black pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                  <h4 className="font-press text-[12px] text-[#ffff55] leading-normal mc-text-shadow">{selectedApp.name}</h4>
+                  <p className="text-xs text-stone-300 font-mono mt-1">Issuer: {selectedApp.providerOrUni} | Due: {selectedApp.deadline}</p>
+                </div>
+                <button
+                  onClick={() => handleDeleteApp(selectedApp.id)}
+                  className="bg-red-950 hover:bg-red-900 border-2 border-black px-3 py-1.5 text-[9px] text-red-200 uppercase font-bold tracking-wider rounded-none cursor-pointer flex items-center gap-1 shrink-0"
+                  title="Abandon this scholarship Quest"
+                >
+                  <Trash2 className="w-3.5 h-3.5 text-red-400" /> Abandon Quest
+                </button>
               </div>
 
               {/* Status workflow dropdown */}

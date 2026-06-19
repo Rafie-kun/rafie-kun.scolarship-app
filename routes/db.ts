@@ -32,7 +32,8 @@ export const profilesMap: Record<string, Profile> = {
     minor: "Statistics",
     graduationYear: 2024,
     additionalSkills: ["Python", "C++", "TypeScript", "Linear Algebra", "Data Structures", "Pytorch"],
-    resumePdf: ""
+    resumePdf: "",
+    rewardedActions: []
   },
   "guest": {
     fullName: "Guest Pathfinder",
@@ -58,7 +59,8 @@ export const profilesMap: Record<string, Profile> = {
     minor: "",
     graduationYear: 2026,
     additionalSkills: ["Java", "HTML/CSS", "Python Basics"],
-    resumePdf: ""
+    resumePdf: "",
+    rewardedActions: []
   }
 };
 

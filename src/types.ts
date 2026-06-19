@@ -26,6 +26,7 @@ export interface Profile {
   additionalSkills?: string[];
   resumePdf?: string;
   lastDailyCheckin?: string;
+  rewardedActions?: string[];
 }
 
 export interface Scholarship {

@@ -167,7 +167,8 @@ router.post('/register', (req: Request, res: Response) => {
     minor: "",
     graduationYear: 2026,
     additionalSkills: ["TypeScript", "Python"],
-    resumePdf: ""
+    resumePdf: "",
+    rewardedActions: []
   };
 
   userApplicationsMap[cleanUser] = [];

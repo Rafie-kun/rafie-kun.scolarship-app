@@ -25,6 +25,8 @@ import LoginScreen from './components/LoginScreen';
 import { useAuth } from './context/AuthContext';
 import { useTheme } from './context/ThemeContext';
 import { playClickSound, playAdvancementSound } from './utils/sound';
+import ErrorBoundary from './components/ErrorBoundary';
+import NotificationsBell from './components/NotificationsBell';
 
 // Dictionary containing styling palettes for unlockable Biomes (themes)
 const getThemeStyling = (themeId: string) => {
@@ -123,6 +125,13 @@ export default function App() {
     playClickSound();
     setActiveTab(tabId);
     setMobileMenuOpen(false);
+  };
+
+  const handlePickaxeClick = () => {
+    playClickSound();
+    const modes: ('light' | 'dark' | 'minecraft')[] = ['light', 'dark', 'minecraft'];
+    const nextIdx = (modes.indexOf(themeMode) + 1) % modes.length;
+    setThemeMode(modes[nextIdx]);
   };
 
   const handleLogoutClick = () => {
@@ -250,7 +259,8 @@ export default function App() {
   const currentWeapon = getEquipmentWeapon();
 
   return (
-    <div className={`min-h-screen flex flex-col font-sans transition-all duration-300 ${
+    <ErrorBoundary>
+      <div className={`min-h-screen flex flex-col font-sans transition-all duration-300 ${
       themeMode === 'minecraft' 
         ? `text-stone-200 ${currentThemeConfig.bodyBg}` 
         : 'bg-[var(--bg-primary)] text-[var(--text-primary)]'
@@ -272,14 +282,18 @@ export default function App() {
             </button>
             
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-stone-800 border-4 border-black flex items-center justify-center font-press text-[#ffff55] text-xs shadow-inner [box-shadow:inset_-3px_-3px_0_#141414,inset_3px_3px_0_#555]">
+              <button
+                onClick={handlePickaxeClick}
+                className="w-12 h-12 bg-stone-800 border-4 border-black hover:bg-stone-750 flex items-center justify-center font-press text-[#ffff55] text-xs shadow-inner active:scale-95 transition-all cursor-pointer [box-shadow:inset_-3px_-3px_0_#141414,inset_3px_3px_0_#555] active:[box-shadow:inset_3px_3px_0_#141414,inset_-3px_-3px_0_#555]"
+                title="Click Pickaxe to Cycle Biomes/Themes!"
+              >
                 ⛏️
-              </div>
+              </button>
               <div className="space-y-1">
-                <h1 className="font-press text-sm tracking-widest text-[#ffff55] mc-text-shadow leading-none flex items-center gap-1.5">
-                  SCHOLARPATH <span className="font-sans text-[10px] uppercase font-bold text-[#aaaaaa] tracking-normal pt-1">Minecraft Edition</span>
+                <h1 className="font-press text-xs sm:text-sm tracking-widest text-[#ffff55] mc-text-shadow leading-tight flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                  SCHOLARPATH <span className="font-sans text-[9px] sm:text-[10px] uppercase font-bold text-[#aaaaaa] tracking-normal">Minecraft Edition</span>
                 </h1>
-                <span className="text-[12px] font-mono text-stone-350 leading-none block font-semibold pt-1">
+                <span className="text-[10px] sm:text-[12px] font-mono text-stone-350 leading-none block font-semibold">
                   Biome: <span className="text-[#a586ff] font-bold">{currentThemeConfig.tagline}</span>
                 </span>
               </div>
@@ -288,8 +302,8 @@ export default function App() {
 
           {/* Epic Minecraft HUD levels XP bar centered right inside the top bar */}
           <div className="flex flex-col items-center gap-2 w-full max-w-sm shrink-0">
-            <div className="flex justify-between w-full text-[12px] font-mono text-[#55ff55] font-bold uppercase select-none">
-              <span className="font-press text-[9px] text-[#ffea00] mc-text-shadow flex items-center gap-1 leading-none pt-1">
+            <div className="flex justify-between w-full text-[10px] sm:text-[12px] font-mono text-[#55ff55] font-bold uppercase select-none gap-2">
+              <span className="font-press text-[8px] sm:text-[9px] text-[#ffea00] mc-text-shadow flex items-center gap-1 leading-none pt-1">
                 <Trophy className="w-3.5 h-3.5" /> Level {profile.level} Player
               </span>
               <span>{profile.points} / {profile.level * 100} XP</span>
@@ -302,6 +316,9 @@ export default function App() {
               />
             </div>
           </div>
+
+          {/* Notifications Bell Icon */}
+          <NotificationsBell />
 
           {/* Working Theme Switcher Toggle (Light, Dark, Minecraft) */}
           <div className="flex items-center gap-1.5 bg-black/50 p-1.5 border-2 border-black rounded-none">
@@ -519,5 +536,6 @@ export default function App() {
 
       </div>
     </div>
+    </ErrorBoundary>
   );
 }

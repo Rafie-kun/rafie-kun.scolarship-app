@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Trophy, Filter, ArrowRight, Award, Target, Sparkles, CheckCircle, Clock } from 'lucide-react';
+import { Search, Trophy, Filter, ArrowRight, Award, Target, Sparkles, CheckCircle, Clock, SlidersHorizontal, Mail, ExternalLink, ShieldCheck, HelpCircle, FileText, Globe, Coins } from 'lucide-react';
 import { Scholarship, Profile } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
@@ -28,11 +28,24 @@ export default function ScholarshipsView() {
   const [gpaMax, setGpaMax] = useState('');
   const [selectedDegrees, setSelectedDegrees] = useState<string[]>([]);
   const [fundingType, setFundingType] = useState('all');
+  const [eligibleCountry, setEligibleCountry] = useState('all');
+  const [upcomingOnly, setUpcomingOnly] = useState(false);
   const [sortBy, setSortBy] = useState('score_desc');
   const [savedSuccess, setSavedSuccess] = useState('');
 
+  // UI state
+  const [filtersCollapsed, setFiltersCollapsed] = useState(false);
+  const [selectedSch, setSelectedSch] = useState<Scholarship | null>(null);
+  const [trackingSchId, setTrackingSchId] = useState<string | null>(null);
+
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const modalAppLink = selectedSch ? ((selectedSch as any).appLink || `https://scholarpath-portal.org/fellowships/${selectedSch.id}/apply`) : '';
+  const modalContactEmail = selectedSch ? ((selectedSch as any).contactEmail || `inquiries@${selectedSch.provider.toLowerCase().replace(/[^a-z0-9]/g, '') || 'scholarship-board'}.org`) : '';
+  const modalAppFee = selectedSch ? (((selectedSch as any).appFee !== undefined ? (selectedSch as any).appFee : "$0 (Free Portal Application)")) : '';
+  const modalReqDocs = selectedSch ? ((selectedSch as any).requiredDocuments || ["Academic Transcripts (Validated)", "Letters of Recommendation (x2)", "Statement of Purpose (Crafted)", "Curriculum Vitae / Resume", "Proof of Nationality / Passport"]) : [];
+  const modalLangReq = selectedSch ? ((selectedSch as any).languageRequirement || "IELTS Overalls ≥ 6.5 or TOEFL iBT ≥ 88 (or English-Medium instruction certificate)") : '';
 
   useEffect(() => {
     return () => {
@@ -42,16 +55,9 @@ export default function ScholarshipsView() {
 
   // Pagination states
   const [page, setPage] = useState(1);
-  const [limit] = useState(4); 
+  const [limit, setLimit] = useState(4); 
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
-
-  // Synced profile GPA on startup
-  useEffect(() => {
-    if (profile && profile.gpa) {
-      setGpaMax(String(profile.gpa));
-    }
-  }, [profile]);
 
   // Load all scholarships
   const fetchScholarships = async () => {
@@ -62,6 +68,7 @@ export default function ScholarshipsView() {
       if (gpaMin) query += `&gpa_min=${gpaMin}`;
       if (gpaMax) query += `&gpa_max=${gpaMax}`;
       if (fundingType && fundingType !== 'all') query += `&fundingType=${fundingType}`;
+      if (eligibleCountry && eligibleCountry !== 'all') query += `&eligibleCountries=${encodeURIComponent(eligibleCountry)}`;
       
       if (selectedDegrees.length > 0) {
         selectedDegrees.forEach((deg) => {
@@ -72,7 +79,12 @@ export default function ScholarshipsView() {
       const res = await authorizedFetch(query);
       if (res.ok) {
         const data = await res.json();
-        setScholarships(data.scholarships || []);
+        // Client filtering fallback for upcomingOnly
+        let loaded = data.scholarships || [];
+        if (upcomingOnly) {
+          loaded = loaded.filter((sch: Scholarship) => getRemainingDays(sch.deadline) <= 120 && getRemainingDays(sch.deadline) > 0);
+        }
+        setScholarships(loaded);
         setTotalPages(data.totalPages || 1);
         setTotalItems(data.total || 0);
       }
@@ -99,23 +111,25 @@ export default function ScholarshipsView() {
     }
   };
 
-  // Trigger search updates
+  // Trigger search updates - FIXED dynamic reload bug by mapping limit and country triggers
   useEffect(() => {
     if (activeTab === 'all') {
       fetchScholarships();
     } else {
       fetchRecommendedSchs();
     }
-  }, [search, gpaMin, gpaMax, selectedDegrees, fundingType, sortBy, page, activeTab]);
+  }, [search, gpaMin, gpaMax, selectedDegrees, fundingType, eligibleCountry, upcomingOnly, sortBy, page, limit, activeTab]);
 
   // Reset Filters
   const handleResetFilters = () => {
     playClickSound();
     setSearch('');
     setGpaMin('');
-    setGpaMax(() => profile?.gpa ? String(profile.gpa) : '');
+    setGpaMax('');
     setSelectedDegrees([]);
     setFundingType('all');
+    setEligibleCountry('all');
+    setUpcomingOnly(false);
     setSortBy('score_desc');
     setPage(1);
   };
@@ -130,6 +144,8 @@ export default function ScholarshipsView() {
 
   // Track Scholarship (reusable)
   const handleSaveApp = async (sch: Scholarship) => {
+    if (trackingSchId) return;
+    setTrackingSchId(sch.id);
     playClickSound();
     
     const newApp = {
@@ -137,7 +153,7 @@ export default function ScholarshipsView() {
       name: sch.name,
       providerOrUni: sch.provider,
       deadline: sch.deadline,
-      status: 'Saved',
+      status: 'Saved' as const,
       notes: `Tracked automatically under Candidate GPA profile. Required Threshold: ≥ ${sch.gpaRequirement.toFixed(2)}.`,
       checklist: [
         { text: 'Check curriculum credit hours guidelines', done: false },
@@ -171,6 +187,8 @@ export default function ScholarshipsView() {
       }
     } catch (e) {
       console.error(e);
+    } finally {
+      setTrackingSchId(null);
     }
   };
 
@@ -232,93 +250,140 @@ export default function ScholarshipsView() {
       {activeTab === 'all' && (
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
           
-          {/* Left Filtering Sidebar */}
-          <div className="space-y-6 lg:col-span-1">
-            <div className="bg-[#2c2c2c] border-4 border-black p-4 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]">
-              <div className="flex items-center justify-between border-b-2 border-black pb-2 mb-4">
-                <span className="font-press text-[9px] text-[#ffff55] uppercase flex items-center gap-1.5 mc-text-shadow">
-                  <Filter className="w-4 h-4 text-[#ffff55]" /> Filter Specs
-                </span>
-                <button 
-                  onClick={handleResetFilters}
-                  className="text-[9px] font-mono text-stone-400 hover:text-[#ffff55] uppercase underline cursor-pointer"
-                >
-                  Reset All
-                </button>
-              </div>
-
-              {/* GPA Threshold criteria */}
-              <div className="space-y-3 mb-5">
-                <label className="text-[10px] font-press text-stone-300 block uppercase">GPA Range filter</label>
-                <div className="space-y-2">
-                  <div>
-                    <span className="text-[9px] font-mono text-stone-400 block mb-1">MIN REQUIREMENT</span>
-                    <input 
-                      type="number" 
-                      step="0.01" 
-                      placeholder="0.00"
-                      value={gpaMin}
-                      onChange={(e) => { setGpaMin(e.target.value); setPage(1); }}
-                      className="w-full bg-[#141414] border-2 border-black px-2 py-1.5 text-xs font-mono text-stone-200 outline-none"
-                    />
-                  </div>
-                  <div>
-                    <span className="text-[9px] font-mono text-stone-400 block mb-1">MAX LIMIT</span>
-                    <input 
-                      type="number" 
-                      step="0.01" 
-                      placeholder="4.00"
-                      value={gpaMax}
-                      onChange={(e) => { setGpaMax(e.target.value); setPage(1); }}
-                      className="w-full bg-[#141414] border-2 border-black px-2 py-1.5 text-xs font-mono text-stone-200 outline-none"
-                    />
-                  </div>
+          {/* Left Filtering Sidebar (Collapsible) */}
+          {!filtersCollapsed && (
+            <div className="space-y-6 lg:col-span-1">
+              <div className="bg-[#2c2c2c] border-4 border-black p-4 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]">
+                <div className="flex items-center justify-between border-b-2 border-black pb-2 mb-4">
+                  <span className="font-press text-[9px] text-[#ffff55] uppercase flex items-center gap-1.5 mc-text-shadow">
+                    <Filter className="w-4 h-4 text-[#ffff55]" /> Filter Specs
+                  </span>
+                  <button 
+                    onClick={handleResetFilters}
+                    className="text-[9px] font-mono text-stone-400 hover:text-[#ffff55] uppercase underline cursor-pointer"
+                  >
+                    Reset All
+                  </button>
                 </div>
-                {profile && (
-                  <div className="bg-black/40 border border-stone-800 p-2 font-mono text-[10px] text-stone-400">
-                    Your profile GPA: <span className="text-[#55ff55] font-bold">{(profile?.gpa ?? 0).toFixed(2)}</span>
-                  </div>
-                )}
-              </div>
 
-              {/* Degree Filter Checkboxes */}
-              <div className="space-y-2 mb-5 border-t border-stone-700 pt-3">
-                <label className="text-[10px] font-press text-stone-300 block uppercase">Level Class</label>
-                {["Master's Degree", "Ph.D.", "Undergraduate"].map((deg) => (
-                  <label key={deg} className="flex items-center gap-2 font-mono text-xs text-stone-300 cursor-pointer select-none">
+                {/* GPA Threshold criteria */}
+                <div className="space-y-3 mb-5">
+                  <label className="text-[10px] font-press text-stone-300 block uppercase font-bold text-[#e0e0e0]">GPA Range filter</label>
+                  <div className="space-y-2">
+                    <div>
+                      <span className="text-[9px] font-mono text-stone-400 block mb-1">MIN REQUIREMENT</span>
+                      <input 
+                        type="number" 
+                        step="0.01" 
+                        placeholder="0.00"
+                        value={gpaMin}
+                        onChange={(e) => { setGpaMin(e.target.value); setPage(1); }}
+                        className="w-full bg-[#141414] border-2 border-black px-2 py-1.5 text-xs font-mono text-stone-200 outline-none"
+                      />
+                    </div>
+                    <div>
+                      <span className="text-[9px] font-mono text-stone-400 block mb-1">MAX LIMIT</span>
+                      <input 
+                        type="number" 
+                        step="0.01" 
+                        placeholder="4.00"
+                        value={gpaMax}
+                        onChange={(e) => { setGpaMax(e.target.value); setPage(1); }}
+                        className="w-full bg-[#141414] border-2 border-black px-2 py-1.5 text-xs font-mono text-stone-200 outline-none"
+                      />
+                    </div>
+                  </div>
+                  {profile && (
+                    <div className="bg-black/40 border border-stone-800 p-2 font-mono text-[10px] text-stone-400">
+                      Your profile GPA: <span className="text-[#55ff55] font-bold">{(profile?.gpa ?? 0).toFixed(2)}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Target Land / Eligible Region */}
+                <div className="space-y-2 mb-5 border-t border-stone-700 pt-3">
+                  <label className="text-[10px] font-press text-stone-300 block uppercase font-bold text-[#e0e0e0]">Target Land / Country</label>
+                  <select
+                    value={eligibleCountry}
+                    onChange={(e) => { setEligibleCountry(e.target.value); setPage(1); playClickSound(); }}
+                    className="w-full bg-[#141414] border-2 border-black px-2 py-1.5 text-xs font-mono text-stone-200 outline-none"
+                  >
+                    <option value="all">Any region (Worldwide)</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="India">India</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Germany">Germany</option>
+                    <option value="USA">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="Kenya">Kenya</option>
+                  </select>
+                </div>
+
+                {/* Degree Filter Checkboxes */}
+                <div className="space-y-2 mb-5 border-t border-stone-700 pt-3">
+                  <label className="text-[10px] font-press text-stone-300 block uppercase font-bold text-[#e0e0e0]">Level Class</label>
+                  {["Master's Degree", "Ph.D.", "Bachelor's Degree"].map((deg) => (
+                    <label key={deg} className="flex items-center gap-2 font-mono text-xs text-stone-300 cursor-pointer select-none">
+                      <input 
+                        type="checkbox"
+                        checked={selectedDegrees.includes(deg)}
+                        onChange={() => toggleDegreeFilter(deg)}
+                        className="accent-[#55ff55] w-4 h-4 cursor-pointer"
+                      />
+                      <span>{deg}</span>
+                    </label>
+                  ))}
+                </div>
+
+                {/* Funding filters */}
+                <div className="space-y-2 mb-5 border-t border-stone-700 pt-3">
+                  <label className="text-[10px] font-press text-stone-300 block uppercase font-bold text-[#e0e0e0]">Funding Types</label>
+                  <select
+                    value={fundingType}
+                    onChange={(e) => { setFundingType(e.target.value); setPage(1); playClickSound(); }}
+                    className="w-full bg-[#141414] border-2 border-black px-2 py-1.5 text-xs font-mono text-stone-200 outline-none"
+                  >
+                    <option value="all">Any Funding Levels</option>
+                    <option value="Fully Funded">Fully Funded (Tome & Board)</option>
+                    <option value="Partially Funded">Partially Funded (Tuition-only)</option>
+                  </select>
+                </div>
+
+                {/* Deadline: upcoming toggle */}
+                <div className="space-y-2 border-t border-stone-700 pt-3">
+                  <span className="text-[10px] font-press text-stone-300 block uppercase font-bold text-[#e0e0e0] mb-2">Deadline Urgency</span>
+                  <label className="flex items-center gap-2 font-mono text-xs text-stone-300 cursor-pointer select-none">
                     <input 
                       type="checkbox"
-                      checked={selectedDegrees.includes(deg)}
-                      onChange={() => toggleDegreeFilter(deg)}
+                      checked={upcomingOnly}
+                      onChange={(e) => { setUpcomingOnly(e.target.checked); setPage(1); playClickSound(); }}
                       className="accent-[#55ff55] w-4 h-4 cursor-pointer"
                     />
-                    <span>{deg}</span>
+                    <span>Closing soon (≤120 Days)</span>
                   </label>
-                ))}
-              </div>
+                </div>
 
-              {/* Funding filters */}
-              <div className="space-y-2 mb-3 border-t border-stone-700 pt-3">
-                <label className="text-[10px] font-press text-stone-300 block uppercase">Funding Types</label>
-                <select
-                  value={fundingType}
-                  onChange={(e) => { setFundingType(e.target.value); setPage(1); playClickSound(); }}
-                  className="w-full bg-[#141414] border-2 border-black px-2 py-1.5 text-xs font-mono text-stone-200 outline-none"
-                >
-                  <option value="all">Any Funding Levels</option>
-                  <option value="Fully Funded">Fully Funded (Tome & Board)</option>
-                  <option value="Partially Funded">Partially Funded (Tuition-only)</option>
-                </select>
               </div>
-
             </div>
-          </div>
+          )}
 
           {/* Cards feed lists */}
-          <div className="lg:col-span-3 space-y-4">
+          <div className={`${filtersCollapsed ? "lg:col-span-4" : "lg:col-span-3"} space-y-4`}>
             
             {/* Search inputs */}
             <div className="bg-[#4a4a4a] border-4 border-black p-4 flex flex-col md:flex-row gap-4 [box-shadow:inset_-4px_-4px_0_#2a2a2a,inset_4px_4px_0_#7a7a7a]">
+              <button
+                onClick={() => { playClickSound(); setFiltersCollapsed(!filtersCollapsed); }}
+                className="mc-btn flex items-center gap-1.5 shrink-0 bg-[#3a3a3a]"
+              >
+                <SlidersHorizontal className="w-3.5 h-3.5 text-[#ffff55]" /> 
+                {filtersCollapsed ? "Show Filters" : "Hide Filters"}
+              </button>
+
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-2.5 w-4 h-4 text-stone-400" />
                 <input
@@ -420,22 +485,51 @@ export default function ScholarshipsView() {
                           <span className="text-xs font-mono font-bold text-stone-200 block">{sch.deadline}</span>
                         </div>
 
-                        <button
-                          onClick={() => handleSaveApp(sch)}
-                          className="w-full mc-btn mt-4 py-2.5 text-[8.5px] uppercase text-[#55ff55]"
-                        >
-                          Track Quest Loot
-                        </button>
+                        <div className="w-full space-y-2 mt-4">
+                          <button
+                            onClick={() => { playClickSound(); setSelectedSch(sch); }}
+                            className="w-full mc-btn py-2 text-[8px] uppercase text-[#ffff55] border-t-[#ffffaa] border-left-[#ffffaa] bg-stone-750"
+                          >
+                            🔬 Inspect Dossier
+                          </button>
+                          <button
+                            onClick={() => handleSaveApp(sch)}
+                            disabled={trackingSchId === sch.id}
+                            className="w-full mc-btn py-2 text-[8px] uppercase text-[#55ff55] disabled:opacity-50"
+                          >
+                            {trackingSchId === sch.id ? "TRACKING..." : "Track Quest Loot"}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   );
                 })}
 
-                {/* Advanced pagination footer */}
+                {/* Advanced pagination footer with limit selector and show all */}
                 <div className="flex flex-col sm:flex-row justify-between items-center bg-[#2c2c2c] border-4 border-black p-3.5 gap-4 font-mono text-xs">
-                  <span className="text-stone-450 text-[11px]">
-                    Revealed <span className="font-bold text-stone-200">{scholarships.length}</span> of <span className="font-bold text-stone-200">{totalItems}</span> matching loot pools
-                  </span>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <span className="text-stone-455 text-[11px]">
+                      Revealed <span className="font-bold text-stone-200">{scholarships.length}</span> of <span className="font-bold text-stone-200">{totalItems}</span> matching loot pools
+                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[10px] text-stone-400">Rows:</span>
+                      <select
+                        value={limit}
+                        onChange={(e) => {
+                          playClickSound();
+                          const val = Number(e.target.value);
+                          setLimit(val);
+                          setPage(1);
+                        }}
+                        className="bg-[#141414] border-2 border-stone-800 text-stone-300 font-mono text-[11px] p-1 focus:outline-none"
+                      >
+                        <option value={4}>4 Slots</option>
+                        <option value={8}>8 Slots</option>
+                        <option value={16}>16 Slots</option>
+                        <option value={50}>50 Slots (Show All)</option>
+                      </select>
+                    </div>
+                  </div>
                   
                   <div className="flex items-center gap-1">
                     <button
@@ -567,12 +661,20 @@ export default function ScholarshipsView() {
                         />
                       </div>
 
-                      <button
-                        onClick={() => handleSaveApp(sch)}
-                        className="mt-3 w-full bg-[#555] hover:bg-stone-700 text-white border-2 border-black text-[8px] font-press py-1.5 cursor-pointer uppercase py-1"
-                      >
-                        Track Quest
-                      </button>
+                      <div className="w-full space-y-1.5 mt-3">
+                        <button
+                          onClick={() => { playClickSound(); setSelectedSch(sch); }}
+                          className="w-full bg-[#3b3b8c] hover:bg-[#4d4db8] text-[#ffff55] border-2 border-black text-[8px] font-press py-1 cursor-pointer uppercase py-1.5"
+                        >
+                          Inspect Details
+                        </button>
+                        <button
+                          onClick={() => handleSaveApp(sch)}
+                          className="w-full bg-[#555] hover:bg-stone-750 text-white border-2 border-black text-[8px] font-press py-1.5 cursor-pointer uppercase py-1"
+                        >
+                          Track Quest
+                        </button>
+                      </div>
                     </div>
 
                   </div>
@@ -581,6 +683,160 @@ export default function ScholarshipsView() {
             </div>
           )}
 
+        </div>
+      )}
+
+      {/* LOOT DOSSIER SPECIFIC EXTRA DETAIL MODAL */}
+      {selectedSch && (
+        <div className="fixed inset-y-0 inset-x-0 bg-black/85 flex items-center justify-center p-4 z-50 overflow-y-auto">
+          <div className="bg-[#2c2c2c] border-4 border-black p-5 max-w-xl w-full mc-window border-t-stone-200 border-left-stone-200 text-stone-100 flex flex-col justify-between my-auto">
+            
+            {/* Header */}
+            <div className="flex justify-between items-start border-b-4 border-black pb-3">
+              <div className="space-y-1">
+                <span className="font-press text-[8.5px] text-[#ffaa00] mc-text-shadow uppercase tracking-wider block">FELLOWSHIP BLUEPRINT & CONTRACT</span>
+                <h3 className="font-press text-[12px] text-[#ffff55] mc-text-shadow leading-normal">{selectedSch.name}</h3>
+                <span className="text-[10px] font-mono text-stone-400 block mt-0.5">Offered by: <strong className="text-stone-300">{selectedSch.provider}</strong></span>
+              </div>
+              <button
+                onClick={() => { playClickSound(); setSelectedSch(null); }}
+                className="bg-stone-800 hover:bg-stone-750 px-2.5 py-1 text-red-400 border-2 border-black text-xs font-bold shrink-0 cursor-pointer"
+              >
+                X
+              </button>
+            </div>
+
+            {/* Body scroll compartment */}
+            <div className="my-4 py-1 space-y-4 font-mono text-xs max-h-[60vh] overflow-y-auto pr-1">
+              
+              {/* Short coverage details banner */}
+              <div className="grid grid-cols-2 gap-3 bg-black/45 p-3.5 border-2 border-black">
+                <div>
+                  <span className="text-stone-400 text-[10px] uppercase block">Loot Coverage Class:</span>
+                  <span className="font-bold text-[#55ff55]">💎 {selectedSch.fundingCoverage}</span>
+                </div>
+                <div>
+                  <span className="text-stone-400 text-[10px] uppercase block">Active Target GPA Threshold:</span>
+                  <span className="font-bold text-[#ffaa00]">≥ {selectedSch.gpaRequirement.toFixed(2)}</span>
+                </div>
+                <div>
+                  <span className="text-stone-400 text-[10px] uppercase block">Submissions Deadline:</span>
+                  <span className="font-bold text-stone-200">📅 {selectedSch.deadline}</span>
+                </div>
+                <div>
+                  <span className="text-stone-400 text-[10px] uppercase block">Total Eligibility Rating:</span>
+                  <span className="font-bold text-[#64e3ff]">🎖️ {selectedSch.competitivenessScore}% Compatibility</span>
+                </div>
+              </div>
+
+              {/* Main description quote */}
+              <div className="p-3 bg-stone-900 border border-stone-800 rounded-none leading-relaxed text-stone-300 text-xs italic">
+                "{selectedSch.description}"
+              </div>
+
+              {/* Additional detailed requirements requested */}
+              <div className="space-y-3 p-3 bg-black/25 border border-stone-800 rounded-none">
+                
+                {/* Lang and toll */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
+                      <Globe className="w-3.5 h-3.5 text-[#ffff55]" /> Language metrics:
+                    </span>
+                    <span className="text-[#a586ff] text-xs font-semibold block bg-black/40 px-2 py-1 select-none border border-black">{modalLangReq}</span>
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
+                      <Coins className="w-3.5 h-3.5 text-[#55ff55]" /> Submission Toll (Fee):
+                    </span>
+                    <span className="text-[#55ff55] text-xs font-semibold block bg-black/40 px-2 py-1 select-none border border-black">{modalAppFee}</span>
+                  </div>
+                </div>
+
+                {/* Required Inventory items */}
+                <div className="space-y-1.5 pt-1">
+                  <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
+                    <FileText className="w-3.5 h-3.5 text-stone-300" /> Required inventory documents:
+                  </span>
+                  <ul className="list-none space-y-1 pl-1">
+                    {modalReqDocs.map((doc: string, dIdx: number) => (
+                      <li key={dIdx} className="text-stone-300 text-xs flex items-center gap-2">
+                        <CheckCircle className="w-3.5 h-3.5 text-green-500 shrink-0" />
+                        <span>{doc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Contact Inquiry email */}
+                <div className="space-y-1 border-t border-stone-800 pt-3">
+                  <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
+                    <Mail className="w-3.5 h-3.5 text-[#ff4f4f]" /> Support guild inquiry email:
+                  </span>
+                  <a href={`mailto:${modalContactEmail}`} className="text-blue-300 hover:underline select-all flex items-center gap-1 leading-none text-xs">
+                    {modalContactEmail}
+                  </a>
+                </div>
+
+              </div>
+
+              {/* Eligible Majors */}
+              <div className="space-y-1">
+                <span className="text-[10px] font-bold text-stone-400 block uppercase">Eligible Majors Registry:</span>
+                <div className="flex flex-wrap gap-1">
+                  {selectedSch.eligibleMajors.map((m, mIdx) => (
+                    <span key={mIdx} className="bg-stone-900 border border-stone-800 text-[11px] text-stone-300 px-2 py-0.5 select-none font-sans">
+                      {m}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Eligible Nations */}
+              <div className="space-y-1">
+                <span className="text-[10px] font-bold text-stone-400 block uppercase">Eligible Nations Registry:</span>
+                <div className="flex flex-wrap gap-1">
+                  {selectedSch.eligibleCountries.map((c, cIdx) => (
+                    <span key={cIdx} className="bg-stone-900 border border-stone-800 text-[11px] text-[#55ffff] px-2 py-0.5 font-sans select-none">
+                      {c}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+            {/* Action operations footer */}
+            <div className="flex flex-col sm:flex-row gap-3 border-t-2 border-black pt-3.5">
+              <a
+                href={modalAppLink}
+                target="_blank"
+                referrerPolicy="no-referrer"
+                rel="noreferrer"
+                onClick={() => playClickSound()}
+                className="flex-1 bg-yellow-950 hover:bg-yellow-900 text-[#ffff55] border-2 border-black py-2.5 px-3 uppercase text-[10px] font-press rounded-none text-center flex items-center justify-center gap-1.5"
+              >
+                <ExternalLink className="w-4 h-4 shrink-0 text-[#ffff55]" /> Launch Official Portal
+              </a>
+              <button
+                disabled={trackingSchId === selectedSch.id}
+                onClick={() => {
+                  handleSaveApp(selectedSch);
+                  setSelectedSch(null);
+                }}
+                className="flex-1 bg-green-950 hover:bg-green-900 text-[#55ff55] border-2 border-black py-2.5 px-3 uppercase text-[10px] font-press rounded-none shrink-0"
+              >
+                {trackingSchId === selectedSch.id ? "TRACKING..." : "🧬 Bind To Quest Track"}
+              </button>
+              <button
+                onClick={() => { playClickSound(); setSelectedSch(null); }}
+                className="bg-stone-800 hover:bg-stone-750 text-white border-2 border-black py-2.5 px-4 uppercase text-[10px] font-press rounded-none"
+              >
+                Dismiss
+              </button>
+            </div>
+
+          </div>
         </div>
       )}
 

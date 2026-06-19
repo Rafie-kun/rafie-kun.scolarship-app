@@ -30,6 +30,12 @@ export default function UniversitiesView() {
   const [loading, setLoading] = useState(true);
   const [recLoading, setRecLoading] = useState(false);
 
+  // Pagination states
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(6);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
+
   // Recommendations configuration
   const [rankMax, setRankMax] = useState(500);
   const [tuitionMax, setTuitionMax] = useState(65000);
@@ -49,11 +55,15 @@ export default function UniversitiesView() {
       if (type !== 'all') params.append('type', type);
       if (housingFilter) params.append('onCampusHousing', 'true');
       params.append('sortBy', sortBy);
+      params.append('page', String(page));
+      params.append('limit', String(limit));
 
       const res = await fetch(`/api/universities?${params.toString()}`);
       if (res.ok) {
         const data = await res.json();
         setUnis(data.universities || []);
+        setTotalPages(data.totalPages || 1);
+        setTotalItems(data.total || 0);
       }
     } catch (err) {
       console.error("Failed to fetch universities grid:", err);
@@ -91,7 +101,7 @@ export default function UniversitiesView() {
     } else {
       fetchRecommendedUnis();
     }
-  }, [search, country, type, sortBy, housingFilter, activeSubTab]);
+  }, [search, country, type, sortBy, housingFilter, activeSubTab, page, limit]);
 
   // Handle recommender updates
   const handleApplyRecFilters = () => {
@@ -252,7 +262,8 @@ export default function UniversitiesView() {
               No strongholds matched your query matrices. Clear search filters.
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {unis.map((uni) => (
                 <div 
                   key={uni.id}
@@ -326,6 +337,64 @@ export default function UniversitiesView() {
                 </div>
               ))}
             </div>
+
+            {/* Advanced pagination footer with limit selector and show all */}
+            <div className="flex flex-col sm:flex-row justify-between items-center bg-[#2c2c2c] border-4 border-black p-3.5 mt-6 gap-4 font-mono text-xs text-stone-300">
+              <div className="flex flex-wrap items-center gap-4">
+                <span className="text-[11px]">
+                  Revealed <span className="font-bold text-stone-200">{unis.length}</span> of <span className="font-bold text-stone-200">{totalItems}</span> matching strongholds
+                </span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[10px] text-stone-400">Rows:</span>
+                  <select
+                    value={limit}
+                    onChange={(e) => {
+                      playClickSound();
+                      const val = Number(e.target.value);
+                      setLimit(val);
+                      setPage(1);
+                    }}
+                    className="bg-[#141414] border-2 border-stone-800 text-stone-300 font-mono text-[11px] p-1 focus:outline-none"
+                  >
+                    <option value={6}>6 Strongholds</option>
+                    <option value={12}>12 Strongholds</option>
+                    <option value={24}>24 Strongholds</option>
+                    <option value={60}>60 Slots (Show All)</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-1">
+                <button
+                  disabled={page === 1}
+                  onClick={() => { playClickSound(); setPage(prev => Math.max(1, prev - 1)); }}
+                  className="mc-btn px-2.5 py-1 text-[9px] uppercase disabled:opacity-50"
+                >
+                  Prev
+                </button>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((pIdx) => (
+                  <button
+                    key={pIdx}
+                    onClick={() => { playClickSound(); setPage(pIdx); }}
+                    className={`px-2.5 py-1 text-[11px] font-bold border-2 ${
+                      page === pIdx 
+                        ? "bg-[#ffff55] border-black text-black" 
+                        : "bg-[#141414] border-stone-800 text-stone-300 hover:border-[#ffff55]"
+                    }`}
+                  >
+                    {pIdx}
+                  </button>
+                ))}
+                <button
+                  disabled={page === totalPages}
+                  onClick={() => { playClickSound(); setPage(prev => Math.min(totalPages, prev + 1)); }}
+                  className="mc-btn px-2.5 py-1 text-[9px] uppercase disabled:opacity-50"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </>
           )}
         </div>
       )}
