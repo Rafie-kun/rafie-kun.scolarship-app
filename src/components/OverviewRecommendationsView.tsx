@@ -26,7 +26,7 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
         ]);
         setProfile(profRes);
         setScholarships(scholRes.scholarships || []);
-        setUniversities(uniRes);
+        setUniversities(uniRes.universities || (Array.isArray(uniRes) ? uniRes : []));
         setNotifications(notifRes);
       } catch (e) {
         console.error('Error fetching dashboard stats:', e);

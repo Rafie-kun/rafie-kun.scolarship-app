@@ -38,8 +38,9 @@ export default function DreamUniversityView() {
     authorizedFetch('/api/universities')
       .then(res => res.json())
       .then(data => {
-        setUnis(data);
-        if (data.length > 0) setSelectedUni(data[0]);
+        const list = data.universities || (Array.isArray(data) ? data : []);
+        setUnis(list);
+        if (list.length > 0) setSelectedUni(list[0]);
       })
       .catch(err => console.error(err));
   }, []);
