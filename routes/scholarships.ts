@@ -103,7 +103,7 @@ router.get('/', (req: Request, res: Response) => {
     // 7. Pagination settings
     const totalCount = results.length;
     const pageIndex = isNaN(parseInt(String(page))) ? 1 : Math.max(1, parseInt(String(page)));
-    const limitIndex = isNaN(parseInt(String(limit))) ? 100 : Math.max(1, parseInt(String(limit)));
+    const limitIndex = isNaN(parseInt(String(limit))) ? 1000 : Math.max(1, parseInt(String(limit)));
 
     const start = (pageIndex - 1) * limitIndex;
     const end = start + limitIndex;

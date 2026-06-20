@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 
@@ -14,6 +15,7 @@ import universitiesRouter from "./routes/universities";
 import profileRouter from "./routes/profile";
 import communityRouter from "./routes/community";
 import uploadRouter from "./routes/upload";
+import jobsRouter from "./routes/jobs";
 
 import { getNotifications, addNotification } from "./db/index";
 
@@ -42,6 +44,43 @@ function hasGeminiKey(): boolean {
   return !!process.env.GEMINI_API_KEY;
 }
 
+// --- REDIRECT SCHOLARSHIP APPLICANTS TO DETAILED PORTALS (Anti-404) ---
+app.get("/fellowships/:id/apply", (req, res) => {
+  const id = req.params.id;
+  try {
+    const scholarshipsPath = path.join(process.cwd(), "data", "scholarships.json");
+    if (fs.existsSync(scholarshipsPath)) {
+      const list = JSON.parse(fs.readFileSync(scholarshipsPath, "utf-8"));
+      const found = list.find((s: any) => s.id === id);
+      if (found) {
+        const target = found.applicationUrl || found.officialWebsite || "https://scholarpath-portal.org";
+        return res.redirect(target);
+      }
+    }
+  } catch (error) {
+    console.error("[Apply Redirection Error]:", error);
+  }
+  res.redirect("/#/scholarships");
+});
+
+app.get("/api/fellowships/:id/apply", (req, res) => {
+  const id = req.params.id;
+  try {
+    const scholarshipsPath = path.join(process.cwd(), "data", "scholarships.json");
+    if (fs.existsSync(scholarshipsPath)) {
+      const list = JSON.parse(fs.readFileSync(scholarshipsPath, "utf-8"));
+      const found = list.find((s: any) => s.id === id);
+      if (found) {
+        const target = found.applicationUrl || found.officialWebsite || "https://scholarpath-portal.org";
+        return res.json({ targetUrl: target });
+      }
+    }
+  } catch (error) {
+    console.error("[API Apply Redirection Error]:", error);
+  }
+  res.status(404).json({ error: "Scholarship portal endpoint could not be indexed in our registry." });
+});
+
 // Mount routers
 app.use("/api/auth", authRouter);
 app.use("/api/scholarships", scholarshipsRouter);
@@ -51,6 +90,7 @@ app.use("/api/roadmap", roadmapRouter);
 app.use("/api/universities", universitiesRouter);
 app.use("/api/profile", profileRouter);
 app.use("/api/community", communityRouter);
+app.use("/api/jobs", jobsRouter);
 app.use("/api", uploadRouter); // Mount on /api/upload-pdf
 app.use("/api", recommenderRouter);
 

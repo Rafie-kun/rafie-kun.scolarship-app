@@ -11,7 +11,7 @@ interface AuthContextType {
   authLoading: boolean;
   authError: string | null;
   login: (username: string, password: string) => Promise<boolean>;
-  register: (username: string, password: string, fullName: string, gpa: string, major: string) => Promise<boolean>;
+  register: (username: string, password: string, fullName: string, gpa: string, major: string, extraFields?: any) => Promise<boolean>;
   guestLogin: () => Promise<boolean>;
   logout: () => void;
   refreshProfile: () => Promise<void>;
@@ -116,22 +116,33 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const register = async (username: string, password: string, fullName: string, gpa: string, major: string): Promise<boolean> => {
+  const register = async (
+    username: string, 
+    password: string, 
+    fullName: string, 
+    gpa: string, 
+    major: string,
+    extraFields?: any
+  ): Promise<boolean> => {
     setAuthLoading(true);
     setAuthError(null);
     playClickSound();
 
     try {
+      const payload = {
+        username,
+        password,
+        fullName,
+        gpa,
+        intendedMajor: major,
+        primaryMajor: major,
+        ...extraFields
+      };
+
       const res = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username,
-          password,
-          fullName,
-          gpa,
-          intendedMajor: major
-        }),
+        body: JSON.stringify(payload),
         credentials: 'include'
       });
 

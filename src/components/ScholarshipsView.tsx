@@ -61,7 +61,7 @@ export default function ScholarshipsView() {
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  const modalAppLink = selectedSch ? ((selectedSch as any).officialWebsite || (selectedSch as any).appLink || `https://scholarpath-portal.org/fellowships/${selectedSch.id}/apply`) : '';
+  const modalAppLink = selectedSch ? `/fellowships/${selectedSch.id}/apply` : '';
   const modalContactEmail = selectedSch ? ((selectedSch as any).contactEmail || `inquiries@${selectedSch.provider.toLowerCase().replace(/[^a-z0-9]/g, '') || 'scholarship-board'}.org`) : '';
   const modalAppFee = selectedSch ? (((selectedSch as any).applicationFee || (selectedSch as any).appFee || "Free Portal Application")) : '';
   const modalReqDocs = selectedSch ? ((selectedSch as any).requiredDocuments || ["Academic Transcripts (Validated)", "Letters of Recommendation (x2)", "Statement of Purpose (Crafted)", "Curriculum Vitae / Resume", "Proof of Nationality / Passport"]) : [];

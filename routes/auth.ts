@@ -141,7 +141,11 @@ router.post('/register', (req: Request, res: Response) => {
     secondaryMajor,
     minor,
     graduationYear,
-    additionalSkills
+    additionalSkills,
+    satScore,
+    oLevelSubjects,
+    aLevelSubjects,
+    resumePdf
   } = req.body;
 
   if (!username || !password) {
@@ -185,7 +189,10 @@ router.post('/register', (req: Request, res: Response) => {
     minor: minor || "",
     graduationYear: graduationYear ? parseInt(String(graduationYear)) : 2026,
     additionalSkills: additionalSkills || ["TypeScript", "Python"],
-    resumePdf: "",
+    resumePdf: resumePdf || "",
+    satScore: satScore ? parseFloat(String(satScore)) : null,
+    oLevelSubjects: oLevelSubjects || [],
+    aLevelSubjects: aLevelSubjects || [],
     rewardedActions: []
   };
 
