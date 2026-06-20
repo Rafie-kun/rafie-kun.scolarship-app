@@ -2,3976 +2,1801 @@
   {
     "id": "uni-001",
     "name": "Harvard University",
-    "country": "USA",
+    "country": "United States",
     "type": "private",
     "ranking": 4,
     "acceptanceRate": "3.4%",
     "averageGpa": 3.95,
     "tuitionMin": 54000,
     "tuitionMax": 61200,
-    "popularMajors": [
-      "Economics",
-      "Computer Science",
-      "Political Science",
-      "Social Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-13",
-      "sch-14",
-      "sch-49"
-    ],
+    "popularMajors": ["Economics", "Computer Science", "Political Science", "Social Sciences"],
+    "offeredScholarships": ["sch-02", "sch-13", "sch-14", "sch-49"],
     "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-001"
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://apply.college.harvard.edu/",
+    "region": "North America"
   },
   {
     "id": "uni-002",
     "name": "Stanford University",
-    "country": "USA",
+    "country": "United States",
     "type": "private",
     "ranking": 5,
     "acceptanceRate": "3.9%",
     "averageGpa": 3.96,
     "tuitionMin": 57000,
     "tuitionMax": 64500,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Human Biology",
-      "Economics"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-13",
-      "sch-49"
-    ],
+    "popularMajors": ["Computer Science", "Engineering", "Human Biology", "Economics"],
+    "offeredScholarships": ["sch-02", "sch-13", "sch-49"],
     "city": "Stanford",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-002"
+    "website": "https://www.stanford.edu/",
+    "applicationUrl": "https://apply.stanford.edu/",
+    "region": "North America"
   },
   {
     "id": "uni-003",
     "name": "Massachusetts Institute of Technology (MIT)",
-    "country": "USA",
+    "country": "United States",
     "type": "private",
     "ranking": 1,
     "acceptanceRate": "4.1%",
     "averageGpa": 3.96,
     "tuitionMin": 55500,
     "tuitionMax": 59750,
-    "popularMajors": [
-      "Computer Science",
-      "Mechanical Engineering",
-      "Physics",
-      "Mathematics"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-13",
-      "sch-49"
-    ],
+    "popularMajors": ["Computer Science", "Mechanical Engineering", "Physics", "Mathematics"],
+    "offeredScholarships": ["sch-02", "sch-13", "sch-49"],
     "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-003"
+    "website": "https://www.mit.edu/",
+    "applicationUrl": "https://apply.mit.edu/",
+    "region": "North America"
   },
   {
     "id": "uni-004",
     "name": "University of California, Berkeley",
-    "country": "USA",
+    "country": "United States",
     "type": "public",
     "ranking": 10,
     "acceptanceRate": "11.4%",
     "averageGpa": 3.89,
     "tuitionMin": 14200,
     "tuitionMax": 44000,
-    "popularMajors": [
-      "Computer Science",
-      "Economics",
-      "Electrical Engineering",
-      "Cellular Biology"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
+    "popularMajors": ["Computer Science", "Economics", "Electrical Engineering", "Cellular Biology"],
+    "offeredScholarships": ["sch-02", "sch-49"],
     "city": "Berkeley",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-004"
+    "website": "https://www.berkeley.edu/",
+    "applicationUrl": "https://apply.berkeley.edu/",
+    "region": "North America"
   },
   {
     "id": "uni-005",
     "name": "University of California, Los Angeles (UCLA)",
-    "country": "USA",
+    "country": "United States",
     "type": "public",
     "ranking": 29,
     "acceptanceRate": "8.6%",
     "averageGpa": 3.9,
     "tuitionMin": 13800,
     "tuitionMax": 43500,
-    "popularMajors": [
-      "Biology",
-      "Economics",
-      "Psychology",
-      "Political Science"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
+    "popularMajors": ["Biology", "Economics", "Psychology", "Political Science"],
+    "offeredScholarships": ["sch-02", "sch-49"],
     "city": "Los Angeles",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-005"
+    "website": "https://www.ucla.edu/",
+    "applicationUrl": "https://apply.ucla.edu/",
+    "region": "North America"
   },
   {
     "id": "uni-006",
     "name": "New York University (NYU)",
-    "country": "USA",
+    "country": "United States",
     "type": "private",
     "ranking": 43,
     "acceptanceRate": "12.2%",
     "averageGpa": 3.8,
     "tuitionMin": 53000,
-    "tuitionMax": 60500,
-    "popularMajors": [
-      "Media Studies",
-      "Business Administration",
-      "Economics",
-      "Computer Science"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
+    "tuitionMax": 58000,
+    "popularMajors": ["Business", "Arts", "Computer Science", "Law"],
+    "offeredScholarships": ["sch-02", "sch-49"],
     "city": "New York",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-006"
+    "website": "https://www.nyu.edu/",
+    "applicationUrl": "https://apply.nyu.edu/",
+    "region": "North America"
   },
   {
     "id": "uni-007",
-    "name": "Columbia University",
-    "country": "USA",
+    "name": "Princeton University",
+    "country": "United States",
     "type": "private",
-    "ranking": 23,
-    "acceptanceRate": "3.73%",
-    "averageGpa": 3.91,
-    "tuitionMin": 61800,
-    "tuitionMax": 66300,
-    "popularMajors": [
-      "Social Sciences",
-      "Computer Science",
-      "History",
-      "Engineering"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-13",
-      "sch-49"
-    ],
-    "city": "New York",
+    "ranking": 3,
+    "acceptanceRate": "3.98%",
+    "averageGpa": 3.92,
+    "tuitionMin": 56000,
+    "tuitionMax": 61000,
+    "popularMajors": ["Computer Science", "Economics", "Mathematics", "Physics"],
+    "offeredScholarships": ["sch-02", "sch-49"],
+    "city": "Princeton",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-007"
+    "website": "https://www.princeton.edu/",
+    "applicationUrl": "https://apply.princeton.edu/",
+    "region": "North America"
   },
   {
     "id": "uni-008",
-    "name": "California State University, Long Beach",
-    "country": "USA",
-    "type": "public",
-    "ranking": 1100,
-    "acceptanceRate": "46.0%",
-    "averageGpa": 3.4,
-    "tuitionMin": 7100,
-    "tuitionMax": 16500,
-    "popularMajors": [
-      "Business Administration",
-      "Art",
-      "Psychology",
-      "Engineering"
-    ],
-    "offeredScholarships": [
-      "sch-49"
-    ],
-    "city": "Long Beach",
+    "name": "Yale University",
+    "country": "United States",
+    "type": "private",
+    "ranking": 6,
+    "acceptanceRate": "4.6%",
+    "averageGpa": 3.95,
+    "tuitionMin": 58000,
+    "tuitionMax": 63000,
+    "popularMajors": ["Political Science", "Economics", "Computer Science", "History"],
+    "offeredScholarships": ["sch-02", "sch-49"],
+    "city": "New Haven",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-008"
+    "website": "https://www.yale.edu/",
+    "applicationUrl": "https://apply.yale.edu/",
+    "region": "North America"
   },
   {
     "id": "uni-009",
-    "name": "University of Oxford",
-    "country": "United Kingdom",
-    "type": "public",
-    "ranking": 3,
-    "acceptanceRate": "14.3%",
-    "averageGpa": 3.88,
-    "tuitionMin": 36000,
-    "tuitionMax": 48500,
-    "popularMajors": [
-      "Philosophy",
-      "Politics",
-      "Economics",
-      "Law",
-      "Computer Science"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-06",
-      "sch-14"
-    ],
-    "city": "Oxford",
+    "name": "Columbia University",
+    "country": "United States",
+    "type": "private",
+    "ranking": 7,
+    "acceptanceRate": "3.9%",
+    "averageGpa": 3.91,
+    "tuitionMin": 61000,
+    "tuitionMax": 66000,
+    "popularMajors": ["Computer Science", "Economics", "Political Science", "Engineering"],
+    "offeredScholarships": ["sch-02", "sch-49"],
+    "city": "New York",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-009"
+    "website": "https://www.columbia.edu/",
+    "applicationUrl": "https://apply.college.columbia.edu/",
+    "region": "North America"
   },
   {
     "id": "uni-010",
+    "name": "University of Pennsylvania (UPenn)",
+    "country": "United States",
+    "type": "private",
+    "ranking": 8,
+    "acceptanceRate": "5.7%",
+    "averageGpa": 3.88,
+    "tuitionMin": 58000,
+    "tuitionMax": 63000,
+    "popularMajors": ["Business", "Economics", "Computer Science", "Engineering"],
+    "offeredScholarships": ["sch-02", "sch-49"],
+    "city": "Philadelphia",
+    "hasOnCampusHousing": true,
+    "website": "https://www.upenn.edu/",
+    "applicationUrl": "https://apply.college.upenn.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-011",
+    "name": "Caltech",
+    "country": "United States",
+    "type": "private",
+    "ranking": 2,
+    "acceptanceRate": "2.7%",
+    "averageGpa": 3.97,
+    "tuitionMin": 59000,
+    "tuitionMax": 62000,
+    "popularMajors": ["Physics", "Mathematics", "Computer Science", "Engineering"],
+    "offeredScholarships": ["sch-02", "sch-49"],
+    "city": "Pasadena",
+    "hasOnCampusHousing": true,
+    "website": "https://www.caltech.edu/",
+    "applicationUrl": "https://apply.caltech.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-012",
+    "name": "University of Chicago",
+    "country": "United States",
+    "type": "private",
+    "ranking": 11,
+    "acceptanceRate": "4.8%",
+    "averageGpa": 3.9,
+    "tuitionMin": 60000,
+    "tuitionMax": 64000,
+    "popularMajors": ["Economics", "Computer Science", "Political Science", "Mathematics"],
+    "offeredScholarships": ["sch-02", "sch-49"],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uchicago.edu/",
+    "applicationUrl": "https://apply.uchicago.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-013",
+    "name": "Duke University",
+    "country": "United States",
+    "type": "private",
+    "ranking": 12,
+    "acceptanceRate": "6.2%",
+    "averageGpa": 3.85,
+    "tuitionMin": 58000,
+    "tuitionMax": 62000,
+    "popularMajors": ["Computer Science", "Economics", "Biology", "Engineering"],
+    "offeredScholarships": ["sch-02", "sch-49"],
+    "city": "Durham",
+    "hasOnCampusHousing": true,
+    "website": "https://www.duke.edu/",
+    "applicationUrl": "https://apply.duke.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-014",
+    "name": "Johns Hopkins University",
+    "country": "United States",
+    "type": "private",
+    "ranking": 13,
+    "acceptanceRate": "7.3%",
+    "averageGpa": 3.85,
+    "tuitionMin": 58000,
+    "tuitionMax": 62000,
+    "popularMajors": ["Biology", "Computer Science", "Engineering", "Medicine"],
+    "offeredScholarships": ["sch-02", "sch-49"],
+    "city": "Baltimore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.jhu.edu/",
+    "applicationUrl": "https://apply.jhu.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-015",
+    "name": "Northwestern University",
+    "country": "United States",
+    "type": "private",
+    "ranking": 14,
+    "acceptanceRate": "7.2%",
+    "averageGpa": 3.84,
+    "tuitionMin": 59000,
+    "tuitionMax": 63000,
+    "popularMajors": ["Computer Science", "Economics", "Engineering", "Journalism"],
+    "offeredScholarships": ["sch-02", "sch-49"],
+    "city": "Evanston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.northwestern.edu/",
+    "applicationUrl": "https://apply.northwestern.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-016",
     "name": "University of Cambridge",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 2,
-    "acceptanceRate": "15.7%",
+    "acceptanceRate": "15.0%",
     "averageGpa": 3.9,
-    "tuitionMin": 34500,
-    "tuitionMax": 47000,
-    "popularMajors": [
-      "Physics",
-      "Mathematics",
-      "Engineering",
-      "Astrobiology"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-06",
-      "sch-12",
-      "sch-14"
-    ],
+    "tuitionMin": 36000,
+    "tuitionMax": 42000,
+    "popularMajors": ["Physics", "Mathematics", "Engineering", "Law"],
+    "offeredScholarships": ["sch-04", "sch-09"],
     "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-010"
+    "website": "https://www.cam.ac.uk/",
+    "applicationUrl": "https://apply.cam.ac.uk/",
+    "region": "Europe"
   },
   {
-    "id": "uni-011",
+    "id": "uni-017",
+    "name": "University of Oxford",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 3,
+    "acceptanceRate": "15.0%",
+    "averageGpa": 3.88,
+    "tuitionMin": 36000,
+    "tuitionMax": 42000,
+    "popularMajors": ["Philosophy", "Politics", "Economics", "Law"],
+    "offeredScholarships": ["sch-04", "sch-09"],
+    "city": "Oxford",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://apply.ox.ac.uk/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-018",
     "name": "Imperial College London",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 6,
-    "acceptanceRate": "11.5%",
-    "averageGpa": 3.82,
-    "tuitionMin": 35000,
-    "tuitionMax": 44000,
-    "popularMajors": [
-      "Engineering",
-      "Computer Science",
-      "Medicine",
-      "Physics"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-06",
-      "sch-14"
-    ],
+    "acceptanceRate": "14.3%",
+    "averageGpa": 3.7,
+    "tuitionMin": 38000,
+    "tuitionMax": 45000,
+    "popularMajors": ["Computer Science", "Engineering", "Medicine", "Physics"],
+    "offeredScholarships": ["sch-04"],
     "city": "London",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-011"
+    "website": "https://www.imperial.ac.uk/",
+    "applicationUrl": "https://apply.imperial.ac.uk/",
+    "region": "Europe"
   },
   {
-    "id": "uni-012",
+    "id": "uni-019",
     "name": "University College London (UCL)",
     "country": "United Kingdom",
     "type": "public",
-    "ranking": 9,
-    "acceptanceRate": "16.1%",
-    "averageGpa": 3.75,
-    "tuitionMin": 29000,
-    "tuitionMax": 39500,
-    "popularMajors": [
-      "Psychology",
-      "Social Sciences",
-      "Law",
-      "Computer Science"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-06",
-      "sch-14",
-      "sch-30"
-    ],
+    "ranking": 8,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.6,
+    "tuitionMin": 35000,
+    "tuitionMax": 42000,
+    "popularMajors": ["Computer Science", "Law", "Medicine", "Business"],
+    "offeredScholarships": ["sch-04"],
     "city": "London",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-012"
+    "website": "https://www.ucl.ac.uk/",
+    "applicationUrl": "https://apply.ucl.ac.uk/",
+    "region": "Europe"
   },
   {
-    "id": "uni-013",
+    "id": "uni-020",
     "name": "London School of Economics (LSE)",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 45,
-    "acceptanceRate": "8.9%",
-    "averageGpa": 3.84,
-    "tuitionMin": 27500,
-    "tuitionMax": 31000,
-    "popularMajors": [
-      "Economics",
-      "Politics",
-      "Social Sciences",
-      "Law"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-06",
-      "sch-14"
-    ],
+    "acceptanceRate": "6.5%",
+    "averageGpa": 3.7,
+    "tuitionMin": 35000,
+    "tuitionMax": 42000,
+    "popularMajors": ["Economics", "Finance", "Politics", "Law"],
+    "offeredScholarships": ["sch-04"],
     "city": "London",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-013"
+    "website": "https://www.lse.ac.uk/",
+    "applicationUrl": "https://apply.lse.ac.uk/",
+    "region": "Europe"
   },
   {
-    "id": "uni-014",
+    "id": "uni-021",
     "name": "University of Edinburgh",
     "country": "United Kingdom",
     "type": "public",
-    "ranking": 22,
-    "acceptanceRate": "26.5%",
-    "averageGpa": 3.65,
-    "tuitionMin": 26000,
-    "tuitionMax": 33500,
-    "popularMajors": [
-      "History",
-      "Economics",
-      "Computer Science",
-      "Biological Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-06",
-      "sch-31"
-    ],
+    "ranking": 15,
+    "acceptanceRate": "33.0%",
+    "averageGpa": 3.5,
+    "tuitionMin": 35000,
+    "tuitionMax": 42000,
+    "popularMajors": ["Computer Science", "Law", "Medicine", "Business"],
+    "offeredScholarships": ["sch-04"],
     "city": "Edinburgh",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-014"
+    "website": "https://www.ed.ac.uk/",
+    "applicationUrl": "https://apply.ed.ac.uk/",
+    "region": "Europe"
   },
   {
-    "id": "uni-015",
+    "id": "uni-022",
+    "name": "King's College London",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 38,
+    "acceptanceRate": "13.0%",
+    "averageGpa": 3.5,
+    "tuitionMin": 35000,
+    "tuitionMax": 42000,
+    "popularMajors": ["Law", "Medicine", "Computer Science", "Business"],
+    "offeredScholarships": ["sch-04"],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.kcl.ac.uk/",
+    "applicationUrl": "https://apply.kcl.ac.uk/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-023",
+    "name": "University of Manchester",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 28,
+    "acceptanceRate": "56.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 32000,
+    "tuitionMax": 40000,
+    "popularMajors": ["Computer Science", "Engineering", "Medicine", "Business"],
+    "offeredScholarships": ["sch-04"],
+    "city": "Manchester",
+    "hasOnCampusHousing": true,
+    "website": "https://www.manchester.ac.uk/",
+    "applicationUrl": "https://apply.manchester.ac.uk/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-024",
+    "name": "University of Warwick",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 64,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 32000,
+    "tuitionMax": 40000,
+    "popularMajors": ["Computer Science", "Business", "Economics", "Mathematics"],
+    "offeredScholarships": ["sch-04"],
+    "city": "Coventry",
+    "hasOnCampusHousing": true,
+    "website": "https://warwick.ac.uk/",
+    "applicationUrl": "https://apply.warwick.ac.uk/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-025",
+    "name": "University of Bristol",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 55,
+    "acceptanceRate": "60.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 32000,
+    "tuitionMax": 40000,
+    "popularMajors": ["Computer Science", "Engineering", "Law", "Medicine"],
+    "offeredScholarships": ["sch-04"],
+    "city": "Bristol",
+    "hasOnCampusHousing": true,
+    "website": "https://www.bristol.ac.uk/",
+    "applicationUrl": "https://apply.bristol.ac.uk/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-026",
+    "name": "University of Glasgow",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 81,
+    "acceptanceRate": "60.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 30000,
+    "tuitionMax": 38000,
+    "popularMajors": ["Computer Science", "Law", "Medicine", "Business"],
+    "offeredScholarships": ["sch-04"],
+    "city": "Glasgow",
+    "hasOnCampusHousing": true,
+    "website": "https://www.gla.ac.uk/",
+    "applicationUrl": "https://apply.gla.ac.uk/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-027",
     "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 7,
     "acceptanceRate": "27.0%",
-    "averageGpa": 3.85,
+    "averageGpa": 3.65,
     "tuitionMin": 1500,
-    "tuitionMax": 1800,
-    "popularMajors": [
-      "Computer Science",
-      "Data Science",
-      "Physics",
-      "Engineering"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-09",
-      "sch-46",
-      "sch-47"
-    ],
+    "tuitionMax": 2500,
+    "popularMajors": ["Computer Science", "Engineering", "Physics", "Mathematics"],
+    "offeredScholarships": ["sch-11"],
     "city": "Zurich",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-015"
+    "hasOnCampusHousing": true,
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://apply.ethz.ch/",
+    "region": "Europe"
   },
   {
-    "id": "uni-016",
-    "name": "EPFL (Ecole Polytechnique Federale)",
+    "id": "uni-028",
+    "name": "EPFL Lausanne",
     "country": "Switzerland",
     "type": "public",
-    "ranking": 36,
-    "acceptanceRate": "21.0%",
-    "averageGpa": 3.8,
+    "ranking": 14,
+    "acceptanceRate": "33.0%",
+    "averageGpa": 3.6,
     "tuitionMin": 1500,
-    "tuitionMax": 1780,
-    "popularMajors": [
-      "Robotics",
-      "Computer Science",
-      "Engineering",
-      "Mathematics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-09",
-      "sch-46"
-    ],
+    "tuitionMax": 2500,
+    "popularMajors": ["Computer Science", "Engineering", "Physics", "Mathematics"],
+    "offeredScholarships": ["sch-11"],
     "city": "Lausanne",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-016"
+    "hasOnCampusHousing": true,
+    "website": "https://www.epfl.ch/",
+    "applicationUrl": "https://apply.epfl.ch/",
+    "region": "Europe"
   },
   {
-    "id": "uni-017",
+    "id": "uni-029",
     "name": "Technical University of Munich (TUM)",
     "country": "Germany",
     "type": "public",
     "ranking": 37,
-    "acceptanceRate": "18.5%",
-    "averageGpa": 3.5,
-    "tuitionMin": 6600,
-    "tuitionMax": 6000,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Physics",
-      "Chemistry"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03",
-      "sch-39"
-    ],
+    "acceptanceRate": "8.5%",
+    "averageGpa": 3.65,
+    "tuitionMin": 0,
+    "tuitionMax": 1500,
+    "popularMajors": ["Computer Science", "Robotics", "Informatics", "Engineering"],
+    "offeredScholarships": ["sch-03", "sch-12"],
     "city": "Munich",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-017"
-  },
-  {
-    "id": "uni-018",
-    "name": "KU Leuven",
-    "country": "Belgium",
-    "type": "public",
-    "ranking": 61,
-    "acceptanceRate": "38.0%",
-    "averageGpa": 3.4,
-    "tuitionMin": 1250,
-    "tuitionMax": 4000,
-    "popularMajors": [
-      "Philosophy",
-      "Engineering",
-      "Computer Science",
-      "Economics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03",
-      "sch-42"
-    ],
-    "city": "Leuven",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-018"
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://apply.tum.de/",
+    "region": "Europe"
   },
   {
-    "id": "uni-019",
-    "name": "Sorbonne University",
-    "country": "France",
+    "id": "uni-030",
+    "name": "LMU Munich",
+    "country": "Germany",
     "type": "public",
-    "ranking": 59,
-    "acceptanceRate": "15.0%",
-    "averageGpa": 3.6,
-    "tuitionMin": 200,
-    "tuitionMax": 500,
-    "popularMajors": [
-      "Arts",
-      "Philosophy",
-      "Social Sciences",
-      "Physics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-07",
-      "sch-45"
-    ],
-    "city": "Paris",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-019"
+    "ranking": 54,
+    "acceptanceRate": "25.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 0,
+    "tuitionMax": 1500,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Physics"],
+    "offeredScholarships": ["sch-03"],
+    "city": "Munich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.lmu.de/",
+    "applicationUrl": "https://apply.lmu.de/",
+    "region": "Europe"
   },
   {
-    "id": "uni-020",
+    "id": "uni-031",
+    "name": "Heidelberg University",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 48,
+    "acceptanceRate": "25.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 0,
+    "tuitionMax": 1500,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Physics"],
+    "offeredScholarships": ["sch-03"],
+    "city": "Heidelberg",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uni-heidelberg.de/",
+    "applicationUrl": "https://apply.uni-heidelberg.de/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-032",
+    "name": "Humboldt University Berlin",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 120,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 0,
+    "tuitionMax": 1500,
+    "popularMajors": ["Computer Science", "Law", "Medicine", "Physics"],
+    "offeredScholarships": ["sch-03"],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.hu-berlin.de/",
+    "applicationUrl": "https://apply.hu-berlin.de/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-033",
+    "name": "Free University Berlin",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 130,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 0,
+    "tuitionMax": 1500,
+    "popularMajors": ["Computer Science", "Law", "Political Science", "Economics"],
+    "offeredScholarships": ["sch-03"],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.fu-berlin.de/",
+    "applicationUrl": "https://apply.fu-berlin.de/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-034",
+    "name": "University of Bonn",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 90,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 0,
+    "tuitionMax": 1500,
+    "popularMajors": ["Computer Science", "Economics", "Law", "Physics"],
+    "offeredScholarships": ["sch-03"],
+    "city": "Bonn",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uni-bonn.de/",
+    "applicationUrl": "https://apply.uni-bonn.de/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-035",
+    "name": "University of Freiburg",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 110,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 0,
+    "tuitionMax": 1500,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Physics"],
+    "offeredScholarships": ["sch-03"],
+    "city": "Freiburg",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uni-freiburg.de/",
+    "applicationUrl": "https://apply.uni-freiburg.de/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-036",
+    "name": "University of Hamburg",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 140,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.2,
+    "tuitionMin": 0,
+    "tuitionMax": 1500,
+    "popularMajors": ["Computer Science", "Law", "Business", "Physics"],
+    "offeredScholarships": ["sch-03"],
+    "city": "Hamburg",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uni-hamburg.de/",
+    "applicationUrl": "https://apply.uni-hamburg.de/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-037",
     "name": "National University of Singapore (NUS)",
     "country": "Singapore",
     "type": "public",
     "ranking": 8,
-    "acceptanceRate": "12.0%",
-    "averageGpa": 3.88,
-    "tuitionMin": 22000,
-    "tuitionMax": 34000,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Robotics",
-      "Physics"
-    ],
-    "offeredScholarships": [
-      "sch-05",
-      "sch-08",
-      "sch-44"
-    ],
+    "acceptanceRate": "5.0%",
+    "averageGpa": 3.8,
+    "tuitionMin": 18000,
+    "tuitionMax": 35000,
+    "popularMajors": ["Computer Science", "Engineering", "Business", "Law"],
+    "offeredScholarships": ["sch-07", "sch-15"],
     "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-020"
+    "website": "https://www.nus.edu.sg/",
+    "applicationUrl": "https://apply.nus.edu.sg/",
+    "region": "Asia"
   },
   {
-    "id": "uni-021",
+    "id": "uni-038",
     "name": "Nanyang Technological University (NTU)",
     "country": "Singapore",
     "type": "public",
-    "ranking": 15,
-    "acceptanceRate": "15.0%",
-    "averageGpa": 3.82,
-    "tuitionMin": 21000,
-    "tuitionMax": 32000,
-    "popularMajors": [
-      "Engineering",
-      "Computer Science",
-      "Business Administration",
-      "Materials Science"
-    ],
-    "offeredScholarships": [
-      "sch-05",
-      "sch-08",
-      "sch-44"
-    ],
+    "ranking": 12,
+    "acceptanceRate": "6.0%",
+    "averageGpa": 3.7,
+    "tuitionMin": 17000,
+    "tuitionMax": 34000,
+    "popularMajors": ["Computer Science", "Engineering", "Business", "Science"],
+    "offeredScholarships": ["sch-07", "sch-15"],
     "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-021"
+    "website": "https://www.ntu.edu.sg/",
+    "applicationUrl": "https://apply.ntu.edu.sg/",
+    "region": "Asia"
   },
   {
-    "id": "uni-022",
+    "id": "uni-039",
+    "name": "Singapore Management University (SMU)",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 150,
+    "acceptanceRate": "15.0%",
+    "averageGpa": 3.6,
+    "tuitionMin": 16000,
+    "tuitionMax": 30000,
+    "popularMajors": ["Business", "Economics", "Law", "Computer Science"],
+    "offeredScholarships": ["sch-07", "sch-15"],
+    "city": "Singapore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.smu.edu.sg/",
+    "applicationUrl": "https://apply.smu.edu.sg/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-040",
     "name": "Tsinghua University",
     "country": "China",
     "type": "public",
-    "ranking": 25,
+    "ranking": 15,
     "acceptanceRate": "1.0%",
     "averageGpa": 3.9,
-    "tuitionMin": 4500,
-    "tuitionMax": 6200,
-    "popularMajors": [
-      "Robotics",
-      "Engineering",
-      "Computer Science",
-      "Business Administration"
-    ],
-    "offeredScholarships": [
-      "sch-10",
-      "sch-19",
-      "sch-37"
-    ],
+    "tuitionMin": 6000,
+    "tuitionMax": 12000,
+    "popularMajors": ["Computer Science", "Engineering", "Physics", "Business"],
+    "offeredScholarships": ["sch-06", "sch-10"],
     "city": "Beijing",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-022"
+    "website": "https://www.tsinghua.edu.cn/",
+    "applicationUrl": "https://apply.tsinghua.edu.cn/",
+    "region": "Asia"
   },
   {
-    "id": "uni-023",
+    "id": "uni-041",
     "name": "Peking University",
     "country": "China",
     "type": "public",
     "ranking": 17,
-    "acceptanceRate": "1.1%",
-    "averageGpa": 3.92,
-    "tuitionMin": 4600,
-    "tuitionMax": 6500,
-    "popularMajors": [
-      "Economics",
-      "Computer Science",
-      "Law",
-      "International Relations"
-    ],
-    "offeredScholarships": [
-      "sch-10",
-      "sch-19",
-      "sch-37"
-    ],
+    "acceptanceRate": "1.5%",
+    "averageGpa": 3.9,
+    "tuitionMin": 6000,
+    "tuitionMax": 12000,
+    "popularMajors": ["Computer Science", "Law", "Business", "Medicine"],
+    "offeredScholarships": ["sch-06", "sch-10"],
     "city": "Beijing",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-023"
+    "website": "https://www.pku.edu.cn/",
+    "applicationUrl": "https://apply.pku.edu.cn/",
+    "region": "Asia"
   },
   {
-    "id": "uni-024",
-    "name": "The University of Tokyo",
+    "id": "uni-042",
+    "name": "University of Tokyo",
     "country": "Japan",
     "type": "public",
-    "ranking": 28,
-    "acceptanceRate": "22.0%",
-    "averageGpa": 3.75,
-    "tuitionMin": 5000,
-    "tuitionMax": 7200,
-    "popularMajors": [
-      "Physics",
-      "Engineering",
-      "Robotics",
-      "Economics"
-    ],
-    "offeredScholarships": [
-      "sch-05",
-      "sch-38"
-    ],
+    "ranking": 23,
+    "acceptanceRate": "15.0%",
+    "averageGpa": 3.7,
+    "tuitionMin": 8000,
+    "tuitionMax": 12000,
+    "popularMajors": ["Computer Science", "Engineering", "Physics", "Law"],
+    "offeredScholarships": ["sch-05", "sch-08"],
     "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-024"
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://apply.u-tokyo.ac.jp/",
+    "region": "Asia"
   },
   {
-    "id": "uni-025",
+    "id": "uni-043",
+    "name": "Kyoto University",
+    "country": "Japan",
+    "type": "public",
+    "ranking": 38,
+    "acceptanceRate": "18.0%",
+    "averageGpa": 3.6,
+    "tuitionMin": 8000,
+    "tuitionMax": 12000,
+    "popularMajors": ["Computer Science", "Engineering", "Physics", "Medicine"],
+    "offeredScholarships": ["sch-05", "sch-08"],
+    "city": "Kyoto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.kyoto-u.ac.jp/",
+    "applicationUrl": "https://apply.kyoto-u.ac.jp/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-044",
+    "name": "Tohoku University",
+    "country": "Japan",
+    "type": "public",
+    "ranking": 60,
+    "acceptanceRate": "20.0%",
+    "averageGpa": 3.5,
+    "tuitionMin": 8000,
+    "tuitionMax": 12000,
+    "popularMajors": ["Computer Science", "Engineering", "Physics", "Medicine"],
+    "offeredScholarships": ["sch-05", "sch-08"],
+    "city": "Sendai",
+    "hasOnCampusHousing": true,
+    "website": "https://www.tohoku.ac.jp/",
+    "applicationUrl": "https://apply.tohoku.ac.jp/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-045",
+    "name": "Osaka University",
+    "country": "Japan",
+    "type": "public",
+    "ranking": 80,
+    "acceptanceRate": "20.0%",
+    "averageGpa": 3.5,
+    "tuitionMin": 8000,
+    "tuitionMax": 12000,
+    "popularMajors": ["Computer Science", "Engineering", "Physics", "Medicine"],
+    "offeredScholarships": ["sch-05", "sch-08"],
+    "city": "Osaka",
+    "hasOnCampusHousing": true,
+    "website": "https://www.osaka-u.ac.jp/",
+    "applicationUrl": "https://apply.osaka-u.ac.jp/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-046",
     "name": "Seoul National University",
     "country": "South Korea",
     "type": "public",
     "ranking": 41,
-    "acceptanceRate": "14.2%",
-    "averageGpa": 3.78,
-    "tuitionMin": 5500,
-    "tuitionMax": 8500,
-    "popularMajors": [
-      "Mechanical Engineering",
-      "Biotechnology",
-      "Business Administration",
-      "Korean culture"
-    ],
-    "offeredScholarships": [
-      "sch-21"
-    ],
+    "acceptanceRate": "10.0%",
+    "averageGpa": 3.7,
+    "tuitionMin": 8000,
+    "tuitionMax": 15000,
+    "popularMajors": ["Computer Science", "Engineering", "Physics", "Law"],
+    "offeredScholarships": ["sch-05", "sch-08"],
     "city": "Seoul",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-025"
+    "website": "https://www.snu.ac.kr/",
+    "applicationUrl": "https://apply.snu.ac.kr/",
+    "region": "Asia"
   },
   {
-    "id": "uni-026",
-    "name": "KAIST (Korea Advanced Institute of Science and Technology)",
+    "id": "uni-047",
+    "name": "KAIST",
     "country": "South Korea",
     "type": "public",
     "ranking": 56,
-    "acceptanceRate": "13.0%",
-    "averageGpa": 3.65,
-    "tuitionMin": 6000,
-    "tuitionMax": 9000,
-    "popularMajors": [
-      "Computer Science",
-      "Robotics",
-      "Engineering",
-      "Physics"
-    ],
-    "offeredScholarships": [
-      "sch-21",
-      "sch-40"
-    ],
+    "acceptanceRate": "8.0%",
+    "averageGpa": 3.7,
+    "tuitionMin": 8000,
+    "tuitionMax": 15000,
+    "popularMajors": ["Computer Science", "Engineering", "Physics", "Mathematics"],
+    "offeredScholarships": ["sch-05", "sch-08"],
     "city": "Daejeon",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-026"
+    "website": "https://www.kaist.ac.kr/",
+    "applicationUrl": "https://apply.kaist.ac.kr/",
+    "region": "Asia"
   },
   {
-    "id": "uni-027",
+    "id": "uni-048",
+    "name": "Yonsei University",
+    "country": "South Korea",
+    "type": "private",
+    "ranking": 70,
+    "acceptanceRate": "15.0%",
+    "averageGpa": 3.6,
+    "tuitionMin": 10000,
+    "tuitionMax": 18000,
+    "popularMajors": ["Business", "Economics", "Computer Science", "Law"],
+    "offeredScholarships": ["sch-05", "sch-08"],
+    "city": "Seoul",
+    "hasOnCampusHousing": true,
+    "website": "https://www.yonsei.ac.kr/",
+    "applicationUrl": "https://apply.yonsei.ac.kr/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-049",
+    "name": "Korea University",
+    "country": "South Korea",
+    "type": "private",
+    "ranking": 75,
+    "acceptanceRate": "15.0%",
+    "averageGpa": 3.6,
+    "tuitionMin": 10000,
+    "tuitionMax": 18000,
+    "popularMajors": ["Business", "Economics", "Computer Science", "Law"],
+    "offeredScholarships": ["sch-05", "sch-08"],
+    "city": "Seoul",
+    "hasOnCampusHousing": true,
+    "website": "https://www.korea.ac.kr/",
+    "applicationUrl": "https://apply.korea.ac.kr/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-050",
+    "name": "Hong Kong University (HKU)",
+    "country": "Hong Kong",
+    "type": "public",
+    "ranking": 26,
+    "acceptanceRate": "15.0%",
+    "averageGpa": 3.7,
+    "tuitionMin": 18000,
+    "tuitionMax": 30000,
+    "popularMajors": ["Computer Science", "Law", "Business", "Medicine"],
+    "offeredScholarships": ["sch-06", "sch-10"],
+    "city": "Hong Kong",
+    "hasOnCampusHousing": true,
+    "website": "https://www.hku.hk/",
+    "applicationUrl": "https://apply.hku.hk/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-051",
+    "name": "Chinese University of Hong Kong (CUHK)",
+    "country": "Hong Kong",
+    "type": "public",
+    "ranking": 47,
+    "acceptanceRate": "15.0%",
+    "averageGpa": 3.6,
+    "tuitionMin": 17000,
+    "tuitionMax": 28000,
+    "popularMajors": ["Computer Science", "Law", "Business", "Medicine"],
+    "offeredScholarships": ["sch-06", "sch-10"],
+    "city": "Hong Kong",
+    "hasOnCampusHousing": true,
+    "website": "https://www.cuhk.edu.hk/",
+    "applicationUrl": "https://apply.cuhk.edu.hk/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-052",
+    "name": "HKUST",
+    "country": "Hong Kong",
+    "type": "public",
+    "ranking": 34,
+    "acceptanceRate": "15.0%",
+    "averageGpa": 3.7,
+    "tuitionMin": 17000,
+    "tuitionMax": 28000,
+    "popularMajors": ["Computer Science", "Engineering", "Business", "Science"],
+    "offeredScholarships": ["sch-06", "sch-10"],
+    "city": "Hong Kong",
+    "hasOnCampusHousing": true,
+    "website": "https://www.hkust.edu.hk/",
+    "applicationUrl": "https://apply.hkust.edu.hk/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-053",
     "name": "Australian National University (ANU)",
     "country": "Australia",
     "type": "public",
-    "ranking": 34,
+    "ranking": 30,
     "acceptanceRate": "35.0%",
     "averageGpa": 3.5,
-    "tuitionMin": 28000,
-    "tuitionMax": 39000,
-    "popularMajors": [
-      "Social Sciences",
-      "Economics",
-      "Law",
-      "Environmental Science"
-    ],
-    "offeredScholarships": [
-      "sch-17"
-    ],
+    "tuitionMin": 35000,
+    "tuitionMax": 45000,
+    "popularMajors": ["Computer Science", "Law", "Public Policy", "Physics"],
+    "offeredScholarships": ["sch-17"],
     "city": "Canberra",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-027"
+    "website": "https://www.anu.edu.au/",
+    "applicationUrl": "https://apply.anu.edu.au/",
+    "region": "Oceania"
   },
   {
-    "id": "uni-028",
+    "id": "uni-054",
     "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 14,
-    "acceptanceRate": "32.0%",
-    "averageGpa": 3.6,
-    "tuitionMin": 30500,
-    "tuitionMax": 42000,
-    "popularMajors": [
-      "Business Administration",
-      "Public Health",
-      "Engineering",
-      "Education"
-    ],
-    "offeredScholarships": [
-      "sch-17"
-    ],
+    "acceptanceRate": "70.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 35000,
+    "tuitionMax": 45000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-17"],
     "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-028"
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://apply.unimelb.edu.au/",
+    "region": "Oceania"
   },
   {
-    "id": "uni-029",
+    "id": "uni-055",
     "name": "University of Sydney",
     "country": "Australia",
     "type": "public",
     "ranking": 19,
     "acceptanceRate": "30.0%",
-    "averageGpa": 3.55,
-    "tuitionMin": 31000,
-    "tuitionMax": 43500,
-    "popularMajors": [
-      "Agriculture",
-      "Law",
-      "Media Studies",
-      "Computer Science"
-    ],
-    "offeredScholarships": [
-      "sch-17"
-    ],
+    "averageGpa": 3.5,
+    "tuitionMin": 35000,
+    "tuitionMax": 45000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-17"],
     "city": "Sydney",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-029"
+    "website": "https://www.sydney.edu.au/",
+    "applicationUrl": "https://apply.sydney.edu.au/",
+    "region": "Oceania"
   },
   {
-    "id": "uni-030",
-    "name": "University of New South Wales (UNSW)",
+    "id": "uni-056",
+    "name": "UNSW Sydney",
     "country": "Australia",
     "type": "public",
-    "ranking": 19,
+    "ranking": 44,
     "acceptanceRate": "30.0%",
-    "averageGpa": 3.5,
-    "tuitionMin": 29500,
-    "tuitionMax": 41500,
-    "popularMajors": [
-      "Engineering",
-      "Computer Science",
-      "Accounting",
-      "Psychology"
-    ],
-    "offeredScholarships": [
-      "sch-17"
-    ],
+    "averageGpa": 3.4,
+    "tuitionMin": 35000,
+    "tuitionMax": 45000,
+    "popularMajors": ["Computer Science", "Engineering", "Law", "Business"],
+    "offeredScholarships": ["sch-17"],
     "city": "Sydney",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-030"
+    "website": "https://www.unsw.edu.au/",
+    "applicationUrl": "https://apply.unsw.edu.au/",
+    "region": "Oceania"
   },
   {
-    "id": "uni-031",
+    "id": "uni-057",
+    "name": "University of Queensland (UQ)",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 46,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 35000,
+    "tuitionMax": 45000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-17"],
+    "city": "Brisbane",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uq.edu.au/",
+    "applicationUrl": "https://apply.uq.edu.au/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-058",
+    "name": "Monash University",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 57,
+    "acceptanceRate": "40.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 35000,
+    "tuitionMax": 45000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-17"],
+    "city": "Melbourne",
+    "hasOnCampusHousing": true,
+    "website": "https://www.monash.edu/",
+    "applicationUrl": "https://apply.monash.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-059",
+    "name": "University of Auckland",
+    "country": "New Zealand",
+    "type": "public",
+    "ranking": 87,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 30000,
+    "tuitionMax": 40000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-17"],
+    "city": "Auckland",
+    "hasOnCampusHousing": true,
+    "website": "https://www.auckland.ac.nz/",
+    "applicationUrl": "https://apply.auckland.ac.nz/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-060",
+    "name": "University of Otago",
+    "country": "New Zealand",
+    "type": "public",
+    "ranking": 150,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 30000,
+    "tuitionMax": 40000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-17"],
+    "city": "Dunedin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.otago.ac.nz/",
+    "applicationUrl": "https://apply.otago.ac.nz/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-061",
+    "name": "University of British Columbia (UBC)",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 47,
+    "acceptanceRate": "52.0%",
+    "averageGpa": 3.5,
+    "tuitionMin": 30000,
+    "tuitionMax": 40000,
+    "popularMajors": ["Computer Science", "Engineering", "Law", "Medicine"],
+    "offeredScholarships": ["sch-17"],
+    "city": "Vancouver",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ubc.ca/",
+    "applicationUrl": "https://apply.ubc.ca/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-062",
     "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 21,
     "acceptanceRate": "43.0%",
-    "averageGpa": 3.7,
-    "tuitionMin": 38000,
-    "tuitionMax": 52000,
-    "popularMajors": [
-      "Computer Science",
-      "Physics",
-      "Bioengineering",
-      "Social Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-11",
-      "sch-18"
-    ],
+    "averageGpa": 3.5,
+    "tuitionMin": 30000,
+    "tuitionMax": 40000,
+    "popularMajors": ["Computer Science", "Engineering", "Law", "Medicine"],
+    "offeredScholarships": ["sch-17"],
     "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-031"
-  },
-  {
-    "id": "uni-032",
-    "name": "University of British Columbia (UBC)",
-    "country": "Canada",
-    "type": "public",
-    "ranking": 34,
-    "acceptanceRate": "44.0%",
-    "averageGpa": 3.65,
-    "tuitionMin": 33000,
-    "tuitionMax": 47000,
-    "popularMajors": [
-      "Environmental Science",
-      "Geography",
-      "Psychology",
-      "Computer Science"
-    ],
-    "offeredScholarships": [
-      "sch-11",
-      "sch-18"
-    ],
-    "city": "Vancouver",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-032"
-  },
-  {
-    "id": "uni-033",
-    "name": "McGill University",
-    "country": "Canada",
-    "type": "public",
-    "ranking": 30,
-    "acceptanceRate": "41.0%",
-    "averageGpa": 3.7,
-    "tuitionMin": 31000,
-    "tuitionMax": 49000,
-    "popularMajors": [
-      "Medicine",
-      "Engineering",
-      "Political Science",
-      "Biological Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-11",
-      "sch-18"
-    ],
-    "city": "Montreal",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-033"
-  },
-  {
-    "id": "uni-034",
-    "name": "Caltech (California Institute of Technology)",
-    "country": "USA",
-    "type": "private",
-    "ranking": 15,
-    "acceptanceRate": "3.9%",
-    "averageGpa": 3.97,
-    "tuitionMin": 60000,
-    "tuitionMax": 65000,
-    "popularMajors": [
-      "Physics",
-      "Chemistry",
-      "Computer Science",
-      "Astronomy"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
-    "city": "Pasadena",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-034"
-  },
-  {
-    "id": "uni-035",
-    "name": "Princeton University",
-    "country": "USA",
-    "type": "private",
-    "ranking": 16,
-    "acceptanceRate": "4.3%",
-    "averageGpa": 3.95,
-    "tuitionMin": 57000,
-    "tuitionMax": 62000,
-    "popularMajors": [
-      "Politics",
-      "Public Policy",
-      "Computer Science",
-      "History"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-13",
-      "sch-14",
-      "sch-49"
-    ],
-    "city": "Princeton",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-035"
-  },
-  {
-    "id": "uni-036",
-    "name": "Yale University",
-    "country": "USA",
-    "type": "private",
-    "ranking": 15,
-    "acceptanceRate": "4.5%",
-    "averageGpa": 3.95,
-    "tuitionMin": 59000,
-    "tuitionMax": 63000,
-    "popularMajors": [
-      "History",
-      "Political Science",
-      "Economics",
-      "Law"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-14",
-      "sch-49"
-    ],
-    "city": "New Haven",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-036"
-  },
-  {
-    "id": "uni-037",
-    "name": "University of Chicago",
-    "country": "USA",
-    "type": "private",
-    "ranking": 11,
-    "acceptanceRate": "5.4%",
-    "averageGpa": 3.92,
-    "tuitionMin": 62000,
-    "tuitionMax": 67000,
-    "popularMajors": [
-      "Economics",
-      "Social Sciences",
-      "Mathematics",
-      "Sociology"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
-    "city": "Chicago",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-037"
-  },
-  {
-    "id": "uni-038",
-    "name": "Cornell University",
-    "country": "USA",
-    "type": "private",
-    "ranking": 13,
-    "acceptanceRate": "7.3%",
-    "averageGpa": 3.9,
-    "tuitionMin": 60000,
-    "tuitionMax": 64000,
-    "popularMajors": [
-      "Engineering",
-      "Agriculture",
-      "Computer Science",
-      "Hotel Administration"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
-    "city": "Ithaca",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-038"
-  },
-  {
-    "id": "uni-039",
-    "name": "Johns Hopkins University",
-    "country": "USA",
-    "type": "private",
-    "ranking": 28,
-    "acceptanceRate": "6.5%",
-    "averageGpa": 3.92,
-    "tuitionMin": 58500,
-    "tuitionMax": 62000,
-    "popularMajors": [
-      "Medicine",
-      "Public Health",
-      "Bioengineering",
-      "International Studies"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
-    "city": "Baltimore",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-039"
-  },
-  {
-    "id": "uni-040",
-    "name": "University of Michigan",
-    "country": "USA",
-    "type": "public",
-    "ranking": 33,
-    "acceptanceRate": "17.7%",
-    "averageGpa": 3.86,
-    "tuitionMin": 16000,
-    "tuitionMax": 55000,
-    "popularMajors": [
-      "Business Administration",
-      "Computer Science",
-      "Psychology",
-      "Economics"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
-    "city": "Ann Arbor",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-040"
-  },
-  {
-    "id": "uni-041",
-    "name": "Georgia Institute of Technology",
-    "country": "USA",
-    "type": "public",
-    "ranking": 88,
-    "acceptanceRate": "15.0%",
-    "averageGpa": 3.85,
-    "tuitionMin": 12500,
-    "tuitionMax": 33000,
-    "popularMajors": [
-      "Mechanical Engineering",
-      "Computer Science",
-      "Industrial Design",
-      "Physics"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
-    "city": "Atlanta",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-041"
-  },
-  {
-    "id": "uni-042",
-    "name": "University of Washington",
-    "country": "USA",
-    "type": "public",
-    "ranking": 76,
-    "acceptanceRate": "48.0%",
-    "averageGpa": 3.75,
-    "tuitionMin": 12000,
-    "tuitionMax": 40000,
-    "popularMajors": [
-      "Computer Science",
-      "Medical Sciences",
-      "Communications",
-      "Information Systems"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
-    "city": "Seattle",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-042"
-  },
-  {
-    "id": "uni-043",
-    "name": "San Jose State University",
-    "country": "USA",
-    "type": "public",
-    "ranking": 1200,
-    "acceptanceRate": "68.0%",
-    "averageGpa": 3.25,
-    "tuitionMin": 7800,
-    "tuitionMax": 17800,
-    "popularMajors": [
-      "Software Engineering",
-      "Computer Science",
-      "Business Administration",
-      "Design"
-    ],
-    "offeredScholarships": [
-      "sch-49"
-    ],
-    "city": "San Jose",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-043"
-  },
-  {
-    "id": "uni-044",
-    "name": "University of Texas at Austin",
-    "country": "USA",
-    "type": "public",
-    "ranking": 58,
-    "acceptanceRate": "29.0%",
-    "averageGpa": 3.8,
-    "tuitionMin": 11500,
-    "tuitionMax": 42000,
-    "popularMajors": [
-      "Business Administration",
-      "Computer Science",
-      "Petroleum Engineering",
-      "Bilingual Education"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
-    "city": "Austin",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-044"
-  },
-  {
-    "id": "uni-045",
-    "name": "University of Illinois Urbana-Champaign",
-    "country": "USA",
-    "type": "public",
-    "ranking": 64,
-    "acceptanceRate": "44.0%",
-    "averageGpa": 3.78,
-    "tuitionMin": 15000,
-    "tuitionMax": 39000,
-    "popularMajors": [
-      "Computer Science",
-      "Electrical Engineering",
-      "Accounting",
-      "Agriculture"
-    ],
-    "offeredScholarships": [
-      "sch-02",
-      "sch-49"
-    ],
-    "city": "Champaign",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-045"
-  },
-  {
-    "id": "uni-046",
-    "name": "King's College London",
-    "country": "United Kingdom",
-    "type": "public",
-    "ranking": 40,
-    "acceptanceRate": "13.0%",
-    "averageGpa": 3.65,
-    "tuitionMin": 25000,
-    "tuitionMax": 35000,
-    "popularMajors": [
-      "Law",
-      "Media Studies",
-      "Philosophy",
-      "Public Health"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-06"
-    ],
-    "city": "London",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-046"
-  },
-  {
-    "id": "uni-047",
-    "name": "University of Manchester",
-    "country": "United Kingdom",
-    "type": "public",
-    "ranking": 32,
-    "acceptanceRate": "40.0%",
-    "averageGpa": 3.55,
-    "tuitionMin": 24000,
-    "tuitionMax": 31000,
-    "popularMajors": [
-      "Engineering",
-      "Economics",
-      "Social Sciences",
-      "Chemistry"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-06",
-      "sch-30"
-    ],
-    "city": "Manchester",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-047"
-  },
-  {
-    "id": "uni-048",
-    "name": "University of Bristol",
-    "country": "United Kingdom",
-    "type": "public",
-    "ranking": 55,
-    "acceptanceRate": "54.0%",
-    "averageGpa": 3.5,
-    "tuitionMin": 22000,
-    "tuitionMax": 29000,
-    "popularMajors": [
-      "Philosophy",
-      "Social Sciences",
-      "Computer Science",
-      "Engineering"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-06"
-    ],
-    "city": "Bristol",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-048"
-  },
-  {
-    "id": "uni-049",
-    "name": "University of Glasgow",
-    "country": "United Kingdom",
-    "type": "public",
-    "ranking": 76,
-    "acceptanceRate": "51.0%",
-    "averageGpa": 3.48,
-    "tuitionMin": 21000,
-    "tuitionMax": 29500,
-    "popularMajors": [
-      "Economics",
-      "Public Health",
-      "Literature",
-      "Chemistry"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-06",
-      "sch-31"
-    ],
-    "city": "Glasgow",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-049"
-  },
-  {
-    "id": "uni-050",
-    "name": "University of Waterloo",
-    "country": "Canada",
-    "type": "public",
-    "ranking": 112,
-    "acceptanceRate": "45.0%",
-    "averageGpa": 3.8,
-    "tuitionMin": 28000,
-    "tuitionMax": 43000,
-    "popularMajors": [
-      "Computer Science",
-      "Software Engineering",
-      "Mathematics",
-      "Astrobiology"
-    ],
-    "offeredScholarships": [
-      "sch-11",
-      "sch-18"
-    ],
-    "city": "Waterloo",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-050"
-  },
-  {
-    "id": "uni-051",
-    "name": "McMaster University",
-    "country": "Canada",
-    "type": "public",
-    "ranking": 189,
-    "acceptanceRate": "58.0%",
-    "averageGpa": 3.6,
-    "tuitionMin": 25000,
-    "tuitionMax": 39000,
-    "popularMajors": [
-      "Medicine",
-      "Bioengineering",
-      "Social Sciences",
-      "Chemistry"
-    ],
-    "offeredScholarships": [
-      "sch-11",
-      "sch-18"
-    ],
-    "city": "Hamilton",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-051"
-  },
-  {
-    "id": "uni-052",
-    "name": "University of Alberta",
-    "country": "Canada",
-    "type": "public",
-    "ranking": 111,
-    "acceptanceRate": "51.0%",
-    "averageGpa": 3.5,
-    "tuitionMin": 18000,
-    "tuitionMax": 29000,
-    "popularMajors": [
-      "Agriculture",
-      "Petroleum Engineering",
-      "Medicine",
-      "Public Health"
-    ],
-    "offeredScholarships": [
-      "sch-11",
-      "sch-18"
-    ],
-    "city": "Edmonton",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-052"
-  },
-  {
-    "id": "uni-053",
-    "name": "University of Montreal",
-    "country": "Canada",
-    "type": "public",
-    "ranking": 141,
-    "acceptanceRate": "47.0%",
-    "averageGpa": 3.55,
-    "tuitionMin": 17000,
-    "tuitionMax": 28000,
-    "popularMajors": [
-      "Literature",
-      "Political Science",
-      "Social Sciences",
-      "Law"
-    ],
-    "offeredScholarships": [
-      "sch-11",
-      "sch-18"
-    ],
-    "city": "Montreal",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-053"
-  },
-  {
-    "id": "uni-054",
-    "name": "Queensland University of Technology (QUT)",
-    "country": "Australia",
-    "type": "public",
-    "ranking": 189,
-    "acceptanceRate": "41.0%",
-    "averageGpa": 3.1,
-    "tuitionMin": 22000,
-    "tuitionMax": 31000,
-    "popularMajors": [
-      "Information Technology",
-      "Business Administration",
-      "Creative Writing",
-      "Robotics"
-    ],
-    "offeredScholarships": [
-      "sch-17"
-    ],
-    "city": "Brisbane",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-054"
-  },
-  {
-    "id": "uni-055",
-    "name": "Monash University",
-    "country": "Australia",
-    "type": "public",
-    "ranking": 42,
-    "acceptanceRate": "40.0%",
-    "averageGpa": 3.45,
-    "tuitionMin": 28500,
-    "tuitionMax": 39500,
-    "popularMajors": [
-      "Accounting",
-      "Medicine",
-      "Engineering",
-      "Education"
-    ],
-    "offeredScholarships": [
-      "sch-17"
-    ],
-    "city": "Clayton",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-055"
-  },
-  {
-    "id": "uni-056",
-    "name": "University of Queensland (UQ)",
-    "country": "Australia",
-    "type": "public",
-    "ranking": 43,
-    "acceptanceRate": "35.0%",
-    "averageGpa": 3.52,
-    "tuitionMin": 29000,
-    "tuitionMax": 40000,
-    "popularMajors": [
-      "Agriculture",
-      "Education",
-      "Science",
-      "Social Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-17"
-    ],
-    "city": "Brisbane",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-056"
-  },
-  {
-    "id": "uni-057",
-    "name": "University of Adelaide",
-    "country": "Australia",
-    "type": "public",
-    "ranking": 89,
-    "acceptanceRate": "49.0%",
-    "averageGpa": 3.2,
-    "tuitionMin": 27000,
-    "tuitionMax": 36000,
-    "popularMajors": [
-      "Petroleum Engineering",
-      "Robotics",
-      "Physics",
-      "Agriculture"
-    ],
-    "offeredScholarships": [
-      "sch-17"
-    ],
-    "city": "Adelaide",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-057"
-  },
-  {
-    "id": "uni-058",
-    "name": "Heidelberg University",
-    "country": "Germany",
-    "type": "public",
-    "ranking": 65,
-    "acceptanceRate": "15.0%",
-    "averageGpa": 3.65,
-    "tuitionMin": 10700,
-    "tuitionMax": 3500,
-    "popularMajors": [
-      "Medicine",
-      "Philosophy",
-      "History",
-      "Physics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03",
-      "sch-39"
-    ],
-    "city": "Heidelberg",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-058"
-  },
-  {
-    "id": "uni-059",
-    "name": "Ludwig Maximilian University of Munich",
-    "country": "Germany",
-    "type": "public",
-    "ranking": 54,
-    "acceptanceRate": "16.0%",
-    "averageGpa": 3.6,
-    "tuitionMin": 10800,
-    "tuitionMax": 4000,
-    "popularMajors": [
-      "Business Administration",
-      "Economics",
-      "Law",
-      "Computer Science"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03",
-      "sch-39"
-    ],
-    "city": "Munich",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-059"
-  },
-  {
-    "id": "uni-060",
-    "name": "Humboldt University of Berlin",
-    "country": "Germany",
-    "type": "public",
-    "ranking": 120,
-    "acceptanceRate": "18.0%",
-    "averageGpa": 3.45,
-    "tuitionMin": 10900,
-    "tuitionMax": 3000,
-    "popularMajors": [
-      "Political Science",
-      "Social Sciences",
-      "Philosophy",
-      "Economics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03",
-      "sch-39"
-    ],
-    "city": "Berlin",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-060"
-  },
-  {
-    "id": "uni-061",
-    "name": "RWTH Aachen University",
-    "country": "Germany",
-    "type": "public",
-    "ranking": 99,
-    "acceptanceRate": "21.0%",
-    "averageGpa": 3.35,
-    "tuitionMin": 11000,
-    "tuitionMax": 2000,
-    "popularMajors": [
-      "Engineering",
-      "Computer Science",
-      "Materials Science",
-      "Physics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03"
-    ],
-    "city": "Aachen",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-061"
-  },
-  {
-    "id": "uni-062",
-    "name": "Karlsruhe Institute of Technology (KIT)",
-    "country": "Germany",
-    "type": "public",
-    "ranking": 119,
-    "acceptanceRate": "24.0%",
-    "averageGpa": 3.4,
-    "tuitionMin": 11100,
-    "tuitionMax": 3500,
-    "popularMajors": [
-      "Engineering",
-      "Computer Science",
-      "Robotics",
-      "Physics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03"
-    ],
-    "city": "Karlsruhe",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-062"
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://apply.utoronto.ca/",
+    "region": "North America"
   },
   {
     "id": "uni-063",
-    "name": "TU Berlin",
-    "country": "Germany",
+    "name": "McGill University",
+    "country": "Canada",
     "type": "public",
-    "ranking": 136,
-    "acceptanceRate": "25.0%",
-    "averageGpa": 3.25,
-    "tuitionMin": 11200,
-    "tuitionMax": 1500,
-    "popularMajors": [
-      "Computer Science",
-      "Software Engineering",
-      "Mathematics",
-      "Bioengineering"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03"
-    ],
-    "city": "Berlin",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-063"
+    "ranking": 31,
+    "acceptanceRate": "46.0%",
+    "averageGpa": 3.5,
+    "tuitionMin": 30000,
+    "tuitionMax": 40000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-17"],
+    "city": "Montreal",
+    "hasOnCampusHousing": true,
+    "website": "https://www.mcgill.ca/",
+    "applicationUrl": "https://apply.mcgill.ca/",
+    "region": "North America"
   },
   {
     "id": "uni-064",
-    "name": "University of Hamburg",
-    "country": "Germany",
+    "name": "University of Alberta",
+    "country": "Canada",
     "type": "public",
-    "ranking": 205,
-    "acceptanceRate": "35.0%",
-    "averageGpa": 3.1,
-    "tuitionMin": 11300,
-    "tuitionMax": 1200,
-    "popularMajors": [
-      "Education",
-      "Economics",
-      "Law",
-      "Physics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03"
-    ],
-    "city": "Hamburg",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-064"
+    "ranking": 110,
+    "acceptanceRate": "58.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 28000,
+    "tuitionMax": 38000,
+    "popularMajors": ["Computer Science", "Engineering", "Medicine", "Law"],
+    "offeredScholarships": ["sch-17"],
+    "city": "Edmonton",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ualberta.ca/",
+    "applicationUrl": "https://apply.ualberta.ca/",
+    "region": "North America"
   },
   {
     "id": "uni-065",
-    "name": "University of Stuttgart",
-    "country": "Germany",
+    "name": "McMaster University",
+    "country": "Canada",
     "type": "public",
-    "ranking": 312,
-    "acceptanceRate": "39.0%",
-    "averageGpa": 3,
-    "tuitionMin": 11400,
-    "tuitionMax": 3000,
-    "popularMajors": [
-      "Engineering",
-      "Automotive Design",
-      "Computer Science",
-      "Robotics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03"
-    ],
-    "city": "Stuttgart",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-065"
+    "ranking": 90,
+    "acceptanceRate": "55.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 28000,
+    "tuitionMax": 38000,
+    "popularMajors": ["Computer Science", "Engineering", "Medicine", "Law"],
+    "offeredScholarships": ["sch-17"],
+    "city": "Hamilton",
+    "hasOnCampusHousing": true,
+    "website": "https://www.mcmaster.ca/",
+    "applicationUrl": "https://apply.mcmaster.ca/",
+    "region": "North America"
   },
   {
     "id": "uni-066",
-    "name": "Deversity of Bonn",
-    "country": "Germany",
+    "name": "University of Waterloo",
+    "country": "Canada",
     "type": "public",
-    "ranking": 239,
-    "acceptanceRate": "33.0%",
-    "averageGpa": 3.15,
-    "tuitionMin": 11500,
-    "tuitionMax": 1000,
-    "popularMajors": [
-      "Agriculture",
-      "Environmental Science",
-      "Economics",
-      "Mathematics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03"
-    ],
-    "city": "Bonn",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-066"
+    "ranking": 140,
+    "acceptanceRate": "53.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 28000,
+    "tuitionMax": 38000,
+    "popularMajors": ["Computer Science", "Engineering", "Mathematics", "Physics"],
+    "offeredScholarships": ["sch-17"],
+    "city": "Waterloo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uwaterloo.ca/",
+    "applicationUrl": "https://apply.uwaterloo.ca/",
+    "region": "North America"
   },
   {
     "id": "uni-067",
-    "name": "University of Freiburg",
-    "country": "Germany",
-    "type": "public",
-    "ranking": 192,
-    "acceptanceRate": "30.0%",
-    "averageGpa": 3.2,
-    "tuitionMin": 11600,
-    "tuitionMax": 3500,
-    "popularMajors": [
-      "Arts",
-      "History",
-      "Engineering",
-      "Biological Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03"
-    ],
-    "city": "Freiburg",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-067"
-  },
-  {
-    "id": "uni-068",
-    "name": "TU Dresden",
-    "country": "Germany",
-    "type": "public",
-    "ranking": 200,
-    "acceptanceRate": "28.0%",
-    "averageGpa": 3.3,
-    "tuitionMin": 11700,
-    "tuitionMax": 1000,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Electrical Engineering",
-      "Physics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03"
-    ],
-    "city": "Dresden",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-068"
-  },
-  {
-    "id": "uni-069",
-    "name": "Gottingen University",
-    "country": "Germany",
-    "type": "public",
-    "ranking": 232,
-    "acceptanceRate": "34.0%",
-    "averageGpa": 3.18,
-    "tuitionMin": 11800,
-    "tuitionMax": 1000,
-    "popularMajors": [
-      "Philosophy",
-      "Physics",
-      "Agriculture",
-      "Social Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-03"
-    ],
-    "city": "Gottingen",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-069"
-  },
-  {
-    "id": "uni-070",
-    "name": "University of Zurich",
-    "country": "Switzerland",
-    "type": "public",
-    "ranking": 80,
-    "acceptanceRate": "25.0%",
-    "averageGpa": 3.7,
-    "tuitionMin": 1600,
-    "tuitionMax": 2000,
-    "popularMajors": [
-      "Economics",
-      "Bioengineering",
-      "Law",
-      "Medicine"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-09"
-    ],
-    "city": "Zurich",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-070"
-  },
-  {
-    "id": "uni-071",
-    "name": "University of Geneva",
-    "country": "Switzerland",
-    "type": "public",
-    "ranking": 115,
-    "acceptanceRate": "28.0%",
-    "averageGpa": 3.6,
-    "tuitionMin": 1000,
-    "tuitionMax": 1200,
-    "popularMajors": [
-      "International Relations",
-      "International Law",
-      "Physics",
-      "Social Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-09"
-    ],
-    "city": "Geneva",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-071"
-  },
-  {
-    "id": "uni-072",
-    "name": "University of Basel",
-    "country": "Switzerland",
-    "type": "public",
-    "ranking": 124,
-    "acceptanceRate": "30.0%",
-    "averageGpa": 3.52,
-    "tuitionMin": 1700,
-    "tuitionMax": 1800,
-    "popularMajors": [
-      "Medicine",
-      "History",
-      "Chemistry",
-      "Biology"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-09"
-    ],
-    "city": "Basel",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-072"
-  },
-  {
-    "id": "uni-073",
-    "name": "Lund University",
-    "country": "Sweden",
-    "type": "public",
-    "ranking": 85,
-    "acceptanceRate": "20.0%",
-    "averageGpa": 3.55,
-    "tuitionMin": 13000,
-    "tuitionMax": 18000,
-    "popularMajors": [
-      "Environmental Science",
-      "Engineering",
-      "Economics",
-      "Biology"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-15",
-      "sch-16"
-    ],
-    "city": "Lund",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-073"
-  },
-  {
-    "id": "uni-074",
-    "name": "KTH Royal Institute of Technology",
-    "country": "Sweden",
-    "type": "public",
-    "ranking": 73,
-    "acceptanceRate": "18.0%",
-    "averageGpa": 3.62,
-    "tuitionMin": 14500,
-    "tuitionMax": 19000,
-    "popularMajors": [
-      "Engineering",
-      "Computer Science",
-      "Physics",
-      "Bioengineering"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-16",
-      "sch-48"
-    ],
-    "city": "Stockholm",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-074"
-  },
-  {
-    "id": "uni-075",
-    "name": "Uppsala University",
-    "country": "Sweden",
-    "type": "public",
-    "ranking": 105,
-    "acceptanceRate": "23.0%",
-    "averageGpa": 3.5,
-    "tuitionMin": 12000,
-    "tuitionMax": 16500,
-    "popularMajors": [
-      "Social Sciences",
-      "Chemistry",
-      "Law",
-      "Engineering"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-16"
-    ],
-    "city": "Uppsala",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-075"
-  },
-  {
-    "id": "uni-076",
-    "name": "Chalmers University of Technology",
-    "country": "Sweden",
-    "type": "public",
-    "ranking": 129,
-    "acceptanceRate": "26.0%",
-    "averageGpa": 3.42,
-    "tuitionMin": 14000,
-    "tuitionMax": 17500,
-    "popularMajors": [
-      "Engineering",
-      "Software Engineering",
-      "Mathematics",
-      "Environmental Science"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-16"
-    ],
-    "city": "Gothenburg",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-076"
-  },
-  {
-    "id": "uni-077",
-    "name": "University of Bologna",
-    "country": "Italy",
-    "type": "public",
-    "ranking": 154,
-    "acceptanceRate": "33.0%",
-    "averageGpa": 3.1,
-    "tuitionMin": 1000,
-    "tuitionMax": 3500,
-    "popularMajors": [
-      "Philosophy",
-      "Economics",
-      "Engineering",
-      "Arts"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-22",
-      "sch-42"
-    ],
-    "city": "Bologna",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-077"
-  },
-  {
-    "id": "uni-078",
-    "name": "Sapienza University of Rome",
-    "country": "Italy",
-    "type": "public",
-    "ranking": 134,
-    "acceptanceRate": "41.0%",
-    "averageGpa": 3.05,
-    "tuitionMin": 1200,
-    "tuitionMax": 3000,
-    "popularMajors": [
-      "Arts",
-      "Archaeology",
-      "Engineering",
-      "Computer Science"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-22"
-    ],
-    "city": "Rome",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-078"
-  },
-  {
-    "id": "uni-079",
-    "name": "Politecnico di Milano",
-    "country": "Italy",
-    "type": "public",
-    "ranking": 111,
-    "acceptanceRate": "28.0%",
-    "averageGpa": 3.48,
-    "tuitionMin": 1500,
-    "tuitionMax": 4000,
-    "popularMajors": [
-      "Design",
-      "Engineering",
-      "Computer Science",
-      "Electrical Engineering"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-22"
-    ],
-    "city": "Milan",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-079"
-  },
-  {
-    "id": "uni-080",
-    "name": "University of Barcelona",
-    "country": "Spain",
-    "type": "public",
-    "ranking": 164,
-    "acceptanceRate": "35.0%",
-    "averageGpa": 3.12,
-    "tuitionMin": 2200,
-    "tuitionMax": 4500,
-    "popularMajors": [
-      "Medicine",
-      "Economics",
-      "Law",
-      "Social Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-01"
-    ],
-    "city": "Barcelona",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-080"
-  },
-  {
-    "id": "uni-081",
-    "name": "Autonomous University of Madrid",
-    "country": "Spain",
-    "type": "public",
-    "ranking": 199,
-    "acceptanceRate": "38.0%",
-    "averageGpa": 3.1,
-    "tuitionMin": 2000,
-    "tuitionMax": 4000,
-    "popularMajors": [
-      "Physics",
-      "History",
-      "Law",
-      "Computer Science"
-    ],
-    "offeredScholarships": [
-      "sch-01"
-    ],
-    "city": "Madrid",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-081"
-  },
-  {
-    "id": "uni-082",
     "name": "Delft University of Technology",
     "country": "Netherlands",
     "type": "public",
-    "ranking": 47,
-    "acceptanceRate": "25.0%",
-    "averageGpa": 3.7,
-    "tuitionMin": 15000,
-    "tuitionMax": 21000,
-    "popularMajors": [
-      "Engineering",
-      "Computer Science",
-      "Electrical Engineering",
-      "Design"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-23"
-    ],
+    "ranking": 61,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.5,
+    "tuitionMin": 10000,
+    "tuitionMax": 15000,
+    "popularMajors": ["Computer Science", "Engineering", "Robotics", "Physics"],
+    "offeredScholarships": ["sch-01"],
     "city": "Delft",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-082"
+    "hasOnCampusHousing": true,
+    "website": "https://www.tudelft.nl/",
+    "applicationUrl": "https://apply.tudelft.nl/",
+    "region": "Europe"
   },
   {
-    "id": "uni-083",
+    "id": "uni-068",
     "name": "University of Amsterdam",
     "country": "Netherlands",
     "type": "public",
-    "ranking": 53,
-    "acceptanceRate": "22.0%",
-    "averageGpa": 3.65,
-    "tuitionMin": 12000,
-    "tuitionMax": 18500,
-    "popularMajors": [
-      "Media Studies",
-      "Psychology",
-      "Politics",
-      "Law"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-23"
-    ],
+    "ranking": 55,
+    "acceptanceRate": "25.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 10000,
+    "tuitionMax": 15000,
+    "popularMajors": ["Computer Science", "Law", "Business", "Social Sciences"],
+    "offeredScholarships": ["sch-01"],
     "city": "Amsterdam",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-083"
+    "hasOnCampusHousing": true,
+    "website": "https://www.uva.nl/",
+    "applicationUrl": "https://apply.uva.nl/",
+    "region": "Europe"
   },
   {
-    "id": "uni-084",
+    "id": "uni-069",
     "name": "Leiden University",
     "country": "Netherlands",
     "type": "public",
-    "ranking": 126,
-    "acceptanceRate": "30.0%",
-    "averageGpa": 3.5,
-    "tuitionMin": 11500,
-    "tuitionMax": 17000,
-    "popularMajors": [
-      "Law",
-      "International Relations",
-      "Social Sciences",
-      "History"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-23"
-    ],
+    "ranking": 77,
+    "acceptanceRate": "25.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 10000,
+    "tuitionMax": 15000,
+    "popularMajors": ["Computer Science", "Law", "Business", "Social Sciences"],
+    "offeredScholarships": ["sch-01"],
     "city": "Leiden",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-084"
+    "hasOnCampusHousing": true,
+    "website": "https://www.universiteitleiden.nl/",
+    "applicationUrl": "https://apply.universiteitleiden.nl/",
+    "region": "Europe"
   },
   {
-    "id": "uni-085",
+    "id": "uni-070",
+    "name": "Erasmus University Rotterdam",
+    "country": "Netherlands",
+    "type": "public",
+    "ranking": 80,
+    "acceptanceRate": "25.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 10000,
+    "tuitionMax": 15000,
+    "popularMajors": ["Business", "Economics", "Law", "Computer Science"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Rotterdam",
+    "hasOnCampusHousing": true,
+    "website": "https://www.eur.nl/",
+    "applicationUrl": "https://apply.eur.nl/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-071",
+    "name": "Sorbonne University",
+    "country": "France",
+    "type": "public",
+    "ranking": 60,
+    "acceptanceRate": "25.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 5000,
+    "tuitionMax": 10000,
+    "popularMajors": ["Computer Science", "Physics", "Mathematics", "Humanities"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://apply.sorbonne-universite.fr/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-072",
+    "name": "Ecole Normale Supérieure (ENS)",
+    "country": "France",
+    "type": "public",
+    "ranking": 45,
+    "acceptanceRate": "5.0%",
+    "averageGpa": 3.8,
+    "tuitionMin": 5000,
+    "tuitionMax": 10000,
+    "popularMajors": ["Physics", "Mathematics", "Computer Science", "Philosophy"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ens.fr/",
+    "applicationUrl": "https://apply.ens.fr/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-073",
+    "name": "Sciences Po",
+    "country": "France",
+    "type": "public",
+    "ranking": 100,
+    "acceptanceRate": "15.0%",
+    "averageGpa": 3.5,
+    "tuitionMin": 15000,
+    "tuitionMax": 20000,
+    "popularMajors": ["Political Science", "Law", "Economics", "Computer Science"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.sciencespo.fr/",
+    "applicationUrl": "https://apply.sciencespo.fr/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-074",
     "name": "University of Copenhagen",
     "country": "Denmark",
     "type": "public",
-    "ranking": 107,
-    "acceptanceRate": "23.0%",
-    "averageGpa": 3.6,
+    "ranking": 79,
+    "acceptanceRate": "20.0%",
+    "averageGpa": 3.4,
     "tuitionMin": 10000,
     "tuitionMax": 15000,
-    "popularMajors": [
-      "Medicine",
-      "Social Sciences",
-      "Physics",
-      "Bioengineering"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-33"
-    ],
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-01"],
     "city": "Copenhagen",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-085"
-  },
-  {
-    "id": "uni-086",
-    "name": "Aalto University",
-    "country": "Finland",
-    "type": "public",
-    "ranking": 109,
-    "acceptanceRate": "19.0%",
-    "averageGpa": 3.5,
-    "tuitionMin": 13500,
-    "tuitionMax": 16500,
-    "popularMajors": [
-      "Engineering",
-      "Computer Science",
-      "Business Administration",
-      "Design"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-34",
-      "sch-35"
-    ],
-    "city": "Espoo",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-086"
+    "website": "https://www.ku.dk/",
+    "applicationUrl": "https://apply.ku.dk/",
+    "region": "Europe"
   },
   {
-    "id": "uni-087",
+    "id": "uni-075",
     "name": "University of Helsinki",
     "country": "Finland",
     "type": "public",
-    "ranking": 115,
-    "acceptanceRate": "17.0%",
-    "averageGpa": 3.58,
-    "tuitionMin": 14000,
-    "tuitionMax": 18000,
-    "popularMajors": [
-      "Education",
-      "Physics",
-      "Computer Science",
-      "Biological Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-34"
-    ],
+    "ranking": 104,
+    "acceptanceRate": "18.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 10000,
+    "tuitionMax": 15000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-01"],
     "city": "Helsinki",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-087"
+    "website": "https://www.helsinki.fi/",
+    "applicationUrl": "https://apply.helsinki.fi/",
+    "region": "Europe"
   },
   {
-    "id": "uni-088",
+    "id": "uni-076",
     "name": "University of Oslo",
     "country": "Norway",
     "type": "public",
-    "ranking": 117,
-    "acceptanceRate": "26.0%",
-    "averageGpa": 3.48,
-    "tuitionMin": 13700,
-    "tuitionMax": 28050,
-    "popularMajors": [
-      "Medicine",
-      "Law",
-      "Social Sciences",
-      "Physics"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-36"
-    ],
+    "ranking": 119,
+    "acceptanceRate": "20.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 0,
+    "tuitionMax": 0,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-01"],
     "city": "Oslo",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-088"
+    "hasOnCampusHousing": true,
+    "website": "https://www.uio.no/",
+    "applicationUrl": "https://apply.uio.no/",
+    "region": "Europe"
   },
   {
-    "id": "uni-089",
+    "id": "uni-077",
+    "name": "Stockholm University",
+    "country": "Sweden",
+    "type": "public",
+    "ranking": 185,
+    "acceptanceRate": "25.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 10000,
+    "tuitionMax": 15000,
+    "popularMajors": ["Computer Science", "Law", "Business", "Social Sciences"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Stockholm",
+    "hasOnCampusHousing": true,
+    "website": "https://www.su.se/",
+    "applicationUrl": "https://apply.su.se/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-078",
+    "name": "Lund University",
+    "country": "Sweden",
+    "type": "public",
+    "ranking": 95,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 10000,
+    "tuitionMax": 15000,
+    "popularMajors": ["Computer Science", "Law", "Business", "Engineering"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Lund",
+    "hasOnCampusHousing": true,
+    "website": "https://www.lunduniversity.lu.se/",
+    "applicationUrl": "https://apply.lunduniversity.lu.se/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-079",
+    "name": "KU Leuven",
+    "country": "Belgium",
+    "type": "public",
+    "ranking": 42,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 5000,
+    "tuitionMax": 10000,
+    "popularMajors": ["Computer Science", "Engineering", "Medicine", "Law"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Leuven",
+    "hasOnCampusHousing": true,
+    "website": "https://www.kuleuven.be/",
+    "applicationUrl": "https://apply.kuleuven.be/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-080",
     "name": "University of Vienna",
     "country": "Austria",
     "type": "public",
     "ranking": 130,
-    "acceptanceRate": "44.0%",
-    "averageGpa": 3,
-    "tuitionMin": 1600,
-    "tuitionMax": 1600,
-    "popularMajors": [
-      "Philosophy",
-      "History",
-      "Law",
-      "Social Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-50"
-    ],
+    "acceptanceRate": "25.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 1500,
+    "tuitionMax": 2500,
+    "popularMajors": ["Computer Science", "Law", "Business", "Humanities"],
+    "offeredScholarships": ["sch-01"],
     "city": "Vienna",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-089"
+    "hasOnCampusHousing": true,
+    "website": "https://www.univie.ac.at/",
+    "applicationUrl": "https://apply.univie.ac.at/",
+    "region": "Europe"
   },
   {
-    "id": "uni-090",
+    "id": "uni-081",
+    "name": "University of Barcelona",
+    "country": "Spain",
+    "type": "public",
+    "ranking": 153,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.2,
+    "tuitionMin": 3000,
+    "tuitionMax": 6000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Barcelona",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ub.edu/",
+    "applicationUrl": "https://apply.ub.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-082",
+    "name": "University of Bologna",
+    "country": "Italy",
+    "type": "public",
+    "ranking": 167,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.2,
+    "tuitionMin": 3000,
+    "tuitionMax": 6000,
+    "popularMajors": ["Computer Science", "Law", "Business", "Humanities"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Bologna",
+    "hasOnCampusHousing": true,
+    "website": "https://www.unibo.it/",
+    "applicationUrl": "https://apply.unibo.it/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-083",
+    "name": "University of Warsaw",
+    "country": "Poland",
+    "type": "public",
+    "ranking": 321,
+    "acceptanceRate": "35.0%",
+    "averageGpa": 3.0,
+    "tuitionMin": 3000,
+    "tuitionMax": 6000,
+    "popularMajors": ["Computer Science", "Law", "Business", "Humanities"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Warsaw",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uw.edu.pl/",
+    "applicationUrl": "https://apply.uw.edu.pl/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-084",
+    "name": "Charles University",
+    "country": "Czech Republic",
+    "type": "public",
+    "ranking": 248,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.0,
+    "tuitionMin": 3000,
+    "tuitionMax": 6000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Humanities"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Prague",
+    "hasOnCampusHousing": true,
+    "website": "https://www.cuni.cz/",
+    "applicationUrl": "https://apply.cuni.cz/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-085",
+    "name": "University of Zurich",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 80,
+    "acceptanceRate": "20.0%",
+    "averageGpa": 3.4,
+    "tuitionMin": 1500,
+    "tuitionMax": 2500,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-11"],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uzh.ch/",
+    "applicationUrl": "https://apply.uzh.ch/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-086",
+    "name": "University of Geneva",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 98,
+    "acceptanceRate": "20.0%",
+    "averageGpa": 3.3,
+    "tuitionMin": 1500,
+    "tuitionMax": 2500,
+    "popularMajors": ["Computer Science", "Law", "Business", "Social Sciences"],
+    "offeredScholarships": ["sch-11"],
+    "city": "Geneva",
+    "hasOnCampusHousing": true,
+    "website": "https://www.unige.ch/",
+    "applicationUrl": "https://apply.unige.ch/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-087",
     "name": "University of Cape Town",
     "country": "South Africa",
     "type": "public",
     "ranking": 173,
-    "acceptanceRate": "28.0%",
-    "averageGpa": 3.3,
-    "tuitionMin": 4500,
-    "tuitionMax": 9500,
-    "popularMajors": [
-      "Business Administration",
-      "Economics",
-      "Mining",
-      "Social Sciences"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-11"
-    ],
+    "acceptanceRate": "25.0%",
+    "averageGpa": 3.2,
+    "tuitionMin": 5000,
+    "tuitionMax": 10000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-01"],
     "city": "Cape Town",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-090"
+    "website": "https://www.uct.ac.za/",
+    "applicationUrl": "https://apply.uct.ac.za/",
+    "region": "Africa"
+  },
+  {
+    "id": "uni-088",
+    "name": "Stellenbosch University",
+    "country": "South Africa",
+    "type": "public",
+    "ranking": 200,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.2,
+    "tuitionMin": 5000,
+    "tuitionMax": 10000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Stellenbosch",
+    "hasOnCampusHousing": true,
+    "website": "https://www.sun.ac.za/",
+    "applicationUrl": "https://apply.sun.ac.za/",
+    "region": "Africa"
+  },
+  {
+    "id": "uni-089",
+    "name": "University of Johannesburg",
+    "country": "South Africa",
+    "type": "public",
+    "ranking": 300,
+    "acceptanceRate": "35.0%",
+    "averageGpa": 3.0,
+    "tuitionMin": 4000,
+    "tuitionMax": 8000,
+    "popularMajors": ["Computer Science", "Business", "Law", "Engineering"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Johannesburg",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uj.ac.za/",
+    "applicationUrl": "https://apply.uj.ac.za/",
+    "region": "Africa"
+  },
+  {
+    "id": "uni-090",
+    "name": "University of Pretoria",
+    "country": "South Africa",
+    "type": "public",
+    "ranking": 250,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.1,
+    "tuitionMin": 4000,
+    "tuitionMax": 8000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Pretoria",
+    "hasOnCampusHousing": true,
+    "website": "https://www.up.ac.za/",
+    "applicationUrl": "https://apply.up.ac.za/",
+    "region": "Africa"
   },
   {
     "id": "uni-091",
-    "name": "National Taiwan University",
-    "country": "Taiwan",
+    "name": "University of Nairobi",
+    "country": "Kenya",
     "type": "public",
-    "ranking": 69,
-    "acceptanceRate": "20.0%",
-    "averageGpa": 3.52,
+    "ranking": 500,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.0,
     "tuitionMin": 3000,
-    "tuitionMax": 4500,
-    "popularMajors": [
-      "Electrical Engineering",
-      "Computer Science",
-      "Materials Science",
-      "Agriculture"
-    ],
-    "offeredScholarships": [
-      "sch-24"
-    ],
-    "city": "Taipei",
+    "tuitionMax": 6000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Nairobi",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-091"
+    "website": "https://www.uonbi.ac.ke/",
+    "applicationUrl": "https://apply.uonbi.ac.ke/",
+    "region": "Africa"
   },
   {
     "id": "uni-092",
+    "name": "Kenyatta University",
+    "country": "Kenya",
+    "type": "public",
+    "ranking": 600,
+    "acceptanceRate": "35.0%",
+    "averageGpa": 2.8,
+    "tuitionMin": 2500,
+    "tuitionMax": 5000,
+    "popularMajors": ["Computer Science", "Education", "Business", "Engineering"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Nairobi",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ku.ac.ke/",
+    "applicationUrl": "https://apply.ku.ac.ke/",
+    "region": "Africa"
+  },
+  {
+    "id": "uni-093",
+    "name": "University of Ghana",
+    "country": "Ghana",
+    "type": "public",
+    "ranking": 400,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.0,
+    "tuitionMin": 3000,
+    "tuitionMax": 6000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Accra",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ug.edu.gh/",
+    "applicationUrl": "https://apply.ug.edu.gh/",
+    "region": "Africa"
+  },
+  {
+    "id": "uni-094",
+    "name": "Cairo University",
+    "country": "Egypt",
+    "type": "public",
+    "ranking": 350,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.0,
+    "tuitionMin": 3000,
+    "tuitionMax": 6000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Engineering"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Cairo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.cu.edu.eg/",
+    "applicationUrl": "https://apply.cu.edu.eg/",
+    "region": "Africa"
+  },
+  {
+    "id": "uni-095",
+    "name": "American University in Cairo",
+    "country": "Egypt",
+    "type": "private",
+    "ranking": 400,
+    "acceptanceRate": "30.0%",
+    "averageGpa": 3.2,
+    "tuitionMin": 20000,
+    "tuitionMax": 30000,
+    "popularMajors": ["Computer Science", "Business", "Engineering", "Law"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Cairo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.aucegypt.edu/",
+    "applicationUrl": "https://apply.aucegypt.edu/",
+    "region": "Africa"
+  },
+  {
+    "id": "uni-096",
+    "name": "King Saud University",
+    "country": "Saudi Arabia",
+    "type": "public",
+    "ranking": 200,
+    "acceptanceRate": "25.0%",
+    "averageGpa": 3.2,
+    "tuitionMin": 5000,
+    "tuitionMax": 10000,
+    "popularMajors": ["Computer Science", "Engineering", "Medicine", "Law"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Riyadh",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ksu.edu.sa/",
+    "applicationUrl": "https://apply.ksu.edu.sa/",
+    "region": "Middle East"
+  },
+  {
+    "id": "uni-097",
+    "name": "King Abdullah University (KAUST)",
+    "country": "Saudi Arabia",
+    "type": "private",
+    "ranking": 100,
+    "acceptanceRate": "10.0%",
+    "averageGpa": 3.6,
+    "tuitionMin": 0,
+    "tuitionMax": 0,
+    "popularMajors": ["Computer Science", "Engineering", "Physics", "Chemistry"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Thuwal",
+    "hasOnCampusHousing": true,
+    "website": "https://www.kaust.edu.sa/",
+    "applicationUrl": "https://apply.kaust.edu.sa/",
+    "region": "Middle East"
+  },
+  {
+    "id": "uni-098",
+    "name": "University of the Philippines",
+    "country": "Philippines",
+    "type": "public",
+    "ranking": 400,
+    "acceptanceRate": "15.0%",
+    "averageGpa": 3.2,
+    "tuitionMin": 3000,
+    "tuitionMax": 6000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Quezon City",
+    "hasOnCampusHousing": true,
+    "website": "https://www.up.edu.ph/",
+    "applicationUrl": "https://apply.up.edu.ph/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-099",
     "name": "University of Malaya",
     "country": "Malaysia",
     "type": "public",
     "ranking": 65,
-    "acceptanceRate": "25.0%",
+    "acceptanceRate": "20.0%",
     "averageGpa": 3.4,
-    "tuitionMin": 4000,
-    "tuitionMax": 7500,
-    "popularMajors": [
-      "Information Technology",
-      "Engineering",
-      "Islamic Finance",
-      "Education"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-25"
-    ],
+    "tuitionMin": 5000,
+    "tuitionMax": 10000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Engineering"],
+    "offeredScholarships": ["sch-01"],
     "city": "Kuala Lumpur",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-092"
-  },
-  {
-    "id": "uni-093",
-    "name": "Gadjah Mada University",
-    "country": "Indonesia",
-    "type": "public",
-    "ranking": 263,
-    "acceptanceRate": "11.0%",
-    "averageGpa": 3.35,
-    "tuitionMin": 1500,
-    "tuitionMax": 3500,
-    "popularMajors": [
-      "Social Sciences",
-      "Engineering",
-      "Agriculture",
-      "Literature"
-    ],
-    "offeredScholarships": [
-      "sch-17",
-      "sch-26"
-    ],
-    "city": "Yogyakarta",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-093"
-  },
-  {
-    "id": "uni-094",
-    "name": "Tshwane University of Technology",
-    "country": "South Africa",
-    "type": "public",
-    "ranking": 1100,
-    "acceptanceRate": "45.0%",
-    "averageGpa": 2.8,
-    "tuitionMin": 2200,
-    "tuitionMax": 4500,
-    "popularMajors": [
-      "Engineering",
-      "Media Studies",
-      "Business Administration",
-      "Computer Science"
-    ],
-    "offeredScholarships": [
-      "sch-04"
-    ],
-    "city": "Pretoria",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-094"
-  },
-  {
-    "id": "uni-095",
-    "name": "Tampere University",
-    "country": "Finland",
-    "type": "public",
-    "ranking": 435,
-    "acceptanceRate": "24.0%",
-    "averageGpa": 3.12,
-    "tuitionMin": 10000,
-    "tuitionMax": 14000,
-    "popularMajors": [
-      "Robotics",
-      "Computer Science",
-      "Information Technology",
-      "Business Administration"
-    ],
-    "offeredScholarships": [
-      "sch-34"
-    ],
-    "city": "Tampere",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-095"
-  },
-  {
-    "id": "uni-096",
-    "name": "University of Auckland",
-    "country": "New Zealand",
-    "type": "public",
-    "ranking": 68,
-    "acceptanceRate": "45.0%",
-    "averageGpa": 3.4,
-    "tuitionMin": 24000,
-    "tuitionMax": 35000,
-    "popularMajors": [
-      "Ecology",
-      "Engineering",
-      "Business Administration",
-      "Law"
-    ],
-    "offeredScholarships": [
-      "sch-04",
-      "sch-14"
-    ],
-    "city": "Auckland",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-096"
-  },
-  {
-    "id": "uni-097",
-    "name": "University of Sao Paulo",
-    "country": "Brazil",
-    "type": "public",
-    "ranking": 85,
-    "acceptanceRate": "15.0%",
-    "averageGpa": 3.5,
-    "tuitionMin": 14600,
-    "tuitionMax": 29400,
-    "popularMajors": [
-      "Agriculture",
-      "Medicine",
-      "Physics",
-      "Bioengineering"
-    ],
-    "offeredScholarships": [
-      "sch-27"
-    ],
-    "city": "Sao Paulo",
-    "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-097"
-  },
-  {
-    "id": "uni-098",
-    "name": "National Autonomous University of Mexico (UNAM)",
-    "country": "Mexico",
-    "type": "public",
-    "ranking": 93,
-    "acceptanceRate": "10.0%",
-    "averageGpa": 3.55,
-    "tuitionMin": 500,
-    "tuitionMax": 1500,
-    "popularMajors": [
-      "Bioengineering",
-      "Civil Engineering",
-      "Law",
-      "International Relations"
-    ],
-    "offeredScholarships": [
-      "sch-28"
-    ],
-    "city": "Mexico City",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-098"
-  },
-  {
-    "id": "uni-099",
-    "name": "Universidad de Buenos Aires",
-    "country": "Argentina",
-    "type": "public",
-    "ranking": 95,
-    "acceptanceRate": "100.0%",
-    "averageGpa": 3.2,
-    "tuitionMin": 14800,
-    "tuitionMax": 29700,
-    "popularMajors": [
-      "Economics",
-      "Social Sciences",
-      "Law",
-      "Medical Sciences"
-    ],
-    "offeredScholarships": [],
-    "city": "Buenos Aires",
-    "hasOnCampusHousing": false,
-    "website": "https://www.scholarpath-portal.org/universities/uni-099"
+    "website": "https://www.um.edu.my/",
+    "applicationUrl": "https://apply.um.edu.my/",
+    "region": "Asia"
   },
   {
     "id": "uni-100",
-    "name": "University of Waterloo (Affiliated Node)",
-    "country": "Canada",
+    "name": "University of Indonesia",
+    "country": "Indonesia",
     "type": "public",
-    "ranking": 112,
-    "acceptanceRate": "45.0%",
-    "averageGpa": 3.68,
-    "tuitionMin": 26000,
-    "tuitionMax": 40500,
-    "popularMajors": [
-      "Software Engineering",
-      "Mathematics",
-      "Quantum Science",
-      "Computer Science"
-    ],
-    "offeredScholarships": [
-      "sch-11",
-      "sch-18"
-    ],
-    "city": "Waterloo",
+    "ranking": 250,
+    "acceptanceRate": "20.0%",
+    "averageGpa": 3.2,
+    "tuitionMin": 3000,
+    "tuitionMax": 6000,
+    "popularMajors": ["Computer Science", "Medicine", "Law", "Business"],
+    "offeredScholarships": ["sch-01"],
+    "city": "Depok",
     "hasOnCampusHousing": true,
-    "website": "https://www.scholarpath-portal.org/universities/uni-100"
-  },
-  {
-    "id": "uni-101",
-    "name": "University of Geneva - Campus 2",
-    "country": "Nigeria",
-    "ranking": 101,
-    "acceptanceRate": "19.7%",
-    "averageGpa": 3.72,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 6060,
-    "tuitionMax": 19613,
-    "city": "London",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-101.edu"
-  },
-  {
-    "id": "uni-102",
-    "name": "Lund University - Campus 1",
-    "country": "Sweden",
-    "ranking": 102,
-    "acceptanceRate": "7.3%",
-    "averageGpa": 3.74,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 9759,
-    "tuitionMax": 19363,
-    "city": "Singapore",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-102.edu"
-  },
-  {
-    "id": "uni-103",
-    "name": "UBC Vancouver - Campus 1",
-    "country": "France",
-    "ranking": 103,
-    "acceptanceRate": "7.9%",
-    "averageGpa": 3.8,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 6213,
-    "tuitionMax": 32964,
-    "city": "Cambridge",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-103.edu"
-  },
-  {
-    "id": "uni-104",
-    "name": "Waterloo University - Campus 1",
-    "country": "Nigeria",
-    "ranking": 104,
-    "acceptanceRate": "14.3%",
-    "averageGpa": 3.7,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 7677,
-    "tuitionMax": 24376,
-    "city": "Boston",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-104.edu"
-  },
-  {
-    "id": "uni-105",
-    "name": "Alberta University - Campus 2",
-    "country": "Sweden",
-    "ranking": 105,
-    "acceptanceRate": "11.1%",
-    "averageGpa": 3.68,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 10952,
-    "tuitionMax": 34357,
-    "city": "London",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-105.edu"
-  },
-  {
-    "id": "uni-106",
-    "name": "Sydney University - Campus 2",
-    "country": "Australia",
-    "ranking": 106,
-    "acceptanceRate": "27.8%",
-    "averageGpa": 3.74,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 7163,
-    "tuitionMax": 17746,
-    "city": "Cambridge",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-106.edu"
-  },
-  {
-    "id": "uni-107",
-    "name": "UNSW Sydney - Campus 2",
-    "country": "Nigeria",
-    "ranking": 107,
-    "acceptanceRate": "28.0%",
-    "averageGpa": 3.68,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 10766,
-    "tuitionMax": 27212,
-    "city": "Dhaka",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-107.edu"
-  },
-  {
-    "id": "uni-108",
-    "name": "Hong Kong University - Campus 3",
-    "country": "Vietnam",
-    "ranking": 108,
-    "acceptanceRate": "9.1%",
-    "averageGpa": 3.6,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 6267,
-    "tuitionMax": 30946,
-    "city": "Tokyo",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-108.edu"
-  },
-  {
-    "id": "uni-109",
-    "name": "HKUST - Campus 3",
-    "country": "Germany",
-    "ranking": 109,
-    "acceptanceRate": "5.1%",
-    "averageGpa": 3.59,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 10064,
-    "tuitionMax": 26859,
-    "city": "Dhaka",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-109.edu"
-  },
-  {
-    "id": "uni-110",
-    "name": "Nanyang Technological - Campus 2",
-    "country": "Japan",
-    "ranking": 110,
-    "acceptanceRate": "16.1%",
-    "averageGpa": 3.7,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 5767,
-    "tuitionMax": 32260,
-    "city": "London",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-110.edu"
-  },
-  {
-    "id": "uni-111",
-    "name": "Peking University - Campus 2",
-    "country": "Sweden",
-    "ranking": 111,
-    "acceptanceRate": "10.4%",
-    "averageGpa": 3.75,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 5721,
-    "tuitionMax": 33362,
-    "city": "Cambridge",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-111.edu"
-  },
-  {
-    "id": "uni-112",
-    "name": "Fudan University - Campus 2",
-    "country": "India",
-    "ranking": 112,
-    "acceptanceRate": "12.8%",
-    "averageGpa": 3.63,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 11398,
-    "tuitionMax": 27209,
-    "city": "Munich",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-112.edu"
-  },
-  {
-    "id": "uni-113",
-    "name": "Zhejiang University - Campus 2",
-    "country": "Australia",
-    "ranking": 113,
-    "acceptanceRate": "18.0%",
-    "averageGpa": 3.8,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 11293,
-    "tuitionMax": 31830,
-    "city": "Zurich",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-113.edu"
-  },
-  {
-    "id": "uni-114",
-    "name": "Tokyo Institute of Technology - Campus 2",
-    "country": "Germany",
-    "ranking": 114,
-    "acceptanceRate": "16.1%",
-    "averageGpa": 3.51,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 8828,
-    "tuitionMax": 22006,
-    "city": "Tokyo",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-114.edu"
-  },
-  {
-    "id": "uni-115",
-    "name": "Osaka University - Campus 2",
-    "country": "Nigeria",
-    "ranking": 115,
-    "acceptanceRate": "12.0%",
-    "averageGpa": 3.81,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 13842,
-    "tuitionMax": 28344,
-    "city": "Boston",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-115.edu"
-  },
-  {
-    "id": "uni-116",
-    "name": "Tohoku University - Campus 1",
-    "country": "Kenya",
-    "ranking": 116,
-    "acceptanceRate": "14.7%",
-    "averageGpa": 3.81,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 13663,
-    "tuitionMax": 25759,
-    "city": "Singapore",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-116.edu"
-  },
-  {
-    "id": "uni-117",
-    "name": "KAIST Engineering - Campus 3",
-    "country": "Japan",
-    "ranking": 117,
-    "acceptanceRate": "20.9%",
-    "averageGpa": 3.55,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 9051,
-    "tuitionMax": 28647,
-    "city": "Tokyo",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-117.edu"
-  },
-  {
-    "id": "uni-118",
-    "name": "POSTECH - Campus 2",
-    "country": "Vietnam",
-    "ranking": 118,
-    "acceptanceRate": "17.5%",
-    "averageGpa": 3.9,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 7314,
-    "tuitionMax": 23121,
-    "city": "Munich",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-118.edu"
-  },
-  {
-    "id": "uni-119",
-    "name": "Yonsei University - Campus 3",
-    "country": "Bangladesh",
-    "ranking": 119,
-    "acceptanceRate": "6.8%",
-    "averageGpa": 3.68,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 10630,
-    "tuitionMax": 17713,
-    "city": "Dhaka",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-119.edu"
-  },
-  {
-    "id": "uni-120",
-    "name": "IISc Bangalore - Campus 1",
-    "country": "Sweden",
-    "ranking": 120,
-    "acceptanceRate": "8.9%",
-    "averageGpa": 3.65,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 10549,
-    "tuitionMax": 33351,
-    "city": "Cambridge",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-120.edu"
-  },
-  {
-    "id": "uni-121",
-    "name": "IIT Madras - Campus 3",
-    "country": "USA",
-    "ranking": 121,
-    "acceptanceRate": "13.5%",
-    "averageGpa": 3.76,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 6189,
-    "tuitionMax": 31914,
-    "city": "London",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-121.edu"
-  },
-  {
-    "id": "uni-122",
-    "name": "IIT Kanpur - Campus 1",
-    "country": "Sweden",
-    "ranking": 122,
-    "acceptanceRate": "25.1%",
-    "averageGpa": 3.72,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 6616,
-    "tuitionMax": 28978,
-    "city": "London",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-122.edu"
-  },
-  {
-    "id": "uni-123",
-    "name": "IIT Kharagpur - Campus 2",
-    "country": "Pakistan",
-    "ranking": 123,
-    "acceptanceRate": "9.7%",
-    "averageGpa": 3.6,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 11303,
-    "tuitionMax": 19596,
-    "city": "Cambridge",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-123.edu"
-  },
-  {
-    "id": "uni-124",
-    "name": "BITS Pilani - Campus 2",
-    "country": "Pakistan",
-    "ranking": 124,
-    "acceptanceRate": "25.1%",
-    "averageGpa": 3.65,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 4896,
-    "tuitionMax": 27215,
-    "city": "Singapore",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-124.edu"
-  },
-  {
-    "id": "uni-125",
-    "name": "MIT - Campus 1",
-    "country": "Vietnam",
-    "ranking": 125,
-    "acceptanceRate": "19.7%",
-    "averageGpa": 3.83,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 10607,
-    "tuitionMax": 15894,
-    "city": "Munich",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-125.edu"
-  },
-  {
-    "id": "uni-126",
-    "name": "University of Cambridge - Campus 1",
-    "country": "Pakistan",
-    "ranking": 126,
-    "acceptanceRate": "7.1%",
-    "averageGpa": 3.76,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 10280,
-    "tuitionMax": 29054,
-    "city": "Tokyo",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-126.edu"
-  },
-  {
-    "id": "uni-127",
-    "name": "University of Oxford - Campus 3",
-    "country": "Switzerland",
-    "ranking": 127,
-    "acceptanceRate": "10.8%",
-    "averageGpa": 3.61,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 6157,
-    "tuitionMax": 24127,
-    "city": "Toronto",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-127.edu"
-  },
-  {
-    "id": "uni-128",
-    "name": "Princeton - Campus 2",
-    "country": "Japan",
-    "ranking": 128,
-    "acceptanceRate": "27.0%",
-    "averageGpa": 3.67,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 5991,
-    "tuitionMax": 26728,
-    "city": "Singapore",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-128.edu"
-  },
-  {
-    "id": "uni-129",
-    "name": "Caltech - Campus 1",
-    "country": "USA",
-    "ranking": 129,
-    "acceptanceRate": "10.8%",
-    "averageGpa": 3.9,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 11606,
-    "tuitionMax": 22483,
-    "city": "Dhaka",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-129.edu"
-  },
-  {
-    "id": "uni-130",
-    "name": "ETH Zurich - Campus 2",
-    "country": "Switzerland",
-    "ranking": 130,
-    "acceptanceRate": "27.1%",
-    "averageGpa": 3.84,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 8136,
-    "tuitionMax": 25820,
-    "city": "Zurich",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-130.edu"
-  },
-  {
-    "id": "uni-131",
-    "name": "University of Tokyo - Campus 2",
-    "country": "Vietnam",
-    "ranking": 131,
-    "acceptanceRate": "12.8%",
-    "averageGpa": 3.62,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 8085,
-    "tuitionMax": 24783,
-    "city": "Zurich",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-131.edu"
-  },
-  {
-    "id": "uni-132",
-    "name": "National University of Singapore - Campus 3",
-    "country": "UK",
-    "ranking": 132,
-    "acceptanceRate": "29.2%",
-    "averageGpa": 3.51,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 5436,
-    "tuitionMax": 18961,
-    "city": "Munich",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-132.edu"
-  },
-  {
-    "id": "uni-133",
-    "name": "Tsinghua University - Campus 3",
-    "country": "Kenya",
-    "ranking": 133,
-    "acceptanceRate": "13.1%",
-    "averageGpa": 3.77,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 13020,
-    "tuitionMax": 23320,
-    "city": "Zurich",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-133.edu"
-  },
-  {
-    "id": "uni-134",
-    "name": "University of Toronto - Campus 3",
-    "country": "Japan",
-    "ranking": 134,
-    "acceptanceRate": "15.0%",
-    "averageGpa": 3.86,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 8374,
-    "tuitionMax": 25559,
-    "city": "Munich",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-134.edu"
-  },
-  {
-    "id": "uni-135",
-    "name": "McGill University - Campus 1",
-    "country": "Bangladesh",
-    "ranking": 135,
-    "acceptanceRate": "30.0%",
-    "averageGpa": 3.81,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 5846,
-    "tuitionMax": 16512,
-    "city": "Boston",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-135.edu"
-  },
-  {
-    "id": "uni-136",
-    "name": "University of Melbourne - Campus 2",
-    "country": "India",
-    "ranking": 136,
-    "acceptanceRate": "6.8%",
-    "averageGpa": 3.73,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 7855,
-    "tuitionMax": 24049,
-    "city": "Tokyo",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-136.edu"
-  },
-  {
-    "id": "uni-137",
-    "name": "ANU - Campus 1",
-    "country": "Australia",
-    "ranking": 137,
-    "acceptanceRate": "26.6%",
-    "averageGpa": 3.79,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 5146,
-    "tuitionMax": 16580,
-    "city": "Cambridge",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-137.edu"
-  },
-  {
-    "id": "uni-138",
-    "name": "Sorbonne University - Campus 1",
-    "country": "UK",
-    "ranking": 138,
-    "acceptanceRate": "9.8%",
-    "averageGpa": 3.87,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 13280,
-    "tuitionMax": 21230,
-    "city": "London",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-138.edu"
-  },
-  {
-    "id": "uni-139",
-    "name": "Technical University of Munich - Campus 3",
-    "country": "Kenya",
-    "ranking": 139,
-    "acceptanceRate": "17.5%",
-    "averageGpa": 3.66,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 12890,
-    "tuitionMax": 34908,
-    "city": "Boston",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-139.edu"
-  },
-  {
-    "id": "uni-140",
-    "name": "Heidelberg University - Campus 2",
-    "country": "Vietnam",
-    "ranking": 140,
-    "acceptanceRate": "16.3%",
-    "averageGpa": 3.9,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 6574,
-    "tuitionMax": 16344,
-    "city": "Tokyo",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-140.edu"
-  },
-  {
-    "id": "uni-141",
-    "name": "Kyoto University - Campus 2",
-    "country": "USA",
-    "ranking": 141,
-    "acceptanceRate": "20.1%",
-    "averageGpa": 3.71,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 13095,
-    "tuitionMax": 29383,
-    "city": "Boston",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-141.edu"
-  },
-  {
-    "id": "uni-142",
-    "name": "Seoul National University - Campus 2",
-    "country": "Germany",
-    "ranking": 142,
-    "acceptanceRate": "7.6%",
-    "averageGpa": 3.78,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 12452,
-    "tuitionMax": 29240,
-    "city": "Boston",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-142.edu"
-  },
-  {
-    "id": "uni-143",
-    "name": "KAIST - Campus 2",
-    "country": "Japan",
-    "ranking": 143,
-    "acceptanceRate": "7.0%",
-    "averageGpa": 3.81,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 6491,
-    "tuitionMax": 27721,
-    "city": "Munich",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-143.edu"
-  },
-  {
-    "id": "uni-144",
-    "name": "IIT Bombay - Campus 2",
-    "country": "USA",
-    "ranking": 144,
-    "acceptanceRate": "11.0%",
-    "averageGpa": 3.62,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 8691,
-    "tuitionMax": 28101,
-    "city": "London",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-144.edu"
-  },
-  {
-    "id": "uni-145",
-    "name": "IIT Delhi - Campus 3",
-    "country": "UK",
-    "ranking": 145,
-    "acceptanceRate": "28.8%",
-    "averageGpa": 3.62,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 12140,
-    "tuitionMax": 23068,
-    "city": "Toronto",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-145.edu"
-  },
-  {
-    "id": "uni-146",
-    "name": "BUCS Dhaka Uni - Campus 2",
-    "country": "Kenya",
-    "ranking": 146,
-    "acceptanceRate": "11.7%",
-    "averageGpa": 3.84,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 10890,
-    "tuitionMax": 32396,
-    "city": "Munich",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-146.edu"
-  },
-  {
-    "id": "uni-147",
-    "name": "BRAC University - Campus 1",
-    "country": "France",
-    "ranking": 147,
-    "acceptanceRate": "16.8%",
-    "averageGpa": 3.7,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 7399,
-    "tuitionMax": 24657,
-    "city": "Singapore",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-147.edu"
-  },
-  {
-    "id": "uni-148",
-    "name": "DU Dhaka University - Campus 3",
-    "country": "Canada",
-    "ranking": 148,
-    "acceptanceRate": "6.6%",
-    "averageGpa": 3.77,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 13716,
-    "tuitionMax": 28851,
-    "city": "Munich",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-148.edu"
-  },
-  {
-    "id": "uni-149",
-    "name": "BUET Engineering Uni - Campus 2",
-    "country": "India",
-    "ranking": 149,
-    "acceptanceRate": "9.7%",
-    "averageGpa": 3.63,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 13695,
-    "tuitionMax": 27713,
-    "city": "Boston",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-149.edu"
-  },
-  {
-    "id": "uni-150",
-    "name": "North South University - Campus 2",
-    "country": "Japan",
-    "ranking": 150,
-    "acceptanceRate": "7.5%",
-    "averageGpa": 3.65,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 8271,
-    "tuitionMax": 21849,
-    "city": "Zurich",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-150.edu"
-  },
-  {
-    "id": "uni-151",
-    "name": "Dhaka Medical College - Campus 1",
-    "country": "Germany",
-    "ranking": 151,
-    "acceptanceRate": "7.0%",
-    "averageGpa": 3.71,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 4864,
-    "tuitionMax": 27913,
-    "city": "Cambridge",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-151.edu"
-  },
-  {
-    "id": "uni-152",
-    "name": "Helsinki University - Campus 2",
-    "country": "India",
-    "ranking": 152,
-    "acceptanceRate": "13.1%",
-    "averageGpa": 3.8,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 13878,
-    "tuitionMax": 30845,
-    "city": "Boston",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-152.edu"
-  },
-  {
-    "id": "uni-153",
-    "name": "Aalto University - Campus 3",
-    "country": "Bangladesh",
-    "ranking": 153,
-    "acceptanceRate": "5.8%",
-    "averageGpa": 3.77,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 5715,
-    "tuitionMax": 18194,
-    "city": "Dhaka",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-153.edu"
-  },
-  {
-    "id": "uni-154",
-    "name": "UCL London - Campus 3",
-    "country": "Germany",
-    "ranking": 154,
-    "acceptanceRate": "29.0%",
-    "averageGpa": 3.63,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 6507,
-    "tuitionMax": 26462,
-    "city": "Zurich",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-154.edu"
-  },
-  {
-    "id": "uni-155",
-    "name": "Imperial College London - Campus 3",
-    "country": "Canada",
-    "ranking": 155,
-    "acceptanceRate": "28.8%",
-    "averageGpa": 3.7,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 5031,
-    "tuitionMax": 20150,
-    "city": "Singapore",
-    "hasOnCampusHousing": false,
-    "website": "https://www.uni-155.edu"
-  },
-  {
-    "id": "uni-156",
-    "name": "University of Edinburgh - Campus 1",
-    "country": "Sweden",
-    "ranking": 156,
-    "acceptanceRate": "29.4%",
-    "averageGpa": 3.84,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 10638,
-    "tuitionMax": 24235,
-    "city": "London",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-156.edu"
-  },
-  {
-    "id": "uni-157",
-    "name": "Kings College London - Campus 1",
-    "country": "Australia",
-    "ranking": 157,
-    "acceptanceRate": "18.2%",
-    "averageGpa": 3.84,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 11673,
-    "tuitionMax": 30077,
-    "city": "Cambridge",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-157.edu"
-  },
-  {
-    "id": "uni-158",
-    "name": "TU Delft - Campus 1",
-    "country": "Kenya",
-    "ranking": 158,
-    "acceptanceRate": "21.1%",
-    "averageGpa": 3.58,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "public",
-    "tuitionMin": 4874,
-    "tuitionMax": 22491,
-    "city": "Boston",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-158.edu"
-  },
-  {
-    "id": "uni-159",
-    "name": "Eindhoven University - Campus 1",
-    "country": "Pakistan",
-    "ranking": 159,
-    "acceptanceRate": "28.2%",
-    "averageGpa": 3.6,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 4219,
-    "tuitionMax": 23956,
-    "city": "Singapore",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-159.edu"
-  },
-  {
-    "id": "uni-160",
-    "name": "KTH Royal Institute - Campus 1",
-    "country": "Germany",
-    "ranking": 160,
-    "acceptanceRate": "24.9%",
-    "averageGpa": 3.51,
-    "popularMajors": [
-      "Computer Science",
-      "Engineering",
-      "Business Administration",
-      "Economics",
-      "AI"
-    ],
-    "offeredScholarships": [
-      "sch-01",
-      "sch-05",
-      "sch-10"
-    ],
-    "type": "private",
-    "tuitionMin": 6552,
-    "tuitionMax": 19985,
-    "city": "Munich",
-    "hasOnCampusHousing": true,
-    "website": "https://www.uni-160.edu"
+    "website": "https://www.ui.ac.id/",
+    "applicationUrl": "https://apply.ui.ac.id/",
+    "region": "Asia"
   }
 ]
