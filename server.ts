@@ -11,13 +11,11 @@ import geminiRouter from "./routes/gemini";
 import recommenderRouter from "./routes/recommender";
 import roadmapRouter from "./routes/roadmap";
 import universitiesRouter from "./routes/universities";
+import profileRouter from "./routes/profile";
+import communityRouter from "./routes/community";
+import uploadRouter from "./routes/upload";
 
-import { 
-  profilesMap, 
-  universitiesData, 
-  notificationsData, 
-  communityPostsData 
-} from "./routes/db";
+import { getNotifications, addNotification } from "./db/index";
 
 const app = express();
 const PORT = 3000;
@@ -51,6 +49,9 @@ app.use("/api/applications", applicationsRouter);
 app.use("/api/gemini", geminiRouter);
 app.use("/api/roadmap", roadmapRouter);
 app.use("/api/universities", universitiesRouter);
+app.use("/api/profile", profileRouter);
+app.use("/api/community", communityRouter);
+app.use("/api", uploadRouter); // Mount on /api/upload-pdf
 app.use("/api", recommenderRouter);
 
 // --- INTERVIEW SIMULATION API ENDPOINT ---
@@ -136,213 +137,9 @@ Only return raw JSON. No markdown backticks, no markdown fence block, no "json" 
   }
 });
 
-// --- COMPLEMENTARY REST CORE API ENDPOINTS WITH IDENTITY SELECTION ---
-
-// Get active candidate profile (Requires Token)
-app.get("/api/profile", authenticateToken, (req, res) => {
-  const user = (req as any).user;
-  const username = user.username;
-  
-  // Return user-specific profile card or fallback to standard templates
-  const profile = profilesMap[username] || profilesMap["arif"];
-  res.json(profile);
-});
-
-// Update candidate GPA, details or test certs (Requires Token)
-app.post("/api/profile", authenticateToken, (req, res) => {
-  const user = (req as any).user;
-  const username = user.username;
-  
-  const currentProfile = profilesMap[username] || profilesMap["arif"];
-  const updatedProfile = { ...currentProfile, ...req.body };
-  profilesMap[username] = updatedProfile;
-  
-  res.json(updatedProfile);
-});
-
-// Resume PDF Upload & AI Auto-fill Parser
-app.post("/api/upload-pdf", authenticateToken, async (req, res) => {
-  const user = (req as any).user;
-  const username = user.username;
-  const { filename, base64 } = req.body;
-  
-  if (!base64) {
-    return res.status(400).json({ error: "Missing file payload" });
-  }
-  
-  const currentProfile = profilesMap[username] || profilesMap["arif"];
-  currentProfile.resumePdf = base64; // Store base64 string
-  
-  let parsedInfo: any = {};
-  
-  try {
-    // Elegant stretch goal: Gemini auto-fill profile fields based on pdf metadata/text heuristic
-    const hasKey = hasGeminiKey();
-    if (hasKey) {
-      const ai = getAI();
-      const prompt = `You are an AI admissions parser. A candidate uploaded a CV/Resume file named "${filename}".
-Based on this title and candidate profile context, suggest a JSON reply containing:
-1. "additionalSkills": array of 4-6 specific technical/general skills matching that domain (e.g. ["Python", "MATLAB", "LaTeX"])
-2. "primaryMajor": string of a refined field (e.g. "Data Science" or "Robotics")
-3. "briefSummary": string with a short 1-sentence bio description.
-
-Return ONLY strict raw JSON. No markdown ticks, no markdown wrap.`;
-      
-      const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
-        contents: prompt
-      });
-      
-      let txt = response.text.trim();
-      if (txt.startsWith("```")) {
-        txt = txt.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
-      }
-      parsedInfo = JSON.parse(txt);
-    } else {
-      // Default offline heuristic parser
-      parsedInfo = {
-        additionalSkills: ["LaTeX", "Research Methods", "MATLAB", "Python", "Technical Writing"],
-        primaryMajor: "Information Technology",
-        briefSummary: "Dedicated scholar with active achievements in high-grade academic projects."
-      };
-    }
-  } catch (err) {
-    console.warn("Gemini resume parsing failed:", err);
-    parsedInfo = {
-      additionalSkills: ["LaTeX", "Research Methods"],
-      primaryMajor: "Creative Computing",
-      briefSummary: "Dedicated scholar exploring high-grade academic opportunities."
-    };
-  }
-  
-  // Apply changes to profile if found
-  if (parsedInfo.additionalSkills && Array.isArray(parsedInfo.additionalSkills)) {
-    currentProfile.additionalSkills = Array.from(new Set([...(currentProfile.additionalSkills || []), ...parsedInfo.additionalSkills]));
-  }
-  if (parsedInfo.primaryMajor) {
-    currentProfile.primaryMajor = parsedInfo.primaryMajor;
-    currentProfile.intendedMajor = parsedInfo.primaryMajor;
-  }
-  
-  res.json({
-    success: true,
-    profile: currentProfile,
-    filename,
-    parsedInfo
-  });
-});
-
-// Award academic advancement points, claim milestone badges & append notifications (Requires Token)
-app.post("/api/profile/reward", authenticateToken, (req, res) => {
-  const user = (req as any).user;
-  const username = user.username;
-  const { points, actionName, badgeToUnlock } = req.body;
-
-  const profile = profilesMap[username] || profilesMap["arif"];
-
-  if (!profile.rewardedActions) {
-    profile.rewardedActions = [];
-  }
-
-  // Double-Check Deduplication (Server-side defense)
-  if (actionName && profile.rewardedActions.includes(actionName)) {
-    // Already rewarded for this action name. Return unaltered profile config immediately.
-    return res.json(profile);
-  }
-
-  if (actionName === 'Daily Exploration Fellowship') {
-    const todayStr = new Date().toISOString().split('T')[0];
-    if (profile.lastDailyCheckin === todayStr) {
-      return res.status(400).json({ error: "Daily exploration bounty already claimed for today!" });
-    }
-    profile.lastDailyCheckin = todayStr;
-  }
-
-  if (actionName) {
-    profile.rewardedActions.push(actionName);
-  }
-
-  if (points) {
-    profile.points += points;
-    // Standard system setup shifts Level coordinates every 100 XP Points
-    const newLevel = Math.floor(profile.points / 100) + 1;
-    if (newLevel > profile.level) {
-      profile.level = newLevel;
-      notificationsData.unshift({
-        id: "level-notif-" + Date.now(),
-        type: "success",
-        message: `🌟 RETRO ADVANCEMENT UNLOCKED! ${profile.fullName} level shifted to Level ${newLevel}! Keep exploring!`,
-        timestamp: "Just now"
-      });
-    }
-
-    if (badgeToUnlock && !profile.badges.includes(badgeToUnlock)) {
-      profile.badges.push(badgeToUnlock);
-      notificationsData.unshift({
-        id: "badge-notif-" + Date.now(),
-        type: "success",
-        message: `🏅 NEW MILESTONE BADGE CLAIMED: [${badgeToUnlock}]! Check your Hero Ledger.`,
-        timestamp: "Just now"
-      });
-    }
-
-    notificationsData.unshift({
-      id: "reward-notif-" + Date.now(),
-      type: "success",
-      message: `Completed achievement: "${actionName || 'Academic Quest'}" (+${points} XP Awarded!)`,
-      timestamp: "Just now"
-    });
-  }
-
-  res.json(profile);
-});
-
-// Global academic institution benchmarks handled via modular universitiesRouter
-
 // Get live system activities/admissions notifications
 app.get("/api/notifications", (req, res) => {
-  res.json(notificationsData);
-});
-
-// Get community forum topics registry
-app.get("/api/community", (req, res) => {
-  res.json(communityPostsData);
-});
-
-// Add custom post to global message boards (Requires Token)
-app.post("/api/community", authenticateToken, (req, res) => {
-  const user = (req as any).user;
-  const username = user.username;
-  const profile = profilesMap[username] || profilesMap["arif"];
-  
-  const { title, content, category } = req.body;
-  if (!title || !content) {
-    return res.status(400).json({ error: "Title and Content are mandatory scrolls!" });
-  }
-
-  const newPost = {
-    id: "post-" + Date.now(),
-    author: profile.fullName.replace(/\s+/g, '_'),
-    title,
-    content,
-    category: category || "General Discussion",
-    votes: 1,
-    commentsCount: 0,
-    createdAt: new Date().toISOString().split("T")[0]
-  };
-
-  communityPostsData.unshift(newPost);
-  res.json(communityPostsData);
-});
-
-// Upvote post on active taverns (Requires Token)
-app.post("/api/community/:id/vote", authenticateToken, (req, res) => {
-  const { id } = req.params;
-  const post = communityPostsData.find(p => p.id === id);
-  if (post) {
-    post.votes += 1;
-  }
-  res.json(communityPostsData);
+  res.json(getNotifications());
 });
 
 // --- VITE DEV MIDDLEWARE & DEPLOYMENT STATIC COMPILING ---
@@ -362,7 +159,7 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`[OK] ScholarPath secure fullstack matrix synced on http://0.0.0.0:${PORT}`);
+    console.log(`[OK] ScholarPath secure SQLite matrix synced on http://0.0.0.0:${PORT}`);
   });
 }
 
