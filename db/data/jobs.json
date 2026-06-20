@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "job-01",
+    "title": "Graduate Teaching Assistant (GTA)",
+    "industry": "Education",
+    "averagePay": "$1,800 / Mo",
+    "type": "part-time",
+    "country": "USA",
+    "tips": "Coordinate with your department early. Often waives partial or full graduate tuition.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-02",
+    "title": "On-Campus IT Support Technical Specialist",
+    "industry": "Information Technology",
+    "averagePay": "$18 / Hr",
+    "type": "part-time",
+    "country": "USA",
+    "tips": "Excellent for Computer Science or IT majors. Network with campus sysadmins.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-03",
+    "title": "AI Research Assistant - Machine Learning",
+    "industry": "Technology",
+    "averagePay": "$2,200 / Mo",
+    "type": "internship",
+    "country": "Germany",
+    "tips": "Requires Python and PyTorch foundations. Check European university laboratory postings.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-04",
+    "title": "University Library Assistant",
+    "industry": "Administrative",
+    "averagePay": "€12 / Hr",
+    "type": "part-time",
+    "country": "Germany",
+    "tips": "A highly coveted quiet job. Allows plenty of time to study on shift.",
+    "payCurrency": "EUR",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-05",
+    "title": "Front-End Developer Intern",
+    "industry": "Software Engineering",
+    "averagePay": "£1,500 / Mo",
+    "type": "internship",
+    "country": "UK",
+    "tips": "Build a robust web portfolio with React and Tailwind to stand out in the UK market.",
+    "payCurrency": "GBP",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-06",
+    "title": "Campus Peer Academic Tutor",
+    "industry": "Education",
+    "averagePay": "CAD $16.50 / Hr",
+    "type": "part-time",
+    "country": "Canada",
+    "tips": "Great for chemistry, physics, or calculus majors. Requires an A score in the tutor class.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-07",
+    "title": "Database Admin Assistant",
+    "industry": "Data Science",
+    "averagePay": "$15 / Hr",
+    "type": "part-time",
+    "country": "Canada",
+    "tips": "Learn SQL server optimization. Looks very competitive on junior database engineering CVs.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-08",
+    "title": "English Language Converse Lead",
+    "industry": "Customer Service",
+    "averagePay": "BDT 12,000 / Mo",
+    "type": "part-time",
+    "country": "Bangladesh",
+    "tips": "Teach local young learners. Enhances communication and management skills.",
+    "payCurrency": "BDT",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-09",
+    "title": "Data Entry & Quality Analyst",
+    "industry": "Administrative",
+    "averagePay": "$14 / Hr",
+    "type": "part-time",
+    "country": "Canada",
+    "tips": "Remote options often available. Build speed and precision with Excel.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-10",
+    "title": "Software Quality Assurance Intern",
+    "industry": "Software Engineering",
+    "averagePay": "€1,600 / Mo",
+    "type": "internship",
+    "country": "Germany",
+    "tips": "Learn Jest, Cypress, and browser testing protocols. Highly analytical role.",
+    "payCurrency": "EUR",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-11",
+    "title": "Social Media Manager Intern",
+    "industry": "Marketing",
+    "averagePay": "$1,200 / Mo",
+    "type": "internship",
+    "country": "USA",
+    "tips": "Understand SEO analytics, TikTok strategies, and consumer marketing graphics.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-12",
+    "title": "Resident Assistant (RA)",
+    "industry": "Hospitality",
+    "averagePay": "Free Housing + Stipend",
+    "type": "part-time",
+    "country": "USA",
+    "tips": "Provides housing and dining credits. Best way to cut down collegiate USA housing costs.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-13",
+    "title": "Campus Tour Ambassador",
+    "industry": "Public Relations",
+    "averagePay": "$15.50 / Hr",
+    "type": "part-time",
+    "country": "USA",
+    "tips": "Develop superb public speaking and storytelling abilities. Enthusiastic vibe required!",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-14",
+    "title": "Junior Cybersecurity Consultant",
+    "industry": "Security",
+    "averagePay": "£22 / Hr",
+    "type": "part-time",
+    "country": "UK",
+    "tips": "Certifications like CompTIA Security+ or CCNA will highly boost application success.",
+    "payCurrency": "GBP",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-15",
+    "title": "Medical Lab Supply Assistant",
+    "industry": "Healthcare",
+    "averagePay": "$18 / Hr",
+    "type": "part-time",
+    "country": "Canada",
+    "tips": "Excellent for biochemistry, pharmacy, or pre-med undergraduate students.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-16",
+    "title": "Python Scripting Remote Freelancer",
+    "industry": "Software Engineering",
+    "averagePay": "$25 / Hr",
+    "type": "part-time",
+    "country": "Worldwide",
+    "tips": "Good for automation projects. Create a profile on platforms like Upwork or Fiverr.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-17",
+    "title": "Digital Illustrator Intern",
+    "industry": "Design",
+    "averagePay": "$1,400 / Mo",
+    "type": "internship",
+    "country": "Worldwide",
+    "tips": "Familiarity with Figma, Photoshop, and vector graphics toolsets is key.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-18",
+    "title": "Product Management Intern",
+    "industry": "Business",
+    "averagePay": "$2,500 / Mo",
+    "type": "internship",
+    "country": "USA",
+    "tips": "Learn Agile methodology, Jira workflows, and user research heuristics.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-19",
+    "title": "Campus Recreation Coordinator",
+    "industry": "Sports",
+    "averagePay": "$13 / Hr",
+    "type": "part-time",
+    "country": "USA",
+    "tips": "Help organize intercollegiate soccer, basketball and fitness classes.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-20",
+    "title": "Web Content Curator",
+    "industry": "Writing",
+    "averagePay": "$16 / Hr",
+    "type": "part-time",
+    "country": "UK",
+    "tips": "Requires flawless grammar and basic SEO writing competence.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-21",
+    "title": "Undergraduate Lab Monitor",
+    "industry": "Education",
+    "averagePay": "$14.50 / Hr",
+    "type": "part-time",
+    "country": "USA",
+    "tips": "Monitor computer laboratory equipment. Very high study downtime during evening shifts.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-22",
+    "title": "Full-Stack Developer Intern",
+    "industry": "Software Engineering",
+    "averagePay": "BDT 25,000 / Mo",
+    "type": "internship",
+    "country": "Bangladesh",
+    "tips": "Excellent local startups in Dhaka always seek Node/React developers. High career growth.",
+    "payCurrency": "BDT",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-23",
+    "title": "SaaS Marketing Copywriter",
+    "industry": "Writing",
+    "averagePay": "$18 / Hr",
+    "type": "part-time",
+    "country": "Canada",
+    "tips": "Ideal for English or Communications majors. Remote hours let you balance university classes.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-24",
+    "title": "Hospitality & Event Staff",
+    "industry": "Hospitality",
+    "averagePay": "€13.50 / Hr",
+    "type": "part-time",
+    "country": "Germany",
+    "tips": "Work weekended exhibitions or student summit expos in Berlin/Munich.",
+    "payCurrency": "EUR",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-25",
+    "title": "App Developer Intern",
+    "industry": "Software Engineering",
+    "averagePay": "$2,000 / Mo",
+    "type": "internship",
+    "country": "UK",
+    "tips": "Work on Flutter or React Native mobile projects. High market demand.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-26",
+    "title": "Campus Barista & Tech Cafe Host",
+    "industry": "Hospitality",
+    "averagePay": "$15 / Hr",
+    "type": "part-time",
+    "country": "USA",
+    "tips": "Get free coffee perks while building customer communication skills.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-27",
+    "title": "Technical Writing Intern",
+    "industry": "Writing",
+    "averagePay": "$1,900 / Mo",
+    "type": "internship",
+    "country": "Canada",
+    "tips": "Write technical API documentation. Great for technical English or dual-degree CS students.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-28",
+    "title": "Business Development Intern",
+    "industry": "Business",
+    "averagePay": "$1,700 / Mo",
+    "type": "internship",
+    "country": "Germany",
+    "tips": "Good opportunity to learn Sales operations, cold outreach systems, and CRM workflows.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-29",
+    "title": "Graphic Design Assistant",
+    "industry": "Design",
+    "averagePay": "BDT 15,000 / Mo",
+    "type": "part-time",
+    "country": "Bangladesh",
+    "tips": "Learn creative branding layouts. Startup environment will accelerate design output speed.",
+    "payCurrency": "BDT",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-30",
+    "title": "Cloud Operations Intern",
+    "industry": "Information Technology",
+    "averagePay": "$2,300 / Mo",
+    "type": "internship",
+    "country": "USA",
+    "tips": "Learn AWS, Docker, and CI/CD pipelines. Extremely high industry standard payoff.",
+    "payCurrency": "USD",
+    "skills": [
+      "Problem Solving",
+      "English Communication",
+      "Teamwork",
+      "Documentation"
+    ],
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-31",
+    "title": "Campus Library Assistant - Dept 10",
+    "industry": "Education",
+    "averagePay": "$15 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Germany",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Work at the catalog desks. Excellent downtime to read SOP guides, solve homework challenges, or study.",
+    "workStudyEligible": false
+  },
+  {
+    "id": "job-32",
+    "title": "Frontend Engineering Intern (React) - Dept 2",
+    "industry": "Technology",
+    "averagePay": "€1,200 / Mo",
+    "payCurrency": "EUR",
+    "type": "internship",
+    "country": "Switzerland",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Refine candidate UI design skills. Showcase production React and Tailwind hooks implementations on github.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-33",
+    "title": "Junior Quantitative Analyst - Dept 2",
+    "industry": "Finance",
+    "averagePay": "$2,500 / Mo",
+    "payCurrency": "USD",
+    "type": "internship",
+    "country": "Germany",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Use Python modeling to evaluate stock standard derivatives. Great path for prospective Economics math majors.",
+    "workStudyEligible": false
+  },
+  {
+    "id": "job-34",
+    "title": "Academic Writing Peer Tutor - Dept 9",
+    "industry": "Education",
+    "averagePay": "$17 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Sweden",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Review statement of purpose peer drafts inside student lounge circles. Sharpen admissions metrics rules comprehension.",
+    "workStudyEligible": false
+  },
+  {
+    "id": "job-35",
+    "title": "Cloud Systems Administration Apprentice - Dept 7",
+    "industry": "Information Technology",
+    "averagePay": "$20 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Japan",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Excellent path for virtualization sysadmins. Help maintain server routing and firewalls.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-36",
+    "title": "Virtual Reality Content Developer - Dept 7",
+    "industry": "Technology",
+    "averagePay": "£1,400 / Mo",
+    "payCurrency": "GBP",
+    "type": "internship",
+    "country": "Germany",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Develop interactive virtual spaces. Uses ThreeJS rendering alongside React Fiber modules.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-37",
+    "title": "English Language Specialist Interpreter - Dept 2",
+    "industry": "Services",
+    "averagePay": "$16 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Germany",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Provide instant live chat translation help to exchange students. Outstanding communication and IELTS practice.",
+    "workStudyEligible": false
+  },
+  {
+    "id": "job-38",
+    "title": "Student Accommodation Resident Advisor - Dept 7",
+    "industry": "Housing",
+    "averagePay": "$12 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Australia",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Help manage university dormitory events. Often incorporates free housing or single room waives.",
+    "workStudyEligible": false
+  },
+  {
+    "id": "job-39",
+    "title": "Administrative Assistant - Dept 7",
+    "industry": "Administration",
+    "averagePay": "$14 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Pakistan",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Outstanding resume-building role that refines client relations and spreadsheet management.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-40",
+    "title": "Machine Learning Solutions Engineer - Dept 3",
+    "industry": "Technology",
+    "averagePay": "$3,200 / Mo",
+    "payCurrency": "USD",
+    "type": "internship",
+    "country": "Australia",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Train custom neural models on corporate pipelines using robust deep learning frameworks.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-41",
+    "title": "Campus Library Assistant - Dept 5",
+    "industry": "Education",
+    "averagePay": "$15 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Japan",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Work at the catalog desks. Excellent downtime to read SOP guides, solve homework challenges, or study.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-42",
+    "title": "Frontend Engineering Intern (React) - Dept 4",
+    "industry": "Technology",
+    "averagePay": "€1,200 / Mo",
+    "payCurrency": "EUR",
+    "type": "internship",
+    "country": "Switzerland",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Refine candidate UI design skills. Showcase production React and Tailwind hooks implementations on github.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-43",
+    "title": "Junior Quantitative Analyst - Dept 5",
+    "industry": "Finance",
+    "averagePay": "$2,500 / Mo",
+    "payCurrency": "USD",
+    "type": "internship",
+    "country": "Germany",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Use Python modeling to evaluate stock standard derivatives. Great path for prospective Economics math majors.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-44",
+    "title": "Academic Writing Peer Tutor - Dept 10",
+    "industry": "Education",
+    "averagePay": "$17 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Japan",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Review statement of purpose peer drafts inside student lounge circles. Sharpen admissions metrics rules comprehension.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-45",
+    "title": "Cloud Systems Administration Apprentice - Dept 3",
+    "industry": "Information Technology",
+    "averagePay": "$20 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Pakistan",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Excellent path for virtualization sysadmins. Help maintain server routing and firewalls.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-46",
+    "title": "Virtual Reality Content Developer - Dept 6",
+    "industry": "Technology",
+    "averagePay": "£1,400 / Mo",
+    "payCurrency": "GBP",
+    "type": "internship",
+    "country": "UK",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Develop interactive virtual spaces. Uses ThreeJS rendering alongside React Fiber modules.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-47",
+    "title": "English Language Specialist Interpreter - Dept 3",
+    "industry": "Services",
+    "averagePay": "$16 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "UK",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Provide instant live chat translation help to exchange students. Outstanding communication and IELTS practice.",
+    "workStudyEligible": false
+  },
+  {
+    "id": "job-48",
+    "title": "Student Accommodation Resident Advisor - Dept 3",
+    "industry": "Housing",
+    "averagePay": "$12 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Sweden",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Help manage university dormitory events. Often incorporates free housing or single room waives.",
+    "workStudyEligible": false
+  },
+  {
+    "id": "job-49",
+    "title": "Administrative Assistant - Dept 7",
+    "industry": "Administration",
+    "averagePay": "$14 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Switzerland",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Outstanding resume-building role that refines client relations and spreadsheet management.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-50",
+    "title": "Machine Learning Solutions Engineer - Dept 6",
+    "industry": "Technology",
+    "averagePay": "$3,200 / Mo",
+    "payCurrency": "USD",
+    "type": "internship",
+    "country": "Bangladesh",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Train custom neural models on corporate pipelines using robust deep learning frameworks.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-51",
+    "title": "Campus Library Assistant - Dept 3",
+    "industry": "Education",
+    "averagePay": "$15 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Canada",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Work at the catalog desks. Excellent downtime to read SOP guides, solve homework challenges, or study.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-52",
+    "title": "Frontend Engineering Intern (React) - Dept 4",
+    "industry": "Technology",
+    "averagePay": "€1,200 / Mo",
+    "payCurrency": "EUR",
+    "type": "internship",
+    "country": "Vietnam",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Refine candidate UI design skills. Showcase production React and Tailwind hooks implementations on github.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-53",
+    "title": "Junior Quantitative Analyst - Dept 4",
+    "industry": "Finance",
+    "averagePay": "$2,500 / Mo",
+    "payCurrency": "USD",
+    "type": "internship",
+    "country": "Pakistan",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Use Python modeling to evaluate stock standard derivatives. Great path for prospective Economics math majors.",
+    "workStudyEligible": false
+  },
+  {
+    "id": "job-54",
+    "title": "Academic Writing Peer Tutor - Dept 3",
+    "industry": "Education",
+    "averagePay": "$17 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "UK",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Review statement of purpose peer drafts inside student lounge circles. Sharpen admissions metrics rules comprehension.",
+    "workStudyEligible": false
+  },
+  {
+    "id": "job-55",
+    "title": "Cloud Systems Administration Apprentice - Dept 2",
+    "industry": "Information Technology",
+    "averagePay": "$20 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Pakistan",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Excellent path for virtualization sysadmins. Help maintain server routing and firewalls.",
+    "workStudyEligible": false
+  },
+  {
+    "id": "job-56",
+    "title": "Virtual Reality Content Developer - Dept 9",
+    "industry": "Technology",
+    "averagePay": "£1,400 / Mo",
+    "payCurrency": "GBP",
+    "type": "internship",
+    "country": "Australia",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Develop interactive virtual spaces. Uses ThreeJS rendering alongside React Fiber modules.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-57",
+    "title": "English Language Specialist Interpreter - Dept 10",
+    "industry": "Services",
+    "averagePay": "$16 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Switzerland",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Provide instant live chat translation help to exchange students. Outstanding communication and IELTS practice.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-58",
+    "title": "Student Accommodation Resident Advisor - Dept 7",
+    "industry": "Housing",
+    "averagePay": "$12 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Australia",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Help manage university dormitory events. Often incorporates free housing or single room waives.",
+    "workStudyEligible": true
+  },
+  {
+    "id": "job-59",
+    "title": "Administrative Assistant - Dept 7",
+    "industry": "Administration",
+    "averagePay": "$14 / Hr",
+    "payCurrency": "USD",
+    "type": "part-time",
+    "country": "Nigeria",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Outstanding resume-building role that refines client relations and spreadsheet management.",
+    "workStudyEligible": false
+  },
+  {
+    "id": "job-60",
+    "title": "Machine Learning Solutions Engineer - Dept 5",
+    "industry": "Technology",
+    "averagePay": "$3,200 / Mo",
+    "payCurrency": "USD",
+    "type": "internship",
+    "country": "Vietnam",
+    "skills": [
+      "System Design",
+      "Technical Writing",
+      "Problem Solving",
+      "React",
+      "Python",
+      "Data Structures"
+    ],
+    "tips": "Train custom neural models on corporate pipelines using robust deep learning frameworks.",
+    "workStudyEligible": true
+  }
+]
