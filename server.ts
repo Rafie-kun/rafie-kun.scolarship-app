@@ -51,16 +51,124 @@ app.get("/fellowships/:id/apply", (req, res) => {
     const scholarshipsPath = path.join(process.cwd(), "data", "scholarships.json");
     if (fs.existsSync(scholarshipsPath)) {
       const list = JSON.parse(fs.readFileSync(scholarshipsPath, "utf-8"));
-      const found = list.find((s: any) => s.id === id);
-      if (found) {
-        const target = found.applicationUrl || found.officialWebsite || "https://scholarpath-portal.org";
-        return res.redirect(target);
+      const scholarship = list.find((s: any) => s.id === id);
+      if (scholarship) {
+        return res.send(`
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <title>Apply for ${scholarship.name}</title>
+              <style>
+                body { 
+                  font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+                  max-width: 800px; 
+                  margin: 40px auto; 
+                  padding: 20px; 
+                  background: #1a1512; 
+                  color: #e0e0e0; 
+                }
+                .card { 
+                  background: #2c2c2c; 
+                  border: 4px solid #000; 
+                  padding: 30px; 
+                  border-radius: 0;
+                  box-shadow: inset -4px -4px 0 #141414, inset 4px 4px 0 #555;
+                }
+                h1 {
+                  font-family: monospace;
+                  color: #ffff55;
+                  text-shadow: 2px 2px 0 #000;
+                  margin-top: 0;
+                  font-size: 24px;
+                }
+                h2 {
+                  font-family: monospace;
+                  color: #55ff55;
+                  text-shadow: 1px 1px 0 #000;
+                  border-bottom: 2px solid #555;
+                  padding-bottom: 8px;
+                  margin-top: 24px;
+                  font-size: 18px;
+                }
+                .btn { 
+                  background: #f5c842; 
+                  color: #000; 
+                  padding: 12px 24px; 
+                  border: 4px solid #000; 
+                  cursor: pointer; 
+                  font-weight: bold; 
+                  font-family: monospace;
+                  text-transform: uppercase;
+                  box-shadow: inset -2px -2px 0 #b58d19, inset 2px 2px 0 #fff;
+                  display: inline-block;
+                  text-decoration: none;
+                }
+                .btn:hover { 
+                  background: #ffd700; 
+                }
+                .back-link {
+                  color: #55ffff;
+                  font-family: monospace;
+                  text-decoration: none;
+                  font-weight: bold;
+                  display: inline-block;
+                  margin-top: 20px;
+                }
+                .back-link:hover {
+                  text-decoration: underline;
+                }
+                li {
+                  margin-bottom: 8px;
+                  line-height: 1.4;
+                }
+                strong {
+                  color: #ffffff;
+                }
+              </style>
+            </head>
+            <body>
+              <div class="card">
+                <h1>🏆 Apply for ${scholarship.name}</h1>
+                <p><strong>Provider:</strong> ${scholarship.provider}</p>
+                <p><strong>Funding Class:</strong> ${scholarship.fundingCoverage}</p>
+                <p><strong>Application Deadline:</strong> ${scholarship.deadline}</p>
+                
+                <h2>📝 APPLICATION PROCESS</h2>
+                <ol>
+                  ${(scholarship.applicationSteps && scholarship.applicationSteps.length > 0)
+                    ? scholarship.applicationSteps.map((step: string) => `<li>${step}</li>`).join('')
+                    : '<li>Check eligibility requirements and prepare academic folders</li><li>Verify required reference logs and SOP drafts</li><li>Submit details through the official board gateway</li>'
+                  }
+                </ol>
+                
+                <p style="margin-top: 15px;"><strong>Required Documents:</strong> ${(scholarship.requiredDocuments || ["Transcripts", "Statement of Purpose", "Recommendation Letters"]).join(', ')}</p>
+                
+                <div style="margin-top: 30px;">
+                  <a href="${scholarship.officialWebsite || scholarship.applicationUrl || 'https://scholarpath-portal.org'}" target="_blank" rel="noopener noreferrer">
+                    <button class="btn">LAUNCH OFFICIAL PORTAL</button>
+                  </a>
+                </div>
+                
+                <br>
+                <a href="/#/scholarships" class="back-link">← Return to ScholarPath</a>
+              </div>
+            </body>
+          </html>
+        `);
       }
     }
   } catch (error) {
     console.error("[Apply Redirection Error]:", error);
   }
-  res.redirect("/#/scholarships");
+  res.status(404).send(`
+    <html>
+      <body style="background: #1a1512; color: #fff; font-family: monospace; text-align: center; padding-top: 50px;">
+        <h1>404 Fellowship Registry Not Found</h1>
+        <p>The requested scholarship parameters are not indexed in our active database.</p>
+        <a href="/#/scholarships" style="color: #ffff55;">Go back to ScholarPath</a>
+      </body>
+    </html>
+  `);
 });
 
 app.get("/api/fellowships/:id/apply", (req, res) => {

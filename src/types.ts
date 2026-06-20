@@ -73,6 +73,8 @@ export interface University {
   offeredScholarships?: string[];
   city: string;
   hasOnCampusHousing: boolean;
+  website?: string;
+  applicationUrl?: string;
 }
 
 export interface ChecklistItem {

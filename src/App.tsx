@@ -4,7 +4,7 @@ import {
   Trophy, BookOpen, GraduationCap, Calculator, Award, ArrowRight, Save, User, Sparkles,
   Search, BookmarkCheck, Calendar, CheckSquare, Square, MessageSquare, Plus, CheckCircle,
   FolderDown, Building, Navigation, Globe, Menu, X, Coins, HelpCircle, Shield, Sword,
-  Undo, Settings
+  Undo, Settings, UserCog
 } from 'lucide-react';
 
 import OverviewRecommendationsView from './components/OverviewRecommendationsView';
@@ -295,10 +295,15 @@ export default function App() {
             {/* Player Profile / Spec Settings direct shortcut */}
             <button
               onClick={() => handleTabChange('profile')}
-              className="mc-btn p-2 flex items-center justify-center cursor-pointer transition-all active:scale-95 text-[#64e3ff] hover:text-[#ffff55]"
+              className="mc-btn p-2 flex items-center justify-center cursor-pointer transition-all active:scale-95 text-[#55ffff] hover:text-[#ffff55] hover:bg-[#343434] hover:scale-105 border-2 border-[#55ffff] [box-shadow:0_0_10px_rgba(85,255,255,0.3)] transition-transform rounded-none"
               title="Player Profile / Settings Cog"
+              id="header-profile-shortcut"
             >
-              <Settings className="w-4 h-4 ml-1 animate-[spin_12s_linear_infinite] hover:animate-[spin_3s_linear_infinite]" />
+              {isLoggedIn ? (
+                <UserCog className="w-4.5 h-4.5" />
+              ) : (
+                <Settings className="w-4.5 h-4.5" />
+              )}
             </button>
 
             {/* Mobile Inventory menu toggle button */}
@@ -341,7 +346,7 @@ export default function App() {
             <div className="w-full mc-xp-bar border-4 border-black max-h-[16px] h-3">
               <div 
                 className={`${currentThemeConfig.hudXpFill} h-full transition-all duration-700 ease-out`} 
-                style={{ width: `${Math.min(100, Math.max(8, ((profile?.points ?? 0) % 100)))}%` }} 
+                style={{ width: `${Math.min(100, Math.max(4, (((profile?.points ?? 0) / ((profile?.level ?? 1) * 100)) * 100)))}%` }} 
               />
             </div>
           </div>

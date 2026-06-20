@@ -112,6 +112,54 @@ db.exec(`
   );
 `);
 
+// --- Dynamic Schema Migration for Pre-existing Databases ---
+try {
+  const profileTableInfo = db.prepare("PRAGMA table_info(profiles)").all() as { name: string }[];
+  const existingProfileCols = new Set(profileTableInfo.map(col => col.name));
+  
+  const profileColsToAdd = [
+    { name: 'educationLevel', type: 'TEXT' },
+    { name: 'highSchoolName', type: 'TEXT' },
+    { name: 'collegeName', type: 'TEXT' },
+    { name: 'primaryMajor', type: 'TEXT' },
+    { name: 'secondaryMajor', type: 'TEXT' },
+    { name: 'minor', type: 'TEXT' },
+    { name: 'graduationYear', type: 'INTEGER' },
+    { name: 'additionalSkills', type: 'TEXT' },
+    { name: 'resumePdf', type: 'TEXT' },
+    { name: 'rewardedActions', type: 'TEXT' },
+    { name: 'oLevelSubjects', type: 'TEXT' },
+    { name: 'aLevelSubjects', type: 'TEXT' },
+    { name: 'satScore', type: 'INTEGER' },
+    { name: 'profilePicture', type: 'TEXT' },
+    { name: 'lastDailyCheckin', type: 'TEXT' }
+  ];
+
+  for (const col of profileColsToAdd) {
+    if (!existingProfileCols.has(col.name)) {
+      db.exec(`ALTER TABLE profiles ADD COLUMN ${col.name} ${col.type}`);
+      console.log(`[SQLite Migration] Automatically appended missing column to profiles: ${col.name}`);
+    }
+  }
+
+  const appTableInfo = db.prepare("PRAGMA table_info(applications)").all() as { name: string }[];
+  const existingAppCols = new Set(appTableInfo.map(col => col.name));
+  
+  const appColsToAdd = [
+    { name: 'notes', type: 'TEXT' },
+    { name: 'checklist', type: 'TEXT' }
+  ];
+
+  for (const col of appColsToAdd) {
+    if (!existingAppCols.has(col.name)) {
+      db.exec(`ALTER TABLE applications ADD COLUMN ${col.name} ${col.type}`);
+      console.log(`[SQLite Migration] Automatically appended missing column to applications: ${col.name}`);
+    }
+  }
+} catch (migrationErr) {
+  console.error("[SQLite Migration Error]: Failed to align pre-existing datatypes:", migrationErr);
+}
+
 // --- Type Converter Helpers ---
 function deserializeProfile(row: any): Profile | null {
   if (!row) return null;

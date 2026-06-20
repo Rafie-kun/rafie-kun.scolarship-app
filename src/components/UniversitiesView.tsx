@@ -685,11 +685,35 @@ export default function UniversitiesView() {
             </div>
 
             <div className="flex gap-2 border-t border-stone-700 pt-3.5">
+              {selectedUni.website && (
+                <button
+                  onClick={() => {
+                    playClickSound();
+                    window.open(selectedUni.website, '_blank', 'noopener,noreferrer');
+                  }}
+                  className="flex-1 mc-btn bg-[#3b3b8c] text-[#ffff55] py-2 text-[10px] font-press"
+                  title="Launch Official University Website"
+                >
+                  🌐 Website
+                </button>
+              )}
+              {selectedUni.applicationUrl && (
+                <button
+                  onClick={() => {
+                    playClickSound();
+                    window.open(selectedUni.applicationUrl, '_blank', 'noopener,noreferrer');
+                  }}
+                  className="flex-1 mc-btn bg-emerald-950 text-[#55ff55] py-2 text-[10px] font-press"
+                  title="Launch Official University Application Portal"
+                >
+                  📝 Apply Portal
+                </button>
+              )}
               <button
                 onClick={() => { playClickSound(); setSelectedUni(null); }}
-                className="flex-1 mc-btn text-white py-2"
+                className="flex-1 mc-btn text-white py-2 text-[10px] font-press"
               >
-                Return to Grids
+                Return
               </button>
             </div>
 

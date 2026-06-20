@@ -243,7 +243,7 @@ export default function LoginScreen() {
               ? 'font-press text-[9px] text-[#ffaa00] animate-pulse'
               : 'text-xs text-indigo-400 bg-indigo-950/50 py-1 px-3 border border-indigo-900/40 w-fit mx-auto'
           }`}>
-            🌌 ScholarPath Pathfinder Hub v2.80
+            🌌 ScholarPath Pathfinder Hub v2.90
           </span>
           <h1 className={`tracking-wider relative inline-block select-none ${
             isRetro

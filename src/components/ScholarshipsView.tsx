@@ -33,6 +33,20 @@ export default function ScholarshipsView() {
   const [sortBy, setSortBy] = useState('score_desc');
   const [savedSuccess, setSavedSuccess] = useState('');
   const [trackedScholarships, setTrackedScholarships] = useState<Set<string>>(new Set());
+  const [universities, setUniversities] = useState<any[]>([]);
+
+  const fetchUniversitiesList = async () => {
+    try {
+      const res = await authorizedFetch('/api/universities');
+      if (res.ok) {
+        const data = await res.json();
+        const loaded = data.universities || data || [];
+        setUniversities(loaded);
+      }
+    } catch (err) {
+      console.error("Failed to load universities list inside scholarships view:", err);
+    }
+  };
 
   const fetchTrackedApps = async () => {
     try {
@@ -49,19 +63,20 @@ export default function ScholarshipsView() {
 
   useEffect(() => {
     fetchTrackedApps();
+    fetchUniversitiesList();
   }, []);
 
   // UI state
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
   const [selectedSch, setSelectedSch] = useState<Scholarship | null>(null);
   const [trackingSchId, setTrackingSchId] = useState<string | null>(null);
-  const [modalTab, setModalTab] = useState<'specs' | 'apply'>('specs');
+  const [modalTab, setModalTab] = useState<'specs' | 'apply' | 'unis'>('specs');
   const [checkedSteps, setCheckedSteps] = useState<Record<number, boolean>>({});
 
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  const modalAppLink = selectedSch ? `/fellowships/${selectedSch.id}/apply` : '';
+  const modalAppLink = selectedSch ? (selectedSch.applicationUrl || selectedSch.officialWebsite || `/fellowships/${selectedSch.id}/apply`) : '';
   const modalContactEmail = selectedSch ? ((selectedSch as any).contactEmail || `inquiries@${selectedSch.provider.toLowerCase().replace(/[^a-z0-9]/g, '') || 'scholarship-board'}.org`) : '';
   const modalAppFee = selectedSch ? (((selectedSch as any).applicationFee || (selectedSch as any).appFee || "Free Portal Application")) : '';
   const modalReqDocs = selectedSch ? ((selectedSch as any).requiredDocuments || ["Academic Transcripts (Validated)", "Letters of Recommendation (x2)", "Statement of Purpose (Crafted)", "Curriculum Vitae / Resume", "Proof of Nationality / Passport"]) : [];
@@ -753,8 +768,7 @@ export default function ScholarshipsView() {
                 X
               </button>
             </div>
-
-            {/* Modal Sub Tab Selectors */}
+                {/* Modal Sub Tab Selectors */}
             <div className="flex gap-2 border-b-2 border-black pb-2 mt-3 select-none">
               <button
                 onClick={() => { playClickSound(); setModalTab('specs'); }}
@@ -771,6 +785,14 @@ export default function ScholarshipsView() {
                 }`}
               >
                 📝 How to Apply Checklist
+              </button>
+              <button
+                onClick={() => { playClickSound(); setModalTab('unis'); }}
+                className={`flex-1 py-2 px-3 font-press text-[8.5px] uppercase border-2 border-black cursor-pointer ${
+                  modalTab === 'unis' ? 'bg-indigo-950/40 border-indigo-500 text-indigo-300' : 'bg-stone-800 text-stone-400 hover:text-stone-200'
+                }`}
+              >
+                🏛️ Affiliated Uni
               </button>
             </div>
 
@@ -872,7 +894,7 @@ export default function ScholarshipsView() {
                     </div>
                   </div>
                 </>
-              ) : (
+              ) : modalTab === 'apply' ? (
                 <div className="space-y-4">
                   <div className="bg-amber-950/20 border border-amber-500/30 p-3 text-stone-300 text-xs rounded-none">
                     🚀 Follow these chronological blueprints to organize and submit your application folder successfully. Check off steps as you secure them!
@@ -901,8 +923,8 @@ export default function ScholarshipsView() {
                             {isDone && "✔"}
                           </div>
                           <div className="space-y-1 text-xs">
-                            <span className="text-[10px] uppercase font-bold text-stone-500 block">Stage {idx + 1}</span>
-                            <p className={isDone ? 'line-through text-stone-400' : 'text-stone-200'}>{step}</p>
+                             <span className="text-[10px] uppercase font-bold text-stone-500 block">Stage {idx + 1}</span>
+                             <p className={isDone ? 'line-through text-stone-400' : 'text-stone-200'}>{step}</p>
                           </div>
                         </div>
                       );
@@ -927,6 +949,101 @@ export default function ScholarshipsView() {
                     >
                       <Globe className="w-4 h-4 text-[#64e3ff] shrink-0" /> {modalAppLink}
                     </a>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="bg-indigo-950/20 border border-indigo-500/30 p-3 text-stone-200 text-xs rounded-none">
+                    🏛️ **ScholarPath Unified Intelligence Match**: Here are the global universities offering or matching this scholarship. Launch their portal or website with a single click.
+                  </div>
+
+                  <div className="space-y-3">
+                    {(() => {
+                      const sch = selectedSch;
+                      const eligibleCountriesLower = sch.eligibleCountries.map(c => c.toLowerCase());
+                      const eligibleMajorsLower = sch.eligibleMajors.map(m => m.toLowerCase());
+
+                      const matchedUnis = universities.filter(uni => {
+                        const isDirectIdMatch = uni.offeredScholarships && (
+                          uni.offeredScholarships.includes(sch.id) || 
+                          uni.offeredScholarships.includes(sch.name)
+                        );
+                        if (isDirectIdMatch) return true;
+
+                        const countryMatch = eligibleCountriesLower.includes(uni.country.toLowerCase()) || 
+                                             eligibleCountriesLower.includes('global') || 
+                                             eligibleCountriesLower.includes('all') ||
+                                             eligibleCountriesLower.some(c => uni.country.toLowerCase().includes(c));
+
+                        const majorsMatch = uni.popularMajors && uni.popularMajors.some((major: string) => 
+                          eligibleMajorsLower.some(m => m.includes(major.toLowerCase()) || major.toLowerCase().includes(m))
+                        );
+
+                        return countryMatch && majorsMatch;
+                      });
+
+                      const displayUnis = matchedUnis.length > 0 ? matchedUnis : universities.filter(uni => 
+                        eligibleCountriesLower.includes(uni.country.toLowerCase()) || 
+                        eligibleCountriesLower.includes('global') ||
+                        eligibleCountriesLower.includes('all') ||
+                        eligibleCountriesLower.some(c => uni.country.toLowerCase().includes(c))
+                      ).slice(0, 5);
+
+                      if (displayUnis.length === 0) {
+                        return (
+                          <div className="p-8 text-center text-stone-400 text-xs border border-stone-800">
+                            No direct affiliated or regional partner universities found. Please check official fellowship channels below.
+                          </div>
+                        );
+                      }
+
+                      return displayUnis.map((uni) => (
+                        <div key={uni.id} className="p-3 bg-black/45 border-2 border-black space-y-2 font-mono text-xs">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h4 className="font-bold text-stone-100 text-xs">{uni.name}</h4>
+                              <span className="text-stone-400 text-[10px] block">{uni.city}, {uni.country} • Rank #{uni.ranking}</span>
+                            </div>
+                            <span className="text-[10px] bg-indigo-950 px-2 py-0.5 text-indigo-300 font-bold border border-indigo-800">
+                              GPA Req: ≥{uni.averageGpa.toFixed(2)}
+                            </span>
+                          </div>
+                          
+                          <div className="flex flex-wrap gap-1">
+                            {uni.popularMajors.slice(0, 3).map((major: string, mIdx: number) => (
+                              <span key={mIdx} className="bg-stone-900 text-stone-400 px-1.5 py-0.5 text-[9px] border border-stone-800">
+                                {major}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="flex gap-2 pt-1 border-t border-stone-900">
+                            {uni.website && (
+                              <button
+                                onClick={() => {
+                                  playClickSound();
+                                  window.open(uni.website, '_blank', 'noopener,noreferrer');
+                                }}
+                                className="flex-1 px-2.5 py-1 text-[9.5px] uppercase font-bold tracking-normal bg-stone-900 border border-stone-800 text-stone-300 hover:text-white"
+                              >
+                                🌐 Website
+                              </button>
+                            )}
+                            {uni.applicationUrl && (
+                              <button
+                                onClick={() => {
+                                  playClickSound();
+                                  window.open(uni.applicationUrl, '_blank', 'noopener,noreferrer');
+                                }}
+                                className="flex-1 px-2.5 py-1 text-[9.5px] uppercase font-bold tracking-normal bg-indigo-950 border border-indigo-800 text-[#64e3ff] hover:text-white"
+                              >
+                                📝 Portal Link
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      ));
+                    })()}
                   </div>
                 </div>
               )}
