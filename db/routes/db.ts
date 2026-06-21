@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import fs from 'fs';
 import path from 'path';
+import { db } from '../db/index';
 import { Profile, Scholarship, University, Application, AppNotification, CommunityPost } from '../src/types';
 
 // JWT Configuration & salt-hashing
@@ -77,19 +78,118 @@ export let universitiesData: University[] = [];
 try {
   const scholarshipsPath = path.join(process.cwd(), 'data', 'scholarships.json');
   if (fs.existsSync(scholarshipsPath)) {
-    scholarshipsData = JSON.parse(fs.readFileSync(scholarshipsPath, 'utf-8'));
+    const raw = JSON.parse(fs.readFileSync(scholarshipsPath, 'utf-8'));
+    // Map mock URLs to authentic website URLs dynamically
+    scholarshipsData = raw.map((sch: any) => {
+      const provider = (sch.provider || "").toLowerCase();
+      const name = (sch.name || "").toLowerCase();
+      
+      let official = sch.officialWebsite || "https://www.ieeff.org";
+      let apply = sch.applicationUrl || "https://www.ieeff.org";
+
+      if (provider.includes("european commission") || name.includes("erasmus")) {
+        official = "https://ec.europa.eu/programmes/erasmus-plus/opportunities/individuals/students/erasmus-mundus-joint-masters_en";
+        apply = "https://ec.europa.eu/programmes/erasmus-plus/opportunities/individuals/students/erasmus-mundus-joint-masters_en";
+      } else if (provider.includes("united states") || name.includes("fulbright")) {
+        official = "https://foreign.fulbrightprogram.org/";
+        apply = "https://foreign.fulbrightprogram.org/about/how-to-apply";
+      } else if (provider.includes("german academic") || name.includes("daad")) {
+        official = "https://www.daad.de/en/";
+        apply = "https://www.daad.de/en/study-and-research-in-germany/scholarships/";
+      } else if (provider.includes("commonwealth") || name.includes("commonwealth")) {
+        official = "https://cscuk.fcdo.gov.uk/scholarships/";
+        apply = "https://cscuk.fcdo.gov.uk/scholarships/commonwealth-masters-scholarships/";
+      } else if (provider.includes("stanford") || name.includes("knight-hennessy")) {
+        official = "https://knight-hennessy.stanford.edu/";
+        apply = "https://knight-hennessy.stanford.edu/apply";
+      } else if (provider.includes("rhodes") || name.includes("rhodes")) {
+        official = "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship/";
+        apply = "https://www.rhodeshouse.ox.ac.uk/scholarships/apply/";
+      } else if (provider.includes("gates cambridge") || name.includes("gates cambridge")) {
+        official = "https://www.gatescambridge.org/";
+        apply = "https://www.gatescambridge.org/apply/how-to-apply/";
+      } else if (provider.includes("schwarzman") || name.includes("schwarzman")) {
+        official = "https://www.schwarzmanscholars.org/";
+        apply = "https://www.schwarzmanscholars.org/admissions/apply/";
+      } else if (provider.includes("singapore") || name.includes("singa")) {
+        official = "https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singapore-international-graduate-award-singa";
+        apply = "https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singapore-international-graduate-award-singa";
+      } else if (provider.includes("government of ireland") || name.includes("ireland")) {
+        official = "https://research.ie/funding/postgraduate-funding-opportunities/";
+        apply = "https://research.ie/funding/postgraduate-funding-opportunities/";
+      } else if (provider.includes("swedish institute") || name.includes("swedish institute")) {
+        official = "https://si.se/en/apply/scholarships/";
+        apply = "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/";
+      } else if (provider.includes("australia awards") || name.includes("australia awards")) {
+        official = "https://www.dfat.gov.uk/people-to-people/australia-awards/australia-awards-scholarships-aas";
+        apply = "https://www.dfat.gov.uk/people-to-people/australia-awards/australia-awards-scholarships-aas";
+      } else if (provider.includes("mext") || name.includes("mext")) {
+        official = "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1418721.htm";
+        apply = "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1418721.htm";
+      } else if (provider.includes("turkey") || name.includes("türkiye")) {
+        official = "https://www.turkiyeburslari.gov.tr/";
+        apply = "https://www.turkiyeburslari.gov.tr/";
+      } else if (provider.includes("korea") || name.includes("global korea")) {
+        official = "https://www.studyinkorea.go.kr/";
+        apply = "https://www.studyinkorea.go.kr/";
+      } else if (provider.includes("china scholarship council") || name.includes("csc")) {
+        official = "https://www.campuschina.org/";
+        apply = "https://www.campuschina.org/";
+      } else if (provider.includes("oxford") || provider.includes("clarendon")) {
+        official = "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/oxford-funding/clarendon-fund";
+        apply = "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/oxford-funding/clarendon-fund";
+      } else {
+        if (official.includes("scholarpath-portal.org")) {
+          official = "https://www.ieeff.org";
+          apply = "https://www.ieeff.org";
+        }
+      }
+
+      return {
+        ...sch,
+        officialWebsite: official,
+        applicationUrl: apply
+      };
+    });
   }
 } catch (err) {
   console.error("Failed to load scholarships json database, fallback to inline", err);
 }
 
 try {
+  const rows = db.prepare('SELECT * FROM universities').all() as any[];
+  if (rows && rows.length > 0) {
+    universitiesData = rows.map(row => ({
+      id: row.id,
+      name: row.name,
+      country: row.country,
+      ranking: row.ranking,
+      acceptanceRate: row.acceptanceRate,
+      averageGpa: row.averageGpa,
+      popularMajors: JSON.parse(row.popularMajors || '[]'),
+      type: row.type || 'public',
+      tuitionMin: row.tuitionMin,
+      tuitionMax: row.tuitionMax,
+      offeredScholarships: JSON.parse(row.offeredScholarships || '[]'),
+      city: row.city,
+      hasOnCampusHousing: !!row.hasOnCampusHousing,
+      website: row.website,
+      applicationUrl: row.applicationUrl,
+      domain: row.domain || undefined,
+      generatedApplicationUrl: row.generatedApplicationUrl || undefined
+    }));
+  } else {
+    const universitiesPath = path.join(process.cwd(), 'data', 'universities.json');
+    if (fs.existsSync(universitiesPath)) {
+      universitiesData = JSON.parse(fs.readFileSync(universitiesPath, 'utf-8'));
+    }
+  }
+} catch (err) {
+  console.error("Failed to load universities from SQL database, fallback to file", err);
   const universitiesPath = path.join(process.cwd(), 'data', 'universities.json');
   if (fs.existsSync(universitiesPath)) {
     universitiesData = JSON.parse(fs.readFileSync(universitiesPath, 'utf-8'));
   }
-} catch (err) {
-  console.error("Failed to load universities json database, fallback to inline", err);
 }
 
 export const mockApplications: Application[] = [

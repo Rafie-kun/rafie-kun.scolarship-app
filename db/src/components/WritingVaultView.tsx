@@ -101,6 +101,7 @@ In my future career, I plan to research compilers, operating system architecture
           <div className="flex justify-between items-center border-b-2 border-black pb-2">
             <h4 className="font-press text-[9px] text-[#ffff55] uppercase mc-text-shadow">ESSAY SCROLLS</h4>
             <button
+              id="load-sop-template-btn"
               onClick={handleLoadTemplate}
               className="text-[10px] font-mono text-stone-300 hover:text-[#ffff55] underline cursor-pointer"
             >

@@ -890,3 +890,20 @@ body {
   transform: scale(0.95);
   box-shadow: 0 0 4px rgba(85, 255, 255, 0.3) !important;
 }
+
+/* 🚀 TUTORIAL HIGHLIGHT PULSE GLOW ANIMATIONS 🚀 */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 4px #ffff55, 0 0 20px rgba(255, 255, 85, 0.45);
+    border-color: #ffff55;
+  }
+  50% {
+    box-shadow: 0 0 0 6px #ffff55, 0 0 40px rgba(255, 255, 85, 0.8);
+    border-color: #ffaa00;
+  }
+}
+
+.animate-tour-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+

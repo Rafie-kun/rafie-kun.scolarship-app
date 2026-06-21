@@ -4,6 +4,7 @@ import { University, Profile } from '../types';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
+import { getCleanUniversityUrl } from '../utils/urlHelper';
 
 interface RecommendedUni {
   university: University;
@@ -350,13 +351,35 @@ export default function UniversitiesView() {
                     </div>
                   </div>
 
-                  <div className="mt-5 pt-3 border-t border-[#3e3e3e]">
+                  <div className="mt-5 pt-3 border-t border-[#3e3e3e] space-y-2">
                     <button
                       onClick={() => { playClickSound(); setSelectedUni(uni); }}
-                      className="w-full mc-btn py-2 text-[8px] font-press tracking-wide uppercase text-[#ffff55]"
+                      className="w-full mc-btn py-1.5 text-[8px] font-press tracking-wide uppercase text-[#ffff55]"
                     >
                       Inspect Dossier Blueprint
                     </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => {
+                          playClickSound();
+                          window.open(getCleanUniversityUrl(uni, false), '_blank', 'noopener,noreferrer');
+                        }}
+                        className="flex-1 bg-stone-900 border-2 border-black hover:border-gray-500 text-stone-200 py-1 text-[8px] font-press uppercase cursor-pointer"
+                        title="Launch Official Website"
+                      >
+                        🌐 Website
+                      </button>
+                      <button
+                        onClick={() => {
+                          playClickSound();
+                          window.open(getCleanUniversityUrl(uni, true), '_blank', 'noopener,noreferrer');
+                        }}
+                        className="flex-1 bg-emerald-950 border-2 border-[#55ff55] hover:border-[#ffff55] text-[#55ff55] py-1 text-[8px] font-press uppercase cursor-pointer"
+                        title="Launch Application/Apply Link"
+                      >
+                        📝 Apply
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -686,10 +709,30 @@ export default function UniversitiesView() {
 
             <div className="flex gap-2 border-t border-stone-700 pt-3.5">
               <button
-                onClick={() => { playClickSound(); setSelectedUni(null); }}
-                className="flex-1 mc-btn text-white py-2"
+                onClick={() => {
+                  playClickSound();
+                  window.open(getCleanUniversityUrl(selectedUni, false), '_blank', 'noopener,noreferrer');
+                }}
+                className="flex-1 mc-btn bg-[#3b3b8c] text-[#ffff55] py-2 text-[10px] font-press"
+                title="Launch Official University Website"
               >
-                Return to Grids
+                🌐 Website
+              </button>
+              <button
+                onClick={() => {
+                  playClickSound();
+                  window.open(getCleanUniversityUrl(selectedUni, true), '_blank', 'noopener,noreferrer');
+                }}
+                className="flex-1 mc-btn bg-emerald-950 text-[#55ff55] py-2 text-[10px] font-press"
+                title="Launch Official University Application Portal"
+              >
+                📝 Apply Portal
+              </button>
+              <button
+                onClick={() => { playClickSound(); setSelectedUni(null); }}
+                className="flex-1 mc-btn text-white py-2 text-[10px] font-press"
+              >
+                Return
               </button>
             </div>
 

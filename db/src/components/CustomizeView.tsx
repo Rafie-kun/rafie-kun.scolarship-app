@@ -9,6 +9,44 @@ export default function CustomizeView() {
   const { themeMode, setThemeMode, theme, soundEnabled, textGlow, setTheme, toggleSound } = useTheme();
   
   const [successMsg, setSuccessMsg] = useState('');
+  const [customKeyInput, setCustomKeyInput] = useState(() => localStorage.getItem('scholarpath_custom_gemini_key') || '');
+  const [keyStatusMsg, setKeyStatusMsg] = useState('');
+  const [verifyingKey, setVerifyingKey] = useState(false);
+
+  const handleVerifyAndSaveKey = async () => {
+    playClickSound();
+    if (!customKeyInput.trim()) {
+      setKeyStatusMsg("Please paste a non-empty key!");
+      return;
+    }
+    setVerifyingKey(true);
+    setKeyStatusMsg("");
+
+    try {
+      const res = await fetch('/api/check-gemini-key', {
+        headers: { 'x-gemini-key': customKeyInput }
+      });
+      const data = await res.json();
+      if (data.hasKey) {
+        localStorage.setItem('scholarpath_custom_gemini_key', customKeyInput.trim());
+        setKeyStatusMsg("✅ SUCCESS: API Key verified & stored securely in browser!");
+        playAdvancementSound();
+      } else {
+        setKeyStatusMsg("❌ FAILURE: The admissions node could not activate this key.");
+      }
+    } catch (e) {
+      setKeyStatusMsg("❌ FAILURE: Network error during key handshakes.");
+    } finally {
+      setVerifyingKey(false);
+    }
+  };
+
+  const handleDeleteKey = () => {
+    playClickSound();
+    localStorage.removeItem('scholarpath_custom_gemini_key');
+    setCustomKeyInput('');
+    setKeyStatusMsg("🧹 Custom key removed. Reverting to server default credentials.");
+  };
 
   const themes = [
     {
@@ -207,6 +245,71 @@ export default function CustomizeView() {
                     <span>AUDIO BLOCKS: MUTED</span>
                   </>
                 )}
+              </button>
+            </div>
+
+            {/* Custom Gemini Key Management */}
+            <div className="bg-[#1c1a19] border-2 border-black p-3 space-y-2 [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)] animate-fade-in">
+              <span className="text-[9px] uppercase text-stone-400 font-bold block">🔑 CUSTOM GEMINI API KEY</span>
+              <p className="text-[10px] text-stone-400 leading-normal">
+                Input your browser-specific key to unlock live Wise Librarian counseling and SOP evaluation loops.
+              </p>
+              <div className="space-y-2">
+                <input
+                  type="password"
+                  placeholder="Paste your Gemini AI key..."
+                  value={customKeyInput}
+                  onChange={(e) => setCustomKeyInput(e.target.value)}
+                  className="w-full bg-black/40 border-2 border-black p-2 text-stone-150 font-mono text-xs focus:outline-none focus:border-[#ffff55] rounded-none"
+                />
+                
+                {keyStatusMsg && (
+                  <p className={`text-[10px] font-mono leading-relaxed uppercase font-bold ${
+                    keyStatusMsg.includes('SUCCESS') ? 'text-[#55ff55]' : 'text-[#f25252]'
+                  }`}>
+                    {keyStatusMsg}
+                  </p>
+                )}
+
+                <div className="flex gap-2.5 pt-1">
+                  <button
+                    type="button"
+                    onClick={handleVerifyAndSaveKey}
+                    disabled={verifyingKey}
+                    className="flex-1 py-1.5 text-center font-mono text-[9px] border-2 border-black cursor-pointer bg-neutral-800 hover:bg-neutral-750 text-[#ffff55] font-bold"
+                  >
+                    {verifyingKey ? 'VERIFYING...' : 'SAVE & VERIFY'}
+                  </button>
+                  {localStorage.getItem('scholarpath_custom_gemini_key') && (
+                    <button
+                      type="button"
+                      onClick={handleDeleteKey}
+                      className="py-1.5 px-2.5 text-center font-mono text-[9px] border-2 border-black cursor-pointer bg-red-950/45 text-[#f25255]"
+                    >
+                      CLEAR
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Onboarding Tour Replay */}
+            <div className="bg-[#1c1a19] border-2 border-black p-3 space-y-2 [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
+              <span className="text-[9px] uppercase text-stone-400 font-bold block">📖 Interactive Guides</span>
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  localStorage.removeItem(`scholarpath_onboarding_completed_${profile?.fullName || 'guest'}`);
+                  window.dispatchEvent(new CustomEvent('start-onboarding-tour'));
+                  setSuccessMsg("QUEST RESET: Initializing guided onboarding tour!");
+                  playAdvancementSound();
+                  setTimeout(() => setSuccessMsg(''), 4500);
+                }}
+                className="mc-btn w-full py-2.5 justify-center flex items-center gap-2 text-[#ffff55]"
+              >
+                <Sparkles className="w-4 h-4 text-[#ffaa00]" />
+                <span>Replay Guided Admissions Quest</span>
               </button>
             </div>
 

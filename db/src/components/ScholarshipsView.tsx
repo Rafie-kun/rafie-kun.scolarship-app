@@ -3,6 +3,7 @@ import { Search, Trophy, Filter, ArrowRight, Award, Target, Sparkles, CheckCircl
 import { Scholarship, Profile } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
+import { getCleanUniversityUrl } from '../utils/urlHelper';
 
 interface RecommendedScholarship {
   scholarship: Scholarship;
@@ -33,12 +34,28 @@ export default function ScholarshipsView() {
   const [sortBy, setSortBy] = useState('score_desc');
   const [savedSuccess, setSavedSuccess] = useState('');
   const [trackedScholarships, setTrackedScholarships] = useState<Set<string>>(new Set());
+  const [applications, setApplications] = useState<any[]>([]);
+  const [universities, setUniversities] = useState<any[]>([]);
+
+  const fetchUniversitiesList = async () => {
+    try {
+      const res = await authorizedFetch('/api/universities');
+      if (res.ok) {
+        const data = await res.json();
+        const loaded = data.universities || data || [];
+        setUniversities(loaded);
+      }
+    } catch (err) {
+      console.error("Failed to load universities list inside scholarships view:", err);
+    }
+  };
 
   const fetchTrackedApps = async () => {
     try {
       const res = await authorizedFetch('/api/applications');
       if (res.ok) {
         const data = await res.json();
+        setApplications(data || []);
         const names = new Set<string>((data || []).map((a: any) => a.name.toLowerCase()));
         setTrackedScholarships(names);
       }
@@ -49,19 +66,21 @@ export default function ScholarshipsView() {
 
   useEffect(() => {
     fetchTrackedApps();
+    fetchUniversitiesList();
   }, []);
 
   // UI state
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
   const [selectedSch, setSelectedSch] = useState<Scholarship | null>(null);
   const [trackingSchId, setTrackingSchId] = useState<string | null>(null);
-  const [modalTab, setModalTab] = useState<'specs' | 'apply'>('specs');
+  const [modalTab, setModalTab] = useState<'specs' | 'apply' | 'unis'>('specs');
   const [checkedSteps, setCheckedSteps] = useState<Record<number, boolean>>({});
 
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  const modalAppLink = selectedSch ? `/fellowships/${selectedSch.id}/apply` : '';
+  const modalAppLink = selectedSch ? (selectedSch.applicationUrl || selectedSch.officialWebsite || `/fellowships/${selectedSch.id}/apply`) : '';
+  const modalTrackedApp = selectedSch ? applications.find(app => app.name.toLowerCase() === selectedSch.name.toLowerCase()) : null;
   const modalContactEmail = selectedSch ? ((selectedSch as any).contactEmail || `inquiries@${selectedSch.provider.toLowerCase().replace(/[^a-z0-9]/g, '') || 'scholarship-board'}.org`) : '';
   const modalAppFee = selectedSch ? (((selectedSch as any).applicationFee || (selectedSch as any).appFee || "Free Portal Application")) : '';
   const modalReqDocs = selectedSch ? ((selectedSch as any).requiredDocuments || ["Academic Transcripts (Validated)", "Letters of Recommendation (x2)", "Statement of Purpose (Crafted)", "Curriculum Vitae / Resume", "Proof of Nationality / Passport"]) : [];
@@ -198,11 +217,9 @@ export default function ScholarshipsView() {
       });
 
       if (res.ok) {
-        setTrackedScholarships(prev => {
-          const updated = new Set(prev);
-          updated.add(sch.name.toLowerCase());
-          return updated;
-        });
+        const data = await res.json();
+        setApplications(data || []);
+        setTrackedScholarships(new Set((data || []).map((a: any) => a.name.toLowerCase())));
 
         // Claim XP points and auto-clear state after set duration
         const actionName = `Tracked Scholarship: ${sch.name}`;
@@ -223,6 +240,34 @@ export default function ScholarshipsView() {
       console.error(e);
     } finally {
       setTrackingSchId(null);
+    }
+  };
+
+  const handleStatusChange = async (scholarshipName: string, newStatus: string) => {
+    playClickSound();
+    const existing = applications.find(app => app.name.toLowerCase() === scholarshipName.toLowerCase());
+    if (existing) {
+      const updated = { ...existing, status: newStatus };
+      try {
+        const res = await authorizedFetch('/api/applications', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ app: updated })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setApplications(data || []);
+          setTrackedScholarships(new Set((data || []).map((a: any) => a.name.toLowerCase())));
+          setSavedSuccess(`Updated "${scholarshipName}" status to "${newStatus}"!`);
+          
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
+          timeoutRef.current = setTimeout(() => {
+            setSavedSuccess('');
+          }, 4000);
+        }
+      } catch (err) {
+        console.error("Failed to update tracking status:", err);
+      }
     }
   };
 
@@ -425,7 +470,7 @@ export default function ScholarshipsView() {
                   value={search}
                   onChange={(e) => { setSearch(e.target.value); setPage(1); }}
                   placeholder="Type name, land, or target major criteria..."
-                  className="w-full bg-[#1e1c1b] border-4 border-black py-1.5 pl-9 pr-4 text-xs font-mono text-stone-200 focus:outline-none focus:border-[#ffff55]"
+                  className="scholarship-search-input w-full bg-[#1e1c1b] border-4 border-black py-1.5 pl-9 pr-4 text-xs font-mono text-stone-200 focus:outline-none focus:border-[#ffff55]"
                 />
               </div>
 
@@ -526,22 +571,36 @@ export default function ScholarshipsView() {
                           >
                             🔬 Inspect Dossier
                           </button>
-                          <button
-                            onClick={() => handleSaveApp(sch)}
-                            disabled={trackingSchId === sch.id || trackedScholarships.has(sch.name.toLowerCase())}
-                            className={`w-full mc-btn py-2 text-[8px] uppercase ${
-                              trackedScholarships.has(sch.name.toLowerCase())
-                                ? "text-[#ffff55] bg-emerald-950/60 border-emerald-500"
-                                : "text-[#55ff55]"
-                            } disabled:opacity-50`}
-                          >
-                            {trackingSchId === sch.id 
-                              ? "TRACKING..." 
-                              : trackedScholarships.has(sch.name.toLowerCase())
-                                ? "Tracked ✓"
-                                : "Track Quest Loot"
+                          {(() => {
+                            const trackedApp = applications.find(app => app.name.toLowerCase() === sch.name.toLowerCase());
+                            if (trackedApp) {
+                              return (
+                                <div className="w-full space-y-1">
+                                  <span className="text-[7.5px] font-mono text-stone-300 block uppercase tracking-tight text-center">Quest Progress:</span>
+                                  <select
+                                    value={trackedApp.status || 'Saved'}
+                                    onChange={(e) => handleStatusChange(sch.name, e.target.value)}
+                                    className="w-full bg-[#18181b] border-2 border-[#55ff55] text-[8px] font-press text-[#55ff55] px-1 py-1.5 focus:outline-none"
+                                  >
+                                    <option value="Saved" className="bg-stone-900 text-stone-200">📌 Saved</option>
+                                    <option value="In Progress" className="bg-stone-900 text-yellow-300">⏳ In Progress</option>
+                                    <option value="Submitted" className="bg-stone-900 text-blue-300">📤 Submitted</option>
+                                    <option value="Accepted" className="bg-stone-900 text-green-300">✅ Accepted</option>
+                                    <option value="Won" className="bg-stone-900 text-amber-300">🏅 Won</option>
+                                  </select>
+                                </div>
+                              );
                             }
-                          </button>
+                            return (
+                              <button
+                                onClick={() => handleSaveApp(sch)}
+                                disabled={trackingSchId === sch.id}
+                                className="tour-track-btn w-full mc-btn py-2 text-[8px] uppercase text-[#55ff55] disabled:opacity-50"
+                              >
+                                {trackingSchId === sch.id ? "TRACKING..." : "Track Quest Loot"}
+                              </button>
+                            );
+                          })()}
                         </div>
                       </div>
                     </div>
@@ -711,17 +770,35 @@ export default function ScholarshipsView() {
                         >
                           Inspect Details
                         </button>
-                        <button
-                          onClick={() => handleSaveApp(sch)}
-                          disabled={trackedScholarships.has(sch.name.toLowerCase())}
-                          className={`w-full border-2 border-black text-[8px] font-press py-1.5 cursor-pointer uppercase ${
-                            trackedScholarships.has(sch.name.toLowerCase())
-                              ? "bg-emerald-955/60 text-[#ffff55] border-[#55ff55]"
-                              : "bg-[#555] hover:bg-stone-750 text-white"
-                          } disabled:opacity-60`}
-                        >
-                          {trackedScholarships.has(sch.name.toLowerCase()) ? "Tracked ✓" : "Track Quest"}
-                        </button>
+                        {(() => {
+                          const trackedApp = applications.find(app => app.name.toLowerCase() === sch.name.toLowerCase());
+                          if (trackedApp) {
+                            return (
+                              <div className="w-full space-y-1">
+                                <span className="text-[7.5px] font-mono text-stone-300 block uppercase tracking-tight text-center">Progress:</span>
+                                <select
+                                  value={trackedApp.status || 'Saved'}
+                                  onChange={(e) => handleStatusChange(sch.name, e.target.value)}
+                                  className="w-full bg-[#18181b] border-2 border-[#55ff55] text-[8px] font-press text-[#55ff55] px-1 py-1 focus:outline-none"
+                                >
+                                  <option value="Saved" className="bg-stone-900 text-stone-200">📌 Saved</option>
+                                  <option value="In Progress" className="bg-stone-900 text-yellow-300">⏳ In Progress</option>
+                                  <option value="Submitted" className="bg-stone-900 text-blue-300">📤 Submitted</option>
+                                  <option value="Accepted" className="bg-stone-900 text-green-300">✅ Accepted</option>
+                                  <option value="Won" className="bg-stone-900 text-amber-300">🏅 Won</option>
+                                </select>
+                              </div>
+                            );
+                          }
+                          return (
+                            <button
+                              onClick={() => handleSaveApp(sch)}
+                              className="w-full border-2 border-black text-[8px] font-press py-1.5 cursor-pointer uppercase bg-[#555] hover:bg-stone-750 text-white"
+                            >
+                              Track Quest
+                            </button>
+                          );
+                        })()}
                       </div>
                     </div>
 
@@ -753,8 +830,7 @@ export default function ScholarshipsView() {
                 X
               </button>
             </div>
-
-            {/* Modal Sub Tab Selectors */}
+                {/* Modal Sub Tab Selectors */}
             <div className="flex gap-2 border-b-2 border-black pb-2 mt-3 select-none">
               <button
                 onClick={() => { playClickSound(); setModalTab('specs'); }}
@@ -771,6 +847,14 @@ export default function ScholarshipsView() {
                 }`}
               >
                 📝 How to Apply Checklist
+              </button>
+              <button
+                onClick={() => { playClickSound(); setModalTab('unis'); }}
+                className={`flex-1 py-2 px-3 font-press text-[8.5px] uppercase border-2 border-black cursor-pointer ${
+                  modalTab === 'unis' ? 'bg-indigo-950/40 border-indigo-500 text-indigo-300' : 'bg-stone-800 text-stone-400 hover:text-stone-200'
+                }`}
+              >
+                🏛️ Affiliated Uni
               </button>
             </div>
 
@@ -872,7 +956,7 @@ export default function ScholarshipsView() {
                     </div>
                   </div>
                 </>
-              ) : (
+              ) : modalTab === 'apply' ? (
                 <div className="space-y-4">
                   <div className="bg-amber-950/20 border border-amber-500/30 p-3 text-stone-300 text-xs rounded-none">
                     🚀 Follow these chronological blueprints to organize and submit your application folder successfully. Check off steps as you secure them!
@@ -901,8 +985,8 @@ export default function ScholarshipsView() {
                             {isDone && "✔"}
                           </div>
                           <div className="space-y-1 text-xs">
-                            <span className="text-[10px] uppercase font-bold text-stone-500 block">Stage {idx + 1}</span>
-                            <p className={isDone ? 'line-through text-stone-400' : 'text-stone-200'}>{step}</p>
+                             <span className="text-[10px] uppercase font-bold text-stone-500 block">Stage {idx + 1}</span>
+                             <p className={isDone ? 'line-through text-stone-400' : 'text-stone-200'}>{step}</p>
                           </div>
                         </div>
                       );
@@ -929,6 +1013,97 @@ export default function ScholarshipsView() {
                     </a>
                   </div>
                 </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="bg-indigo-950/20 border border-indigo-500/30 p-3 text-stone-200 text-xs rounded-none">
+                    🏛️ **ScholarPath Unified Intelligence Match**: Here are the global universities offering or matching this scholarship. Launch their portal or website with a single click.
+                  </div>
+
+                  <div className="space-y-3">
+                    {(() => {
+                      const sch = selectedSch;
+                      const eligibleCountriesLower = sch.eligibleCountries.map(c => c.toLowerCase());
+                      const eligibleMajorsLower = sch.eligibleMajors.map(m => m.toLowerCase());
+
+                      const matchedUnis = universities.filter(uni => {
+                        const isDirectIdMatch = uni.offeredScholarships && (
+                          uni.offeredScholarships.includes(sch.id) || 
+                          uni.offeredScholarships.includes(sch.name)
+                        );
+                        if (isDirectIdMatch) return true;
+
+                        const countryMatch = eligibleCountriesLower.includes(uni.country.toLowerCase()) || 
+                                             eligibleCountriesLower.includes('global') || 
+                                             eligibleCountriesLower.includes('all') ||
+                                             eligibleCountriesLower.some(c => uni.country.toLowerCase().includes(c));
+
+                        const majorsMatch = uni.popularMajors && uni.popularMajors.some((major: string) => 
+                          eligibleMajorsLower.some(m => m.includes(major.toLowerCase()) || major.toLowerCase().includes(m))
+                        );
+
+                        return countryMatch && majorsMatch;
+                      });
+
+                      const displayUnis = matchedUnis.length > 0 ? matchedUnis : universities.filter(uni => 
+                        eligibleCountriesLower.includes(uni.country.toLowerCase()) || 
+                        eligibleCountriesLower.includes('global') ||
+                        eligibleCountriesLower.includes('all') ||
+                        eligibleCountriesLower.some(c => uni.country.toLowerCase().includes(c))
+                      ).slice(0, 5);
+
+                      if (displayUnis.length === 0) {
+                        return (
+                          <div className="p-8 text-center text-stone-400 text-xs border border-stone-800">
+                            No direct affiliated or regional partner universities found. Please check official fellowship channels below.
+                          </div>
+                        );
+                      }
+
+                      return displayUnis.map((uni) => (
+                        <div key={uni.id} className="p-3 bg-black/45 border-2 border-black space-y-2 font-mono text-xs">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h4 className="font-bold text-stone-100 text-xs">{uni.name}</h4>
+                              <span className="text-stone-400 text-[10px] block">{uni.city}, {uni.country} • Rank #{uni.ranking}</span>
+                            </div>
+                            <span className="text-[10px] bg-indigo-950 px-2 py-0.5 text-indigo-300 font-bold border border-indigo-800">
+                              GPA Req: ≥{uni.averageGpa.toFixed(2)}
+                            </span>
+                          </div>
+                          
+                          <div className="flex flex-wrap gap-1">
+                            {uni.popularMajors.slice(0, 3).map((major: string, mIdx: number) => (
+                              <span key={mIdx} className="bg-stone-900 text-stone-400 px-1.5 py-0.5 text-[9px] border border-stone-800">
+                                {major}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="flex gap-2 pt-1 border-t border-stone-900">
+                            <button
+                              onClick={() => {
+                                playClickSound();
+                                window.open(getCleanUniversityUrl(uni, false), '_blank', 'noopener,noreferrer');
+                              }}
+                              className="flex-1 px-2.5 py-1 text-[9.5px] uppercase font-bold tracking-normal bg-stone-900 border border-stone-800 text-stone-300 hover:text-white"
+                            >
+                              🌐 Website
+                            </button>
+                            <button
+                              onClick={() => {
+                                playClickSound();
+                                window.open(getCleanUniversityUrl(uni, true), '_blank', 'noopener,noreferrer');
+                              }}
+                              className="flex-1 px-2.5 py-1 text-[9.5px] uppercase font-bold tracking-normal bg-[#f5c842] border border-black text-black font-bold hover:bg-yellow-400"
+                            >
+                              📝 Apply Portal
+                            </button>
+                          </div>
+                        </div>
+                      ));
+                    })()}
+                  </div>
+                </div>
               )}
 
             </div>
@@ -945,16 +1120,33 @@ export default function ScholarshipsView() {
               >
                 <ExternalLink className="w-4 h-4 shrink-0 text-[#ffff55]" /> Launch Official Portal
               </a>
-              <button
-                disabled={trackingSchId === selectedSch.id}
-                onClick={() => {
-                  handleSaveApp(selectedSch);
-                  setSelectedSch(null);
-                }}
-                className="flex-1 bg-green-950 hover:bg-green-900 text-[#55ff55] border-2 border-black py-2.5 px-3 uppercase text-[10px] font-press rounded-none shrink-0"
-              >
-                {trackingSchId === selectedSch.id ? "TRACKING..." : "🧬 Bind To Quest Track"}
-              </button>
+              {modalTrackedApp ? (
+                <div className="flex-1 flex items-center bg-emerald-950 border-2 border-black py-1 px-3">
+                  <span className="text-[9px] font-mono text-stone-300 uppercase mr-2 shrink-0">Status:</span>
+                  <select
+                    value={modalTrackedApp.status || 'Saved'}
+                    onChange={(e) => handleStatusChange(selectedSch.name, e.target.value)}
+                    className="flex-1 bg-[#18181b] border border-emerald-500 text-[9px] font-press text-[#55ff55] px-1 py-1 focus:outline-none"
+                  >
+                    <option value="Saved" className="bg-stone-900 text-stone-200">📌 Saved</option>
+                    <option value="In Progress" className="bg-stone-900 text-yellow-300">⏳ In Progress</option>
+                    <option value="Submitted" className="bg-stone-900 text-blue-300">📤 Submitted</option>
+                    <option value="Accepted" className="bg-stone-900 text-green-300">✅ Accepted</option>
+                    <option value="Won" className="bg-stone-900 text-amber-300">🏅 Won</option>
+                  </select>
+                </div>
+              ) : (
+                <button
+                  disabled={trackingSchId === selectedSch.id}
+                  onClick={() => {
+                    handleSaveApp(selectedSch);
+                    setSelectedSch(null);
+                  }}
+                  className="flex-1 bg-green-950 hover:bg-green-900 text-[#55ff55] border-2 border-black py-2.5 px-3 uppercase text-[10px] font-press rounded-none shrink-0"
+                >
+                  {trackingSchId === selectedSch.id ? "TRACKING..." : "🧬 Bind To Quest Track"}
+                </button>
+              )}
               <button
                 onClick={() => { playClickSound(); setSelectedSch(null); }}
                 className="bg-stone-800 hover:bg-stone-750 text-white border-2 border-black py-2.5 px-4 uppercase text-[10px] font-press rounded-none"

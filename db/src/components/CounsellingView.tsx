@@ -10,10 +10,29 @@ export default function CounsellingView() {
 
   // Copilot (The Wise Librarian) states
   const [chatInput, setChatInput] = useState('');
-  const [chatHistory, setChatHistory] = useState<{ sender: 'user' | 'ai'; text: string }[]>([
-    { sender: 'ai', text: 'Greetings, scholar. I am **The Wise Librarian**. Paste your academic details, ECTS queries, or ask me which fully-funded programs match your scorecards!' }
-  ]);
+  const [chatHistory, setChatHistory] = useState<{ sender: 'user' | 'ai'; text: string }[]>(() => {
+    try {
+      const saved = localStorage.getItem('scholarpath_copilot_chatHistory_v1');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {
+      console.warn("Failed to load persistent chat history", e);
+    }
+    return [
+      { sender: 'ai', text: 'Greetings, scholar. I am **The Wise Librarian**. Paste your academic details, ECTS queries, or ask me which fully-funded programs match your scorecards!' }
+    ];
+  });
   const [chatLoading, setChatLoading] = useState(false);
+  const [chatError, setChatError] = useState<string | null>(null);
+  const [lastUserMessage, setLastUserMessage] = useState<string>('');
+
+  // Persist chat history changes
+  React.useEffect(() => {
+    try {
+      localStorage.setItem('scholarpath_copilot_chatHistory_v1', JSON.stringify(chatHistory));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [chatHistory]);
 
   // Mock Interviewer states
   const [interviewInput, setInterviewInput] = useState('');
@@ -33,29 +52,46 @@ export default function CounsellingView() {
     };
   }, []);
 
-  const handleSendChat = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSendChat = async (e?: React.FormEvent, retryMsg?: string) => {
+    if (e) e.preventDefault();
     playClickSound();
-    if (!chatInput.trim() || chatLoading) return;
 
-    const userMsg = chatInput.trim();
-    setChatInput('');
-    setChatHistory(prev => [...prev, { sender: 'user', text: userMsg }]);
+    const userMsg = retryMsg || chatInput.trim();
+    if (!userMsg || chatLoading) return;
+
+    if (!retryMsg) {
+      setChatInput('');
+    }
+    
+    setLastUserMessage(userMsg);
+    setChatError(null);
+
+    // Don't duplicate the user message on retry rendering
+    if (!retryMsg) {
+      setChatHistory(prev => [...prev, { sender: 'user', text: userMsg }]);
+    }
     setChatLoading(true);
+
+    const customKey = localStorage.getItem('scholarpath_custom_gemini_key') || '';
 
     try {
       const res = await authorizedFetch('/api/gemini/study-chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-gemini-key': customKey
+        },
         body: JSON.stringify({ message: userMsg, chatHistory })
       });
       if (res.ok) {
         const data = await res.json();
         setChatHistory(prev => [...prev, { sender: 'ai', text: data.reply }]);
+      } else {
+        throw new Error("HTTP chat endpoint returned failure code");
       }
     } catch (e) {
       console.error(e);
-      setChatHistory(prev => [...prev, { sender: 'ai', text: 'Error contacting admissions librarian. Keep exploring.' }]);
+      setChatError("Wisdom transmission disrupted. The Librarian could not link to the Admissions indices.");
     } finally {
       setChatLoading(false);
     }
@@ -73,10 +109,15 @@ export default function CounsellingView() {
     }
     setInterviewLoading(true);
 
+    const customKey = localStorage.getItem('scholarpath_custom_gemini_key') || '';
+
     try {
       const res = await authorizedFetch('/api/gemini/mock-interview', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-gemini-key': customKey
+        },
         body: JSON.stringify({ message: userAns, previousTurns })
       });
       if (res.ok) {
@@ -139,25 +180,38 @@ export default function CounsellingView() {
       )}
 
       {activeSubTab === 'copilot' ? (
-        
-        /* Copilot View */
+         /* Copilot View */
         <div className="bg-[#2c2c2c] border-4 border-black p-5 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555] rounded-none flex flex-col justify-between h-[550px]">
           <div className="border-b-2 border-black pb-3 flex justify-between items-center text-stone-100 flex-wrap gap-2">
             <h4 className="font-press text-[9px] uppercase tracking-wider text-[#ffff55] flex items-center gap-2 mc-text-shadow">
               <BookOpen className="w-5 h-5 text-[#ffff55] shrink-0" /> THE WISE LIBRARIAN COPILOT
             </h4>
-            <span className="text-[10px] font-mono text-stone-400">Node Secure Endpoint</span>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => {
+                  playClickSound();
+                  if (confirm("Reset current admissions registry session history?")) {
+                    setChatHistory([{ sender: 'ai', text: 'Greetings, scholar. I am **The Wise Librarian**. Paste your academic details, ECTS queries, or ask me which fully-funded programs match your scorecards!' }]);
+                    setChatError(null);
+                  }
+                }}
+                className="text-[9px] font-mono hover:text-[#ff5552] text-stone-400 bg-stone-90 \0 p-1 border border-stone-800 hover:border-[#ff5552] rounded-none"
+              >
+                🧹 CLEAR SYSTEM LOGS
+              </button>
+              <span className="text-[10px] font-mono text-stone-400">Node Secure Endpoint</span>
+            </div>
           </div>
 
           {/* Messages block */}
-          <div className="flex-1 my-4 overflow-y-auto space-y-4 pr-2 max-h-[350px]">
+          <div className="flex-1 my-4 overflow-y-auto space-y-4 pr-1 max-h-[350px]">
             {chatHistory.map((item, idx) => (
               <div 
                 key={idx}
                 className={`p-3 border-2 font-mono text-xs max-w-2xl rounded-none leading-relaxed ${
                   item.sender === 'ai'
-                    ? 'bg-[#141414] border-stone-800 text-stone-200 mr-auto'
-                    : 'bg-[#333333] border-stone-700 text-stone-100 ml-auto'
+                    ? 'bg-[#141414] border-stone-800 text-stone-200 mr-auto shadow-md'
+                    : 'bg-[#333333] border-stone-700 text-stone-100 ml-auto shadow-sm'
                 }`}
               >
                 <div className="text-[8px] font-press uppercase text-[#ffaa00] mb-1">
@@ -169,9 +223,22 @@ export default function CounsellingView() {
               </div>
             ))}
             {chatLoading && (
-              <div className="p-3 bg-stone-900 border border-amber-500/30 text-stone-400 mr-auto max-w-xs font-mono text-[10px] animate-pulse flex items-center gap-2">
-                <Sparkles className="w-4 h-4 animate-spin text-amber-500" />
-                <span>Consulting admissions indexes...</span>
+              <div className="p-3 bg-stone-900 border-2 border-amber-500 text-amber-400 mr-auto max-w-xs font-mono text-[10px] animate-pulse flex items-center gap-2">
+                <Sparkles className="w-4 h-4 animate-spin text-amber-400" />
+                <span>Wise Librarian is reading scroll volumes...</span>
+              </div>
+            )}
+
+            {chatError && (
+              <div className="p-3 bg-red-950/40 border-4 border-red-500 text-red-450 mr-auto max-w-md font-mono text-[11px] gap-2">
+                <p className="font-bold uppercase tracking-wider mb-2">📡 REDSTONE CHANNEL FAILURE:</p>
+                <p className="mb-3 leading-relaxed">{chatError}</p>
+                <button
+                  onClick={() => handleSendChat(undefined, lastUserMessage)}
+                  className="mc-btn px-3 py-1.5 text-[9px] uppercase font-bold text-[#ffff55] bg-stone-900 hover:bg-stone-800 transition-all border-2 border-[#ffff55]"
+                >
+                  🔄 Retry Consultation
+                </button>
               </div>
             )}
           </div>
@@ -179,6 +246,7 @@ export default function CounsellingView() {
           {/* Input tray */}
           <form onSubmit={handleSendChat} className="flex gap-2 pt-2 border-t-2 border-black">
             <input
+              id="copilot-chat-input"
               type="text"
               placeholder="Query credit hours matching, GPA limits, IELTS targets, or check Erasmus guidelines..."
               value={chatInput}

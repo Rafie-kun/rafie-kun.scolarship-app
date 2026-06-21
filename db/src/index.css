@@ -826,3 +826,84 @@ body {
     linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px);
 }
+
+/* 🚀 HIGH-CONTRAST CONTRAST & ACCESSIBLE TEXT BOOSTERS FOR MY CONTAINER 🚀 */
+#scholarpath-main-container {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-primary);
+}
+
+#scholarpath-main-container h1,
+#scholarpath-main-container h2,
+#scholarpath-main-container h3,
+#scholarpath-main-container h4,
+#scholarpath-main-container h5,
+#scholarpath-main-container h6 {
+  color: var(--text-primary) !important;
+}
+
+/* Map descriptive gray/stone color helpers to theme secondary colors to avoid text washouts in dark or light modes */
+#scholarpath-main-container .text-stone-200,
+#scholarpath-main-container .text-slate-200,
+#scholarpath-main-container .text-neutral-200,
+#scholarpath-main-container .text-gray-200,
+#scholarpath-main-container .text-zinc-200 {
+  color: var(--text-primary) !important;
+}
+
+#scholarpath-main-container .text-stone-300,
+#scholarpath-main-container .text-slate-300,
+#scholarpath-main-container .text-neutral-300,
+#scholarpath-main-container .text-gray-300,
+#scholarpath-main-container .text-zinc-300 {
+  color: var(--text-secondary) !important;
+}
+
+#scholarpath-main-container .text-stone-400,
+#scholarpath-main-container .text-slate-400,
+#scholarpath-main-container .text-neutral-400,
+#scholarpath-main-container .text-gray-400,
+#scholarpath-main-container .text-zinc-400 {
+  color: var(--text-secondary) !important;
+}
+
+#scholarpath-main-container .text-stone-500,
+#scholarpath-main-container .text-slate-500,
+#scholarpath-main-container .text-neutral-500,
+#scholarpath-main-container .text-gray-500,
+#scholarpath-main-container .text-zinc-500 {
+  color: var(--text-tertiary) !important;
+}
+
+/* 🚀 PROFILE BUTTON TRANSITIONS & FEEDBACK STYLING 🚀 */
+#header-profile-shortcut {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#header-profile-shortcut:hover {
+  transform: scale(1.08) rotate(3deg);
+  border-color: var(--text-secondary) !important;
+  box-shadow: 0 0 14px rgba(85, 255, 255, 0.75) !important;
+}
+
+#header-profile-shortcut:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 4px rgba(85, 255, 255, 0.3) !important;
+}
+
+/* 🚀 TUTORIAL HIGHLIGHT PULSE GLOW ANIMATIONS 🚀 */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 4px #ffff55, 0 0 20px rgba(255, 255, 85, 0.45);
+    border-color: #ffff55;
+  }
+  50% {
+    box-shadow: 0 0 0 6px #ffff55, 0 0 40px rgba(255, 255, 85, 0.8);
+    border-color: #ffaa00;
+  }
+}
+
+.animate-tour-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+

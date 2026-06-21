@@ -123,16 +123,26 @@ export default function ApplicationsView() {
 
   const handleCreateNewAppManual = async () => {
     playClickSound();
+    
+    const name = window.prompt("Enter the name of the scholarship/fellowship you want to track:");
+    if (name === null) return; // User cancelled
+    const finalName = name.trim() || 'Custom Admissions Pursuit';
+    
+    const provider = window.prompt("Enter the provider / university name:");
+    if (provider === null) return; // User cancelled
+    const finalProvider = provider.trim() || 'Your Specified Board';
+
     const newApp: Application = {
       id: 'app-' + Date.now(),
-      name: 'Custom Admissions Pursuit',
-      providerOrUni: 'Your Specified Board',
+      name: finalName,
+      providerOrUni: finalProvider,
       deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
       status: 'Saved',
       notes: 'No research logs recorded yet. Track curriculum syllabus requirements and reference letter draft copies here.',
       checklist: [
-        { text: 'Detail academic ECTS prerequisites', done: false },
-        { text: 'Verify application deadlines on portal', done: false }
+        { text: 'Research eligibility requirements', done: false },
+        { text: 'Prepare academic transcripts', done: false },
+        { text: 'Write Statement of Purpose', done: false }
       ]
     };
 
@@ -145,10 +155,23 @@ export default function ApplicationsView() {
       if (res.ok) {
         const data = await res.json();
         setApps(data);
-        setSelectedApp(newHeaderApp => data.find((a: Application) => a.name === newHeaderApp?.name) || newApp);
+        const newlyCreated = data.find((a: Application) => a.id === newApp.id) || data[data.length - 1] || newApp;
+        setSelectedApp(newlyCreated);
+        
+        // Reward user 10 XP
+        const actionName = `Added custom track: ${finalName}`;
+        if (!rewardedActionsRef.current.has(actionName)) {
+          rewardedActionsRef.current.add(actionName);
+          await rewardPoints(10, actionName, "Quest Tracker");
+        }
+        
+        setSuccess(`Custom quest "${finalName}" added to tracked ledger! (+10 XP)`);
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(() => setSuccess(''), 4000);
       }
     } catch (e) {
       console.error(e);
+      alert('Failed to register custom quest. Please check server logs.');
     }
   };
 

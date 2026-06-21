@@ -4,7 +4,7 @@ import {
   Trophy, BookOpen, GraduationCap, Calculator, Award, ArrowRight, Save, User, Sparkles,
   Search, BookmarkCheck, Calendar, CheckSquare, Square, MessageSquare, Plus, CheckCircle,
   FolderDown, Building, Navigation, Globe, Menu, X, Coins, HelpCircle, Shield, Sword,
-  Undo
+  Undo, Settings, UserCog
 } from 'lucide-react';
 
 import OverviewRecommendationsView from './components/OverviewRecommendationsView';
@@ -20,6 +20,8 @@ import ProfileView from './components/ProfileView';
 import ExportCenterView from './components/ExportCenterView';
 import DreamUniversityView from './components/DreamUniversityView';
 import CustomizeView from './components/CustomizeView';
+import OnboardingTour from './components/OnboardingTour';
+import AIAssistant from './components/AIAssistant';
 
 import LoginScreen from './components/LoginScreen';
 import { useAuth } from './context/AuthContext';
@@ -119,14 +121,26 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
-  const [wizardActive, setWizardActive] = useState(false);
-  const [wizardStep, setWizardStep] = useState(1);
+  const [showTour, setShowTour] = useState(false);
 
   useEffect(() => {
-    if (isLoggedIn && localStorage.getItem('scholarpath_show_welcome_wizard') === 'true') {
-      setWizardActive(true);
+    if (isLoggedIn && profile) {
+      const completed = localStorage.getItem(`scholarpath_onboarding_completed_${profile.fullName || 'guest'}`);
+      if (completed !== 'true') {
+        setShowTour(true);
+      }
+    } else {
+      setShowTour(false);
     }
-  }, [profile, isLoggedIn]);
+  }, [isLoggedIn, profile]);
+
+  useEffect(() => {
+    const handleStartTour = () => {
+      setShowTour(true);
+    };
+    window.addEventListener('start-onboarding-tour', handleStartTour);
+    return () => window.removeEventListener('start-onboarding-tour', handleStartTour);
+  }, []);
 
   const currentThemeConfig = getThemeStyling(theme);
 
@@ -292,9 +306,25 @@ export default function App() {
         
         <div className="px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3">
+            {/* Player Profile / Spec Settings direct shortcut */}
+            <button
+              onClick={() => handleTabChange('profile')}
+              className="mc-btn p-2 flex items-center justify-center cursor-pointer transition-all active:scale-95 text-[#55ffff] hover:text-[#ffff55] hover:bg-[#343434] hover:scale-105 border-2 border-[#55ffff] [box-shadow:0_0_10px_rgba(85,255,255,0.3)] transition-transform rounded-none"
+              title="Player Profile / Settings Cog"
+              id="header-profile-shortcut"
+            >
+              {isLoggedIn ? (
+                <UserCog className="w-4.5 h-4.5" />
+              ) : (
+                <Settings className="w-4.5 h-4.5" />
+              )}
+            </button>
+
+            {/* Mobile Inventory menu toggle button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden mc-btn p-2"
+              title="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-4 h-4 ml-1" /> : <Menu className="w-4 h-4 ml-1" />}
             </button>
@@ -330,7 +360,7 @@ export default function App() {
             <div className="w-full mc-xp-bar border-4 border-black max-h-[16px] h-3">
               <div 
                 className={`${currentThemeConfig.hudXpFill} h-full transition-all duration-700 ease-out`} 
-                style={{ width: `${Math.min(100, Math.max(8, ((profile?.points ?? 0) % 100)))}%` }} 
+                style={{ width: `${Math.min(100, Math.max(4, (((profile?.points ?? 0) / ((profile?.level ?? 1) * 100)) * 100)))}%` }} 
               />
             </div>
           </div>
@@ -556,127 +586,33 @@ export default function App() {
 
       </div>
 
-      {/* --- WELCOME WIZARD WALKTHROUGH OVERLAY --- */}
-      {wizardActive && (
-        <div className="fixed inset-0 bg-black/85 z-[9999] flex items-center justify-center p-4 backdrop-blur-sm select-none">
-          <div className={`relative w-full max-w-lg p-6 border-4 text-left transition-all ${
-            themeMode === 'minecraft'
-              ? 'bg-[#2c2c2c] border-black [box-shadow:inset_-6px_-6px_0_#141414,inset_6px_6px_0_#555,0_20px_40px_rgba(0,0,0,0.8)] font-mono'
-              : 'bg-slate-900 border-slate-800 text-slate-100 rounded-none shadow-2xl font-sans'
-          }`}>
-            <div className="text-center mb-4 space-y-1 animate-fadeIn">
-              <span className={`block font-bold uppercase tracking-widest ${
-                themeMode === 'minecraft' ? 'font-press text-[8px] text-[#ffaa00] animate-pulse' : 'text-xs text-indigo-400 font-bold'
-              }`}>
-                ✨ ADMISSIONS QUEST LOG UNLOCKED! ✨
-              </span>
-              <h3 className={`font-bold uppercase ${
-                themeMode === 'minecraft' ? 'font-press text-[12px] text-[#ffff55]' : 'text-lg tracking-tight text-white'
-              }`}>
-                WELCOME TO SCHOLARPATH
-              </h3>
-              <div className="flex justify-center gap-1.5 pt-2">
-                {[1, 2, 3].map((stepNum) => (
-                  <div
-                    key={stepNum}
-                    className={`h-2.5 w-2.5 transition-all duration-300 ${
-                      stepNum === wizardStep
-                        ? themeMode === 'minecraft' ? 'bg-[#55ff55] w-6' : 'bg-indigo-500 w-6'
-                        : themeMode === 'minecraft' ? 'bg-stone-800' : 'bg-slate-800'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
+      {/* Floating Dynamic AI Navigation Assistant */}
+      {isLoggedIn && profile && (
+        <AIAssistant
+          currentPage={activeTab}
+          profile={profile}
+          onNavigateTab={handleTabChange}
+        />
+      )}
 
-            <div className={`my-5 p-4 border bg-black/40 min-h-[140px] flex flex-col justify-between ${
-              themeMode === 'minecraft' ? 'border-stone-850 font-mono' : 'border-slate-800'
-            }`}>
-              {wizardStep === 1 && (
-                <div className="space-y-2">
-                  <h4 className={`font-bold uppercase ${themeMode === 'minecraft' ? 'text-[#ffff55] text-[10px]' : 'text-sm text-yellow-400'}`}>
-                    Step 1/3: 🎮 Character Initialized!
-                  </h4>
-                  <p className={`${themeMode === 'minecraft' ? 'text-[11px] leading-relaxed text-stone-300' : 'text-xs text-slate-300 leading-relaxed'}`}>
-                    Congratulations! Your Pathfinder profile has been securely compiled. You have spawned on Level 1 with standard XP stats. Let's conquer the admissions board!
-                  </p>
-                </div>
-              )}
-
-              {wizardStep === 2 && (
-                <div className="space-y-2">
-                  <h4 className={`font-bold uppercase ${themeMode === 'minecraft' ? 'text-[#55ffff] text-[10px]' : 'text-sm text-cyan-400'}`}>
-                    Step 2/3: 🛡️ Equip Your Portfolio AP!
-                  </h4>
-                  <p className={`${themeMode === 'minecraft' ? 'text-[11px] leading-relaxed text-stone-300' : 'text-xs text-slate-300 leading-relaxed'}`}>
-                    Gain points and strengthen your ledger and shield defenses! Fill in your work experience, certifications, and projects in the Hero Ledger (Profile tab) or check in daily.
-                  </p>
-                </div>
-              )}
-
-              {wizardStep === 3 && (
-                <div className="space-y-2">
-                  <h4 className={`font-bold uppercase ${themeMode === 'minecraft' ? 'text-[#55ff55] text-[10px]' : 'text-sm text-emerald-400'}`}>
-                    Step 3/3: 🗺️ Track Real Fellowship Loot!
-                  </h4>
-                  <p className={`${themeMode === 'minecraft' ? 'text-[11px] leading-relaxed text-stone-300' : 'text-xs text-slate-300 leading-relaxed'}`}>
-                    Embark on quests by tracking competitive fellowships. Submitting custom tracked records, checking requirements, and reviewing applications boosts your character tier!
-                  </p>
-                </div>
-              )}
-
-              <div className="flex justify-between items-center mt-6 pt-4 border-t border-stone-800/40">
-                <button
-                  type="button"
-                  onClick={() => {
-                    playClickSound();
-                    if (wizardStep > 1) {
-                      setWizardStep(wizardStep - 1);
-                    }
-                  }}
-                  disabled={wizardStep === 1}
-                  className={`cursor-pointer uppercase font-bold text-[9px] py-1.5 px-3 disabled:opacity-30 ${
-                    themeMode === 'minecraft' ? 'text-stone-400 font-mono' : 'text-slate-500'
-                  }`}
-                >
-                  Previous
-                </button>
-
-                {wizardStep < 3 ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      playClickSound();
-                      setWizardStep(wizardStep + 1);
-                    }}
-                    className={`cursor-pointer uppercase font-bold text-[9px] py-1.5 px-4 ${
-                      themeMode === 'minecraft' ? 'mc-btn text-[#ffff55]' : 'bg-indigo-600 hover:bg-indigo-500 text-white rounded-none shadow'
-                    }`}
-                  >
-                    Continue
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={async () => {
-                      playClickSound();
-                      setWizardActive(false);
-                      localStorage.removeItem('scholarpath_show_welcome_wizard');
-                      if (rewardPoints) {
-                        await rewardPoints(100, "Spawning Onboarding Quest Core", "Pathfinder Apprentice");
-                      }
-                    }}
-                    className={`cursor-pointer uppercase font-bold text-[9px] py-2.5 px-5 animate-bounce ${
-                      themeMode === 'minecraft' ? 'mc-btn text-[#55ff55]' : 'bg-emerald-600 hover:bg-emerald-500 text-white rounded-none shadow-[0_0_15px_rgba(16,185,129,0.4)]'
-                    }`}
-                  >
-                    🚀 Start Expedition (+100 XP)
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* --- INTERACTIVE ONBOARDING TOUR OVERLAY --- */}
+      {showTour && isLoggedIn && profile && (
+        <OnboardingTour
+          onComplete={async (totalXP) => {
+            localStorage.setItem(`scholarpath_onboarding_completed_${profile.fullName || 'guest'}`, 'true');
+            setShowTour(false);
+            if (rewardPoints) {
+              await rewardPoints(totalXP, "Completed Guided Onboarding Quest", "Onboarding Master");
+            }
+          }}
+          onSkip={() => {
+            localStorage.setItem(`scholarpath_onboarding_completed_${profile.fullName || 'guest'}`, 'true');
+            setShowTour(false);
+          }}
+          onNavigateTab={(tabId) => {
+            setActiveTab(tabId);
+          }}
+        />
       )}
     </div>
     </ErrorBoundary>

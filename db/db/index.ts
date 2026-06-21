@@ -110,7 +110,76 @@ db.exec(`
     extracurriculars TEXT NOT NULL DEFAULT '[]',
     FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
   );
+
+  CREATE TABLE IF NOT EXISTS universities (
+    id TEXT PRIMARY KEY,
+    name TEXT UNIQUE NOT NULL,
+    country TEXT NOT NULL,
+    ranking INTEGER DEFAULT 9999,
+    acceptanceRate TEXT DEFAULT 'N/A',
+    averageGpa REAL DEFAULT 3.0,
+    popularMajors TEXT DEFAULT '[]',
+    type TEXT DEFAULT 'public',
+    tuitionMin REAL DEFAULT 0,
+    tuitionMax REAL DEFAULT 0,
+    offeredScholarships TEXT DEFAULT '[]',
+    city TEXT DEFAULT 'N/A',
+    hasOnCampusHousing INTEGER DEFAULT 0,
+    website TEXT,
+    applicationUrl TEXT,
+    domain TEXT DEFAULT NULL,
+    generatedApplicationUrl TEXT DEFAULT NULL
+  );
+
 `);
+
+// --- Dynamic Schema Migration for Pre-existing Databases ---
+try {
+  const profileTableInfo = db.prepare("PRAGMA table_info(profiles)").all() as { name: string }[];
+  const existingProfileCols = new Set(profileTableInfo.map(col => col.name));
+  
+  const profileColsToAdd = [
+    { name: 'educationLevel', type: 'TEXT' },
+    { name: 'highSchoolName', type: 'TEXT' },
+    { name: 'collegeName', type: 'TEXT' },
+    { name: 'primaryMajor', type: 'TEXT' },
+    { name: 'secondaryMajor', type: 'TEXT' },
+    { name: 'minor', type: 'TEXT' },
+    { name: 'graduationYear', type: 'INTEGER' },
+    { name: 'additionalSkills', type: 'TEXT' },
+    { name: 'resumePdf', type: 'TEXT' },
+    { name: 'rewardedActions', type: 'TEXT' },
+    { name: 'oLevelSubjects', type: 'TEXT' },
+    { name: 'aLevelSubjects', type: 'TEXT' },
+    { name: 'satScore', type: 'INTEGER' },
+    { name: 'profilePicture', type: 'TEXT' },
+    { name: 'lastDailyCheckin', type: 'TEXT' }
+  ];
+
+  for (const col of profileColsToAdd) {
+    if (!existingProfileCols.has(col.name)) {
+      db.exec(`ALTER TABLE profiles ADD COLUMN ${col.name} ${col.type}`);
+      console.log(`[SQLite Migration] Automatically appended missing column to profiles: ${col.name}`);
+    }
+  }
+
+  const appTableInfo = db.prepare("PRAGMA table_info(applications)").all() as { name: string }[];
+  const existingAppCols = new Set(appTableInfo.map(col => col.name));
+  
+  const appColsToAdd = [
+    { name: 'notes', type: 'TEXT' },
+    { name: 'checklist', type: 'TEXT' }
+  ];
+
+  for (const col of appColsToAdd) {
+    if (!existingAppCols.has(col.name)) {
+      db.exec(`ALTER TABLE applications ADD COLUMN ${col.name} ${col.type}`);
+      console.log(`[SQLite Migration] Automatically appended missing column to applications: ${col.name}`);
+    }
+  }
+} catch (migrationErr) {
+  console.error("[SQLite Migration Error]: Failed to align pre-existing datatypes:", migrationErr);
+}
 
 // --- Type Converter Helpers ---
 function deserializeProfile(row: any): Profile | null {
@@ -674,6 +743,151 @@ export function seedDatabaseIfEmpty(): void {
   console.log('[SQLite DB] Initial database table seeds created successfully!');
 }
 
+// Function to seed universities on first load or if empty
+export function seedUniversitiesIfEmpty(): void {
+  const countUnis = db.prepare('SELECT COUNT(*) as count FROM universities').get() as { count: number };
+  if (countUnis.count === 0) {
+    console.log('[SQLite DB] Seeding universities table from raw json stream...');
+    const universitiesPath = path.join(process.cwd(), 'data', 'universities.json');
+    if (fs.existsSync(universitiesPath)) {
+      try {
+        const rawUnis = JSON.parse(fs.readFileSync(universitiesPath, 'utf-8'));
+        const insertUni = db.prepare(`
+          INSERT OR IGNORE INTO universities (
+            id, name, country, ranking, acceptanceRate, averageGpa, popularMajors, type,
+            tuitionMin, tuitionMax, offeredScholarships, city, hasOnCampusHousing, website, applicationUrl, domain, generatedApplicationUrl
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `);
+        
+        const tx = db.transaction((list: any[]) => {
+          for (const uni of list) {
+            insertUni.run(
+              uni.id || ('uni-' + Math.random().toString(36).substr(2, 9)),
+              uni.name,
+              uni.country || 'Worldwide',
+              uni.ranking !== undefined ? uni.ranking : 9999,
+              uni.acceptanceRate || 'N/A',
+              uni.averageGpa !== undefined ? uni.averageGpa : 3.0,
+              JSON.stringify(uni.popularMajors || []),
+              uni.type || 'public',
+              uni.tuitionMin !== undefined ? uni.tuitionMin : 0,
+              uni.tuitionMax !== undefined ? uni.tuitionMax : 0,
+              JSON.stringify(uni.offeredScholarships || []),
+              uni.city || 'N/A',
+              uni.hasOnCampusHousing ? 1 : 0,
+              uni.website || null,
+              uni.applicationUrl || null,
+              uni.domain || null,
+              uni.generatedApplicationUrl || null
+            );
+          }
+        });
+        tx(rawUnis);
+        console.log(`[SQLite DB] Successfully seeded ${rawUnis.length} standard universities.`);
+      } catch (err) {
+        console.error("[Seeding Universities Error]:", err);
+      }
+    }
+  }
+}
+
+export interface GetUniversitiesOptions {
+  search?: string;
+  country?: string;
+  type?: string;
+  sortBy?: string;
+  onCampusHousing?: boolean;
+  limit: number;
+  page: number;
+}
+
+export function getUniversitiesFromDb(options: GetUniversitiesOptions): { total: number; universities: any[] } {
+  let query = 'SELECT * FROM universities WHERE 1=1';
+  let countQuery = 'SELECT COUNT(*) as total FROM universities WHERE 1=1';
+  const params: any[] = [];
+
+  if (options.search) {
+    const s = `%${options.search}%`;
+    query += ' AND (name LIKE ? OR city LIKE ? OR popularMajors LIKE ? OR country LIKE ?)';
+    countQuery += ' AND (name LIKE ? OR city LIKE ? OR popularMajors LIKE ? OR country LIKE ?)';
+    params.push(s, s, s, s);
+  }
+
+  if (options.country && options.country !== 'all') {
+    query += ' AND LOWER(country) = LOWER(?)';
+    countQuery += ' AND LOWER(country) = LOWER(?)';
+    params.push(options.country);
+  }
+
+  if (options.type && options.type !== 'all') {
+    query += ' AND type = ?';
+    countQuery += ' AND type = ?';
+    params.push(options.type);
+  }
+
+  if (options.onCampusHousing) {
+    query += ' AND hasOnCampusHousing = 1';
+    countQuery += ' AND hasOnCampusHousing = 1';
+  }
+
+  // Sorting
+  if (options.sortBy) {
+    if (options.sortBy === 'ranking_asc') {
+      query += ' ORDER BY ranking ASC';
+    } else if (options.sortBy === 'tuition_asc') {
+      query += ' ORDER BY tuitionMin ASC';
+    } else if (options.sortBy === 'tuition_desc') {
+      query += ' ORDER BY tuitionMin DESC';
+    } else if (options.sortBy === 'gpa_desc') {
+      query += ' ORDER BY averageGpa DESC';
+    } else if (options.sortBy === 'alphabetical') {
+      query += ' ORDER BY name ASC';
+    } else {
+      query += ' ORDER BY ranking ASC';
+    }
+  } else {
+    query += ' ORDER BY ranking ASC';
+  }
+
+  // Count
+  const countStmt = db.prepare(countQuery);
+  const totalRow = countStmt.get(...params) as { total: number };
+  const total = totalRow ? totalRow.total : 0;
+
+  // Pagination
+  const page = Math.max(1, options.page);
+  const limit = Math.max(1, options.limit);
+  const offset = (page - 1) * limit;
+
+  query += ' LIMIT ? OFFSET ?';
+  const selectStmt = db.prepare(query);
+  const rows = selectStmt.all(...params, limit, offset) as any[];
+
+  const universities = rows.map(row => ({
+    id: row.id,
+    name: row.name,
+    country: row.country,
+    ranking: row.ranking,
+    acceptanceRate: row.acceptanceRate,
+    averageGpa: row.averageGpa,
+    popularMajors: JSON.parse(row.popularMajors || '[]'),
+    type: row.type,
+    tuitionMin: row.tuitionMin,
+    tuitionMax: row.tuitionMax,
+    offeredScholarships: JSON.parse(row.offeredScholarships || '[]'),
+    city: row.city,
+    hasOnCampusHousing: !!row.hasOnCampusHousing,
+    website: row.website,
+    applicationUrl: row.applicationUrl,
+    domain: row.domain || undefined,
+    generatedApplicationUrl: row.generatedApplicationUrl || undefined
+  }));
+
+  return { total, universities };
+}
+
 // Auto-seed the database on load if empty
 seedDatabaseIfEmpty();
+seedUniversitiesIfEmpty();
+
 

@@ -31,6 +31,8 @@ export interface Profile {
   aLevelSubjects?: string[];
   satScore?: number | null;
   profilePicture?: string;
+  hasCompletedOnboarding?: boolean;
+  customGeminiKey?: string;
 }
 
 export interface Scholarship {
@@ -73,6 +75,8 @@ export interface University {
   offeredScholarships?: string[];
   city: string;
   hasOnCampusHousing: boolean;
+  website?: string;
+  applicationUrl?: string;
 }
 
 export interface ChecklistItem {

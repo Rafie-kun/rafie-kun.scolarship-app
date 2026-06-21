@@ -54,6 +54,62 @@ export default function ProfileView() {
   // Inner dossier folders states (for clean screen division)
   const [activeFormTab, setActiveFormTab] = useState<'basics' | 'academics' | 'portfolio'>('basics');
 
+  // GPA Conversion parameters
+  const [showGpaCalc, setShowGpaCalc] = useState(false);
+  const [calcEducationLevel, setCalcEducationLevel] = useState('high_school_oa'); // 'high_school_oa' | 'ib' | 'ap' | 'sat_act'
+  const [calcGradesRaw, setCalcGradesRaw] = useState<string[]>(['A*', 'A', 'B']); 
+  const [calcIbScores, setCalcIbScores] = useState<number[]>([6, 5, 7]);
+  const [calcApScores, setCalcApScores] = useState<number[]>([4, 5, 3]);
+  const [calcSatScore, setCalcSatScore] = useState(1450);
+
+  const calculateGpaValue = () => {
+    let computed = 3.0;
+
+    if (calcEducationLevel === 'high_school_oa') {
+      const oLevelToGpa: Record<string, number> = {
+        'A*': 4.0, 'A': 3.7, 'B': 3.3, 'C': 3.0, 'D': 2.3, 'E': 2.0, 'F': 0.0
+      };
+      const validGrades = calcGradesRaw.filter(g => oLevelToGpa[g] !== undefined);
+      if (validGrades.length > 0) {
+        const sum = validGrades.reduce((acc, grade) => acc + oLevelToGpa[grade], 0);
+        computed = sum / validGrades.length;
+      }
+    } else if (calcEducationLevel === 'ib') {
+      const ibToGpa: Record<number, number> = {
+        7: 4.0, 6: 3.7, 5: 3.3, 4: 3.0, 3: 2.3, 2: 2.0, 1: 0.0
+      };
+      if (calcIbScores.length > 0) {
+        const sum = calcIbScores.reduce((acc, score) => acc + (ibToGpa[score] || 0), 0);
+        computed = sum / calcIbScores.length;
+      }
+    } else if (calcEducationLevel === 'ap') {
+      const apToGpa: Record<number, number> = {
+        5: 4.0, 4: 3.7, 3: 3.0, 2: 2.0, 1: 0.0
+      };
+      if (calcApScores.length > 0) {
+        const sum = calcApScores.reduce((acc, score) => acc + (apToGpa[score] || 0), 0);
+        computed = sum / calcApScores.length;
+      }
+    } else if (calcEducationLevel === 'sat_act') {
+      if (calcSatScore >= 1550) computed = 4.0;
+      else if (calcSatScore >= 1480) computed = 3.9;
+      else if (calcSatScore >= 1400) computed = 3.8;
+      else if (calcSatScore >= 1320) computed = 3.7;
+      else if (calcSatScore >= 1240) computed = 3.5;
+      else if (calcSatScore >= 1150) computed = 3.2;
+      else if (calcSatScore >= 1000) computed = 2.8;
+      else computed = 2.0;
+    }
+    return Number(computed.toFixed(2));
+  };
+
+  const applyCalculatedGpa = () => {
+    playClickSound();
+    const computedVal = calculateGpaValue();
+    setGpa(computedVal);
+    setShowGpaCalc(false);
+  };
+
   const fetchProfile = async () => {
     try {
       const res = await authorizedFetch('/api/profile');
@@ -99,6 +155,14 @@ export default function ProfileView() {
 
   useEffect(() => {
     fetchProfile();
+
+    const handleAcademicsSelect = () => {
+      setActiveFormTab('academics');
+    };
+    window.addEventListener('profile-tab-academics', handleAcademicsSelect);
+    return () => {
+      window.removeEventListener('profile-tab-academics', handleAcademicsSelect);
+    };
   }, []);
 
   const handleUpdateProfile = async (e: React.FormEvent) => {
@@ -471,6 +535,7 @@ export default function ProfileView() {
                     <div className="flex flex-col gap-1.5">
                       <span className="text-stone-300 uppercase text-[9px] font-bold">Current Learning Level:</span>
                       <select
+                        id="education-level-select"
                         value={educationLevel}
                         onChange={(e) => setEducationLevel(e.target.value)}
                         className="bg-[#141414] border-2 border-black p-2 outline-none"
@@ -564,30 +629,137 @@ export default function ProfileView() {
                       />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 col-span-1.5">
-                      <div className="flex flex-col gap-1.5">
-                        <span className="text-stone-300 uppercase text-[9px] font-bold">Current GPA:</span>
+                    <div className="grid grid-cols-2 gap-2 col-span-1.5 bg-[#1a1a1a] p-2 border border-black/50">
+                      <div className="flex flex-col gap-1.5 col-span-1">
+                        <span className="text-stone-300 uppercase text-[9px] font-bold flex justify-between items-center">
+                          <span>Current GPA:</span>
+                          <button
+                            type="button"
+                            onClick={() => { playClickSound(); setShowGpaCalc(!showGpaCalc); }}
+                            className="text-[8px] bg-[#3b3b8c] hover:bg-[#4d4dbf] text-[#ffff55] border border-black px-1.5 py-0.5 font-press uppercase cursor-pointer"
+                          >
+                            🔮 Auto Calc
+                          </button>
+                        </span>
                         <input
                           type="number"
                           step="0.01"
                           value={gpa}
                           onChange={(e) => setGpa(Number(e.target.value))}
-                          className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
+                          className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55] text-xs font-mono text-stone-200"
                           min="0"
                           max={maxGpa}
                           required
                         />
                       </div>
-                      <div className="flex flex-col gap-1.5">
+                      <div className="flex flex-col gap-1.5 col-span-1">
                         <span className="text-[#a8a8a8] uppercase text-[9px] font-bold">Max GPA Limit</span>
                         <input
                           type="number"
                           step="0.1"
                           value={maxGpa}
                           onChange={(e) => setMaxGpa(Number(e.target.value))}
-                          className="bg-[#141414] border-2 border-black p-2 outline-none"
+                          className="bg-[#141414] border-2 border-black p-2 outline-none text-xs font-mono text-stone-200"
                         />
                       </div>
+
+                      {/* Expandable Auto GPA Calculator panel */}
+                      {showGpaCalc && (
+                        <div className="col-span-2 mt-2 bg-black/40 p-3 border-2 border-dashed border-[#ffff55]/40 space-y-3 font-mono text-[11px] text-stone-300">
+                          <div className="flex justify-between items-center border-b border-stone-800 pb-1.5">
+                            <span className="font-press text-[8px] text-[#ffff55] uppercase">Auto GPA Converter</span>
+                            <button
+                              type="button"
+                              onClick={() => { playClickSound(); setShowGpaCalc(false); }}
+                              className="text-red-400 font-bold text-xs"
+                            >
+                              ✕
+                            </button>
+                          </div>
+
+                          <div className="space-y-1">
+                            <label className="text-[9px] text-stone-400 block uppercase">Choose Grading Scheme Limit:</label>
+                            <select
+                              value={calcEducationLevel}
+                              onChange={(e) => { playClickSound(); setCalcEducationLevel(e.target.value); }}
+                              className="bg-stone-900 border border-stone-700 text-stone-200 p-1 w-full text-[11px]"
+                            >
+                              <option value="high_school_oa">High School (O/A Levels: A*, A, B, C...)</option>
+                              <option value="ib">IB (International Baccalaureate: 1-7)</option>
+                              <option value="ap">AP (Advanced Placement: 1-5)</option>
+                              <option value="sat_act">SAT (Score 400-1600)</option>
+                            </select>
+                          </div>
+
+                          {calcEducationLevel === 'high_school_oa' && (
+                            <div className="space-y-2">
+                              <span className="text-[9px] text-stone-400 block uppercase">Enter Registered Subject Grades (comma separated):</span>
+                              <input
+                                type="text"
+                                value={calcGradesRaw.join(', ')}
+                                onChange={(e) => setCalcGradesRaw(e.target.value.toUpperCase().split(',').map(s => s.trim()))}
+                                className="bg-[#141414] border border-stone-700 text-stone-150 p-1 w-full text-xs font-mono"
+                                placeholder="A*, A, B, B, C"
+                              />
+                              <p className="text-[9px] text-stone-500 italic">Grading metrics: A* = 4.0, A = 3.7, B = 3.3, C = 3.0, D = 2.3, E = 2.0, F = 0.0</p>
+                            </div>
+                          )}
+
+                          {calcEducationLevel === 'ib' && (
+                            <div className="space-y-2">
+                              <span className="text-[9px] text-stone-400 block uppercase font-bold">Enter Registered Subject Scores (comma separated 1-7):</span>
+                              <input
+                                type="text"
+                                value={calcIbScores.join(', ')}
+                                onChange={(e) => setCalcIbScores(e.target.value.split(',').map(s => parseInt(s.trim(), 10) || 7))}
+                                className="bg-[#141414] border border-stone-700 text-stone-150 p-1 w-full text-xs font-mono"
+                                placeholder="7, 6, 5, 6, 7"
+                              />
+                              <p className="text-[9px] text-stone-500 italic">Grading metrics: 7 = 4.0, 6 = 3.7, 5 = 3.3, 4 = 3.0, 3 = 2.3, 2 = 2.0</p>
+                            </div>
+                          )}
+
+                          {calcEducationLevel === 'ap' && (
+                            <div className="space-y-2">
+                              <span className="text-[9px] text-stone-400 block uppercase font-bold">Enter Registered Subject Scores (comma separated 1-5):</span>
+                              <input
+                                type="text"
+                                value={calcApScores.join(', ')}
+                                onChange={(e) => setCalcApScores(e.target.value.split(',').map(s => parseInt(s.trim(), 10) || 5))}
+                                className="bg-[#141414] border border-stone-700 text-stone-150 p-1 w-full text-xs font-mono"
+                                placeholder="5, 4, 5, 3"
+                              />
+                            </div>
+                          )}
+
+                          {calcEducationLevel === 'sat_act' && (
+                            <div className="space-y-1">
+                              <span className="text-[9px] text-stone-400 block uppercase font-bold">Enter SAT Combined Score (400 - 1600):</span>
+                              <input
+                                type="number"
+                                min="400"
+                                max="1600"
+                                value={calcSatScore}
+                                onChange={(e) => setCalcSatScore(parseInt(e.target.value, 10) || 1200)}
+                                className="bg-[#141414] border border-stone-700 text-stone-150 p-1 w-full text-xs font-mono"
+                              />
+                            </div>
+                          )}
+
+                          <div className="flex gap-2 pt-1 border-t border-stone-800">
+                            <div className="text-stone-300 font-bold self-center text-[10px]">
+                              Computed: <span className="text-[#55ff55]">{calculateGpaValue().toFixed(2)}</span> / 4.00
+                            </div>
+                            <button
+                              type="button"
+                              onClick={applyCalculatedGpa}
+                              className="ml-auto bg-green-950 text-[#55ff55] border border-green-700 px-2.5 py-1 uppercase text-[9px] font-bold cursor-pointer"
+                            >
+                              Apply Value
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     <div className="flex flex-col gap-1.5 col-span-1">

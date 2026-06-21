@@ -107,6 +107,7 @@ export default function CommunityView() {
             </p>
           </div>
           <button
+            id="community-new-post-btn"
             onClick={() => { setShowForm(!showForm); playClickSound(); }}
             className="mc-btn px-4 py-2.5 text-[9px] uppercase tracking-wider transition-colors shrink-0 font-bold"
           >

@@ -5,12 +5,14 @@ import { getProfileByUsername } from '../db/index';
 
 const router = express.Router();
 
-let aiClient: GoogleGenAI | null = null;
-function getAI() {
-  if (!aiClient) {
-    const key = process.env.GEMINI_API_KEY;
-    aiClient = new GoogleGenAI({ 
-      apiKey: key || "MOCK_KEY_PLACEHOLDER",
+// Clients registry cached by API key to avoid re-instantiation
+const aiClientsMap: Record<string, GoogleGenAI> = {};
+
+function getAIClient(customKey?: string) {
+  const key = customKey || process.env.GEMINI_API_KEY || "MOCK_KEY_PLACEHOLDER";
+  if (!aiClientsMap[key]) {
+    aiClientsMap[key] = new GoogleGenAI({ 
+      apiKey: key,
       httpOptions: {
         headers: {
           'User-Agent': 'aistudio-build',
@@ -18,15 +20,21 @@ function getAI() {
       }
     });
   }
-  return aiClient;
+  return aiClientsMap[key];
 }
 
 // Check key helper
-function hasGeminiKey(): boolean {
-  return !!process.env.GEMINI_API_KEY;
+function hasGeminiKey(customKey?: string): boolean {
+  return (customKey && customKey.trim().length > 5) || !!process.env.GEMINI_API_KEY;
 }
 
-// 1. SOP Document Evaluation (Requires Token)
+// 1. Key Check Endpoint
+router.get('/check-gemini-key', (req: Request, res: Response) => {
+  const customKey = req.headers['x-gemini-key'] as string;
+  res.json({ hasKey: hasGeminiKey(customKey) });
+});
+
+// 2. SOP Document Evaluation (Requires Token)
 router.post('/review-document', authenticateToken, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
@@ -40,8 +48,14 @@ router.post('/review-document', authenticateToken, async (req: Request, res: Res
     return res.status(400).json({ error: "SOP scroll text is required to evaluate!" });
   }
 
+  const customKey = req.headers['x-gemini-key'] as string;
+
   try {
-    const ai = getAI();
+    if (!hasGeminiKey(customKey)) {
+      throw new Error("Missing GEMINI_API_KEY");
+    }
+
+    const ai = getAIClient(customKey);
     const prompt = `You are an elite academic admissions counselor and professor specializing in evaluating Statements of Purpose (SOP) and resumes for competitive fully-funded international scholarships like Erasmus, Fulbright, DAAD.
 Analyze the following document draft for candidate ${profile.fullName} applying for a ${targetDegree || profile.intendedDegree} in ${major || profile.intendedMajor}:
 
@@ -66,10 +80,6 @@ Provide a gorgeous, highly detailed structure-critique review containing:
 
 Respond in clean, modern formatting.`;
 
-    if (!hasGeminiKey()) {
-      throw new Error("Missing GEMINI_API_KEY");
-    }
-
     const response = await ai.models.generateContent({
       model: "gemini-3.5-flash",
       contents: prompt,
@@ -79,12 +89,12 @@ Respond in clean, modern formatting.`;
   } catch (err: any) {
     console.log("AI Document Review: Using offline heuristics fallback");
     res.json({
-      review: `**🌌 HEURISTIC EVALUATION REPORT (Offline Guild Fallback)**\n\n- **Target Track**: ${targetDegree || profile.intendedDegree} in ${major || profile.intendedMajor}\n- **Candidate**: **${profile.fullName}** (GPA: ${profile.gpa})\n- **Evaluated Length**: ${documentText.length} characters\n\n### ⚔️ Immediate Critical Guidance:\n1. **Inject Quantitative Proof**: You reference projects like *${profile.projects[0] || 'your research tasks'}*. Standard committees demand numbers. Instead of "optimized a system," say "refactored a core rendering routine boosting frame delivery by 24%."\n2. **Align with European ECTS Guidelines**: Clearly reference how your previous academic workload matches the targeted syllabus coursework.\n3. **Mute Passion Gaps**: Avoid starting sentences with "Since my childhood, I liked computer pixels." Instead, start with "My academic background in ${profile.intendedMajor} led to developing a deep focus in..."\n\n_Configure process.env.GEMINI_API_KEY in the Settings drawer with custom credentials to initialize the real-time Gemini LLM parser!_`
+      review: `**🌌 HEURISTIC EVALUATION REPORT (Offline Guild Fallback)**\n\n- **Target Track**: ${targetDegree || profile.intendedDegree} in ${major || profile.intendedMajor}\n- **Candidate**: **${profile.fullName}** (GPA: ${profile.gpa})\n- **Evaluated Length**: ${documentText.length} characters\n\n### ⚔️ Immediate Critical Guidance:\n1. **Inject Quantitative Proof**: You reference projects like *${profile.projects[0] || 'your research tasks'}*. Standard committees demand numbers. Instead of "optimized a system," say "refactored a core rendering routine boosting frame delivery by 24%."\n2. **Align with European ECTS Guidelines**: Clearly reference how your previous academic workload matches the targeted syllabus coursework.\n3. **Mute Passion Gaps**: Avoid starting sentences with "Since my childhood, I liked computer pixels." Instead, start with "My academic background in ${profile.intendedMajor} led to developing a deep focus in..."\n\n_Configure a secure Custom Gemini API key inside Skins & Biomes Settings panel or the environment files to activate the live LLM evaluation!_`
     });
   }
 });
 
-// 2. Wise Librarian Guidance Copilot Chat (Requires Token)
+// 3. Wise Librarian Guidance Copilot Chat (Requires Token)
 router.post('/study-chat', authenticateToken, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
@@ -98,19 +108,22 @@ router.post('/study-chat', authenticateToken, async (req: Request, res: Response
     return res.status(400).json({ error: "Missing query parameter." });
   }
 
+  const customKey = req.headers['x-gemini-key'] as string;
+
   try {
-    if (!hasGeminiKey()) {
+    if (!hasGeminiKey(customKey)) {
       throw new Error("Missing GEMINI_API_KEY");
     }
 
-    const ai = getAI();
-    const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
-      contents: [
-        {
-          role: "user",
-          parts: [{
-            text: `You are 'The Wise Librarian', an expert AI admissions copilot, academic advisor, and counselor for fully-funded international scholarships (such as Erasmus, Fulbright, DAAD, Commonwealth, MEXT, etc.).
+    const ai = getAIClient(customKey);
+    
+    // Construct rich context contents including history
+    const historyParts = (chatHistory || []).slice(-10).map((h: any) => ({
+      role: h.sender === 'user' || h.role === 'user' ? 'user' : 'model',
+      parts: [{ text: h.text || h.content || '' }]
+    }));
+
+    const systemContext = `You are 'The Wise Librarian', an expert AI admissions copilot, academic advisor, and counselor for fully-funded international scholarships (such as Erasmus, Fulbright, DAAD, Commonwealth, MEXT, etc.).
 Your mission is to help candidates compile rigorous portfolios, suggest which scholarships align with their GPA and profile, and give absolute professional clarity.
 Keep your personality professional, highly technical, helpful, and subtly encouraging. Use concise structured bullets where possible.
 
@@ -119,24 +132,49 @@ CANDIDATE PROFILE CONTEXT:
 - GPA: ${profile.gpa}/${profile.maxGpa}
 - IELTS: ${profile.ieltsScore || "7.0"} | GRE: ${profile.greScore || "310"}
 - Intended Studies: ${profile.intendedDegree} in ${profile.intendedMajor}
-- Nationality: ${profile.nationality}
+- Nationality: ${profile.nationality}`;
 
-Answer their query: "${message}"`
-          }]
-        }
-      ]
+    const contents = [
+      ...historyParts,
+      {
+        role: "user",
+        parts: [{ text: `Answer this query considering my candidate profile: "${message}"` }]
+      }
+    ];
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash",
+      contents,
+      config: {
+        systemInstruction: systemContext
+      }
     });
 
-    res.json({ reply: response.text });
+    const reply = response.text || "No reply generated.";
+    
+    // Check if reply suggests navigating somewhere
+    let suggestedAction = '';
+    const lower = reply.toLowerCase();
+    if (lower.includes('navigate to profile') || lower.includes('go to profile')) {
+      suggestedAction = 'profile';
+    } else if (lower.includes('navigate to scholarships') || lower.includes('go to scholarships')) {
+      suggestedAction = 'scholarships';
+    } else if (lower.includes('navigate to writing') || lower.includes('go to writing') || lower.includes('cv builder')) {
+      suggestedAction = 'writing';
+    } else if (lower.includes('navigate to community') || lower.includes('go to community')) {
+      suggestedAction = 'community';
+    }
+
+    res.json({ reply, suggestedAction });
   } catch (err: any) {
-    console.log("Librarian: Using offline handbook fallback mode");
+    console.log("Librarian fallback mode active", err.message);
     res.json({
-      reply: `Greetings **${profile.fullName}**! I am here in local handbook mode. \n\n* **Academic Strategy**: Based on your GPA of **${profile.gpa}** and background in **${profile.intendedMajor}**, you show exceptional potential for joint Master's tracks in Europe or research fellowships in Switzerland/Japan.\n* **Next Steps**: Focus heavily on drafting SOP blueprints and requesting references from professors who remember your major achievements. \n\n_Please note: The full brain center of the Wise Librarian is sleeping. Add a GEMINI_API_KEY inside your secure workspace environment to unleash active AI counseling._`
+      reply: `Greetings **${profile.fullName}**! I am here in local handbook mode. \n\n* **Academic Strategy**: Based on your GPA of **${profile.gpa}** and background in **${profile.intendedMajor}**, you show exceptional potential for joint Master's tracks in Europe or research fellowships in Switzerland/Japan.\n* **Next Steps**: Focus heavily on drafting SOP blueprints and requesting references from professors who remember your major achievements. \n\n_Please note: The full live mode of the Wise Librarian is sleeping. Add a custom GEMINI_API_KEY inside your secure Skins & Biomes (Customize tab) to unleash active AI counseling._`
     });
   }
 });
 
-// 3. Mock interview trainer panel (Requires Token)
+// 4. Mock interview trainer panel (Requires Token)
 router.post('/mock-interview', authenticateToken, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
@@ -145,13 +183,14 @@ router.post('/mock-interview', authenticateToken, async (req: Request, res: Resp
     return res.status(404).json({ error: "Candidate profile not found." });
   }
   const { message } = req.body;
+  const customKey = req.headers['x-gemini-key'] as string;
 
   try {
-    if (!hasGeminiKey()) {
+    if (!hasGeminiKey(customKey)) {
       throw new Error("Missing GEMINI_API_KEY");
     }
 
-    const ai = getAI();
+    const ai = getAIClient(customKey);
     const prompt = `You are the lead admissions professor conducting a competitive mock oral panel interview for a highly sought-after fully-funded scholarship admission slot.
 Candidate Profile:
 - Name: ${profile.fullName}

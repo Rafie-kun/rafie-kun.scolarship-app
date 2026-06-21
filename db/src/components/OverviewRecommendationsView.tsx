@@ -238,7 +238,7 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
           </div>
 
           {/* Quick Stats Summary */}
-          <div className="bg-[#4c4c4c] border-4 border-black p-5 rounded-none space-y-4 [box-shadow:inset_-4px_-4px_0_#2b2b2b,inset_4px_4px_0_#777]">
+          <div id="overview-profile-card" className="bg-[#4c4c4c] border-4 border-black p-5 rounded-none space-y-4 [box-shadow:inset_-4px_-4px_0_#2b2b2b,inset_4px_4px_0_#777]">
             <h4 className="font-press text-[9px] text-[#ffff55] mc-text-shadow uppercase border-b-4 border-black pb-2">HERO ARTIFACTS</h4>
             
             <div className="space-y-2 text-xs font-mono">
