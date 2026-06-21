@@ -5,7 +5,7 @@ import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { useAuth } from '../context/AuthContext';
 
 export default function ExportCenterView() {
-  const { authorizedFetch } = useAuth();
+  const { authorizedFetch, rewardPoints } = useAuth();
   const [applications, setApplications] = useState<Application[]>([]);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [selectedFormat, setSelectedFormat] = useState<'pdf' | 'docx' | 'json' | 'md'>('md');
@@ -23,6 +23,17 @@ export default function ExportCenterView() {
       .then(res => res.json())
       .then(data => setProfile(data))
       .catch(err => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    const handleProfileUpdated = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail) {
+        setProfile(customEvent.detail);
+      }
+    };
+    window.addEventListener('profile-updated', handleProfileUpdated);
+    return () => window.removeEventListener('profile-updated', handleProfileUpdated);
   }, []);
 
   const triggerDownload = (filename: string, content: string, mimeType: string) => {
@@ -165,17 +176,9 @@ export default function ExportCenterView() {
       setSuccessMsg(`Successfully exported ${type.toUpperCase()} to file! Check your storage.`);
       
       // Award reward points for utilizing standard export tools
-      await authorizedFetch('/api/profile/reward', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          points: 30,
-          actionName: `Admissions Exporter (${type})`,
-          badgeToUnlock: "Portfolio Architect"
-        })
-      });
-
-      playAdvancementSound();
+      if (rewardPoints) {
+        await rewardPoints(30, `Admissions Exporter (${type})`, "Portfolio Architect");
+      }
     } catch (err) {
       console.error(err);
     } finally {

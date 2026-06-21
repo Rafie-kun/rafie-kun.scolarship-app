@@ -1001,6 +1001,7 @@ export default function ProfileView() {
               <div className="pt-4 border-t-2 border-black flex justify-end">
                 <button
                   type="submit"
+                  id="profile-save-btn"
                   className="mc-btn py-3 px-6 text-[10px] text-[#ffff55] flex items-center gap-1.5 uppercase tracking-wider"
                 >
                   <Save className="w-4 h-4 text-[#ffff55]" /> Save Dossier Blueprint

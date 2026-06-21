@@ -4,7 +4,7 @@ import {
   Trophy, BookOpen, GraduationCap, Calculator, Award, ArrowRight, Save, User, Sparkles,
   Search, BookmarkCheck, Calendar, CheckSquare, Square, MessageSquare, Plus, CheckCircle,
   FolderDown, Building, Navigation, Globe, Menu, X, Coins, HelpCircle, Shield, Sword,
-  Undo, Settings, UserCog
+  Undo, Settings, UserCog, FileText
 } from 'lucide-react';
 
 import OverviewRecommendationsView from './components/OverviewRecommendationsView';
@@ -22,6 +22,7 @@ import DreamUniversityView from './components/DreamUniversityView';
 import CustomizeView from './components/CustomizeView';
 import OnboardingTour from './components/OnboardingTour';
 import AIAssistant from './components/AIAssistant';
+import CVBuilder from './components/CVBuilder';
 
 import LoginScreen from './components/LoginScreen';
 import { useAuth } from './context/AuthContext';
@@ -114,7 +115,7 @@ const getThemeStyling = (themeId: string) => {
 };
 
 export default function App() {
-  const { isLoggedIn, profile, authLoading, logout, rewardPoints } = useAuth();
+  const { isLoggedIn, profile, authLoading, logout, rewardPoints, refreshProfile, updateProfile } = useAuth();
   const { theme, themeMode, setThemeMode } = useTheme();
 
   const [activeTab, setActiveTab] = useState('overview');
@@ -125,8 +126,8 @@ export default function App() {
 
   useEffect(() => {
     if (isLoggedIn && profile) {
-      const completed = localStorage.getItem(`scholarpath_onboarding_completed_${profile.fullName || 'guest'}`);
-      if (completed !== 'true') {
+      const completedOnboarding = localStorage.getItem(`scholarpath_onboarding_completed_${profile.fullName || 'guest'}`) === 'true' || profile.hasCompletedOnboarding;
+      if (!completedOnboarding) {
         setShowTour(true);
       }
     } else {
@@ -171,6 +172,7 @@ export default function App() {
     { id: 'applications', label: 'Quest Book', mcName: 'Redstone Ledger Registry', desc: 'Manage your active application checkpoints and deadlines', icon: BookmarkCheck, color: 'text-red-400' },
     { id: 'simulator', label: 'Alchemist Lab', mcName: 'Admissions Cauldron Brew', desc: 'Forecast acceptances margins with custom parameters', icon: Calculator, color: 'text-indigo-400' },
     { id: 'writing', label: 'Scroll Vault', mcName: 'Golden Writing Quill', desc: 'Evaluate & draft professional Statement documents', icon: Save, color: 'text-cyan-400' },
+    { id: 'cv', label: 'Eminent CV Builder', mcName: 'Diamond Badge Emblem', desc: 'Synthesize custom admissions CV credentials & export PDF', icon: FileText, color: 'text-rose-450 font-bold' },
     { id: 'counselling', label: 'Wise Wizard', mcName: 'Tome of Guidance', desc: 'Speak to the librarian AI about ECTS matches', icon: BookOpen, color: 'text-emerald-400' },
     { id: 'learning', label: 'Navigator Compass', mcName: 'Chronometer Compass', desc: 'Structured timeline maps for global admission stages', icon: Navigation, color: 'text-orange-400' },
     { id: 'community', label: 'Tavern Forum', mcName: 'Broadcasting Beacon', desc: 'Interact with fellow explorers regarding research meta', icon: MessageSquare, color: 'text-purple-400' },
@@ -195,6 +197,8 @@ export default function App() {
         return <DreamUniversityView />;
       case 'writing':
         return <WritingVaultView />;
+      case 'cv':
+        return <CVBuilder />;
       case 'counselling':
         return <CounsellingView />;
       case 'community':
@@ -360,7 +364,7 @@ export default function App() {
             <div className="w-full mc-xp-bar border-4 border-black max-h-[16px] h-3">
               <div 
                 className={`${currentThemeConfig.hudXpFill} h-full transition-all duration-700 ease-out`} 
-                style={{ width: `${Math.min(100, Math.max(4, (((profile?.points ?? 0) / ((profile?.level ?? 1) * 100)) * 100)))}%` }} 
+                style={{ width: `${Math.min(100, Math.max(4, (((profile?.points ?? 0) % 100) / 100 * 100)))}%` }} 
               />
             </div>
           </div>
@@ -600,13 +604,19 @@ export default function App() {
         <OnboardingTour
           onComplete={async (totalXP) => {
             localStorage.setItem(`scholarpath_onboarding_completed_${profile.fullName || 'guest'}`, 'true');
+            if (updateProfile) {
+              await updateProfile({ hasCompletedOnboarding: true });
+            }
             setShowTour(false);
             if (rewardPoints) {
               await rewardPoints(totalXP, "Completed Guided Onboarding Quest", "Onboarding Master");
             }
           }}
-          onSkip={() => {
+          onSkip={async () => {
             localStorage.setItem(`scholarpath_onboarding_completed_${profile.fullName || 'guest'}`, 'true');
+            if (updateProfile) {
+              await updateProfile({ hasCompletedOnboarding: true });
+            }
             setShowTour(false);
           }}
           onNavigateTab={(tabId) => {

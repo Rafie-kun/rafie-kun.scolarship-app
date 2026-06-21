@@ -347,6 +347,17 @@ app.get("/api/notifications", (req, res) => {
   res.json(getNotifications());
 });
 
+// Manual scraper trigger route for instant validation checking
+app.post("/api/scraper/trigger", async (req, res) => {
+  try {
+    const scheduler = await import("./scripts/scheduler");
+    const result = await scheduler.runScraperImmediately();
+    res.json({ success: true, ...result });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // --- VITE DEV MIDDLEWARE & DEPLOYMENT STATIC COMPILING ---
 async function startServer() {
   if (process.env.NODE_ENV !== "production") {
@@ -365,6 +376,11 @@ async function startServer() {
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`[OK] ScholarPath secure SQLite matrix synced on http://0.0.0.0:${PORT}`);
+    
+    // Initialize scheduled admissions & scholarship crawler
+    import("./scripts/scheduler").then(m => m.startScheduler()).catch(err => {
+      console.error("[⚠️] Failed to mount automated scheduler task:", err);
+    });
   });
 }
 

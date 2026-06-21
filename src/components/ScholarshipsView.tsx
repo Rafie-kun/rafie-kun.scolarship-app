@@ -464,13 +464,13 @@ export default function ScholarshipsView() {
               </button>
 
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-2.5 w-4 h-4 text-stone-400" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 pointer-events-none z-10" />
                 <input
                   type="text"
                   value={search}
                   onChange={(e) => { setSearch(e.target.value); setPage(1); }}
                   placeholder="Type name, land, or target major criteria..."
-                  className="scholarship-search-input w-full bg-[#1e1c1b] border-4 border-black py-1.5 pl-9 pr-4 text-xs font-mono text-stone-200 focus:outline-none focus:border-[#ffff55]"
+                  className="scholarship-search-input w-full bg-[#1e1c1b] border-4 border-black py-1.5 pl-11 pr-4 text-xs font-mono text-stone-200 focus:outline-none focus:border-[#ffff55]"
                 />
               </div>
 

@@ -5,7 +5,7 @@ import { useTheme, ThemeId } from '../context/ThemeContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 
 export default function CustomizeView() {
-  const { profile } = useAuth();
+  const { profile, updateProfile } = useAuth();
   const { themeMode, setThemeMode, theme, soundEnabled, textGlow, setTheme, toggleSound } = useTheme();
   
   const [successMsg, setSuccessMsg] = useState('');
@@ -23,13 +23,16 @@ export default function CustomizeView() {
     setKeyStatusMsg("");
 
     try {
-      const res = await fetch('/api/check-gemini-key', {
+      const res = await fetch('/api/gemini/check-gemini-key', {
         headers: { 'x-gemini-key': customKeyInput }
       });
       const data = await res.json();
       if (data.hasKey) {
         localStorage.setItem('scholarpath_custom_gemini_key', customKeyInput.trim());
-        setKeyStatusMsg("✅ SUCCESS: API Key verified & stored securely in browser!");
+        if (updateProfile) {
+          await updateProfile({ customGeminiKey: customKeyInput.trim() });
+        }
+        setKeyStatusMsg("✅ SUCCESS: API Key verified & stored securely in persistent SQLite vault!");
         playAdvancementSound();
       } else {
         setKeyStatusMsg("❌ FAILURE: The admissions node could not activate this key.");
@@ -41,9 +44,12 @@ export default function CustomizeView() {
     }
   };
 
-  const handleDeleteKey = () => {
+  const handleDeleteKey = async () => {
     playClickSound();
     localStorage.removeItem('scholarpath_custom_gemini_key');
+    if (updateProfile) {
+      await updateProfile({ customGeminiKey: '' });
+    }
     setCustomKeyInput('');
     setKeyStatusMsg("🧹 Custom key removed. Reverting to server default credentials.");
   };
@@ -298,9 +304,12 @@ export default function CustomizeView() {
               <span className="text-[9px] uppercase text-stone-400 font-bold block">📖 Interactive Guides</span>
               <button
                 type="button"
-                onClick={() => {
+                onClick={async () => {
                   playClickSound();
                   localStorage.removeItem(`scholarpath_onboarding_completed_${profile?.fullName || 'guest'}`);
+                  if (updateProfile) {
+                    await updateProfile({ hasCompletedOnboarding: false });
+                  }
                   window.dispatchEvent(new CustomEvent('start-onboarding-tour'));
                   setSuccessMsg("QUEST RESET: Initializing guided onboarding tour!");
                   playAdvancementSound();

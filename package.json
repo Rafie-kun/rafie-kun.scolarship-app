@@ -1,6 +1,6 @@
 {
   "name": "scholarpath-app",
-  "version": "3.1.0",
+  "version": "3.2.5",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
@@ -12,14 +12,17 @@
     "@google/genai": "^2.8.0",
     "bcryptjs": "^3.0.3",
     "better-sqlite3": "^12.11.1",
+    "cheerio": "^1.2.0",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.3",
     "jspdf": "^4.2.1",
     "lucide-react": "^0.435.0",
     "motion": "^11.11.17",
+    "node-cron": "^4.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-markdown": "^9.0.1"
+    "react-markdown": "^9.0.1",
+    "rss-parser": "^3.13.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0-beta.8",
@@ -27,6 +30,7 @@
     "@types/better-sqlite3": "^7.6.13",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/node-cron": "^3.0.11",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",

@@ -15,6 +15,7 @@ interface AuthContextType {
   guestLogin: () => Promise<boolean>;
   logout: () => void;
   refreshProfile: () => Promise<void>;
+  updateProfile: (updatedData: Partial<Profile>) => Promise<boolean>;
   rewardPoints: (points: number, actionName: string, badgeToUnlock?: string) => Promise<void>;
   authorizedFetch: (url: string, options?: RequestInit) => Promise<Response>;
 }
@@ -57,6 +58,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.error("Failed to sync profile card:", e);
     }
   };
+
+  useEffect(() => {
+    const handleProfileUpdated = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail && JSON.stringify(customEvent.detail) !== JSON.stringify(profile)) {
+        setProfile(customEvent.detail);
+      }
+    };
+    window.addEventListener('profile-updated', handleProfileUpdated);
+    return () => window.removeEventListener('profile-updated', handleProfileUpdated);
+  }, [profile]);
 
   useEffect(() => {
     const initializeAuth = async () => {
@@ -210,6 +222,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoggedIn(false);
   };
 
+  const updateProfile = async (updatedData: Partial<Profile>): Promise<boolean> => {
+    try {
+      const res = await authorizedFetch('/api/profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedData)
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setProfile(data);
+        window.dispatchEvent(new CustomEvent('profile-updated', { detail: data }));
+        return true;
+      }
+      return false;
+    } catch (e) {
+      console.error("Failed to update profile:", e);
+      return false;
+    }
+  };
+
   const rewardingRef = React.useRef<boolean>(false);
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
 
@@ -259,6 +291,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       guestLogin,
       logout,
       refreshProfile,
+      updateProfile,
       rewardPoints,
       authorizedFetch
     }}>

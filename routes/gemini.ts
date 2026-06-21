@@ -30,8 +30,26 @@ function hasGeminiKey(customKey?: string): boolean {
 
 // 1. Key Check Endpoint
 router.get('/check-gemini-key', (req: Request, res: Response) => {
-  const customKey = req.headers['x-gemini-key'] as string;
-  res.json({ hasKey: hasGeminiKey(customKey) });
+  let customKey = req.headers['x-gemini-key'] as string;
+  let hasKey = hasGeminiKey(customKey);
+  
+  // Try checking auth header for a saved Key
+  const authHeader = req.headers['authorization'];
+  if (authHeader && !hasKey) {
+    const token = authHeader.split(' ')[1];
+    if (token) {
+      try {
+        const jwt = require('jsonwebtoken');
+        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret-jwt-key');
+        const profile = getProfileByUsername(decoded.username);
+        if (profile?.customGeminiKey) {
+          customKey = profile.customGeminiKey;
+          hasKey = hasGeminiKey(customKey);
+        }
+      } catch (e) {}
+    }
+  }
+  res.json({ hasKey });
 });
 
 // 2. SOP Document Evaluation (Requires Token)
@@ -48,7 +66,7 @@ router.post('/review-document', authenticateToken, async (req: Request, res: Res
     return res.status(400).json({ error: "SOP scroll text is required to evaluate!" });
   }
 
-  const customKey = req.headers['x-gemini-key'] as string;
+  const customKey = (req.headers['x-gemini-key'] as string) || profile?.customGeminiKey;
 
   try {
     if (!hasGeminiKey(customKey)) {
@@ -108,7 +126,7 @@ router.post('/study-chat', authenticateToken, async (req: Request, res: Response
     return res.status(400).json({ error: "Missing query parameter." });
   }
 
-  const customKey = req.headers['x-gemini-key'] as string;
+  const customKey = (req.headers['x-gemini-key'] as string) || profile?.customGeminiKey;
 
   try {
     if (!hasGeminiKey(customKey)) {
@@ -183,7 +201,7 @@ router.post('/mock-interview', authenticateToken, async (req: Request, res: Resp
     return res.status(404).json({ error: "Candidate profile not found." });
   }
   const { message } = req.body;
-  const customKey = req.headers['x-gemini-key'] as string;
+  const customKey = (req.headers['x-gemini-key'] as string) || profile?.customGeminiKey;
 
   try {
     if (!hasGeminiKey(customKey)) {

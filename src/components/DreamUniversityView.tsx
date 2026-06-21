@@ -45,6 +45,17 @@ export default function DreamUniversityView() {
       .catch(err => console.error(err));
   }, []);
 
+  useEffect(() => {
+    const handleProfileUpdated = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail) {
+        setProfile(customEvent.detail);
+      }
+    };
+    window.addEventListener('profile-updated', handleProfileUpdated);
+    return () => window.removeEventListener('profile-updated', handleProfileUpdated);
+  }, []);
+
   const runSimulation = async () => {
     playClickSound();
     if (!profile || !selectedUni) return;

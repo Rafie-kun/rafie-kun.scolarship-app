@@ -95,6 +95,17 @@ export default function LearningPathView() {
   };
 
   useEffect(() => {
+    const handleProfileUpdated = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail) {
+        setProfile(customEvent.detail);
+      }
+    };
+    window.addEventListener('profile-updated', handleProfileUpdated);
+    return () => window.removeEventListener('profile-updated', handleProfileUpdated);
+  }, []);
+
+  useEffect(() => {
     generateStatePath();
   }, [timelineSpanMonths]);
 
@@ -119,10 +130,12 @@ export default function LearningPathView() {
             points: 5,
             actionName
           })
-        }).then(() => {
-          if (timeoutRef.current) clearTimeout(timeoutRef.current);
-          timeoutRef.current = setTimeout(() => setSuccess(''), 4000);
-        });
+        }).then(res => res.json())
+          .then(updatedProfile => {
+            dispatchProfileUpdate(updatedProfile);
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            timeoutRef.current = setTimeout(() => setSuccess(''), 4000);
+          });
       }
     }
 

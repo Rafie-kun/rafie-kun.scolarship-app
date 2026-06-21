@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ChevronRight, ChevronLeft, Trophy, Sparkles, Star, ArrowRight } from 'lucide-react';
+import { X, ChevronRight, ChevronLeft, Trophy, Sparkles, ArrowRight } from 'lucide-react';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
-import { tourSteps, TourStep } from '../services/tourService';
+import { tourSteps } from '../services/tourService';
 
 interface OnboardingTourProps {
   onComplete: (totalXP: number) => void;
@@ -13,8 +13,14 @@ interface OnboardingTourProps {
 export default function OnboardingTour({ onComplete, onSkip, onNavigateTab }: OnboardingTourProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [highlightRect, setHighlightRect] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
+  const [viewportRect, setViewportRect] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
   const [tooltipPos, setTooltipPos] = useState({ top: 300, left: 400 });
   
+  // Spotlight position states (viewport relative)
+  const [spotlightX, setSpotlightX] = useState(window.innerWidth / 2);
+  const [spotlightY, setSpotlightY] = useState(window.innerHeight / 2);
+  const [spotlightRadius, setSpotlightRadius] = useState(0);
+
   const [isNavigating, setIsNavigating] = useState(false);
   const [elementFound, setElementFound] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
@@ -25,23 +31,29 @@ export default function OnboardingTour({ onComplete, onSkip, onNavigateTab }: On
   const updatePositionCoordinates = useCallback(() => {
     if (!step.targetSelector) {
       setHighlightRect(null);
+      setViewportRect(null);
       setElementFound(false);
-      // Center the tooltip
+      
+      // Center the tooltip in viewport
       setTooltipPos({
         top: Math.max(100, window.innerHeight / 2 - 110),
         left: Math.max(16, window.innerWidth / 2 - 190)
       });
+      
+      // Clear spotlight area when there's no target step
+      setSpotlightX(window.innerWidth / 2);
+      setSpotlightY(window.innerHeight / 2);
+      setSpotlightRadius(0);
       return;
     }
 
     const targetEl = document.querySelector(step.targetSelector);
     if (targetEl) {
-      // Find element absolute position
       const clientRect = targetEl.getBoundingClientRect();
       const documentTop = clientRect.top + window.scrollY;
       const documentLeft = clientRect.left + window.scrollX;
 
-      // Update highlighter coordinates
+      // Update highlighter coordinates (page relative)
       setHighlightRect({
         top: documentTop,
         left: documentLeft,
@@ -49,28 +61,47 @@ export default function OnboardingTour({ onComplete, onSkip, onNavigateTab }: On
         height: clientRect.height
       });
 
-      // Compute ideal tooltip viewport location relative to the target element
-      // If there is enough space below the target, place tooltip below it.
-      // Otherwise list alternative options (above, or side, or overlay center safe-zone)
+      // Update viewport coordinates for fixed tracking
+      setViewportRect({
+        top: clientRect.top,
+        left: clientRect.left,
+        width: clientRect.width,
+        height: clientRect.height
+      });
+
+      // Update spotlight coordinates (relative to viewport)
+      const centerX = clientRect.left + clientRect.width / 2;
+      const centerY = clientRect.top + clientRect.height / 2;
+      setSpotlightX(centerX);
+      setSpotlightY(centerY);
+
+      // Adjust spotlight hole radius depending on element dimension
+      const maxSide = Math.max(clientRect.width, clientRect.height);
+      setSpotlightRadius(Math.max(60, maxSide * 0.7 + 15));
+
+      // Compute ideal tooltip fixed location relative to the target element's viewport rect
       const spaceBelow = window.innerHeight - clientRect.bottom;
       const spaceAbove = clientRect.top;
 
-      let toolTop = documentTop + clientRect.height + 24;
-      let toolLeft = documentLeft + clientRect.width / 2 - 190;
+      let toolTop = clientRect.bottom + 16;
+      let toolLeft = clientRect.left + clientRect.width / 2 - 190;
 
       if (spaceBelow < 280 && spaceAbove > 280) {
         // Place above target
-        toolTop = Math.max(16, documentTop - 250);
+        toolTop = Math.max(16, clientRect.top - 250);
       } else if (spaceBelow < 250 && spaceAbove < 250) {
-        // Centered fallback
-        toolTop = Math.max(16, documentTop + clientRect.height / 2 - 110);
-        toolLeft = Math.max(16, documentLeft + clientRect.width + 24);
+        // Centered fallback at the side
+        toolTop = Math.max(16, clientRect.top + clientRect.height / 2 - 110);
+        toolLeft = Math.max(16, clientRect.left + clientRect.width + 24);
       }
 
-      // Safeguard boundaries so tooltip doesn't bleed off the viewport margins
+      // Safeguard boundaries so tooltip doesn't bleed off the viewport margins (min 16px, max window.innerWidth - 410px)
       const maxLeft = Math.max(16, window.innerWidth - 410);
       const minLeft = 16;
       toolLeft = Math.max(minLeft, Math.min(toolLeft, maxLeft));
+
+      const maxTop = Math.max(16, window.innerHeight - 280);
+      toolTop = Math.max(16, Math.min(toolTop, maxTop));
 
       setTooltipPos({
         top: toolTop,
@@ -80,11 +111,15 @@ export default function OnboardingTour({ onComplete, onSkip, onNavigateTab }: On
     } else {
       // Fallback centering if element isn't rendered or found yet
       setHighlightRect(null);
+      setViewportRect(null);
       setElementFound(false);
       setTooltipPos({
         top: Math.max(100, window.innerHeight / 2 - 110),
         left: Math.max(16, window.innerWidth / 2 - 190)
       });
+      setSpotlightX(window.innerWidth / 2);
+      setSpotlightY(window.innerHeight / 2);
+      setSpotlightRadius(0);
     }
   }, [step]);
 
@@ -130,7 +165,7 @@ export default function OnboardingTour({ onComplete, onSkip, onNavigateTab }: On
       await new Promise(resolve => setTimeout(resolve, 350));
     }
 
-    // 4. Set accurate final static positions
+    // 4. Set accurate final positions
     updatePositionCoordinates();
     setIsNavigating(false);
   }, [onNavigateTab, updatePositionCoordinates]);
@@ -151,8 +186,8 @@ export default function OnboardingTour({ onComplete, onSkip, onNavigateTab }: On
     window.addEventListener('scroll', handleUpdate, { passive: true });
     window.addEventListener('resize', handleUpdate, { passive: true });
 
-    // Double-safety continuous frame updates for animated layouts/accordion adjustments
-    const animationFrameId = setInterval(handleUpdate, 150);
+    // Continuous frames check for animations and side-menus
+    const animationFrameId = setInterval(handleUpdate, 120);
 
     return () => {
       window.removeEventListener('scroll', handleUpdate);
@@ -186,31 +221,45 @@ export default function OnboardingTour({ onComplete, onSkip, onNavigateTab }: On
   const hasTarget = step.targetSelector && elementFound && highlightRect;
 
   return (
-    <div className="fixed inset-0 z-[9998] overflow-y-auto overflow-x-hidden pointer-events-none select-none">
-      {/* 🚀 FIX 1 & 4: PERMANENT DEEP BACKDROP OVERLAY OVER RUNNING SPA TABS */}
+    <div className="fixed inset-0 z-[9998] overflow-hidden pointer-events-none select-none">
+      
+      {/* 🎯 SPOTLIGHT BACKDROP OVERLAY with webkit-mask image */}
       <div 
-        className="fixed inset-0 pointer-events-auto bg-black/85 backdrop-blur-[2px]" 
-        style={{ zIndex: 9998 }}
+        className="fixed inset-0 pointer-events-none transition-all duration-150"
+        style={{
+          zIndex: 9998,
+          backgroundColor: 'rgba(0, 0, 0, 0.78)',
+          maskImage: spotlightRadius > 0 
+            ? `radial-gradient(circle ${spotlightRadius}px at ${spotlightX}px ${spotlightY}px, transparent 0%, transparent ${spotlightRadius - 8}px, black ${spotlightRadius}px, black 100%)`
+            : 'none',
+          WebkitMaskImage: spotlightRadius > 0 
+            ? `radial-gradient(circle ${spotlightRadius}px at ${spotlightX}px ${spotlightY}px, transparent 0%, transparent ${spotlightRadius - 8}px, black ${spotlightRadius}px, black 100%)`
+            : 'none',
+          maskComposite: 'add',
+        }}
       />
 
-      {/* 🚀 FIX 2 & 3: RELATIVE HIGHLIGHT OVERLAY POSITIONED ON VIEWPORT BOUNDS */}
-      {hasTarget && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="absolute pointer-events-none rounded-none animate-tour-glow border-4"
+      {/* BLOCK INTERACTION OVER ANY BACKGROUND EXCEPT THE TOOLTIP (Transparent back-cover so click won't accidentally exit) */}
+      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 9997 }} />
+
+      {/* 🚀 FIXED BINDING HIGH-CONTRAST GOLD GLOW BORDER */}
+      {hasTarget && viewportRect && (
+        <div
+          className="fixed pointer-events-none rounded-none border-4 transition-all duration-75"
           style={{
-            top: highlightRect.top - 8,
-            left: highlightRect.left - 8,
-            width: highlightRect.width + 16,
-            height: highlightRect.height + 16,
-            zIndex: 9999
+            top: viewportRect.top - 8,
+            left: viewportRect.left - 8,
+            width: viewportRect.width + 16,
+            height: viewportRect.height + 16,
+            borderColor: '#ffff55',
+            boxShadow: '0 0 25px rgba(255,255,85,0.7), 0 0 50px rgba(255,255,85,0.4)',
+            zIndex: 9999,
+            animation: 'pulse-glow 2s infinite'
           }}
         />
       )}
 
-      {/* Interactive Tooltip Card framed nicely using retro pixel border */}
+      {/* Interactive Tooltip Card */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentStep}
@@ -218,7 +267,7 @@ export default function OnboardingTour({ onComplete, onSkip, onNavigateTab }: On
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.22 }}
-          className="absolute pointer-events-auto bg-[#2c2c2c] border-4 border-black p-5 w-[#90%] sm:w-[380px] rounded-none [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555,0_15px_40px_rgba(0,0,0,0.9)] text-stone-200"
+          className="fixed pointer-events-auto bg-[#2c2c2c] border-4 border-black p-5 w-[#90%] sm:w-[380px] rounded-none [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555,0_15px_40px_rgba(0,0,0,0.9)] text-stone-200"
           style={{
             top: tooltipPos.top,
             left: tooltipPos.left,

@@ -60,6 +60,8 @@ db.exec(`
     satScore INTEGER,
     profilePicture TEXT,
     lastDailyCheckin TEXT,
+    hasCompletedOnboarding INTEGER DEFAULT 0,
+    customGeminiKey TEXT,
     FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
   );
 
@@ -153,7 +155,9 @@ try {
     { name: 'aLevelSubjects', type: 'TEXT' },
     { name: 'satScore', type: 'INTEGER' },
     { name: 'profilePicture', type: 'TEXT' },
-    { name: 'lastDailyCheckin', type: 'TEXT' }
+    { name: 'lastDailyCheckin', type: 'TEXT' },
+    { name: 'hasCompletedOnboarding', type: 'INTEGER DEFAULT 0' },
+    { name: 'customGeminiKey', type: 'TEXT' }
   ];
 
   for (const col of profileColsToAdd) {
@@ -214,7 +218,9 @@ function deserializeProfile(row: any): Profile | null {
     aLevelSubjects: JSON.parse(row.aLevelSubjects || '[]'),
     satScore: row.satScore !== null && row.satScore !== undefined ? row.satScore : null,
     profilePicture: row.profilePicture || undefined,
-    lastDailyCheckin: row.lastDailyCheckin || undefined
+    lastDailyCheckin: row.lastDailyCheckin || undefined,
+    hasCompletedOnboarding: row.hasCompletedOnboarding === 1,
+    customGeminiKey: row.customGeminiKey || undefined
   };
 }
 
@@ -253,9 +259,10 @@ export function createNewUser(username: string, passwordHash: string, fullName: 
       country, nationality, gpa, maxGpa, ieltsScore, greScore, leadershipExperience,
       projects, volunteerExperience, badges, educationLevel, highSchoolName, collegeName,
       primaryMajor, secondaryMajor, minor, graduationYear, additionalSkills, resumePdf,
-      rewardedActions, oLevelSubjects, aLevelSubjects, satScore, profilePicture, lastDailyCheckin
+      rewardedActions, oLevelSubjects, aLevelSubjects, satScore, profilePicture, lastDailyCheckin,
+      hasCompletedOnboarding, customGeminiKey
     ) VALUES (
-      ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+      ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
     )
   `);
 
@@ -294,7 +301,9 @@ export function createNewUser(username: string, passwordHash: string, fullName: 
       JSON.stringify(profile.aLevelSubjects || []),
       profile.satScore || null,
       profile.profilePicture || null,
-      profile.lastDailyCheckin || null
+      profile.lastDailyCheckin || null,
+      profile.hasCompletedOnboarding ? 1 : 0,
+      profile.customGeminiKey || null
     );
   });
 
@@ -316,7 +325,8 @@ export function saveProfile(username: string, updated: Partial<Profile>): void {
       educationLevel = ?, highSchoolName = ?, collegeName = ?, primaryMajor = ?,
       secondaryMajor = ?, minor = ?, graduationYear = ?, additionalSkills = ?,
       resumePdf = ?, rewardedActions = ?, oLevelSubjects = ?, aLevelSubjects = ?,
-      satScore = ?, profilePicture = ?, lastDailyCheckin = ?
+      satScore = ?, profilePicture = ?, lastDailyCheckin = ?,
+      hasCompletedOnboarding = ?, customGeminiKey = ?
     WHERE LOWER(username) = LOWER(?)
   `);
 
@@ -351,6 +361,8 @@ export function saveProfile(username: string, updated: Partial<Profile>): void {
     merged.satScore || null,
     merged.profilePicture || null,
     merged.lastDailyCheckin || null,
+    merged.hasCompletedOnboarding ? 1 : 0,
+    merged.customGeminiKey || null,
     username
   );
 }

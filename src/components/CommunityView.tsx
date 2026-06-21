@@ -5,7 +5,7 @@ import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { useAuth } from '../context/AuthContext';
 
 export default function CommunityView() {
-  const { authorizedFetch } = useAuth();
+  const { authorizedFetch, rewardPoints } = useAuth();
   const [posts, setPosts] = useState<CommunityPost[]>([]);
   const [loading, setLoading] = useState(true);
   
@@ -68,19 +68,12 @@ export default function CommunityView() {
       const actionName = `Created forum thread: ${title}`;
       if (!rewardedActionsRef.current.has(actionName)) {
         rewardedActionsRef.current.add(actionName);
-        await authorizedFetch('/api/profile/reward', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            points: 20,
-            actionName,
-            badgeToUnlock: "Vocal Scholar"
-          })
-        });
+        if (rewardPoints) {
+          await rewardPoints(20, actionName, "Vocal Scholar");
+        }
       }
 
       setSuccess(`Admissions feed updated! Posted discussion thread.`);
-      playAdvancementSound();
       
       setTitle('');
       setContent('');
