@@ -1,0 +1,10 @@
+{
+  "name": "ScholarPath",
+  "description": "An AI-powered academic success ecosystem containing admissions checklists, entrance simulations, SOP writing evaluation labs, and mentorship boards.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
