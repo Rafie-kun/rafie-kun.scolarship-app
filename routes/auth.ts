@@ -239,50 +239,55 @@ router.post('/login', (req: Request, res: Response) => {
 
 // Spawn / register as guest player session
 router.post('/guest', (req: Request, res: Response) => {
-  // Generate random guest user suffix
-  const guestUser = `guest_${Math.floor(1000 + Math.random() * 9000)}`;
-  
-  // Clone starter guest profile
-  const guestProfile: Profile = {
-    fullName: `Guest Explorer #${guestUser.split('_')[1]}`,
-    level: 1,
-    points: 40,
-    intendedMajor: "Information Technology",
-    intendedDegree: "Master's Degree",
-    country: "Canada",
-    nationality: "Explorer Space",
-    gpa: 3.50,
-    maxGpa: 4.0,
-    ieltsScore: "7.0",
-    greScore: "310",
-    leadershipExperience: ["Novice Camp Counselor"],
-    projects: ["Procedural Map Builder"],
-    volunteerExperience: ["Local Highschool Coding Club Support"],
-    badges: ["Fresh Spawn"],
-    educationLevel: "high_school",
-    highSchoolName: "Explorer Secondary Academy",
-    collegeName: "",
-    primaryMajor: "Information Technology",
-    secondaryMajor: "",
-    minor: "",
-    graduationYear: 2026,
-    additionalSkills: ["Java", "HTML/CSS", "Python Basics"],
-    resumePdf: "",
-    rewardedActions: []
-  };
+  try {
+    // Generate random guest user suffix
+    const guestUser = `guest_${Math.floor(1000 + Math.random() * 9000)}`;
+    
+    // Clone starter guest profile
+    const guestProfile: Profile = {
+      fullName: `Guest Explorer #${guestUser.split('_')[1]}`,
+      level: 1,
+      points: 40,
+      intendedMajor: "Information Technology",
+      intendedDegree: "Master's Degree",
+      country: "Canada",
+      nationality: "Explorer Space",
+      gpa: 3.50,
+      maxGpa: 4.0,
+      ieltsScore: "7.0",
+      greScore: "310",
+      leadershipExperience: ["Novice Camp Counselor"],
+      projects: ["Procedural Map Builder"],
+      volunteerExperience: ["Local Highschool Coding Club Support"],
+      badges: ["Fresh Spawn"],
+      educationLevel: "high_school",
+      highSchoolName: "Explorer Secondary Academy",
+      collegeName: "",
+      primaryMajor: "Information Technology",
+      secondaryMajor: "",
+      minor: "",
+      graduationYear: 2026,
+      additionalSkills: ["Java", "HTML/CSS", "Python Basics"],
+      resumePdf: "",
+      rewardedActions: []
+    };
 
-  const guestSalt = bcrypt.genSaltSync(8);
-  const guestHash = bcrypt.hashSync("guest_" + guestUser, guestSalt);
-  createNewUser(guestUser, guestHash, guestProfile.fullName, guestProfile);
+    const guestSalt = bcrypt.genSaltSync(8);
+    const guestHash = bcrypt.hashSync("guest_" + guestUser, guestSalt);
+    createNewUser(guestUser, guestHash, guestProfile.fullName, guestProfile);
 
-  const token = jwt.sign({ username: guestUser, isGuest: true }, JWT_SECRET, { expiresIn: '2h' });
-  setAuthCookie(req, res, token, true);
+    const token = jwt.sign({ username: guestUser, isGuest: true }, JWT_SECRET, { expiresIn: '2h' });
+    setAuthCookie(req, res, token, true);
 
-  res.json({
-    success: true,
-    username: guestUser,
-    profile: guestProfile
-  });
+    res.json({
+      success: true,
+      username: guestUser,
+      profile: guestProfile
+    });
+  } catch (err: any) {
+    console.error("Guest login error:", err);
+    res.status(500).json({ error: "Guest spawn failed: " + err.message });
+  }
 });
 
 // Logout – Clears httpOnly Cookie

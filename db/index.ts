@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 import { Profile, Application, AppNotification, CommunityPost, CVData } from '../src/types';
 
 // Ensure data folder exists
-const isVercel = process.env.VERCEL === '1';
+const isVercel = !!process.env.VERCEL;
 const dbDir = isVercel ? '/tmp/scholarpath-data' : path.join(process.cwd(), 'data');
 if (!fs.existsSync(dbDir)) {
   fs.mkdirSync(dbDir, { recursive: true });
