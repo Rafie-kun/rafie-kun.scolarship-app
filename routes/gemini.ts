@@ -235,4 +235,38 @@ Keep your response limited to 2-3 short, highly structured paragraphs. Act stric
   }
 });
 
+// 5. Budget tips endpoint
+router.post('/budget-tips', async (req: Request, res: Response) => {
+  const { country, university, totalCost, yearlyEarnings, netCost, currency, hourlyWage, workHours } = req.body;
+  
+  try {
+    const ai = getAIClient();
+    const prompt = `You are a financial advisor for international students. The user is planning to study in ${country} at ${university}.
+    
+    Budget:
+    - Total annual cost: ${currency} ${totalCost}
+    - Part‑time earnings: ${currency} ${yearlyEarnings}
+    - Net cost: ${currency} ${netCost}
+    - Hourly wage: ${currency} ${hourlyWage}
+    - Legal work hours: ${workHours}/week
+    
+    Provide 4‑5 actionable tips on:
+    1. How to save money on living expenses.
+    2. Which scholarships to look for.
+    3. Best part‑time jobs for students in ${country}.
+    4. General advice to reduce the net cost.
+    
+    Format your response in clean Markdown with bullet points.`;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-3.5-flash',
+      contents: prompt,
+    });
+
+    res.json({ tips: response.text });
+  } catch (err) {
+    res.json({ tips: `### 🌟 Quick Tips for ${country}\n\n- Look for DAAD or other government scholarships.\n- Consider sharing accommodation to reduce rent.\n- Work up to ${workHours} hours/week legally.\n- Apply for university‑specific financial aid.\n- Use student discounts for transport and food.` });
+  }
+});
+
 export default router;

@@ -1,0 +1,56 @@
+[
+  {
+    "country": "Germany",
+    "currency": "EUR",
+    "tuitionPublic": 1500,
+    "tuitionPrivate": 12000,
+    "rentMonthly": 400,
+    "foodMonthly": 250,
+    "transportMonthly": 100,
+    "healthInsuranceMonthly": 120,
+    "miscMonthly": 200,
+    "hourlyWage": 12,
+    "workHoursPerWeek": 20,
+    "universities": [
+      { "name": "Technical University of Munich", "tuition": 1500 },
+      { "name": "LMU Munich", "tuition": 1500 },
+      { "name": "Heidelberg University", "tuition": 1500 }
+    ]
+  },
+  {
+    "country": "United Kingdom",
+    "currency": "GBP",
+    "tuitionPublic": 9250,
+    "tuitionPrivate": 35000,
+    "rentMonthly": 700,
+    "foodMonthly": 300,
+    "transportMonthly": 150,
+    "healthInsuranceMonthly": 0,
+    "miscMonthly": 200,
+    "hourlyWage": 11,
+    "workHoursPerWeek": 20,
+    "universities": [
+      { "name": "University of Oxford", "tuition": 35000 },
+      { "name": "University of Cambridge", "tuition": 35000 },
+      { "name": "Imperial College London", "tuition": 35000 }
+    ]
+  },
+  {
+    "country": "United States",
+    "currency": "USD",
+    "tuitionPublic": 25000,
+    "tuitionPrivate": 55000,
+    "rentMonthly": 1200,
+    "foodMonthly": 400,
+    "transportMonthly": 150,
+    "healthInsuranceMonthly": 300,
+    "miscMonthly": 250,
+    "hourlyWage": 15,
+    "workHoursPerWeek": 20,
+    "universities": [
+      { "name": "Harvard University", "tuition": 55000 },
+      { "name": "Stanford University", "tuition": 57000 },
+      { "name": "MIT", "tuition": 55500 }
+    ]
+  }
+]

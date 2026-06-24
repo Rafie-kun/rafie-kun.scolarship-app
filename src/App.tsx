@@ -23,6 +23,7 @@ import CustomizeView from './components/CustomizeView';
 import OnboardingTour from './components/OnboardingTour';
 import AIAssistant from './components/AIAssistant';
 import CVBuilder from './components/CVBuilder';
+import BudgetPlanner from './components/BudgetPlanner';
 
 import LoginScreen from './components/LoginScreen';
 import { useAuth } from './context/AuthContext';
@@ -174,6 +175,7 @@ export default function App() {
     { id: 'writing', label: 'Scroll Vault', mcName: 'Golden Writing Quill', desc: 'Evaluate & draft professional Statement documents', icon: Save, color: 'text-cyan-400' },
     { id: 'cv', label: 'Eminent CV Builder', mcName: 'Diamond Badge Emblem', desc: 'Synthesize custom admissions CV credentials & export PDF', icon: FileText, color: 'text-rose-450 font-bold' },
     { id: 'counselling', label: 'Wise Wizard', mcName: 'Tome of Guidance', desc: 'Speak to the librarian AI about ECTS matches', icon: BookOpen, color: 'text-emerald-400' },
+    { id: 'budget', label: 'Budget Planner', mcName: 'Golden Coins', desc: 'Calculate study costs & part-time earnings', icon: Coins, color: 'text-[#2ecc71]' },
     { id: 'learning', label: 'Navigator Compass', mcName: 'Chronometer Compass', desc: 'Structured timeline maps for global admission stages', icon: Navigation, color: 'text-orange-400' },
     { id: 'community', label: 'Tavern Forum', mcName: 'Broadcasting Beacon', desc: 'Interact with fellow explorers regarding research meta', icon: MessageSquare, color: 'text-purple-400' },
     { id: 'mentors', label: 'Alumni Guild', mcName: 'Master Guide Scroll', desc: 'Consult with vetting alumni from top fellowship chains', icon: Award, color: 'text-pink-400' },
@@ -201,6 +203,8 @@ export default function App() {
         return <CVBuilder />;
       case 'counselling':
         return <CounsellingView />;
+      case 'budget':
+        return <BudgetPlanner />;
       case 'community':
         return <CommunityView />;
       case 'learning':

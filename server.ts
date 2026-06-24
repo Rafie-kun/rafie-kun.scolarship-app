@@ -360,13 +360,13 @@ app.post("/api/scraper/trigger", async (req, res) => {
 
 // --- VITE DEV MIDDLEWARE & DEPLOYMENT STATIC COMPILING ---
 async function startServer() {
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env.NODE_ENV !== "production" && !process.env.VERCEL) {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
     });
     app.use(vite.middlewares);
-  } else {
+  } else if (!process.env.VERCEL) {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
     app.get("*", (req, res) => {
@@ -374,14 +374,20 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`[OK] ScholarPath secure SQLite matrix synced on http://0.0.0.0:${PORT}`);
-    
-    // Initialize scheduled admissions & scholarship crawler
-    import("./scripts/scheduler").then(m => m.startScheduler()).catch(err => {
-      console.error("[⚠️] Failed to mount automated scheduler task:", err);
+  if (!process.env.VERCEL) {
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`[OK] ScholarPath secure SQLite matrix synced on http://0.0.0.0:${PORT}`);
+      
+      // Initialize scheduled admissions & scholarship crawler
+      import("./scripts/scheduler").then(m => m.startScheduler()).catch(err => {
+        console.error("[⚠️] Failed to mount automated scheduler task:", err);
+      });
     });
-  });
+  }
 }
 
-startServer();
+if (!process.env.VERCEL) {
+  startServer();
+}
+
+export default app;

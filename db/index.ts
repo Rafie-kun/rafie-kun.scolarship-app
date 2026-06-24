@@ -5,12 +5,19 @@ import bcrypt from 'bcryptjs';
 import { Profile, Application, AppNotification, CommunityPost, CVData } from '../src/types';
 
 // Ensure data folder exists
-const dbDir = path.join(process.cwd(), 'data');
+const isVercel = process.env.VERCEL === '1';
+const dbDir = isVercel ? '/tmp/scholarpath-data' : path.join(process.cwd(), 'data');
 if (!fs.existsSync(dbDir)) {
   fs.mkdirSync(dbDir, { recursive: true });
 }
 
+// Copy default db to tmp on vercel if it doesn't exist but we have a bundled one
 const dbPath = path.join(dbDir, 'app.db');
+const bundledDbPath = path.join(process.cwd(), 'data', 'app.db');
+if (isVercel && !fs.existsSync(dbPath) && fs.existsSync(bundledDbPath)) {
+  fs.copyFileSync(bundledDbPath, dbPath);
+}
+
 export const db = new Database(dbPath);
 
 // Enable WAL journal mode for high performance
