@@ -116,9 +116,9 @@ export default function DreamUniversityView() {
     // Compile customized reasons
     const reasons: string[] = [];
     if (gpaDifference >= 0) {
-      reasons.push(`Hypothetical GPA of ${computedGpa.toFixed(2)} meets or matches the target institution's mean entering criteria (${selectedUni.averageGpa.toFixed(2)}).`);
+      reasons.push(`Hypothetical GPA of ${computedGpa.toFixed(2)} meets or matches the target institution's mean entering criteria (${(selectedUni.averageGpa ?? 3.0).toFixed(2)}).`);
     } else {
-      reasons.push(`Hypothetical GPA of ${computedGpa.toFixed(2)} remains below the baseline entering criteria (${selectedUni.averageGpa.toFixed(2)}).`);
+      reasons.push(`Hypothetical GPA of ${computedGpa.toFixed(2)} remains below the baseline entering criteria (${(selectedUni.averageGpa ?? 3.0).toFixed(2)}).`);
     }
 
     if (hasResearchProject) {

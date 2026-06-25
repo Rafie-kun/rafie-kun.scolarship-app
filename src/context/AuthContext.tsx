@@ -22,9 +22,27 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const defaultProfile: Profile = {
+  fullName: 'Guest Explorer',
+  level: 1,
+  points: 0,
+  gpa: 3.0,
+  maxGpa: 4.0,
+  educationLevel: 'undergraduate',
+  intendedDegree: 'undergraduate',
+  intendedMajor: 'Computer Science',
+  badges: [],
+  leadershipExperience: [],
+  projects: [],
+  volunteerExperience: [],
+  additionalSkills: [],
+  hasCompletedOnboarding: false,
+  offlineMode: true
+};
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<string | null>(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
+  const [profile, setProfile] = useState<Profile | null>(defaultProfile);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isGuest, setIsGuest] = useState<boolean>(false);
   const [authLoading, setAuthLoading] = useState<boolean>(true);
@@ -88,17 +106,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (res.ok) {
           const data = await res.json();
           setUser(data.username);
-          setProfile(data.profile);
+          setProfile(data.profile || defaultProfile);
           setIsGuest(!!data.isGuest);
           setIsLoggedIn(true);
         } else {
           // No session or guest spawned yet, keep logged out
           setIsLoggedIn(false);
           setUser(null);
-          setProfile(null);
+          setProfile(defaultProfile);
         }
       } catch (e) {
         console.warn("Cookies check failed on initialization", e);
+        setIsLoggedIn(true);
+        setUser(defaultProfile.fullName);
+        setProfile(defaultProfile);
+        setIsGuest(true);
       } finally {
         setAuthLoading(false);
       }
@@ -340,7 +362,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.warn("Logout request failed, clearing states locally", e);
     }
     setUser(null);
-    setProfile(null);
+    setProfile(defaultProfile);
     setIsGuest(false);
     setIsLoggedIn(false);
   };

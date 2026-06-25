@@ -375,7 +375,7 @@ export default function UniversitiesView() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-stone-400 text-[11px]">Target GPA Limit:</span>
-                        <span className="font-bold text-[#ffaa00]">{uni.averageGpa.toFixed(2)}</span>
+                        <span className="font-bold text-[#ffaa00]">{(uni.averageGpa ?? 3.0).toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-stone-400 text-[11px]">Est. Annual Tuition:</span>
@@ -706,7 +706,7 @@ export default function UniversitiesView() {
                 </div>
                 <div className="space-y-1">
                   <span className="text-stone-400 text-[10px] block">ADMIT GPA REQUIREMENT:</span>
-                  <span className="font-bold text-[#ffaa00]">{selectedUni.averageGpa.toFixed(2)} / 4.0</span>
+                  <span className="font-bold text-[#ffaa00]">{(selectedUni.averageGpa ?? 3.0).toFixed(2)} / 4.0</span>
                 </div>
                 <div className="space-y-1">
                   <span className="text-stone-400 text-[10px] block">ACCEPTANCE PROBABILITY:</span>

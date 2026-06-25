@@ -255,7 +255,7 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
             <div className="space-y-2 text-xs font-mono">
               <div className="p-3 bg-[#2a2a2a] border-2 border-black flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4 rounded-none [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
                 <span className="text-[#ffaa00] font-bold">GPA CAP LIMIT:</span>
-                <span className="font-press text-[8px] sm:text-[9px] text-[#55ff55]">{profile?.gpa?.toFixed(2) ?? '—'} / {profile?.maxGpa?.toFixed(1) ?? '—'}</span>
+                <span className="font-press text-[8px] sm:text-[9px] text-[#55ff55]">{profile?.gpa?.toFixed(2) ?? '3.00'} / {profile?.maxGpa?.toFixed(1) ?? '4.0'}</span>
               </div>
               <div className="p-3 bg-[#2a2a2a] border-2 border-black flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4 rounded-none [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
                 <span className="text-[#ffaa00] font-bold">TARGET CLASS:</span>

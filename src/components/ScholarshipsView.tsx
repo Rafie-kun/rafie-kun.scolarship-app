@@ -254,7 +254,7 @@ export default function ScholarshipsView() {
       providerOrUni: sch.provider,
       deadline: sch.deadline,
       status: 'Saved' as const,
-      notes: `Tracked automatically under Candidate GPA profile. Required Threshold: ≥ ${sch.gpaRequirement.toFixed(2)}.`,
+      notes: `Tracked automatically under Candidate GPA profile. Required Threshold: ≥ ${(sch.gpaRequirement ?? 3.0).toFixed(2)}.`,
       checklist: [
         { text: 'Check curriculum credit hours guidelines', done: false },
         { text: 'Outline custom Statement of Purpose', done: false },
@@ -607,7 +607,7 @@ export default function ScholarshipsView() {
                             <span className="font-bold flex items-center gap-1.5 mt-0.5">
                               <Target className="w-4 h-4 text-purple-400" />
                               <span className={gpaMatch ? "text-[#55ff55]" : "text-[#ff5555]"}>
-                                ≥ {sch.gpaRequirement.toFixed(2)}
+                                ≥ {(sch.gpaRequirement ?? 3.0).toFixed(2)}
                               </span>
                               {gpaMatch ? (
                                 <span className="text-[9px] text-[#55ff55] bg-emerald-950 px-1 border border-emerald-500/20 rounded-none">Eligible</span>
@@ -811,7 +811,7 @@ export default function ScholarshipsView() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono p-3 bg-black/35 border border-black">
                         <div>
                           <span className="text-[#a8a29e] block text-[9px] uppercase">GPA minimum:</span>
-                          <span className="font-bold text-[#ffaa00] mt-0.5 block">≥ {sch.gpaRequirement.toFixed(2)}</span>
+                          <span className="font-bold text-[#ffaa00] mt-0.5 block">≥ {(sch.gpaRequirement ?? 3.0).toFixed(2)}</span>
                         </div>
                         <div>
                           <span className="text-[#a8a29e] block text-[9px] uppercase">Eligible Majors:</span>
@@ -945,7 +945,7 @@ export default function ScholarshipsView() {
                     </div>
                     <div>
                       <span className="text-stone-400 text-[10px] uppercase block">Active Target GPA Threshold:</span>
-                      <span className="font-bold text-[#ffaa00]">≥ {selectedSch.gpaRequirement.toFixed(2)}</span>
+                      <span className="font-bold text-[#ffaa00]">≥ {(selectedSch.gpaRequirement ?? 3.0).toFixed(2)}</span>
                     </div>
                     <div>
                       <span className="text-stone-400 text-[10px] uppercase block">Submissions Deadline:</span>
@@ -1141,7 +1141,7 @@ export default function ScholarshipsView() {
                               <span className="text-stone-400 text-[10px] block">{uni.city}, {uni.country} • Rank #{uni.ranking}</span>
                             </div>
                             <span className="text-[10px] bg-indigo-950 px-2 py-0.5 text-indigo-300 font-bold border border-indigo-800">
-                              GPA Req: ≥{uni.averageGpa.toFixed(2)}
+                              GPA Req: ≥{(uni.averageGpa ?? 3.0).toFixed(2)}
                             </span>
                           </div>
                           
