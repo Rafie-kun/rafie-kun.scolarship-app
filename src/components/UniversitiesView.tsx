@@ -390,7 +390,7 @@ export default function UniversitiesView() {
                     <div className="pt-2">
                       <span className="text-[9px] font-mono uppercase text-[#64e3ff] block mb-1">Strong Core Facilities:</span>
                       <div className="flex flex-wrap gap-1">
-                        {uni.popularMajors.slice(0, 3).map((major, i) => (
+                        {uni.popularMajors?.slice(0, 3).map((major, i) => (
                           <span key={i} className="bg-stone-900 border border-stone-800 text-[10px] text-stone-300 px-1.5 py-0.5">
                             {major}
                           </span>
@@ -633,7 +633,7 @@ export default function UniversitiesView() {
                         </p>
 
                         <div className="flex flex-wrap gap-1.5 pt-1">
-                          {recItem.university.popularMajors.map((m, idx) => (
+                          {recItem.university.popularMajors?.map((m, idx) => (
                             <span key={idx} className="bg-stone-900 text-stone-400 border border-stone-800 font-sans text-[11px] px-2 py-0.5">
                               {m}
                             </span>
@@ -731,7 +731,7 @@ export default function UniversitiesView() {
                 <div className="p-2.5 bg-stone-900 border border-stone-800 text-stone-350 italic">
                   {selectedUni.offeredScholarships && selectedUni.offeredScholarships.length > 0 ? (
                     <div className="flex flex-wrap gap-1.5">
-                      {selectedUni.offeredScholarships.map(schId => (
+                      {selectedUni.offeredScholarships?.map(schId => (
                         <span key={schId} className="bg-[#3b3b8c] text-yellow-300 font-press text-[8px] px-2 py-1 uppercase border border-black select-none">
                           🔑 {schId}
                         </span>
@@ -746,7 +746,7 @@ export default function UniversitiesView() {
               <div className="space-y-2">
                 <span className="text-[10px] font-press text-stone-400 uppercase block">POPULAR MAJORS CATALOGED:</span>
                 <div className="flex flex-wrap gap-1.5">
-                  {selectedUni.popularMajors.map((major, i) => (
+                  {selectedUni.popularMajors?.map((major, i) => (
                     <span key={i} className="bg-stone-900 text-stone-250 px-2 py-0.5 border border-stone-800 select-all font-sans text-xs">
                       {major}
                     </span>

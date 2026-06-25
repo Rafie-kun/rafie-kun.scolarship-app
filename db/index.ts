@@ -794,9 +794,13 @@ export function seedUniversitiesIfEmpty(): void {
   if (countUnis.count === 0) {
     console.log('[SQLite DB] Seeding universities table from raw json stream...');
     const searchPaths = [
+      path.join(process.cwd(), 'public', 'data', 'universities.json'),
       path.join(process.cwd(), 'data', 'universities.json'),
+      path.join(__dirname, '..', 'public', 'data', 'universities.json'),
       path.join(__dirname, '..', 'data', 'universities.json'),
+      path.join(__dirname, '../../public/data', 'universities.json'),
       path.join(__dirname, '../../data', 'universities.json'),
+      path.join('/var/task', 'public', 'data', 'universities.json'),
       path.join('/var/task', 'data', 'universities.json')
     ];
     let universitiesPath = '';

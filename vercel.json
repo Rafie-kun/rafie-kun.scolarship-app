@@ -4,7 +4,7 @@
       "src": "server.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["data/**", "public/data/**"]
+        "includeFiles": ["data/**", "public/data/**", "dist/**"]
       }
     }
   ],
@@ -15,8 +15,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/server.ts"
     }
-  ],
-  "outputDirectory": "dist"
+  ]
 }

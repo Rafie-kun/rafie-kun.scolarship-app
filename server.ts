@@ -359,6 +359,20 @@ app.post("/api/scraper/trigger", async (req, res) => {
 });
 
 // --- VITE DEV MIDDLEWARE & DEPLOYMENT STATIC COMPILING ---
+if (process.env.VERCEL) {
+  const distPath = path.join(__dirname, "dist");
+  app.use(express.static(distPath));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(distPath, "index.html"));
+  });
+} else if (process.env.NODE_ENV === "production") {
+  const distPath = path.join(process.cwd(), "dist");
+  app.use(express.static(distPath));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(distPath, "index.html"));
+  });
+}
+
 async function startServer() {
   if (process.env.NODE_ENV !== "production" && !process.env.VERCEL) {
     const vite = await createViteServer({
@@ -366,11 +380,10 @@ async function startServer() {
       appType: "spa",
     });
     app.use(vite.middlewares);
-  } else if (!process.env.VERCEL) {
-    const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
+    
+    // Fallback for DEV mode SPA
     app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
+      res.sendFile(path.join(process.cwd(), "index.html"));
     });
   }
 

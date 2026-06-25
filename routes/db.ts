@@ -204,9 +204,13 @@ try {
     const __dirname = __filename ? path.dirname(__filename) : process.cwd();
     
     const searchPaths = [
+      path.join(process.cwd(), 'public', 'data', 'universities.json'),
       path.join(process.cwd(), 'data', 'universities.json'),
+      path.join(__dirname, '..', 'public', 'data', 'universities.json'),
       path.join(__dirname, '..', 'data', 'universities.json'),
+      path.join(__dirname, '../../public/data', 'universities.json'),
       path.join(__dirname, '../../data', 'universities.json'),
+      path.join('/var/task', 'public', 'data', 'universities.json'),
       path.join('/var/task', 'data', 'universities.json')
     ];
     
@@ -228,9 +232,13 @@ try {
   const __dirname = __filename ? path.dirname(__filename) : process.cwd();
   
   const searchPaths = [
+    path.join(process.cwd(), 'public', 'data', 'universities.json'),
     path.join(process.cwd(), 'data', 'universities.json'),
+    path.join(__dirname, '..', 'public', 'data', 'universities.json'),
     path.join(__dirname, '..', 'data', 'universities.json'),
+    path.join(__dirname, '../../public/data', 'universities.json'),
     path.join(__dirname, '../../data', 'universities.json'),
+    path.join('/var/task', 'public', 'data', 'universities.json'),
     path.join('/var/task', 'data', 'universities.json')
   ];
   

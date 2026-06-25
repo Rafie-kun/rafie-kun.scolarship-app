@@ -626,7 +626,7 @@ export default function ScholarshipsView() {
 
                           <div className="col-span-1 md:col-span-2 border-t border-stone-800 pt-2 text-[11px] text-stone-300">
                             <span className="text-stone-400 block text-[9px] uppercase">Eligible Nationalities & Lands:</span>
-                            <span className="mt-0.5 text-[#55ffff] font-semibold">{sch.eligibleCountries.join(", ")}</span>
+                            <span className="mt-0.5 text-[#55ffff] font-semibold">{sch.eligibleCountries?.join(", ") ?? "Any"}</span>
                           </div>
                         </div>
 
@@ -815,8 +815,8 @@ export default function ScholarshipsView() {
                         </div>
                         <div>
                           <span className="text-[#a8a29e] block text-[9px] uppercase">Eligible Majors:</span>
-                          <span className="font-bold text-[#55ffff] mt-0.5 block truncate max-w-sm" title={sch.eligibleMajors.join(", ")}>
-                            {sch.eligibleMajors.slice(0, 3).join(", ")} {sch.eligibleMajors.length > 3 ? "..." : ""}
+                          <span className="font-bold text-[#55ffff] mt-0.5 block truncate max-w-sm" title={sch.eligibleMajors?.join(", ") ?? "Any"}>
+                            {sch.eligibleMajors?.slice(0, 3).join(", ") ?? "Any"} {sch.eligibleMajors && sch.eligibleMajors.length > 3 ? "..." : ""}
                           </span>
                         </div>
                       </div>
@@ -1010,7 +1010,7 @@ export default function ScholarshipsView() {
                   <div className="space-y-1">
                     <span className="text-[10px] font-bold text-stone-400 block uppercase">Eligible Majors Registry:</span>
                     <div className="flex flex-wrap gap-1">
-                      {selectedSch.eligibleMajors.map((m, mIdx) => (
+                      {selectedSch.eligibleMajors?.map((m, mIdx) => (
                         <span key={mIdx} className="bg-stone-900 border border-stone-800 text-[11px] text-stone-300 px-2 py-0.5 select-none font-sans">
                           {m}
                         </span>
@@ -1022,7 +1022,7 @@ export default function ScholarshipsView() {
                   <div className="space-y-1">
                     <span className="text-[10px] font-bold text-stone-400 block uppercase">Eligible Nations Registry:</span>
                     <div className="flex flex-wrap gap-1">
-                      {selectedSch.eligibleCountries.map((c, cIdx) => (
+                      {selectedSch.eligibleCountries?.map((c, cIdx) => (
                         <span key={cIdx} className="bg-stone-900 border border-stone-800 text-[11px] text-[#55ffff] px-2 py-0.5 font-sans select-none">
                           {c}
                         </span>
@@ -1096,8 +1096,8 @@ export default function ScholarshipsView() {
                   <div className="space-y-3">
                     {(() => {
                       const sch = selectedSch;
-                      const eligibleCountriesLower = sch.eligibleCountries.map(c => c.toLowerCase());
-                      const eligibleMajorsLower = sch.eligibleMajors.map(m => m.toLowerCase());
+                      const eligibleCountriesLower = sch.eligibleCountries?.map(c => c.toLowerCase()) ?? [];
+                      const eligibleMajorsLower = sch.eligibleMajors?.map(m => m.toLowerCase()) ?? [];
 
                       const matchedUnis = universities.filter(uni => {
                         const isDirectIdMatch = uni.offeredScholarships && (
@@ -1146,7 +1146,7 @@ export default function ScholarshipsView() {
                           </div>
                           
                           <div className="flex flex-wrap gap-1">
-                            {uni.popularMajors.slice(0, 3).map((major: string, mIdx: number) => (
+                            {uni.popularMajors?.slice(0, 3).map((major: string, mIdx: number) => (
                               <span key={mIdx} className="bg-stone-900 text-stone-400 px-1.5 py-0.5 text-[9px] border border-stone-800">
                                 {major}
                               </span>
