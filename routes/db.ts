@@ -76,8 +76,25 @@ export let scholarshipsData: Scholarship[] = [];
 export let universitiesData: University[] = [];
 
 try {
-  const scholarshipsPath = path.join(process.cwd(), 'data', 'scholarships.json');
-  if (fs.existsSync(scholarshipsPath)) {
+  const __filename = import.meta.url ? new URL(import.meta.url).pathname : '';
+  const __dirname = __filename ? path.dirname(__filename) : process.cwd();
+  
+  const searchPaths = [
+    path.join(process.cwd(), 'data', 'scholarships.json'),
+    path.join(__dirname, '..', 'data', 'scholarships.json'),
+    path.join(__dirname, '../../data', 'scholarships.json'),
+    path.join('/var/task', 'data', 'scholarships.json')
+  ];
+  
+  let scholarshipsPath = '';
+  for (const p of searchPaths) {
+    if (fs.existsSync(p)) {
+      scholarshipsPath = p;
+      break;
+    }
+  }
+
+  if (scholarshipsPath) {
     const raw = JSON.parse(fs.readFileSync(scholarshipsPath, 'utf-8'));
     // Map mock URLs to authentic website URLs dynamically
     scholarshipsData = raw.map((sch: any) => {
@@ -179,15 +196,49 @@ try {
       generatedApplicationUrl: row.generatedApplicationUrl || undefined
     }));
   } else {
-    const universitiesPath = path.join(process.cwd(), 'data', 'universities.json');
-    if (fs.existsSync(universitiesPath)) {
+    const __filename = import.meta.url ? new URL(import.meta.url).pathname : '';
+    const __dirname = __filename ? path.dirname(__filename) : process.cwd();
+    
+    const searchPaths = [
+      path.join(process.cwd(), 'data', 'universities.json'),
+      path.join(__dirname, '..', 'data', 'universities.json'),
+      path.join(__dirname, '../../data', 'universities.json'),
+      path.join('/var/task', 'data', 'universities.json')
+    ];
+    
+    let universitiesPath = '';
+    for (const p of searchPaths) {
+      if (fs.existsSync(p)) {
+        universitiesPath = p;
+        break;
+      }
+    }
+    
+    if (universitiesPath) {
       universitiesData = JSON.parse(fs.readFileSync(universitiesPath, 'utf-8'));
     }
   }
 } catch (err) {
   console.error("Failed to load universities from SQL database, fallback to file", err);
-  const universitiesPath = path.join(process.cwd(), 'data', 'universities.json');
-  if (fs.existsSync(universitiesPath)) {
+  const __filename = import.meta.url ? new URL(import.meta.url).pathname : '';
+  const __dirname = __filename ? path.dirname(__filename) : process.cwd();
+  
+  const searchPaths = [
+    path.join(process.cwd(), 'data', 'universities.json'),
+    path.join(__dirname, '..', 'data', 'universities.json'),
+    path.join(__dirname, '../../data', 'universities.json'),
+    path.join('/var/task', 'data', 'universities.json')
+  ];
+  
+  let universitiesPath = '';
+  for (const p of searchPaths) {
+    if (fs.existsSync(p)) {
+      universitiesPath = p;
+      break;
+    }
+  }
+  
+  if (universitiesPath) {
     universitiesData = JSON.parse(fs.readFileSync(universitiesPath, 'utf-8'));
   }
 }

@@ -4,6 +4,9 @@ import path from 'path';
 import bcrypt from 'bcryptjs';
 import { Profile, Application, AppNotification, CommunityPost, CVData } from '../src/types';
 
+const __filename = import.meta.url ? new URL(import.meta.url).pathname : '';
+const __dirname = __filename ? path.dirname(__filename) : process.cwd();
+
 // Ensure data folder exists
 const isVercel = !!process.env.VERCEL;
 const dbDir = isVercel ? '/tmp/scholarpath-data' : path.join(process.cwd(), 'data');
@@ -11,11 +14,30 @@ if (!fs.existsSync(dbDir)) {
   fs.mkdirSync(dbDir, { recursive: true });
 }
 
+// Locate the bundled db path
+const searchPaths = [
+  path.join(process.cwd(), 'data', 'app.db'),
+  path.join(__dirname, '..', 'data', 'app.db'),
+  path.join(__dirname, '../../data', 'app.db'),
+  path.join('/var/task', 'data', 'app.db')
+];
+
+let bundledDbPath = '';
+for (const p of searchPaths) {
+  if (fs.existsSync(p)) {
+    bundledDbPath = p;
+    break;
+  }
+}
+
 // Copy default db to tmp on vercel if it doesn't exist but we have a bundled one
 const dbPath = path.join(dbDir, 'app.db');
-const bundledDbPath = path.join(process.cwd(), 'data', 'app.db');
-if (isVercel && !fs.existsSync(dbPath) && fs.existsSync(bundledDbPath)) {
-  fs.copyFileSync(bundledDbPath, dbPath);
+if (isVercel && !fs.existsSync(dbPath) && bundledDbPath) {
+  try {
+    fs.copyFileSync(bundledDbPath, dbPath);
+  } catch (e) {
+    console.error("Failed to copy bundled db:", e);
+  }
 }
 
 export const db = new Database(dbPath);
@@ -767,8 +789,21 @@ export function seedUniversitiesIfEmpty(): void {
   const countUnis = db.prepare('SELECT COUNT(*) as count FROM universities').get() as { count: number };
   if (countUnis.count === 0) {
     console.log('[SQLite DB] Seeding universities table from raw json stream...');
-    const universitiesPath = path.join(process.cwd(), 'data', 'universities.json');
-    if (fs.existsSync(universitiesPath)) {
+    const searchPaths = [
+      path.join(process.cwd(), 'data', 'universities.json'),
+      path.join(__dirname, '..', 'data', 'universities.json'),
+      path.join(__dirname, '../../data', 'universities.json'),
+      path.join('/var/task', 'data', 'universities.json')
+    ];
+    let universitiesPath = '';
+    for (const p of searchPaths) {
+      if (fs.existsSync(p)) {
+        universitiesPath = p;
+        break;
+      }
+    }
+
+    if (universitiesPath) {
       try {
         const rawUnis = JSON.parse(fs.readFileSync(universitiesPath, 'utf-8'));
         const insertUni = db.prepare(`
