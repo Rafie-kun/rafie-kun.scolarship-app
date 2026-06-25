@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
-import { authenticateToken } from './auth';
-import { getProfileByUsername, saveProfile } from '../db/index';
+import { authenticateToken } from './auth.js';
+import { getProfileByUsername, saveProfile } from '../db/index.js';
 import { GoogleGenAI, Type } from '@google/genai';
 
 const router = express.Router();

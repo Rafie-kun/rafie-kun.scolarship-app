@@ -5,20 +5,20 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 
 // Modular Route Imports
-import authRouter, { authenticateToken } from "./routes/auth";
-import scholarshipsRouter from "./routes/scholarships";
-import applicationsRouter from "./routes/applications";
-import geminiRouter from "./routes/gemini";
-import recommenderRouter from "./routes/recommender";
-import roadmapRouter from "./routes/roadmap";
-import universitiesRouter from "./routes/universities";
-import profileRouter from "./routes/profile";
-import communityRouter from "./routes/community";
-import uploadRouter from "./routes/upload";
-import jobsRouter from "./routes/jobs";
+import authRouter, { authenticateToken } from "./routes/auth.js";
+import scholarshipsRouter from "./routes/scholarships.js";
+import applicationsRouter from "./routes/applications.js";
+import geminiRouter from "./routes/gemini.js";
+import recommenderRouter from "./routes/recommender.js";
+import roadmapRouter from "./routes/roadmap.js";
+import universitiesRouter from "./routes/universities.js";
+import profileRouter from "./routes/profile.js";
+import communityRouter from "./routes/community.js";
+import uploadRouter from "./routes/upload.js";
+import jobsRouter from "./routes/jobs.js";
 
-import { scholarshipsData } from "./routes/db";
-import { getNotifications, addNotification } from "./db/index";
+import { scholarshipsData } from "./routes/db.js";
+import { getNotifications, addNotification } from "./db/index.js";
 
 const app = express();
 const PORT = 3000;

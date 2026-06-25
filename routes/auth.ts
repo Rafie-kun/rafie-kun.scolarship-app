@@ -1,9 +1,9 @@
 import express, { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { JWT_SECRET } from './db';
-import { getUserByUsername, createNewUser, getProfileByUsername } from '../db/index';
-import { Profile } from '../src/types';
+import { JWT_SECRET } from './db.js';
+import { getUserByUsername, createNewUser, getProfileByUsername } from '../db/index.js';
+import type { Profile } from '../src/types.js';
 
 const router = express.Router();
 

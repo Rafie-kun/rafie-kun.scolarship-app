@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
-import { authenticateToken } from './auth';
-import { getProfileByUsername, saveProfile, getCVData, saveCVData, addNotification } from '../db/index';
+import { authenticateToken } from './auth.js';
+import { getProfileByUsername, saveProfile, getCVData, saveCVData, addNotification } from '../db/index.js';
 
 const router = express.Router();
 
