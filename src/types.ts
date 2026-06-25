@@ -33,6 +33,7 @@ export interface Profile {
   profilePicture?: string;
   hasCompletedOnboarding?: boolean;
   customGeminiKey?: string;
+  offlineMode?: boolean;
 }
 
 export interface Scholarship {

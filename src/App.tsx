@@ -436,6 +436,15 @@ export default function App() {
         </div>
       </header>
 
+      {/* Offline Mode Banner */}
+      {profile?.offlineMode && (
+        <div className="w-full bg-red-900/90 border-b-4 border-red-700 text-white text-center py-2 px-4 flex items-center justify-center gap-2 font-mono text-sm shadow-md z-50">
+          <Shield className="w-4 h-4 text-amber-400" />
+          <span className="font-bold tracking-wide">OFFLINE MODE:</span>
+          <span>Communications anomaly detected. Changes saved locally and may not sync with the central server.</span>
+        </div>
+      )}
+
       {/* Main Panel Content matrix */}
       <div className="flex-1 flex flex-col md:flex-row relative">
         
