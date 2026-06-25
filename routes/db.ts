@@ -80,9 +80,13 @@ try {
   const __dirname = __filename ? path.dirname(__filename) : process.cwd();
   
   const searchPaths = [
+    path.join(process.cwd(), 'public', 'data', 'scholarships.json'),
     path.join(process.cwd(), 'data', 'scholarships.json'),
+    path.join(__dirname, '..', 'public', 'data', 'scholarships.json'),
     path.join(__dirname, '..', 'data', 'scholarships.json'),
+    path.join(__dirname, '../../public/data', 'scholarships.json'),
     path.join(__dirname, '../../data', 'scholarships.json'),
+    path.join('/var/task', 'public', 'data', 'scholarships.json'),
     path.join('/var/task', 'data', 'scholarships.json')
   ];
   

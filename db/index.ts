@@ -16,9 +16,13 @@ if (!fs.existsSync(dbDir)) {
 
 // Locate the bundled db path
 const searchPaths = [
+  path.join(process.cwd(), 'public', 'data', 'app.db'),
   path.join(process.cwd(), 'data', 'app.db'),
+  path.join(__dirname, '..', 'public', 'data', 'app.db'),
   path.join(__dirname, '..', 'data', 'app.db'),
+  path.join(__dirname, '../../public/data', 'app.db'),
   path.join(__dirname, '../../data', 'app.db'),
+  path.join('/var/task', 'public', 'data', 'app.db'),
   path.join('/var/task', 'data', 'app.db')
 ];
 

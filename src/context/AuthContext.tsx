@@ -95,7 +95,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (localUserStr) {
           const localUser = JSON.parse(localUserStr);
           setUser(localUser.username);
-          setProfile(localUser);
+          setProfile({ ...defaultProfile, ...localUser });
           setIsGuest(!!localUser.isGuest);
           setIsLoggedIn(true);
           setAuthLoading(false);
@@ -106,7 +106,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (res.ok) {
           const data = await res.json();
           setUser(data.username);
-          setProfile(data.profile || defaultProfile);
+          setProfile({ ...defaultProfile, ...(data.profile || {}) });
           setIsGuest(!!data.isGuest);
           setIsLoggedIn(true);
         } else {
@@ -174,6 +174,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       console.warn("API Login failed, falling back to local storage:", e);
       const fallbackProfile = { 
+        ...defaultProfile,
         username, 
         fullName: username, 
         level: 1, 
@@ -249,6 +250,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (e: any) {
       console.warn("API Register failed, falling back to local storage:", e);
       const fallbackProfile = { 
+        ...defaultProfile,
         username, 
         fullName, 
         level: 1, 
@@ -305,6 +307,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       const fallbackGuestUser = `guest_${Math.floor(1000 + Math.random() * 9000)}`;
       const fallbackGuestProfile = {
+        ...defaultProfile,
         username: fallbackGuestUser,
         fullName: `Guest Explorer #${fallbackGuestUser.split('_')[1]}`,
         level: 1,
@@ -331,7 +334,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         additionalSkills: ["Java", "HTML/CSS", "Python Basics"],
         resumePdf: "",
         rewardedActions: [],
-        onboardingCompleted: false,
+        hasCompletedOnboarding: false,
         isGuest: true,
         offlineMode: true
       };
