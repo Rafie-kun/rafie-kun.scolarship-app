@@ -61,13 +61,37 @@ export default function UniversitiesView() {
       params.append('page', String(page));
       params.append('limit', String(limit));
 
-      const res = await fetch(`/api/universities?${params.toString()}`);
-      if (res.ok) {
-        const data = await res.json();
-        setUnis(data.universities || []);
-        setTotalPages(data.totalPages || 1);
-        setTotalItems(data.total || 0);
+      let data: any = { universities: [], totalPages: 1, total: 0 };
+      try {
+        const res = await fetch(`/api/universities?${params.toString()}`);
+        if (res.ok) {
+          data = await res.json();
+        }
+      } catch (err) {
+        console.warn("API failed, using fallback:", err);
       }
+
+      if (!data.universities || data.universities.length === 0) {
+        const fallbackRes = await fetch('/data/universities.json');
+        if (fallbackRes.ok) {
+          const allUnis = await fallbackRes.json();
+          // Basic client side filtering as fallback
+          let filtered = allUnis;
+          if (search) filtered = filtered.filter((u: any) => u.name.toLowerCase().includes(search.toLowerCase()) || u.city.toLowerCase().includes(search.toLowerCase()));
+          if (country !== 'all') filtered = filtered.filter((u: any) => u.country.toLowerCase() === country.toLowerCase());
+          if (type !== 'all') filtered = filtered.filter((u: any) => u.type === type);
+          if (housingFilter) filtered = filtered.filter((u: any) => u.hasOnCampusHousing);
+          
+          data.total = filtered.length;
+          data.totalPages = Math.ceil(filtered.length / limit);
+          const startIndex = (page - 1) * limit;
+          data.universities = filtered.slice(startIndex, startIndex + limit);
+        }
+      }
+
+      setUnis(data.universities || []);
+      setTotalPages(data.totalPages || 1);
+      setTotalItems(data.total || 0);
     } catch (err) {
       console.error("Failed to fetch universities grid:", err);
     } finally {
@@ -85,11 +109,35 @@ export default function UniversitiesView() {
       params.append('type', recType);
       if (recHousing) params.append('on_campus_housing', 'true');
 
-      const res = await authorizedFetch(`/api/best-universities?${params.toString()}`);
-      if (res.ok) {
-        const data = await res.json();
-        setRecommendedUnis(data || []);
+      let recs: any[] = [];
+      try {
+        const res = await authorizedFetch(`/api/best-universities?${params.toString()}`);
+        if (res.ok) {
+          recs = await res.json();
+        }
+      } catch (err) {
+        console.warn("Best universities API failed, using fallback:", err);
       }
+
+      if (!recs || recs.length === 0) {
+        const fallbackRes = await fetch('/data/universities.json');
+        if (fallbackRes.ok) {
+          const allUnis = await fallbackRes.json();
+          const filtered = allUnis.filter((u: any) => 
+            u.ranking <= rankMax && 
+            (tuitionMax >= 65000 || u.tuitionMax <= tuitionMax) &&
+            (recType === 'all' || u.type === recType) &&
+            (!recHousing || u.hasOnCampusHousing)
+          );
+          recs = filtered.slice(0, 10).map((u: any, idx: number) => ({
+            university: u,
+            matchScore: Math.floor(80 + Math.random() * 20),
+            reasoning: "Static fallback recommendation logic applied."
+          }));
+        }
+      }
+
+      setRecommendedUnis(recs || []);
     } catch (err) {
       console.error("Failed to fetch university recommendations:", err);
     } finally {

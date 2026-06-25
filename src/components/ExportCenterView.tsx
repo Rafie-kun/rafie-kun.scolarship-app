@@ -14,15 +14,37 @@ export default function ExportCenterView() {
 
   useEffect(() => {
     // Collect stats from API
-    authorizedFetch('/api/applications')
-      .then(res => res.json())
-      .then(data => setApplications(data))
-      .catch(err => console.error(err));
-
-    authorizedFetch('/api/profile')
-      .then(res => res.json())
-      .then(data => setProfile(data))
-      .catch(err => console.error(err));
+    const loadData = async () => {
+      try {
+        const res = await authorizedFetch('/api/applications');
+        let data = [];
+        if (res.ok) {
+          data = await res.json();
+        }
+        
+        if (!data || data.length === 0) {
+          const { getMockApplications } = await import('../services/mockDataService');
+          data = getMockApplications();
+        }
+        setApplications(data || []);
+      } catch (err) {
+        console.warn("Failed to fetch applications in export, using fallback", err);
+        const { getMockApplications } = await import('../services/mockDataService');
+        setApplications(getMockApplications());
+      }
+      
+      try {
+        const res = await authorizedFetch('/api/profile');
+        if (res.ok) {
+          const data = await res.json();
+          setProfile(data);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    
+    loadData();
   }, []);
 
   useEffect(() => {

@@ -1,0 +1,1902 @@
+[
+  {
+    "id": "sch-001",
+    "name": "Global Excellence Scholarship 1",
+    "provider": "Foundation 1",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 25076.34507070169,
+    "amountMax": 42444.40907721614,
+    "currency": "GBP",
+    "applicationDeadline": "2026-04-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-1",
+    "country": "Japan",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-002",
+    "name": "Global Excellence Scholarship 2",
+    "provider": "Foundation 2",
+    "description": "A fully funded scholarship for outstanding students in Economics.",
+    "amountMin": 25237.044109676004,
+    "amountMax": 31050.321830251025,
+    "currency": "GBP",
+    "applicationDeadline": "2026-11-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-2",
+    "country": "France",
+    "region": "North America"
+  },
+  {
+    "id": "sch-003",
+    "name": "Global Excellence Scholarship 3",
+    "provider": "Foundation 3",
+    "description": "A fully funded scholarship for outstanding students in Psychology.",
+    "amountMin": 22707.00246177876,
+    "amountMax": 46543.23052291531,
+    "currency": "EUR",
+    "applicationDeadline": "2026-07-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-3",
+    "country": "Germany",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-004",
+    "name": "Global Excellence Scholarship 4",
+    "provider": "Foundation 4",
+    "description": "A fully funded scholarship for outstanding students in Architecture.",
+    "amountMin": 21749.36700672451,
+    "amountMax": 56335.282053960094,
+    "currency": "GBP",
+    "applicationDeadline": "2026-11-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-4",
+    "country": "Switzerland",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-005",
+    "name": "Global Excellence Scholarship 5",
+    "provider": "Foundation 5",
+    "description": "A fully funded scholarship for outstanding students in Medicine.",
+    "amountMin": 20689.88854714189,
+    "amountMax": 44000.62936997355,
+    "currency": "USD",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-5",
+    "country": "United Kingdom",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-006",
+    "name": "Global Excellence Scholarship 6",
+    "provider": "Foundation 6",
+    "description": "A fully funded scholarship for outstanding students in Engineering.",
+    "amountMin": 27910.12129517243,
+    "amountMax": 30677.832713217984,
+    "currency": "USD",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-6",
+    "country": "Germany",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-007",
+    "name": "Global Excellence Scholarship 7",
+    "provider": "Foundation 7",
+    "description": "A fully funded scholarship for outstanding students in Biology.",
+    "amountMin": 17844.37158775761,
+    "amountMax": 32161.82657606487,
+    "currency": "GBP",
+    "applicationDeadline": "2026-03-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-7",
+    "country": "Australia",
+    "region": "North America"
+  },
+  {
+    "id": "sch-008",
+    "name": "Global Excellence Scholarship 8",
+    "provider": "Foundation 8",
+    "description": "A fully funded scholarship for outstanding students in Medicine.",
+    "amountMin": 21298.777472290032,
+    "amountMax": 49864.24484722666,
+    "currency": "GBP",
+    "applicationDeadline": "2026-10-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-8",
+    "country": "Australia",
+    "region": "North America"
+  },
+  {
+    "id": "sch-009",
+    "name": "Global Excellence Scholarship 9",
+    "provider": "Foundation 9",
+    "description": "A fully funded scholarship for outstanding students in Information Technology.",
+    "amountMin": 26022.0862263764,
+    "amountMax": 30726.15987824209,
+    "currency": "GBP",
+    "applicationDeadline": "2026-11-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-9",
+    "country": "Canada",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-010",
+    "name": "Global Excellence Scholarship 10",
+    "provider": "Foundation 10",
+    "description": "A fully funded scholarship for outstanding students in Data Science.",
+    "amountMin": 28743.742215887993,
+    "amountMax": 35309.69383144059,
+    "currency": "USD",
+    "applicationDeadline": "2026-06-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-10",
+    "country": "United States",
+    "region": "North America"
+  },
+  {
+    "id": "sch-011",
+    "name": "Global Excellence Scholarship 11",
+    "provider": "Foundation 11",
+    "description": "A fully funded scholarship for outstanding students in Information Technology.",
+    "amountMin": 19059.23783150412,
+    "amountMax": 38790.68969823858,
+    "currency": "USD",
+    "applicationDeadline": "2026-04-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-11",
+    "country": "United Kingdom",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-012",
+    "name": "Global Excellence Scholarship 12",
+    "provider": "Foundation 12",
+    "description": "A fully funded scholarship for outstanding students in Business.",
+    "amountMin": 26030.742261110157,
+    "amountMax": 49333.3745981003,
+    "currency": "EUR",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-12",
+    "country": "Japan",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-013",
+    "name": "Global Excellence Scholarship 13",
+    "provider": "Foundation 13",
+    "description": "A fully funded scholarship for outstanding students in Psychology.",
+    "amountMin": 22767.327502654793,
+    "amountMax": 35251.043372734945,
+    "currency": "EUR",
+    "applicationDeadline": "2026-02-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-13",
+    "country": "Canada",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-014",
+    "name": "Global Excellence Scholarship 14",
+    "provider": "Foundation 14",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 25014.779648370604,
+    "amountMax": 53973.449787357225,
+    "currency": "EUR",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-14",
+    "country": "Singapore",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-015",
+    "name": "Global Excellence Scholarship 15",
+    "provider": "Foundation 15",
+    "description": "A fully funded scholarship for outstanding students in Data Science.",
+    "amountMin": 15356.709464716216,
+    "amountMax": 42401.89049432818,
+    "currency": "GBP",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-15",
+    "country": "United Kingdom",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-016",
+    "name": "Global Excellence Scholarship 16",
+    "provider": "Foundation 16",
+    "description": "A fully funded scholarship for outstanding students in Medicine.",
+    "amountMin": 24818.2038566515,
+    "amountMax": 30618.195372337115,
+    "currency": "USD",
+    "applicationDeadline": "2026-08-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-16",
+    "country": "United States",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-017",
+    "name": "Global Excellence Scholarship 17",
+    "provider": "Foundation 17",
+    "description": "A fully funded scholarship for outstanding students in Data Science.",
+    "amountMin": 13749.073737958186,
+    "amountMax": 43054.876166317954,
+    "currency": "GBP",
+    "applicationDeadline": "2026-10-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-17",
+    "country": "France",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-018",
+    "name": "Global Excellence Scholarship 18",
+    "provider": "Foundation 18",
+    "description": "A fully funded scholarship for outstanding students in Arts.",
+    "amountMin": 12404.498361496502,
+    "amountMax": 30564.392191482533,
+    "currency": "GBP",
+    "applicationDeadline": "2026-10-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-18",
+    "country": "Canada",
+    "region": "North America"
+  },
+  {
+    "id": "sch-019",
+    "name": "Global Excellence Scholarship 19",
+    "provider": "Foundation 19",
+    "description": "A fully funded scholarship for outstanding students in Design.",
+    "amountMin": 22181.6301285983,
+    "amountMax": 36813.63649131215,
+    "currency": "GBP",
+    "applicationDeadline": "2026-02-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-19",
+    "country": "Canada",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-020",
+    "name": "Global Excellence Scholarship 20",
+    "provider": "Foundation 20",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 24648.487340256972,
+    "amountMax": 56900.45381603521,
+    "currency": "USD",
+    "applicationDeadline": "2026-05-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-20",
+    "country": "Switzerland",
+    "region": "North America"
+  },
+  {
+    "id": "sch-021",
+    "name": "Global Excellence Scholarship 21",
+    "provider": "Foundation 21",
+    "description": "A fully funded scholarship for outstanding students in Information Technology.",
+    "amountMin": 21996.422870146875,
+    "amountMax": 42976.527744429484,
+    "currency": "EUR",
+    "applicationDeadline": "2026-05-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-21",
+    "country": "Japan",
+    "region": "North America"
+  },
+  {
+    "id": "sch-022",
+    "name": "Global Excellence Scholarship 22",
+    "provider": "Foundation 22",
+    "description": "A fully funded scholarship for outstanding students in Medicine.",
+    "amountMin": 27051.044824614743,
+    "amountMax": 34963.10127707833,
+    "currency": "USD",
+    "applicationDeadline": "2026-05-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-22",
+    "country": "Switzerland",
+    "region": "North America"
+  },
+  {
+    "id": "sch-023",
+    "name": "Global Excellence Scholarship 23",
+    "provider": "Foundation 23",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 19375.779976602455,
+    "amountMax": 30488.076610435848,
+    "currency": "EUR",
+    "applicationDeadline": "2026-10-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-23",
+    "country": "United States",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-024",
+    "name": "Global Excellence Scholarship 24",
+    "provider": "Foundation 24",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 29781.30534542388,
+    "amountMax": 32379.662038896397,
+    "currency": "USD",
+    "applicationDeadline": "2026-02-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-24",
+    "country": "Japan",
+    "region": "North America"
+  },
+  {
+    "id": "sch-025",
+    "name": "Global Excellence Scholarship 25",
+    "provider": "Foundation 25",
+    "description": "A fully funded scholarship for outstanding students in Business.",
+    "amountMin": 10129.292418198564,
+    "amountMax": 41816.494446556404,
+    "currency": "USD",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-25",
+    "country": "Australia",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-026",
+    "name": "Global Excellence Scholarship 26",
+    "provider": "Foundation 26",
+    "description": "A fully funded scholarship for outstanding students in Information Technology.",
+    "amountMin": 11343.818404224085,
+    "amountMax": 51040.77242454866,
+    "currency": "EUR",
+    "applicationDeadline": "2026-04-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-26",
+    "country": "Germany",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-027",
+    "name": "Global Excellence Scholarship 27",
+    "provider": "Foundation 27",
+    "description": "A fully funded scholarship for outstanding students in Biology.",
+    "amountMin": 14524.980897043588,
+    "amountMax": 38126.412130698576,
+    "currency": "GBP",
+    "applicationDeadline": "2026-04-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-27",
+    "country": "Canada",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-028",
+    "name": "Global Excellence Scholarship 28",
+    "provider": "Foundation 28",
+    "description": "A fully funded scholarship for outstanding students in Design.",
+    "amountMin": 11402.499873840863,
+    "amountMax": 53708.04414522124,
+    "currency": "USD",
+    "applicationDeadline": "2026-10-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-28",
+    "country": "Japan",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-029",
+    "name": "Global Excellence Scholarship 29",
+    "provider": "Foundation 29",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 17380.17926356994,
+    "amountMax": 51493.14073113834,
+    "currency": "GBP",
+    "applicationDeadline": "2026-07-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-29",
+    "country": "United Kingdom",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-030",
+    "name": "Global Excellence Scholarship 30",
+    "provider": "Foundation 30",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 16108.090244837298,
+    "amountMax": 42549.96818256719,
+    "currency": "EUR",
+    "applicationDeadline": "2026-11-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-30",
+    "country": "Australia",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-031",
+    "name": "Global Excellence Scholarship 31",
+    "provider": "Foundation 31",
+    "description": "A fully funded scholarship for outstanding students in Business.",
+    "amountMin": 12547.261500119319,
+    "amountMax": 44281.434294466424,
+    "currency": "EUR",
+    "applicationDeadline": "2026-02-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-31",
+    "country": "Switzerland",
+    "region": "North America"
+  },
+  {
+    "id": "sch-032",
+    "name": "Global Excellence Scholarship 32",
+    "provider": "Foundation 32",
+    "description": "A fully funded scholarship for outstanding students in Architecture.",
+    "amountMin": 20202.32043353566,
+    "amountMax": 34793.809491207154,
+    "currency": "GBP",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-32",
+    "country": "Japan",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-033",
+    "name": "Global Excellence Scholarship 33",
+    "provider": "Foundation 33",
+    "description": "A fully funded scholarship for outstanding students in Design.",
+    "amountMin": 18769.746617912395,
+    "amountMax": 35782.66299517625,
+    "currency": "GBP",
+    "applicationDeadline": "2026-11-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-33",
+    "country": "France",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-034",
+    "name": "Global Excellence Scholarship 34",
+    "provider": "Foundation 34",
+    "description": "A fully funded scholarship for outstanding students in Biology.",
+    "amountMin": 23976.38817748485,
+    "amountMax": 38641.26932022605,
+    "currency": "USD",
+    "applicationDeadline": "2026-12-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-34",
+    "country": "Australia",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-035",
+    "name": "Global Excellence Scholarship 35",
+    "provider": "Foundation 35",
+    "description": "A fully funded scholarship for outstanding students in Medicine.",
+    "amountMin": 27823.273347792296,
+    "amountMax": 34956.17846954226,
+    "currency": "GBP",
+    "applicationDeadline": "2026-06-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-35",
+    "country": "Canada",
+    "region": "North America"
+  },
+  {
+    "id": "sch-036",
+    "name": "Global Excellence Scholarship 36",
+    "provider": "Foundation 36",
+    "description": "A fully funded scholarship for outstanding students in Data Science.",
+    "amountMin": 15123.836697669994,
+    "amountMax": 59120.403602079874,
+    "currency": "EUR",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-36",
+    "country": "Canada",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-037",
+    "name": "Global Excellence Scholarship 37",
+    "provider": "Foundation 37",
+    "description": "A fully funded scholarship for outstanding students in Data Science.",
+    "amountMin": 10082.231962496766,
+    "amountMax": 42321.81668126358,
+    "currency": "GBP",
+    "applicationDeadline": "2026-02-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-37",
+    "country": "Japan",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-038",
+    "name": "Global Excellence Scholarship 38",
+    "provider": "Foundation 38",
+    "description": "A fully funded scholarship for outstanding students in Arts.",
+    "amountMin": 15474.474239204104,
+    "amountMax": 49639.257913495116,
+    "currency": "EUR",
+    "applicationDeadline": "2026-07-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-38",
+    "country": "Canada",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-039",
+    "name": "Global Excellence Scholarship 39",
+    "provider": "Foundation 39",
+    "description": "A fully funded scholarship for outstanding students in Medicine.",
+    "amountMin": 23180.006317096268,
+    "amountMax": 31178.88068666934,
+    "currency": "GBP",
+    "applicationDeadline": "2026-04-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-39",
+    "country": "United Kingdom",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-040",
+    "name": "Global Excellence Scholarship 40",
+    "provider": "Foundation 40",
+    "description": "A fully funded scholarship for outstanding students in Arts.",
+    "amountMin": 26007.89987559906,
+    "amountMax": 30821.119583729276,
+    "currency": "EUR",
+    "applicationDeadline": "2026-06-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-40",
+    "country": "Switzerland",
+    "region": "North America"
+  },
+  {
+    "id": "sch-041",
+    "name": "Global Excellence Scholarship 41",
+    "provider": "Foundation 41",
+    "description": "A fully funded scholarship for outstanding students in Biology.",
+    "amountMin": 12125.823340560373,
+    "amountMax": 49869.63371328588,
+    "currency": "EUR",
+    "applicationDeadline": "2026-05-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-41",
+    "country": "Switzerland",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-042",
+    "name": "Global Excellence Scholarship 42",
+    "provider": "Foundation 42",
+    "description": "A fully funded scholarship for outstanding students in Arts.",
+    "amountMin": 14069.456236348366,
+    "amountMax": 47454.84637188919,
+    "currency": "GBP",
+    "applicationDeadline": "2026-08-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-42",
+    "country": "Japan",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-043",
+    "name": "Global Excellence Scholarship 43",
+    "provider": "Foundation 43",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 25574.35048240624,
+    "amountMax": 51583.66128794306,
+    "currency": "EUR",
+    "applicationDeadline": "2026-06-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-43",
+    "country": "Japan",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-044",
+    "name": "Global Excellence Scholarship 44",
+    "provider": "Foundation 44",
+    "description": "A fully funded scholarship for outstanding students in Business.",
+    "amountMin": 11860.149631809303,
+    "amountMax": 31787.75360120975,
+    "currency": "GBP",
+    "applicationDeadline": "2026-10-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-44",
+    "country": "Germany",
+    "region": "North America"
+  },
+  {
+    "id": "sch-045",
+    "name": "Global Excellence Scholarship 45",
+    "provider": "Foundation 45",
+    "description": "A fully funded scholarship for outstanding students in Computer Science.",
+    "amountMin": 10301.652043361766,
+    "amountMax": 54638.38871826201,
+    "currency": "GBP",
+    "applicationDeadline": "2026-11-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-45",
+    "country": "Switzerland",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-046",
+    "name": "Global Excellence Scholarship 46",
+    "provider": "Foundation 46",
+    "description": "A fully funded scholarship for outstanding students in Business.",
+    "amountMin": 26038.3114099989,
+    "amountMax": 56375.33464334171,
+    "currency": "GBP",
+    "applicationDeadline": "2026-03-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-46",
+    "country": "France",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-047",
+    "name": "Global Excellence Scholarship 47",
+    "provider": "Foundation 47",
+    "description": "A fully funded scholarship for outstanding students in Computer Science.",
+    "amountMin": 14399.472220971857,
+    "amountMax": 54495.55592323468,
+    "currency": "EUR",
+    "applicationDeadline": "2026-08-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-47",
+    "country": "Australia",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-048",
+    "name": "Global Excellence Scholarship 48",
+    "provider": "Foundation 48",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 29403.63451426986,
+    "amountMax": 41023.79671469242,
+    "currency": "USD",
+    "applicationDeadline": "2026-06-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-48",
+    "country": "France",
+    "region": "North America"
+  },
+  {
+    "id": "sch-049",
+    "name": "Global Excellence Scholarship 49",
+    "provider": "Foundation 49",
+    "description": "A fully funded scholarship for outstanding students in Biology.",
+    "amountMin": 24268.93816486899,
+    "amountMax": 39453.01665146233,
+    "currency": "USD",
+    "applicationDeadline": "2026-03-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-49",
+    "country": "Singapore",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-050",
+    "name": "Global Excellence Scholarship 50",
+    "provider": "Foundation 50",
+    "description": "A fully funded scholarship for outstanding students in Medicine.",
+    "amountMin": 12358.131074409777,
+    "amountMax": 44892.10070125474,
+    "currency": "EUR",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-50",
+    "country": "Germany",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-051",
+    "name": "Global Excellence Scholarship 51",
+    "provider": "Foundation 51",
+    "description": "A fully funded scholarship for outstanding students in Arts.",
+    "amountMin": 24149.53156977478,
+    "amountMax": 52782.99120711605,
+    "currency": "EUR",
+    "applicationDeadline": "2026-02-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-51",
+    "country": "France",
+    "region": "North America"
+  },
+  {
+    "id": "sch-052",
+    "name": "Global Excellence Scholarship 52",
+    "provider": "Foundation 52",
+    "description": "A fully funded scholarship for outstanding students in Computer Science.",
+    "amountMin": 25766.78885795758,
+    "amountMax": 53918.38461062697,
+    "currency": "USD",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-52",
+    "country": "Singapore",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-053",
+    "name": "Global Excellence Scholarship 53",
+    "provider": "Foundation 53",
+    "description": "A fully funded scholarship for outstanding students in Economics.",
+    "amountMin": 24793.838765508583,
+    "amountMax": 31481.098772699523,
+    "currency": "USD",
+    "applicationDeadline": "2026-08-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-53",
+    "country": "Switzerland",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-054",
+    "name": "Global Excellence Scholarship 54",
+    "provider": "Foundation 54",
+    "description": "A fully funded scholarship for outstanding students in Design.",
+    "amountMin": 22379.527801250362,
+    "amountMax": 36880.634555283345,
+    "currency": "USD",
+    "applicationDeadline": "2026-03-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-54",
+    "country": "Canada",
+    "region": "North America"
+  },
+  {
+    "id": "sch-055",
+    "name": "Global Excellence Scholarship 55",
+    "provider": "Foundation 55",
+    "description": "A fully funded scholarship for outstanding students in Business.",
+    "amountMin": 21343.75501530688,
+    "amountMax": 59670.5541418894,
+    "currency": "GBP",
+    "applicationDeadline": "2026-10-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-55",
+    "country": "United States",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-056",
+    "name": "Global Excellence Scholarship 56",
+    "provider": "Foundation 56",
+    "description": "A fully funded scholarship for outstanding students in Business.",
+    "amountMin": 27665.29393458293,
+    "amountMax": 54910.100717359644,
+    "currency": "USD",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-56",
+    "country": "Germany",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-057",
+    "name": "Global Excellence Scholarship 57",
+    "provider": "Foundation 57",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 23885.432473259676,
+    "amountMax": 47790.28232511533,
+    "currency": "GBP",
+    "applicationDeadline": "2026-02-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-57",
+    "country": "United Kingdom",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-058",
+    "name": "Global Excellence Scholarship 58",
+    "provider": "Foundation 58",
+    "description": "A fully funded scholarship for outstanding students in Economics.",
+    "amountMin": 12338.687944427553,
+    "amountMax": 58282.17920729165,
+    "currency": "GBP",
+    "applicationDeadline": "2026-10-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-58",
+    "country": "Canada",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-059",
+    "name": "Global Excellence Scholarship 59",
+    "provider": "Foundation 59",
+    "description": "A fully funded scholarship for outstanding students in Arts.",
+    "amountMin": 18936.309621558357,
+    "amountMax": 42462.63192993442,
+    "currency": "USD",
+    "applicationDeadline": "2026-05-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-59",
+    "country": "Canada",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-060",
+    "name": "Global Excellence Scholarship 60",
+    "provider": "Foundation 60",
+    "description": "A fully funded scholarship for outstanding students in Psychology.",
+    "amountMin": 24964.60014689703,
+    "amountMax": 39750.31715732989,
+    "currency": "EUR",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-60",
+    "country": "United Kingdom",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-061",
+    "name": "Global Excellence Scholarship 61",
+    "provider": "Foundation 61",
+    "description": "A fully funded scholarship for outstanding students in Business.",
+    "amountMin": 26586.312143099633,
+    "amountMax": 33265.12772084943,
+    "currency": "EUR",
+    "applicationDeadline": "2026-05-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-61",
+    "country": "France",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-062",
+    "name": "Global Excellence Scholarship 62",
+    "provider": "Foundation 62",
+    "description": "A fully funded scholarship for outstanding students in Architecture.",
+    "amountMin": 11709.271616865244,
+    "amountMax": 40562.28034767127,
+    "currency": "USD",
+    "applicationDeadline": "2026-10-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-62",
+    "country": "Singapore",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-063",
+    "name": "Global Excellence Scholarship 63",
+    "provider": "Foundation 63",
+    "description": "A fully funded scholarship for outstanding students in Economics.",
+    "amountMin": 14718.528552994625,
+    "amountMax": 55009.004253537074,
+    "currency": "USD",
+    "applicationDeadline": "2026-08-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-63",
+    "country": "Canada",
+    "region": "North America"
+  },
+  {
+    "id": "sch-064",
+    "name": "Global Excellence Scholarship 64",
+    "provider": "Foundation 64",
+    "description": "A fully funded scholarship for outstanding students in Medicine.",
+    "amountMin": 12233.053385566378,
+    "amountMax": 51589.908347672404,
+    "currency": "USD",
+    "applicationDeadline": "2026-11-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-64",
+    "country": "United Kingdom",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-065",
+    "name": "Global Excellence Scholarship 65",
+    "provider": "Foundation 65",
+    "description": "A fully funded scholarship for outstanding students in Biology.",
+    "amountMin": 28108.05487173583,
+    "amountMax": 35014.841226833756,
+    "currency": "GBP",
+    "applicationDeadline": "2026-02-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-65",
+    "country": "Australia",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-066",
+    "name": "Global Excellence Scholarship 66",
+    "provider": "Foundation 66",
+    "description": "A fully funded scholarship for outstanding students in Data Science.",
+    "amountMin": 20908.233622948046,
+    "amountMax": 52951.301199196736,
+    "currency": "GBP",
+    "applicationDeadline": "2026-03-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-66",
+    "country": "Canada",
+    "region": "North America"
+  },
+  {
+    "id": "sch-067",
+    "name": "Global Excellence Scholarship 67",
+    "provider": "Foundation 67",
+    "description": "A fully funded scholarship for outstanding students in Data Science.",
+    "amountMin": 16004.092151435394,
+    "amountMax": 51622.08538522367,
+    "currency": "USD",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-67",
+    "country": "Canada",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-068",
+    "name": "Global Excellence Scholarship 68",
+    "provider": "Foundation 68",
+    "description": "A fully funded scholarship for outstanding students in Medicine.",
+    "amountMin": 21437.74884936282,
+    "amountMax": 36483.642689219814,
+    "currency": "GBP",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-68",
+    "country": "United Kingdom",
+    "region": "North America"
+  },
+  {
+    "id": "sch-069",
+    "name": "Global Excellence Scholarship 69",
+    "provider": "Foundation 69",
+    "description": "A fully funded scholarship for outstanding students in Engineering.",
+    "amountMin": 25531.34388375951,
+    "amountMax": 38248.24197926797,
+    "currency": "USD",
+    "applicationDeadline": "2026-08-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-69",
+    "country": "Switzerland",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-070",
+    "name": "Global Excellence Scholarship 70",
+    "provider": "Foundation 70",
+    "description": "A fully funded scholarship for outstanding students in Architecture.",
+    "amountMin": 20020.706527830196,
+    "amountMax": 34034.90598602659,
+    "currency": "GBP",
+    "applicationDeadline": "2026-05-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-70",
+    "country": "Australia",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-071",
+    "name": "Global Excellence Scholarship 71",
+    "provider": "Foundation 71",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 28186.295035806146,
+    "amountMax": 42280.35046209354,
+    "currency": "USD",
+    "applicationDeadline": "2026-08-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-71",
+    "country": "United Kingdom",
+    "region": "North America"
+  },
+  {
+    "id": "sch-072",
+    "name": "Global Excellence Scholarship 72",
+    "provider": "Foundation 72",
+    "description": "A fully funded scholarship for outstanding students in Psychology.",
+    "amountMin": 27439.061001328802,
+    "amountMax": 43848.94270178033,
+    "currency": "EUR",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-72",
+    "country": "Singapore",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-073",
+    "name": "Global Excellence Scholarship 73",
+    "provider": "Foundation 73",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 16482.14884323797,
+    "amountMax": 41025.50754189347,
+    "currency": "GBP",
+    "applicationDeadline": "2026-08-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-73",
+    "country": "Japan",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-074",
+    "name": "Global Excellence Scholarship 74",
+    "provider": "Foundation 74",
+    "description": "A fully funded scholarship for outstanding students in Information Technology.",
+    "amountMin": 23117.498864240722,
+    "amountMax": 35546.648266109536,
+    "currency": "GBP",
+    "applicationDeadline": "2026-07-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-74",
+    "country": "Canada",
+    "region": "North America"
+  },
+  {
+    "id": "sch-075",
+    "name": "Global Excellence Scholarship 75",
+    "provider": "Foundation 75",
+    "description": "A fully funded scholarship for outstanding students in Design.",
+    "amountMin": 21720.0017914188,
+    "amountMax": 44365.605321836214,
+    "currency": "USD",
+    "applicationDeadline": "2026-03-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-75",
+    "country": "United Kingdom",
+    "region": "North America"
+  },
+  {
+    "id": "sch-076",
+    "name": "Global Excellence Scholarship 76",
+    "provider": "Foundation 76",
+    "description": "A fully funded scholarship for outstanding students in Psychology.",
+    "amountMin": 20147.575689526806,
+    "amountMax": 46798.02293580484,
+    "currency": "EUR",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-76",
+    "country": "United States",
+    "region": "North America"
+  },
+  {
+    "id": "sch-077",
+    "name": "Global Excellence Scholarship 77",
+    "provider": "Foundation 77",
+    "description": "A fully funded scholarship for outstanding students in Architecture.",
+    "amountMin": 23654.430525893462,
+    "amountMax": 45853.57820296976,
+    "currency": "EUR",
+    "applicationDeadline": "2026-07-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-77",
+    "country": "Germany",
+    "region": "North America"
+  },
+  {
+    "id": "sch-078",
+    "name": "Global Excellence Scholarship 78",
+    "provider": "Foundation 78",
+    "description": "A fully funded scholarship for outstanding students in Design.",
+    "amountMin": 24280.922114392994,
+    "amountMax": 42619.94238319,
+    "currency": "USD",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-78",
+    "country": "Australia",
+    "region": "North America"
+  },
+  {
+    "id": "sch-079",
+    "name": "Global Excellence Scholarship 79",
+    "provider": "Foundation 79",
+    "description": "A fully funded scholarship for outstanding students in Information Technology.",
+    "amountMin": 22785.254171854125,
+    "amountMax": 40794.74768839094,
+    "currency": "GBP",
+    "applicationDeadline": "2026-06-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-79",
+    "country": "Germany",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-080",
+    "name": "Global Excellence Scholarship 80",
+    "provider": "Foundation 80",
+    "description": "A fully funded scholarship for outstanding students in Medicine.",
+    "amountMin": 14873.340594592373,
+    "amountMax": 37305.100946035855,
+    "currency": "GBP",
+    "applicationDeadline": "2026-06-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-80",
+    "country": "Switzerland",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-081",
+    "name": "Global Excellence Scholarship 81",
+    "provider": "Foundation 81",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 27077.816478856086,
+    "amountMax": 36587.51862042261,
+    "currency": "GBP",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-81",
+    "country": "Germany",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-082",
+    "name": "Global Excellence Scholarship 82",
+    "provider": "Foundation 82",
+    "description": "A fully funded scholarship for outstanding students in Information Technology.",
+    "amountMin": 20673.052639916605,
+    "amountMax": 32265.73826680219,
+    "currency": "GBP",
+    "applicationDeadline": "2026-03-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-82",
+    "country": "United States",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-083",
+    "name": "Global Excellence Scholarship 83",
+    "provider": "Foundation 83",
+    "description": "A fully funded scholarship for outstanding students in Information Technology.",
+    "amountMin": 26248.356073169776,
+    "amountMax": 42210.32902300945,
+    "currency": "USD",
+    "applicationDeadline": "2026-08-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-83",
+    "country": "Germany",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-084",
+    "name": "Global Excellence Scholarship 84",
+    "provider": "Foundation 84",
+    "description": "A fully funded scholarship for outstanding students in Design.",
+    "amountMin": 12301.032060617279,
+    "amountMax": 50141.022949058504,
+    "currency": "USD",
+    "applicationDeadline": "2026-05-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-84",
+    "country": "Canada",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-085",
+    "name": "Global Excellence Scholarship 85",
+    "provider": "Foundation 85",
+    "description": "A fully funded scholarship for outstanding students in Architecture.",
+    "amountMin": 25643.960306825305,
+    "amountMax": 34547.70694820017,
+    "currency": "GBP",
+    "applicationDeadline": "2026-07-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-85",
+    "country": "Switzerland",
+    "region": "North America"
+  },
+  {
+    "id": "sch-086",
+    "name": "Global Excellence Scholarship 86",
+    "provider": "Foundation 86",
+    "description": "A fully funded scholarship for outstanding students in Design.",
+    "amountMin": 11023.618404707704,
+    "amountMax": 57949.38462898486,
+    "currency": "GBP",
+    "applicationDeadline": "2026-03-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-86",
+    "country": "Singapore",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-087",
+    "name": "Global Excellence Scholarship 87",
+    "provider": "Foundation 87",
+    "description": "A fully funded scholarship for outstanding students in Information Technology.",
+    "amountMin": 22958.263295244687,
+    "amountMax": 57348.320313975215,
+    "currency": "USD",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-87",
+    "country": "Canada",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-088",
+    "name": "Global Excellence Scholarship 88",
+    "provider": "Foundation 88",
+    "description": "A fully funded scholarship for outstanding students in Business.",
+    "amountMin": 18306.768479000973,
+    "amountMax": 30012.0140575704,
+    "currency": "GBP",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-88",
+    "country": "Singapore",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-089",
+    "name": "Global Excellence Scholarship 89",
+    "provider": "Foundation 89",
+    "description": "A fully funded scholarship for outstanding students in Biology.",
+    "amountMin": 13369.175573268723,
+    "amountMax": 40293.55126108449,
+    "currency": "GBP",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-89",
+    "country": "Germany",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-090",
+    "name": "Global Excellence Scholarship 90",
+    "provider": "Foundation 90",
+    "description": "A fully funded scholarship for outstanding students in Law.",
+    "amountMin": 18966.55927495967,
+    "amountMax": 53058.725367011975,
+    "currency": "EUR",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-90",
+    "country": "France",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-091",
+    "name": "Global Excellence Scholarship 91",
+    "provider": "Foundation 91",
+    "description": "A fully funded scholarship for outstanding students in Biology.",
+    "amountMin": 18481.548255777714,
+    "amountMax": 33035.407786944146,
+    "currency": "EUR",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-91",
+    "country": "Switzerland",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-092",
+    "name": "Global Excellence Scholarship 92",
+    "provider": "Foundation 92",
+    "description": "A fully funded scholarship for outstanding students in Economics.",
+    "amountMin": 19794.59943647714,
+    "amountMax": 57659.78377932886,
+    "currency": "EUR",
+    "applicationDeadline": "2026-08-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-92",
+    "country": "Japan",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-093",
+    "name": "Global Excellence Scholarship 93",
+    "provider": "Foundation 93",
+    "description": "A fully funded scholarship for outstanding students in Architecture.",
+    "amountMin": 20452.740123938915,
+    "amountMax": 48838.15457811039,
+    "currency": "USD",
+    "applicationDeadline": "2026-12-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-93",
+    "country": "Japan",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-094",
+    "name": "Global Excellence Scholarship 94",
+    "provider": "Foundation 94",
+    "description": "A fully funded scholarship for outstanding students in Biology.",
+    "amountMin": 12896.679723486312,
+    "amountMax": 46999.18004518548,
+    "currency": "USD",
+    "applicationDeadline": "2026-04-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-94",
+    "country": "Singapore",
+    "region": "North America"
+  },
+  {
+    "id": "sch-095",
+    "name": "Global Excellence Scholarship 95",
+    "provider": "Foundation 95",
+    "description": "A fully funded scholarship for outstanding students in Computer Science.",
+    "amountMin": 20503.03632995154,
+    "amountMax": 50974.31713949665,
+    "currency": "GBP",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-95",
+    "country": "France",
+    "region": "Oceania"
+  },
+  {
+    "id": "sch-096",
+    "name": "Global Excellence Scholarship 96",
+    "provider": "Foundation 96",
+    "description": "A fully funded scholarship for outstanding students in Computer Science.",
+    "amountMin": 19172.889198849094,
+    "amountMax": 38420.25564099957,
+    "currency": "USD",
+    "applicationDeadline": "2026-09-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-96",
+    "country": "Switzerland",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-097",
+    "name": "Global Excellence Scholarship 97",
+    "provider": "Foundation 97",
+    "description": "A fully funded scholarship for outstanding students in Information Technology.",
+    "amountMin": 11249.593845966014,
+    "amountMax": 58533.93741694298,
+    "currency": "GBP",
+    "applicationDeadline": "2026-05-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-97",
+    "country": "France",
+    "region": "Asia"
+  },
+  {
+    "id": "sch-098",
+    "name": "Global Excellence Scholarship 98",
+    "provider": "Foundation 98",
+    "description": "A fully funded scholarship for outstanding students in Computer Science.",
+    "amountMin": 17181.26977853298,
+    "amountMax": 33435.986031347114,
+    "currency": "GBP",
+    "applicationDeadline": "2026-04-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Postgraduate",
+    "url": "https://scholarships.org/sch-98",
+    "country": "United Kingdom",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-099",
+    "name": "Global Excellence Scholarship 99",
+    "provider": "Foundation 99",
+    "description": "A fully funded scholarship for outstanding students in Information Technology.",
+    "amountMin": 12237.84125730136,
+    "amountMax": 55374.31620824826,
+    "currency": "GBP",
+    "applicationDeadline": "2026-05-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-99",
+    "country": "United States",
+    "region": "Europe"
+  },
+  {
+    "id": "sch-100",
+    "name": "Global Excellence Scholarship 100",
+    "provider": "Foundation 100",
+    "description": "A fully funded scholarship for outstanding students in Business.",
+    "amountMin": 23405.054227935183,
+    "amountMax": 31201.25962910479,
+    "currency": "USD",
+    "applicationDeadline": "2026-01-01",
+    "eligibilityCriteria": [
+      "High GPA",
+      "Leadership skills",
+      "International student"
+    ],
+    "targetDegree": "Undergraduate",
+    "url": "https://scholarships.org/sch-100",
+    "country": "Australia",
+    "region": "Europe"
+  }
+]

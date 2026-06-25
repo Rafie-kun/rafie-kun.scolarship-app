@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, CheckSquare, Square, Notebook, CheckCircle, Plus, ClipboardList, Trash2, ArrowRight, Sparkles } from 'lucide-react';
+import { Calendar, CheckSquare, Square, Notebook, CheckCircle, Plus, ClipboardList, Trash2, ArrowRight, Sparkles, Shield } from 'lucide-react';
 import { Application } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
+import { getMockApplications, saveMockApplications } from '../services/mockDataService';
 
 export default function ApplicationsView() {
-  const { authorizedFetch, rewardPoints } = useAuth();
+  const { authorizedFetch, rewardPoints, profile } = useAuth();
   const [apps, setApps] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedApp, setSelectedApp] = useState<Application | null>(null);
   const [newChecklistItem, setNewChecklistItem] = useState('');
   const [success, setSuccess] = useState('');
+  const [usingLocalMock, setUsingLocalMock] = useState(false);
 
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
@@ -24,18 +26,36 @@ export default function ApplicationsView() {
   const fetchApps = async () => {
     try {
       const res = await authorizedFetch('/api/applications');
+      let data = [];
       if (res.ok) {
-        const data = await res.json();
-        setApps(data);
-        if (data.length > 0 && !selectedApp) {
-          setSelectedApp(data[0]);
-        } else if (selectedApp) {
-          const updated = data.find((a: Application) => a.id === selectedApp.id);
-          if (updated) setSelectedApp(updated);
-        }
+        data = await res.json();
+      }
+      
+      if (!data || data.length === 0 || profile?.offlineMode) {
+        data = getMockApplications();
+        setUsingLocalMock(true);
+      } else {
+        setUsingLocalMock(false);
+      }
+
+      setApps(data);
+      if (data.length > 0 && !selectedApp) {
+        setSelectedApp(data[0]);
+      } else if (selectedApp) {
+        const updated = data.find((a: Application) => a.id === selectedApp?.id);
+        if (updated) setSelectedApp(updated);
       }
     } catch (e) {
-      console.error(e);
+      console.warn("API failed, using local mock data", e);
+      const mockData = getMockApplications();
+      setUsingLocalMock(true);
+      setApps(mockData);
+      if (mockData.length > 0 && !selectedApp) {
+        setSelectedApp(mockData[0]);
+      } else if (selectedApp) {
+        const updated = mockData.find((a: Application) => a.id === selectedApp?.id);
+        if (updated) setSelectedApp(updated);
+      }
     }
   };
 
@@ -44,6 +64,14 @@ export default function ApplicationsView() {
   }, []);
 
   const handleUpdateApp = async (updatedApp: Application) => {
+    if (usingLocalMock) {
+      const updatedApps = apps.map(a => a.id === updatedApp.id ? updatedApp : a);
+      saveMockApplications(updatedApps);
+      setApps(updatedApps);
+      setSelectedApp(updatedApp);
+      return;
+    }
+
     try {
       const res = await authorizedFetch('/api/applications', {
         method: 'POST',
@@ -57,6 +85,12 @@ export default function ApplicationsView() {
       }
     } catch (e) {
       console.error(e);
+      // Fallback to local
+      const updatedApps = apps.map(a => a.id === updatedApp.id ? updatedApp : a);
+      saveMockApplications(updatedApps);
+      setApps(updatedApps);
+      setSelectedApp(updatedApp);
+      setUsingLocalMock(true);
     }
   };
 
@@ -74,7 +108,6 @@ export default function ApplicationsView() {
       const actionName = `Admissions Step Done: ${checklist[idx].text}`;
       if (!rewardedActionsRef.current.has(actionName)) {
         rewardedActionsRef.current.add(actionName);
-        // Award XP via Hook
         await rewardPoints(5, actionName);
       }
       
@@ -125,11 +158,11 @@ export default function ApplicationsView() {
     playClickSound();
     
     const name = window.prompt("Enter the name of the scholarship/fellowship you want to track:");
-    if (name === null) return; // User cancelled
+    if (name === null) return; 
     const finalName = name.trim() || 'Custom Admissions Pursuit';
     
     const provider = window.prompt("Enter the provider / university name:");
-    if (provider === null) return; // User cancelled
+    if (provider === null) return; 
     const finalProvider = provider.trim() || 'Your Specified Board';
 
     const newApp: Application = {
@@ -146,6 +179,17 @@ export default function ApplicationsView() {
       ]
     };
 
+    if (usingLocalMock) {
+      const updatedApps = [...apps, newApp];
+      saveMockApplications(updatedApps);
+      setApps(updatedApps);
+      setSelectedApp(newApp);
+      setSuccess(`Custom quest "${finalName}" added to tracked ledger! (+10 XP)`);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setSuccess(''), 4000);
+      return;
+    }
+
     try {
       const res = await authorizedFetch('/api/applications', {
         method: 'POST',
@@ -158,7 +202,6 @@ export default function ApplicationsView() {
         const newlyCreated = data.find((a: Application) => a.id === newApp.id) || data[data.length - 1] || newApp;
         setSelectedApp(newlyCreated);
         
-        // Reward user 10 XP
         const actionName = `Added custom track: ${finalName}`;
         if (!rewardedActionsRef.current.has(actionName)) {
           rewardedActionsRef.current.add(actionName);
@@ -171,7 +214,15 @@ export default function ApplicationsView() {
       }
     } catch (e) {
       console.error(e);
-      alert('Failed to register custom quest. Please check server logs.');
+      // Fallback to local
+      const updatedApps = [...apps, newApp];
+      saveMockApplications(updatedApps);
+      setApps(updatedApps);
+      setSelectedApp(newApp);
+      setUsingLocalMock(true);
+      setSuccess(`Custom quest "${finalName}" added locally!`);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setSuccess(''), 4000);
     }
   };
 
@@ -180,6 +231,22 @@ export default function ApplicationsView() {
     if (!window.confirm("⚠️ Are you sure you want to abandon/delete this admissions quest tracker? All research logbooks for this slot will be swept away.")) {
       return;
     }
+    
+    if (usingLocalMock) {
+      const updatedApps = apps.filter(a => a.id !== id);
+      saveMockApplications(updatedApps);
+      setApps(updatedApps);
+      if (updatedApps.length > 0) {
+        setSelectedApp(updatedApps[0]);
+      } else {
+        setSelectedApp(null);
+      }
+      setSuccess('🌿 Tracking quest abandoned successfully.');
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setSuccess(''), 4000);
+      return;
+    }
+
     try {
       const res = await authorizedFetch(`/api/applications/${id}`, {
         method: 'DELETE'
@@ -198,6 +265,16 @@ export default function ApplicationsView() {
       }
     } catch (e) {
       console.error("Failed to delete application tracker:", e);
+      // Fallback
+      const updatedApps = apps.filter(a => a.id !== id);
+      saveMockApplications(updatedApps);
+      setApps(updatedApps);
+      if (updatedApps.length > 0) setSelectedApp(updatedApps[0]);
+      else setSelectedApp(null);
+      setUsingLocalMock(true);
+      setSuccess('🌿 Tracking quest abandoned locally.');
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setSuccess(''), 4000);
     }
   };
 

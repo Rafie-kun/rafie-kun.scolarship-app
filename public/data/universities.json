@@ -1,0 +1,4850 @@
+[
+  {
+    "id": "uni-harvard",
+    "name": "Harvard University",
+    "country": "United States",
+    "type": "private",
+    "ranking": 1,
+    "acceptanceRate": "3.4%",
+    "averageGpa": 3.95,
+    "tuitionMin": 54000,
+    "tuitionMax": 61200,
+    "popularMajors": [
+      "Economics",
+      "Computer Science",
+      "Political Science"
+    ],
+    "offeredScholarships": [
+      "sch-001"
+    ],
+    "city": "Cambridge",
+    "hasOnCampusHousing": true,
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://apply.college.harvard.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-mit",
+    "name": "Massachusetts Institute of Technology",
+    "country": "United States",
+    "type": "private",
+    "ranking": 2,
+    "acceptanceRate": "4.1%",
+    "averageGpa": 3.96,
+    "tuitionMin": 55500,
+    "tuitionMax": 59750,
+    "popularMajors": [
+      "Computer Science",
+      "Mechanical Engineering",
+      "Physics"
+    ],
+    "offeredScholarships": [
+      "sch-002"
+    ],
+    "city": "Cambridge",
+    "hasOnCampusHousing": true,
+    "website": "https://www.mit.edu/",
+    "applicationUrl": "https://apply.mit.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-001",
+    "name": "Global University 1",
+    "country": "Canada",
+    "type": "private",
+    "ranking": 1,
+    "acceptanceRate": "21.9%",
+    "averageGpa": 3.644282304175611,
+    "tuitionMin": 18825,
+    "tuitionMax": 40295,
+    "popularMajors": [
+      "Computer Science",
+      "Design",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-030"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni1.edu/",
+    "applicationUrl": "https://apply.globaluni1.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-002",
+    "name": "Global University 2",
+    "country": "Canada",
+    "type": "private",
+    "ranking": 2,
+    "acceptanceRate": "38.5%",
+    "averageGpa": 3.3586265777468087,
+    "tuitionMin": 10447,
+    "tuitionMax": 33688,
+    "popularMajors": [
+      "Psychology",
+      "Data Science",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-025"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni2.edu/",
+    "applicationUrl": "https://apply.globaluni2.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-003",
+    "name": "Global University 3",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 3,
+    "acceptanceRate": "51.6%",
+    "averageGpa": 3.1318562022365457,
+    "tuitionMin": 13688,
+    "tuitionMax": 32368,
+    "popularMajors": [
+      "Design",
+      "Business",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-048"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni3.edu/",
+    "applicationUrl": "https://apply.globaluni3.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-004",
+    "name": "Global University 4",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 4,
+    "acceptanceRate": "35.6%",
+    "averageGpa": 3.7116726261037005,
+    "tuitionMin": 23137,
+    "tuitionMax": 46126,
+    "popularMajors": [
+      "Arts",
+      "Biology",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-026"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni4.edu/",
+    "applicationUrl": "https://apply.globaluni4.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-005",
+    "name": "Global University 5",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 5,
+    "acceptanceRate": "15.1%",
+    "averageGpa": 3.30173487780354,
+    "tuitionMin": 23378,
+    "tuitionMax": 47020,
+    "popularMajors": [
+      "Biology",
+      "Law",
+      "Arts"
+    ],
+    "offeredScholarships": [
+      "sch-013"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni5.edu/",
+    "applicationUrl": "https://apply.globaluni5.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-006",
+    "name": "Global University 6",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 6,
+    "acceptanceRate": "18.0%",
+    "averageGpa": 3.6072982296819878,
+    "tuitionMin": 13362,
+    "tuitionMax": 31624,
+    "popularMajors": [
+      "Information Technology",
+      "Psychology",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-047"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni6.edu/",
+    "applicationUrl": "https://apply.globaluni6.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-007",
+    "name": "Global University 7",
+    "country": "United States",
+    "type": "public",
+    "ranking": 7,
+    "acceptanceRate": "40.4%",
+    "averageGpa": 3.8211138004807994,
+    "tuitionMin": 47283,
+    "tuitionMax": 64182,
+    "popularMajors": [
+      "Medicine",
+      "Business",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-005"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni7.edu/",
+    "applicationUrl": "https://apply.globaluni7.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-008",
+    "name": "Global University 8",
+    "country": "France",
+    "type": "public",
+    "ranking": 8,
+    "acceptanceRate": "5.4%",
+    "averageGpa": 3.520663535517211,
+    "tuitionMin": 19065,
+    "tuitionMax": 36052,
+    "popularMajors": [
+      "Data Science",
+      "Data Science",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-040"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni8.edu/",
+    "applicationUrl": "https://apply.globaluni8.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-009",
+    "name": "Global University 9",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 9,
+    "acceptanceRate": "8.2%",
+    "averageGpa": 3.3383515702173963,
+    "tuitionMin": 24259,
+    "tuitionMax": 40229,
+    "popularMajors": [
+      "Data Science",
+      "Arts",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-015"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni9.edu/",
+    "applicationUrl": "https://apply.globaluni9.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-010",
+    "name": "Global University 10",
+    "country": "United States",
+    "type": "public",
+    "ranking": 10,
+    "acceptanceRate": "37.7%",
+    "averageGpa": 3.56175131813516,
+    "tuitionMin": 30171,
+    "tuitionMax": 49644,
+    "popularMajors": [
+      "Psychology",
+      "Biology",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-023"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni10.edu/",
+    "applicationUrl": "https://apply.globaluni10.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-011",
+    "name": "Global University 11",
+    "country": "Switzerland",
+    "type": "private",
+    "ranking": 11,
+    "acceptanceRate": "5.6%",
+    "averageGpa": 3.1156668885797467,
+    "tuitionMin": 12580,
+    "tuitionMax": 29055,
+    "popularMajors": [
+      "Architecture",
+      "Economics",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-000"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni11.edu/",
+    "applicationUrl": "https://apply.globaluni11.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-012",
+    "name": "Global University 12",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 12,
+    "acceptanceRate": "48.0%",
+    "averageGpa": 3.0678295398782423,
+    "tuitionMin": 19386,
+    "tuitionMax": 41301,
+    "popularMajors": [
+      "Architecture",
+      "Medicine",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-027"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni12.edu/",
+    "applicationUrl": "https://apply.globaluni12.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-013",
+    "name": "Global University 13",
+    "country": "Canada",
+    "type": "private",
+    "ranking": 13,
+    "acceptanceRate": "22.6%",
+    "averageGpa": 3.835784771500694,
+    "tuitionMin": 22131,
+    "tuitionMax": 40668,
+    "popularMajors": [
+      "Economics",
+      "Biology",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-048"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni13.edu/",
+    "applicationUrl": "https://apply.globaluni13.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-014",
+    "name": "Global University 14",
+    "country": "Japan",
+    "type": "public",
+    "ranking": 14,
+    "acceptanceRate": "38.8%",
+    "averageGpa": 3.9912397839457174,
+    "tuitionMin": 24847,
+    "tuitionMax": 46440,
+    "popularMajors": [
+      "Economics",
+      "Psychology",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-014"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni14.edu/",
+    "applicationUrl": "https://apply.globaluni14.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-015",
+    "name": "Global University 15",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 15,
+    "acceptanceRate": "47.9%",
+    "averageGpa": 3.2781875262720224,
+    "tuitionMin": 22755,
+    "tuitionMax": 46800,
+    "popularMajors": [
+      "Medicine",
+      "Law",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-022"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni15.edu/",
+    "applicationUrl": "https://apply.globaluni15.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-016",
+    "name": "Global University 16",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 16,
+    "acceptanceRate": "28.8%",
+    "averageGpa": 3.9017996043696455,
+    "tuitionMin": 19075,
+    "tuitionMax": 41835,
+    "popularMajors": [
+      "Economics",
+      "Computer Science",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-026"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni16.edu/",
+    "applicationUrl": "https://apply.globaluni16.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-017",
+    "name": "Global University 17",
+    "country": "France",
+    "type": "public",
+    "ranking": 17,
+    "acceptanceRate": "21.0%",
+    "averageGpa": 3.738591715413847,
+    "tuitionMin": 19173,
+    "tuitionMax": 34471,
+    "popularMajors": [
+      "Data Science",
+      "Economics",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-000"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni17.edu/",
+    "applicationUrl": "https://apply.globaluni17.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-018",
+    "name": "Global University 18",
+    "country": "United States",
+    "type": "public",
+    "ranking": 18,
+    "acceptanceRate": "12.6%",
+    "averageGpa": 3.969329914950306,
+    "tuitionMin": 33440,
+    "tuitionMax": 51541,
+    "popularMajors": [
+      "Data Science",
+      "Economics",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-025"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni18.edu/",
+    "applicationUrl": "https://apply.globaluni18.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-019",
+    "name": "Global University 19",
+    "country": "Canada",
+    "type": "private",
+    "ranking": 19,
+    "acceptanceRate": "52.5%",
+    "averageGpa": 3.8669302588953034,
+    "tuitionMin": 18767,
+    "tuitionMax": 34787,
+    "popularMajors": [
+      "Arts",
+      "Business",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-019"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni19.edu/",
+    "applicationUrl": "https://apply.globaluni19.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-020",
+    "name": "Global University 20",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 20,
+    "acceptanceRate": "16.2%",
+    "averageGpa": 3.5192313763072347,
+    "tuitionMin": 21454,
+    "tuitionMax": 42290,
+    "popularMajors": [
+      "Engineering",
+      "Law",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-001"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni20.edu/",
+    "applicationUrl": "https://apply.globaluni20.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-021",
+    "name": "Global University 21",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 21,
+    "acceptanceRate": "12.0%",
+    "averageGpa": 3.287537793929819,
+    "tuitionMin": 16426,
+    "tuitionMax": 33417,
+    "popularMajors": [
+      "Computer Science",
+      "Architecture",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-039"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni21.edu/",
+    "applicationUrl": "https://apply.globaluni21.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-022",
+    "name": "Global University 22",
+    "country": "France",
+    "type": "private",
+    "ranking": 22,
+    "acceptanceRate": "20.9%",
+    "averageGpa": 3.5685913382863976,
+    "tuitionMin": 20056,
+    "tuitionMax": 40924,
+    "popularMajors": [
+      "Arts",
+      "Economics",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-005"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni22.edu/",
+    "applicationUrl": "https://apply.globaluni22.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-023",
+    "name": "Global University 23",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 23,
+    "acceptanceRate": "8.2%",
+    "averageGpa": 3.8565290732922883,
+    "tuitionMin": 16734,
+    "tuitionMax": 36566,
+    "popularMajors": [
+      "Biology",
+      "Engineering",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-044"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni23.edu/",
+    "applicationUrl": "https://apply.globaluni23.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-024",
+    "name": "Global University 24",
+    "country": "France",
+    "type": "private",
+    "ranking": 24,
+    "acceptanceRate": "47.2%",
+    "averageGpa": 3.753282938647986,
+    "tuitionMin": 23243,
+    "tuitionMax": 41975,
+    "popularMajors": [
+      "Biology",
+      "Economics",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-034"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni24.edu/",
+    "applicationUrl": "https://apply.globaluni24.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-025",
+    "name": "Global University 25",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 25,
+    "acceptanceRate": "51.9%",
+    "averageGpa": 3.644045050302959,
+    "tuitionMin": 18261,
+    "tuitionMax": 40456,
+    "popularMajors": [
+      "Information Technology",
+      "Architecture",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-038"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni25.edu/",
+    "applicationUrl": "https://apply.globaluni25.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-026",
+    "name": "Global University 26",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 26,
+    "acceptanceRate": "29.4%",
+    "averageGpa": 3.7604366098869684,
+    "tuitionMin": 11331,
+    "tuitionMax": 26388,
+    "popularMajors": [
+      "Computer Science",
+      "Medicine",
+      "Arts"
+    ],
+    "offeredScholarships": [
+      "sch-015"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni26.edu/",
+    "applicationUrl": "https://apply.globaluni26.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-027",
+    "name": "Global University 27",
+    "country": "France",
+    "type": "private",
+    "ranking": 27,
+    "acceptanceRate": "39.1%",
+    "averageGpa": 3.8340107475812077,
+    "tuitionMin": 10442,
+    "tuitionMax": 29315,
+    "popularMajors": [
+      "Data Science",
+      "Data Science",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-018"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni27.edu/",
+    "applicationUrl": "https://apply.globaluni27.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-028",
+    "name": "Global University 28",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 28,
+    "acceptanceRate": "24.5%",
+    "averageGpa": 3.4160493497958315,
+    "tuitionMin": 19378,
+    "tuitionMax": 36508,
+    "popularMajors": [
+      "Information Technology",
+      "Psychology",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-000"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni28.edu/",
+    "applicationUrl": "https://apply.globaluni28.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-029",
+    "name": "Global University 29",
+    "country": "Switzerland",
+    "type": "private",
+    "ranking": 29,
+    "acceptanceRate": "16.7%",
+    "averageGpa": 3.9727356166195706,
+    "tuitionMin": 21989,
+    "tuitionMax": 41442,
+    "popularMajors": [
+      "Medicine",
+      "Information Technology",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-045"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni29.edu/",
+    "applicationUrl": "https://apply.globaluni29.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-030",
+    "name": "Global University 30",
+    "country": "United States",
+    "type": "public",
+    "ranking": 30,
+    "acceptanceRate": "31.4%",
+    "averageGpa": 3.7106215380809733,
+    "tuitionMin": 39056,
+    "tuitionMax": 58694,
+    "popularMajors": [
+      "Architecture",
+      "Design",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-006"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni30.edu/",
+    "applicationUrl": "https://apply.globaluni30.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-031",
+    "name": "Global University 31",
+    "country": "United States",
+    "type": "public",
+    "ranking": 31,
+    "acceptanceRate": "42.2%",
+    "averageGpa": 3.953607513243429,
+    "tuitionMin": 36493,
+    "tuitionMax": 55014,
+    "popularMajors": [
+      "Data Science",
+      "Data Science",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-015"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni31.edu/",
+    "applicationUrl": "https://apply.globaluni31.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-032",
+    "name": "Global University 32",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 32,
+    "acceptanceRate": "42.0%",
+    "averageGpa": 3.410672485721747,
+    "tuitionMin": 18558,
+    "tuitionMax": 37768,
+    "popularMajors": [
+      "Design",
+      "Data Science",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-001"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni32.edu/",
+    "applicationUrl": "https://apply.globaluni32.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-033",
+    "name": "Global University 33",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 33,
+    "acceptanceRate": "23.7%",
+    "averageGpa": 3.94043470941551,
+    "tuitionMin": 18269,
+    "tuitionMax": 39450,
+    "popularMajors": [
+      "Medicine",
+      "Arts",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-008"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni33.edu/",
+    "applicationUrl": "https://apply.globaluni33.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-034",
+    "name": "Global University 34",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 34,
+    "acceptanceRate": "9.3%",
+    "averageGpa": 3.7913030889922004,
+    "tuitionMin": 19484,
+    "tuitionMax": 35488,
+    "popularMajors": [
+      "Psychology",
+      "Biology",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-020"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni34.edu/",
+    "applicationUrl": "https://apply.globaluni34.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-035",
+    "name": "Global University 35",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 35,
+    "acceptanceRate": "22.9%",
+    "averageGpa": 3.77172178961228,
+    "tuitionMin": 21910,
+    "tuitionMax": 41938,
+    "popularMajors": [
+      "Biology",
+      "Psychology",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-024"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni35.edu/",
+    "applicationUrl": "https://apply.globaluni35.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-036",
+    "name": "Global University 36",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 36,
+    "acceptanceRate": "41.6%",
+    "averageGpa": 3.9267886922703212,
+    "tuitionMin": 17834,
+    "tuitionMax": 37312,
+    "popularMajors": [
+      "Engineering",
+      "Architecture",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-039"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni36.edu/",
+    "applicationUrl": "https://apply.globaluni36.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-037",
+    "name": "Global University 37",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 37,
+    "acceptanceRate": "23.5%",
+    "averageGpa": 3.1401215357747034,
+    "tuitionMin": 13225,
+    "tuitionMax": 29236,
+    "popularMajors": [
+      "Architecture",
+      "Economics",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-011"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni37.edu/",
+    "applicationUrl": "https://apply.globaluni37.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-038",
+    "name": "Global University 38",
+    "country": "Australia",
+    "type": "private",
+    "ranking": 38,
+    "acceptanceRate": "26.2%",
+    "averageGpa": 3.853748180186646,
+    "tuitionMin": 14171,
+    "tuitionMax": 38057,
+    "popularMajors": [
+      "Data Science",
+      "Business",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-028"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni38.edu/",
+    "applicationUrl": "https://apply.globaluni38.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-039",
+    "name": "Global University 39",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 39,
+    "acceptanceRate": "34.8%",
+    "averageGpa": 3.1469470822653314,
+    "tuitionMin": 20794,
+    "tuitionMax": 37184,
+    "popularMajors": [
+      "Biology",
+      "Economics",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-003"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni39.edu/",
+    "applicationUrl": "https://apply.globaluni39.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-040",
+    "name": "Global University 40",
+    "country": "France",
+    "type": "public",
+    "ranking": 40,
+    "acceptanceRate": "28.6%",
+    "averageGpa": 3.7887794108842128,
+    "tuitionMin": 12185,
+    "tuitionMax": 33885,
+    "popularMajors": [
+      "Arts",
+      "Computer Science",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-023"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni40.edu/",
+    "applicationUrl": "https://apply.globaluni40.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-041",
+    "name": "Global University 41",
+    "country": "Japan",
+    "type": "private",
+    "ranking": 41,
+    "acceptanceRate": "28.5%",
+    "averageGpa": 3.621184795571109,
+    "tuitionMin": 16402,
+    "tuitionMax": 31504,
+    "popularMajors": [
+      "Law",
+      "Computer Science",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-039"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni41.edu/",
+    "applicationUrl": "https://apply.globaluni41.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-042",
+    "name": "Global University 42",
+    "country": "Japan",
+    "type": "private",
+    "ranking": 42,
+    "acceptanceRate": "25.2%",
+    "averageGpa": 3.157733489427418,
+    "tuitionMin": 16983,
+    "tuitionMax": 34702,
+    "popularMajors": [
+      "Biology",
+      "Medicine",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-022"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni42.edu/",
+    "applicationUrl": "https://apply.globaluni42.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-043",
+    "name": "Global University 43",
+    "country": "Switzerland",
+    "type": "private",
+    "ranking": 43,
+    "acceptanceRate": "23.9%",
+    "averageGpa": 3.021054307307989,
+    "tuitionMin": 17783,
+    "tuitionMax": 37582,
+    "popularMajors": [
+      "Economics",
+      "Economics",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-010"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni43.edu/",
+    "applicationUrl": "https://apply.globaluni43.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-044",
+    "name": "Global University 44",
+    "country": "France",
+    "type": "private",
+    "ranking": 44,
+    "acceptanceRate": "42.4%",
+    "averageGpa": 3.4716101587778034,
+    "tuitionMin": 18253,
+    "tuitionMax": 41984,
+    "popularMajors": [
+      "Business",
+      "Arts",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-018"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni44.edu/",
+    "applicationUrl": "https://apply.globaluni44.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-045",
+    "name": "Global University 45",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 45,
+    "acceptanceRate": "47.8%",
+    "averageGpa": 3.456201997244701,
+    "tuitionMin": 10336,
+    "tuitionMax": 27477,
+    "popularMajors": [
+      "Arts",
+      "Design",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-048"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni45.edu/",
+    "applicationUrl": "https://apply.globaluni45.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-046",
+    "name": "Global University 46",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 46,
+    "acceptanceRate": "46.2%",
+    "averageGpa": 3.195573627333136,
+    "tuitionMin": 22984,
+    "tuitionMax": 41212,
+    "popularMajors": [
+      "Computer Science",
+      "Economics",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-007"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni46.edu/",
+    "applicationUrl": "https://apply.globaluni46.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-047",
+    "name": "Global University 47",
+    "country": "Germany",
+    "type": "private",
+    "ranking": 47,
+    "acceptanceRate": "33.4%",
+    "averageGpa": 3.225035627331261,
+    "tuitionMin": 20027,
+    "tuitionMax": 37107,
+    "popularMajors": [
+      "Arts",
+      "Arts",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-032"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni47.edu/",
+    "applicationUrl": "https://apply.globaluni47.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-048",
+    "name": "Global University 48",
+    "country": "Switzerland",
+    "type": "private",
+    "ranking": 48,
+    "acceptanceRate": "46.2%",
+    "averageGpa": 3.636813807238153,
+    "tuitionMin": 22433,
+    "tuitionMax": 42027,
+    "popularMajors": [
+      "Engineering",
+      "Law",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-022"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni48.edu/",
+    "applicationUrl": "https://apply.globaluni48.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-049",
+    "name": "Global University 49",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 49,
+    "acceptanceRate": "12.2%",
+    "averageGpa": 3.197430006534817,
+    "tuitionMin": 21736,
+    "tuitionMax": 42391,
+    "popularMajors": [
+      "Information Technology",
+      "Business",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-022"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni49.edu/",
+    "applicationUrl": "https://apply.globaluni49.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-050",
+    "name": "Global University 50",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 50,
+    "acceptanceRate": "13.8%",
+    "averageGpa": 3.877051681072073,
+    "tuitionMin": 20842,
+    "tuitionMax": 37957,
+    "popularMajors": [
+      "Arts",
+      "Information Technology",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-023"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni50.edu/",
+    "applicationUrl": "https://apply.globaluni50.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-051",
+    "name": "Global University 51",
+    "country": "United States",
+    "type": "public",
+    "ranking": 51,
+    "acceptanceRate": "33.1%",
+    "averageGpa": 3.788354821198845,
+    "tuitionMin": 33060,
+    "tuitionMax": 49526,
+    "popularMajors": [
+      "Economics",
+      "Business",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-044"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni51.edu/",
+    "applicationUrl": "https://apply.globaluni51.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-052",
+    "name": "Global University 52",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 52,
+    "acceptanceRate": "5.6%",
+    "averageGpa": 3.082815128759818,
+    "tuitionMin": 20355,
+    "tuitionMax": 44465,
+    "popularMajors": [
+      "Engineering",
+      "Arts",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-026"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni52.edu/",
+    "applicationUrl": "https://apply.globaluni52.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-053",
+    "name": "Global University 53",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 53,
+    "acceptanceRate": "16.3%",
+    "averageGpa": 3.1843941068975523,
+    "tuitionMin": 24354,
+    "tuitionMax": 46546,
+    "popularMajors": [
+      "Medicine",
+      "Data Science",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-042"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni53.edu/",
+    "applicationUrl": "https://apply.globaluni53.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-054",
+    "name": "Global University 54",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 54,
+    "acceptanceRate": "18.1%",
+    "averageGpa": 3.2507733819592275,
+    "tuitionMin": 11485,
+    "tuitionMax": 36177,
+    "popularMajors": [
+      "Psychology",
+      "Biology",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-034"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni54.edu/",
+    "applicationUrl": "https://apply.globaluni54.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-055",
+    "name": "Global University 55",
+    "country": "Germany",
+    "type": "private",
+    "ranking": 55,
+    "acceptanceRate": "31.9%",
+    "averageGpa": 3.223552670694829,
+    "tuitionMin": 11323,
+    "tuitionMax": 31181,
+    "popularMajors": [
+      "Architecture",
+      "Architecture",
+      "Data Science"
+    ],
+    "offeredScholarships": [
+      "sch-026"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni55.edu/",
+    "applicationUrl": "https://apply.globaluni55.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-056",
+    "name": "Global University 56",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 56,
+    "acceptanceRate": "8.7%",
+    "averageGpa": 3.6790919770299624,
+    "tuitionMin": 18093,
+    "tuitionMax": 39070,
+    "popularMajors": [
+      "Business",
+      "Design",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-035"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni56.edu/",
+    "applicationUrl": "https://apply.globaluni56.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-057",
+    "name": "Global University 57",
+    "country": "France",
+    "type": "private",
+    "ranking": 57,
+    "acceptanceRate": "43.5%",
+    "averageGpa": 3.557439739279684,
+    "tuitionMin": 24857,
+    "tuitionMax": 45497,
+    "popularMajors": [
+      "Psychology",
+      "Information Technology",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-033"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni57.edu/",
+    "applicationUrl": "https://apply.globaluni57.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-058",
+    "name": "Global University 58",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 58,
+    "acceptanceRate": "10.0%",
+    "averageGpa": 3.633182897146763,
+    "tuitionMin": 14177,
+    "tuitionMax": 32154,
+    "popularMajors": [
+      "Information Technology",
+      "Engineering",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-009"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni58.edu/",
+    "applicationUrl": "https://apply.globaluni58.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-059",
+    "name": "Global University 59",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 59,
+    "acceptanceRate": "36.0%",
+    "averageGpa": 3.429407319046327,
+    "tuitionMin": 12412,
+    "tuitionMax": 33111,
+    "popularMajors": [
+      "Economics",
+      "Information Technology",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-033"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni59.edu/",
+    "applicationUrl": "https://apply.globaluni59.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-060",
+    "name": "Global University 60",
+    "country": "Canada",
+    "type": "private",
+    "ranking": 60,
+    "acceptanceRate": "24.7%",
+    "averageGpa": 3.8388706118395026,
+    "tuitionMin": 17270,
+    "tuitionMax": 36869,
+    "popularMajors": [
+      "Arts",
+      "Business",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-042"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni60.edu/",
+    "applicationUrl": "https://apply.globaluni60.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-061",
+    "name": "Global University 61",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 61,
+    "acceptanceRate": "31.6%",
+    "averageGpa": 3.0676991147672483,
+    "tuitionMin": 12180,
+    "tuitionMax": 34006,
+    "popularMajors": [
+      "Medicine",
+      "Information Technology",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-006"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni61.edu/",
+    "applicationUrl": "https://apply.globaluni61.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-062",
+    "name": "Global University 62",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 62,
+    "acceptanceRate": "26.2%",
+    "averageGpa": 3.4448314495042753,
+    "tuitionMin": 18555,
+    "tuitionMax": 40085,
+    "popularMajors": [
+      "Architecture",
+      "Economics",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-010"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni62.edu/",
+    "applicationUrl": "https://apply.globaluni62.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-063",
+    "name": "Global University 63",
+    "country": "Canada",
+    "type": "private",
+    "ranking": 63,
+    "acceptanceRate": "47.1%",
+    "averageGpa": 3.8437957767359068,
+    "tuitionMin": 19875,
+    "tuitionMax": 38696,
+    "popularMajors": [
+      "Engineering",
+      "Economics",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-038"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni63.edu/",
+    "applicationUrl": "https://apply.globaluni63.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-064",
+    "name": "Global University 64",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 64,
+    "acceptanceRate": "47.5%",
+    "averageGpa": 3.6153515767735263,
+    "tuitionMin": 23079,
+    "tuitionMax": 46714,
+    "popularMajors": [
+      "Architecture",
+      "Medicine",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-040"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni64.edu/",
+    "applicationUrl": "https://apply.globaluni64.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-065",
+    "name": "Global University 65",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 65,
+    "acceptanceRate": "11.3%",
+    "averageGpa": 3.947765992608038,
+    "tuitionMin": 24243,
+    "tuitionMax": 42704,
+    "popularMajors": [
+      "Business",
+      "Data Science",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-027"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni65.edu/",
+    "applicationUrl": "https://apply.globaluni65.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-066",
+    "name": "Global University 66",
+    "country": "Japan",
+    "type": "public",
+    "ranking": 66,
+    "acceptanceRate": "8.3%",
+    "averageGpa": 3.7884509892622242,
+    "tuitionMin": 11570,
+    "tuitionMax": 29101,
+    "popularMajors": [
+      "Biology",
+      "Medicine",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-045"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni66.edu/",
+    "applicationUrl": "https://apply.globaluni66.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-067",
+    "name": "Global University 67",
+    "country": "Australia",
+    "type": "private",
+    "ranking": 67,
+    "acceptanceRate": "35.8%",
+    "averageGpa": 3.9361520356967468,
+    "tuitionMin": 24623,
+    "tuitionMax": 48684,
+    "popularMajors": [
+      "Economics",
+      "Engineering",
+      "Arts"
+    ],
+    "offeredScholarships": [
+      "sch-020"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni67.edu/",
+    "applicationUrl": "https://apply.globaluni67.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-068",
+    "name": "Global University 68",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 68,
+    "acceptanceRate": "12.0%",
+    "averageGpa": 3.330798542238038,
+    "tuitionMin": 24952,
+    "tuitionMax": 46888,
+    "popularMajors": [
+      "Arts",
+      "Computer Science",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-004"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni68.edu/",
+    "applicationUrl": "https://apply.globaluni68.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-069",
+    "name": "Global University 69",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 69,
+    "acceptanceRate": "13.3%",
+    "averageGpa": 3.494985293920032,
+    "tuitionMin": 19785,
+    "tuitionMax": 44221,
+    "popularMajors": [
+      "Law",
+      "Architecture",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-037"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni69.edu/",
+    "applicationUrl": "https://apply.globaluni69.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-070",
+    "name": "Global University 70",
+    "country": "France",
+    "type": "private",
+    "ranking": 70,
+    "acceptanceRate": "14.6%",
+    "averageGpa": 3.995312079487741,
+    "tuitionMin": 12465,
+    "tuitionMax": 30345,
+    "popularMajors": [
+      "Economics",
+      "Engineering",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-009"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni70.edu/",
+    "applicationUrl": "https://apply.globaluni70.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-071",
+    "name": "Global University 71",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 71,
+    "acceptanceRate": "15.8%",
+    "averageGpa": 3.180623352938727,
+    "tuitionMin": 13166,
+    "tuitionMax": 29647,
+    "popularMajors": [
+      "Information Technology",
+      "Psychology",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-039"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni71.edu/",
+    "applicationUrl": "https://apply.globaluni71.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-072",
+    "name": "Global University 72",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 72,
+    "acceptanceRate": "12.1%",
+    "averageGpa": 3.7592515607563417,
+    "tuitionMin": 21460,
+    "tuitionMax": 45890,
+    "popularMajors": [
+      "Business",
+      "Information Technology",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-049"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni72.edu/",
+    "applicationUrl": "https://apply.globaluni72.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-073",
+    "name": "Global University 73",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 73,
+    "acceptanceRate": "25.4%",
+    "averageGpa": 3.383420964923732,
+    "tuitionMin": 23963,
+    "tuitionMax": 44888,
+    "popularMajors": [
+      "Arts",
+      "Design",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-010"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni73.edu/",
+    "applicationUrl": "https://apply.globaluni73.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-074",
+    "name": "Global University 74",
+    "country": "France",
+    "type": "public",
+    "ranking": 74,
+    "acceptanceRate": "53.3%",
+    "averageGpa": 3.9158751813211925,
+    "tuitionMin": 22401,
+    "tuitionMax": 39841,
+    "popularMajors": [
+      "Computer Science",
+      "Computer Science",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-035"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni74.edu/",
+    "applicationUrl": "https://apply.globaluni74.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-075",
+    "name": "Global University 75",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 75,
+    "acceptanceRate": "14.1%",
+    "averageGpa": 3.996543248561168,
+    "tuitionMin": 23294,
+    "tuitionMax": 42002,
+    "popularMajors": [
+      "Medicine",
+      "Architecture",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-019"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni75.edu/",
+    "applicationUrl": "https://apply.globaluni75.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-076",
+    "name": "Global University 76",
+    "country": "France",
+    "type": "private",
+    "ranking": 76,
+    "acceptanceRate": "51.9%",
+    "averageGpa": 3.7846223708070963,
+    "tuitionMin": 19773,
+    "tuitionMax": 44360,
+    "popularMajors": [
+      "Biology",
+      "Law",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-028"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni76.edu/",
+    "applicationUrl": "https://apply.globaluni76.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-077",
+    "name": "Global University 77",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 77,
+    "acceptanceRate": "32.3%",
+    "averageGpa": 3.32834909160759,
+    "tuitionMin": 23801,
+    "tuitionMax": 47286,
+    "popularMajors": [
+      "Business",
+      "Biology",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-032"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni77.edu/",
+    "applicationUrl": "https://apply.globaluni77.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-078",
+    "name": "Global University 78",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 78,
+    "acceptanceRate": "44.6%",
+    "averageGpa": 3.2420094607477052,
+    "tuitionMin": 17571,
+    "tuitionMax": 39327,
+    "popularMajors": [
+      "Architecture",
+      "Economics",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-012"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni78.edu/",
+    "applicationUrl": "https://apply.globaluni78.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-079",
+    "name": "Global University 79",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 79,
+    "acceptanceRate": "15.5%",
+    "averageGpa": 3.7276653065699925,
+    "tuitionMin": 11972,
+    "tuitionMax": 27511,
+    "popularMajors": [
+      "Law",
+      "Economics",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-009"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni79.edu/",
+    "applicationUrl": "https://apply.globaluni79.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-080",
+    "name": "Global University 80",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 80,
+    "acceptanceRate": "12.2%",
+    "averageGpa": 3.5032349092884227,
+    "tuitionMin": 13722,
+    "tuitionMax": 36629,
+    "popularMajors": [
+      "Data Science",
+      "Design",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-015"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni80.edu/",
+    "applicationUrl": "https://apply.globaluni80.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-081",
+    "name": "Global University 81",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 81,
+    "acceptanceRate": "5.6%",
+    "averageGpa": 3.791124301559618,
+    "tuitionMin": 18501,
+    "tuitionMax": 42430,
+    "popularMajors": [
+      "Architecture",
+      "Computer Science",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-037"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni81.edu/",
+    "applicationUrl": "https://apply.globaluni81.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-082",
+    "name": "Global University 82",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 82,
+    "acceptanceRate": "21.3%",
+    "averageGpa": 3.7502726064549106,
+    "tuitionMin": 12276,
+    "tuitionMax": 30521,
+    "popularMajors": [
+      "Economics",
+      "Biology",
+      "Data Science"
+    ],
+    "offeredScholarships": [
+      "sch-020"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni82.edu/",
+    "applicationUrl": "https://apply.globaluni82.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-083",
+    "name": "Global University 83",
+    "country": "France",
+    "type": "public",
+    "ranking": 83,
+    "acceptanceRate": "6.9%",
+    "averageGpa": 3.995658580930594,
+    "tuitionMin": 19906,
+    "tuitionMax": 35601,
+    "popularMajors": [
+      "Engineering",
+      "Data Science",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-008"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni83.edu/",
+    "applicationUrl": "https://apply.globaluni83.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-084",
+    "name": "Global University 84",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 84,
+    "acceptanceRate": "16.9%",
+    "averageGpa": 3.8600083423801093,
+    "tuitionMin": 13580,
+    "tuitionMax": 29853,
+    "popularMajors": [
+      "Arts",
+      "Design",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-029"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni84.edu/",
+    "applicationUrl": "https://apply.globaluni84.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-085",
+    "name": "Global University 85",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 85,
+    "acceptanceRate": "49.8%",
+    "averageGpa": 3.1965763423423237,
+    "tuitionMin": 15434,
+    "tuitionMax": 40160,
+    "popularMajors": [
+      "Design",
+      "Economics",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-041"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni85.edu/",
+    "applicationUrl": "https://apply.globaluni85.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-086",
+    "name": "Global University 86",
+    "country": "France",
+    "type": "public",
+    "ranking": 86,
+    "acceptanceRate": "45.9%",
+    "averageGpa": 3.3520883568596065,
+    "tuitionMin": 18249,
+    "tuitionMax": 35539,
+    "popularMajors": [
+      "Business",
+      "Design",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-000"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni86.edu/",
+    "applicationUrl": "https://apply.globaluni86.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-087",
+    "name": "Global University 87",
+    "country": "United States",
+    "type": "public",
+    "ranking": 87,
+    "acceptanceRate": "43.4%",
+    "averageGpa": 3.414399846822771,
+    "tuitionMin": 41168,
+    "tuitionMax": 56277,
+    "popularMajors": [
+      "Medicine",
+      "Arts",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-038"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni87.edu/",
+    "applicationUrl": "https://apply.globaluni87.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-088",
+    "name": "Global University 88",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 88,
+    "acceptanceRate": "43.3%",
+    "averageGpa": 3.296938827357827,
+    "tuitionMin": 21506,
+    "tuitionMax": 38678,
+    "popularMajors": [
+      "Arts",
+      "Information Technology",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-012"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni88.edu/",
+    "applicationUrl": "https://apply.globaluni88.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-089",
+    "name": "Global University 89",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 89,
+    "acceptanceRate": "23.3%",
+    "averageGpa": 3.064348975044908,
+    "tuitionMin": 24572,
+    "tuitionMax": 47649,
+    "popularMajors": [
+      "Architecture",
+      "Engineering",
+      "Data Science"
+    ],
+    "offeredScholarships": [
+      "sch-036"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni89.edu/",
+    "applicationUrl": "https://apply.globaluni89.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-090",
+    "name": "Global University 90",
+    "country": "United States",
+    "type": "public",
+    "ranking": 90,
+    "acceptanceRate": "20.2%",
+    "averageGpa": 3.433078840025173,
+    "tuitionMin": 35411,
+    "tuitionMax": 51185,
+    "popularMajors": [
+      "Information Technology",
+      "Arts",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-024"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni90.edu/",
+    "applicationUrl": "https://apply.globaluni90.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-091",
+    "name": "Global University 91",
+    "country": "Japan",
+    "type": "public",
+    "ranking": 91,
+    "acceptanceRate": "17.1%",
+    "averageGpa": 3.2688960507457616,
+    "tuitionMin": 22456,
+    "tuitionMax": 37487,
+    "popularMajors": [
+      "Economics",
+      "Data Science",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-025"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni91.edu/",
+    "applicationUrl": "https://apply.globaluni91.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-092",
+    "name": "Global University 92",
+    "country": "Switzerland",
+    "type": "private",
+    "ranking": 92,
+    "acceptanceRate": "30.1%",
+    "averageGpa": 3.0823729987549404,
+    "tuitionMin": 19078,
+    "tuitionMax": 35720,
+    "popularMajors": [
+      "Psychology",
+      "Information Technology",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-013"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni92.edu/",
+    "applicationUrl": "https://apply.globaluni92.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-093",
+    "name": "Global University 93",
+    "country": "Canada",
+    "type": "private",
+    "ranking": 93,
+    "acceptanceRate": "28.8%",
+    "averageGpa": 3.424475094224414,
+    "tuitionMin": 12106,
+    "tuitionMax": 36111,
+    "popularMajors": [
+      "Law",
+      "Business",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-046"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni93.edu/",
+    "applicationUrl": "https://apply.globaluni93.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-094",
+    "name": "Global University 94",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 94,
+    "acceptanceRate": "28.8%",
+    "averageGpa": 3.8485621886633026,
+    "tuitionMin": 12602,
+    "tuitionMax": 32978,
+    "popularMajors": [
+      "Biology",
+      "Psychology",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-025"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni94.edu/",
+    "applicationUrl": "https://apply.globaluni94.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-095",
+    "name": "Global University 95",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 95,
+    "acceptanceRate": "43.4%",
+    "averageGpa": 3.2998964067648817,
+    "tuitionMin": 16650,
+    "tuitionMax": 37040,
+    "popularMajors": [
+      "Design",
+      "Business",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-040"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni95.edu/",
+    "applicationUrl": "https://apply.globaluni95.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-096",
+    "name": "Global University 96",
+    "country": "Australia",
+    "type": "private",
+    "ranking": 96,
+    "acceptanceRate": "28.2%",
+    "averageGpa": 3.6444014940815537,
+    "tuitionMin": 13986,
+    "tuitionMax": 33608,
+    "popularMajors": [
+      "Law",
+      "Information Technology",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-000"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni96.edu/",
+    "applicationUrl": "https://apply.globaluni96.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-097",
+    "name": "Global University 97",
+    "country": "United States",
+    "type": "private",
+    "ranking": 97,
+    "acceptanceRate": "52.0%",
+    "averageGpa": 3.094737042228319,
+    "tuitionMin": 39109,
+    "tuitionMax": 60542,
+    "popularMajors": [
+      "Engineering",
+      "Engineering",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-019"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni97.edu/",
+    "applicationUrl": "https://apply.globaluni97.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-098",
+    "name": "Global University 98",
+    "country": "France",
+    "type": "public",
+    "ranking": 98,
+    "acceptanceRate": "45.8%",
+    "averageGpa": 3.969426591101956,
+    "tuitionMin": 10636,
+    "tuitionMax": 26109,
+    "popularMajors": [
+      "Arts",
+      "Law",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-006"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni98.edu/",
+    "applicationUrl": "https://apply.globaluni98.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-099",
+    "name": "Global University 99",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 99,
+    "acceptanceRate": "26.8%",
+    "averageGpa": 3.994346333870599,
+    "tuitionMin": 10455,
+    "tuitionMax": 25581,
+    "popularMajors": [
+      "Data Science",
+      "Law",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-003"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni99.edu/",
+    "applicationUrl": "https://apply.globaluni99.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-100",
+    "name": "Global University 100",
+    "country": "France",
+    "type": "private",
+    "ranking": 100,
+    "acceptanceRate": "44.5%",
+    "averageGpa": 3.2987018253614853,
+    "tuitionMin": 20357,
+    "tuitionMax": 41114,
+    "popularMajors": [
+      "Information Technology",
+      "Business",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-048"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni100.edu/",
+    "applicationUrl": "https://apply.globaluni100.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-101",
+    "name": "Global University 101",
+    "country": "Australia",
+    "type": "private",
+    "ranking": 101,
+    "acceptanceRate": "42.6%",
+    "averageGpa": 3.7225593593233706,
+    "tuitionMin": 24906,
+    "tuitionMax": 42564,
+    "popularMajors": [
+      "Biology",
+      "Law",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-026"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni101.edu/",
+    "applicationUrl": "https://apply.globaluni101.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-102",
+    "name": "Global University 102",
+    "country": "United States",
+    "type": "public",
+    "ranking": 102,
+    "acceptanceRate": "16.2%",
+    "averageGpa": 3.5514226091919037,
+    "tuitionMin": 37692,
+    "tuitionMax": 57063,
+    "popularMajors": [
+      "Arts",
+      "Psychology",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-046"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni102.edu/",
+    "applicationUrl": "https://apply.globaluni102.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-103",
+    "name": "Global University 103",
+    "country": "United States",
+    "type": "public",
+    "ranking": 103,
+    "acceptanceRate": "33.8%",
+    "averageGpa": 3.5825263182369027,
+    "tuitionMin": 40152,
+    "tuitionMax": 62104,
+    "popularMajors": [
+      "Medicine",
+      "Information Technology",
+      "Arts"
+    ],
+    "offeredScholarships": [
+      "sch-043"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni103.edu/",
+    "applicationUrl": "https://apply.globaluni103.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-104",
+    "name": "Global University 104",
+    "country": "Japan",
+    "type": "public",
+    "ranking": 104,
+    "acceptanceRate": "45.4%",
+    "averageGpa": 3.0791366757487975,
+    "tuitionMin": 19872,
+    "tuitionMax": 42711,
+    "popularMajors": [
+      "Arts",
+      "Arts",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-002"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni104.edu/",
+    "applicationUrl": "https://apply.globaluni104.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-105",
+    "name": "Global University 105",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 105,
+    "acceptanceRate": "27.2%",
+    "averageGpa": 3.8235890075419112,
+    "tuitionMin": 24556,
+    "tuitionMax": 41018,
+    "popularMajors": [
+      "Computer Science",
+      "Information Technology",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-048"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni105.edu/",
+    "applicationUrl": "https://apply.globaluni105.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-106",
+    "name": "Global University 106",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 106,
+    "acceptanceRate": "43.7%",
+    "averageGpa": 3.344010021056667,
+    "tuitionMin": 13455,
+    "tuitionMax": 35953,
+    "popularMajors": [
+      "Law",
+      "Architecture",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-025"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni106.edu/",
+    "applicationUrl": "https://apply.globaluni106.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-107",
+    "name": "Global University 107",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 107,
+    "acceptanceRate": "9.8%",
+    "averageGpa": 3.774898229693469,
+    "tuitionMin": 22590,
+    "tuitionMax": 45289,
+    "popularMajors": [
+      "Biology",
+      "Economics",
+      "Data Science"
+    ],
+    "offeredScholarships": [
+      "sch-048"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni107.edu/",
+    "applicationUrl": "https://apply.globaluni107.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-108",
+    "name": "Global University 108",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 108,
+    "acceptanceRate": "21.0%",
+    "averageGpa": 3.6211429694099664,
+    "tuitionMin": 17854,
+    "tuitionMax": 41973,
+    "popularMajors": [
+      "Engineering",
+      "Arts",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-011"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni108.edu/",
+    "applicationUrl": "https://apply.globaluni108.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-109",
+    "name": "Global University 109",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 109,
+    "acceptanceRate": "34.8%",
+    "averageGpa": 3.9786758240242497,
+    "tuitionMin": 19130,
+    "tuitionMax": 37027,
+    "popularMajors": [
+      "Data Science",
+      "Law",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-001"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni109.edu/",
+    "applicationUrl": "https://apply.globaluni109.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-110",
+    "name": "Global University 110",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 110,
+    "acceptanceRate": "39.2%",
+    "averageGpa": 3.2873205276901674,
+    "tuitionMin": 24317,
+    "tuitionMax": 49111,
+    "popularMajors": [
+      "Architecture",
+      "Medicine",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-037"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni110.edu/",
+    "applicationUrl": "https://apply.globaluni110.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-111",
+    "name": "Global University 111",
+    "country": "Japan",
+    "type": "private",
+    "ranking": 111,
+    "acceptanceRate": "24.1%",
+    "averageGpa": 3.8440882829634235,
+    "tuitionMin": 15155,
+    "tuitionMax": 32284,
+    "popularMajors": [
+      "Design",
+      "Law",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-001"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni111.edu/",
+    "applicationUrl": "https://apply.globaluni111.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-112",
+    "name": "Global University 112",
+    "country": "Japan",
+    "type": "private",
+    "ranking": 112,
+    "acceptanceRate": "45.5%",
+    "averageGpa": 3.1872227099183736,
+    "tuitionMin": 21978,
+    "tuitionMax": 45914,
+    "popularMajors": [
+      "Psychology",
+      "Biology",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-039"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni112.edu/",
+    "applicationUrl": "https://apply.globaluni112.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-113",
+    "name": "Global University 113",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 113,
+    "acceptanceRate": "50.9%",
+    "averageGpa": 3.1477674261044615,
+    "tuitionMin": 23724,
+    "tuitionMax": 45161,
+    "popularMajors": [
+      "Architecture",
+      "Business",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-014"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni113.edu/",
+    "applicationUrl": "https://apply.globaluni113.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-114",
+    "name": "Global University 114",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 114,
+    "acceptanceRate": "24.8%",
+    "averageGpa": 3.1286328164896675,
+    "tuitionMin": 24166,
+    "tuitionMax": 43254,
+    "popularMajors": [
+      "Medicine",
+      "Biology",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-037"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni114.edu/",
+    "applicationUrl": "https://apply.globaluni114.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-115",
+    "name": "Global University 115",
+    "country": "Australia",
+    "type": "private",
+    "ranking": 115,
+    "acceptanceRate": "11.1%",
+    "averageGpa": 3.4065075395067574,
+    "tuitionMin": 20248,
+    "tuitionMax": 40631,
+    "popularMajors": [
+      "Psychology",
+      "Business",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-034"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni115.edu/",
+    "applicationUrl": "https://apply.globaluni115.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-116",
+    "name": "Global University 116",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 116,
+    "acceptanceRate": "54.9%",
+    "averageGpa": 3.414940294280324,
+    "tuitionMin": 23206,
+    "tuitionMax": 46285,
+    "popularMajors": [
+      "Law",
+      "Arts",
+      "Arts"
+    ],
+    "offeredScholarships": [
+      "sch-006"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni116.edu/",
+    "applicationUrl": "https://apply.globaluni116.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-117",
+    "name": "Global University 117",
+    "country": "Canada",
+    "type": "private",
+    "ranking": 117,
+    "acceptanceRate": "46.9%",
+    "averageGpa": 3.2039023444148578,
+    "tuitionMin": 19271,
+    "tuitionMax": 34350,
+    "popularMajors": [
+      "Law",
+      "Economics",
+      "Data Science"
+    ],
+    "offeredScholarships": [
+      "sch-029"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni117.edu/",
+    "applicationUrl": "https://apply.globaluni117.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-118",
+    "name": "Global University 118",
+    "country": "United States",
+    "type": "public",
+    "ranking": 118,
+    "acceptanceRate": "28.4%",
+    "averageGpa": 3.4875585693849853,
+    "tuitionMin": 46775,
+    "tuitionMax": 64665,
+    "popularMajors": [
+      "Economics",
+      "Information Technology",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-045"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni118.edu/",
+    "applicationUrl": "https://apply.globaluni118.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-119",
+    "name": "Global University 119",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 119,
+    "acceptanceRate": "32.3%",
+    "averageGpa": 3.3202027827296465,
+    "tuitionMin": 20930,
+    "tuitionMax": 41557,
+    "popularMajors": [
+      "Biology",
+      "Medicine",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-004"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni119.edu/",
+    "applicationUrl": "https://apply.globaluni119.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-120",
+    "name": "Global University 120",
+    "country": "Canada",
+    "type": "private",
+    "ranking": 120,
+    "acceptanceRate": "37.8%",
+    "averageGpa": 3.9470503555391634,
+    "tuitionMin": 11285,
+    "tuitionMax": 32852,
+    "popularMajors": [
+      "Economics",
+      "Information Technology",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-045"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni120.edu/",
+    "applicationUrl": "https://apply.globaluni120.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-121",
+    "name": "Global University 121",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 121,
+    "acceptanceRate": "35.1%",
+    "averageGpa": 3.2884859093520458,
+    "tuitionMin": 16466,
+    "tuitionMax": 37733,
+    "popularMajors": [
+      "Business",
+      "Engineering",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-009"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni121.edu/",
+    "applicationUrl": "https://apply.globaluni121.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-122",
+    "name": "Global University 122",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 122,
+    "acceptanceRate": "47.1%",
+    "averageGpa": 3.474526495305363,
+    "tuitionMin": 18281,
+    "tuitionMax": 37315,
+    "popularMajors": [
+      "Architecture",
+      "Data Science",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-028"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni122.edu/",
+    "applicationUrl": "https://apply.globaluni122.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-123",
+    "name": "Global University 123",
+    "country": "France",
+    "type": "private",
+    "ranking": 123,
+    "acceptanceRate": "32.4%",
+    "averageGpa": 3.6288455096445134,
+    "tuitionMin": 23268,
+    "tuitionMax": 40409,
+    "popularMajors": [
+      "Medicine",
+      "Arts",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-039"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni123.edu/",
+    "applicationUrl": "https://apply.globaluni123.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-124",
+    "name": "Global University 124",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 124,
+    "acceptanceRate": "40.0%",
+    "averageGpa": 3.3950418508505127,
+    "tuitionMin": 22151,
+    "tuitionMax": 45937,
+    "popularMajors": [
+      "Law",
+      "Medicine",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-029"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni124.edu/",
+    "applicationUrl": "https://apply.globaluni124.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-125",
+    "name": "Global University 125",
+    "country": "Germany",
+    "type": "private",
+    "ranking": 125,
+    "acceptanceRate": "41.2%",
+    "averageGpa": 3.906757286251107,
+    "tuitionMin": 10757,
+    "tuitionMax": 34515,
+    "popularMajors": [
+      "Information Technology",
+      "Arts",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-033"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni125.edu/",
+    "applicationUrl": "https://apply.globaluni125.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-126",
+    "name": "Global University 126",
+    "country": "Germany",
+    "type": "private",
+    "ranking": 126,
+    "acceptanceRate": "26.2%",
+    "averageGpa": 3.182684669746336,
+    "tuitionMin": 16277,
+    "tuitionMax": 36907,
+    "popularMajors": [
+      "Design",
+      "Engineering",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-021"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni126.edu/",
+    "applicationUrl": "https://apply.globaluni126.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-127",
+    "name": "Global University 127",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 127,
+    "acceptanceRate": "39.0%",
+    "averageGpa": 3.316424785053158,
+    "tuitionMin": 16495,
+    "tuitionMax": 34903,
+    "popularMajors": [
+      "Biology",
+      "Information Technology",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-041"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni127.edu/",
+    "applicationUrl": "https://apply.globaluni127.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-128",
+    "name": "Global University 128",
+    "country": "Australia",
+    "type": "private",
+    "ranking": 128,
+    "acceptanceRate": "54.9%",
+    "averageGpa": 3.354847990598752,
+    "tuitionMin": 10335,
+    "tuitionMax": 31037,
+    "popularMajors": [
+      "Architecture",
+      "Data Science",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-032"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni128.edu/",
+    "applicationUrl": "https://apply.globaluni128.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-129",
+    "name": "Global University 129",
+    "country": "France",
+    "type": "public",
+    "ranking": 129,
+    "acceptanceRate": "29.8%",
+    "averageGpa": 3.629165692656585,
+    "tuitionMin": 15469,
+    "tuitionMax": 39040,
+    "popularMajors": [
+      "Economics",
+      "Architecture",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-038"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni129.edu/",
+    "applicationUrl": "https://apply.globaluni129.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-130",
+    "name": "Global University 130",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 130,
+    "acceptanceRate": "26.9%",
+    "averageGpa": 3.8125522128846487,
+    "tuitionMin": 20514,
+    "tuitionMax": 35918,
+    "popularMajors": [
+      "Data Science",
+      "Economics",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-005"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni130.edu/",
+    "applicationUrl": "https://apply.globaluni130.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-131",
+    "name": "Global University 131",
+    "country": "France",
+    "type": "public",
+    "ranking": 131,
+    "acceptanceRate": "8.5%",
+    "averageGpa": 3.60821025937786,
+    "tuitionMin": 17377,
+    "tuitionMax": 38979,
+    "popularMajors": [
+      "Medicine",
+      "Psychology",
+      "Arts"
+    ],
+    "offeredScholarships": [
+      "sch-012"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni131.edu/",
+    "applicationUrl": "https://apply.globaluni131.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-132",
+    "name": "Global University 132",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 132,
+    "acceptanceRate": "18.9%",
+    "averageGpa": 3.8136971232231813,
+    "tuitionMin": 24776,
+    "tuitionMax": 47657,
+    "popularMajors": [
+      "Architecture",
+      "Information Technology",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-027"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni132.edu/",
+    "applicationUrl": "https://apply.globaluni132.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-133",
+    "name": "Global University 133",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 133,
+    "acceptanceRate": "21.1%",
+    "averageGpa": 3.642106483021339,
+    "tuitionMin": 22820,
+    "tuitionMax": 38481,
+    "popularMajors": [
+      "Design",
+      "Architecture",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-017"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni133.edu/",
+    "applicationUrl": "https://apply.globaluni133.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-134",
+    "name": "Global University 134",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 134,
+    "acceptanceRate": "47.7%",
+    "averageGpa": 3.124504680866368,
+    "tuitionMin": 17193,
+    "tuitionMax": 36209,
+    "popularMajors": [
+      "Biology",
+      "Business",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-041"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni134.edu/",
+    "applicationUrl": "https://apply.globaluni134.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-135",
+    "name": "Global University 135",
+    "country": "France",
+    "type": "public",
+    "ranking": 135,
+    "acceptanceRate": "22.2%",
+    "averageGpa": 3.582851670287259,
+    "tuitionMin": 20453,
+    "tuitionMax": 40940,
+    "popularMajors": [
+      "Business",
+      "Engineering",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-007"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni135.edu/",
+    "applicationUrl": "https://apply.globaluni135.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-136",
+    "name": "Global University 136",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 136,
+    "acceptanceRate": "7.6%",
+    "averageGpa": 3.358803232711384,
+    "tuitionMin": 20256,
+    "tuitionMax": 41547,
+    "popularMajors": [
+      "Medicine",
+      "Medicine",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-035"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni136.edu/",
+    "applicationUrl": "https://apply.globaluni136.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-137",
+    "name": "Global University 137",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 137,
+    "acceptanceRate": "9.6%",
+    "averageGpa": 3.611845728335676,
+    "tuitionMin": 15284,
+    "tuitionMax": 32737,
+    "popularMajors": [
+      "Architecture",
+      "Engineering",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-005"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni137.edu/",
+    "applicationUrl": "https://apply.globaluni137.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-138",
+    "name": "Global University 138",
+    "country": "United States",
+    "type": "public",
+    "ranking": 138,
+    "acceptanceRate": "25.2%",
+    "averageGpa": 3.4376038246154788,
+    "tuitionMin": 30722,
+    "tuitionMax": 47844,
+    "popularMajors": [
+      "Design",
+      "Engineering",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-027"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni138.edu/",
+    "applicationUrl": "https://apply.globaluni138.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-139",
+    "name": "Global University 139",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 139,
+    "acceptanceRate": "23.0%",
+    "averageGpa": 3.391206958921488,
+    "tuitionMin": 14195,
+    "tuitionMax": 34875,
+    "popularMajors": [
+      "Medicine",
+      "Arts",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-021"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni139.edu/",
+    "applicationUrl": "https://apply.globaluni139.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-140",
+    "name": "Global University 140",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 140,
+    "acceptanceRate": "28.7%",
+    "averageGpa": 3.088464484835817,
+    "tuitionMin": 23848,
+    "tuitionMax": 44302,
+    "popularMajors": [
+      "Business",
+      "Design",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-007"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni140.edu/",
+    "applicationUrl": "https://apply.globaluni140.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-141",
+    "name": "Global University 141",
+    "country": "Australia",
+    "type": "private",
+    "ranking": 141,
+    "acceptanceRate": "54.5%",
+    "averageGpa": 3.402084294019827,
+    "tuitionMin": 19712,
+    "tuitionMax": 38590,
+    "popularMajors": [
+      "Economics",
+      "Design",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-018"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni141.edu/",
+    "applicationUrl": "https://apply.globaluni141.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-142",
+    "name": "Global University 142",
+    "country": "Germany",
+    "type": "private",
+    "ranking": 142,
+    "acceptanceRate": "43.7%",
+    "averageGpa": 3.579571278041093,
+    "tuitionMin": 17040,
+    "tuitionMax": 35780,
+    "popularMajors": [
+      "Arts",
+      "Biology",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-046"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni142.edu/",
+    "applicationUrl": "https://apply.globaluni142.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-143",
+    "name": "Global University 143",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 143,
+    "acceptanceRate": "38.3%",
+    "averageGpa": 3.5753596764685858,
+    "tuitionMin": 23652,
+    "tuitionMax": 38755,
+    "popularMajors": [
+      "Law",
+      "Biology",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-027"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni143.edu/",
+    "applicationUrl": "https://apply.globaluni143.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-144",
+    "name": "Global University 144",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 144,
+    "acceptanceRate": "7.4%",
+    "averageGpa": 3.618218672833029,
+    "tuitionMin": 16297,
+    "tuitionMax": 39638,
+    "popularMajors": [
+      "Economics",
+      "Information Technology",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-048"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni144.edu/",
+    "applicationUrl": "https://apply.globaluni144.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-145",
+    "name": "Global University 145",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 145,
+    "acceptanceRate": "22.6%",
+    "averageGpa": 3.0673796809343132,
+    "tuitionMin": 13154,
+    "tuitionMax": 35663,
+    "popularMajors": [
+      "Design",
+      "Business",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-021"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni145.edu/",
+    "applicationUrl": "https://apply.globaluni145.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-146",
+    "name": "Global University 146",
+    "country": "United States",
+    "type": "private",
+    "ranking": 146,
+    "acceptanceRate": "6.0%",
+    "averageGpa": 3.9928538686704753,
+    "tuitionMin": 33420,
+    "tuitionMax": 53929,
+    "popularMajors": [
+      "Medicine",
+      "Medicine",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-010"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni146.edu/",
+    "applicationUrl": "https://apply.globaluni146.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-147",
+    "name": "Global University 147",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 147,
+    "acceptanceRate": "31.0%",
+    "averageGpa": 3.763704852268393,
+    "tuitionMin": 16004,
+    "tuitionMax": 39479,
+    "popularMajors": [
+      "Computer Science",
+      "Business",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-046"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni147.edu/",
+    "applicationUrl": "https://apply.globaluni147.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-148",
+    "name": "Global University 148",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 148,
+    "acceptanceRate": "32.1%",
+    "averageGpa": 3.6703915266939235,
+    "tuitionMin": 21424,
+    "tuitionMax": 37689,
+    "popularMajors": [
+      "Information Technology",
+      "Biology",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-012"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni148.edu/",
+    "applicationUrl": "https://apply.globaluni148.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-149",
+    "name": "Global University 149",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 149,
+    "acceptanceRate": "29.0%",
+    "averageGpa": 3.1742934916016647,
+    "tuitionMin": 13317,
+    "tuitionMax": 38206,
+    "popularMajors": [
+      "Engineering",
+      "Data Science",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-027"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni149.edu/",
+    "applicationUrl": "https://apply.globaluni149.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-150",
+    "name": "Global University 150",
+    "country": "Japan",
+    "type": "private",
+    "ranking": 150,
+    "acceptanceRate": "9.8%",
+    "averageGpa": 3.255941084323964,
+    "tuitionMin": 19420,
+    "tuitionMax": 43692,
+    "popularMajors": [
+      "Medicine",
+      "Arts",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-009"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni150.edu/",
+    "applicationUrl": "https://apply.globaluni150.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-151",
+    "name": "Global University 151",
+    "country": "France",
+    "type": "public",
+    "ranking": 151,
+    "acceptanceRate": "43.6%",
+    "averageGpa": 3.6629699161396627,
+    "tuitionMin": 21664,
+    "tuitionMax": 39198,
+    "popularMajors": [
+      "Information Technology",
+      "Law",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-023"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni151.edu/",
+    "applicationUrl": "https://apply.globaluni151.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-152",
+    "name": "Global University 152",
+    "country": "France",
+    "type": "public",
+    "ranking": 152,
+    "acceptanceRate": "52.5%",
+    "averageGpa": 3.404891498884373,
+    "tuitionMin": 12885,
+    "tuitionMax": 31987,
+    "popularMajors": [
+      "Arts",
+      "Law",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-011"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni152.edu/",
+    "applicationUrl": "https://apply.globaluni152.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-153",
+    "name": "Global University 153",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 153,
+    "acceptanceRate": "54.8%",
+    "averageGpa": 3.3861608966292573,
+    "tuitionMin": 15835,
+    "tuitionMax": 32828,
+    "popularMajors": [
+      "Law",
+      "Architecture",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-002"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni153.edu/",
+    "applicationUrl": "https://apply.globaluni153.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-154",
+    "name": "Global University 154",
+    "country": "United States",
+    "type": "public",
+    "ranking": 154,
+    "acceptanceRate": "16.3%",
+    "averageGpa": 3.124341442253019,
+    "tuitionMin": 43738,
+    "tuitionMax": 62717,
+    "popularMajors": [
+      "Medicine",
+      "Biology",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-046"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni154.edu/",
+    "applicationUrl": "https://apply.globaluni154.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-155",
+    "name": "Global University 155",
+    "country": "Germany",
+    "type": "public",
+    "ranking": 155,
+    "acceptanceRate": "51.7%",
+    "averageGpa": 3.9941201954024326,
+    "tuitionMin": 11896,
+    "tuitionMax": 28401,
+    "popularMajors": [
+      "Architecture",
+      "Information Technology",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-026"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni155.edu/",
+    "applicationUrl": "https://apply.globaluni155.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-156",
+    "name": "Global University 156",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 156,
+    "acceptanceRate": "48.2%",
+    "averageGpa": 3.754201819092922,
+    "tuitionMin": 12846,
+    "tuitionMax": 29027,
+    "popularMajors": [
+      "Computer Science",
+      "Economics",
+      "Data Science"
+    ],
+    "offeredScholarships": [
+      "sch-015"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni156.edu/",
+    "applicationUrl": "https://apply.globaluni156.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-157",
+    "name": "Global University 157",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 157,
+    "acceptanceRate": "37.5%",
+    "averageGpa": 3.627141410431059,
+    "tuitionMin": 18135,
+    "tuitionMax": 35274,
+    "popularMajors": [
+      "Computer Science",
+      "Medicine",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-005"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni157.edu/",
+    "applicationUrl": "https://apply.globaluni157.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-158",
+    "name": "Global University 158",
+    "country": "Singapore",
+    "type": "private",
+    "ranking": 158,
+    "acceptanceRate": "49.0%",
+    "averageGpa": 3.06274958087226,
+    "tuitionMin": 15410,
+    "tuitionMax": 31672,
+    "popularMajors": [
+      "Data Science",
+      "Architecture",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-026"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni158.edu/",
+    "applicationUrl": "https://apply.globaluni158.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-159",
+    "name": "Global University 159",
+    "country": "United States",
+    "type": "private",
+    "ranking": 159,
+    "acceptanceRate": "10.7%",
+    "averageGpa": 3.529654090487101,
+    "tuitionMin": 45853,
+    "tuitionMax": 64371,
+    "popularMajors": [
+      "Economics",
+      "Medicine",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-009"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni159.edu/",
+    "applicationUrl": "https://apply.globaluni159.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-160",
+    "name": "Global University 160",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 160,
+    "acceptanceRate": "35.1%",
+    "averageGpa": 3.237810071247071,
+    "tuitionMin": 11983,
+    "tuitionMax": 33074,
+    "popularMajors": [
+      "Data Science",
+      "Arts",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-009"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni160.edu/",
+    "applicationUrl": "https://apply.globaluni160.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-161",
+    "name": "Global University 161",
+    "country": "United States",
+    "type": "public",
+    "ranking": 161,
+    "acceptanceRate": "37.8%",
+    "averageGpa": 3.7853950036944246,
+    "tuitionMin": 44648,
+    "tuitionMax": 63135,
+    "popularMajors": [
+      "Engineering",
+      "Law",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-006"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni161.edu/",
+    "applicationUrl": "https://apply.globaluni161.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-162",
+    "name": "Global University 162",
+    "country": "Japan",
+    "type": "private",
+    "ranking": 162,
+    "acceptanceRate": "24.6%",
+    "averageGpa": 3.305271396091807,
+    "tuitionMin": 18942,
+    "tuitionMax": 36101,
+    "popularMajors": [
+      "Information Technology",
+      "Architecture",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-025"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni162.edu/",
+    "applicationUrl": "https://apply.globaluni162.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-163",
+    "name": "Global University 163",
+    "country": "United States",
+    "type": "private",
+    "ranking": 163,
+    "acceptanceRate": "35.6%",
+    "averageGpa": 3.290584653761044,
+    "tuitionMin": 34784,
+    "tuitionMax": 53388,
+    "popularMajors": [
+      "Data Science",
+      "Engineering",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-038"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni163.edu/",
+    "applicationUrl": "https://apply.globaluni163.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-164",
+    "name": "Global University 164",
+    "country": "Japan",
+    "type": "public",
+    "ranking": 164,
+    "acceptanceRate": "54.0%",
+    "averageGpa": 3.2295995195120613,
+    "tuitionMin": 20621,
+    "tuitionMax": 43405,
+    "popularMajors": [
+      "Computer Science",
+      "Law",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-017"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni164.edu/",
+    "applicationUrl": "https://apply.globaluni164.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-165",
+    "name": "Global University 165",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 165,
+    "acceptanceRate": "9.3%",
+    "averageGpa": 3.371894793012311,
+    "tuitionMin": 15051,
+    "tuitionMax": 36396,
+    "popularMajors": [
+      "Computer Science",
+      "Economics",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-031"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni165.edu/",
+    "applicationUrl": "https://apply.globaluni165.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-166",
+    "name": "Global University 166",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 166,
+    "acceptanceRate": "30.7%",
+    "averageGpa": 3.1410021580702736,
+    "tuitionMin": 23940,
+    "tuitionMax": 45320,
+    "popularMajors": [
+      "Design",
+      "Arts",
+      "Arts"
+    ],
+    "offeredScholarships": [
+      "sch-025"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni166.edu/",
+    "applicationUrl": "https://apply.globaluni166.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-167",
+    "name": "Global University 167",
+    "country": "Japan",
+    "type": "public",
+    "ranking": 167,
+    "acceptanceRate": "38.6%",
+    "averageGpa": 3.9920800643618786,
+    "tuitionMin": 18627,
+    "tuitionMax": 41430,
+    "popularMajors": [
+      "Business",
+      "Business",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-043"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni167.edu/",
+    "applicationUrl": "https://apply.globaluni167.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-168",
+    "name": "Global University 168",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 168,
+    "acceptanceRate": "45.5%",
+    "averageGpa": 3.1042710072762625,
+    "tuitionMin": 17439,
+    "tuitionMax": 33358,
+    "popularMajors": [
+      "Psychology",
+      "Medicine",
+      "Arts"
+    ],
+    "offeredScholarships": [
+      "sch-024"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni168.edu/",
+    "applicationUrl": "https://apply.globaluni168.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-169",
+    "name": "Global University 169",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 169,
+    "acceptanceRate": "55.0%",
+    "averageGpa": 3.7827276928932276,
+    "tuitionMin": 22477,
+    "tuitionMax": 47368,
+    "popularMajors": [
+      "Business",
+      "Architecture",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-031"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni169.edu/",
+    "applicationUrl": "https://apply.globaluni169.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-170",
+    "name": "Global University 170",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 170,
+    "acceptanceRate": "19.0%",
+    "averageGpa": 3.7662258201610426,
+    "tuitionMin": 21219,
+    "tuitionMax": 40367,
+    "popularMajors": [
+      "Computer Science",
+      "Biology",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-008"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni170.edu/",
+    "applicationUrl": "https://apply.globaluni170.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-171",
+    "name": "Global University 171",
+    "country": "Switzerland",
+    "type": "private",
+    "ranking": 171,
+    "acceptanceRate": "45.6%",
+    "averageGpa": 3.0105235019194856,
+    "tuitionMin": 18447,
+    "tuitionMax": 35377,
+    "popularMajors": [
+      "Architecture",
+      "Architecture",
+      "Data Science"
+    ],
+    "offeredScholarships": [
+      "sch-013"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni171.edu/",
+    "applicationUrl": "https://apply.globaluni171.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-172",
+    "name": "Global University 172",
+    "country": "Germany",
+    "type": "private",
+    "ranking": 172,
+    "acceptanceRate": "38.0%",
+    "averageGpa": 3.1959156761637626,
+    "tuitionMin": 19534,
+    "tuitionMax": 42855,
+    "popularMajors": [
+      "Design",
+      "Design",
+      "Economics"
+    ],
+    "offeredScholarships": [
+      "sch-023"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni172.edu/",
+    "applicationUrl": "https://apply.globaluni172.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-173",
+    "name": "Global University 173",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 173,
+    "acceptanceRate": "53.4%",
+    "averageGpa": 3.5145140006079787,
+    "tuitionMin": 22922,
+    "tuitionMax": 47753,
+    "popularMajors": [
+      "Computer Science",
+      "Computer Science",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-044"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni173.edu/",
+    "applicationUrl": "https://apply.globaluni173.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-174",
+    "name": "Global University 174",
+    "country": "United States",
+    "type": "private",
+    "ranking": 174,
+    "acceptanceRate": "31.4%",
+    "averageGpa": 3.025219043677298,
+    "tuitionMin": 39909,
+    "tuitionMax": 58215,
+    "popularMajors": [
+      "Engineering",
+      "Engineering",
+      "Medicine"
+    ],
+    "offeredScholarships": [
+      "sch-004"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni174.edu/",
+    "applicationUrl": "https://apply.globaluni174.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-175",
+    "name": "Global University 175",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 175,
+    "acceptanceRate": "48.8%",
+    "averageGpa": 3.0072598981049627,
+    "tuitionMin": 24001,
+    "tuitionMax": 39115,
+    "popularMajors": [
+      "Design",
+      "Engineering",
+      "Arts"
+    ],
+    "offeredScholarships": [
+      "sch-049"
+    ],
+    "city": "Berlin",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni175.edu/",
+    "applicationUrl": "https://apply.globaluni175.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-176",
+    "name": "Global University 176",
+    "country": "France",
+    "type": "public",
+    "ranking": 176,
+    "acceptanceRate": "27.8%",
+    "averageGpa": 3.978786266647129,
+    "tuitionMin": 19135,
+    "tuitionMax": 35415,
+    "popularMajors": [
+      "Engineering",
+      "Design",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-021"
+    ],
+    "city": "Tokyo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni176.edu/",
+    "applicationUrl": "https://apply.globaluni176.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-177",
+    "name": "Global University 177",
+    "country": "Germany",
+    "type": "private",
+    "ranking": 177,
+    "acceptanceRate": "20.4%",
+    "averageGpa": 3.6237081146054537,
+    "tuitionMin": 15111,
+    "tuitionMax": 37623,
+    "popularMajors": [
+      "Design",
+      "Architecture",
+      "Data Science"
+    ],
+    "offeredScholarships": [
+      "sch-033"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni177.edu/",
+    "applicationUrl": "https://apply.globaluni177.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-178",
+    "name": "Global University 178",
+    "country": "Australia",
+    "type": "private",
+    "ranking": 178,
+    "acceptanceRate": "22.2%",
+    "averageGpa": 3.196517269004859,
+    "tuitionMin": 17649,
+    "tuitionMax": 32773,
+    "popularMajors": [
+      "Design",
+      "Arts",
+      "Design"
+    ],
+    "offeredScholarships": [
+      "sch-021"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni178.edu/",
+    "applicationUrl": "https://apply.globaluni178.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-179",
+    "name": "Global University 179",
+    "country": "Japan",
+    "type": "public",
+    "ranking": 179,
+    "acceptanceRate": "46.0%",
+    "averageGpa": 3.753678263957231,
+    "tuitionMin": 22112,
+    "tuitionMax": 41337,
+    "popularMajors": [
+      "Computer Science",
+      "Biology",
+      "Arts"
+    ],
+    "offeredScholarships": [
+      "sch-032"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni179.edu/",
+    "applicationUrl": "https://apply.globaluni179.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-180",
+    "name": "Global University 180",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 180,
+    "acceptanceRate": "8.4%",
+    "averageGpa": 3.4643785542054912,
+    "tuitionMin": 14744,
+    "tuitionMax": 32792,
+    "popularMajors": [
+      "Psychology",
+      "Architecture",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-025"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni180.edu/",
+    "applicationUrl": "https://apply.globaluni180.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-181",
+    "name": "Global University 181",
+    "country": "United Kingdom",
+    "type": "public",
+    "ranking": 181,
+    "acceptanceRate": "12.5%",
+    "averageGpa": 3.8117053863328176,
+    "tuitionMin": 16390,
+    "tuitionMax": 35393,
+    "popularMajors": [
+      "Data Science",
+      "Economics",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-010"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni181.edu/",
+    "applicationUrl": "https://apply.globaluni181.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-182",
+    "name": "Global University 182",
+    "country": "France",
+    "type": "private",
+    "ranking": 182,
+    "acceptanceRate": "26.4%",
+    "averageGpa": 3.066493647833856,
+    "tuitionMin": 11320,
+    "tuitionMax": 34411,
+    "popularMajors": [
+      "Architecture",
+      "Information Technology",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-017"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni182.edu/",
+    "applicationUrl": "https://apply.globaluni182.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-183",
+    "name": "Global University 183",
+    "country": "United States",
+    "type": "private",
+    "ranking": 183,
+    "acceptanceRate": "44.4%",
+    "averageGpa": 3.6425650577455926,
+    "tuitionMin": 34294,
+    "tuitionMax": 50897,
+    "popularMajors": [
+      "Medicine",
+      "Business",
+      "Information Technology"
+    ],
+    "offeredScholarships": [
+      "sch-031"
+    ],
+    "city": "Boston",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni183.edu/",
+    "applicationUrl": "https://apply.globaluni183.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-184",
+    "name": "Global University 184",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 184,
+    "acceptanceRate": "15.9%",
+    "averageGpa": 3.42917258700365,
+    "tuitionMin": 24340,
+    "tuitionMax": 47074,
+    "popularMajors": [
+      "Economics",
+      "Information Technology",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-000"
+    ],
+    "city": "London",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni184.edu/",
+    "applicationUrl": "https://apply.globaluni184.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-185",
+    "name": "Global University 185",
+    "country": "Germany",
+    "type": "private",
+    "ranking": 185,
+    "acceptanceRate": "31.4%",
+    "averageGpa": 3.9570885037732006,
+    "tuitionMin": 23135,
+    "tuitionMax": 39329,
+    "popularMajors": [
+      "Design",
+      "Architecture",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-025"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni185.edu/",
+    "applicationUrl": "https://apply.globaluni185.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-186",
+    "name": "Global University 186",
+    "country": "Canada",
+    "type": "private",
+    "ranking": 186,
+    "acceptanceRate": "9.0%",
+    "averageGpa": 3.39732639269789,
+    "tuitionMin": 10654,
+    "tuitionMax": 29889,
+    "popularMajors": [
+      "Architecture",
+      "Business",
+      "Arts"
+    ],
+    "offeredScholarships": [
+      "sch-038"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni186.edu/",
+    "applicationUrl": "https://apply.globaluni186.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-187",
+    "name": "Global University 187",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 187,
+    "acceptanceRate": "28.9%",
+    "averageGpa": 3.5649118738659604,
+    "tuitionMin": 16626,
+    "tuitionMax": 37886,
+    "popularMajors": [
+      "Psychology",
+      "Biology",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-037"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni187.edu/",
+    "applicationUrl": "https://apply.globaluni187.edu/",
+    "region": "Oceania"
+  },
+  {
+    "id": "uni-188",
+    "name": "Global University 188",
+    "country": "Australia",
+    "type": "private",
+    "ranking": 188,
+    "acceptanceRate": "49.4%",
+    "averageGpa": 3.07383963251074,
+    "tuitionMin": 22747,
+    "tuitionMax": 38591,
+    "popularMajors": [
+      "Medicine",
+      "Arts",
+      "Biology"
+    ],
+    "offeredScholarships": [
+      "sch-001"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni188.edu/",
+    "applicationUrl": "https://apply.globaluni188.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-189",
+    "name": "Global University 189",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 189,
+    "acceptanceRate": "32.7%",
+    "averageGpa": 3.765946143802168,
+    "tuitionMin": 14875,
+    "tuitionMax": 36344,
+    "popularMajors": [
+      "Engineering",
+      "Medicine",
+      "Data Science"
+    ],
+    "offeredScholarships": [
+      "sch-025"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni189.edu/",
+    "applicationUrl": "https://apply.globaluni189.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-190",
+    "name": "Global University 190",
+    "country": "Japan",
+    "type": "private",
+    "ranking": 190,
+    "acceptanceRate": "32.0%",
+    "averageGpa": 3.3008357144961806,
+    "tuitionMin": 22960,
+    "tuitionMax": 40715,
+    "popularMajors": [
+      "Information Technology",
+      "Arts",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-003"
+    ],
+    "city": "Paris",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni190.edu/",
+    "applicationUrl": "https://apply.globaluni190.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-191",
+    "name": "Global University 191",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 191,
+    "acceptanceRate": "23.1%",
+    "averageGpa": 3.905510421610502,
+    "tuitionMin": 20062,
+    "tuitionMax": 42028,
+    "popularMajors": [
+      "Arts",
+      "Medicine",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-016"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni191.edu/",
+    "applicationUrl": "https://apply.globaluni191.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-192",
+    "name": "Global University 192",
+    "country": "Canada",
+    "type": "public",
+    "ranking": 192,
+    "acceptanceRate": "13.6%",
+    "averageGpa": 3.98968808537415,
+    "tuitionMin": 14413,
+    "tuitionMax": 29711,
+    "popularMajors": [
+      "Design",
+      "Data Science",
+      "Law"
+    ],
+    "offeredScholarships": [
+      "sch-039"
+    ],
+    "city": "Toronto",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni192.edu/",
+    "applicationUrl": "https://apply.globaluni192.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-193",
+    "name": "Global University 193",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 193,
+    "acceptanceRate": "28.0%",
+    "averageGpa": 3.720521632692935,
+    "tuitionMin": 11376,
+    "tuitionMax": 28334,
+    "popularMajors": [
+      "Architecture",
+      "Psychology",
+      "Architecture"
+    ],
+    "offeredScholarships": [
+      "sch-041"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni193.edu/",
+    "applicationUrl": "https://apply.globaluni193.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-194",
+    "name": "Global University 194",
+    "country": "United States",
+    "type": "private",
+    "ranking": 194,
+    "acceptanceRate": "49.5%",
+    "averageGpa": 3.426229586207059,
+    "tuitionMin": 47259,
+    "tuitionMax": 66055,
+    "popularMajors": [
+      "Economics",
+      "Biology",
+      "Data Science"
+    ],
+    "offeredScholarships": [
+      "sch-007"
+    ],
+    "city": "Sydney",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni194.edu/",
+    "applicationUrl": "https://apply.globaluni194.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-195",
+    "name": "Global University 195",
+    "country": "Switzerland",
+    "type": "public",
+    "ranking": 195,
+    "acceptanceRate": "9.8%",
+    "averageGpa": 3.188944778456821,
+    "tuitionMin": 14359,
+    "tuitionMax": 29571,
+    "popularMajors": [
+      "Engineering",
+      "Design",
+      "Computer Science"
+    ],
+    "offeredScholarships": [
+      "sch-037"
+    ],
+    "city": "New York",
+    "hasOnCampusHousing": false,
+    "website": "https://www.globaluni195.edu/",
+    "applicationUrl": "https://apply.globaluni195.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-196",
+    "name": "Global University 196",
+    "country": "France",
+    "type": "public",
+    "ranking": 196,
+    "acceptanceRate": "9.1%",
+    "averageGpa": 3.4376158336011065,
+    "tuitionMin": 17231,
+    "tuitionMax": 32752,
+    "popularMajors": [
+      "Biology",
+      "Medicine",
+      "Business"
+    ],
+    "offeredScholarships": [
+      "sch-021"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni196.edu/",
+    "applicationUrl": "https://apply.globaluni196.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-197",
+    "name": "Global University 197",
+    "country": "United Kingdom",
+    "type": "private",
+    "ranking": 197,
+    "acceptanceRate": "25.0%",
+    "averageGpa": 3.2395155790377594,
+    "tuitionMin": 10128,
+    "tuitionMax": 28962,
+    "popularMajors": [
+      "Arts",
+      "Arts",
+      "Engineering"
+    ],
+    "offeredScholarships": [
+      "sch-022"
+    ],
+    "city": "Chicago",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni197.edu/",
+    "applicationUrl": "https://apply.globaluni197.edu/",
+    "region": "North America"
+  },
+  {
+    "id": "uni-198",
+    "name": "Global University 198",
+    "country": "Singapore",
+    "type": "public",
+    "ranking": 198,
+    "acceptanceRate": "46.2%",
+    "averageGpa": 3.0204997508305196,
+    "tuitionMin": 17792,
+    "tuitionMax": 34712,
+    "popularMajors": [
+      "Law",
+      "Design",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-041"
+    ],
+    "city": "Singapore",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni198.edu/",
+    "applicationUrl": "https://apply.globaluni198.edu/",
+    "region": "Europe"
+  },
+  {
+    "id": "uni-199",
+    "name": "Global University 199",
+    "country": "Japan",
+    "type": "public",
+    "ranking": 199,
+    "acceptanceRate": "41.0%",
+    "averageGpa": 3.767704001511536,
+    "tuitionMin": 14847,
+    "tuitionMax": 29884,
+    "popularMajors": [
+      "Biology",
+      "Arts",
+      "Psychology"
+    ],
+    "offeredScholarships": [
+      "sch-015"
+    ],
+    "city": "Zurich",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni199.edu/",
+    "applicationUrl": "https://apply.globaluni199.edu/",
+    "region": "Asia"
+  },
+  {
+    "id": "uni-200",
+    "name": "Global University 200",
+    "country": "Australia",
+    "type": "public",
+    "ranking": 200,
+    "acceptanceRate": "36.6%",
+    "averageGpa": 3.5718191689440815,
+    "tuitionMin": 12992,
+    "tuitionMax": 33721,
+    "popularMajors": [
+      "Information Technology",
+      "Law",
+      "Data Science"
+    ],
+    "offeredScholarships": [
+      "sch-021"
+    ],
+    "city": "Los Angeles",
+    "hasOnCampusHousing": true,
+    "website": "https://www.globaluni200.edu/",
+    "applicationUrl": "https://apply.globaluni200.edu/",
+    "region": "Oceania"
+  }
+]
