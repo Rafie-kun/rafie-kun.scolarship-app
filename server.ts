@@ -358,7 +358,7 @@ app.post("/api/scraper/trigger", async (req, res) => {
 });
 
 // --- VITE DEV MIDDLEWARE & DEPLOYMENT STATIC COMPILING ---
-if (process.env.NODE_ENV === "production" && !process.env.VERCEL) {
+if (process.env.NODE_ENV === "production" || process.env.VERCEL) {
   const distPath = path.join(process.cwd(), "dist");
   app.use(express.static(distPath));
   app.get("*", (req, res) => {

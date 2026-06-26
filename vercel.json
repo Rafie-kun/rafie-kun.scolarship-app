@@ -2,17 +2,17 @@
   "version": 2,
   "functions": {
     "api/index.ts": {
-      "includeFiles": ["data/**", "public/data/**"]
+      "includeFiles": ["dist/**", "data/**", "public/data/**", "db/**"]
     }
   },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/index"
+      "destination": "/api/index.ts"
     },
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/api/index.ts"
     }
   ]
 }
