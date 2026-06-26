@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
-import { authenticateToken } from './auth.js';
-import { getUserApplications, saveApplication, deleteApplication } from '../db/index.js';
+import { authenticateToken } from './auth';
+import { getUserApplications, saveApplication, deleteApplication } from '../db/index';
 
 const router = express.Router();
 

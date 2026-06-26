@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { scholarshipsData } from './db.js';
+import { scholarshipsData } from './db';
 
 const router = express.Router();
 

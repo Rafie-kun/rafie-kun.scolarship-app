@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { getUniversitiesFromDb } from '../db/index.js';
+import { getUniversitiesFromDb } from '../db/index';
 
 const router = express.Router();
 

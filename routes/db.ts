@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
 import fs from 'fs';
 import path from 'path';
-import { db } from '../db/index.js';
-import type { Profile, Scholarship, University, Application, AppNotification, CommunityPost } from '../src/types.js';
+import { db } from '../db/index';
+import type { Profile, Scholarship, University, Application, AppNotification, CommunityPost } from '../src/types';
 
 // JWT Configuration & salt-hashing
 export const JWT_SECRET = process.env.JWT_SECRET || "scholarpath_cybermatrix_gold_2026_xyz";

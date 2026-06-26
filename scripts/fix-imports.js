@@ -6,14 +6,23 @@ function fixFile(filePath) {
   let changed = false;
 
   const replaceLogic = (match, quote, importPath) => {
-    if (!importPath.endsWith('.js') && !importPath.endsWith('.json')) {
+    if (importPath.endsWith('.js')) {
       changed = true;
-      return `from ${quote}${importPath}.js${quote}`;
+      return `from ${quote}${importPath.slice(0, -3)}${quote}`;
     }
     return match;
   };
 
   content = content.replace(/from (['"])(\.[^'"]+)\1/g, replaceLogic);
+  
+  // also fix dynamic imports
+  content = content.replace(/import\((['"])(\.[^'"]+)\1\)/g, (match, quote, importPath) => {
+    if (importPath.endsWith('.js')) {
+      changed = true;
+      return `import(${quote}${importPath.slice(0, -3)}${quote})`;
+    }
+    return match;
+  });
 
   if (changed) {
     fs.writeFileSync(filePath, content, 'utf8');
