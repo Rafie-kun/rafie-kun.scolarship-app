@@ -1,7 +1,6 @@
 import express from "express";
 import path from "path";
 import fs from "fs";
-import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 
 // Modular Route Imports
@@ -220,7 +219,7 @@ app.post("/api/admin/import-universities", async (req, res) => {
     const count = await runImport();
     
     // Refresh the in-memory array of schools inside routes/db so recommender, search etc works immediately!
-    const { db } = await import("./db/index");
+    const { db } = await import("./db/index.js");
     try {
       const rows = db.prepare('SELECT * FROM universities').all() as any[];
       // Update routes/db array in-memory
@@ -244,7 +243,7 @@ app.post("/api/admin/import-universities", async (req, res) => {
         generatedApplicationUrl: row.generatedApplicationUrl || undefined
       }));
       // Overwrite the in-memory array
-      const dbModule = await import("./routes/db");
+      const dbModule = await import("./routes/db.js");
       (dbModule as any).universitiesData.length = 0;
       (dbModule as any).universitiesData.push(...updatedUnis);
     } catch (rr) {
@@ -350,7 +349,7 @@ app.get("/api/notifications", (req, res) => {
 // Manual scraper trigger route for instant validation checking
 app.post("/api/scraper/trigger", async (req, res) => {
   try {
-    const scheduler = await import("./scripts/scheduler");
+    const scheduler = await import("./scripts/scheduler.js");
     const result = await scheduler.runScraperImmediately();
     res.json({ success: true, ...result });
   } catch (err: any) {
@@ -375,6 +374,7 @@ if (process.env.VERCEL) {
 
 async function startServer() {
   if (process.env.NODE_ENV !== "production" && !process.env.VERCEL) {
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
@@ -392,7 +392,7 @@ async function startServer() {
       console.log(`[OK] ScholarPath secure SQLite matrix synced on http://0.0.0.0:${PORT}`);
       
       // Initialize scheduled admissions & scholarship crawler
-      import("./scripts/scheduler").then(m => m.startScheduler()).catch(err => {
+      import("./scripts/scheduler.js").then(m => m.startScheduler()).catch(err => {
         console.error("[⚠️] Failed to mount automated scheduler task:", err);
       });
     });
