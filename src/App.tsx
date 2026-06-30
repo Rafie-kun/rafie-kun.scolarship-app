@@ -116,7 +116,7 @@ const getThemeStyling = (themeId: string) => {
 };
 
 export default function App() {
-  const { isLoggedIn, profile, authLoading, logout, rewardPoints, refreshProfile, updateProfile } = useAuth();
+  const { isLoggedIn, profile, authLoading, isGuest, logout, rewardPoints, refreshProfile, updateProfile } = useAuth();
   const { theme, themeMode, setThemeMode } = useTheme();
 
   const [activeTab, setActiveTab] = useState('overview');
@@ -126,15 +126,22 @@ export default function App() {
   const [showTour, setShowTour] = useState(false);
 
   useEffect(() => {
-    if (isLoggedIn && profile) {
-      const completedOnboarding = localStorage.getItem(`scholarpath_onboarding_completed_${profile.fullName || 'guest'}`) === 'true' || profile.hasCompletedOnboarding;
+    if (isLoggedIn && profile && !authLoading) {
+      // Prevent showing the tour during transient loading states where profile is the placeholder defaultProfile
+      if (profile.fullName === 'Guest Explorer' && !isGuest) {
+        return;
+      }
+      
+      const completedOnboarding = profile.hasCompletedOnboarding;
       if (!completedOnboarding) {
         setShowTour(true);
+      } else {
+        setShowTour(false);
       }
     } else {
       setShowTour(false);
     }
-  }, [isLoggedIn, profile]);
+  }, [isLoggedIn, profile, authLoading, isGuest]);
 
   useEffect(() => {
     const handleStartTour = () => {

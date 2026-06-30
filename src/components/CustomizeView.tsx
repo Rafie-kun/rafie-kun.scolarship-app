@@ -302,24 +302,40 @@ export default function CustomizeView() {
             {/* Onboarding Tour Replay */}
             <div className="bg-[#1c1a19] border-2 border-black p-3 space-y-2 [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
               <span className="text-[9px] uppercase text-stone-400 font-bold block">📖 Interactive Guides</span>
-              <button
-                type="button"
-                onClick={async () => {
-                  playClickSound();
-                  localStorage.removeItem(`scholarpath_onboarding_completed_${profile?.fullName || 'guest'}`);
-                  if (updateProfile) {
-                    await updateProfile({ hasCompletedOnboarding: false });
-                  }
-                  window.dispatchEvent(new CustomEvent('start-onboarding-tour'));
-                  setSuccessMsg("QUEST RESET: Initializing guided onboarding tour!");
-                  playAdvancementSound();
-                  setTimeout(() => setSuccessMsg(''), 4500);
-                }}
-                className="mc-btn w-full py-2.5 justify-center flex items-center gap-2 text-[#ffff55]"
-              >
-                <Sparkles className="w-4 h-4 text-[#ffaa00]" />
-                <span>Replay Guided Admissions Quest</span>
-              </button>
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    window.dispatchEvent(new CustomEvent('start-onboarding-tour'));
+                    setSuccessMsg("QUEST OPENED: Initializing guided onboarding tour!");
+                    playAdvancementSound();
+                    setTimeout(() => setSuccessMsg(''), 4500);
+                  }}
+                  className="mc-btn w-full py-2.5 justify-center flex items-center gap-2 text-white font-bold bg-neutral-800 hover:bg-neutral-700 border-2 border-black"
+                >
+                  <Sparkles className="w-4 h-4 text-[#55ff55]" />
+                  <span>Open Tutorial Guide</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    playClickSound();
+                    localStorage.removeItem(`scholarpath_onboarding_completed_${profile?.fullName || 'guest'}`);
+                    if (updateProfile) {
+                      await updateProfile({ hasCompletedOnboarding: false });
+                    }
+                    window.dispatchEvent(new CustomEvent('start-onboarding-tour'));
+                    setSuccessMsg("QUEST RESET: Initializing guided onboarding tour!");
+                    playAdvancementSound();
+                    setTimeout(() => setSuccessMsg(''), 4500);
+                  }}
+                  className="mc-btn w-full py-2.5 justify-center flex items-center gap-2 text-[#ffff55]"
+                >
+                  <Sparkles className="w-4 h-4 text-[#ffaa00]" />
+                  <span>Reset & Replay Quest (Fresh Status)</span>
+                </button>
+              </div>
             </div>
 
             {/* Typography line height description */}

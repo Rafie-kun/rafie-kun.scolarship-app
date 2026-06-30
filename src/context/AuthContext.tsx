@@ -82,18 +82,51 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const handleProfileUpdated = (e: Event) => {
       const customEvent = e as CustomEvent;
-      if (customEvent.detail && JSON.stringify(customEvent.detail) !== JSON.stringify(profile)) {
+      if (customEvent.detail) {
         setProfile(customEvent.detail);
         localStorage.setItem('scholarpath_user', JSON.stringify(customEvent.detail));
       }
     };
     window.addEventListener('profile-updated', handleProfileUpdated);
     return () => window.removeEventListener('profile-updated', handleProfileUpdated);
-  }, [profile]);
+  }, []);
 
   useEffect(() => {
     const initializeAuth = async () => {
       try {
+        // Always try to sync with the server database first to fetch fresh XP points and levels
+        const res = await fetch('/api/auth/me', { credentials: 'include' });
+        if (res.ok) {
+          const data = await res.json();
+          setUser(data.username);
+          const freshProfile = { 
+            ...defaultProfile, 
+            ...(data.profile || {}),
+            username: data.username,
+            isGuest: !!data.isGuest,
+            offlineMode: false 
+          };
+          setProfile(freshProfile);
+          setIsGuest(!!data.isGuest);
+          setIsLoggedIn(true);
+          localStorage.setItem('scholarpath_user', JSON.stringify(freshProfile));
+        } else {
+          // If server check fails (no session), fall back to local storage cache if present
+          const localUserStr = localStorage.getItem('scholarpath_user');
+          if (localUserStr) {
+            const localUser = JSON.parse(localUserStr);
+            setUser(localUser.username);
+            setProfile({ ...defaultProfile, ...localUser });
+            setIsGuest(!!localUser.isGuest);
+            setIsLoggedIn(true);
+          } else {
+            setIsLoggedIn(false);
+            setUser(null);
+            setProfile(defaultProfile);
+          }
+        }
+      } catch (e) {
+        console.warn("Server check failed on initialization, falling back to local storage:", e);
         const localUserStr = localStorage.getItem('scholarpath_user');
         if (localUserStr) {
           const localUser = JSON.parse(localUserStr);
@@ -101,29 +134,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setProfile({ ...defaultProfile, ...localUser });
           setIsGuest(!!localUser.isGuest);
           setIsLoggedIn(true);
-          setAuthLoading(false);
-          return;
-        }
-
-        const res = await fetch('/api/auth/me', { credentials: 'include' });
-        if (res.ok) {
-          const data = await res.json();
-          setUser(data.username);
-          setProfile({ ...defaultProfile, ...(data.profile || {}) });
-          setIsGuest(!!data.isGuest);
-          setIsLoggedIn(true);
         } else {
-          // No session or guest spawned yet, keep logged out
           setIsLoggedIn(false);
           setUser(null);
           setProfile(defaultProfile);
         }
-      } catch (e) {
-        console.warn("Cookies check failed on initialization", e);
-        setIsLoggedIn(true);
-        setUser(defaultProfile.fullName);
-        setProfile(defaultProfile);
-        setIsGuest(true);
       } finally {
         setAuthLoading(false);
       }
@@ -314,27 +329,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         username: fallbackGuestUser,
         fullName: `Guest Explorer #${fallbackGuestUser.split('_')[1]}`,
         level: 1,
-        points: 40,
-        intendedMajor: "Information Technology",
-        intendedDegree: "Master's Degree",
-        country: "Canada",
-        nationality: "Explorer Space",
-        gpa: 3.50,
+        points: 0,
+        intendedMajor: "",
+        intendedDegree: "",
+        country: "",
+        nationality: "",
+        gpa: 4.0,
         maxGpa: 4.0,
-        ieltsScore: "7.0",
-        greScore: "310",
-        leadershipExperience: ["Novice Camp Counselor"],
-        projects: ["Procedural Map Builder"],
-        volunteerExperience: ["Local Highschool Coding Club Support"],
-        badges: ["Fresh Spawn"],
-        educationLevel: "high_school",
-        highSchoolName: "Explorer Secondary Academy",
+        ieltsScore: "",
+        greScore: "",
+        leadershipExperience: [],
+        projects: [],
+        volunteerExperience: [],
+        badges: [],
+        educationLevel: "undergraduate",
+        highSchoolName: "",
         collegeName: "",
-        primaryMajor: "Information Technology",
+        primaryMajor: "",
         secondaryMajor: "",
         minor: "",
         graduationYear: 2026,
-        additionalSkills: ["Java", "HTML/CSS", "Python Basics"],
+        additionalSkills: [],
         resumePdf: "",
         rewardedActions: [],
         hasCompletedOnboarding: false,
@@ -357,8 +372,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = async () => {
     playClickSound();
+    
+    // Clear user and guest-specific scoped caches on logout
+    const u = user || 'guest';
+    localStorage.removeItem(`scholarpath_mock_applications_${u}`);
+    localStorage.removeItem(`scholarpath_copilot_chatHistory_v1_${u}`);
+    localStorage.removeItem(`scholarpath_onboarding_completed_${u}`);
+    
     localStorage.removeItem('scholarpath_user');
-    localStorage.removeItem('scholarpath_guest_profile'); // legacy cleanup
+    localStorage.removeItem('scholarpath_guest_profile');
+    localStorage.removeItem('scholarpath_show_welcome_wizard');
+    
     try {
       await fetch('/api/auth/logout', { 
         method: 'POST',

@@ -5,34 +5,46 @@ import { useAuth } from '../context/AuthContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 
 export default function CounsellingView() {
-  const { authorizedFetch, rewardPoints } = useAuth();
+  const { authorizedFetch, rewardPoints, profile, user } = useAuth();
   const [activeSubTab, setActiveSubTab] = useState<'copilot' | 'interview'>('copilot');
 
   // Copilot (The Wise Librarian) states
   const [chatInput, setChatInput] = useState('');
-  const [chatHistory, setChatHistory] = useState<{ sender: 'user' | 'ai'; text: string }[]>(() => {
-    try {
-      const saved = localStorage.getItem('scholarpath_copilot_chatHistory_v1');
-      if (saved) return JSON.parse(saved);
-    } catch (e) {
-      console.warn("Failed to load persistent chat history", e);
-    }
-    return [
-      { sender: 'ai', text: 'Greetings, scholar. I am **The Wise Librarian**. Paste your academic details, ECTS queries, or ask me which fully-funded programs match your scorecards!' }
-    ];
-  });
+  const [chatHistory, setChatHistory] = useState<{ sender: 'user' | 'ai'; text: string }[]>([]);
   const [chatLoading, setChatLoading] = useState(false);
   const [chatError, setChatError] = useState<string | null>(null);
   const [lastUserMessage, setLastUserMessage] = useState<string>('');
 
-  // Persist chat history changes
+  // Dynamically load chat history scoped by username
   React.useEffect(() => {
+    const userSuffix = user || 'guest';
+    const userKey = `scholarpath_copilot_chatHistory_v1_${userSuffix}`;
     try {
-      localStorage.setItem('scholarpath_copilot_chatHistory_v1', JSON.stringify(chatHistory));
+      const saved = localStorage.getItem(userKey);
+      if (saved) {
+        setChatHistory(JSON.parse(saved));
+        return;
+      }
+    } catch (e) {
+      console.warn("Failed to load persistent chat history", e);
+    }
+    // Default welcome message
+    setChatHistory([
+      { sender: 'ai', text: 'Greetings, scholar. I am **The Wise Librarian**. Paste your academic details, ECTS queries, or ask me which fully-funded programs match your scorecards!' }
+    ]);
+  }, [user]);
+
+  // Persist chat history scoped by username
+  React.useEffect(() => {
+    const userSuffix = user || 'guest';
+    const userKey = `scholarpath_copilot_chatHistory_v1_${userSuffix}`;
+    if (chatHistory.length === 0) return;
+    try {
+      localStorage.setItem(userKey, JSON.stringify(chatHistory));
     } catch (e) {
       console.error(e);
     }
-  }, [chatHistory]);
+  }, [chatHistory, user]);
 
   // Mock Interviewer states
   const [interviewInput, setInterviewInput] = useState('');

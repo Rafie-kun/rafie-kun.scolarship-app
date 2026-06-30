@@ -6,7 +6,7 @@ import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { getMockApplications, saveMockApplications } from '../services/mockDataService';
 
 export default function ApplicationsView() {
-  const { authorizedFetch, rewardPoints, profile } = useAuth();
+  const { authorizedFetch, rewardPoints, profile, user } = useAuth();
   const [apps, setApps] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedApp, setSelectedApp] = useState<Application | null>(null);
@@ -24,6 +24,7 @@ export default function ApplicationsView() {
   }, []);
 
   const fetchApps = async () => {
+    const userSuffix = user || 'guest';
     try {
       const res = await authorizedFetch('/api/applications');
       let data = [];
@@ -32,7 +33,7 @@ export default function ApplicationsView() {
       }
       
       if (!data || data.length === 0 || profile?.offlineMode) {
-        data = getMockApplications();
+        data = getMockApplications(userSuffix);
         setUsingLocalMock(true);
       } else {
         setUsingLocalMock(false);
@@ -47,7 +48,7 @@ export default function ApplicationsView() {
       }
     } catch (e) {
       console.warn("API failed, using local mock data", e);
-      const mockData = getMockApplications();
+      const mockData = getMockApplications(userSuffix);
       setUsingLocalMock(true);
       setApps(mockData);
       if (mockData.length > 0 && !selectedApp) {
@@ -61,12 +62,13 @@ export default function ApplicationsView() {
 
   useEffect(() => {
     fetchApps().then(() => setLoading(false));
-  }, []);
+  }, [user]);
 
   const handleUpdateApp = async (updatedApp: Application) => {
+    const userSuffix = user || 'guest';
     if (usingLocalMock) {
       const updatedApps = apps.map(a => a.id === updatedApp.id ? updatedApp : a);
-      saveMockApplications(updatedApps);
+      saveMockApplications(updatedApps, userSuffix);
       setApps(updatedApps);
       setSelectedApp(updatedApp);
       return;
@@ -87,7 +89,7 @@ export default function ApplicationsView() {
       console.error(e);
       // Fallback to local
       const updatedApps = apps.map(a => a.id === updatedApp.id ? updatedApp : a);
-      saveMockApplications(updatedApps);
+      saveMockApplications(updatedApps, userSuffix);
       setApps(updatedApps);
       setSelectedApp(updatedApp);
       setUsingLocalMock(true);
