@@ -84,6 +84,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const customEvent = e as CustomEvent;
       if (customEvent.detail && JSON.stringify(customEvent.detail) !== JSON.stringify(profile)) {
         setProfile(customEvent.detail);
+        localStorage.setItem('scholarpath_user', JSON.stringify(customEvent.detail));
       }
     };
     window.addEventListener('profile-updated', handleProfileUpdated);
@@ -410,10 +411,55 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const rewardingRef = React.useRef<boolean>(false);
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
 
+  // Helper for offline / local-only fallback
+  const triggerLocalReward = (pts: number, actName: string, badge?: string) => {
+    if (!profile) return;
+    
+    const currentRewarded = profile.rewardedActions || [];
+    if (currentRewarded.includes(actName)) return;
+
+    const updatedRewarded = [...currentRewarded, actName];
+    const newPoints = (profile.points || 0) + pts;
+    const newLevel = Math.floor(newPoints / 100) + 1;
+    const isLevelUp = newLevel > (profile.level || 1);
+
+    const updatedBadges = [...(profile.badges || [])];
+    if (badge && !updatedBadges.includes(badge)) {
+      updatedBadges.push(badge);
+    }
+
+    const updatedProfile: Profile = {
+      ...profile,
+      points: newPoints,
+      level: newLevel,
+      rewardedActions: updatedRewarded,
+      badges: updatedBadges,
+      offlineMode: true
+    };
+
+    localStorage.setItem('scholarpath_user', JSON.stringify(updatedProfile));
+    setProfile(updatedProfile);
+    window.dispatchEvent(new CustomEvent('profile-updated', { detail: updatedProfile }));
+
+    if (isLevelUp) {
+      playAdvancementSound();
+    } else {
+      playXpSound();
+    }
+  };
+
   const rewardPoints = async (points: number, actionName: string, badgeToUnlock?: string) => {
     if (rewardingRef.current) return;
+    
+    // Check session ref first
     if (rewardedActionsRef.current.has(actionName)) {
       console.log(`Action "${actionName}" was already rewarded in this session.`);
+      return;
+    }
+
+    // Check active profile list of completed actions
+    if (profile?.rewardedActions?.includes(actionName)) {
+      console.log(`Action "${actionName}" was already rewarded in profile.`);
       return;
     }
 
@@ -428,15 +474,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       });
       if (res.ok) {
         const updatedProfile = await res.json();
+        
+        // Always persist to local storage to prevent reload resets
+        localStorage.setItem('scholarpath_user', JSON.stringify(updatedProfile));
         setProfile(updatedProfile);
+        
+        // Dispatch event for other components to synchronize
         window.dispatchEvent(new CustomEvent('profile-updated', { detail: updatedProfile }));
-        playXpSound();
+        
+        // Sound cues based on level change
+        if (profile && updatedProfile.level > (profile.level || 1)) {
+          playAdvancementSound();
+        } else {
+          playXpSound();
+        }
       } else {
-        rewardedActionsRef.current.delete(actionName);
+        console.warn("Server reward returned non-ok, falling back to local calculation.");
+        triggerLocalReward(points, actionName, badgeToUnlock);
       }
     } catch (err) {
-      console.error("Reward communication failure:", err);
-      rewardedActionsRef.current.delete(actionName);
+      console.warn("Reward communication failure, falling back to local calculation:", err);
+      triggerLocalReward(points, actionName, badgeToUnlock);
     } finally {
       rewardingRef.current = false;
     }
