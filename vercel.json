@@ -1,20 +1,16 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "dist/**",
-          "data/**",
-          "public/data/**"
-        ]
-      }
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": [
+        "dist/**",
+        "data/**",
+        "public/data/**"
+      ]
     }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "api/index.ts" },
-    { "src": "/(.*)", "dest": "api/index.ts" }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.ts" },
+    { "source": "/((?!assets/|favicon\\.ico|favicon\\.png|.*\\.js|.*\\.css|.*\\.png|.*\\.jpg|.*\\.svg|.*\\.json).*)", "destination": "/api/index.ts" }
   ]
 }
