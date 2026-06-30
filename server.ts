@@ -24,6 +24,11 @@ const PORT = 3000;
 
 app.use(express.json());
 
+// --- HEALTH CHECK ENDPOINT ---
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
 // Initialize AI Client
 let aiClient: GoogleGenAI | null = null;
 function getAI() {

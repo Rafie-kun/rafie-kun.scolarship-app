@@ -219,6 +219,17 @@ try {
 }
 
 // --- Type Converter Helpers ---
+function safeJsonParse(value: any, fallback: any = []): any {
+  if (!value) return fallback;
+  if (typeof value === 'object') return value;
+  try {
+    return JSON.parse(value);
+  } catch (e) {
+    console.warn("[SQLite DB] JSON parse fallback triggered for value:", value, e);
+    return fallback;
+  }
+}
+
 function deserializeProfile(row: any): Profile | null {
   if (!row) return null;
   return {
@@ -233,10 +244,10 @@ function deserializeProfile(row: any): Profile | null {
     maxGpa: row.maxGpa,
     ieltsScore: row.ieltsScore || undefined,
     greScore: row.greScore || undefined,
-    leadershipExperience: JSON.parse(row.leadershipExperience || '[]'),
-    projects: JSON.parse(row.projects || '[]'),
-    volunteerExperience: JSON.parse(row.volunteerExperience || '[]'),
-    badges: JSON.parse(row.badges || '[]'),
+    leadershipExperience: safeJsonParse(row.leadershipExperience),
+    projects: safeJsonParse(row.projects),
+    volunteerExperience: safeJsonParse(row.volunteerExperience),
+    badges: safeJsonParse(row.badges),
     educationLevel: row.educationLevel || undefined,
     highSchoolName: row.highSchoolName || undefined,
     collegeName: row.collegeName || undefined,
@@ -244,15 +255,15 @@ function deserializeProfile(row: any): Profile | null {
     secondaryMajor: row.secondaryMajor || undefined,
     minor: row.minor || undefined,
     graduationYear: row.graduationYear !== null ? row.graduationYear : undefined,
-    additionalSkills: JSON.parse(row.additionalSkills || '[]'),
+    additionalSkills: safeJsonParse(row.additionalSkills),
     resumePdf: row.resumePdf || undefined,
-    rewardedActions: JSON.parse(row.rewardedActions || '[]'),
-    oLevelSubjects: JSON.parse(row.oLevelSubjects || '[]'),
-    aLevelSubjects: JSON.parse(row.aLevelSubjects || '[]'),
+    rewardedActions: safeJsonParse(row.rewardedActions),
+    oLevelSubjects: safeJsonParse(row.oLevelSubjects),
+    aLevelSubjects: safeJsonParse(row.aLevelSubjects),
     satScore: row.satScore !== null && row.satScore !== undefined ? row.satScore : null,
     profilePicture: row.profilePicture || undefined,
     lastDailyCheckin: row.lastDailyCheckin || undefined,
-    hasCompletedOnboarding: row.hasCompletedOnboarding === 1,
+    hasCompletedOnboarding: row.hasCompletedOnboarding === 1 || row.hasCompletedOnboarding === '1' || row.hasCompletedOnboarding === true || row.hasCompletedOnboarding === 'true',
     customGeminiKey: row.customGeminiKey || undefined
   };
 }
@@ -262,6 +273,11 @@ function deserializeProfile(row: any): Profile | null {
 export function getUserByUsername(username: string): any {
   const stmt = db.prepare('SELECT * FROM users WHERE LOWER(username) = LOWER(?)');
   return stmt.get(username);
+}
+
+export function getUserByEmail(email: string): any {
+  const stmt = db.prepare('SELECT * FROM users WHERE LOWER(email) = LOWER(?)');
+  return stmt.get(email);
 }
 
 export function getUserByUserId(id: string): any {
@@ -281,11 +297,11 @@ export function getProfileByUsername(username: string): Profile | null {
   return deserializeProfile(row);
 }
 
-export function createNewUser(username: string, passwordHash: string, fullName: string, profile: Profile): string {
+export function createNewUser(username: string, passwordHash: string, fullName: string, profile: Profile, email?: string): string {
   const userId = 'usr-' + Date.now() + Math.random().toString(36).substr(2, 4);
   const profileId = 'prf-' + Date.now() + Math.random().toString(36).substr(2, 4);
   
-  const insertUser = db.prepare('INSERT INTO users (id, username, password, createdAt) VALUES (?, ?, ?, ?)');
+  const insertUser = db.prepare('INSERT INTO users (id, username, email, password, createdAt) VALUES (?, ?, ?, ?, ?)');
   const insertProfile = db.prepare(`
     INSERT INTO profiles (
       id, user_id, username, fullName, level, points, intendedMajor, intendedDegree,
@@ -300,7 +316,7 @@ export function createNewUser(username: string, passwordHash: string, fullName: 
   `);
 
   const runTx = db.transaction(() => {
-    insertUser.run(userId, username, passwordHash, new Date().toISOString());
+    insertUser.run(userId, username, email || null, passwordHash, new Date().toISOString());
     insertProfile.run(
       profileId,
       userId,
@@ -414,7 +430,7 @@ export function getUserApplications(username: string): Application[] {
     deadline: row.deadline,
     status: row.status as any,
     notes: row.notes || undefined,
-    checklist: JSON.parse(row.checklist || '[]')
+    checklist: safeJsonParse(row.checklist)
   }));
 }
 
@@ -474,7 +490,7 @@ export function getRoadmap(username: string): any[] | null {
   const stmt = db.prepare('SELECT roadmap FROM roadmaps WHERE user_id = ?');
   const row = stmt.get(user.id);
   if (!row) return null;
-  return JSON.parse((row as any).roadmap || '[]');
+  return safeJsonParse((row as any).roadmap);
 }
 
 export function saveRoadmap(username: string, roadmap: any[]): void {
@@ -569,12 +585,12 @@ export function getCVData(username: string): CVData {
   }
 
   return {
-    workExperience: JSON.parse((row as any).workExperience || '[]'),
-    internships: JSON.parse((row as any).internships || '[]'),
-    projects: JSON.parse((row as any).projects || '[]'),
-    skills: JSON.parse((row as any).skills || '[]'),
-    certifications: JSON.parse((row as any).certifications || '[]'),
-    extracurriculars: JSON.parse((row as any).extracurriculars || '[]')
+    workExperience: safeJsonParse((row as any).workExperience),
+    internships: safeJsonParse((row as any).internships),
+    projects: safeJsonParse((row as any).projects),
+    skills: safeJsonParse((row as any).skills),
+    certifications: safeJsonParse((row as any).certifications),
+    extracurriculars: safeJsonParse((row as any).extracurriculars)
   };
 }
 
@@ -932,11 +948,11 @@ export function getUniversitiesFromDb(options: GetUniversitiesOptions): { total:
     ranking: row.ranking,
     acceptanceRate: row.acceptanceRate,
     averageGpa: row.averageGpa,
-    popularMajors: JSON.parse(row.popularMajors || '[]'),
+    popularMajors: safeJsonParse(row.popularMajors),
     type: row.type,
     tuitionMin: row.tuitionMin,
     tuitionMax: row.tuitionMax,
-    offeredScholarships: JSON.parse(row.offeredScholarships || '[]'),
+    offeredScholarships: safeJsonParse(row.offeredScholarships),
     city: row.city,
     hasOnCampusHousing: !!row.hasOnCampusHousing,
     website: row.website,

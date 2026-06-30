@@ -585,7 +585,7 @@ export default function CVBuilder() {
                     type="email"
                     value={personalInfo.email}
                     onChange={(e) => setPersonalInfo({ ...personalInfo, email: e.target.value })}
-                    placeholder="e.g. arif@gmail.com"
+                    placeholder="e.g. hello@gmail.com"
                     className="bg-[#141414] border-2 border-black p-2 outline-none"
                   />
                 </div>

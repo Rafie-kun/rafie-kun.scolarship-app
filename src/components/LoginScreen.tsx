@@ -40,6 +40,7 @@ export default function LoginScreen() {
   const [activeTab, setActiveTab] = useState<'signin' | 'register'>('signin');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   // Profile data fields for signup
@@ -119,15 +120,39 @@ export default function LoginScreen() {
     e.preventDefault();
     setLocalError('');
     
-    if (!username.trim() || !password.trim()) {
-      setLocalError('Credential inputs cannot be blank!');
-      return;
-    }
-
     if (activeTab === 'signin') {
+      if (!username.trim() || !password.trim()) {
+        setLocalError('Credential inputs cannot be blank!');
+        return;
+      }
       await login(username, password);
     } else {
       // Sign-up flow with validation
+      if (!username.trim() || !password.trim() || !email.trim()) {
+        setLocalError('Username, Email, and Password are required!');
+        return;
+      }
+
+      // Username strength validation
+      const usernameRegex = /^[a-zA-Z0-9_-]{3,16}$/;
+      if (!usernameRegex.test(username.trim().toLowerCase())) {
+        setLocalError('Username must be 3-16 characters and contain only letters, numbers, underscores, or hyphens.');
+        return;
+      }
+
+      // Email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.trim().toLowerCase())) {
+        setLocalError('Please enter a valid email address!');
+        return;
+      }
+
+      // Password complexity check
+      if (password.length < 8 || !/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) {
+        setLocalError('Password must be at least 8 characters and contain both letters and numbers.');
+        return;
+      }
+
       if (!fullName.trim()) {
         setLocalError('Please records your player Full Name!');
         return;
@@ -184,6 +209,7 @@ export default function LoginScreen() {
       await register(
         username, 
         password, 
+        email,
         fullName, 
         educationLevel === 'high_school' ? '4.00' : (gpaScore.trim() || '3.75'), 
         educationLevel !== 'high_school' ? (customMajorText.trim() || 'General Studies') : 'High School Curriculum',
@@ -359,6 +385,25 @@ export default function LoginScreen() {
           {activeTab === 'register' && (
             <div className={`space-y-4 pt-4 border-t ${isRetro ? 'border-stone-800' : 'border-slate-800'}`}>
               
+              {/* Email Address field */}
+              <div className="space-y-1">
+                <label className={`block uppercase font-bold ${isRetro ? 'text-[9px] text-stone-300' : 'text-xs text-slate-300'}`}>
+                  Email Address:
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="e.g. hello@gmail.com"
+                  className={`w-full focus:outline-none focus:ring-1 ${
+                    isRetro
+                      ? 'bg-[#141414] border-4 border-black p-2.5 text-stone-100 focus:border-[#ffff55] text-xs font-sans'
+                      : 'bg-slate-950 border border-slate-800 p-2.5 text-slate-100 placeholder-slate-600 font-sans text-xs focus:border-indigo-500 focus:ring-indigo-500'
+                  }`}
+                />
+              </div>
+
               {/* Full Name field */}
               <div className="space-y-1">
                 <label className={`block uppercase font-bold ${isRetro ? 'text-[9px] text-stone-300' : 'text-xs text-slate-300'}`}>

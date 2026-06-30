@@ -6,8 +6,8 @@ import { useAuth } from '../context/AuthContext';
 import { dispatchProfileUpdate } from '../utils/events';
 
 export default function OverviewRecommendationsView({ onNavigate }: { onNavigate: (view: string) => void }) {
-  const { authorizedFetch } = useAuth();
-  const [profile, setProfile] = useState<Profile | null>(null);
+  const { authorizedFetch, profile: authProfile } = useAuth();
+  const [profile, setProfile] = useState<Profile | null>(authProfile || null);
   const [scholarships, setScholarships] = useState<Scholarship[]>([]);
   const [universities, setUniversities] = useState<University[]>([]);
   const [notifications, setNotifications] = useState<AppNotification[]>([]);
@@ -18,13 +18,33 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const safeFetchJson = async (url: string, fallback: any) => {
+          try {
+            const r = await authorizedFetch(url);
+            if (!r.ok) {
+              console.warn(`[API] Fetch non-OK response for ${url}: status ${r.status}`);
+              return fallback;
+            }
+            return await r.json().catch(() => fallback);
+          } catch (err) {
+            console.warn(`[API] Failed to fetch or parse ${url}:`, err);
+            return fallback;
+          }
+        };
+
         const [profRes, scholRes, uniRes, notifRes] = await Promise.all([
-          authorizedFetch('/api/profile').then(r => r.json()),
-          authorizedFetch('/api/scholarships').then(r => r.json()),
-          authorizedFetch('/api/universities').then(r => r.json()),
-          authorizedFetch('/api/notifications').then(r => r.json()),
+          safeFetchJson('/api/profile', null),
+          safeFetchJson('/api/scholarships', { scholarships: [] }),
+          safeFetchJson('/api/universities', { universities: [] }),
+          safeFetchJson('/api/notifications', []),
         ]);
-        setProfile(profRes);
+
+        if (profRes && !profRes.error) {
+          setProfile(profRes);
+        } else {
+          // Keep default profile if there was an unauthorized error
+          setProfile(prev => prev);
+        }
         setScholarships(scholRes.scholarships || []);
         setUniversities(uniRes.universities || (Array.isArray(uniRes) ? uniRes : []));
         setNotifications(notifRes);

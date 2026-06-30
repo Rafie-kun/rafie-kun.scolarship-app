@@ -116,7 +116,7 @@ const getThemeStyling = (themeId: string) => {
 };
 
 export default function App() {
-  const { isLoggedIn, profile, authLoading, isGuest, logout, rewardPoints, refreshProfile, updateProfile } = useAuth();
+  const { user, isLoggedIn, profile, authLoading, isGuest, logout, rewardPoints, refreshProfile, updateProfile } = useAuth();
   const { theme, themeMode, setThemeMode } = useTheme();
 
   const [activeTab, setActiveTab] = useState('overview');
@@ -132,7 +132,7 @@ export default function App() {
         return;
       }
       
-      const completedOnboarding = profile.hasCompletedOnboarding;
+      const completedOnboarding = profile.hasCompletedOnboarding || localStorage.getItem(`scholarpath_onboarding_completed_${user || 'guest'}`) === 'true';
       if (!completedOnboarding) {
         setShowTour(true);
       } else {
@@ -445,10 +445,10 @@ export default function App() {
 
       {/* Offline Mode Banner */}
       {profile?.offlineMode && (
-        <div className="w-full bg-red-900/90 border-b-4 border-red-700 text-white text-center py-2 px-4 flex items-center justify-center gap-2 font-mono text-sm shadow-md z-50">
-          <Shield className="w-4 h-4 text-amber-400" />
-          <span className="font-bold tracking-wide">OFFLINE MODE:</span>
-          <span>Communications anomaly detected. Changes saved locally and may not sync with the central server.</span>
+        <div className="w-full bg-amber-950/95 border-b-4 border-amber-600 text-amber-100 text-center py-2 px-4 flex items-center justify-center gap-2 font-mono text-xs shadow-md z-50 transition-all duration-300">
+          <div className="animate-pulse w-2 h-2 rounded-full bg-amber-500 mr-1" />
+          <span className="font-bold tracking-wider text-amber-400 uppercase">OFFLINE SYNCHRONIZATION:</span>
+          <span>We are temporarily unable to reach the mainframe. Your progress is saved locally and will synchronize automatically once the connection is restored.</span>
         </div>
       )}
 
@@ -563,6 +563,17 @@ export default function App() {
 
           {/* Footer credentials credits info */}
           <div className="pt-4 border-t-4 border-black font-mono text-xs text-[#aaa] space-y-2 mt-4">
+            <button
+              onClick={() => {
+                playClickSound();
+                window.dispatchEvent(new CustomEvent('start-onboarding-tour'));
+              }}
+              className="w-full text-center mc-btn py-2 text-[10.5px] text-[#ffff55] font-bold flex items-center justify-center gap-2 border-2 border-black"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#ffff55]" />
+              <span>HELP & WALKTHROUGH</span>
+            </button>
+
             <div className="flex justify-between text-[#ffaa00] font-bold px-1 select-none">
               <span>METADATA COINS:</span>
               <span className="font-press text-[9px]">{(profile?.points || 0) * 2} 🪙</span>
@@ -623,7 +634,7 @@ export default function App() {
       {showTour && isLoggedIn && profile && (
         <OnboardingTour
           onComplete={async (totalXP) => {
-            localStorage.setItem(`scholarpath_onboarding_completed_${profile.fullName || 'guest'}`, 'true');
+            localStorage.setItem(`scholarpath_onboarding_completed_${user || 'guest'}`, 'true');
             if (updateProfile) {
               await updateProfile({ hasCompletedOnboarding: true });
             }
@@ -633,7 +644,7 @@ export default function App() {
             }
           }}
           onSkip={async () => {
-            localStorage.setItem(`scholarpath_onboarding_completed_${profile.fullName || 'guest'}`, 'true');
+            localStorage.setItem(`scholarpath_onboarding_completed_${user || 'guest'}`, 'true');
             if (updateProfile) {
               await updateProfile({ hasCompletedOnboarding: true });
             }

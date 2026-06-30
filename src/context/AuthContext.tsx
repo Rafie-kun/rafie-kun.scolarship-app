@@ -11,7 +11,7 @@ interface AuthContextType {
   authLoading: boolean;
   authError: string | null;
   login: (username: string, password: string) => Promise<boolean>;
-  register: (username: string, password: string, fullName: string, gpa: string, major: string, extraFields?: any) => Promise<boolean>;
+  register: (username: string, password: string, email: string, fullName: string, gpa: string, major: string, extraFields?: any) => Promise<boolean>;
   guestLogin: () => Promise<boolean>;
   logout: () => void;
   refreshProfile: () => Promise<void>;
@@ -39,7 +39,7 @@ const defaultProfile: Profile = {
   volunteerExperience: [],
   additionalSkills: [],
   hasCompletedOnboarding: false,
-  offlineMode: true
+  offlineMode: false
 };
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -50,18 +50,250 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [authLoading, setAuthLoading] = useState<boolean>(true);
   const [authError, setAuthError] = useState<string | null>(null);
 
+  const [isOfflineState, setIsOfflineState] = useState<boolean>(false);
+
+  // Sync isOfflineState with profile.offlineMode to keep views updated
+  const profileOfflineMode = profile?.offlineMode;
+  const authUsername = user;
+  useEffect(() => {
+    if (profile && profile.offlineMode !== isOfflineState) {
+      setProfile(prev => prev ? { ...prev, offlineMode: isOfflineState } : null);
+    }
+  }, [isOfflineState, profileOfflineMode, authUsername]);
+
+  // Sync helper to post offline local modifications once connection is restored
+  const syncUnsyncedData = async () => {
+    const token = localStorage.getItem('scholarpath_jwt_token');
+    
+    // 1. Synchronize deferred profile edits
+    const pendingProfileStr = localStorage.getItem('scholarpath_pending_profile_update');
+    if (pendingProfileStr) {
+      try {
+        const pendingData = JSON.parse(pendingProfileStr);
+        console.log("[Sync] Synchronizing cached offline profile modifications...", pendingData);
+        
+        const res = await fetch('/api/profile', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+          },
+          body: JSON.stringify(pendingData),
+          credentials: 'include'
+        });
+        
+        if (res.ok) {
+          console.log("[Sync] Offline profile modifications successfully synchronized.");
+          localStorage.removeItem('scholarpath_pending_profile_update');
+        } else {
+          console.warn(`[Sync] Server returned non-OK status (${res.status}) on profile sync.`);
+        }
+      } catch (err) {
+        console.error("[Sync] Error synchronizing offline profile update:", err);
+      }
+    }
+    
+    // 2. Synchronize deferred XP accomplishments
+    const pendingRewardsStr = localStorage.getItem('scholarpath_pending_rewards');
+    if (pendingRewardsStr) {
+      try {
+        const pendingRewards: Array<{ points: number, actionName: string, badgeToUnlock?: string }> = JSON.parse(pendingRewardsStr);
+        if (pendingRewards.length > 0) {
+          console.log(`[Sync] Synchronizing ${pendingRewards.length} deferred XP milestones...`);
+          
+          let successfullySyncedCount = 0;
+          for (const reward of pendingRewards) {
+            try {
+              const res = await fetch('/api/profile/reward', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                },
+                body: JSON.stringify(reward),
+                credentials: 'include'
+              });
+              
+              if (res.ok) {
+                successfullySyncedCount++;
+              } else {
+                console.warn(`[Sync] Failed to sync milestone "${reward.actionName}". Status: ${res.status}`);
+              }
+            } catch (err) {
+              console.error(`[Sync] Error syncing milestone "${reward.actionName}":`, err);
+            }
+          }
+          
+          const remainingRewards = pendingRewards.slice(successfullySyncedCount);
+          if (remainingRewards.length === 0) {
+            console.log("[Sync] All deferred milestones synchronized successfully.");
+            localStorage.removeItem('scholarpath_pending_rewards');
+          } else {
+            localStorage.setItem('scholarpath_pending_rewards', JSON.stringify(remainingRewards));
+          }
+        }
+      } catch (err) {
+        console.error("[Sync] Error parsing or synchronizing deferred rewards:", err);
+      }
+    }
+    
+    // 3. Fetch canonical state from central database to align all panels
+    try {
+      const res = await fetch('/api/profile', {
+        headers: token ? { 'Authorization': `Bearer ${token}` } : undefined,
+        credentials: 'include'
+      });
+      if (res.ok) {
+        const freshProfile = await res.json();
+        const alignedProfile = {
+          ...freshProfile,
+          offlineMode: false
+        };
+        setProfile(alignedProfile);
+        localStorage.setItem('scholarpath_user', JSON.stringify(alignedProfile));
+        window.dispatchEvent(new CustomEvent('profile-updated', { detail: alignedProfile }));
+        
+        // Push safe in-app ledger notification
+        const schedulerNotif = {
+          id: "sync-complete-" + Date.now(),
+          type: "success",
+          message: "⚡ CONNECTION RESTORED! Your offline progress has been synchronized successfully with the mainframe database.",
+          timestamp: "Just now"
+        };
+        console.log("[Sync] Ledger status updated: Online Mode active.");
+      }
+    } catch (err) {
+      console.warn("[Sync] Failed to pull canonical state after sync:", err);
+    }
+  };
+
+  // Connectivity check with rapid timeout to verify if central API is reachable
+  const checkConnectivity = async () => {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
+      
+      const res = await fetch('/api/health', {
+        method: 'GET',
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+      
+      if (res.ok) {
+        setIsOfflineState(prev => {
+          if (prev) {
+            console.log("[Connectivity] Connection restored. Synchronizing deferred changes...");
+            setTimeout(() => syncUnsyncedData(), 500);
+          }
+          return false;
+        });
+      } else {
+        console.warn("[Connectivity] API health returned non-OK status:", res.status);
+        setIsOfflineState(true);
+      }
+    } catch (err) {
+      console.warn("[Connectivity] Mainframe connection attempt failed:", err);
+      setIsOfflineState(true);
+    }
+  };
+
+  // Periodic health check when online to detect outages
+  useEffect(() => {
+    if (isOfflineState) return;
+
+    const intervalId = setInterval(async () => {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 4000);
+        const res = await fetch('/api/health', {
+          method: 'GET',
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        
+        if (!res.ok) {
+          // Double check before declaring offline to avoid transient spikes
+          const reCheck = await fetch('/api/health').catch(() => null);
+          if (!reCheck || !reCheck.ok) {
+            setIsOfflineState(true);
+          }
+        }
+      } catch (err) {
+        const reCheck = await fetch('/api/health').catch(() => null);
+        if (!reCheck || !reCheck.ok) {
+          setIsOfflineState(true);
+        }
+      }
+    }, 45000); // Check every 45s
+
+    return () => clearInterval(intervalId);
+  }, [isOfflineState]);
+
+  // Exponential backoff reconnect loop active ONLY when offline
+  useEffect(() => {
+    if (!isOfflineState) return;
+
+    let retryDelay = 2000;
+    const maxDelay = 30000;
+    let timerId: NodeJS.Timeout | null = null;
+    let isActive = true;
+
+    const attemptReconnection = async () => {
+      if (!isActive) return;
+      console.log(`[Reconnector] Checking mainframe availability (next check in ${retryDelay / 1000}s)...`);
+      
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 4000);
+        const res = await fetch('/api/health', {
+          method: 'GET',
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        
+        if (res.ok) {
+          console.log("[Reconnector] Connection verified!");
+          setIsOfflineState(false);
+          return;
+        }
+      } catch (err) {
+        // Continue exponential check
+      }
+
+      retryDelay = Math.min(retryDelay * 1.5, maxDelay);
+      timerId = setTimeout(attemptReconnection, retryDelay);
+    };
+
+    timerId = setTimeout(attemptReconnection, retryDelay);
+
+    return () => {
+      isActive = false;
+      if (timerId) clearTimeout(timerId);
+    };
+  }, [isOfflineState]);
+
   // Synced wrapper around standard fetch to automatically supply credentials and cookies
   const authorizedFetch = async (url: string, options: RequestInit = {}): Promise<Response> => {
+    const token = localStorage.getItem('scholarpath_jwt_token');
     const headers = {
       'Content-Type': 'application/json',
+      ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
       ...(options.headers || {}),
     } as Record<string, string>;
 
-    return fetch(url, {
-      ...options,
-      headers,
-      credentials: 'include' // Critical to pass httpOnly cookies across local routing nodes
-    });
+    try {
+      const res = await fetch(url, {
+        ...options,
+        headers,
+        credentials: 'include' // Critical to pass httpOnly cookies across local routing nodes
+      });
+      return res;
+    } catch (err) {
+      console.warn(`[Network] Fetch exception targeting "${url}":`, err);
+      // Run rapid verification in background
+      checkConnectivity();
+      throw err;
+    }
   };
 
   const refreshProfile = async () => {
@@ -69,10 +301,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const res = await authorizedFetch('/api/profile');
       if (res.ok) {
         const data = await res.json();
-        setProfile(data);
+        const normalized = { ...data, offlineMode: isOfflineState };
+        setProfile(normalized);
         
         // Dispatch event for components listening on native window
-        window.dispatchEvent(new CustomEvent('profile-updated', { detail: data }));
+        window.dispatchEvent(new CustomEvent('profile-updated', { detail: normalized }));
       }
     } catch (e) {
       console.error("Failed to sync profile card:", e);
@@ -94,8 +327,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const initializeAuth = async () => {
       try {
+        const token = localStorage.getItem('scholarpath_jwt_token');
         // Always try to sync with the server database first to fetch fresh XP points and levels
-        const res = await fetch('/api/auth/me', { credentials: 'include' });
+        const res = await fetch('/api/auth/me', {
+          headers: token ? { 'Authorization': `Bearer ${token}` } : undefined,
+          credentials: 'include'
+        });
         if (res.ok) {
           const data = await res.json();
           setUser(data.username);
@@ -110,15 +347,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setIsGuest(!!data.isGuest);
           setIsLoggedIn(true);
           localStorage.setItem('scholarpath_user', JSON.stringify(freshProfile));
+          // Perform any sync if needed
+          setTimeout(() => syncUnsyncedData(), 500);
         } else {
           // If server check fails (no session), fall back to local storage cache if present
           const localUserStr = localStorage.getItem('scholarpath_user');
           if (localUserStr) {
             const localUser = JSON.parse(localUserStr);
             setUser(localUser.username);
-            setProfile({ ...defaultProfile, ...localUser });
+            // Default to onlineMode: false initially to avoid flash of offline banner. Will double check immediately in background.
+            const profileToLoad = { ...defaultProfile, ...localUser, offlineMode: false };
+            setProfile(profileToLoad);
             setIsGuest(!!localUser.isGuest);
             setIsLoggedIn(true);
+            
+            // Perform connection check to confirm actual status
+            checkConnectivity();
           } else {
             setIsLoggedIn(false);
             setUser(null);
@@ -127,11 +371,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       } catch (e) {
         console.warn("Server check failed on initialization, falling back to local storage:", e);
+        setIsOfflineState(true);
         const localUserStr = localStorage.getItem('scholarpath_user');
         if (localUserStr) {
           const localUser = JSON.parse(localUserStr);
           setUser(localUser.username);
-          setProfile({ ...defaultProfile, ...localUser });
+          const profileToLoad = { ...defaultProfile, ...localUser, offlineMode: true };
+          setProfile(profileToLoad);
           setIsGuest(!!localUser.isGuest);
           setIsLoggedIn(true);
         } else {
@@ -177,6 +423,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         offlineMode: false
       };
       localStorage.setItem('scholarpath_user', JSON.stringify(profileData));
+      if (data.token) {
+        localStorage.setItem('scholarpath_jwt_token', data.token);
+      }
 
       setUser(data.username);
       setProfile(profileData);
@@ -217,6 +466,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const register = async (
     username: string, 
     password: string, 
+    email: string,
     fullName: string, 
     gpa: string, 
     major: string,
@@ -230,6 +480,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const payload = {
         username,
         password,
+        email,
         fullName,
         gpa,
         intendedMajor: major,
@@ -258,6 +509,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         offlineMode: false
       };
       localStorage.setItem('scholarpath_user', JSON.stringify(profileData));
+      if (data.token) {
+        localStorage.setItem('scholarpath_jwt_token', data.token);
+      }
 
       setUser(data.username);
       setProfile(profileData);
@@ -312,6 +566,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         offlineMode: false
       };
       localStorage.setItem('scholarpath_user', JSON.stringify(profileData));
+      if (data.token) {
+        localStorage.setItem('scholarpath_jwt_token', data.token);
+      }
 
       setUser(data.username);
       setProfile(profileData);
@@ -382,6 +639,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.removeItem('scholarpath_user');
     localStorage.removeItem('scholarpath_guest_profile');
     localStorage.removeItem('scholarpath_show_welcome_wizard');
+    localStorage.removeItem('scholarpath_jwt_token');
     
     try {
       await fetch('/api/auth/logout', { 
@@ -407,21 +665,37 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (res.ok) {
         const data = await res.json();
         
+        // Clear any pending offline profile updates since we are back online
+        localStorage.removeItem('scholarpath_pending_profile_update');
+
         // Always persist to local storage
         if (profile) {
-          localStorage.setItem('scholarpath_user', JSON.stringify({
+          const mergedProfile = {
             ...profile,
-            ...data
-          }));
+            ...data,
+            offlineMode: false // Explicitly clear offline mode
+          };
+          localStorage.setItem('scholarpath_user', JSON.stringify(mergedProfile));
+          setProfile(mergedProfile);
+        } else {
+          setProfile(data);
         }
 
-        setProfile(data);
         window.dispatchEvent(new CustomEvent('profile-updated', { detail: data }));
         return true;
       }
       return false;
     } catch (e) {
-      console.warn("Failed to sync profile with server, updating locally:", e);
+      console.warn("Failed to sync profile with server, updating locally & queueing for sync:", e);
+      // Save pending update in queue
+      try {
+        const existingPending = JSON.parse(localStorage.getItem('scholarpath_pending_profile_update') || '{}');
+        const mergedPending = { ...existingPending, ...updatedData };
+        localStorage.setItem('scholarpath_pending_profile_update', JSON.stringify(mergedPending));
+      } catch (err) {
+        console.error("Failed to queue pending profile updates:", err);
+      }
+
       if (profile) {
         const localUpdate = { ...profile, ...updatedData, offlineMode: true };
         localStorage.setItem('scholarpath_user', JSON.stringify(localUpdate));
@@ -472,6 +746,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const queueRewardLocal = (points: number, actionName: string, badgeToUnlock?: string) => {
+    // 1. Save in the pending rewards queue for background synchronization
+    const existingQueueStr = localStorage.getItem('scholarpath_pending_rewards');
+    let existingQueue = [];
+    try {
+      if (existingQueueStr) {
+        existingQueue = JSON.parse(existingQueueStr);
+      }
+    } catch (e) {
+      console.error("[Reward Queue] Error parsing pending queue:", e);
+    }
+    
+    // Prevent duplicates in the queue
+    if (!existingQueue.some((item: any) => item.actionName === actionName)) {
+      existingQueue.push({ points, actionName, badgeToUnlock });
+      localStorage.setItem('scholarpath_pending_rewards', JSON.stringify(existingQueue));
+    }
+
+    // 2. Compute local reward so UI updates immediately
+    triggerLocalReward(points, actionName, badgeToUnlock);
+  };
+
   const rewardPoints = async (points: number, actionName: string, badgeToUnlock?: string) => {
     if (rewardingRef.current) return;
     
@@ -498,27 +794,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       });
       if (res.ok) {
         const updatedProfile = await res.json();
+        const mergedProfile = {
+          ...updatedProfile,
+          offlineMode: false // Explicitly clear offline mode
+        };
         
         // Always persist to local storage to prevent reload resets
-        localStorage.setItem('scholarpath_user', JSON.stringify(updatedProfile));
-        setProfile(updatedProfile);
+        localStorage.setItem('scholarpath_user', JSON.stringify(mergedProfile));
+        setProfile(mergedProfile);
         
         // Dispatch event for other components to synchronize
-        window.dispatchEvent(new CustomEvent('profile-updated', { detail: updatedProfile }));
+        window.dispatchEvent(new CustomEvent('profile-updated', { detail: mergedProfile }));
         
         // Sound cues based on level change
-        if (profile && updatedProfile.level > (profile.level || 1)) {
+        if (profile && mergedProfile.level > (profile.level || 1)) {
           playAdvancementSound();
         } else {
           playXpSound();
         }
       } else {
-        console.warn("Server reward returned non-ok, falling back to local calculation.");
-        triggerLocalReward(points, actionName, badgeToUnlock);
+        console.warn("Server reward returned non-ok, falling back to local calculation & queueing for sync.");
+        queueRewardLocal(points, actionName, badgeToUnlock);
       }
     } catch (err) {
-      console.warn("Reward communication failure, falling back to local calculation:", err);
-      triggerLocalReward(points, actionName, badgeToUnlock);
+      console.warn("Reward communication failure, falling back to local calculation & queueing for sync:", err);
+      queueRewardLocal(points, actionName, badgeToUnlock);
     } finally {
       rewardingRef.current = false;
     }

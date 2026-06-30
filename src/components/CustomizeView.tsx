@@ -5,7 +5,7 @@ import { useTheme, ThemeId } from '../context/ThemeContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 
 export default function CustomizeView() {
-  const { profile, updateProfile } = useAuth();
+  const { user, profile, updateProfile } = useAuth();
   const { themeMode, setThemeMode, theme, soundEnabled, textGlow, setTheme, toggleSound } = useTheme();
   
   const [successMsg, setSuccessMsg] = useState('');
@@ -321,7 +321,7 @@ export default function CustomizeView() {
                   type="button"
                   onClick={async () => {
                     playClickSound();
-                    localStorage.removeItem(`scholarpath_onboarding_completed_${profile?.fullName || 'guest'}`);
+                    localStorage.removeItem(`scholarpath_onboarding_completed_${user || 'guest'}`);
                     if (updateProfile) {
                       await updateProfile({ hasCompletedOnboarding: false });
                     }

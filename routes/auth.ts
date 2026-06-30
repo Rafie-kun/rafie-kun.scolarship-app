@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { JWT_SECRET } from './db.js';
-import { getUserByUsername, createNewUser, getProfileByUsername } from '../db/index.js';
+import { getUserByUsername, getUserByEmail, createNewUser, getProfileByUsername } from '../db/index.js';
 import type { Profile } from '../src/types.js';
 
 const router = express.Router();
@@ -125,11 +125,58 @@ router.get('/me', (req: Request, res: Response) => {
   });
 });
 
+// Check username availability
+router.get('/check-username', (req: Request, res: Response) => {
+  const username = req.query.username;
+  if (!username) {
+    return res.status(400).json({ error: "Username query parameter is required" });
+  }
+  const cleanUser = String(username).trim().toLowerCase();
+  
+  const usernameRegex = /^[a-zA-Z0-9_-]{3,16}$/;
+  if (!usernameRegex.test(cleanUser)) {
+    return res.json({ 
+      available: false, 
+      error: "Username must be 3-16 characters and contain only letters, numbers, underscores, or hyphens." 
+    });
+  }
+
+  const existing = getUserByUsername(cleanUser);
+  if (existing) {
+    return res.json({ available: false, error: "This username already exists." });
+  }
+  return res.json({ available: true });
+});
+
+// Check email availability
+router.get('/check-email', (req: Request, res: Response) => {
+  const email = req.query.email;
+  if (!email) {
+    return res.status(400).json({ error: "Email query parameter is required" });
+  }
+  const cleanEmail = String(email).trim().toLowerCase();
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(cleanEmail)) {
+    return res.json({ 
+      available: false, 
+      error: "Please enter a valid email address." 
+    });
+  }
+
+  const existing = getUserByEmail(cleanEmail);
+  if (existing) {
+    return res.json({ available: false, error: "This email already exists." });
+  }
+  return res.json({ available: true });
+});
+
 // Register as a real candidate
 router.post('/register', (req: Request, res: Response) => {
   const { 
     username, 
     password, 
+    email,
     fullName, 
     gpa, 
     intendedMajor, 
@@ -148,14 +195,36 @@ router.post('/register', (req: Request, res: Response) => {
     resumePdf
   } = req.body;
 
-  if (!username || !password) {
-    return res.status(400).json({ error: "Player Username and Password are required!" });
+  if (!username || !password || !email) {
+    return res.status(400).json({ error: "Username, Email, and Password are required!" });
   }
 
   const cleanUser = String(username).trim().toLowerCase();
+  const cleanEmail = String(email).trim().toLowerCase();
+
+  // Username validation
+  const usernameRegex = /^[a-zA-Z0-9_-]{3,16}$/;
+  if (!usernameRegex.test(cleanUser)) {
+    return res.status(400).json({ error: "Username must be 3-16 characters and contain only letters, numbers, underscores, or hyphens." });
+  }
+
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(cleanEmail)) {
+    return res.status(400).json({ error: "Please enter a valid email address." });
+  }
+
+  // Password validation
+  if (password.length < 8 || !/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) {
+    return res.status(400).json({ error: "Password must be at least 8 characters and contain both letters and numbers." });
+  }
 
   if (getUserByUsername(cleanUser)) {
-    return res.status(400).json({ error: "This player name is already registered under Admissions Command!" });
+    return res.status(400).json({ error: "This username already exists." });
+  }
+
+  if (getUserByEmail(cleanEmail)) {
+    return res.status(400).json({ error: "This email already exists." });
   }
 
   // Salt & Hash password
@@ -196,7 +265,7 @@ router.post('/register', (req: Request, res: Response) => {
     rewardedActions: []
   };
 
-  createNewUser(cleanUser, hashedPassword, newProfile.fullName, newProfile);
+  createNewUser(cleanUser, hashedPassword, newProfile.fullName, newProfile, cleanEmail);
 
   // Respond with cookie and JSON
   const token = jwt.sign({ username: cleanUser, isGuest: false }, JWT_SECRET, { expiresIn: '7d' });
@@ -205,7 +274,8 @@ router.post('/register', (req: Request, res: Response) => {
   res.status(201).json({
     success: true,
     username: cleanUser,
-    profile: newProfile
+    profile: newProfile,
+    token
   });
 });
 
@@ -233,7 +303,8 @@ router.post('/login', (req: Request, res: Response) => {
   res.json({
     success: true,
     username: cleanUser,
-    profile
+    profile,
+    token
   });
 });
 
@@ -282,7 +353,8 @@ router.post('/guest', (req: Request, res: Response) => {
     res.json({
       success: true,
       username: guestUser,
-      profile: guestProfile
+      profile: guestProfile,
+      token
     });
   } catch (err: any) {
     console.error("Guest login error:", err);
