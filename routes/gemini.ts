@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { GoogleGenAI } from "@google/genai";
-import { authenticateToken } from './auth';
-import { getProfileByUsername } from '../db/index';
+import { authenticateToken } from './auth.js';
+import { getProfileByUsername } from '../db/index.js';
 
 const router = express.Router();
 

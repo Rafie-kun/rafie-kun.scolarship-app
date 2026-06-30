@@ -4,20 +4,20 @@ import fs from "fs";
 import { GoogleGenAI } from "@google/genai";
 
 // Modular Route Imports
-import authRouter, { authenticateToken } from "./routes/auth";
-import scholarshipsRouter from "./routes/scholarships";
-import applicationsRouter from "./routes/applications";
-import geminiRouter from "./routes/gemini";
-import recommenderRouter from "./routes/recommender";
-import roadmapRouter from "./routes/roadmap";
-import universitiesRouter from "./routes/universities";
-import profileRouter from "./routes/profile";
-import communityRouter from "./routes/community";
-import uploadRouter from "./routes/upload";
-import jobsRouter from "./routes/jobs";
+import authRouter, { authenticateToken } from "./routes/auth.js";
+import scholarshipsRouter from "./routes/scholarships.js";
+import applicationsRouter from "./routes/applications.js";
+import geminiRouter from "./routes/gemini.js";
+import recommenderRouter from "./routes/recommender.js";
+import roadmapRouter from "./routes/roadmap.js";
+import universitiesRouter from "./routes/universities.js";
+import profileRouter from "./routes/profile.js";
+import communityRouter from "./routes/community.js";
+import uploadRouter from "./routes/upload.js";
+import jobsRouter from "./routes/jobs.js";
 
-import { scholarshipsData } from "./routes/db";
-import { getNotifications, addNotification } from "./db/index";
+import { scholarshipsData } from "./routes/db.js";
+import { getNotifications, addNotification } from "./db/index.js";
 
 const app = express();
 const PORT = 3000;
@@ -215,11 +215,11 @@ app.post("/api/admin/import-universities", async (req, res) => {
   }
 
   try {
-    const { runImport } = await import("./scripts/import-universities");
+    const { runImport } = await import("./scripts/import-universities.js");
     const count = await runImport();
     
     // Refresh the in-memory array of schools inside routes/db so recommender, search etc works immediately!
-    const { db } = await import("./db/index");
+    const { db } = await import("./db/index.js");
     try {
       const rows = db.prepare('SELECT * FROM universities').all() as any[];
       // Update routes/db array in-memory
@@ -243,7 +243,7 @@ app.post("/api/admin/import-universities", async (req, res) => {
         generatedApplicationUrl: row.generatedApplicationUrl || undefined
       }));
       // Overwrite the in-memory array
-      const dbModule = await import("./routes/db");
+      const dbModule = await import("./routes/db.js");
       (dbModule as any).universitiesData.length = 0;
       (dbModule as any).universitiesData.push(...updatedUnis);
     } catch (rr) {
@@ -349,7 +349,7 @@ app.get("/api/notifications", (req, res) => {
 // Manual scraper trigger route for instant validation checking
 app.post("/api/scraper/trigger", async (req, res) => {
   try {
-    const scheduler = await import("./scripts/scheduler");
+    const scheduler = await import("./scripts/scheduler.js");
     const result = await scheduler.runScraperImmediately();
     res.json({ success: true, ...result });
   } catch (err: any) {
@@ -386,7 +386,7 @@ async function startServer() {
       console.log(`[OK] ScholarPath secure SQLite matrix synced on http://0.0.0.0:${PORT}`);
       
       // Initialize scheduled admissions & scholarship crawler
-      import("./scripts/scheduler").then(m => m.startScheduler()).catch(err => {
+      import("./scripts/scheduler.js").then(m => m.startScheduler()).catch(err => {
         console.error("[⚠️] Failed to mount automated scheduler task:", err);
       });
     });

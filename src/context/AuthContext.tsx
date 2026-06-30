@@ -31,6 +31,8 @@ const defaultProfile: Profile = {
   educationLevel: 'undergraduate',
   intendedDegree: 'undergraduate',
   intendedMajor: 'Computer Science',
+  country: 'United States',
+  nationality: 'American',
   badges: [],
   leadershipExperience: [],
   projects: [],

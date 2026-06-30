@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
-import { authenticateToken } from './auth';
-import { getCommunityPosts, addCommunityPost, voteCommunityPost, getProfileByUsername } from '../db/index';
+import { authenticateToken } from './auth.js';
+import { getCommunityPosts, addCommunityPost, voteCommunityPost, getProfileByUsername } from '../db/index.js';
 
 const router = express.Router();
 

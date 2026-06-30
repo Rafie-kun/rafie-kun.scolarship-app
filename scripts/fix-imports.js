@@ -6,9 +6,9 @@ function fixFile(filePath) {
   let changed = false;
 
   const replaceLogic = (match, quote, importPath) => {
-    if (importPath.endsWith('.js')) {
+    if (!importPath.endsWith('.js') && !importPath.endsWith('.json')) {
       changed = true;
-      return `from ${quote}${importPath.slice(0, -3)}${quote}`;
+      return `from ${quote}${importPath}.js${quote}`;
     }
     return match;
   };
@@ -17,9 +17,9 @@ function fixFile(filePath) {
   
   // also fix dynamic imports
   content = content.replace(/import\((['"])(\.[^'"]+)\1\)/g, (match, quote, importPath) => {
-    if (importPath.endsWith('.js')) {
+    if (!importPath.endsWith('.js') && !importPath.endsWith('.json')) {
       changed = true;
-      return `import(${quote}${importPath.slice(0, -3)}${quote})`;
+      return `import(${quote}${importPath}.js${quote})`;
     }
     return match;
   });
