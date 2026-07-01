@@ -61,9 +61,33 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, [isOfflineState, profileOfflineMode, authUsername]);
 
+  // Standalone/internal helper to register offline sync events
+  const addSyncEvent = (type: string, details: string[], points: number = 0) => {
+    try {
+      const existingStr = localStorage.getItem('scholarpath_sync_history');
+      const existing = existingStr ? JSON.parse(existingStr) : [];
+      const newEvent = {
+        id: "sync-" + Date.now() + "-" + Math.random().toString(36).substr(2, 4),
+        timestamp: new Date().toLocaleTimeString() + " " + new Date().toLocaleDateString(),
+        type,
+        details,
+        points,
+        status: 'success' as const
+      };
+      existing.unshift(newEvent);
+      localStorage.setItem('scholarpath_sync_history', JSON.stringify(existing.slice(0, 50)));
+      window.dispatchEvent(new CustomEvent('sync-history-updated'));
+    } catch (err) {
+      console.error("Error adding sync history event:", err);
+    }
+  };
+
   // Sync helper to post offline local modifications once connection is restored
   const syncUnsyncedData = async () => {
     const token = localStorage.getItem('scholarpath_jwt_token');
+    let syncCount = 0;
+    const syncDetails: string[] = [];
+    let syncedPoints = 0;
     
     // 1. Synchronize deferred profile edits
     const pendingProfileStr = localStorage.getItem('scholarpath_pending_profile_update');
@@ -85,6 +109,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (res.ok) {
           console.log("[Sync] Offline profile modifications successfully synchronized.");
           localStorage.removeItem('scholarpath_pending_profile_update');
+          syncCount++;
+          syncDetails.push("Profile changes synchronized successfully: " + Object.keys(pendingData).join(", "));
         } else {
           console.warn(`[Sync] Server returned non-OK status (${res.status}) on profile sync.`);
         }
@@ -116,6 +142,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               
               if (res.ok) {
                 successfullySyncedCount++;
+                syncedPoints += reward.points;
+                syncDetails.push(`Milestone synchronized: "${reward.actionName}" (+${reward.points} XP)`);
               } else {
                 console.warn(`[Sync] Failed to sync milestone "${reward.actionName}". Status: ${res.status}`);
               }
@@ -128,6 +156,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           if (remainingRewards.length === 0) {
             console.log("[Sync] All deferred milestones synchronized successfully.");
             localStorage.removeItem('scholarpath_pending_rewards');
+            syncCount++;
           } else {
             localStorage.setItem('scholarpath_pending_rewards', JSON.stringify(remainingRewards));
           }
@@ -153,6 +182,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem('scholarpath_user', JSON.stringify(alignedProfile));
         window.dispatchEvent(new CustomEvent('profile-updated', { detail: alignedProfile }));
         
+        // Log the sync event if we had unsynced changes, or a general reconnection event
+        if (syncDetails.length > 0) {
+          addSyncEvent("Dynamic Reconciliation", syncDetails, syncedPoints);
+        } else {
+          addSyncEvent("Mainframe Link Check", ["Central ledger database connection verified", "Aligned active registers"], 0);
+        }
+
         // Push safe in-app ledger notification
         const schedulerNotif = {
           id: "sync-complete-" + Date.now(),

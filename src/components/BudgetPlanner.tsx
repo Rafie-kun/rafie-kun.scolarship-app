@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Coins, TrendingUp, Briefcase, Sparkles, DollarSign, Home, Utensils, Bus, Shield, Wifi } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import { useTheme } from '../context/ThemeContext';
 
 interface CostData {
   country: string;
@@ -18,6 +19,16 @@ interface CostData {
 }
 
 export default function BudgetPlanner() {
+  const { convertAmount, rates } = useTheme();
+
+  const fmt = (localAmt: number) => {
+    if (!budgetData) return "";
+    const originalCurrency = budgetData.currency as any;
+    const rateToUsd = rates[originalCurrency] || 1.0;
+    const usdValue = localAmt / rateToUsd;
+    return convertAmount(usdValue);
+  };
+
   const [costData, setCostData] = useState<CostData[]>([]);
   const [selectedCountry, setSelectedCountry] = useState('');
   const [selectedUniversity, setSelectedUniversity] = useState('');
@@ -174,27 +185,27 @@ export default function BudgetPlanner() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-[#1a1512] border border-[#2c2c2c] rounded-2xl p-4 text-center">
               <p className="text-white/60 text-sm">Total Yearly Cost</p>
-              <p className="text-2xl font-bold text-white">{budgetData.currency} {budgetData.totalCost.toLocaleString()}</p>
+              <p className="text-2xl font-bold text-white">{fmt(budgetData.totalCost)}</p>
             </div>
             <div className="bg-[#1a1512] border border-[#2c2c2c] rounded-2xl p-4 text-center">
               <p className="text-white/60 text-sm">Part‑Time Earnings</p>
-              <p className="text-2xl font-bold text-[#2ecc71]">+ {budgetData.currency} {budgetData.yearlyEarnings.toLocaleString()}</p>
+              <p className="text-2xl font-bold text-[#2ecc71]">+ {fmt(budgetData.yearlyEarnings)}</p>
             </div>
             <div className="bg-[#1a1512] rounded-2xl p-4 text-center border-2 border-[#f5c842]">
               <p className="text-white/60 text-sm">Net Cost</p>
-              <p className="text-2xl font-bold text-[#f5c842]">{budgetData.currency} {budgetData.netCost.toLocaleString()}</p>
+              <p className="text-2xl font-bold text-[#f5c842]">{fmt(budgetData.netCost)}</p>
             </div>
           </div>
 
           <div className="bg-[#1a1512] border border-[#2c2c2c] rounded-2xl p-6">
             <h3 className="text-lg font-semibold text-white mb-4">Monthly Breakdown</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div><span className="text-white/60">🏠 Rent:</span> <span className="text-white">{budgetData.currency} {budgetData.breakdown.rent}</span></div>
-              <div><span className="text-white/60">🍔 Food:</span> <span className="text-white">{budgetData.currency} {budgetData.breakdown.food}</span></div>
-              <div><span className="text-white/60">🚌 Transport:</span> <span className="text-white">{budgetData.currency} {budgetData.breakdown.transport}</span></div>
-              <div><span className="text-white/60">🛡️ Health:</span> <span className="text-white">{budgetData.currency} {budgetData.breakdown.health}</span></div>
-              <div><span className="text-white/60">📱 Misc:</span> <span className="text-white">{budgetData.currency} {budgetData.breakdown.misc}</span></div>
-              <div><span className="text-white/60">💰 Hourly Wage:</span> <span className="text-white">{budgetData.currency} {budgetData.breakdown.hourlyWage}</span></div>
+              <div><span className="text-white/60">🏠 Rent:</span> <span className="text-white">{fmt(budgetData.breakdown.rent)}</span></div>
+              <div><span className="text-white/60">🍔 Food:</span> <span className="text-white">{fmt(budgetData.breakdown.food)}</span></div>
+              <div><span className="text-white/60">🚌 Transport:</span> <span className="text-white">{fmt(budgetData.breakdown.transport)}</span></div>
+              <div><span className="text-white/60">🛡️ Health:</span> <span className="text-white">{fmt(budgetData.breakdown.health)}</span></div>
+              <div><span className="text-white/60">📱 Misc:</span> <span className="text-white">{fmt(budgetData.breakdown.misc)}</span></div>
+              <div><span className="text-white/60">💰 Hourly Wage:</span> <span className="text-white">{fmt(budgetData.breakdown.hourlyWage)}</span></div>
             </div>
             <div className="mt-3 text-sm text-white/60">
               💼 You can work <strong className="text-white">{budgetData.breakdown.workHours} hours/week</strong> legally.

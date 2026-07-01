@@ -3,7 +3,7 @@ import { playClickSound } from '../utils/sound';
 
 export type ThemeId = 'overworld' | 'nether' | 'end' | 'aether';
 export type ThemeMode = 'light' | 'dark' | 'minecraft';
-export type CurrencyId = 'USD' | 'EUR' | 'GBP' | 'BDT';
+export type CurrencyId = 'USD' | 'EUR' | 'GBP' | 'BDT' | 'CAD' | 'AUD' | 'INR';
 
 interface ThemeContextType {
   themeMode: ThemeMode;
@@ -28,14 +28,20 @@ const DEFAULT_RATES: Record<CurrencyId, number> = {
   USD: 1.0,
   EUR: 0.92,
   GBP: 0.79,
-  BDT: 117.5
+  BDT: 117.5,
+  CAD: 1.37,
+  AUD: 1.5,
+  INR: 83.5
 };
 
 const CURRENCY_SYMBOLS: Record<CurrencyId, string> = {
   USD: '$',
   EUR: '€',
   GBP: '£',
-  BDT: '৳'
+  BDT: '৳',
+  CAD: 'C$',
+  AUD: 'A$',
+  INR: '₹'
 };
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -77,7 +83,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
               USD: 1.0,
               EUR: data.rates.EUR || DEFAULT_RATES.EUR,
               GBP: data.rates.GBP || DEFAULT_RATES.GBP,
-              BDT: data.rates.BDT || DEFAULT_RATES.BDT
+              BDT: data.rates.BDT || DEFAULT_RATES.BDT,
+              CAD: data.rates.CAD || DEFAULT_RATES.CAD,
+              AUD: data.rates.AUD || DEFAULT_RATES.AUD,
+              INR: data.rates.INR || DEFAULT_RATES.INR
             });
           }
         }

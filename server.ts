@@ -15,6 +15,7 @@ import profileRouter from "./routes/profile.js";
 import communityRouter from "./routes/community.js";
 import uploadRouter from "./routes/upload.js";
 import jobsRouter from "./routes/jobs.js";
+import aiRouter from "./routes/ai.js";
 
 import { scholarshipsData } from "./routes/db.js";
 import { getNotifications, addNotification } from "./db/index.js";
@@ -207,6 +208,7 @@ app.use("/api/universities", universitiesRouter);
 app.use("/api/profile", profileRouter);
 app.use("/api/community", communityRouter);
 app.use("/api/jobs", jobsRouter);
+app.use("/api/ai", aiRouter);
 app.use("/api", uploadRouter); // Mount on /api/upload-pdf
 app.use("/api", recommenderRouter);
 

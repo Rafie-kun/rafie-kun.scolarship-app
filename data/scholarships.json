@@ -1,0 +1,5012 @@
+[
+  {
+    "id": "sch-01",
+    "name": "Erasmus Mundus Joint Masters Scholarship",
+    "provider": "European Commission",
+    "description": "Prestigious fully-funded master's scholarships covering airfare, 100% tuition, travel insurance, and a monthly stipend for joint degrees across multiple European universities.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Engineering",
+      "Data Science",
+      "Public Health",
+      "Environmental Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "Nepal",
+      "India",
+      "Nigeria",
+      "Pakistan",
+      "Vietnam",
+      "Kenya",
+      "Ghana"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.4,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-15",
+    "competitivenessScore": 92,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@europeancommission.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-01",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-01/apply"
+  },
+  {
+    "id": "sch-02",
+    "name": "Fulbright Foreign Student Program",
+    "provider": "United States Department of State",
+    "description": "The flagship international educational exchange program sponsored by the U.S. government, covering tuition, airfare, a living stipend, and health insurance for graduate studies in the USA.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Public Policy",
+      "Social Sciences",
+      "Business Administration",
+      "Engineering"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "India",
+      "Nigeria",
+      "Germany",
+      "Japan",
+      "Brazil",
+      "Mexico",
+      "Turkey",
+      "Vietnam"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.6,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-10-15",
+    "competitivenessScore": 95,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@unitedstatesdepartmentofstate.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-02",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-02/apply"
+  },
+  {
+    "id": "sch-03",
+    "name": "DAAD Development Postgraduate Scholarships (EPOS)",
+    "provider": "German Academic Exchange Service",
+    "description": "Supports academic professionals from developing countries to complete postgrad courses in Germany, with monthly allowance and specialized preparatory courses.",
+    "eligibleMajors": [
+      "Engineering",
+      "Environmental Science",
+      "Economics",
+      "Computer Science",
+      "Agriculture"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Bangladesh",
+      "Nepal",
+      "Vietnam",
+      "Indonesia",
+      "Kenya",
+      "Nigeria",
+      "Brazil"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.2,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-11-30",
+    "competitivenessScore": 85,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@germanacademicexchangeservice.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-03",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-03/apply"
+  },
+  {
+    "id": "sch-04",
+    "name": "Commonwealth Master's Scholarships",
+    "provider": "UK Commonwealth Scholarship Commission",
+    "description": "Fully funded scholarships for talented individuals from Commonwealth nations to pursue a Master's degree at participating UK universities.",
+    "eligibleMajors": [
+      "Public Health",
+      "Information Technology",
+      "Engineering",
+      "Education",
+      "Human Rights",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Bangladesh",
+      "India",
+      "Pakistan",
+      "Nigeria",
+      "Ghana",
+      "Kenya",
+      "Malaysia",
+      "South Africa",
+      "Uganda"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.5,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-01",
+    "competitivenessScore": 88,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@ukcommonwealthscholarshipcommission.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-04",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-04/apply"
+  },
+  {
+    "id": "sch-05",
+    "name": "MEXT Japanese Government Scholarships",
+    "provider": "Ministry of Education, Culture, Sports, Science and Technology",
+    "description": "Comprehensive scholarship covering tuition, airfare, and monthly stipends for undergraduate and postgraduate studies in elite Japanese institutions.",
+    "eligibleMajors": [
+      "Engineering",
+      "Computer Science",
+      "Robotics",
+      "Physics",
+      "Japanese Studies",
+      "Mathematics"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "India",
+      "Indonesia",
+      "Vietnam",
+      "Malaysia",
+      "Egypt",
+      "Canada",
+      "USA"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.4,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-09-01",
+    "competitivenessScore": 90,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@ministryofeducationculturesportsscienceandtechnology.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-05",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-05/apply"
+  },
+  {
+    "id": "sch-06",
+    "name": "Chevening Scholarships",
+    "provider": "UK Foreign, Commonwealth & Development Office",
+    "description": "The UK government’s global scholarship program, funded by the FCDO and partner organizations, designed to cultivate future global leaders.",
+    "eligibleMajors": [
+      "Politics",
+      "Public Policy",
+      "Economics",
+      "Media Studies",
+      "Computer Science",
+      "Business Administration"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Bangladesh",
+      "Pakistan",
+      "Indonesia",
+      "Brazil",
+      "Mexico",
+      "Egypt",
+      "Kenya"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.3,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-05",
+    "competitivenessScore": 91,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@ukforeigncommonwealthdevelopmentoffice.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-06",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-06/apply"
+  },
+  {
+    "id": "sch-07",
+    "name": "Eiffel Excellence Scholarship Program",
+    "provider": "French Ministry of Europe and Foreign Affairs",
+    "description": "A tool designed by the French Ministry to allow French higher education institutions to attract the best foreign students to master’s and PhD programs.",
+    "eligibleMajors": [
+      "Engineering",
+      "Computer Science",
+      "Economics",
+      "Law",
+      "Political Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Brazil",
+      "China",
+      "India",
+      "Vietnam",
+      "Japan",
+      "USA",
+      "Canada"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.7,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-01-10",
+    "competitivenessScore": 93,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@frenchministryofeuropeandforeignaffairs.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-07",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-07/apply"
+  },
+  {
+    "id": "sch-08",
+    "name": "Singapore International Graduate Award (SINGA)",
+    "provider": "A*STAR, Nanyang Technological University, NUS & SUTD",
+    "description": "Supports outstanding international graduates pursuing doctorates in Science and Engineering at Singapore's world-renowned research labs.",
+    "eligibleMajors": [
+      "Physics",
+      "Computer Science",
+      "Bioengineering",
+      "Chemistry",
+      "Electrical Engineering"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Bangladesh",
+      "China",
+      "Vietnam",
+      "Spain",
+      "Germany",
+      "USA",
+      "Australia"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.6,
+    "degreeLevel": [
+      "Ph.D."
+    ],
+    "deadline": "2026-12-01",
+    "competitivenessScore": 94,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@astarnanyangtechnologicaluniversitynussutd.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-08",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-08/apply"
+  },
+  {
+    "id": "sch-09",
+    "name": "Swiss Government Excellence Scholarships",
+    "provider": "Swiss Federal Commission for Scholarships for Foreign Students",
+    "description": "Enables international postgraduate researchers and doctors to spend joint research periods in prestigious Swiss academic centers.",
+    "eligibleMajors": [
+      "Bioengineering",
+      "Computer Science",
+      "Robotics",
+      "Physics",
+      "Chemistry",
+      "Mathematics"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "India",
+      "Japan",
+      "South Korea",
+      "Singapore",
+      "Canada",
+      "South Africa",
+      "Nigeria"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.8,
+    "degreeLevel": [
+      "Ph.D."
+    ],
+    "deadline": "2026-11-15",
+    "competitivenessScore": 96,
+    "minimumEducationLevel": "graduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@swissfederalcommissionforscholarshipsforforeignstudents.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-09",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-09/apply"
+  },
+  {
+    "id": "sch-10",
+    "name": "Schwarzman Scholars",
+    "provider": "Schwarzman Foundation",
+    "description": "Fully-funded one-year Master's degree in Global Affairs at Tsinghua University in Beijing. Prepares next-generation leaders with immersive knowledge of China.",
+    "eligibleMajors": [
+      "Political Science",
+      "Economics",
+      "Public Policy",
+      "International Relations",
+      "Computer Science",
+      "Business Administration"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "China",
+      "India",
+      "Germany",
+      "United Kingdom",
+      "Canada",
+      "Singapore",
+      "Australia"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.7,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-09-20",
+    "competitivenessScore": 97,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@schwarzmanfoundation.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-10",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-10/apply"
+  },
+  {
+    "id": "sch-11",
+    "name": "Vanier Canada Graduate Scholarships",
+    "provider": "Government of Canada",
+    "description": "Attracts and retains world-class doctoral students by supporting those who demonstrate both leadership skills and a high standard of scholarly achievement.",
+    "eligibleMajors": [
+      "Health Sciences",
+      "Natural Sciences",
+      "Engineering",
+      "Social Sciences",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Canada",
+      "USA",
+      "United Kingdom",
+      "France",
+      "Japan",
+      "India",
+      "China",
+      "Australia"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.8,
+    "degreeLevel": [
+      "Ph.D."
+    ],
+    "deadline": "2026-11-01",
+    "competitivenessScore": 95,
+    "minimumEducationLevel": "graduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@governmentofcanada.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-11",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-11/apply"
+  },
+  {
+    "id": "sch-12",
+    "name": "Gates Cambridge Scholarship",
+    "provider": "Bill & Melinda Gates Foundation",
+    "description": "Fully-funded master's and doctoral awards at the University of Cambridge, allocated to intellectually outstanding students showing active social leadership.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Physics",
+      "Engineering",
+      "Economics",
+      "Astrobiology",
+      "Public Health"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "Canada",
+      "India",
+      "South Africa",
+      "Pakistan",
+      "New Zealand",
+      "Bangladesh"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.85,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-10-12",
+    "competitivenessScore": 98,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@billmelindagatesfoundation.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-12",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-12/apply"
+  },
+  {
+    "id": "sch-13",
+    "name": "Knight-Hennessy Scholars Program",
+    "provider": "Stanford University",
+    "description": "Join an international multidisciplinary cohort of graduate leaders studying at Stanford with full tuition, stipend, academic travel, and educational grants.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Information Systems",
+      "Business Administration",
+      "Law",
+      "Medicine",
+      "Engineering"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "China",
+      "India",
+      "Canada",
+      "United Kingdom",
+      "Saudi Arabia",
+      "South Korea"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.9,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-10-09",
+    "competitivenessScore": 99,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@stanforduniversity.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-13",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-13/apply"
+  },
+  {
+    "id": "sch-14",
+    "name": "Rhodes Scholarship",
+    "provider": "Rhodes Trust",
+    "description": "The oldest and perhaps most prestigious postgraduate scholarship in the world, enabling students to study at the University of Oxford with full coverage.",
+    "eligibleMajors": [
+      "Philosophy",
+      "Politics",
+      "Economics",
+      "Law",
+      "Computer Science",
+      "Physics",
+      "History"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "Canada",
+      "India",
+      "Pakistan",
+      "South Africa",
+      "Australia",
+      "New Zealand",
+      "Germany"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.9,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-10-01",
+    "competitivenessScore": 99,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@rhodestrust.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-14",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-14/apply"
+  },
+  {
+    "id": "sch-15",
+    "name": "Lund University Global Scholarship",
+    "provider": "Lund University",
+    "description": "Premium selective academic scholarship targeting non-EU/EEA student citizens, minimizing tuition up to 100% for top academic achievers.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "Engineering",
+      "Data Science",
+      "Computer Science",
+      "Economics",
+      "Biology"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "Canada",
+      "India",
+      "Bangladesh",
+      "Turkey",
+      "Vietnam",
+      "Singapore"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.5,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-02-01",
+    "competitivenessScore": 75,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@lunduniversity.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-15",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-15/apply"
+  },
+  {
+    "id": "sch-16",
+    "name": "Swedish Institute Scholarships for Global Professionals (SISGP)",
+    "provider": "Swedish Institute (Government of Sweden)",
+    "description": "Highly competitive full funding for masters degrees in Sweden, focusing on global leadership, sustainability, and industrial development experience.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Agriculture",
+      "Social Sciences",
+      "Engineering",
+      "Sustainable Development"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "Vietnam",
+      "Turkey",
+      "Egypt",
+      "Ghana",
+      "Indonesia",
+      "Pakistan",
+      "Ukraine"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.4,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-02-15",
+    "competitivenessScore": 87,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@swedishinstitutegovernmentofsweden.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-16",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-16/apply"
+  },
+  {
+    "id": "sch-17",
+    "name": "Australia Awards Scholarship",
+    "provider": "Department of Foreign Affairs and Trade (DFAT)",
+    "description": "Stewardship for students from developing Indo-Pacific nations to complete full-funded undergraduate or graduate programs at elite Australian nodes.",
+    "eligibleMajors": [
+      "Agriculture",
+      "Education",
+      "Public Policy",
+      "Computer Science",
+      "Public Health",
+      "Environmental Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Indonesia",
+      "Vietnam",
+      "Nepal",
+      "Bangladesh",
+      "Pakistan",
+      "Philippines",
+      "Fiji"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.3,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-04-30",
+    "competitivenessScore": 86,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@departmentofforeignaffairsandtradedfat.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-17",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-17/apply"
+  },
+  {
+    "id": "sch-18",
+    "name": "Canada Graduate Scholarships - Master's Program (CGS-M)",
+    "provider": "SSHRC, NSERC and CIHR",
+    "description": "Provides financial support to high-caliber students who are engaged in eligible master's or corresponding doctoral programs in Canada.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Physics",
+      "Chemistry",
+      "Bioengineering",
+      "Social Sciences"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Canada",
+      "USA",
+      "United Kingdom",
+      "France",
+      "Germany",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.6,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-01",
+    "competitivenessScore": 80,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@sshrcnsercandcihr.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-18",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-18/apply"
+  },
+  {
+    "id": "sch-19",
+    "name": "China Scholarship Council (CSC)",
+    "provider": "Ministry of Education of the PRC",
+    "description": "Comprehensive scholarship to promote cultural, technological and scientific exchange in high-performing Chinese universities.",
+    "eligibleMajors": [
+      "Robotics",
+      "Engineering",
+      "Computer Science",
+      "Electrical Engineering",
+      "Medicine"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "Pakistan",
+      "Nepal",
+      "Egypt",
+      "Nigeria",
+      "Russia",
+      "Brazil"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.1,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-04-10",
+    "competitivenessScore": 72,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@ministryofeducationoftheprc.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-19",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-19/apply"
+  },
+  {
+    "id": "sch-20",
+    "name": "Türkiye Scholarships",
+    "provider": "Government of Turkey",
+    "description": "A government-funded, competitive higher education scholarship program for international students seeking full-time degree programs.",
+    "eligibleMajors": [
+      "International Relations",
+      "Computer Science",
+      "Engineering",
+      "Medicine",
+      "Islamic Studies"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "Pakistan",
+      "Somalia",
+      "Egypt",
+      "Azerbaijan",
+      "Kazakhstan",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.2,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-02-20",
+    "competitivenessScore": 78,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@governmentofturkey.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-20",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-20/apply"
+  },
+  {
+    "id": "sch-21",
+    "name": "Global Korea Scholarship (GKS)",
+    "provider": "National Institute for International Education (NIIED)",
+    "description": "Designed to provide international students with opportunities to study at higher educational institutions in Korea, fostering global friendships.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Mechanical Engineering",
+      "Biotechnology",
+      "Business Administration",
+      "Korean culture"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Vietnam",
+      "Indonesia",
+      "India",
+      "Bangladesh",
+      "Malaysia",
+      "USA",
+      "Brazil",
+      "Russia"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.3,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-03-31",
+    "competitivenessScore": 84,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@nationalinstituteforinternationaleducationniied.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-21",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-21/apply"
+  },
+  {
+    "id": "sch-22",
+    "name": "Italian Government (MAECI) Grants",
+    "provider": "Ministry of Foreign Affairs and International Cooperation",
+    "description": "Grants for foreign citizens and Italian citizens living abroad to study, complete research, or take language courses in historic Italian nodes.",
+    "eligibleMajors": [
+      "Arts",
+      "Archology",
+      "Engineering",
+      "Computer Science",
+      "Economics",
+      "Italian Culture"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Bangladesh",
+      "Egypt",
+      "Turkey",
+      "Vietnam",
+      "Tunisia",
+      "Colombia"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-06-15",
+    "competitivenessScore": 74,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@ministryofforeignaffairsandinternationalcooperation.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-22",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-22/apply"
+  },
+  {
+    "id": "sch-23",
+    "name": "Orange Tulip Scholarship (Netherlands)",
+    "provider": "Nuffic Neso and Dutch Universities",
+    "description": "A prestigious Dutch scholarship program targeted specifically for top academic talent from select emerging economies.",
+    "eligibleMajors": [
+      "Business Administration",
+      "Computer Science",
+      "Public Policy",
+      "Engineering",
+      "Law"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Indonesia",
+      "Brazil",
+      "Mexico",
+      "China",
+      "South Korea",
+      "Vietnam",
+      "Russia"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.5,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-04-01",
+    "competitivenessScore": 82,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@nufficnesoanddutchuniversities.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-23",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-23/apply"
+  },
+  {
+    "id": "sch-24",
+    "name": "Taiwan ICDF Scholarship",
+    "provider": "International Cooperation and Development Fund",
+    "description": "Fully-funded scholarships for nationals from allied and partner countries to study agriculture, health, computer information, or engineering.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Agriculture",
+      "Public Health",
+      "Electrical Engineering",
+      "Development Economics"
+    ],
+    "eligibleCountries": [
+      "Paraguay",
+      "Honduras",
+      "Guatemala",
+      "Eswatini",
+      "Belize",
+      "Indonesia",
+      "Philippines",
+      "Vietnam",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.1,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-03-15",
+    "competitivenessScore": 79,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@internationalcooperationanddevelopmentfund.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-24",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-24/apply"
+  },
+  {
+    "id": "sch-25",
+    "name": "Malaysian International Scholarship (MIS)",
+    "provider": "Ministry of Higher Education, Government of Malaysia",
+    "description": "An initiative by the Malaysian Government to attract top academic brains from around the world to pursue advanced academic studies in Malaysia.",
+    "eligibleMajors": [
+      "Information Technology",
+      "Engineering",
+      "Islamic Finance",
+      "Agriculture",
+      "Biotechnology",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Egypt",
+      "Saudi Arabia",
+      "Indonesia",
+      "Bangladesh",
+      "Turkey",
+      "Nigeria",
+      "Pakistan"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.5,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-06-30",
+    "competitivenessScore": 76,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@ministryofhighereducationgovernmentofmalaysia.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-25",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-25/apply"
+  },
+  {
+    "id": "sch-26",
+    "name": "K servitude Kemitraan Negara Berkembang (KNB)",
+    "provider": "Ministry of Education and Culture of Indonesia",
+    "description": "Comprehensive scholarship for students from developing nations to experience academic coursework and cultural development in world-class Indonesian universities.",
+    "eligibleMajors": [
+      "Social Sciences",
+      "Engineering",
+      "Agriculture",
+      "Information Technology",
+      "Literature",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "Vietnam",
+      "Nepal",
+      "Timor-Leste",
+      "Kenya",
+      "Nigeria",
+      "Madagascar"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 2.9,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-05-20",
+    "competitivenessScore": 65,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@ministryofeducationandcultureofindonesia.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-26",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-26/apply"
+  },
+  {
+    "id": "sch-27",
+    "name": "CNPq Brazilian Research Fellowship",
+    "provider": "National Council for Scientific and Technological Development",
+    "description": "Grants and fellowships to support talented international doctoral researchers targeting science, computer simulation, and bio-industrial engineering.",
+    "eligibleMajors": [
+      "Physics",
+      "Bioengineering",
+      "Agriculture",
+      "Environmental Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Argentina",
+      "Mexico",
+      "Colombia",
+      "France",
+      "Germany",
+      "USA",
+      "Spain",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.2,
+    "degreeLevel": [
+      "Ph.D."
+    ],
+    "deadline": "2026-08-30",
+    "competitivenessScore": 70,
+    "minimumEducationLevel": "graduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@nationalcouncilforscientificandtechnologicaldevelopment.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-27",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-27/apply"
+  },
+  {
+    "id": "sch-28",
+    "name": "CONACYT Mexican Government Fellowships",
+    "provider": "National Council of Science and Technology",
+    "description": "Fully-funded postgraduate fellowships for international students pursuing scientific research and technical doctorates in Mexico.",
+    "eligibleMajors": [
+      "Bioengineering",
+      "Engineering",
+      "Physics",
+      "Chemistry",
+      "Computer Science",
+      "Agriculture"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Colombia",
+      "Brazil",
+      "Honduras",
+      "Spain",
+      "USA",
+      "Canada"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-07-31",
+    "competitivenessScore": 68,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@nationalcouncilofscienceandtechnology.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-28",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-28/apply"
+  },
+  {
+    "id": "sch-29",
+    "name": "OAS - Organization of American States Academic Grants",
+    "provider": "OAS Fellowship Commission",
+    "description": "Sponsors graduate research initiatives and full-time professional degrees among member states of the Americas.",
+    "eligibleMajors": [
+      "Public Policy",
+      "Economics",
+      "Engineering",
+      "Social Sciences",
+      "Environmental Science"
+    ],
+    "eligibleCountries": [
+      "USA",
+      "Canada",
+      "Mexico",
+      "Brazil",
+      "Colombia",
+      "Argentina",
+      "Chile",
+      "Peru"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.2,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-05-15",
+    "competitivenessScore": 73,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@oasfellowshipcommission.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-29",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-29/apply"
+  },
+  {
+    "id": "sch-30",
+    "name": "Commonwealth Shared Scholarships",
+    "provider": "UK Foreign, Commonwealth & Development Office and UK Universities",
+    "description": "Designed for candidates from least developed and lower-middle income Commonwealth countries of high potential, looking to impact local sectors.",
+    "eligibleMajors": [
+      "Public Health",
+      "Agriculture",
+      "Environmental Science",
+      "Education",
+      "Information Systems",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Bangladesh",
+      "Pakistan",
+      "Nigeria",
+      "Ghana",
+      "Kenya",
+      "Uganda",
+      "Zambia",
+      "Papua New Guinea"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.5,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-18",
+    "competitivenessScore": 89,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@ukforeigncommonwealthdevelopmentofficeandukuniversities.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-30",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-30/apply"
+  },
+  {
+    "id": "sch-31",
+    "name": "Scotland's Saltire Scholarships",
+    "provider": "Scottish Government and Universities Scotland",
+    "description": "Promotes Scotland as a leading center of learning, with tuition contributions targeting creative industries, tech, and renewable energy.",
+    "eligibleMajors": [
+      "Data Science",
+      "Computer Science",
+      "Environmental Science",
+      "Robotics",
+      "Bioengineering",
+      "Media Studies"
+    ],
+    "eligibleCountries": [
+      "USA",
+      "Canada",
+      "India",
+      "China",
+      "Japan",
+      "Pakistan"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.6,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-05-28",
+    "competitivenessScore": 78,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@scottishgovernmentanduniversitiesscotland.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-31",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-31/apply"
+  },
+  {
+    "id": "sch-32",
+    "name": "Government of Ireland Postgrad Scholarship",
+    "provider": "Irish Research Council",
+    "description": "Highly selective fellowship providing €19,000 annual allowance alongside full tuition to explore postgraduate study in any discipline in Ireland.",
+    "eligibleMajors": [
+      "Philosophy",
+      "International Relations",
+      "Computer Science",
+      "Engineering",
+      "Bioengineering",
+      "Physics"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "Canada",
+      "India",
+      "Bangladesh",
+      "Nigeria",
+      "Brazil",
+      "Germany"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.7,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-10-21",
+    "competitivenessScore": 91,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@irishresearchcouncil.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-32",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-32/apply"
+  },
+  {
+    "id": "sch-33",
+    "name": "Danish Government Scholarships for Non-EU Students",
+    "provider": "Danish Ministry of Higher Education and Science",
+    "description": "Supports highly qualified students from non-EU/EEA countries with full or partial tuition waiver alongside living fee support.",
+    "eligibleMajors": [
+      "Robotics",
+      "Computer Science",
+      "Engineering",
+      "Data Science",
+      "Physics",
+      "Chemistry"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "Canada",
+      "India",
+      "Bangladesh",
+      "Turkey",
+      "Singapore",
+      "Australia"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.6,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-03-01",
+    "competitivenessScore": 86,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@danishministryofhighereducationandscience.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-33",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-33/apply"
+  },
+  {
+    "id": "sch-34",
+    "name": "Finland Government Scholarship Pool",
+    "provider": "Finnish National Agency for Education (EDUFI)",
+    "description": "Enables doctoral students to perform research periods at leading Finnish science nodes and technical academies.",
+    "eligibleMajors": [
+      "Robotics",
+      "Computer Science",
+      "Engineering",
+      "Environmental Science",
+      "Physics"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "USA",
+      "Russia",
+      "China",
+      "Egypt",
+      "Vietnam",
+      "Turkey",
+      "Japan"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.4,
+    "degreeLevel": [
+      "Ph.D."
+    ],
+    "deadline": "2026-04-15",
+    "competitivenessScore": 83,
+    "minimumEducationLevel": "graduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@finnishnationalagencyforeducationedufi.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-34",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-34/apply"
+  },
+  {
+    "id": "sch-35",
+    "name": "Aalto University Academic Excellence Scholarship",
+    "provider": "Aalto University (Finland)",
+    "description": "A waiver covering 100% tuition for highly talented international students applying to design, engineering, or business degrees.",
+    "eligibleMajors": [
+      "Engineering",
+      "Computer Science",
+      "Robotics",
+      "Media Studies",
+      "Business Administration"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "India",
+      "Bangladesh",
+      "China",
+      "Vietnam",
+      "Saudi Arabia"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.5,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-01-08",
+    "competitivenessScore": 81,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@aaltouniversityfinland.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-35",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-35/apply"
+  },
+  {
+    "id": "sch-36",
+    "name": "Norwegian University of Science and Technology Fellowship",
+    "provider": "NTNU",
+    "description": "Supports fully integrated PhD employment research lines with salary, computer workstations, and academic travel allowances.",
+    "eligibleMajors": [
+      "Energy",
+      "Environmental Science",
+      "Engineering",
+      "Robotics",
+      "Computer Science",
+      "Physics"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Norway",
+      "Germany",
+      "USA",
+      "India",
+      "Bangladesh",
+      "China",
+      "Canada"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.7,
+    "degreeLevel": [
+      "Ph.D."
+    ],
+    "deadline": "2026-09-30",
+    "competitivenessScore": 92,
+    "minimumEducationLevel": "graduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@ntnu.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-36",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-36/apply"
+  },
+  {
+    "id": "sch-37",
+    "name": "Tsinghua University Global Scholarship",
+    "provider": "Tsinghua University (Beijing)",
+    "description": "Supports outstanding international students to study in full English or Chinese medium programs with tuition minimization and living allowances.",
+    "eligibleMajors": [
+      "Robotics",
+      "Computer Science",
+      "Bioengineering",
+      "Engineering",
+      "Business Administration",
+      "Economics"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "Canada",
+      "Singapore",
+      "Japan",
+      "India",
+      "Germany",
+      "United Kingdom"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.6,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-05-10",
+    "competitivenessScore": 88,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@tsinghuauniversitybeijing.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-37",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-37/apply"
+  },
+  {
+    "id": "sch-38",
+    "name": "University of Tokyo President's Fellowship",
+    "provider": "University of Tokyo",
+    "description": "Scholarship awarded directly to talented international students to conduct research in advanced fields of engineering, data, and social metrics.",
+    "eligibleMajors": [
+      "Physics",
+      "Robotics",
+      "Computer Science",
+      "Information Systems",
+      "Economics",
+      "Engineering"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "China",
+      "USA",
+      "Canada",
+      "United Kingdom",
+      "France",
+      "Vietnam"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.8,
+    "degreeLevel": [
+      "Ph.D."
+    ],
+    "deadline": "2026-10-31",
+    "competitivenessScore": 94,
+    "minimumEducationLevel": "graduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@universityoftokyo.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-38",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-38/apply"
+  },
+  {
+    "id": "sch-39",
+    "name": "Heinrich Boll Foundation Scholarships",
+    "provider": "Heinrich Boll Foundation (Germany)",
+    "description": "Focuses on supporting students who are socially engaged, environmentally active, and demonstrate remarkable academic credentials.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "Politics",
+      "Social Sciences",
+      "Economics",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Bangladesh",
+      "Turkey",
+      "Georgia",
+      "Kenya",
+      "Nigeria",
+      "Colombia"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.3,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-03-01",
+    "competitivenessScore": 82,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@heinrichbollfoundationgermany.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-39",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-39/apply"
+  },
+  {
+    "id": "sch-40",
+    "name": "KAIST International Student Scholarship",
+    "provider": "Korea Advanced Institute of Science and Technology",
+    "description": "Fully funds outstanding international undergraduate and graduate applicants, offering free tuition, living stipends, and medical health insurance.",
+    "eligibleMajors": [
+      "Robotics",
+      "Computer Science",
+      "Engineering",
+      "Electrical Engineering",
+      "Physics",
+      "Chemistry"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "Vietnam",
+      "India",
+      "Malaysia",
+      "Egypt",
+      "Kazakhstan",
+      "USA",
+      "Spain"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.4,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-01-20",
+    "competitivenessScore": 89,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@koreaadvancedinstituteofscienceandtechnology.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-40",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-40/apply"
+  },
+  {
+    "id": "sch-41",
+    "name": "Inlaks Shivdasani Foundation Scholarships",
+    "provider": "Inlaks Shivdasani Trust",
+    "description": "Enables meritorious Indian citizens to study abroad in prestigious universities in the US, UK, and imperial European institutions.",
+    "eligibleMajors": [
+      "Social Sciences",
+      "Arts",
+      "Economics",
+      "Public Policy",
+      "History",
+      "Literature"
+    ],
+    "eligibleCountries": [
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.8,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-03-15",
+    "competitivenessScore": 94,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@inlaksshivdasanitrust.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-41",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-41/apply"
+  },
+  {
+    "id": "sch-42",
+    "name": "Bologna University Tuition Waivers (Unibo)",
+    "provider": "University of Bologna (Italy)",
+    "description": "A set of tuition waivers and study grants for deserving international students who enroll in first, second, or single-cycle degree programs.",
+    "eligibleMajors": [
+      "Philosophy",
+      "Economics",
+      "Engineering",
+      "Computer Science",
+      "Arts",
+      "Law"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Bangladesh",
+      "Brazil",
+      "Nepal",
+      "Turkey",
+      "Iran",
+      "Saudi Arabia"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-04-30",
+    "competitivenessScore": 70,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@universityofbolognaitaly.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-42",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-42/apply"
+  },
+  {
+    "id": "sch-43",
+    "name": "TUM Asia Scholarship",
+    "provider": "Technical University of Munich (TUM) Asia Singapore",
+    "description": "Tailored to excellent master's applicants pursuing specialized aerospace engineering or chemistry credentials in Singapore and Germany.",
+    "eligibleMajors": [
+      "Engineering",
+      "Chemistry",
+      "Bioengineering",
+      "Information Technology",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Bangladesh",
+      "Indonesia",
+      "Vietnam",
+      "China",
+      "Thailand"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.3,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-03-31",
+    "competitivenessScore": 77,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@technicaluniversityofmunichtumasiasingapore.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-43",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-43/apply"
+  },
+  {
+    "id": "sch-44",
+    "name": "National University of Singapore Research Scholarship",
+    "provider": "NUS",
+    "description": "Provides monthly stipend and full tuition waiver for outstanding graduates to perform cutting-edge research studies at NUS.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Engineering",
+      "Robotics",
+      "Physics",
+      "Chemistry",
+      "Bioengineering"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "China",
+      "India",
+      "USA",
+      "Spain",
+      "Germany",
+      "Bangladesh",
+      "Indonesia"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.75,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-05-15",
+    "competitivenessScore": 92,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@nus.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-44",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-44/apply"
+  },
+  {
+    "id": "sch-45",
+    "name": "Sorbonne Universite Excellence Grant",
+    "provider": "Sorbonne Universite France",
+    "description": "Provides specialized funding support for high-achieving international postgraduate research fellows in the Paris area.",
+    "eligibleMajors": [
+      "Philosophy",
+      "Arts",
+      "Social Sciences",
+      "Physics",
+      "Mathematics",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "Canada",
+      "Japan",
+      "South Korea",
+      "Germany",
+      "Brazil",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.6,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-02-10",
+    "competitivenessScore": 85,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@sorbonneuniversitefrance.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-45",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-45/apply"
+  },
+  {
+    "id": "sch-46",
+    "name": "EPFL Excellence Fellowships",
+    "provider": "Ecole Polytechnique Federale de Lausanne",
+    "description": "Highly competitive, top-tier fellowships enabling stellar students to commence a master's degree program with financial backing in Switzerland.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Robotics",
+      "Engineering",
+      "Bioengineering",
+      "Physics",
+      "Mathematics"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "India",
+      "Canada",
+      "Japan",
+      "Germany",
+      "France",
+      "Singapore"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.85,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-15",
+    "competitivenessScore": 95,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@ecolepolytechniquefederaledelausanne.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-46",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-46/apply"
+  },
+  {
+    "id": "sch-47",
+    "name": "ETH Munich Zurich Fellowship",
+    "provider": "ETH Zurich",
+    "description": "Supports researchers targeting major innovation nodes in central computer engineering, cryptography, and artificial intelligence models.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Data Science",
+      "Physics",
+      "Robotics",
+      "Engineering",
+      "Mathematics"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "Canada",
+      "Singapore",
+      "India",
+      "Japan",
+      "South Korea"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.9,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-12-15",
+    "competitivenessScore": 97,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@ethzurich.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-47",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-47/apply"
+  },
+  {
+    "id": "sch-48",
+    "name": "Swedish KTH Royal Institute Scholarship",
+    "provider": "KTH Royal Institute of Technology",
+    "description": "Covers full tuition costs of a master's degree program at KTH for outstanding students from non-EU countries.",
+    "eligibleMajors": [
+      "Engineering",
+      "Computer Science",
+      "Physics",
+      "Environmental Science",
+      "Bioengineering"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Bangladesh",
+      "Turkey",
+      "Vietnam",
+      "Pakistan",
+      "Uruguay",
+      "Kenya"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.5,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-01-15",
+    "competitivenessScore": 80,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@kthroyalinstituteoftechnology.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-48",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-48/apply"
+  },
+  {
+    "id": "sch-49",
+    "name": "Gates Millennium Scholars Program",
+    "provider": "Bill & Melinda Gates Foundation",
+    "description": "Supports minority high school graduates to enter undergraduate colleges with comprehensive funding, academic counselling, and tuition support.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Education",
+      "Engineering",
+      "Mathematics",
+      "Science",
+      "Public Health"
+    ],
+    "eligibleCountries": [
+      "USA"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.3,
+    "degreeLevel": [
+      "Bachelor's Degree"
+    ],
+    "deadline": "2026-01-15",
+    "competitivenessScore": 93,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@billmelindagatesfoundation.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-49",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-49/apply"
+  },
+  {
+    "id": "sch-50",
+    "name": "Austrian Government Database Grant",
+    "provider": "Austrian Federal Ministry of Education",
+    "description": "Provides research subsidies and monthly allowance to international doctoral students who reside in external countries but use Austrian facilities.",
+    "eligibleMajors": [
+      "Engineering",
+      "Philosophy",
+      "Physics",
+      "History",
+      "Computer Science",
+      "Law"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "India",
+      "Pakistan",
+      "Nepal",
+      "Nigeria",
+      "Colombia",
+      "Vietnam"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 2.8,
+    "degreeLevel": [
+      "Master's Degree",
+      "Ph.D."
+    ],
+    "deadline": "2026-03-01",
+    "competitivenessScore": 60,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Consult program curricula details",
+      "Collect formal university reference logs",
+      "Draft customized SOP in Writing Vault",
+      "Verify eligible GPA indices",
+      "Complete the official scholarship submission portal"
+    ],
+    "requiredDocuments": [
+      "Transcripts",
+      "Statement of Purpose",
+      "Recommendation Letter",
+      "Language Proficiency"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "awards-office@austrianfederalministryofeducation.org",
+    "officialWebsite": "https://www.scholarpath-portal.org/fellowships/sch-50",
+    "applicationUrl": "https://scholarpath-portal.org/fellowships/sch-50/apply"
+  },
+  {
+    "id": "sch-51",
+    "name": "Global Tech Pioneers Fellowship - Unit 5",
+    "provider": "Future Tech Foundation",
+    "description": "Awards full-tuition grants to forward-thinking tech candidates demonstrating clear computing credentials.",
+    "eligibleMajors": [
+      "Mechanical Engineering",
+      "Environmental Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Nigeria",
+      "UK",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.08,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-20",
+    "competitivenessScore": 78,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@futuretechfoundation.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-51"
+  },
+  {
+    "id": "sch-52",
+    "name": "Sovereign Leader Masters Award - Unit 3",
+    "provider": "Commonwealth Office",
+    "description": "Fully-funded Master's program covering complete flights, research allowances, and premium stipends.",
+    "eligibleMajors": [
+      "Information Technology",
+      "Data Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Australia",
+      "Germany",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.54,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-6",
+    "competitivenessScore": 83,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@commonwealthoffice.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-52"
+  },
+  {
+    "id": "sch-53",
+    "name": "Oasis Arid Environmental Research Scholarship - Unit 5",
+    "provider": "Oasis Green Institute",
+    "description": "Focused on sponsoring innovative agricultural or meteorological projects dealing with sustainable development.",
+    "eligibleMajors": [
+      "Data Science",
+      "Information Technology",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "UK",
+      "Australia",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-20",
+    "competitivenessScore": 82,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@oasisgreeninstitute.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-53"
+  },
+  {
+    "id": "sch-54",
+    "name": "AI Excellence Doctoral Grant - Unit 5",
+    "provider": "Apex AI Institute",
+    "description": "Sponsoring international PhD projects looking at neural nets, vision transformer pipelines, and LLM tuning.",
+    "eligibleMajors": [
+      "Economics",
+      "Computer Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Worldwide",
+      "Germany",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.25,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-18",
+    "competitivenessScore": 82,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@apexaiinstitute.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-54"
+  },
+  {
+    "id": "sch-55",
+    "name": "Empower Women in Engineering Fund - Unit 4",
+    "provider": "Ada Lovelace Circle",
+    "description": "Dedicated to reducing the gender gap in technical streams by fully funding college or undergraduate studies.",
+    "eligibleMajors": [
+      "Public Policy",
+      "Computer Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Australia",
+      "UK",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.37,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-17",
+    "competitivenessScore": 93,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@adalovelacecircle.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-55"
+  },
+  {
+    "id": "sch-56",
+    "name": "Rotary Peace Professional Fellowship - Unit 1",
+    "provider": "Rotary Foundation",
+    "description": "Designed for young peace builders worldwide to complete dedicated public policy and conflict resolution majors.",
+    "eligibleMajors": [
+      "Mechanical Engineering",
+      "Business Administration",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Germany",
+      "Canada",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.47,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-13",
+    "competitivenessScore": 81,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@rotaryfoundation.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-56"
+  },
+  {
+    "id": "sch-57",
+    "name": "Vanguard Mathematics & Physics Grand Award - Unit 2",
+    "provider": "Symmetry Lab",
+    "description": "For brilliant academic candidates targeting pure math or theoretical physics at undergraduate/graduate levels.",
+    "eligibleMajors": [
+      "Public Health",
+      "Public Health",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Switzerland",
+      "Pakistan",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.77,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-8",
+    "competitivenessScore": 92,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@symmetrylab.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-57"
+  },
+  {
+    "id": "sch-58",
+    "name": "MEXT Japanese Government Scholarship (Admissions Board) - Unit 4",
+    "provider": "Monbukagakusho Japan",
+    "description": "Highly prestigious research or undergraduate funding incorporating intensive Japanese language terms.",
+    "eligibleMajors": [
+      "Business Administration",
+      "Business Administration",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "UK",
+      "Kenya",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.47,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-5",
+    "competitivenessScore": 91,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@monbukagakushojapan.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-58"
+  },
+  {
+    "id": "sch-59",
+    "name": "Stipendium Hungaricum Joint Program - Unit 1",
+    "provider": "Hungary Minister of Culture",
+    "description": "Fully funding tuition, accommodation support, and monthly living allocations in historical European cities.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "AI",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Sweden",
+      "Canada",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.6,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-19",
+    "competitivenessScore": 86,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@hungaryministerofculture.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-59"
+  },
+  {
+    "id": "sch-60",
+    "name": "Swiss Government Excellence Research Scholarship - Unit 3",
+    "provider": "Swiss Federal Commission",
+    "description": "Provides intellectual research candidates of any field high-tier laboratory access and research stipends.",
+    "eligibleMajors": [
+      "Public Policy",
+      "Computer Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "France",
+      "Worldwide",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.47,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-8",
+    "competitivenessScore": 76,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@swissfederalcommission.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-60"
+  },
+  {
+    "id": "sch-61",
+    "name": "Gates Cambridge Scholarship Foundation - Unit 1",
+    "provider": "Bill & Melinda Gates Trust",
+    "description": "Fully funded graduate honors at University of Cambridge evaluating outstanding leadership capabilities.",
+    "eligibleMajors": [
+      "Social Sciences",
+      "Social Sciences",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Canada",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.4,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-12",
+    "competitivenessScore": 76,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@billmelindagatestrust.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-61"
+  },
+  {
+    "id": "sch-62",
+    "name": "Chevening Foreign Office Leaders Program - Unit 3",
+    "provider": "UK Foreign & Commonwealth Office",
+    "description": "A flagship program enabling prospective leaders from around the world to study Master's courses.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "Social Sciences",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Sweden",
+      "Sweden",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.59,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-10",
+    "competitivenessScore": 90,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@ukforeigncommonwealthoffice.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-62"
+  },
+  {
+    "id": "sch-63",
+    "name": "DAAD Friedrich Ebert Foundation Grant - Unit 2",
+    "provider": "FES Germany",
+    "description": "Dedicated to outstanding international students committed to democracy and social justice principles.",
+    "eligibleMajors": [
+      "Public Health",
+      "Information Technology",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Kenya",
+      "USA",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.13,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-7",
+    "competitivenessScore": 92,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@fesgermany.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-63"
+  },
+  {
+    "id": "sch-64",
+    "name": "Swedish Institute Scholarships for Global Professionals - Unit 2",
+    "provider": "Swedish Institute",
+    "description": "A highly competitive fully-funded master's scholarship for global leaders from select partner countries.",
+    "eligibleMajors": [
+      "Economics",
+      "Software Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Germany",
+      "Sweden",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.44,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-6",
+    "competitivenessScore": 92,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@swedishinstitute.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-64"
+  },
+  {
+    "id": "sch-65",
+    "name": "Knight-Hennessy Scholars at Stanford University - Unit 4",
+    "provider": "Stanford Foundation",
+    "description": "Supports graduate study in any department, nurturing visionary and community-focused leaders.",
+    "eligibleMajors": [
+      "Data Science",
+      "Mechanical Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Pakistan",
+      "Switzerland",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.59,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-22",
+    "competitivenessScore": 93,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@stanfordfoundation.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-65"
+  },
+  {
+    "id": "sch-66",
+    "name": "Rhodes Scholarship Trust Program - Unit 1",
+    "provider": "Rhodes Trust Oxford",
+    "description": "The oldest and perhaps most prestigious international fellowship enabling postgraduate study in England.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "Economics",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Switzerland",
+      "France",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.23,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-14",
+    "competitivenessScore": 76,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@rhodestrustoxford.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-66"
+  },
+  {
+    "id": "sch-67",
+    "name": "Schwarzman Scholars Leadership Masters - Unit 3",
+    "provider": "Tsinghua University",
+    "description": "An immersive one-year master's program in Beijing designed to prepare the next generation of global leaders.",
+    "eligibleMajors": [
+      "Mechanical Engineering",
+      "Finance",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Switzerland",
+      "Sweden",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.26,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-10",
+    "competitivenessScore": 85,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@tsinghuauniversity.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-67"
+  },
+  {
+    "id": "sch-68",
+    "name": "Fulbright-Nehru Master's Fellowships - Unit 5",
+    "provider": "USIEF India",
+    "description": "Designed for outstanding Indian citizens with 3+ years work experience in priority development fields.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Public Health",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Worldwide",
+      "Canada",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.41,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-23",
+    "competitivenessScore": 80,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@usiefindia.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-68"
+  },
+  {
+    "id": "sch-69",
+    "name": "Commonwealth Shared Scholarships - Unit 2",
+    "provider": "FCDO and UK Universities",
+    "description": "Supports low and middle-income country students to pursue master's degrees in UK development areas.",
+    "eligibleMajors": [
+      "Economics",
+      "Social Sciences",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Germany",
+      "UK",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.04,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-7",
+    "competitivenessScore": 78,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@fcdoandukuniversities.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-69"
+  },
+  {
+    "id": "sch-70",
+    "name": "Inlaks Shivdasani Foundation Internships - Unit 5",
+    "provider": "Inlaks Foundation",
+    "description": "Offers funding for brilliant students to study at top universities in the US, UK, and Europe, emphasizing art/science.",
+    "eligibleMajors": [
+      "Mechanical Engineering",
+      "Software Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "Bangladesh",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.66,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-9",
+    "competitivenessScore": 79,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@inlaksfoundation.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-70"
+  },
+  {
+    "id": "sch-71",
+    "name": "VLIR-UOS Training and Masters Program - Unit 1",
+    "provider": "Belgian DGD",
+    "description": "Fully-funded scholarships for students from Africa, Asia, and Latin America to pursue development-focused master's in Belgium.",
+    "eligibleMajors": [
+      "Social Sciences",
+      "Social Sciences",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "India",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.56,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-22",
+    "competitivenessScore": 92,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@belgiandgd.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-71"
+  },
+  {
+    "id": "sch-72",
+    "name": "Erasmus Charlemagne Research Fellowship - Unit 2",
+    "provider": "European Union Council",
+    "description": "Fosters inter-disciplinary study on European integration, structural funding, and common border economics.",
+    "eligibleMajors": [
+      "Information Technology",
+      "Public Health",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Nigeria",
+      "Sweden",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.15,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-10",
+    "competitivenessScore": 80,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@europeanunioncouncil.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-72"
+  },
+  {
+    "id": "sch-73",
+    "name": "Japanese World Bank Graduate Scholarship (JJ/WBGSP) - Unit 2",
+    "provider": "World Bank and Japan",
+    "description": "Sponsorship for mid-career development professionals targeting priority master's streams globally.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "Finance",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "Germany",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.33,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-5",
+    "competitivenessScore": 90,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@worldbankandjapan.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-73"
+  },
+  {
+    "id": "sch-74",
+    "name": "Mastercard Foundation Scholars Program - Unit 5",
+    "provider": "Mastercard Foundation",
+    "description": "Provides comprehensive scholarships to bright young Africans demonstrating strong volunteer and social commitment.",
+    "eligibleMajors": [
+      "Finance",
+      "Finance",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Worldwide",
+      "Kenya",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.44,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-8",
+    "competitivenessScore": 85,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@mastercardfoundation.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-74"
+  },
+  {
+    "id": "sch-75",
+    "name": "Eiffel Excellence Master's Program - Unit 4",
+    "provider": "French Ministry for Europe",
+    "description": "Enables French higher education institutions to attract top international master's candidates in science/law.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Environmental Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Worldwide",
+      "Germany",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.5,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-8",
+    "competitivenessScore": 83,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@frenchministryforeurope.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-75"
+  },
+  {
+    "id": "sch-76",
+    "name": "Clarendon Fund Graduate Scholarships - Unit 5",
+    "provider": "Oxford University Press",
+    "description": "Sponsors complete tuition fee cover plus annual living stipends for top international graduate students at Oxford.",
+    "eligibleMajors": [
+      "Business Administration",
+      "Environmental Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "France",
+      "Kenya",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.53,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-7",
+    "competitivenessScore": 82,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@oxforduniversitypress.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-76"
+  },
+  {
+    "id": "sch-77",
+    "name": "Australia Awards Scholarship Program (AAS) - Unit 1",
+    "provider": "Department of Foreign Affairs & Trade",
+    "description": "Provides long-term postgrad opportunities for students from partner developing countries across Asia-Pacific.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Computer Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "Pakistan",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.62,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-23",
+    "competitivenessScore": 84,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@departmentofforeignaffairstrade.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-77"
+  },
+  {
+    "id": "sch-78",
+    "name": "Ontario Graduate Scholarship (OGS) - Unit 5",
+    "provider": "Goverment of Ontario",
+    "description": "Sponsors merit-based graduate studies across research universities in Ontario, Canada for high-achieving applicants.",
+    "eligibleMajors": [
+      "Information Technology",
+      "Computer Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Worldwide",
+      "Switzerland",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.04,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-18",
+    "competitivenessScore": 85,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@govermentofontario.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-78"
+  },
+  {
+    "id": "sch-79",
+    "name": "Adelaide Scholarships International (ASI) - Unit 3",
+    "provider": "University of Adelaide",
+    "description": "Provides tuition fee support and medical coverage for brilliant doctoral scholars in major STEM areas.",
+    "eligibleMajors": [
+      "AI",
+      "Computer Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Japan",
+      "USA",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.51,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-22",
+    "competitivenessScore": 91,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@universityofadelaide.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-79"
+  },
+  {
+    "id": "sch-80",
+    "name": "KAIST Full Undergraduate Fellowship - Unit 4",
+    "provider": "KAIST South Korea",
+    "description": "Sponsors 100% of undergraduate tuition and living stipends for top international high school graduates.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "Information Technology",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Worldwide",
+      "Sweden",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.69,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-13",
+    "competitivenessScore": 90,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@kaistsouthkorea.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-80"
+  },
+  {
+    "id": "sch-81",
+    "name": "Global Tech Pioneers Fellowship - Unit 1",
+    "provider": "Future Tech Foundation",
+    "description": "Awards full-tuition grants to forward-thinking tech candidates demonstrating clear computing credentials.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "Finance",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Australia",
+      "India",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.74,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-11",
+    "competitivenessScore": 78,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@futuretechfoundation.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-81"
+  },
+  {
+    "id": "sch-82",
+    "name": "Sovereign Leader Masters Award - Unit 3",
+    "provider": "Commonwealth Office",
+    "description": "Fully-funded Master's program covering complete flights, research allowances, and premium stipends.",
+    "eligibleMajors": [
+      "Public Policy",
+      "Public Health",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Germany",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.15,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-6",
+    "competitivenessScore": 93,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@commonwealthoffice.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-82"
+  },
+  {
+    "id": "sch-83",
+    "name": "Oasis Arid Environmental Research Scholarship - Unit 1",
+    "provider": "Oasis Green Institute",
+    "description": "Focused on sponsoring innovative agricultural or meteorological projects dealing with sustainable development.",
+    "eligibleMajors": [
+      "Public Health",
+      "Computer Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Kenya",
+      "Kenya",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.73,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-20",
+    "competitivenessScore": 76,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@oasisgreeninstitute.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-83"
+  },
+  {
+    "id": "sch-84",
+    "name": "AI Excellence Doctoral Grant - Unit 4",
+    "provider": "Apex AI Institute",
+    "description": "Sponsoring international PhD projects looking at neural nets, vision transformer pipelines, and LLM tuning.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Mechanical Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Sweden",
+      "Bangladesh",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.78,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-22",
+    "competitivenessScore": 78,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@apexaiinstitute.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-84"
+  },
+  {
+    "id": "sch-85",
+    "name": "Empower Women in Engineering Fund - Unit 2",
+    "provider": "Ada Lovelace Circle",
+    "description": "Dedicated to reducing the gender gap in technical streams by fully funding college or undergraduate studies.",
+    "eligibleMajors": [
+      "AI",
+      "Mechanical Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "India",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.03,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-9",
+    "competitivenessScore": 89,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@adalovelacecircle.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-85"
+  },
+  {
+    "id": "sch-86",
+    "name": "Rotary Peace Professional Fellowship - Unit 2",
+    "provider": "Rotary Foundation",
+    "description": "Designed for young peace builders worldwide to complete dedicated public policy and conflict resolution majors.",
+    "eligibleMajors": [
+      "Social Sciences",
+      "Public Policy",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Japan",
+      "Vietnam",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.15,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-9",
+    "competitivenessScore": 91,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@rotaryfoundation.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-86"
+  },
+  {
+    "id": "sch-87",
+    "name": "Vanguard Mathematics & Physics Grand Award - Unit 5",
+    "provider": "Symmetry Lab",
+    "description": "For brilliant academic candidates targeting pure math or theoretical physics at undergraduate/graduate levels.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "Public Health",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Pakistan",
+      "Worldwide",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.66,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-18",
+    "competitivenessScore": 80,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@symmetrylab.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-87"
+  },
+  {
+    "id": "sch-88",
+    "name": "MEXT Japanese Government Scholarship (Admissions Board) - Unit 4",
+    "provider": "Monbukagakusho Japan",
+    "description": "Highly prestigious research or undergraduate funding incorporating intensive Japanese language terms.",
+    "eligibleMajors": [
+      "Social Sciences",
+      "Software Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "Japan",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.17,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-15",
+    "competitivenessScore": 87,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@monbukagakushojapan.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-88"
+  },
+  {
+    "id": "sch-89",
+    "name": "Stipendium Hungaricum Joint Program - Unit 3",
+    "provider": "Hungary Minister of Culture",
+    "description": "Fully funding tuition, accommodation support, and monthly living allocations in historical European cities.",
+    "eligibleMajors": [
+      "Mechanical Engineering",
+      "Mechanical Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Kenya",
+      "Vietnam",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.39,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-9",
+    "competitivenessScore": 87,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@hungaryministerofculture.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-89"
+  },
+  {
+    "id": "sch-90",
+    "name": "Swiss Government Excellence Research Scholarship - Unit 3",
+    "provider": "Swiss Federal Commission",
+    "description": "Provides intellectual research candidates of any field high-tier laboratory access and research stipends.",
+    "eligibleMajors": [
+      "Mechanical Engineering",
+      "Data Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Japan",
+      "Sweden",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.39,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-7",
+    "competitivenessScore": 75,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@swissfederalcommission.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-90"
+  },
+  {
+    "id": "sch-91",
+    "name": "Gates Cambridge Scholarship Foundation - Unit 4",
+    "provider": "Bill & Melinda Gates Trust",
+    "description": "Fully funded graduate honors at University of Cambridge evaluating outstanding leadership capabilities.",
+    "eligibleMajors": [
+      "Social Sciences",
+      "Public Health",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "USA",
+      "Nigeria",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.41,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-23",
+    "competitivenessScore": 88,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@billmelindagatestrust.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-91"
+  },
+  {
+    "id": "sch-92",
+    "name": "Chevening Foreign Office Leaders Program - Unit 1",
+    "provider": "UK Foreign & Commonwealth Office",
+    "description": "A flagship program enabling prospective leaders from around the world to study Master's courses.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Australia",
+      "Switzerland",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.2,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-7",
+    "competitivenessScore": 78,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@ukforeigncommonwealthoffice.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-92"
+  },
+  {
+    "id": "sch-93",
+    "name": "DAAD Friedrich Ebert Foundation Grant - Unit 1",
+    "provider": "FES Germany",
+    "description": "Dedicated to outstanding international students committed to democracy and social justice principles.",
+    "eligibleMajors": [
+      "Social Sciences",
+      "Computer Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Japan",
+      "Australia",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.52,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-7",
+    "competitivenessScore": 75,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@fesgermany.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-93"
+  },
+  {
+    "id": "sch-94",
+    "name": "Swedish Institute Scholarships for Global Professionals - Unit 1",
+    "provider": "Swedish Institute",
+    "description": "A highly competitive fully-funded master's scholarship for global leaders from select partner countries.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Mechanical Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Germany",
+      "Japan",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.32,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-22",
+    "competitivenessScore": 84,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@swedishinstitute.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-94"
+  },
+  {
+    "id": "sch-95",
+    "name": "Knight-Hennessy Scholars at Stanford University - Unit 5",
+    "provider": "Stanford Foundation",
+    "description": "Supports graduate study in any department, nurturing visionary and community-focused leaders.",
+    "eligibleMajors": [
+      "Social Sciences",
+      "Business Administration",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Pakistan",
+      "Australia",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.72,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-21",
+    "competitivenessScore": 93,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@stanfordfoundation.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-95"
+  },
+  {
+    "id": "sch-96",
+    "name": "Rhodes Scholarship Trust Program - Unit 3",
+    "provider": "Rhodes Trust Oxford",
+    "description": "The oldest and perhaps most prestigious international fellowship enabling postgraduate study in England.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "Social Sciences",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Germany",
+      "Australia",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.51,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-15",
+    "competitivenessScore": 94,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@rhodestrustoxford.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-96"
+  },
+  {
+    "id": "sch-97",
+    "name": "Schwarzman Scholars Leadership Masters - Unit 4",
+    "provider": "Tsinghua University",
+    "description": "An immersive one-year master's program in Beijing designed to prepare the next generation of global leaders.",
+    "eligibleMajors": [
+      "Business Administration",
+      "Finance",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Bangladesh",
+      "Switzerland",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.44,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-7",
+    "competitivenessScore": 84,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@tsinghuauniversity.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-97"
+  },
+  {
+    "id": "sch-98",
+    "name": "Fulbright-Nehru Master's Fellowships - Unit 2",
+    "provider": "USIEF India",
+    "description": "Designed for outstanding Indian citizens with 3+ years work experience in priority development fields.",
+    "eligibleMajors": [
+      "Economics",
+      "Environmental Science",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Switzerland",
+      "UK",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.17,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-24",
+    "competitivenessScore": 78,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@usiefindia.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-98"
+  },
+  {
+    "id": "sch-99",
+    "name": "Commonwealth Shared Scholarships - Unit 1",
+    "provider": "FCDO and UK Universities",
+    "description": "Supports low and middle-income country students to pursue master's degrees in UK development areas.",
+    "eligibleMajors": [
+      "Finance",
+      "Software Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Pakistan",
+      "Vietnam",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.5,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-21",
+    "competitivenessScore": 88,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@fcdoandukuniversities.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-99"
+  },
+  {
+    "id": "sch-100",
+    "name": "Inlaks Shivdasani Foundation Internships - Unit 5",
+    "provider": "Inlaks Foundation",
+    "description": "Offers funding for brilliant students to study at top universities in the US, UK, and Europe, emphasizing art/science.",
+    "eligibleMajors": [
+      "Information Technology",
+      "Information Technology",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Pakistan",
+      "France",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.27,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-23",
+    "competitivenessScore": 87,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@inlaksfoundation.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-100"
+  },
+  {
+    "id": "sch-101",
+    "name": "VLIR-UOS Training and Masters Program - Unit 2",
+    "provider": "Belgian DGD",
+    "description": "Fully-funded scholarships for students from Africa, Asia, and Latin America to pursue development-focused master's in Belgium.",
+    "eligibleMajors": [
+      "Data Science",
+      "Software Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Germany",
+      "Switzerland",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.62,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-11",
+    "competitivenessScore": 91,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@belgiandgd.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-101"
+  },
+  {
+    "id": "sch-102",
+    "name": "Erasmus Charlemagne Research Fellowship - Unit 2",
+    "provider": "European Union Council",
+    "description": "Fosters inter-disciplinary study on European integration, structural funding, and common border economics.",
+    "eligibleMajors": [
+      "Software Engineering",
+      "Social Sciences",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Switzerland",
+      "Sweden",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.79,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-24",
+    "competitivenessScore": 88,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@europeanunioncouncil.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-102"
+  },
+  {
+    "id": "sch-103",
+    "name": "Japanese World Bank Graduate Scholarship (JJ/WBGSP) - Unit 4",
+    "provider": "World Bank and Japan",
+    "description": "Sponsorship for mid-career development professionals targeting priority master's streams globally.",
+    "eligibleMajors": [
+      "Finance",
+      "Economics",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Canada",
+      "France",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.33,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-18",
+    "competitivenessScore": 81,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@worldbankandjapan.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-103"
+  },
+  {
+    "id": "sch-104",
+    "name": "Mastercard Foundation Scholars Program - Unit 1",
+    "provider": "Mastercard Foundation",
+    "description": "Provides comprehensive scholarships to bright young Africans demonstrating strong volunteer and social commitment.",
+    "eligibleMajors": [
+      "Business Administration",
+      "AI",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Australia",
+      "Pakistan",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.6,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-12",
+    "competitivenessScore": 75,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@mastercardfoundation.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-104"
+  },
+  {
+    "id": "sch-105",
+    "name": "Eiffel Excellence Master's Program - Unit 4",
+    "provider": "French Ministry for Europe",
+    "description": "Enables French higher education institutions to attract top international master's candidates in science/law.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "Public Health",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Vietnam",
+      "Pakistan",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.35,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-6",
+    "competitivenessScore": 92,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@frenchministryforeurope.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-105"
+  },
+  {
+    "id": "sch-106",
+    "name": "Clarendon Fund Graduate Scholarships - Unit 3",
+    "provider": "Oxford University Press",
+    "description": "Sponsors complete tuition fee cover plus annual living stipends for top international graduate students at Oxford.",
+    "eligibleMajors": [
+      "AI",
+      "Public Policy",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Worldwide",
+      "UK",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.16,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-15",
+    "competitivenessScore": 80,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@oxforduniversitypress.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-106"
+  },
+  {
+    "id": "sch-107",
+    "name": "Australia Awards Scholarship Program (AAS) - Unit 4",
+    "provider": "Department of Foreign Affairs & Trade",
+    "description": "Provides long-term postgrad opportunities for students from partner developing countries across Asia-Pacific.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Mechanical Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Canada",
+      "Worldwide",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.37,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-23",
+    "competitivenessScore": 90,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@departmentofforeignaffairstrade.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-107"
+  },
+  {
+    "id": "sch-108",
+    "name": "Ontario Graduate Scholarship (OGS) - Unit 4",
+    "provider": "Goverment of Ontario",
+    "description": "Sponsors merit-based graduate studies across research universities in Ontario, Canada for high-achieving applicants.",
+    "eligibleMajors": [
+      "Information Technology",
+      "Public Health",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Japan",
+      "Worldwide",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.46,
+    "degreeLevel": [
+      "Bachelor's Degree",
+      "Master's Degree"
+    ],
+    "deadline": "2026-12-9",
+    "competitivenessScore": 77,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "Free ($0)",
+    "contactEmail": "admissions@govermentofontario.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-108"
+  },
+  {
+    "id": "sch-109",
+    "name": "Adelaide Scholarships International (ASI) - Unit 2",
+    "provider": "University of Adelaide",
+    "description": "Provides tuition fee support and medical coverage for brilliant doctoral scholars in major STEM areas.",
+    "eligibleMajors": [
+      "Environmental Science",
+      "Information Technology",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "India",
+      "Bangladesh",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Fully Funded",
+    "gpaRequirement": 3.09,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-10-11",
+    "competitivenessScore": 91,
+    "minimumEducationLevel": "undergraduate",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@universityofadelaide.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-109"
+  },
+  {
+    "id": "sch-110",
+    "name": "KAIST Full Undergraduate Fellowship - Unit 4",
+    "provider": "KAIST South Korea",
+    "description": "Sponsors 100% of undergraduate tuition and living stipends for top international high school graduates.",
+    "eligibleMajors": [
+      "Computer Science",
+      "Software Engineering",
+      "Computer Science"
+    ],
+    "eligibleCountries": [
+      "Worldwide",
+      "Sweden",
+      "Switzerland",
+      "Bangladesh",
+      "India"
+    ],
+    "fundingCoverage": "Partially Funded",
+    "gpaRequirement": 3.21,
+    "degreeLevel": [
+      "Master's Degree"
+    ],
+    "deadline": "2026-11-7",
+    "competitivenessScore": 89,
+    "minimumEducationLevel": "high_school",
+    "applicationSteps": [
+      "Prepare your portfolio curriculum vitae",
+      "Write a rigorous Statement of Purpose highlighting quantitative impact metrics",
+      "Acquire two academic reference letters in PDF format",
+      "Submit corresponding ledger index credentials to the official application board"
+    ],
+    "requiredDocuments": [
+      "Official academic transcripts",
+      "IELTS / TOEFL language score sheets",
+      "SOP motivation letter",
+      "CV listing previous projects and skills"
+    ],
+    "applicationFee": "$75 USD",
+    "contactEmail": "admissions@kaistsouthkorea.org",
+    "officialWebsite": "https://www.scholarship-info.org",
+    "applicationUrl": "https://scholarship-portal.org/apply-route-matrix-110"
+  }
+]

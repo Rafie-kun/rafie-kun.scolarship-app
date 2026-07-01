@@ -4,7 +4,7 @@ import {
   Trophy, BookOpen, GraduationCap, Calculator, Award, ArrowRight, Save, User, Sparkles,
   Search, BookmarkCheck, Calendar, CheckSquare, Square, MessageSquare, Plus, CheckCircle,
   FolderDown, Building, Navigation, Globe, Menu, X, Coins, HelpCircle, Shield, Sword,
-  Undo, Settings, UserCog, FileText
+  Undo, Settings, UserCog, FileText, TrendingUp
 } from 'lucide-react';
 
 import OverviewRecommendationsView from './components/OverviewRecommendationsView';
@@ -24,6 +24,7 @@ import OnboardingTour from './components/OnboardingTour';
 import AIAssistant from './components/AIAssistant';
 import CVBuilder from './components/CVBuilder';
 import BudgetPlanner from './components/BudgetPlanner';
+import PerformanceAnalyticsView from './components/PerformanceAnalyticsView';
 
 import LoginScreen from './components/LoginScreen';
 import { useAuth } from './context/AuthContext';
@@ -31,6 +32,7 @@ import { useTheme } from './context/ThemeContext';
 import { playClickSound, playAdvancementSound } from './utils/sound';
 import ErrorBoundary from './components/ErrorBoundary';
 import NotificationsBell from './components/NotificationsBell';
+import SyncStatusDrawer from './components/SyncStatusDrawer';
 
 // Dictionary containing styling palettes for unlockable Biomes (themes)
 const getThemeStyling = (themeId: string) => {
@@ -117,7 +119,7 @@ const getThemeStyling = (themeId: string) => {
 
 export default function App() {
   const { user, isLoggedIn, profile, authLoading, isGuest, logout, rewardPoints, refreshProfile, updateProfile } = useAuth();
-  const { theme, themeMode, setThemeMode } = useTheme();
+  const { theme, themeMode, setThemeMode, currency, setCurrency } = useTheme();
 
   const [activeTab, setActiveTab] = useState('overview');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -175,6 +177,7 @@ export default function App() {
   // Navigations directory menu hotbar mappings
   const navItems = [
     { id: 'overview', label: 'Quest Dashboard', mcName: 'Diamond Trophy', desc: 'View active targets, track scores, and claimed items', icon: Trophy, color: 'text-amber-400' },
+    { id: 'analytics', label: 'Performance Analytics', mcName: 'Golden Redstone Gauge', desc: 'Visualize academic GPA trends and quest completions', icon: TrendingUp, color: 'text-[#55ff55]' },
     { id: 'scholarships', label: 'Loot Registry', mcName: 'Enchanted Golden Apple', desc: 'Browse matched international fellowships & stipends', icon: GraduationCap, color: 'text-yellow-400' },
     { id: 'universities', label: 'Target Keeps', mcName: 'Golden Citadel Spire', desc: 'Browse entry GPA benchmarks for global institutions', icon: Building, color: 'text-sky-400' },
     { id: 'applications', label: 'Quest Book', mcName: 'Redstone Ledger Registry', desc: 'Manage your active application checkpoints and deadlines', icon: BookmarkCheck, color: 'text-red-400' },
@@ -196,6 +199,8 @@ export default function App() {
     switch (activeTab) {
       case 'overview':
         return <OverviewRecommendationsView onNavigate={(view) => setActiveTab(view)} />;
+      case 'analytics':
+        return <PerformanceAnalyticsView />;
       case 'scholarships':
         return <ScholarshipsView />;
       case 'universities':
@@ -382,6 +387,30 @@ export default function App() {
 
           {/* Notifications Bell Icon */}
           <NotificationsBell />
+
+          {/* Sync Status Drawer Icon */}
+          <SyncStatusDrawer />
+
+          {/* Global Currency Switcher Selector */}
+          <div className="flex items-center gap-1.5 bg-black/50 p-1.5 border-2 border-black rounded-none">
+            <span className="text-[8px] font-press text-[#2ecc71] px-1 select-none hidden xl:inline">VAL:</span>
+            <select
+              value={currency}
+              onChange={(e) => {
+                playClickSound();
+                setCurrency(e.target.value as any);
+              }}
+              className="bg-stone-850 text-stone-200 border border-stone-900 font-mono text-[9px] font-bold px-2 py-0.5 rounded-none focus:outline-none focus:border-[#2ecc71] uppercase cursor-pointer"
+            >
+              <option value="USD">💵 USD ($)</option>
+              <option value="EUR">💶 EUR (€)</option>
+              <option value="GBP">💷 GBP (£)</option>
+              <option value="BDT">৳ BDT (৳)</option>
+              <option value="CAD">🍁 CAD (C$)</option>
+              <option value="AUD">🐨 AUD (A$)</option>
+              <option value="INR">🪙 INR (₹)</option>
+            </select>
+          </div>
 
           {/* Working Theme Switcher Toggle (Light, Dark, Minecraft) */}
           <div className="flex items-center gap-1.5 bg-black/50 p-1.5 border-2 border-black rounded-none">

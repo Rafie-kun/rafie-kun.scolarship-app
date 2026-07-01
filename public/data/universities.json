@@ -21,7 +21,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.harvard.edu/",
     "applicationUrl": "https://apply.college.harvard.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-mit",
@@ -45,7 +47,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.mit.edu/",
     "applicationUrl": "https://apply.mit.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-001",
@@ -69,7 +73,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni1.edu/",
     "applicationUrl": "https://apply.globaluni1.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-002",
@@ -93,7 +99,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni2.edu/",
     "applicationUrl": "https://apply.globaluni2.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-003",
@@ -117,7 +125,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni3.edu/",
     "applicationUrl": "https://apply.globaluni3.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-004",
@@ -141,7 +151,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni4.edu/",
     "applicationUrl": "https://apply.globaluni4.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-005",
@@ -165,7 +177,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni5.edu/",
     "applicationUrl": "https://apply.globaluni5.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-006",
@@ -189,7 +203,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni6.edu/",
     "applicationUrl": "https://apply.globaluni6.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-007",
@@ -213,7 +229,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni7.edu/",
     "applicationUrl": "https://apply.globaluni7.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-008",
@@ -237,7 +255,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni8.edu/",
     "applicationUrl": "https://apply.globaluni8.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-009",
@@ -261,7 +281,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni9.edu/",
     "applicationUrl": "https://apply.globaluni9.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-010",
@@ -285,7 +307,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni10.edu/",
     "applicationUrl": "https://apply.globaluni10.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-011",
@@ -309,7 +333,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni11.edu/",
     "applicationUrl": "https://apply.globaluni11.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-012",
@@ -333,7 +359,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni12.edu/",
     "applicationUrl": "https://apply.globaluni12.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-013",
@@ -357,7 +385,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni13.edu/",
     "applicationUrl": "https://apply.globaluni13.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-014",
@@ -381,7 +411,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni14.edu/",
     "applicationUrl": "https://apply.globaluni14.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-015",
@@ -405,7 +437,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni15.edu/",
     "applicationUrl": "https://apply.globaluni15.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-016",
@@ -429,7 +463,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni16.edu/",
     "applicationUrl": "https://apply.globaluni16.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-017",
@@ -453,7 +489,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni17.edu/",
     "applicationUrl": "https://apply.globaluni17.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-018",
@@ -477,7 +515,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni18.edu/",
     "applicationUrl": "https://apply.globaluni18.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-019",
@@ -501,7 +541,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni19.edu/",
     "applicationUrl": "https://apply.globaluni19.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-020",
@@ -525,7 +567,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni20.edu/",
     "applicationUrl": "https://apply.globaluni20.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-021",
@@ -549,7 +593,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni21.edu/",
     "applicationUrl": "https://apply.globaluni21.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-022",
@@ -573,7 +619,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni22.edu/",
     "applicationUrl": "https://apply.globaluni22.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-023",
@@ -597,7 +645,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni23.edu/",
     "applicationUrl": "https://apply.globaluni23.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-024",
@@ -621,7 +671,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni24.edu/",
     "applicationUrl": "https://apply.globaluni24.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-025",
@@ -645,7 +697,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni25.edu/",
     "applicationUrl": "https://apply.globaluni25.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-026",
@@ -669,7 +723,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni26.edu/",
     "applicationUrl": "https://apply.globaluni26.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-027",
@@ -693,7 +749,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni27.edu/",
     "applicationUrl": "https://apply.globaluni27.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-028",
@@ -717,7 +775,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni28.edu/",
     "applicationUrl": "https://apply.globaluni28.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-029",
@@ -741,7 +801,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni29.edu/",
     "applicationUrl": "https://apply.globaluni29.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-030",
@@ -765,7 +827,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni30.edu/",
     "applicationUrl": "https://apply.globaluni30.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-031",
@@ -789,7 +853,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni31.edu/",
     "applicationUrl": "https://apply.globaluni31.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-032",
@@ -813,7 +879,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni32.edu/",
     "applicationUrl": "https://apply.globaluni32.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-033",
@@ -837,7 +905,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni33.edu/",
     "applicationUrl": "https://apply.globaluni33.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-034",
@@ -861,7 +931,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni34.edu/",
     "applicationUrl": "https://apply.globaluni34.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-035",
@@ -885,7 +957,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni35.edu/",
     "applicationUrl": "https://apply.globaluni35.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-036",
@@ -909,7 +983,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni36.edu/",
     "applicationUrl": "https://apply.globaluni36.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-037",
@@ -933,7 +1009,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni37.edu/",
     "applicationUrl": "https://apply.globaluni37.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-038",
@@ -957,7 +1035,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni38.edu/",
     "applicationUrl": "https://apply.globaluni38.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-039",
@@ -981,7 +1061,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni39.edu/",
     "applicationUrl": "https://apply.globaluni39.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-040",
@@ -1005,7 +1087,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni40.edu/",
     "applicationUrl": "https://apply.globaluni40.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-041",
@@ -1029,7 +1113,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni41.edu/",
     "applicationUrl": "https://apply.globaluni41.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-042",
@@ -1053,7 +1139,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni42.edu/",
     "applicationUrl": "https://apply.globaluni42.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-043",
@@ -1077,7 +1165,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni43.edu/",
     "applicationUrl": "https://apply.globaluni43.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-044",
@@ -1101,7 +1191,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni44.edu/",
     "applicationUrl": "https://apply.globaluni44.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-045",
@@ -1125,7 +1217,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni45.edu/",
     "applicationUrl": "https://apply.globaluni45.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-046",
@@ -1149,7 +1243,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni46.edu/",
     "applicationUrl": "https://apply.globaluni46.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-047",
@@ -1173,7 +1269,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni47.edu/",
     "applicationUrl": "https://apply.globaluni47.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-048",
@@ -1197,7 +1295,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni48.edu/",
     "applicationUrl": "https://apply.globaluni48.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-049",
@@ -1221,7 +1321,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni49.edu/",
     "applicationUrl": "https://apply.globaluni49.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-050",
@@ -1245,7 +1347,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni50.edu/",
     "applicationUrl": "https://apply.globaluni50.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-051",
@@ -1269,7 +1373,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni51.edu/",
     "applicationUrl": "https://apply.globaluni51.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-052",
@@ -1293,7 +1399,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni52.edu/",
     "applicationUrl": "https://apply.globaluni52.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-053",
@@ -1317,7 +1425,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni53.edu/",
     "applicationUrl": "https://apply.globaluni53.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-054",
@@ -1341,7 +1451,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni54.edu/",
     "applicationUrl": "https://apply.globaluni54.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-055",
@@ -1365,7 +1477,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni55.edu/",
     "applicationUrl": "https://apply.globaluni55.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-056",
@@ -1389,7 +1503,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni56.edu/",
     "applicationUrl": "https://apply.globaluni56.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-057",
@@ -1413,7 +1529,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni57.edu/",
     "applicationUrl": "https://apply.globaluni57.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-058",
@@ -1437,7 +1555,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni58.edu/",
     "applicationUrl": "https://apply.globaluni58.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-059",
@@ -1461,7 +1581,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni59.edu/",
     "applicationUrl": "https://apply.globaluni59.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-060",
@@ -1485,7 +1607,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni60.edu/",
     "applicationUrl": "https://apply.globaluni60.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-061",
@@ -1509,7 +1633,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni61.edu/",
     "applicationUrl": "https://apply.globaluni61.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-062",
@@ -1533,7 +1659,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni62.edu/",
     "applicationUrl": "https://apply.globaluni62.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-063",
@@ -1557,7 +1685,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni63.edu/",
     "applicationUrl": "https://apply.globaluni63.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-064",
@@ -1581,7 +1711,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni64.edu/",
     "applicationUrl": "https://apply.globaluni64.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-065",
@@ -1605,7 +1737,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni65.edu/",
     "applicationUrl": "https://apply.globaluni65.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-066",
@@ -1629,7 +1763,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni66.edu/",
     "applicationUrl": "https://apply.globaluni66.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-067",
@@ -1653,7 +1789,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni67.edu/",
     "applicationUrl": "https://apply.globaluni67.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-068",
@@ -1677,7 +1815,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni68.edu/",
     "applicationUrl": "https://apply.globaluni68.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-069",
@@ -1701,7 +1841,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni69.edu/",
     "applicationUrl": "https://apply.globaluni69.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-070",
@@ -1725,7 +1867,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni70.edu/",
     "applicationUrl": "https://apply.globaluni70.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-071",
@@ -1749,7 +1893,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni71.edu/",
     "applicationUrl": "https://apply.globaluni71.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-072",
@@ -1773,7 +1919,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni72.edu/",
     "applicationUrl": "https://apply.globaluni72.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-073",
@@ -1797,7 +1945,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni73.edu/",
     "applicationUrl": "https://apply.globaluni73.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-074",
@@ -1821,7 +1971,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni74.edu/",
     "applicationUrl": "https://apply.globaluni74.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-075",
@@ -1845,7 +1997,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni75.edu/",
     "applicationUrl": "https://apply.globaluni75.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-076",
@@ -1869,7 +2023,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni76.edu/",
     "applicationUrl": "https://apply.globaluni76.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-077",
@@ -1893,7 +2049,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni77.edu/",
     "applicationUrl": "https://apply.globaluni77.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-078",
@@ -1917,7 +2075,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni78.edu/",
     "applicationUrl": "https://apply.globaluni78.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-079",
@@ -1941,7 +2101,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni79.edu/",
     "applicationUrl": "https://apply.globaluni79.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-080",
@@ -1965,7 +2127,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni80.edu/",
     "applicationUrl": "https://apply.globaluni80.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-081",
@@ -1989,7 +2153,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni81.edu/",
     "applicationUrl": "https://apply.globaluni81.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-082",
@@ -2013,7 +2179,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni82.edu/",
     "applicationUrl": "https://apply.globaluni82.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-083",
@@ -2037,7 +2205,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni83.edu/",
     "applicationUrl": "https://apply.globaluni83.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-084",
@@ -2061,7 +2231,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni84.edu/",
     "applicationUrl": "https://apply.globaluni84.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-085",
@@ -2085,7 +2257,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni85.edu/",
     "applicationUrl": "https://apply.globaluni85.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-086",
@@ -2109,7 +2283,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni86.edu/",
     "applicationUrl": "https://apply.globaluni86.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-087",
@@ -2133,7 +2309,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni87.edu/",
     "applicationUrl": "https://apply.globaluni87.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-088",
@@ -2157,7 +2335,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni88.edu/",
     "applicationUrl": "https://apply.globaluni88.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-089",
@@ -2181,7 +2361,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni89.edu/",
     "applicationUrl": "https://apply.globaluni89.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-090",
@@ -2205,7 +2387,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni90.edu/",
     "applicationUrl": "https://apply.globaluni90.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-091",
@@ -2229,7 +2413,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni91.edu/",
     "applicationUrl": "https://apply.globaluni91.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-092",
@@ -2253,7 +2439,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni92.edu/",
     "applicationUrl": "https://apply.globaluni92.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-093",
@@ -2277,7 +2465,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni93.edu/",
     "applicationUrl": "https://apply.globaluni93.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-094",
@@ -2301,7 +2491,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni94.edu/",
     "applicationUrl": "https://apply.globaluni94.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-095",
@@ -2325,7 +2517,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni95.edu/",
     "applicationUrl": "https://apply.globaluni95.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-096",
@@ -2349,7 +2543,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni96.edu/",
     "applicationUrl": "https://apply.globaluni96.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-097",
@@ -2373,7 +2569,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni97.edu/",
     "applicationUrl": "https://apply.globaluni97.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-098",
@@ -2397,7 +2595,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni98.edu/",
     "applicationUrl": "https://apply.globaluni98.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-099",
@@ -2421,7 +2621,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni99.edu/",
     "applicationUrl": "https://apply.globaluni99.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-100",
@@ -2445,7 +2647,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni100.edu/",
     "applicationUrl": "https://apply.globaluni100.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-101",
@@ -2469,7 +2673,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni101.edu/",
     "applicationUrl": "https://apply.globaluni101.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-102",
@@ -2493,7 +2699,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni102.edu/",
     "applicationUrl": "https://apply.globaluni102.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-103",
@@ -2517,7 +2725,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni103.edu/",
     "applicationUrl": "https://apply.globaluni103.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-104",
@@ -2541,7 +2751,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni104.edu/",
     "applicationUrl": "https://apply.globaluni104.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-105",
@@ -2565,7 +2777,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni105.edu/",
     "applicationUrl": "https://apply.globaluni105.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-106",
@@ -2589,7 +2803,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni106.edu/",
     "applicationUrl": "https://apply.globaluni106.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-107",
@@ -2613,7 +2829,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni107.edu/",
     "applicationUrl": "https://apply.globaluni107.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-108",
@@ -2637,7 +2855,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni108.edu/",
     "applicationUrl": "https://apply.globaluni108.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-109",
@@ -2661,7 +2881,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni109.edu/",
     "applicationUrl": "https://apply.globaluni109.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-110",
@@ -2685,7 +2907,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni110.edu/",
     "applicationUrl": "https://apply.globaluni110.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-111",
@@ -2709,7 +2933,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni111.edu/",
     "applicationUrl": "https://apply.globaluni111.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-112",
@@ -2733,7 +2959,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni112.edu/",
     "applicationUrl": "https://apply.globaluni112.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-113",
@@ -2757,7 +2985,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni113.edu/",
     "applicationUrl": "https://apply.globaluni113.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-114",
@@ -2781,7 +3011,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni114.edu/",
     "applicationUrl": "https://apply.globaluni114.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-115",
@@ -2805,7 +3037,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni115.edu/",
     "applicationUrl": "https://apply.globaluni115.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-116",
@@ -2829,7 +3063,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni116.edu/",
     "applicationUrl": "https://apply.globaluni116.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-117",
@@ -2853,7 +3089,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni117.edu/",
     "applicationUrl": "https://apply.globaluni117.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-118",
@@ -2877,7 +3115,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni118.edu/",
     "applicationUrl": "https://apply.globaluni118.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-119",
@@ -2901,7 +3141,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni119.edu/",
     "applicationUrl": "https://apply.globaluni119.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-120",
@@ -2925,7 +3167,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni120.edu/",
     "applicationUrl": "https://apply.globaluni120.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-121",
@@ -2949,7 +3193,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni121.edu/",
     "applicationUrl": "https://apply.globaluni121.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-122",
@@ -2973,7 +3219,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni122.edu/",
     "applicationUrl": "https://apply.globaluni122.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-123",
@@ -2997,7 +3245,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni123.edu/",
     "applicationUrl": "https://apply.globaluni123.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-124",
@@ -3021,7 +3271,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni124.edu/",
     "applicationUrl": "https://apply.globaluni124.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-125",
@@ -3045,7 +3297,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni125.edu/",
     "applicationUrl": "https://apply.globaluni125.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-126",
@@ -3069,7 +3323,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni126.edu/",
     "applicationUrl": "https://apply.globaluni126.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-127",
@@ -3093,7 +3349,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni127.edu/",
     "applicationUrl": "https://apply.globaluni127.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-128",
@@ -3117,7 +3375,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni128.edu/",
     "applicationUrl": "https://apply.globaluni128.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-129",
@@ -3141,7 +3401,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni129.edu/",
     "applicationUrl": "https://apply.globaluni129.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-130",
@@ -3165,7 +3427,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni130.edu/",
     "applicationUrl": "https://apply.globaluni130.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-131",
@@ -3189,7 +3453,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni131.edu/",
     "applicationUrl": "https://apply.globaluni131.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-132",
@@ -3213,7 +3479,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni132.edu/",
     "applicationUrl": "https://apply.globaluni132.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-133",
@@ -3237,7 +3505,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni133.edu/",
     "applicationUrl": "https://apply.globaluni133.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-134",
@@ -3261,7 +3531,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni134.edu/",
     "applicationUrl": "https://apply.globaluni134.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-135",
@@ -3285,7 +3557,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni135.edu/",
     "applicationUrl": "https://apply.globaluni135.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-136",
@@ -3309,7 +3583,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni136.edu/",
     "applicationUrl": "https://apply.globaluni136.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-137",
@@ -3333,7 +3609,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni137.edu/",
     "applicationUrl": "https://apply.globaluni137.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-138",
@@ -3357,7 +3635,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni138.edu/",
     "applicationUrl": "https://apply.globaluni138.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-139",
@@ -3381,7 +3661,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni139.edu/",
     "applicationUrl": "https://apply.globaluni139.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-140",
@@ -3405,7 +3687,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni140.edu/",
     "applicationUrl": "https://apply.globaluni140.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-141",
@@ -3429,7 +3713,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni141.edu/",
     "applicationUrl": "https://apply.globaluni141.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-142",
@@ -3453,7 +3739,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni142.edu/",
     "applicationUrl": "https://apply.globaluni142.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-143",
@@ -3477,7 +3765,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni143.edu/",
     "applicationUrl": "https://apply.globaluni143.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-144",
@@ -3501,7 +3791,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni144.edu/",
     "applicationUrl": "https://apply.globaluni144.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-145",
@@ -3525,7 +3817,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni145.edu/",
     "applicationUrl": "https://apply.globaluni145.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-146",
@@ -3549,7 +3843,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni146.edu/",
     "applicationUrl": "https://apply.globaluni146.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-147",
@@ -3573,7 +3869,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni147.edu/",
     "applicationUrl": "https://apply.globaluni147.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-148",
@@ -3597,7 +3895,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni148.edu/",
     "applicationUrl": "https://apply.globaluni148.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-149",
@@ -3621,7 +3921,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni149.edu/",
     "applicationUrl": "https://apply.globaluni149.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-150",
@@ -3645,7 +3947,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni150.edu/",
     "applicationUrl": "https://apply.globaluni150.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-151",
@@ -3669,7 +3973,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni151.edu/",
     "applicationUrl": "https://apply.globaluni151.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-152",
@@ -3693,7 +3999,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni152.edu/",
     "applicationUrl": "https://apply.globaluni152.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-153",
@@ -3717,7 +4025,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni153.edu/",
     "applicationUrl": "https://apply.globaluni153.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-154",
@@ -3741,7 +4051,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni154.edu/",
     "applicationUrl": "https://apply.globaluni154.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-155",
@@ -3765,7 +4077,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni155.edu/",
     "applicationUrl": "https://apply.globaluni155.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-156",
@@ -3789,7 +4103,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni156.edu/",
     "applicationUrl": "https://apply.globaluni156.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-157",
@@ -3813,7 +4129,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni157.edu/",
     "applicationUrl": "https://apply.globaluni157.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-158",
@@ -3837,7 +4155,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni158.edu/",
     "applicationUrl": "https://apply.globaluni158.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-159",
@@ -3861,7 +4181,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni159.edu/",
     "applicationUrl": "https://apply.globaluni159.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-160",
@@ -3885,7 +4207,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni160.edu/",
     "applicationUrl": "https://apply.globaluni160.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-161",
@@ -3909,7 +4233,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni161.edu/",
     "applicationUrl": "https://apply.globaluni161.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-162",
@@ -3933,7 +4259,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni162.edu/",
     "applicationUrl": "https://apply.globaluni162.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-163",
@@ -3957,7 +4285,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni163.edu/",
     "applicationUrl": "https://apply.globaluni163.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-164",
@@ -3981,7 +4311,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni164.edu/",
     "applicationUrl": "https://apply.globaluni164.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-165",
@@ -4005,7 +4337,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni165.edu/",
     "applicationUrl": "https://apply.globaluni165.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-166",
@@ -4029,7 +4363,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni166.edu/",
     "applicationUrl": "https://apply.globaluni166.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-167",
@@ -4053,7 +4389,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni167.edu/",
     "applicationUrl": "https://apply.globaluni167.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-168",
@@ -4077,7 +4415,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni168.edu/",
     "applicationUrl": "https://apply.globaluni168.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-169",
@@ -4101,7 +4441,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni169.edu/",
     "applicationUrl": "https://apply.globaluni169.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-170",
@@ -4125,7 +4467,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni170.edu/",
     "applicationUrl": "https://apply.globaluni170.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-171",
@@ -4149,7 +4493,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni171.edu/",
     "applicationUrl": "https://apply.globaluni171.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-172",
@@ -4173,7 +4519,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni172.edu/",
     "applicationUrl": "https://apply.globaluni172.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-173",
@@ -4197,7 +4545,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni173.edu/",
     "applicationUrl": "https://apply.globaluni173.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-174",
@@ -4221,7 +4571,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni174.edu/",
     "applicationUrl": "https://apply.globaluni174.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-175",
@@ -4245,7 +4597,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni175.edu/",
     "applicationUrl": "https://apply.globaluni175.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-176",
@@ -4269,7 +4623,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni176.edu/",
     "applicationUrl": "https://apply.globaluni176.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-177",
@@ -4293,7 +4649,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni177.edu/",
     "applicationUrl": "https://apply.globaluni177.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-178",
@@ -4317,7 +4675,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni178.edu/",
     "applicationUrl": "https://apply.globaluni178.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-179",
@@ -4341,7 +4701,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni179.edu/",
     "applicationUrl": "https://apply.globaluni179.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-180",
@@ -4365,7 +4727,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni180.edu/",
     "applicationUrl": "https://apply.globaluni180.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-181",
@@ -4389,7 +4753,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni181.edu/",
     "applicationUrl": "https://apply.globaluni181.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-182",
@@ -4413,7 +4779,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni182.edu/",
     "applicationUrl": "https://apply.globaluni182.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-183",
@@ -4437,7 +4805,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni183.edu/",
     "applicationUrl": "https://apply.globaluni183.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-184",
@@ -4461,7 +4831,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni184.edu/",
     "applicationUrl": "https://apply.globaluni184.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-185",
@@ -4485,7 +4857,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni185.edu/",
     "applicationUrl": "https://apply.globaluni185.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-186",
@@ -4509,7 +4883,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni186.edu/",
     "applicationUrl": "https://apply.globaluni186.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-187",
@@ -4533,7 +4909,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni187.edu/",
     "applicationUrl": "https://apply.globaluni187.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-188",
@@ -4557,7 +4935,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni188.edu/",
     "applicationUrl": "https://apply.globaluni188.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-189",
@@ -4581,7 +4961,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni189.edu/",
     "applicationUrl": "https://apply.globaluni189.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-190",
@@ -4605,7 +4987,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni190.edu/",
     "applicationUrl": "https://apply.globaluni190.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-191",
@@ -4629,7 +5013,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni191.edu/",
     "applicationUrl": "https://apply.globaluni191.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-192",
@@ -4653,7 +5039,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni192.edu/",
     "applicationUrl": "https://apply.globaluni192.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-193",
@@ -4677,7 +5065,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni193.edu/",
     "applicationUrl": "https://apply.globaluni193.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-194",
@@ -4701,7 +5091,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni194.edu/",
     "applicationUrl": "https://apply.globaluni194.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-195",
@@ -4725,7 +5117,9 @@
     "hasOnCampusHousing": false,
     "website": "https://www.globaluni195.edu/",
     "applicationUrl": "https://apply.globaluni195.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-196",
@@ -4749,7 +5143,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni196.edu/",
     "applicationUrl": "https://apply.globaluni196.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-197",
@@ -4773,7 +5169,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni197.edu/",
     "applicationUrl": "https://apply.globaluni197.edu/",
-    "region": "North America"
+    "region": "North America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-198",
@@ -4797,7 +5195,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni198.edu/",
     "applicationUrl": "https://apply.globaluni198.edu/",
-    "region": "Europe"
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-199",
@@ -4821,7 +5221,9 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni199.edu/",
     "applicationUrl": "https://apply.globaluni199.edu/",
-    "region": "Asia"
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   },
   {
     "id": "uni-200",
@@ -4845,6 +5247,1232 @@
     "hasOnCampusHousing": true,
     "website": "https://www.globaluni200.edu/",
     "applicationUrl": "https://apply.globaluni200.edu/",
-    "region": "Oceania"
+    "region": "Oceania",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-italy",
+    "name": "University of Bologna",
+    "country": "Italy",
+    "type": "public",
+    "ranking": 225,
+    "acceptanceRate": "48.1%",
+    "averageGpa": 3.59,
+    "tuitionMin": 7008,
+    "tuitionMax": 18855,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Bologna",
+    "hasOnCampusHousing": false,
+    "website": "https://www.unibo.it/",
+    "applicationUrl": "https://www.unibo.it/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-spain",
+    "name": "University of Barcelona",
+    "country": "Spain",
+    "type": "public",
+    "ranking": 230,
+    "acceptanceRate": "40.6%",
+    "averageGpa": 3.65,
+    "tuitionMin": 5354,
+    "tuitionMax": 24221,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Barcelona",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ub.edu/",
+    "applicationUrl": "https://www.ub.edu/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-netherlands",
+    "name": "University of Amsterdam",
+    "country": "Netherlands",
+    "type": "public",
+    "ranking": 235,
+    "acceptanceRate": "49.3%",
+    "averageGpa": 3.43,
+    "tuitionMin": 6738,
+    "tuitionMax": 17426,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Amsterdam",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uva.nl/",
+    "applicationUrl": "https://www.uva.nl/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-sweden",
+    "name": "KTH Royal Institute of Technology",
+    "country": "Sweden",
+    "type": "public",
+    "ranking": 245,
+    "acceptanceRate": "29.9%",
+    "averageGpa": 3.5,
+    "tuitionMin": 9437,
+    "tuitionMax": 15524,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Stockholm",
+    "hasOnCampusHousing": false,
+    "website": "https://www.kth.se/",
+    "applicationUrl": "https://www.kth.se/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-norway",
+    "name": "University of Oslo",
+    "country": "Norway",
+    "type": "public",
+    "ranking": 250,
+    "acceptanceRate": "39.2%",
+    "averageGpa": 3.65,
+    "tuitionMin": 9546,
+    "tuitionMax": 15929,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Oslo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uio.no/",
+    "applicationUrl": "https://www.uio.no/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-denmark",
+    "name": "University of Copenhagen",
+    "country": "Denmark",
+    "type": "public",
+    "ranking": 255,
+    "acceptanceRate": "34.4%",
+    "averageGpa": 3.16,
+    "tuitionMin": 7660,
+    "tuitionMax": 25137,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Copenhagen",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ku.dk/",
+    "applicationUrl": "https://www.ku.dk/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-finland",
+    "name": "University of Helsinki",
+    "country": "Finland",
+    "type": "public",
+    "ranking": 260,
+    "acceptanceRate": "50.1%",
+    "averageGpa": 3.16,
+    "tuitionMin": 11759,
+    "tuitionMax": 19653,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Helsinki",
+    "hasOnCampusHousing": true,
+    "website": "https://www.helsinki.fi/",
+    "applicationUrl": "https://www.helsinki.fi/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-belgium",
+    "name": "KU Leuven",
+    "country": "Belgium",
+    "type": "public",
+    "ranking": 265,
+    "acceptanceRate": "33.4%",
+    "averageGpa": 3.5,
+    "tuitionMin": 11541,
+    "tuitionMax": 19494,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Leuven",
+    "hasOnCampusHousing": true,
+    "website": "https://www.kuleuven.be/",
+    "applicationUrl": "https://www.kuleuven.be/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-austria",
+    "name": "University of Vienna",
+    "country": "Austria",
+    "type": "public",
+    "ranking": 270,
+    "acceptanceRate": "40.1%",
+    "averageGpa": 3.21,
+    "tuitionMin": 9864,
+    "tuitionMax": 21233,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Vienna",
+    "hasOnCampusHousing": true,
+    "website": "https://www.univie.ac.at/",
+    "applicationUrl": "https://www.univie.ac.at/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-ireland",
+    "name": "Trinity College Dublin",
+    "country": "Ireland",
+    "type": "public",
+    "ranking": 275,
+    "acceptanceRate": "37.7%",
+    "averageGpa": 3.72,
+    "tuitionMin": 11011,
+    "tuitionMax": 17667,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Dublin",
+    "hasOnCampusHousing": true,
+    "website": "https://www.tcd.ie/",
+    "applicationUrl": "https://www.tcd.ie/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-newzealand",
+    "name": "University of Auckland",
+    "country": "New Zealand",
+    "type": "public",
+    "ranking": 285,
+    "acceptanceRate": "50.7%",
+    "averageGpa": 3.48,
+    "tuitionMin": 6990,
+    "tuitionMax": 17542,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Auckland",
+    "hasOnCampusHousing": true,
+    "website": "https://www.auckland.ac.nz/",
+    "applicationUrl": "https://www.auckland.ac.nz/apply",
+    "region": "Asia-Pacific",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-southkorea",
+    "name": "Seoul National University",
+    "country": "South Korea",
+    "type": "public",
+    "ranking": 295,
+    "acceptanceRate": "45.5%",
+    "averageGpa": 3.75,
+    "tuitionMin": 6887,
+    "tuitionMax": 24487,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Seoul",
+    "hasOnCampusHousing": true,
+    "website": "https://www.snu.ac.kr/",
+    "applicationUrl": "https://www.snu.ac.kr/apply",
+    "region": "Asia-Pacific",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-china",
+    "name": "Tsinghua University",
+    "country": "China",
+    "type": "public",
+    "ranking": 300,
+    "acceptanceRate": "49.4%",
+    "averageGpa": 3.58,
+    "tuitionMin": 5993,
+    "tuitionMax": 28844,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Beijing",
+    "hasOnCampusHousing": true,
+    "website": "https://www.tsinghua.edu.cn/",
+    "applicationUrl": "https://www.tsinghua.edu.cn/apply",
+    "region": "Asia-Pacific",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-hongkong",
+    "name": "University of Hong Kong",
+    "country": "Hong Kong",
+    "type": "public",
+    "ranking": 310,
+    "acceptanceRate": "59.0%",
+    "averageGpa": 3.23,
+    "tuitionMin": 10316,
+    "tuitionMax": 25804,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Hong Kong",
+    "hasOnCampusHousing": true,
+    "website": "https://www.hku.hk/",
+    "applicationUrl": "https://www.hku.hk/apply",
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-india",
+    "name": "Indian Institute of Technology Bombay",
+    "country": "India",
+    "type": "public",
+    "ranking": 315,
+    "acceptanceRate": "47.2%",
+    "averageGpa": 3.42,
+    "tuitionMin": 8636,
+    "tuitionMax": 28498,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Mumbai",
+    "hasOnCampusHousing": true,
+    "website": "https://www.iitb.ac.in/",
+    "applicationUrl": "https://www.iitb.ac.in/apply",
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-bangladesh",
+    "name": "University of Dhaka",
+    "country": "Bangladesh",
+    "type": "public",
+    "ranking": 320,
+    "acceptanceRate": "46.3%",
+    "averageGpa": 3.41,
+    "tuitionMin": 9331,
+    "tuitionMax": 27175,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Dhaka",
+    "hasOnCampusHousing": true,
+    "website": "https://www.du.ac.bd/",
+    "applicationUrl": "https://www.du.ac.bd/apply",
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-pakistan",
+    "name": "Quaid-i-Azam University",
+    "country": "Pakistan",
+    "type": "public",
+    "ranking": 325,
+    "acceptanceRate": "29.0%",
+    "averageGpa": 3.09,
+    "tuitionMin": 9458,
+    "tuitionMax": 19363,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Islamabad",
+    "hasOnCampusHousing": true,
+    "website": "https://qau.edu.pk/",
+    "applicationUrl": "https://qau.edu.pk/apply",
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-srilanka",
+    "name": "University of Colombo",
+    "country": "Sri Lanka",
+    "type": "public",
+    "ranking": 330,
+    "acceptanceRate": "38.5%",
+    "averageGpa": 3.36,
+    "tuitionMin": 8857,
+    "tuitionMax": 24293,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Colombo",
+    "hasOnCampusHousing": true,
+    "website": "https://cmb.ac.lk/",
+    "applicationUrl": "https://cmb.ac.lk/apply",
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-nepal",
+    "name": "Tribhuvan University",
+    "country": "Nepal",
+    "type": "public",
+    "ranking": 335,
+    "acceptanceRate": "53.5%",
+    "averageGpa": 3.66,
+    "tuitionMin": 9100,
+    "tuitionMax": 29040,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Kathmandu",
+    "hasOnCampusHousing": true,
+    "website": "https://tribhuvan-university.edu.np/",
+    "applicationUrl": "https://tribhuvan-university.edu.np/apply",
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-brazil",
+    "name": "University of São Paulo",
+    "country": "Brazil",
+    "type": "public",
+    "ranking": 340,
+    "acceptanceRate": "29.5%",
+    "averageGpa": 3.66,
+    "tuitionMin": 6455,
+    "tuitionMax": 23227,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "São Paulo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.usp.br/",
+    "applicationUrl": "https://www.usp.br/apply",
+    "region": "Latin America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-argentina",
+    "name": "University of Buenos Aires",
+    "country": "Argentina",
+    "type": "public",
+    "ranking": 345,
+    "acceptanceRate": "28.5%",
+    "averageGpa": 3.75,
+    "tuitionMin": 9775,
+    "tuitionMax": 16553,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Buenos Aires",
+    "hasOnCampusHousing": false,
+    "website": "https://www.uba.ar/",
+    "applicationUrl": "https://www.uba.ar/apply",
+    "region": "Latin America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-chile",
+    "name": "Pontifical Catholic University of Chile",
+    "country": "Chile",
+    "type": "private",
+    "ranking": 350,
+    "acceptanceRate": "32.0%",
+    "averageGpa": 3.26,
+    "tuitionMin": 11842,
+    "tuitionMax": 22011,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Santiago",
+    "hasOnCampusHousing": false,
+    "website": "https://www.uc.cl/",
+    "applicationUrl": "https://www.uc.cl/apply",
+    "region": "Latin America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-colombia",
+    "name": "National University of Colombia",
+    "country": "Colombia",
+    "type": "public",
+    "ranking": 355,
+    "acceptanceRate": "36.3%",
+    "averageGpa": 3.03,
+    "tuitionMin": 9493,
+    "tuitionMax": 27696,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Bogotá",
+    "hasOnCampusHousing": false,
+    "website": "https://unal.edu.co/",
+    "applicationUrl": "https://unal.edu.co/apply",
+    "region": "Latin America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-mexico",
+    "name": "National Autonomous University of Mexico",
+    "country": "Mexico",
+    "type": "public",
+    "ranking": 360,
+    "acceptanceRate": "36.9%",
+    "averageGpa": 3.61,
+    "tuitionMin": 12513,
+    "tuitionMax": 16441,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Mexico City",
+    "hasOnCampusHousing": false,
+    "website": "https://www.unam.mx/",
+    "applicationUrl": "https://www.unam.mx/apply",
+    "region": "Latin America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-peru",
+    "name": "National University of San Marcos",
+    "country": "Peru",
+    "type": "public",
+    "ranking": 365,
+    "acceptanceRate": "27.2%",
+    "averageGpa": 3.64,
+    "tuitionMin": 12861,
+    "tuitionMax": 26747,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Lima",
+    "hasOnCampusHousing": false,
+    "website": "https://unmsm.edu.pe/",
+    "applicationUrl": "https://unmsm.edu.pe/apply",
+    "region": "Latin America",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-southafrica",
+    "name": "University of Cape Town",
+    "country": "South Africa",
+    "type": "public",
+    "ranking": 370,
+    "acceptanceRate": "46.0%",
+    "averageGpa": 3.48,
+    "tuitionMin": 9995,
+    "tuitionMax": 26417,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Cape Town",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uct.ac.za/",
+    "applicationUrl": "https://www.uct.ac.za/apply",
+    "region": "Middle East & Africa",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-egypt",
+    "name": "The American University in Cairo",
+    "country": "Egypt",
+    "type": "private",
+    "ranking": 375,
+    "acceptanceRate": "46.8%",
+    "averageGpa": 3.64,
+    "tuitionMin": 11772,
+    "tuitionMax": 18147,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Cairo",
+    "hasOnCampusHousing": true,
+    "website": "https://www.aucegypt.edu/",
+    "applicationUrl": "https://www.aucegypt.edu/apply",
+    "region": "Middle East & Africa",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-kenya",
+    "name": "University of Nairobi",
+    "country": "Kenya",
+    "type": "public",
+    "ranking": 380,
+    "acceptanceRate": "25.6%",
+    "averageGpa": 3.14,
+    "tuitionMin": 12681,
+    "tuitionMax": 18241,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Nairobi",
+    "hasOnCampusHousing": true,
+    "website": "https://uonbi.ac.ke/",
+    "applicationUrl": "https://uonbi.ac.ke/apply",
+    "region": "Middle East & Africa",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-nigeria",
+    "name": "University of Ibadan",
+    "country": "Nigeria",
+    "type": "public",
+    "ranking": 385,
+    "acceptanceRate": "47.3%",
+    "averageGpa": 3.46,
+    "tuitionMin": 9020,
+    "tuitionMax": 27658,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Ibadan",
+    "hasOnCampusHousing": true,
+    "website": "https://ui.edu.ng/",
+    "applicationUrl": "https://ui.edu.ng/apply",
+    "region": "Middle East & Africa",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-ghana",
+    "name": "University of Ghana",
+    "country": "Ghana",
+    "type": "public",
+    "ranking": 390,
+    "acceptanceRate": "35.7%",
+    "averageGpa": 3.8,
+    "tuitionMin": 7991,
+    "tuitionMax": 18111,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Accra",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ug.edu.gh/",
+    "applicationUrl": "https://www.ug.edu.gh/apply",
+    "region": "Middle East & Africa",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-morocco",
+    "name": "Mohammed V University",
+    "country": "Morocco",
+    "type": "public",
+    "ranking": 395,
+    "acceptanceRate": "48.9%",
+    "averageGpa": 3.17,
+    "tuitionMin": 10540,
+    "tuitionMax": 28706,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Rabat",
+    "hasOnCampusHousing": true,
+    "website": "https://www.um5.ac.ma/",
+    "applicationUrl": "https://www.um5.ac.ma/apply",
+    "region": "Middle East & Africa",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-saudiarabia",
+    "name": "King Abdulaziz University",
+    "country": "Saudi Arabia",
+    "type": "public",
+    "ranking": 400,
+    "acceptanceRate": "56.5%",
+    "averageGpa": 3.52,
+    "tuitionMin": 11536,
+    "tuitionMax": 18251,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Jeddah",
+    "hasOnCampusHousing": false,
+    "website": "https://www.kau.edu.sa/",
+    "applicationUrl": "https://www.kau.edu.sa/apply",
+    "region": "Middle East & Africa",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-uae",
+    "name": "United Arab Emirates University",
+    "country": "UAE",
+    "type": "public",
+    "ranking": 405,
+    "acceptanceRate": "29.3%",
+    "averageGpa": 3.51,
+    "tuitionMin": 9309,
+    "tuitionMax": 28108,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Al Ain",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uaeu.ac.ae/",
+    "applicationUrl": "https://www.uaeu.ac.ae/apply",
+    "region": "Middle East & Africa",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-qatar",
+    "name": "Qatar University",
+    "country": "Qatar",
+    "type": "public",
+    "ranking": 410,
+    "acceptanceRate": "43.9%",
+    "averageGpa": 3.64,
+    "tuitionMin": 11428,
+    "tuitionMax": 18077,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Doha",
+    "hasOnCampusHousing": true,
+    "website": "https://www.qu.edu.qa/",
+    "applicationUrl": "https://www.qu.edu.qa/apply",
+    "region": "Middle East & Africa",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-turkey",
+    "name": "Middle East Technical University",
+    "country": "Turkey",
+    "type": "public",
+    "ranking": 415,
+    "acceptanceRate": "58.4%",
+    "averageGpa": 3.77,
+    "tuitionMin": 12525,
+    "tuitionMax": 23095,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Ankara",
+    "hasOnCampusHousing": true,
+    "website": "https://www.metu.edu.tr/",
+    "applicationUrl": "https://www.metu.edu.tr/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-israel",
+    "name": "Hebrew University of Jerusalem",
+    "country": "Israel",
+    "type": "public",
+    "ranking": 420,
+    "acceptanceRate": "50.8%",
+    "averageGpa": 3.18,
+    "tuitionMin": 6314,
+    "tuitionMax": 26734,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Jerusalem",
+    "hasOnCampusHousing": true,
+    "website": "https://new.huji.ac.il/",
+    "applicationUrl": "https://new.huji.ac.il/apply",
+    "region": "Middle East & Africa",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-greece",
+    "name": "National and Kapodistrian University of Athens",
+    "country": "Greece",
+    "type": "public",
+    "ranking": 425,
+    "acceptanceRate": "53.5%",
+    "averageGpa": 3.05,
+    "tuitionMin": 12605,
+    "tuitionMax": 22704,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Athens",
+    "hasOnCampusHousing": true,
+    "website": "https://en.uoa.gr/",
+    "applicationUrl": "https://en.uoa.gr/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-portugal",
+    "name": "University of Lisbon",
+    "country": "Portugal",
+    "type": "public",
+    "ranking": 430,
+    "acceptanceRate": "34.2%",
+    "averageGpa": 3.6,
+    "tuitionMin": 7434,
+    "tuitionMax": 19148,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Lisbon",
+    "hasOnCampusHousing": false,
+    "website": "https://www.ulisboa.pt/",
+    "applicationUrl": "https://www.ulisboa.pt/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-poland",
+    "name": "University of Warsaw",
+    "country": "Poland",
+    "type": "public",
+    "ranking": 435,
+    "acceptanceRate": "58.3%",
+    "averageGpa": 3.52,
+    "tuitionMin": 8719,
+    "tuitionMax": 17895,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Warsaw",
+    "hasOnCampusHousing": true,
+    "website": "https://www.uw.edu.pl/",
+    "applicationUrl": "https://www.uw.edu.pl/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-czechrepublic",
+    "name": "Charles University",
+    "country": "Czech Republic",
+    "type": "public",
+    "ranking": 440,
+    "acceptanceRate": "49.6%",
+    "averageGpa": 3.74,
+    "tuitionMin": 6711,
+    "tuitionMax": 19841,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Prague",
+    "hasOnCampusHousing": false,
+    "website": "https://cuni.cz/",
+    "applicationUrl": "https://cuni.cz/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-hungary",
+    "name": "Eötvös Loránd University",
+    "country": "Hungary",
+    "type": "public",
+    "ranking": 445,
+    "acceptanceRate": "47.6%",
+    "averageGpa": 3.34,
+    "tuitionMin": 6208,
+    "tuitionMax": 24119,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Budapest",
+    "hasOnCampusHousing": true,
+    "website": "https://www.elte.hu/",
+    "applicationUrl": "https://www.elte.hu/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-ukraine",
+    "name": "Taras Shevchenko National University of Kyiv",
+    "country": "Ukraine",
+    "type": "public",
+    "ranking": 450,
+    "acceptanceRate": "51.9%",
+    "averageGpa": 3.04,
+    "tuitionMin": 9815,
+    "tuitionMax": 25942,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Kyiv",
+    "hasOnCampusHousing": false,
+    "website": "http://www.univ.kiev.ua/",
+    "applicationUrl": "http://www.univ.kiev.ua/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-romania",
+    "name": "University of Bucharest",
+    "country": "Romania",
+    "type": "public",
+    "ranking": 455,
+    "acceptanceRate": "50.7%",
+    "averageGpa": 3.18,
+    "tuitionMin": 9068,
+    "tuitionMax": 19510,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Bucharest",
+    "hasOnCampusHousing": true,
+    "website": "https://unibuc.ro/",
+    "applicationUrl": "https://unibuc.ro/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-thailand",
+    "name": "Chulalongkorn University",
+    "country": "Thailand",
+    "type": "public",
+    "ranking": 460,
+    "acceptanceRate": "59.5%",
+    "averageGpa": 3.14,
+    "tuitionMin": 5001,
+    "tuitionMax": 15827,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Bangkok",
+    "hasOnCampusHousing": true,
+    "website": "https://www.chula.ac.th/",
+    "applicationUrl": "https://www.chula.ac.th/apply",
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-malaysia",
+    "name": "Universiti Malaya",
+    "country": "Malaysia",
+    "type": "public",
+    "ranking": 465,
+    "acceptanceRate": "38.9%",
+    "averageGpa": 3.66,
+    "tuitionMin": 6704,
+    "tuitionMax": 16946,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Kuala Lumpur",
+    "hasOnCampusHousing": true,
+    "website": "https://www.um.edu.my/",
+    "applicationUrl": "https://www.um.edu.my/apply",
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-vietnam",
+    "name": "Vietnam National University, Hanoi",
+    "country": "Vietnam",
+    "type": "public",
+    "ranking": 470,
+    "acceptanceRate": "40.4%",
+    "averageGpa": 3.22,
+    "tuitionMin": 11616,
+    "tuitionMax": 16539,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Hanoi",
+    "hasOnCampusHousing": true,
+    "website": "https://vnu.edu.vn/",
+    "applicationUrl": "https://vnu.edu.vn/apply",
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-indonesia",
+    "name": "University of Indonesia",
+    "country": "Indonesia",
+    "type": "public",
+    "ranking": 475,
+    "acceptanceRate": "55.2%",
+    "averageGpa": 3.2,
+    "tuitionMin": 5825,
+    "tuitionMax": 17000,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Jakarta",
+    "hasOnCampusHousing": true,
+    "website": "https://www.ui.ac.id/",
+    "applicationUrl": "https://www.ui.ac.id/apply",
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-philippines",
+    "name": "University of the Philippines",
+    "country": "Philippines",
+    "type": "public",
+    "ranking": 480,
+    "acceptanceRate": "36.6%",
+    "averageGpa": 3.75,
+    "tuitionMin": 6868,
+    "tuitionMax": 22676,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Quezon City",
+    "hasOnCampusHousing": false,
+    "website": "https://up.edu.ph/",
+    "applicationUrl": "https://up.edu.ph/apply",
+    "region": "Asia",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-iceland",
+    "name": "University of Iceland",
+    "country": "Iceland",
+    "type": "public",
+    "ranking": 485,
+    "acceptanceRate": "51.8%",
+    "averageGpa": 3.43,
+    "tuitionMin": 9502,
+    "tuitionMax": 20712,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Reykjavik",
+    "hasOnCampusHousing": true,
+    "website": "https://english.hi.is/",
+    "applicationUrl": "https://english.hi.is/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-croatia",
+    "name": "University of Zagreb",
+    "country": "Croatia",
+    "type": "public",
+    "ranking": 490,
+    "acceptanceRate": "40.9%",
+    "averageGpa": 3.12,
+    "tuitionMin": 7509,
+    "tuitionMax": 19199,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Zagreb",
+    "hasOnCampusHousing": true,
+    "website": "http://www.unizg.hr/",
+    "applicationUrl": "http://www.unizg.hr/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "uni-gen-estonia",
+    "name": "University of Tartu",
+    "country": "Estonia",
+    "type": "public",
+    "ranking": 495,
+    "acceptanceRate": "38.3%",
+    "averageGpa": 3.71,
+    "tuitionMin": 7382,
+    "tuitionMax": 19236,
+    "popularMajors": [
+      "Computer Science",
+      "Business Administration",
+      "Engineering"
+    ],
+    "offeredScholarships": [],
+    "city": "Tartu",
+    "hasOnCampusHousing": true,
+    "website": "https://ut.ee/",
+    "applicationUrl": "https://ut.ee/apply",
+    "region": "Europe",
+    "lastVerified": "2026-07-01",
+    "source": "official"
   }
 ]

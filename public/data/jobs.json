@@ -1,0 +1,1322 @@
+[
+  {
+    "id": "job-unitedstates",
+    "country": "United States",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 20,
+    "currency": "USD",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-canada",
+    "country": "Canada",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-unitedkingdom",
+    "country": "United Kingdom",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-germany",
+    "country": "Germany",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-france",
+    "country": "France",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-italy",
+    "country": "Italy",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-spain",
+    "country": "Spain",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-netherlands",
+    "country": "Netherlands",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-switzerland",
+    "country": "Switzerland",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 20,
+    "currency": "USD",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-sweden",
+    "country": "Sweden",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-norway",
+    "country": "Norway",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 20,
+    "currency": "USD",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-denmark",
+    "country": "Denmark",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 20,
+    "currency": "USD",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-finland",
+    "country": "Finland",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-belgium",
+    "country": "Belgium",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-austria",
+    "country": "Austria",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-ireland",
+    "country": "Ireland",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-australia",
+    "country": "Australia",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-newzealand",
+    "country": "New Zealand",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-japan",
+    "country": "Japan",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-southkorea",
+    "country": "South Korea",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-china",
+    "country": "China",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-singapore",
+    "country": "Singapore",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 20,
+    "currency": "USD",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-hongkong",
+    "country": "Hong Kong",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 20,
+    "currency": "USD",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-india",
+    "country": "India",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 353,
+    "currency": "BDT",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-bangladesh",
+    "country": "Bangladesh",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 353,
+    "currency": "BDT",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-pakistan",
+    "country": "Pakistan",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 353,
+    "currency": "BDT",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-srilanka",
+    "country": "Sri Lanka",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 353,
+    "currency": "BDT",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-nepal",
+    "country": "Nepal",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 353,
+    "currency": "BDT",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-brazil",
+    "country": "Brazil",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-argentina",
+    "country": "Argentina",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-chile",
+    "country": "Chile",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-colombia",
+    "country": "Colombia",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-mexico",
+    "country": "Mexico",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-peru",
+    "country": "Peru",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-southafrica",
+    "country": "South Africa",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-egypt",
+    "country": "Egypt",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-kenya",
+    "country": "Kenya",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 353,
+    "currency": "BDT",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-nigeria",
+    "country": "Nigeria",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 353,
+    "currency": "BDT",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-ghana",
+    "country": "Ghana",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 353,
+    "currency": "BDT",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-morocco",
+    "country": "Morocco",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-saudiarabia",
+    "country": "Saudi Arabia",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-uae",
+    "country": "UAE",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-qatar",
+    "country": "Qatar",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 20,
+    "currency": "USD",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-turkey",
+    "country": "Turkey",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-israel",
+    "country": "Israel",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 14,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-greece",
+    "country": "Greece",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-portugal",
+    "country": "Portugal",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-poland",
+    "country": "Poland",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-czechrepublic",
+    "country": "Czech Republic",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-hungary",
+    "country": "Hungary",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-ukraine",
+    "country": "Ukraine",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-romania",
+    "country": "Romania",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-thailand",
+    "country": "Thailand",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-malaysia",
+    "country": "Malaysia",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-vietnam",
+    "country": "Vietnam",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-indonesia",
+    "country": "Indonesia",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-philippines",
+    "country": "Philippines",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 501,
+    "currency": "INR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-iceland",
+    "country": "Iceland",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 20,
+    "currency": "USD",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week on-campus without permit.",
+      "Off-campus requires specific work authorization under study visa.",
+      "Must remain registered as a full-time scholar.",
+      "Allowed to work full-time during official summer/winter breaks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-croatia",
+    "country": "Croatia",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  },
+  {
+    "id": "job-estonia",
+    "country": "Estonia",
+    "maxWeeklyHours": 20,
+    "averageHourlyWage": 10,
+    "currency": "EUR",
+    "guidelineRules": [
+      "Allowed to work up to 20 hours per week during semesters.",
+      "Up to 140 full days or 280 half days per year.",
+      "No work permit needed for EU citizens.",
+      "Non-EU students require visa stamp checks."
+    ],
+    "popularIndustries": [
+      "Retail & Supermarkets",
+      "Research/Teaching Assistant",
+      "Barista & Hospitality",
+      "Academic Tutoring",
+      "IT Support"
+    ],
+    "lastVerified": "2026-07-01",
+    "source": "official"
+  }
+]

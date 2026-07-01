@@ -4,6 +4,7 @@ import { Profile, Scholarship, University, AppNotification } from '../types';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { useAuth } from '../context/AuthContext';
 import { dispatchProfileUpdate } from '../utils/events';
+import StreakLog from './StreakLog';
 
 export default function OverviewRecommendationsView({ onNavigate }: { onNavigate: (view: string) => void }) {
   const { authorizedFetch, profile: authProfile } = useAuth();
@@ -185,6 +186,9 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
               {hasClaimedToday ? "CLAIMED 💎" : "CLAIM +15 XP"}
             </button>
           </div>
+
+          {/* Streak Log Component */}
+          <StreakLog />
 
           {/* Core Matching Scholarship recommendations */}
           <div className="bg-[#4c4c4c] border-4 border-black p-5 [box-shadow:inset_-4px_-4px_0_#2b2b2b,inset_4px_4px_0_#777] rounded-none space-y-4">

@@ -3,10 +3,13 @@ import { Sparkles, MessageSquare, Send, Award, Target, HelpCircle, CheckCircle, 
 import ReactMarkdown from 'react-markdown';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
+import ScholarshipAdvisor from './AIAdvisor/ScholarshipAdvisor';
+import UniversityAdvisor from './AIAdvisor/UniversityAdvisor';
+import BudgetAdvisor from './AIAdvisor/BudgetAdvisor';
 
 export default function CounsellingView() {
   const { authorizedFetch, rewardPoints, profile, user } = useAuth();
-  const [activeSubTab, setActiveSubTab] = useState<'copilot' | 'interview'>('copilot');
+  const [activeSubTab, setActiveSubTab] = useState<'copilot' | 'interview' | 'scholarship' | 'university' | 'budget'>('copilot');
 
   // Copilot (The Wise Librarian) states
   const [chatInput, setChatInput] = useState('');
@@ -161,26 +164,56 @@ export default function CounsellingView() {
     <div className="space-y-6" id="scholarpath-counselling-v2">
       
       {/* Visual Subtabs Nav */}
-      <div className="flex bg-[#141414] border-4 border-black p-1 rounded-none gap-2">
+      <div className="flex flex-wrap md:flex-nowrap bg-[#141414] border-4 border-black p-1 rounded-none gap-2">
         <button
           onClick={() => { setActiveSubTab('copilot'); playClickSound(); }}
-          className={`flex-1 text-center py-2.5 cursor-pointer font-press text-[9px] uppercase tracking-wider transition-all rounded-none ${
+          className={`flex-1 text-center py-2.5 cursor-pointer font-press text-[9px] uppercase tracking-wider transition-all rounded-none min-w-[120px] ${
             activeSubTab === 'copilot'
               ? 'bg-[#ffff55] text-black font-semibold'
               : 'text-stone-400 hover:text-stone-200'
           }`}
         >
-          🎓 Study AI Copilot
+          🎓 AI Copilot
         </button>
         <button
           onClick={() => { setActiveSubTab('interview'); playClickSound(); }}
-          className={`flex-1 text-center py-2.5 cursor-pointer font-press text-[9px] uppercase tracking-wider transition-all rounded-none ${
+          className={`flex-1 text-center py-2.5 cursor-pointer font-press text-[9px] uppercase tracking-wider transition-all rounded-none min-w-[120px] ${
             activeSubTab === 'interview'
               ? 'bg-[#ffaa00] text-black font-semibold'
               : 'text-stone-400 hover:text-stone-200'
           }`}
         >
-          🎙️ Mock Panel Trainer
+          🎙️ Panel Trainer
+        </button>
+        <button
+          onClick={() => { setActiveSubTab('scholarship'); playClickSound(); }}
+          className={`flex-1 text-center py-2.5 cursor-pointer font-press text-[9px] uppercase tracking-wider transition-all rounded-none min-w-[120px] ${
+            activeSubTab === 'scholarship'
+              ? 'bg-[#ffff55] text-black font-semibold'
+              : 'text-stone-400 hover:text-stone-200'
+          }`}
+        >
+          🏆 Scholarship AI
+        </button>
+        <button
+          onClick={() => { setActiveSubTab('university'); playClickSound(); }}
+          className={`flex-1 text-center py-2.5 cursor-pointer font-press text-[9px] uppercase tracking-wider transition-all rounded-none min-w-[120px] ${
+            activeSubTab === 'university'
+              ? 'bg-[#55ffff] text-black font-semibold'
+              : 'text-stone-400 hover:text-stone-200'
+          }`}
+        >
+          🏢 University AI
+        </button>
+        <button
+          onClick={() => { setActiveSubTab('budget'); playClickSound(); }}
+          className={`flex-1 text-center py-2.5 cursor-pointer font-press text-[9px] uppercase tracking-wider transition-all rounded-none min-w-[120px] ${
+            activeSubTab === 'budget'
+              ? 'bg-[#2ecc71] text-black font-semibold'
+              : 'text-stone-400 hover:text-stone-200'
+          }`}
+        >
+          💰 Budget AI
         </button>
       </div>
 
@@ -191,7 +224,7 @@ export default function CounsellingView() {
         </div>
       )}
 
-      {activeSubTab === 'copilot' ? (
+      {activeSubTab === 'copilot' && (
          /* Copilot View */
         <div className="bg-[#2c2c2c] border-4 border-black p-5 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555] rounded-none flex flex-col justify-between h-[550px]">
           <div className="border-b-2 border-black pb-3 flex justify-between items-center text-stone-100 flex-wrap gap-2">
@@ -200,6 +233,7 @@ export default function CounsellingView() {
             </h4>
             <div className="flex items-center gap-3">
               <button
+                type="button"
                 onClick={() => {
                   playClickSound();
                   if (confirm("Reset current admissions registry session history?")) {
@@ -207,7 +241,7 @@ export default function CounsellingView() {
                     setChatError(null);
                   }
                 }}
-                className="text-[9px] font-mono hover:text-[#ff5552] text-stone-400 bg-stone-90 \0 p-1 border border-stone-800 hover:border-[#ff5552] rounded-none"
+                className="text-[9px] font-mono hover:text-[#ff5552] text-stone-400 bg-stone-900 p-1 border border-stone-800 hover:border-[#ff5552] rounded-none"
               >
                 🧹 CLEAR SYSTEM LOGS
               </button>
@@ -246,6 +280,7 @@ export default function CounsellingView() {
                 <p className="font-bold uppercase tracking-wider mb-2">📡 REDSTONE CHANNEL FAILURE:</p>
                 <p className="mb-3 leading-relaxed">{chatError}</p>
                 <button
+                  type="button"
                   onClick={() => handleSendChat(undefined, lastUserMessage)}
                   className="mc-btn px-3 py-1.5 text-[9px] uppercase font-bold text-[#ffff55] bg-stone-900 hover:bg-stone-800 transition-all border-2 border-[#ffff55]"
                 >
@@ -275,9 +310,9 @@ export default function CounsellingView() {
             </button>
           </form>
         </div>
+      )}
 
-      ) : (
-
+      {activeSubTab === 'interview' && (
         /* Mock Panel Trainer View */
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           
@@ -342,9 +377,12 @@ export default function CounsellingView() {
               *Advisor tip: admissions reviews favor numerical credentials, joint ECTS workloads, and structured speaking guidelines!
             </p>
           </div>
-
         </div>
       )}
+
+      {activeSubTab === 'scholarship' && <ScholarshipAdvisor />}
+      {activeSubTab === 'university' && <UniversityAdvisor />}
+      {activeSubTab === 'budget' && <BudgetAdvisor />}
 
     </div>
   );
