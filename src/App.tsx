@@ -25,6 +25,8 @@ import AIAssistant from './components/AIAssistant';
 import CVBuilder from './components/CVBuilder';
 import BudgetPlanner from './components/BudgetPlanner';
 import PerformanceAnalyticsView from './components/PerformanceAnalyticsView';
+import CurrencySwitcher from './components/CurrencySwitcher';
+import AdvancedSearch from './components/AdvancedSearch';
 
 import LoginScreen from './components/LoginScreen';
 import { useAuth } from './context/AuthContext';
@@ -118,8 +120,25 @@ const getThemeStyling = (themeId: string) => {
 };
 
 export default function App() {
-  const { user, isLoggedIn, profile, authLoading, isGuest, logout, rewardPoints, refreshProfile, updateProfile } = useAuth();
+  const { user, isLoggedIn, profile: authProfile, authLoading, isGuest, logout, rewardPoints, refreshProfile, updateProfile } = useAuth();
   const { theme, themeMode, setThemeMode, currency, setCurrency } = useTheme();
+
+  const [profile, setProfile] = useState(authProfile);
+
+  useEffect(() => {
+    setProfile(authProfile);
+  }, [authProfile]);
+
+  useEffect(() => {
+    const handleProfileUpdated = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail) {
+        setProfile(customEvent.detail);
+      }
+    };
+    window.addEventListener('profile-updated', handleProfileUpdated);
+    return () => window.removeEventListener('profile-updated', handleProfileUpdated);
+  }, []);
 
   const [activeTab, setActiveTab] = useState('overview');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -180,6 +199,7 @@ export default function App() {
     { id: 'analytics', label: 'Performance Analytics', mcName: 'Golden Redstone Gauge', desc: 'Visualize academic GPA trends and quest completions', icon: TrendingUp, color: 'text-[#55ff55]' },
     { id: 'scholarships', label: 'Loot Registry', mcName: 'Enchanted Golden Apple', desc: 'Browse matched international fellowships & stipends', icon: GraduationCap, color: 'text-yellow-400' },
     { id: 'universities', label: 'Target Keeps', mcName: 'Golden Citadel Spire', desc: 'Browse entry GPA benchmarks for global institutions', icon: Building, color: 'text-sky-400' },
+    { id: 'search', label: 'Explorer Spyglass', mcName: 'Explorer Spyglass Tool', desc: 'High-precision cross-database query engine for loot and citadels', icon: Search, color: 'text-violet-400 font-bold' },
     { id: 'applications', label: 'Quest Book', mcName: 'Redstone Ledger Registry', desc: 'Manage your active application checkpoints and deadlines', icon: BookmarkCheck, color: 'text-red-400' },
     { id: 'simulator', label: 'Alchemist Lab', mcName: 'Admissions Cauldron Brew', desc: 'Forecast acceptances margins with custom parameters', icon: Calculator, color: 'text-indigo-400' },
     { id: 'writing', label: 'Scroll Vault', mcName: 'Golden Writing Quill', desc: 'Evaluate & draft professional Statement documents', icon: Save, color: 'text-cyan-400' },
@@ -200,11 +220,13 @@ export default function App() {
       case 'overview':
         return <OverviewRecommendationsView onNavigate={(view) => setActiveTab(view)} />;
       case 'analytics':
-        return <PerformanceAnalyticsView />;
+        return <PerformanceAnalyticsView onNavigate={handleTabChange} />;
       case 'scholarships':
         return <ScholarshipsView />;
       case 'universities':
         return <UniversitiesView />;
+      case 'search':
+        return <AdvancedSearch />;
       case 'applications':
         return <ApplicationsView />;
       case 'simulator':
@@ -392,25 +414,7 @@ export default function App() {
           <SyncStatusDrawer />
 
           {/* Global Currency Switcher Selector */}
-          <div className="flex items-center gap-1.5 bg-black/50 p-1.5 border-2 border-black rounded-none">
-            <span className="text-[8px] font-press text-[#2ecc71] px-1 select-none hidden xl:inline">VAL:</span>
-            <select
-              value={currency}
-              onChange={(e) => {
-                playClickSound();
-                setCurrency(e.target.value as any);
-              }}
-              className="bg-stone-850 text-stone-200 border border-stone-900 font-mono text-[9px] font-bold px-2 py-0.5 rounded-none focus:outline-none focus:border-[#2ecc71] uppercase cursor-pointer"
-            >
-              <option value="USD">💵 USD ($)</option>
-              <option value="EUR">💶 EUR (€)</option>
-              <option value="GBP">💷 GBP (£)</option>
-              <option value="BDT">৳ BDT (৳)</option>
-              <option value="CAD">🍁 CAD (C$)</option>
-              <option value="AUD">🐨 AUD (A$)</option>
-              <option value="INR">🪙 INR (₹)</option>
-            </select>
-          </div>
+          <CurrencySwitcher />
 
           {/* Working Theme Switcher Toggle (Light, Dark, Minecraft) */}
           <div className="flex items-center gap-1.5 bg-black/50 p-1.5 border-2 border-black rounded-none">

@@ -1185,14 +1185,59 @@ export default function ScholarshipsView() {
             {/* Action operations footer */}
             <div className="flex flex-col sm:flex-row gap-3 border-t-2 border-black pt-3.5">
               <a
-                href={modalAppLink}
+                href={(() => {
+                  const url = selectedSch.applicationUrl || selectedSch.officialWebsite;
+                  if (url && url !== '#' && !url.includes('placeholder') && !url.includes('scholarships.org')) {
+                    return url;
+                  } else {
+                    const nameQuery = selectedSch.name || "Scholarship";
+                    return `https://www.google.com/search?q=${encodeURIComponent(nameQuery + " apply official website")}`;
+                  }
+                })()}
                 target="_blank"
-                referrerPolicy="no-referrer"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 onClick={() => playClickSound()}
-                className="flex-1 bg-yellow-950 hover:bg-yellow-900 text-[#ffff55] border-2 border-black py-2.5 px-3 uppercase text-[10px] font-press rounded-none text-center flex items-center justify-center gap-1.5"
+                className="flex-1 bg-yellow-950 hover:bg-yellow-900 text-[#ffff55] border-2 border-black py-2.5 px-3 uppercase text-[9px] font-press rounded-none text-center flex items-center justify-center gap-1.5 cursor-pointer select-none"
               >
-                <ExternalLink className="w-4 h-4 shrink-0 text-[#ffff55]" /> Launch Official Portal
+                <ExternalLink className="w-4 h-4 shrink-0 text-[#ffff55]" /> APPLY PORTAL
+              </a>
+
+              <a
+                href={(() => {
+                  const matchedUnis = universities.filter(uni => {
+                    const eligibleCountriesLower = selectedSch.eligibleCountries?.map(c => c.toLowerCase()) ?? [];
+                    const eligibleMajorsLower = selectedSch.eligibleMajors?.map(m => m.toLowerCase()) ?? [];
+                    const isDirectIdMatch = uni.offeredScholarships && (
+                      uni.offeredScholarships.includes(selectedSch.id) || 
+                      uni.offeredScholarships.includes(selectedSch.name)
+                    );
+                    if (isDirectIdMatch) return true;
+                    const countryMatch = eligibleCountriesLower.includes(uni.country.toLowerCase()) || 
+                                         eligibleCountriesLower.includes('global') || 
+                                         eligibleCountriesLower.includes('all') ||
+                                         eligibleCountriesLower.some(c => uni.country.toLowerCase().includes(c));
+                    const majorsMatch = uni.popularMajors && uni.popularMajors.some((major: string) => 
+                      eligibleMajorsLower.some(m => m.includes(major.toLowerCase()) || major.toLowerCase().includes(m))
+                    );
+                    return countryMatch && majorsMatch;
+                  });
+                  const university = matchedUnis[0] || universities[0];
+                  const url = university?.website || university?.officialWebsite;
+                  if (url && url !== '#' && !url.includes('placeholder') && !url.includes('example.com')) {
+                    return url;
+                  } else if (university) {
+                    const nameQuery = university.name || "University";
+                    return `https://www.google.com/search?q=${encodeURIComponent(nameQuery + " official website")}`;
+                  } else {
+                    return `https://www.google.com/search?q=${encodeURIComponent((selectedSch.name || "") + " official website")}`;
+                  }
+                })()}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => playClickSound()}
+                className="flex-1 bg-blue-950 hover:bg-blue-900 text-[#64e3ff] border-2 border-black py-2.5 px-3 uppercase text-[9px] font-press rounded-none text-center flex items-center justify-center gap-1.5 cursor-pointer select-none"
+              >
+                <Globe className="w-4 h-4 shrink-0 text-[#64e3ff]" /> WEBSITE
               </a>
               {modalTrackedApp ? (
                 <div className="flex-1 flex items-center bg-emerald-950 border-2 border-black py-1 px-3">

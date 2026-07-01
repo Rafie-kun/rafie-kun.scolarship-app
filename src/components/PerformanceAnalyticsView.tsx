@@ -4,7 +4,7 @@ import {
   CartesianGrid, Legend, AreaChart, Area, PieChart, Pie, Cell 
 } from 'recharts';
 import { 
-  TrendingUp, Award, Trophy, Target, Sparkles, Plus, Trash2, CheckCircle, ListTodo, GraduationCap 
+  TrendingUp, Award, Trophy, Target, Sparkles, Plus, Trash2, CheckCircle, ListTodo, GraduationCap, Lock, ShieldAlert
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound } from '../utils/sound';
@@ -16,7 +16,7 @@ interface GpaPoint {
   gpa: number;
 }
 
-export default function PerformanceAnalyticsView() {
+export default function PerformanceAnalyticsView({ onNavigate }: { onNavigate?: (tabId: string) => void }) {
   const { authorizedFetch, profile, user } = useAuth();
   
   // States for GPA tracking
@@ -32,24 +32,24 @@ export default function PerformanceAnalyticsView() {
 
   const username = user || 'guest';
 
-  // Seed default GPA points if not present in localStorage
+  // Seed default GPA points ONLY if profile is onboarding-ready and trends are not present in localStorage
   useEffect(() => {
     try {
       const storedGpa = localStorage.getItem(`scholarpath_gpa_trends_${username}`);
       if (storedGpa) {
         setGpaHistory(JSON.parse(storedGpa));
       } else {
-        const currentGpa = profile?.gpa || 3.65;
+        const currentGpa = profile?.gpa || 3.0;
         const targetGpa = profile?.maxGpa || 4.0;
-        const initialPoints: GpaPoint[] = [
-          { term: 'High School Year 1', gpa: 3.30 },
-          { term: 'High School Year 2', gpa: 3.45 },
-          { term: 'High School Year 3', gpa: 3.60 },
-          { term: 'Pre-University Capstone', gpa: 3.75 },
+        // Seed only REAL standings if onboarding is completed, otherwise empty array to prevent mock larping
+        const initialPoints: GpaPoint[] = profile?.hasCompletedOnboarding ? [
           { term: 'Current Standings', gpa: currentGpa },
-          { term: 'Mainframe Target Benchmark', gpa: targetGpa }
-        ];
-        localStorage.setItem(`scholarpath_gpa_trends_${username}`, JSON.stringify(initialPoints));
+          { term: 'Target Benchmark', gpa: targetGpa }
+        ] : [];
+        
+        if (initialPoints.length > 0) {
+          localStorage.setItem(`scholarpath_gpa_trends_${username}`, JSON.stringify(initialPoints));
+        }
         setGpaHistory(initialPoints);
       }
     } catch (err) {
@@ -119,21 +119,21 @@ export default function PerformanceAnalyticsView() {
       }
     });
 
-    // Seed some baseline statistics if no checklist tasks exist yet
-    if (total === 0) {
-      completed = 8;
-      pending = 4;
-      total = 12;
+    // Seed baseline statistics ONLY if user completed onboarding and no tasks exist yet
+    if (total === 0 && profile?.hasCompletedOnboarding) {
+      completed = 0;
+      pending = 0;
+      total = 0;
     }
 
     setTaskStats({ completed, pending, total });
 
     // Format app status statistics for Recharts Bar Chart
     const statusData = [
-      { name: 'Saved', count: statusCounts['Saved'] || 1, color: '#33ffff' },
-      { name: 'In Progress', count: statusCounts['In Progress'] || 2, color: '#ffff55' },
-      { name: 'Submitted', count: statusCounts['Submitted'] || 1, color: '#ffaa00' },
-      { name: 'Accepted', count: statusCounts['Accepted'] || 1, color: '#55ff55' },
+      { name: 'Saved', count: statusCounts['Saved'] || 0, color: '#33ffff' },
+      { name: 'In Progress', count: statusCounts['In Progress'] || 0, color: '#ffff55' },
+      { name: 'Submitted', count: statusCounts['Submitted'] || 0, color: '#ffaa00' },
+      { name: 'Accepted', count: statusCounts['Accepted'] || 0, color: '#55ff55' },
       { name: 'Won', count: statusCounts['Won'] || 0, color: '#ff55ff' }
     ];
     setAppStatusStats(statusData);
@@ -177,6 +177,49 @@ export default function PerformanceAnalyticsView() {
   const taskCompletionRate = taskStats.total > 0 
     ? Math.round((taskStats.completed / taskStats.total) * 100) 
     : 0;
+
+  // Render Beautiful Empty State if user hasn't completed onboarding wizard yet
+  if (!profile?.hasCompletedOnboarding) {
+    return (
+      <div className="space-y-6" id="scholarpath-performance-analytics">
+        {/* Title Header Panel */}
+        <div className="mc-window bg-[#322d29] border-4 border-black font-mono">
+          <h3 className="font-press text-[11px] text-[#ffff55] uppercase flex items-center gap-2 mc-text-shadow">
+            <TrendingUp className="w-4.5 h-4.5 text-[#ffff55]" /> Scribe Performance Analytics
+          </h3>
+          <p className="text-stone-300 text-xs mt-1.5 leading-normal">
+            Track GPA trends, benchmark target acceptances margins, and evaluate active quest completion rates. All calculations are synchronized dynamically using Recharts render engines.
+          </p>
+        </div>
+
+        {/* Empty State Banner Card */}
+        <div className="mc-window bg-[#2a2421] border-4 border-black p-10 text-center text-stone-200 [box-shadow:inset_-4px_-4px_0_#171412,inset_4px_4px_0_#433833] max-w-2xl mx-auto my-12 flex flex-col items-center justify-center gap-6">
+          <div className="w-16 h-16 bg-stone-900 border-4 border-black flex items-center justify-center rounded-none text-red-500 animate-pulse [box-shadow:inset_-3px_-3px_0_#141414,inset_3px_3px_0_#555]">
+            <Lock className="w-8 h-8 text-[#ff5555]" />
+          </div>
+          
+          <div className="space-y-2">
+            <h4 className="font-press text-[12px] text-[#ff5555] mc-text-shadow uppercase tracking-wider">
+              Admissions Analytics Locked
+            </h4>
+            <p className="text-stone-300 text-xs max-w-md mx-auto leading-relaxed font-sans">
+              Your academic profile is currently blank! The Scribe database requires you to complete the Academic Onboarding Wizard to build charts, historical curves, and compute custom competitiveness indices.
+            </p>
+          </div>
+
+          <button
+            onClick={() => {
+              playClickSound();
+              onNavigate?.('profile');
+            }}
+            className="mc-btn font-press text-[10px] py-3.5 px-6 uppercase text-[#ffff55] border-2 border-yellow-500 animate-bounce cursor-pointer hover:bg-stone-850"
+          >
+            ⛏️ Start Profile Onboarding Wizard
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6" id="scholarpath-performance-analytics">

@@ -138,7 +138,7 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
     <div className="space-y-6" id="scholarpath-overview">
       
       {/* Level XP Bar */}
-      <div className="mc-window bg-[#322d29] text-stone-200 border-4 border-black font-mono">
+      <div className="mc-window bg-[#322d29] text-stone-200 border-4 border-black font-mono p-4">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h3 className="font-press text-[11px] text-[#ffff55] uppercase flex items-center gap-2 mc-text-shadow">
@@ -152,6 +152,12 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
             <span className="font-press text-[10px] text-[#55ff55] whitespace-nowrap">LVL {currentLevel}</span>
             <span className="text-xs text-[#ffff55] font-bold font-mono whitespace-nowrap">{pointsInCurrentLevel}/100 XP</span>
           </div>
+        </div>
+        <div className="w-full mc-xp-bar border-4 border-black max-h-[16px] h-3 mt-3 bg-stone-950">
+          <div 
+            className="bg-[#55ff55] h-full transition-all duration-700 ease-out" 
+            style={{ width: `${xpPercent}%` }} 
+          />
         </div>
       </div>
 

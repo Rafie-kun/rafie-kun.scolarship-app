@@ -53,9 +53,9 @@
   },
   {
     "id": "uni-001",
-    "name": "Global University 1",
+    "name": "University of Toronto",
     "country": "Canada",
-    "type": "private",
+    "type": "public",
     "ranking": 1,
     "acceptanceRate": "21.9%",
     "averageGpa": 3.644282304175611,
@@ -69,19 +69,19 @@
     "offeredScholarships": [
       "sch-030"
     ],
-    "city": "Berlin",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni1.edu/",
-    "applicationUrl": "https://apply.globaluni1.edu/",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-002",
-    "name": "Global University 2",
+    "name": "University of Toronto",
     "country": "Canada",
-    "type": "private",
+    "type": "public",
     "ranking": 2,
     "acceptanceRate": "38.5%",
     "averageGpa": 3.3586265777468087,
@@ -95,19 +95,19 @@
     "offeredScholarships": [
       "sch-025"
     ],
-    "city": "Zurich",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni2.edu/",
-    "applicationUrl": "https://apply.globaluni2.edu/",
-    "region": "Europe",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-003",
-    "name": "Global University 3",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 3,
     "acceptanceRate": "51.6%",
     "averageGpa": 3.1318562022365457,
@@ -121,17 +121,17 @@
     "offeredScholarships": [
       "sch-048"
     ],
-    "city": "New York",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni3.edu/",
-    "applicationUrl": "https://apply.globaluni3.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-004",
-    "name": "Global University 4",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 4,
@@ -147,17 +147,17 @@
     "offeredScholarships": [
       "sch-026"
     ],
-    "city": "New York",
+    "city": "Toronto",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni4.edu/",
-    "applicationUrl": "https://apply.globaluni4.edu/",
-    "region": "Europe",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-005",
-    "name": "Global University 5",
+    "name": "Technical University of Munich",
     "country": "Germany",
     "type": "public",
     "ranking": 5,
@@ -173,19 +173,19 @@
     "offeredScholarships": [
       "sch-013"
     ],
-    "city": "Los Angeles",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni5.edu/",
-    "applicationUrl": "https://apply.globaluni5.edu/",
-    "region": "North America",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-006",
-    "name": "Global University 6",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 6,
     "acceptanceRate": "18.0%",
     "averageGpa": 3.6072982296819878,
@@ -199,19 +199,19 @@
     "offeredScholarships": [
       "sch-047"
     ],
-    "city": "Los Angeles",
+    "city": "Singapore",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni6.edu/",
-    "applicationUrl": "https://apply.globaluni6.edu/",
-    "region": "Oceania",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-007",
-    "name": "Global University 7",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 7,
     "acceptanceRate": "40.4%",
     "averageGpa": 3.8211138004807994,
@@ -225,17 +225,17 @@
     "offeredScholarships": [
       "sch-005"
     ],
-    "city": "Sydney",
+    "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni7.edu/",
-    "applicationUrl": "https://apply.globaluni7.edu/",
-    "region": "Asia",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-008",
-    "name": "Global University 8",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 8,
@@ -251,17 +251,17 @@
     "offeredScholarships": [
       "sch-040"
     ],
-    "city": "Boston",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni8.edu/",
-    "applicationUrl": "https://apply.globaluni8.edu/",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-009",
-    "name": "Global University 9",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 9,
@@ -279,17 +279,17 @@
     ],
     "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni9.edu/",
-    "applicationUrl": "https://apply.globaluni9.edu/",
-    "region": "Oceania",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-010",
-    "name": "Global University 10",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 10,
     "acceptanceRate": "37.7%",
     "averageGpa": 3.56175131813516,
@@ -303,19 +303,19 @@
     "offeredScholarships": [
       "sch-023"
     ],
-    "city": "Chicago",
+    "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni10.edu/",
-    "applicationUrl": "https://apply.globaluni10.edu/",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-011",
-    "name": "Global University 11",
+    "name": "ETH Zurich",
     "country": "Switzerland",
-    "type": "private",
+    "type": "public",
     "ranking": 11,
     "acceptanceRate": "5.6%",
     "averageGpa": 3.1156668885797467,
@@ -331,15 +331,15 @@
     ],
     "city": "Zurich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni11.edu/",
-    "applicationUrl": "https://apply.globaluni11.edu/",
-    "region": "Asia",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-012",
-    "name": "Global University 12",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 12,
@@ -355,19 +355,19 @@
     "offeredScholarships": [
       "sch-027"
     ],
-    "city": "Zurich",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni12.edu/",
-    "applicationUrl": "https://apply.globaluni12.edu/",
-    "region": "Europe",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-013",
-    "name": "Global University 13",
+    "name": "University of Toronto",
     "country": "Canada",
-    "type": "private",
+    "type": "public",
     "ranking": 13,
     "acceptanceRate": "22.6%",
     "averageGpa": 3.835784771500694,
@@ -381,17 +381,17 @@
     "offeredScholarships": [
       "sch-048"
     ],
-    "city": "Paris",
+    "city": "Toronto",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni13.edu/",
-    "applicationUrl": "https://apply.globaluni13.edu/",
-    "region": "Asia",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-014",
-    "name": "Global University 14",
+    "name": "University of Tokyo",
     "country": "Japan",
     "type": "public",
     "ranking": 14,
@@ -407,17 +407,17 @@
     "offeredScholarships": [
       "sch-014"
     ],
-    "city": "Toronto",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni14.edu/",
-    "applicationUrl": "https://apply.globaluni14.edu/",
-    "region": "North America",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-015",
-    "name": "Global University 15",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 15,
@@ -433,17 +433,17 @@
     "offeredScholarships": [
       "sch-022"
     ],
-    "city": "Berlin",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni15.edu/",
-    "applicationUrl": "https://apply.globaluni15.edu/",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
     "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-016",
-    "name": "Global University 16",
+    "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 16,
@@ -459,17 +459,17 @@
     "offeredScholarships": [
       "sch-026"
     ],
-    "city": "Toronto",
+    "city": "Zurich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni16.edu/",
-    "applicationUrl": "https://apply.globaluni16.edu/",
-    "region": "Oceania",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-017",
-    "name": "Global University 17",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 17,
@@ -485,19 +485,19 @@
     "offeredScholarships": [
       "sch-000"
     ],
-    "city": "Tokyo",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni17.edu/",
-    "applicationUrl": "https://apply.globaluni17.edu/",
-    "region": "Oceania",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-018",
-    "name": "Global University 18",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 18,
     "acceptanceRate": "12.6%",
     "averageGpa": 3.969329914950306,
@@ -511,19 +511,19 @@
     "offeredScholarships": [
       "sch-025"
     ],
-    "city": "Sydney",
+    "city": "Cambridge",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni18.edu/",
-    "applicationUrl": "https://apply.globaluni18.edu/",
-    "region": "Europe",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-019",
-    "name": "Global University 19",
+    "name": "University of Toronto",
     "country": "Canada",
-    "type": "private",
+    "type": "public",
     "ranking": 19,
     "acceptanceRate": "52.5%",
     "averageGpa": 3.8669302588953034,
@@ -537,17 +537,17 @@
     "offeredScholarships": [
       "sch-019"
     ],
-    "city": "Singapore",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni19.edu/",
-    "applicationUrl": "https://apply.globaluni19.edu/",
-    "region": "Europe",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-020",
-    "name": "Global University 20",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 20,
@@ -563,17 +563,17 @@
     "offeredScholarships": [
       "sch-001"
     ],
-    "city": "New York",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni20.edu/",
-    "applicationUrl": "https://apply.globaluni20.edu/",
-    "region": "Asia",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-021",
-    "name": "Global University 21",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 21,
@@ -589,19 +589,19 @@
     "offeredScholarships": [
       "sch-039"
     ],
-    "city": "Sydney",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni21.edu/",
-    "applicationUrl": "https://apply.globaluni21.edu/",
-    "region": "Oceania",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-022",
-    "name": "Global University 22",
+    "name": "Sorbonne University",
     "country": "France",
-    "type": "private",
+    "type": "public",
     "ranking": 22,
     "acceptanceRate": "20.9%",
     "averageGpa": 3.5685913382863976,
@@ -615,17 +615,17 @@
     "offeredScholarships": [
       "sch-005"
     ],
-    "city": "Toronto",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni22.edu/",
-    "applicationUrl": "https://apply.globaluni22.edu/",
-    "region": "North America",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-023",
-    "name": "Global University 23",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 23,
@@ -641,19 +641,19 @@
     "offeredScholarships": [
       "sch-044"
     ],
-    "city": "Berlin",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni23.edu/",
-    "applicationUrl": "https://apply.globaluni23.edu/",
-    "region": "North America",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-024",
-    "name": "Global University 24",
+    "name": "Sorbonne University",
     "country": "France",
-    "type": "private",
+    "type": "public",
     "ranking": 24,
     "acceptanceRate": "47.2%",
     "averageGpa": 3.753282938647986,
@@ -667,19 +667,19 @@
     "offeredScholarships": [
       "sch-034"
     ],
-    "city": "Los Angeles",
+    "city": "Paris",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni24.edu/",
-    "applicationUrl": "https://apply.globaluni24.edu/",
-    "region": "Asia",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-025",
-    "name": "Global University 25",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 25,
     "acceptanceRate": "51.9%",
     "averageGpa": 3.644045050302959,
@@ -693,19 +693,19 @@
     "offeredScholarships": [
       "sch-038"
     ],
-    "city": "New York",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni25.edu/",
-    "applicationUrl": "https://apply.globaluni25.edu/",
-    "region": "Asia",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-026",
-    "name": "Global University 26",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 26,
     "acceptanceRate": "29.4%",
     "averageGpa": 3.7604366098869684,
@@ -719,19 +719,19 @@
     "offeredScholarships": [
       "sch-015"
     ],
-    "city": "New York",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni26.edu/",
-    "applicationUrl": "https://apply.globaluni26.edu/",
-    "region": "Asia",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-027",
-    "name": "Global University 27",
+    "name": "Sorbonne University",
     "country": "France",
-    "type": "private",
+    "type": "public",
     "ranking": 27,
     "acceptanceRate": "39.1%",
     "averageGpa": 3.8340107475812077,
@@ -745,17 +745,17 @@
     "offeredScholarships": [
       "sch-018"
     ],
-    "city": "Tokyo",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni27.edu/",
-    "applicationUrl": "https://apply.globaluni27.edu/",
-    "region": "Oceania",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-028",
-    "name": "Global University 28",
+    "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 28,
@@ -771,19 +771,19 @@
     "offeredScholarships": [
       "sch-000"
     ],
-    "city": "Chicago",
+    "city": "Zurich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni28.edu/",
-    "applicationUrl": "https://apply.globaluni28.edu/",
-    "region": "Oceania",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-029",
-    "name": "Global University 29",
+    "name": "ETH Zurich",
     "country": "Switzerland",
-    "type": "private",
+    "type": "public",
     "ranking": 29,
     "acceptanceRate": "16.7%",
     "averageGpa": 3.9727356166195706,
@@ -797,19 +797,19 @@
     "offeredScholarships": [
       "sch-045"
     ],
-    "city": "Sydney",
+    "city": "Zurich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni29.edu/",
-    "applicationUrl": "https://apply.globaluni29.edu/",
-    "region": "North America",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-030",
-    "name": "Global University 30",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 30,
     "acceptanceRate": "31.4%",
     "averageGpa": 3.7106215380809733,
@@ -823,19 +823,19 @@
     "offeredScholarships": [
       "sch-006"
     ],
-    "city": "Chicago",
+    "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni30.edu/",
-    "applicationUrl": "https://apply.globaluni30.edu/",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-031",
-    "name": "Global University 31",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 31,
     "acceptanceRate": "42.2%",
     "averageGpa": 3.953607513243429,
@@ -849,17 +849,17 @@
     "offeredScholarships": [
       "sch-015"
     ],
-    "city": "London",
+    "city": "Cambridge",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni31.edu/",
-    "applicationUrl": "https://apply.globaluni31.edu/",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-032",
-    "name": "Global University 32",
+    "name": "Technical University of Munich",
     "country": "Germany",
     "type": "public",
     "ranking": 32,
@@ -875,17 +875,17 @@
     "offeredScholarships": [
       "sch-001"
     ],
-    "city": "Chicago",
+    "city": "Munich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni32.edu/",
-    "applicationUrl": "https://apply.globaluni32.edu/",
-    "region": "North America",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-033",
-    "name": "Global University 33",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 33,
@@ -901,17 +901,17 @@
     "offeredScholarships": [
       "sch-008"
     ],
-    "city": "Paris",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni33.edu/",
-    "applicationUrl": "https://apply.globaluni33.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-034",
-    "name": "Global University 34",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 34,
@@ -927,19 +927,19 @@
     "offeredScholarships": [
       "sch-020"
     ],
-    "city": "Boston",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni34.edu/",
-    "applicationUrl": "https://apply.globaluni34.edu/",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-035",
-    "name": "Global University 35",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 35,
     "acceptanceRate": "22.9%",
     "averageGpa": 3.77172178961228,
@@ -953,19 +953,19 @@
     "offeredScholarships": [
       "sch-024"
     ],
-    "city": "Toronto",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni35.edu/",
-    "applicationUrl": "https://apply.globaluni35.edu/",
-    "region": "Europe",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-036",
-    "name": "Global University 36",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 36,
     "acceptanceRate": "41.6%",
     "averageGpa": 3.9267886922703212,
@@ -979,17 +979,17 @@
     "offeredScholarships": [
       "sch-039"
     ],
-    "city": "Tokyo",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni36.edu/",
-    "applicationUrl": "https://apply.globaluni36.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-037",
-    "name": "Global University 37",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 37,
@@ -1005,19 +1005,19 @@
     "offeredScholarships": [
       "sch-011"
     ],
-    "city": "Sydney",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni37.edu/",
-    "applicationUrl": "https://apply.globaluni37.edu/",
-    "region": "Europe",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-038",
-    "name": "Global University 38",
+    "name": "University of Melbourne",
     "country": "Australia",
-    "type": "private",
+    "type": "public",
     "ranking": 38,
     "acceptanceRate": "26.2%",
     "averageGpa": 3.853748180186646,
@@ -1031,17 +1031,17 @@
     "offeredScholarships": [
       "sch-028"
     ],
-    "city": "Singapore",
+    "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni38.edu/",
-    "applicationUrl": "https://apply.globaluni38.edu/",
-    "region": "Asia",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-039",
-    "name": "Global University 39",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 39,
@@ -1057,17 +1057,17 @@
     "offeredScholarships": [
       "sch-003"
     ],
-    "city": "Los Angeles",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni39.edu/",
-    "applicationUrl": "https://apply.globaluni39.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-040",
-    "name": "Global University 40",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 40,
@@ -1083,19 +1083,19 @@
     "offeredScholarships": [
       "sch-023"
     ],
-    "city": "Los Angeles",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni40.edu/",
-    "applicationUrl": "https://apply.globaluni40.edu/",
-    "region": "Oceania",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-041",
-    "name": "Global University 41",
+    "name": "University of Tokyo",
     "country": "Japan",
-    "type": "private",
+    "type": "public",
     "ranking": 41,
     "acceptanceRate": "28.5%",
     "averageGpa": 3.621184795571109,
@@ -1109,19 +1109,19 @@
     "offeredScholarships": [
       "sch-039"
     ],
-    "city": "Zurich",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni41.edu/",
-    "applicationUrl": "https://apply.globaluni41.edu/",
-    "region": "Asia",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-042",
-    "name": "Global University 42",
+    "name": "University of Tokyo",
     "country": "Japan",
-    "type": "private",
+    "type": "public",
     "ranking": 42,
     "acceptanceRate": "25.2%",
     "averageGpa": 3.157733489427418,
@@ -1135,19 +1135,19 @@
     "offeredScholarships": [
       "sch-022"
     ],
-    "city": "Sydney",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni42.edu/",
-    "applicationUrl": "https://apply.globaluni42.edu/",
-    "region": "Oceania",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-043",
-    "name": "Global University 43",
+    "name": "ETH Zurich",
     "country": "Switzerland",
-    "type": "private",
+    "type": "public",
     "ranking": 43,
     "acceptanceRate": "23.9%",
     "averageGpa": 3.021054307307989,
@@ -1161,19 +1161,19 @@
     "offeredScholarships": [
       "sch-010"
     ],
-    "city": "Tokyo",
+    "city": "Zurich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni43.edu/",
-    "applicationUrl": "https://apply.globaluni43.edu/",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-044",
-    "name": "Global University 44",
+    "name": "Sorbonne University",
     "country": "France",
-    "type": "private",
+    "type": "public",
     "ranking": 44,
     "acceptanceRate": "42.4%",
     "averageGpa": 3.4716101587778034,
@@ -1187,17 +1187,17 @@
     "offeredScholarships": [
       "sch-018"
     ],
-    "city": "Berlin",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni44.edu/",
-    "applicationUrl": "https://apply.globaluni44.edu/",
-    "region": "North America",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-045",
-    "name": "Global University 45",
+    "name": "Technical University of Munich",
     "country": "Germany",
     "type": "public",
     "ranking": 45,
@@ -1213,17 +1213,17 @@
     "offeredScholarships": [
       "sch-048"
     ],
-    "city": "Berlin",
+    "city": "Munich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni45.edu/",
-    "applicationUrl": "https://apply.globaluni45.edu/",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-046",
-    "name": "Global University 46",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 46,
@@ -1239,19 +1239,19 @@
     "offeredScholarships": [
       "sch-007"
     ],
-    "city": "Paris",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni46.edu/",
-    "applicationUrl": "https://apply.globaluni46.edu/",
-    "region": "North America",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-047",
-    "name": "Global University 47",
+    "name": "Technical University of Munich",
     "country": "Germany",
-    "type": "private",
+    "type": "public",
     "ranking": 47,
     "acceptanceRate": "33.4%",
     "averageGpa": 3.225035627331261,
@@ -1265,19 +1265,19 @@
     "offeredScholarships": [
       "sch-032"
     ],
-    "city": "London",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni47.edu/",
-    "applicationUrl": "https://apply.globaluni47.edu/",
-    "region": "North America",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-048",
-    "name": "Global University 48",
+    "name": "ETH Zurich",
     "country": "Switzerland",
-    "type": "private",
+    "type": "public",
     "ranking": 48,
     "acceptanceRate": "46.2%",
     "averageGpa": 3.636813807238153,
@@ -1291,17 +1291,17 @@
     "offeredScholarships": [
       "sch-022"
     ],
-    "city": "Singapore",
+    "city": "Zurich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni48.edu/",
-    "applicationUrl": "https://apply.globaluni48.edu/",
-    "region": "Oceania",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-049",
-    "name": "Global University 49",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 49,
@@ -1317,17 +1317,17 @@
     "offeredScholarships": [
       "sch-022"
     ],
-    "city": "Boston",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni49.edu/",
-    "applicationUrl": "https://apply.globaluni49.edu/",
-    "region": "North America",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-050",
-    "name": "Global University 50",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 50,
@@ -1343,19 +1343,19 @@
     "offeredScholarships": [
       "sch-023"
     ],
-    "city": "Chicago",
+    "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni50.edu/",
-    "applicationUrl": "https://apply.globaluni50.edu/",
-    "region": "North America",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-051",
-    "name": "Global University 51",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 51,
     "acceptanceRate": "33.1%",
     "averageGpa": 3.788354821198845,
@@ -1369,17 +1369,17 @@
     "offeredScholarships": [
       "sch-044"
     ],
-    "city": "Berlin",
+    "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni51.edu/",
-    "applicationUrl": "https://apply.globaluni51.edu/",
-    "region": "Asia",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-052",
-    "name": "Global University 52",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 52,
@@ -1395,17 +1395,17 @@
     "offeredScholarships": [
       "sch-026"
     ],
-    "city": "Boston",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni52.edu/",
-    "applicationUrl": "https://apply.globaluni52.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-053",
-    "name": "Global University 53",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 53,
@@ -1421,17 +1421,17 @@
     "offeredScholarships": [
       "sch-042"
     ],
-    "city": "Chicago",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni53.edu/",
-    "applicationUrl": "https://apply.globaluni53.edu/",
-    "region": "Europe",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-054",
-    "name": "Global University 54",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 54,
@@ -1447,19 +1447,19 @@
     "offeredScholarships": [
       "sch-034"
     ],
-    "city": "Paris",
+    "city": "Toronto",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni54.edu/",
-    "applicationUrl": "https://apply.globaluni54.edu/",
-    "region": "Oceania",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-055",
-    "name": "Global University 55",
+    "name": "Technical University of Munich",
     "country": "Germany",
-    "type": "private",
+    "type": "public",
     "ranking": 55,
     "acceptanceRate": "31.9%",
     "averageGpa": 3.223552670694829,
@@ -1473,17 +1473,17 @@
     "offeredScholarships": [
       "sch-026"
     ],
-    "city": "New York",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni55.edu/",
-    "applicationUrl": "https://apply.globaluni55.edu/",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-056",
-    "name": "Global University 56",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 56,
@@ -1499,19 +1499,19 @@
     "offeredScholarships": [
       "sch-035"
     ],
-    "city": "Tokyo",
+    "city": "Toronto",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni56.edu/",
-    "applicationUrl": "https://apply.globaluni56.edu/",
-    "region": "Europe",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-057",
-    "name": "Global University 57",
+    "name": "Sorbonne University",
     "country": "France",
-    "type": "private",
+    "type": "public",
     "ranking": 57,
     "acceptanceRate": "43.5%",
     "averageGpa": 3.557439739279684,
@@ -1525,17 +1525,17 @@
     "offeredScholarships": [
       "sch-033"
     ],
-    "city": "Berlin",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni57.edu/",
-    "applicationUrl": "https://apply.globaluni57.edu/",
-    "region": "Oceania",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-058",
-    "name": "Global University 58",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 58,
@@ -1551,19 +1551,19 @@
     "offeredScholarships": [
       "sch-009"
     ],
-    "city": "Sydney",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni58.edu/",
-    "applicationUrl": "https://apply.globaluni58.edu/",
-    "region": "Asia",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-059",
-    "name": "Global University 59",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 59,
     "acceptanceRate": "36.0%",
     "averageGpa": 3.429407319046327,
@@ -1577,19 +1577,19 @@
     "offeredScholarships": [
       "sch-033"
     ],
-    "city": "Sydney",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni59.edu/",
-    "applicationUrl": "https://apply.globaluni59.edu/",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
     "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-060",
-    "name": "Global University 60",
+    "name": "University of Toronto",
     "country": "Canada",
-    "type": "private",
+    "type": "public",
     "ranking": 60,
     "acceptanceRate": "24.7%",
     "averageGpa": 3.8388706118395026,
@@ -1603,17 +1603,17 @@
     "offeredScholarships": [
       "sch-042"
     ],
-    "city": "Zurich",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni60.edu/",
-    "applicationUrl": "https://apply.globaluni60.edu/",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-061",
-    "name": "Global University 61",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 61,
@@ -1629,17 +1629,17 @@
     "offeredScholarships": [
       "sch-006"
     ],
-    "city": "Toronto",
+    "city": "Singapore",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni61.edu/",
-    "applicationUrl": "https://apply.globaluni61.edu/",
-    "region": "Europe",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-062",
-    "name": "Global University 62",
+    "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 62,
@@ -1655,19 +1655,19 @@
     "offeredScholarships": [
       "sch-010"
     ],
-    "city": "Chicago",
+    "city": "Zurich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni62.edu/",
-    "applicationUrl": "https://apply.globaluni62.edu/",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-063",
-    "name": "Global University 63",
+    "name": "University of Toronto",
     "country": "Canada",
-    "type": "private",
+    "type": "public",
     "ranking": 63,
     "acceptanceRate": "47.1%",
     "averageGpa": 3.8437957767359068,
@@ -1681,17 +1681,17 @@
     "offeredScholarships": [
       "sch-038"
     ],
-    "city": "Los Angeles",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni63.edu/",
-    "applicationUrl": "https://apply.globaluni63.edu/",
-    "region": "Asia",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-064",
-    "name": "Global University 64",
+    "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 64,
@@ -1707,17 +1707,17 @@
     "offeredScholarships": [
       "sch-040"
     ],
-    "city": "Boston",
+    "city": "Zurich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni64.edu/",
-    "applicationUrl": "https://apply.globaluni64.edu/",
-    "region": "Asia",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-065",
-    "name": "Global University 65",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 65,
@@ -1733,17 +1733,17 @@
     "offeredScholarships": [
       "sch-027"
     ],
-    "city": "Tokyo",
+    "city": "Toronto",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni65.edu/",
-    "applicationUrl": "https://apply.globaluni65.edu/",
-    "region": "Asia",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-066",
-    "name": "Global University 66",
+    "name": "University of Tokyo",
     "country": "Japan",
     "type": "public",
     "ranking": 66,
@@ -1759,19 +1759,19 @@
     "offeredScholarships": [
       "sch-045"
     ],
-    "city": "Toronto",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni66.edu/",
-    "applicationUrl": "https://apply.globaluni66.edu/",
-    "region": "Oceania",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-067",
-    "name": "Global University 67",
+    "name": "University of Melbourne",
     "country": "Australia",
-    "type": "private",
+    "type": "public",
     "ranking": 67,
     "acceptanceRate": "35.8%",
     "averageGpa": 3.9361520356967468,
@@ -1785,19 +1785,19 @@
     "offeredScholarships": [
       "sch-020"
     ],
-    "city": "Tokyo",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni67.edu/",
-    "applicationUrl": "https://apply.globaluni67.edu/",
-    "region": "North America",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-068",
-    "name": "Global University 68",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 68,
     "acceptanceRate": "12.0%",
     "averageGpa": 3.330798542238038,
@@ -1811,17 +1811,17 @@
     "offeredScholarships": [
       "sch-004"
     ],
-    "city": "Toronto",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni68.edu/",
-    "applicationUrl": "https://apply.globaluni68.edu/",
-    "region": "North America",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-069",
-    "name": "Global University 69",
+    "name": "Technical University of Munich",
     "country": "Germany",
     "type": "public",
     "ranking": 69,
@@ -1837,19 +1837,19 @@
     "offeredScholarships": [
       "sch-037"
     ],
-    "city": "London",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni69.edu/",
-    "applicationUrl": "https://apply.globaluni69.edu/",
-    "region": "Oceania",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-070",
-    "name": "Global University 70",
+    "name": "Sorbonne University",
     "country": "France",
-    "type": "private",
+    "type": "public",
     "ranking": 70,
     "acceptanceRate": "14.6%",
     "averageGpa": 3.995312079487741,
@@ -1863,17 +1863,17 @@
     "offeredScholarships": [
       "sch-009"
     ],
-    "city": "Zurich",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni70.edu/",
-    "applicationUrl": "https://apply.globaluni70.edu/",
-    "region": "Oceania",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-071",
-    "name": "Global University 71",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 71,
@@ -1889,19 +1889,19 @@
     "offeredScholarships": [
       "sch-039"
     ],
-    "city": "New York",
+    "city": "Singapore",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni71.edu/",
-    "applicationUrl": "https://apply.globaluni71.edu/",
-    "region": "Europe",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-072",
-    "name": "Global University 72",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 72,
     "acceptanceRate": "12.1%",
     "averageGpa": 3.7592515607563417,
@@ -1915,19 +1915,19 @@
     "offeredScholarships": [
       "sch-049"
     ],
-    "city": "London",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni72.edu/",
-    "applicationUrl": "https://apply.globaluni72.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-073",
-    "name": "Global University 73",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 73,
     "acceptanceRate": "25.4%",
     "averageGpa": 3.383420964923732,
@@ -1941,17 +1941,17 @@
     "offeredScholarships": [
       "sch-010"
     ],
-    "city": "Los Angeles",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni73.edu/",
-    "applicationUrl": "https://apply.globaluni73.edu/",
-    "region": "Europe",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-074",
-    "name": "Global University 74",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 74,
@@ -1967,17 +1967,17 @@
     "offeredScholarships": [
       "sch-035"
     ],
-    "city": "Singapore",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni74.edu/",
-    "applicationUrl": "https://apply.globaluni74.edu/",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-075",
-    "name": "Global University 75",
+    "name": "Technical University of Munich",
     "country": "Germany",
     "type": "public",
     "ranking": 75,
@@ -1993,19 +1993,19 @@
     "offeredScholarships": [
       "sch-019"
     ],
-    "city": "Tokyo",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni75.edu/",
-    "applicationUrl": "https://apply.globaluni75.edu/",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-076",
-    "name": "Global University 76",
+    "name": "Sorbonne University",
     "country": "France",
-    "type": "private",
+    "type": "public",
     "ranking": 76,
     "acceptanceRate": "51.9%",
     "averageGpa": 3.7846223708070963,
@@ -2021,17 +2021,17 @@
     ],
     "city": "Paris",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni76.edu/",
-    "applicationUrl": "https://apply.globaluni76.edu/",
-    "region": "North America",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-077",
-    "name": "Global University 77",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 77,
     "acceptanceRate": "32.3%",
     "averageGpa": 3.32834909160759,
@@ -2045,17 +2045,17 @@
     "offeredScholarships": [
       "sch-032"
     ],
-    "city": "Toronto",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni77.edu/",
-    "applicationUrl": "https://apply.globaluni77.edu/",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
     "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-078",
-    "name": "Global University 78",
+    "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 78,
@@ -2071,17 +2071,17 @@
     "offeredScholarships": [
       "sch-012"
     ],
-    "city": "Tokyo",
+    "city": "Zurich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni78.edu/",
-    "applicationUrl": "https://apply.globaluni78.edu/",
-    "region": "Asia",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-079",
-    "name": "Global University 79",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 79,
@@ -2097,17 +2097,17 @@
     "offeredScholarships": [
       "sch-009"
     ],
-    "city": "Paris",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni79.edu/",
-    "applicationUrl": "https://apply.globaluni79.edu/",
-    "region": "North America",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-080",
-    "name": "Global University 80",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 80,
@@ -2123,17 +2123,17 @@
     "offeredScholarships": [
       "sch-015"
     ],
-    "city": "Boston",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni80.edu/",
-    "applicationUrl": "https://apply.globaluni80.edu/",
-    "region": "North America",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-081",
-    "name": "Global University 81",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 81,
@@ -2149,19 +2149,19 @@
     "offeredScholarships": [
       "sch-037"
     ],
-    "city": "Boston",
+    "city": "Toronto",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni81.edu/",
-    "applicationUrl": "https://apply.globaluni81.edu/",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-082",
-    "name": "Global University 82",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 82,
     "acceptanceRate": "21.3%",
     "averageGpa": 3.7502726064549106,
@@ -2175,17 +2175,17 @@
     "offeredScholarships": [
       "sch-020"
     ],
-    "city": "Boston",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni82.edu/",
-    "applicationUrl": "https://apply.globaluni82.edu/",
-    "region": "Europe",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-083",
-    "name": "Global University 83",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 83,
@@ -2201,19 +2201,19 @@
     "offeredScholarships": [
       "sch-008"
     ],
-    "city": "Zurich",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni83.edu/",
-    "applicationUrl": "https://apply.globaluni83.edu/",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-084",
-    "name": "Global University 84",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 84,
     "acceptanceRate": "16.9%",
     "averageGpa": 3.8600083423801093,
@@ -2227,19 +2227,19 @@
     "offeredScholarships": [
       "sch-029"
     ],
-    "city": "Paris",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni84.edu/",
-    "applicationUrl": "https://apply.globaluni84.edu/",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
     "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-085",
-    "name": "Global University 85",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 85,
     "acceptanceRate": "49.8%",
     "averageGpa": 3.1965763423423237,
@@ -2253,17 +2253,17 @@
     "offeredScholarships": [
       "sch-041"
     ],
-    "city": "Berlin",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni85.edu/",
-    "applicationUrl": "https://apply.globaluni85.edu/",
-    "region": "Asia",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-086",
-    "name": "Global University 86",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 86,
@@ -2281,17 +2281,17 @@
     ],
     "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni86.edu/",
-    "applicationUrl": "https://apply.globaluni86.edu/",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-087",
-    "name": "Global University 87",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 87,
     "acceptanceRate": "43.4%",
     "averageGpa": 3.414399846822771,
@@ -2305,17 +2305,17 @@
     "offeredScholarships": [
       "sch-038"
     ],
-    "city": "Chicago",
+    "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni87.edu/",
-    "applicationUrl": "https://apply.globaluni87.edu/",
-    "region": "Europe",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-088",
-    "name": "Global University 88",
+    "name": "Technical University of Munich",
     "country": "Germany",
     "type": "public",
     "ranking": 88,
@@ -2331,19 +2331,19 @@
     "offeredScholarships": [
       "sch-012"
     ],
-    "city": "Singapore",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni88.edu/",
-    "applicationUrl": "https://apply.globaluni88.edu/",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-089",
-    "name": "Global University 89",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 89,
     "acceptanceRate": "23.3%",
     "averageGpa": 3.064348975044908,
@@ -2357,19 +2357,19 @@
     "offeredScholarships": [
       "sch-036"
     ],
-    "city": "Sydney",
+    "city": "Singapore",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni89.edu/",
-    "applicationUrl": "https://apply.globaluni89.edu/",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
     "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-090",
-    "name": "Global University 90",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 90,
     "acceptanceRate": "20.2%",
     "averageGpa": 3.433078840025173,
@@ -2383,17 +2383,17 @@
     "offeredScholarships": [
       "sch-024"
     ],
-    "city": "Berlin",
+    "city": "Cambridge",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni90.edu/",
-    "applicationUrl": "https://apply.globaluni90.edu/",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-091",
-    "name": "Global University 91",
+    "name": "University of Tokyo",
     "country": "Japan",
     "type": "public",
     "ranking": 91,
@@ -2409,19 +2409,19 @@
     "offeredScholarships": [
       "sch-025"
     ],
-    "city": "London",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni91.edu/",
-    "applicationUrl": "https://apply.globaluni91.edu/",
-    "region": "Oceania",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-092",
-    "name": "Global University 92",
+    "name": "ETH Zurich",
     "country": "Switzerland",
-    "type": "private",
+    "type": "public",
     "ranking": 92,
     "acceptanceRate": "30.1%",
     "averageGpa": 3.0823729987549404,
@@ -2435,19 +2435,19 @@
     "offeredScholarships": [
       "sch-013"
     ],
-    "city": "Singapore",
+    "city": "Zurich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni92.edu/",
-    "applicationUrl": "https://apply.globaluni92.edu/",
-    "region": "Oceania",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-093",
-    "name": "Global University 93",
+    "name": "University of Toronto",
     "country": "Canada",
-    "type": "private",
+    "type": "public",
     "ranking": 93,
     "acceptanceRate": "28.8%",
     "averageGpa": 3.424475094224414,
@@ -2461,19 +2461,19 @@
     "offeredScholarships": [
       "sch-046"
     ],
-    "city": "Singapore",
+    "city": "Toronto",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni93.edu/",
-    "applicationUrl": "https://apply.globaluni93.edu/",
-    "region": "Europe",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-094",
-    "name": "Global University 94",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 94,
     "acceptanceRate": "28.8%",
     "averageGpa": 3.8485621886633026,
@@ -2487,17 +2487,17 @@
     "offeredScholarships": [
       "sch-025"
     ],
-    "city": "Sydney",
+    "city": "Singapore",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni94.edu/",
-    "applicationUrl": "https://apply.globaluni94.edu/",
-    "region": "Europe",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-095",
-    "name": "Global University 95",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 95,
@@ -2513,19 +2513,19 @@
     "offeredScholarships": [
       "sch-040"
     ],
-    "city": "Zurich",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni95.edu/",
-    "applicationUrl": "https://apply.globaluni95.edu/",
-    "region": "North America",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-096",
-    "name": "Global University 96",
+    "name": "University of Melbourne",
     "country": "Australia",
-    "type": "private",
+    "type": "public",
     "ranking": 96,
     "acceptanceRate": "28.2%",
     "averageGpa": 3.6444014940815537,
@@ -2539,17 +2539,17 @@
     "offeredScholarships": [
       "sch-000"
     ],
-    "city": "Sydney",
+    "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni96.edu/",
-    "applicationUrl": "https://apply.globaluni96.edu/",
-    "region": "Oceania",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-097",
-    "name": "Global University 97",
+    "name": "Harvard University",
     "country": "United States",
     "type": "private",
     "ranking": 97,
@@ -2565,17 +2565,17 @@
     "offeredScholarships": [
       "sch-019"
     ],
-    "city": "London",
+    "city": "Cambridge",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni97.edu/",
-    "applicationUrl": "https://apply.globaluni97.edu/",
-    "region": "Europe",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-098",
-    "name": "Global University 98",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 98,
@@ -2591,19 +2591,19 @@
     "offeredScholarships": [
       "sch-006"
     ],
-    "city": "Boston",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni98.edu/",
-    "applicationUrl": "https://apply.globaluni98.edu/",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-099",
-    "name": "Global University 99",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 99,
     "acceptanceRate": "26.8%",
     "averageGpa": 3.994346333870599,
@@ -2617,19 +2617,19 @@
     "offeredScholarships": [
       "sch-003"
     ],
-    "city": "Los Angeles",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni99.edu/",
-    "applicationUrl": "https://apply.globaluni99.edu/",
-    "region": "Europe",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-100",
-    "name": "Global University 100",
+    "name": "Sorbonne University",
     "country": "France",
-    "type": "private",
+    "type": "public",
     "ranking": 100,
     "acceptanceRate": "44.5%",
     "averageGpa": 3.2987018253614853,
@@ -2643,19 +2643,19 @@
     "offeredScholarships": [
       "sch-048"
     ],
-    "city": "Zurich",
+    "city": "Paris",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni100.edu/",
-    "applicationUrl": "https://apply.globaluni100.edu/",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-101",
-    "name": "Global University 101",
+    "name": "University of Melbourne",
     "country": "Australia",
-    "type": "private",
+    "type": "public",
     "ranking": 101,
     "acceptanceRate": "42.6%",
     "averageGpa": 3.7225593593233706,
@@ -2669,19 +2669,19 @@
     "offeredScholarships": [
       "sch-026"
     ],
-    "city": "Zurich",
+    "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni101.edu/",
-    "applicationUrl": "https://apply.globaluni101.edu/",
-    "region": "Asia",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-102",
-    "name": "Global University 102",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 102,
     "acceptanceRate": "16.2%",
     "averageGpa": 3.5514226091919037,
@@ -2695,19 +2695,19 @@
     "offeredScholarships": [
       "sch-046"
     ],
-    "city": "London",
+    "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni102.edu/",
-    "applicationUrl": "https://apply.globaluni102.edu/",
-    "region": "Asia",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-103",
-    "name": "Global University 103",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 103,
     "acceptanceRate": "33.8%",
     "averageGpa": 3.5825263182369027,
@@ -2721,17 +2721,17 @@
     "offeredScholarships": [
       "sch-043"
     ],
-    "city": "New York",
+    "city": "Cambridge",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni103.edu/",
-    "applicationUrl": "https://apply.globaluni103.edu/",
-    "region": "Asia",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-104",
-    "name": "Global University 104",
+    "name": "University of Tokyo",
     "country": "Japan",
     "type": "public",
     "ranking": 104,
@@ -2747,17 +2747,17 @@
     "offeredScholarships": [
       "sch-002"
     ],
-    "city": "New York",
+    "city": "Tokyo",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni104.edu/",
-    "applicationUrl": "https://apply.globaluni104.edu/",
-    "region": "Oceania",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-105",
-    "name": "Global University 105",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 105,
@@ -2773,17 +2773,17 @@
     "offeredScholarships": [
       "sch-048"
     ],
-    "city": "Boston",
+    "city": "Oxford",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni105.edu/",
-    "applicationUrl": "https://apply.globaluni105.edu/",
-    "region": "Asia",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-106",
-    "name": "Global University 106",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 106,
@@ -2799,17 +2799,17 @@
     "offeredScholarships": [
       "sch-025"
     ],
-    "city": "Toronto",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni106.edu/",
-    "applicationUrl": "https://apply.globaluni106.edu/",
-    "region": "Oceania",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-107",
-    "name": "Global University 107",
+    "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 107,
@@ -2825,19 +2825,19 @@
     "offeredScholarships": [
       "sch-048"
     ],
-    "city": "Toronto",
+    "city": "Zurich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni107.edu/",
-    "applicationUrl": "https://apply.globaluni107.edu/",
-    "region": "North America",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-108",
-    "name": "Global University 108",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 108,
     "acceptanceRate": "21.0%",
     "averageGpa": 3.6211429694099664,
@@ -2851,17 +2851,17 @@
     "offeredScholarships": [
       "sch-011"
     ],
-    "city": "Paris",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni108.edu/",
-    "applicationUrl": "https://apply.globaluni108.edu/",
-    "region": "Oceania",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-109",
-    "name": "Global University 109",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 109,
@@ -2877,17 +2877,17 @@
     "offeredScholarships": [
       "sch-001"
     ],
-    "city": "Chicago",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni109.edu/",
-    "applicationUrl": "https://apply.globaluni109.edu/",
-    "region": "Europe",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-110",
-    "name": "Global University 110",
+    "name": "Technical University of Munich",
     "country": "Germany",
     "type": "public",
     "ranking": 110,
@@ -2903,19 +2903,19 @@
     "offeredScholarships": [
       "sch-037"
     ],
-    "city": "Los Angeles",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni110.edu/",
-    "applicationUrl": "https://apply.globaluni110.edu/",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-111",
-    "name": "Global University 111",
+    "name": "University of Tokyo",
     "country": "Japan",
-    "type": "private",
+    "type": "public",
     "ranking": 111,
     "acceptanceRate": "24.1%",
     "averageGpa": 3.8440882829634235,
@@ -2929,19 +2929,19 @@
     "offeredScholarships": [
       "sch-001"
     ],
-    "city": "New York",
+    "city": "Tokyo",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni111.edu/",
-    "applicationUrl": "https://apply.globaluni111.edu/",
-    "region": "North America",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-112",
-    "name": "Global University 112",
+    "name": "University of Tokyo",
     "country": "Japan",
-    "type": "private",
+    "type": "public",
     "ranking": 112,
     "acceptanceRate": "45.5%",
     "averageGpa": 3.1872227099183736,
@@ -2955,17 +2955,17 @@
     "offeredScholarships": [
       "sch-039"
     ],
-    "city": "New York",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni112.edu/",
-    "applicationUrl": "https://apply.globaluni112.edu/",
-    "region": "Oceania",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-113",
-    "name": "Global University 113",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 113,
@@ -2981,19 +2981,19 @@
     "offeredScholarships": [
       "sch-014"
     ],
-    "city": "Berlin",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni113.edu/",
-    "applicationUrl": "https://apply.globaluni113.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-114",
-    "name": "Global University 114",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 114,
     "acceptanceRate": "24.8%",
     "averageGpa": 3.1286328164896675,
@@ -3007,19 +3007,19 @@
     "offeredScholarships": [
       "sch-037"
     ],
-    "city": "Sydney",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni114.edu/",
-    "applicationUrl": "https://apply.globaluni114.edu/",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
     "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-115",
-    "name": "Global University 115",
+    "name": "University of Melbourne",
     "country": "Australia",
-    "type": "private",
+    "type": "public",
     "ranking": 115,
     "acceptanceRate": "11.1%",
     "averageGpa": 3.4065075395067574,
@@ -3033,17 +3033,17 @@
     "offeredScholarships": [
       "sch-034"
     ],
-    "city": "Toronto",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni115.edu/",
-    "applicationUrl": "https://apply.globaluni115.edu/",
-    "region": "North America",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-116",
-    "name": "Global University 116",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 116,
@@ -3059,19 +3059,19 @@
     "offeredScholarships": [
       "sch-006"
     ],
-    "city": "Sydney",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni116.edu/",
-    "applicationUrl": "https://apply.globaluni116.edu/",
-    "region": "North America",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-117",
-    "name": "Global University 117",
+    "name": "University of Toronto",
     "country": "Canada",
-    "type": "private",
+    "type": "public",
     "ranking": 117,
     "acceptanceRate": "46.9%",
     "averageGpa": 3.2039023444148578,
@@ -3085,19 +3085,19 @@
     "offeredScholarships": [
       "sch-029"
     ],
-    "city": "Chicago",
+    "city": "Toronto",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni117.edu/",
-    "applicationUrl": "https://apply.globaluni117.edu/",
-    "region": "Oceania",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-118",
-    "name": "Global University 118",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 118,
     "acceptanceRate": "28.4%",
     "averageGpa": 3.4875585693849853,
@@ -3111,19 +3111,19 @@
     "offeredScholarships": [
       "sch-045"
     ],
-    "city": "New York",
+    "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni118.edu/",
-    "applicationUrl": "https://apply.globaluni118.edu/",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-119",
-    "name": "Global University 119",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 119,
     "acceptanceRate": "32.3%",
     "averageGpa": 3.3202027827296465,
@@ -3137,19 +3137,19 @@
     "offeredScholarships": [
       "sch-004"
     ],
-    "city": "Paris",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni119.edu/",
-    "applicationUrl": "https://apply.globaluni119.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-120",
-    "name": "Global University 120",
+    "name": "University of Toronto",
     "country": "Canada",
-    "type": "private",
+    "type": "public",
     "ranking": 120,
     "acceptanceRate": "37.8%",
     "averageGpa": 3.9470503555391634,
@@ -3163,17 +3163,17 @@
     "offeredScholarships": [
       "sch-045"
     ],
-    "city": "Chicago",
+    "city": "Toronto",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni120.edu/",
-    "applicationUrl": "https://apply.globaluni120.edu/",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-121",
-    "name": "Global University 121",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 121,
@@ -3189,17 +3189,17 @@
     "offeredScholarships": [
       "sch-009"
     ],
-    "city": "Los Angeles",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni121.edu/",
-    "applicationUrl": "https://apply.globaluni121.edu/",
-    "region": "Oceania",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-122",
-    "name": "Global University 122",
+    "name": "Technical University of Munich",
     "country": "Germany",
     "type": "public",
     "ranking": 122,
@@ -3215,19 +3215,19 @@
     "offeredScholarships": [
       "sch-028"
     ],
-    "city": "Sydney",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni122.edu/",
-    "applicationUrl": "https://apply.globaluni122.edu/",
-    "region": "Oceania",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-123",
-    "name": "Global University 123",
+    "name": "Sorbonne University",
     "country": "France",
-    "type": "private",
+    "type": "public",
     "ranking": 123,
     "acceptanceRate": "32.4%",
     "averageGpa": 3.6288455096445134,
@@ -3241,17 +3241,17 @@
     "offeredScholarships": [
       "sch-039"
     ],
-    "city": "Tokyo",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni123.edu/",
-    "applicationUrl": "https://apply.globaluni123.edu/",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-124",
-    "name": "Global University 124",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 124,
@@ -3267,19 +3267,19 @@
     "offeredScholarships": [
       "sch-029"
     ],
-    "city": "Sydney",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni124.edu/",
-    "applicationUrl": "https://apply.globaluni124.edu/",
-    "region": "Asia",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-125",
-    "name": "Global University 125",
+    "name": "Technical University of Munich",
     "country": "Germany",
-    "type": "private",
+    "type": "public",
     "ranking": 125,
     "acceptanceRate": "41.2%",
     "averageGpa": 3.906757286251107,
@@ -3293,19 +3293,19 @@
     "offeredScholarships": [
       "sch-033"
     ],
-    "city": "Sydney",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni125.edu/",
-    "applicationUrl": "https://apply.globaluni125.edu/",
-    "region": "Oceania",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-126",
-    "name": "Global University 126",
+    "name": "Technical University of Munich",
     "country": "Germany",
-    "type": "private",
+    "type": "public",
     "ranking": 126,
     "acceptanceRate": "26.2%",
     "averageGpa": 3.182684669746336,
@@ -3319,17 +3319,17 @@
     "offeredScholarships": [
       "sch-021"
     ],
-    "city": "Sydney",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni126.edu/",
-    "applicationUrl": "https://apply.globaluni126.edu/",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-127",
-    "name": "Global University 127",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 127,
@@ -3345,19 +3345,19 @@
     "offeredScholarships": [
       "sch-041"
     ],
-    "city": "London",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni127.edu/",
-    "applicationUrl": "https://apply.globaluni127.edu/",
-    "region": "Oceania",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-128",
-    "name": "Global University 128",
+    "name": "University of Melbourne",
     "country": "Australia",
-    "type": "private",
+    "type": "public",
     "ranking": 128,
     "acceptanceRate": "54.9%",
     "averageGpa": 3.354847990598752,
@@ -3371,17 +3371,17 @@
     "offeredScholarships": [
       "sch-032"
     ],
-    "city": "Berlin",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni128.edu/",
-    "applicationUrl": "https://apply.globaluni128.edu/",
-    "region": "North America",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-129",
-    "name": "Global University 129",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 129,
@@ -3397,19 +3397,19 @@
     "offeredScholarships": [
       "sch-038"
     ],
-    "city": "Chicago",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni129.edu/",
-    "applicationUrl": "https://apply.globaluni129.edu/",
-    "region": "Oceania",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-130",
-    "name": "Global University 130",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 130,
     "acceptanceRate": "26.9%",
     "averageGpa": 3.8125522128846487,
@@ -3423,17 +3423,17 @@
     "offeredScholarships": [
       "sch-005"
     ],
-    "city": "London",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni130.edu/",
-    "applicationUrl": "https://apply.globaluni130.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-131",
-    "name": "Global University 131",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 131,
@@ -3449,17 +3449,17 @@
     "offeredScholarships": [
       "sch-012"
     ],
-    "city": "Chicago",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni131.edu/",
-    "applicationUrl": "https://apply.globaluni131.edu/",
-    "region": "Oceania",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-132",
-    "name": "Global University 132",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 132,
@@ -3475,19 +3475,19 @@
     "offeredScholarships": [
       "sch-027"
     ],
-    "city": "Berlin",
+    "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni132.edu/",
-    "applicationUrl": "https://apply.globaluni132.edu/",
-    "region": "North America",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-133",
-    "name": "Global University 133",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 133,
     "acceptanceRate": "21.1%",
     "averageGpa": 3.642106483021339,
@@ -3501,19 +3501,19 @@
     "offeredScholarships": [
       "sch-017"
     ],
-    "city": "Chicago",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni133.edu/",
-    "applicationUrl": "https://apply.globaluni133.edu/",
-    "region": "Oceania",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-134",
-    "name": "Global University 134",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 134,
     "acceptanceRate": "47.7%",
     "averageGpa": 3.124504680866368,
@@ -3527,17 +3527,17 @@
     "offeredScholarships": [
       "sch-041"
     ],
-    "city": "Zurich",
+    "city": "Singapore",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni134.edu/",
-    "applicationUrl": "https://apply.globaluni134.edu/",
-    "region": "North America",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-135",
-    "name": "Global University 135",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 135,
@@ -3553,17 +3553,17 @@
     "offeredScholarships": [
       "sch-007"
     ],
-    "city": "London",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni135.edu/",
-    "applicationUrl": "https://apply.globaluni135.edu/",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-136",
-    "name": "Global University 136",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 136,
@@ -3579,17 +3579,17 @@
     "offeredScholarships": [
       "sch-035"
     ],
-    "city": "Berlin",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni136.edu/",
-    "applicationUrl": "https://apply.globaluni136.edu/",
-    "region": "Oceania",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-137",
-    "name": "Global University 137",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 137,
@@ -3605,19 +3605,19 @@
     "offeredScholarships": [
       "sch-005"
     ],
-    "city": "London",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni137.edu/",
-    "applicationUrl": "https://apply.globaluni137.edu/",
-    "region": "Asia",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-138",
-    "name": "Global University 138",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 138,
     "acceptanceRate": "25.2%",
     "averageGpa": 3.4376038246154788,
@@ -3631,17 +3631,17 @@
     "offeredScholarships": [
       "sch-027"
     ],
-    "city": "Los Angeles",
+    "city": "Cambridge",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni138.edu/",
-    "applicationUrl": "https://apply.globaluni138.edu/",
-    "region": "Oceania",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-139",
-    "name": "Global University 139",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 139,
@@ -3657,17 +3657,17 @@
     "offeredScholarships": [
       "sch-021"
     ],
-    "city": "Chicago",
+    "city": "Toronto",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni139.edu/",
-    "applicationUrl": "https://apply.globaluni139.edu/",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-140",
-    "name": "Global University 140",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 140,
@@ -3683,19 +3683,19 @@
     "offeredScholarships": [
       "sch-007"
     ],
-    "city": "Chicago",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni140.edu/",
-    "applicationUrl": "https://apply.globaluni140.edu/",
-    "region": "North America",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-141",
-    "name": "Global University 141",
+    "name": "University of Melbourne",
     "country": "Australia",
-    "type": "private",
+    "type": "public",
     "ranking": 141,
     "acceptanceRate": "54.5%",
     "averageGpa": 3.402084294019827,
@@ -3709,19 +3709,19 @@
     "offeredScholarships": [
       "sch-018"
     ],
-    "city": "Chicago",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni141.edu/",
-    "applicationUrl": "https://apply.globaluni141.edu/",
-    "region": "North America",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-142",
-    "name": "Global University 142",
+    "name": "Technical University of Munich",
     "country": "Germany",
-    "type": "private",
+    "type": "public",
     "ranking": 142,
     "acceptanceRate": "43.7%",
     "averageGpa": 3.579571278041093,
@@ -3735,17 +3735,17 @@
     "offeredScholarships": [
       "sch-046"
     ],
-    "city": "Singapore",
+    "city": "Munich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni142.edu/",
-    "applicationUrl": "https://apply.globaluni142.edu/",
-    "region": "North America",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-143",
-    "name": "Global University 143",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 143,
@@ -3761,17 +3761,17 @@
     "offeredScholarships": [
       "sch-027"
     ],
-    "city": "Chicago",
+    "city": "Oxford",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni143.edu/",
-    "applicationUrl": "https://apply.globaluni143.edu/",
-    "region": "Asia",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-144",
-    "name": "Global University 144",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 144,
@@ -3787,17 +3787,17 @@
     "offeredScholarships": [
       "sch-048"
     ],
-    "city": "Paris",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni144.edu/",
-    "applicationUrl": "https://apply.globaluni144.edu/",
-    "region": "Oceania",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-145",
-    "name": "Global University 145",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 145,
@@ -3813,17 +3813,17 @@
     "offeredScholarships": [
       "sch-021"
     ],
-    "city": "Boston",
+    "city": "Toronto",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni145.edu/",
-    "applicationUrl": "https://apply.globaluni145.edu/",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-146",
-    "name": "Global University 146",
+    "name": "Harvard University",
     "country": "United States",
     "type": "private",
     "ranking": 146,
@@ -3839,17 +3839,17 @@
     "offeredScholarships": [
       "sch-010"
     ],
-    "city": "Singapore",
+    "city": "Cambridge",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni146.edu/",
-    "applicationUrl": "https://apply.globaluni146.edu/",
-    "region": "Europe",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-147",
-    "name": "Global University 147",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 147,
@@ -3865,17 +3865,17 @@
     "offeredScholarships": [
       "sch-046"
     ],
-    "city": "New York",
+    "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni147.edu/",
-    "applicationUrl": "https://apply.globaluni147.edu/",
-    "region": "Oceania",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-148",
-    "name": "Global University 148",
+    "name": "Technical University of Munich",
     "country": "Germany",
     "type": "public",
     "ranking": 148,
@@ -3891,17 +3891,17 @@
     "offeredScholarships": [
       "sch-012"
     ],
-    "city": "London",
+    "city": "Munich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni148.edu/",
-    "applicationUrl": "https://apply.globaluni148.edu/",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-149",
-    "name": "Global University 149",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 149,
@@ -3917,19 +3917,19 @@
     "offeredScholarships": [
       "sch-027"
     ],
-    "city": "Los Angeles",
+    "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni149.edu/",
-    "applicationUrl": "https://apply.globaluni149.edu/",
-    "region": "North America",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-150",
-    "name": "Global University 150",
+    "name": "University of Tokyo",
     "country": "Japan",
-    "type": "private",
+    "type": "public",
     "ranking": 150,
     "acceptanceRate": "9.8%",
     "averageGpa": 3.255941084323964,
@@ -3943,17 +3943,17 @@
     "offeredScholarships": [
       "sch-009"
     ],
-    "city": "Berlin",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni150.edu/",
-    "applicationUrl": "https://apply.globaluni150.edu/",
-    "region": "Europe",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-151",
-    "name": "Global University 151",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 151,
@@ -3969,17 +3969,17 @@
     "offeredScholarships": [
       "sch-023"
     ],
-    "city": "Chicago",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni151.edu/",
-    "applicationUrl": "https://apply.globaluni151.edu/",
-    "region": "Asia",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-152",
-    "name": "Global University 152",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 152,
@@ -3995,17 +3995,17 @@
     "offeredScholarships": [
       "sch-011"
     ],
-    "city": "London",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni152.edu/",
-    "applicationUrl": "https://apply.globaluni152.edu/",
-    "region": "North America",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-153",
-    "name": "Global University 153",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 153,
@@ -4021,19 +4021,19 @@
     "offeredScholarships": [
       "sch-002"
     ],
-    "city": "Zurich",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni153.edu/",
-    "applicationUrl": "https://apply.globaluni153.edu/",
-    "region": "North America",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-154",
-    "name": "Global University 154",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 154,
     "acceptanceRate": "16.3%",
     "averageGpa": 3.124341442253019,
@@ -4047,17 +4047,17 @@
     "offeredScholarships": [
       "sch-046"
     ],
-    "city": "London",
+    "city": "Cambridge",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni154.edu/",
-    "applicationUrl": "https://apply.globaluni154.edu/",
-    "region": "Europe",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-155",
-    "name": "Global University 155",
+    "name": "Technical University of Munich",
     "country": "Germany",
     "type": "public",
     "ranking": 155,
@@ -4073,17 +4073,17 @@
     "offeredScholarships": [
       "sch-026"
     ],
-    "city": "Singapore",
+    "city": "Munich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni155.edu/",
-    "applicationUrl": "https://apply.globaluni155.edu/",
-    "region": "North America",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-156",
-    "name": "Global University 156",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 156,
@@ -4099,17 +4099,17 @@
     "offeredScholarships": [
       "sch-015"
     ],
-    "city": "London",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni156.edu/",
-    "applicationUrl": "https://apply.globaluni156.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-157",
-    "name": "Global University 157",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 157,
@@ -4125,19 +4125,19 @@
     "offeredScholarships": [
       "sch-005"
     ],
-    "city": "Zurich",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni157.edu/",
-    "applicationUrl": "https://apply.globaluni157.edu/",
-    "region": "Europe",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-158",
-    "name": "Global University 158",
+    "name": "National University of Singapore",
     "country": "Singapore",
-    "type": "private",
+    "type": "public",
     "ranking": 158,
     "acceptanceRate": "49.0%",
     "averageGpa": 3.06274958087226,
@@ -4151,17 +4151,17 @@
     "offeredScholarships": [
       "sch-026"
     ],
-    "city": "Zurich",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni158.edu/",
-    "applicationUrl": "https://apply.globaluni158.edu/",
-    "region": "North America",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-159",
-    "name": "Global University 159",
+    "name": "Harvard University",
     "country": "United States",
     "type": "private",
     "ranking": 159,
@@ -4177,17 +4177,17 @@
     "offeredScholarships": [
       "sch-009"
     ],
-    "city": "Boston",
+    "city": "Cambridge",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni159.edu/",
-    "applicationUrl": "https://apply.globaluni159.edu/",
-    "region": "Europe",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-160",
-    "name": "Global University 160",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 160,
@@ -4203,19 +4203,19 @@
     "offeredScholarships": [
       "sch-009"
     ],
-    "city": "Boston",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni160.edu/",
-    "applicationUrl": "https://apply.globaluni160.edu/",
-    "region": "Europe",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-161",
-    "name": "Global University 161",
+    "name": "Harvard University",
     "country": "United States",
-    "type": "public",
+    "type": "private",
     "ranking": 161,
     "acceptanceRate": "37.8%",
     "averageGpa": 3.7853950036944246,
@@ -4229,19 +4229,19 @@
     "offeredScholarships": [
       "sch-006"
     ],
-    "city": "Tokyo",
+    "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni161.edu/",
-    "applicationUrl": "https://apply.globaluni161.edu/",
-    "region": "Europe",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-162",
-    "name": "Global University 162",
+    "name": "University of Tokyo",
     "country": "Japan",
-    "type": "private",
+    "type": "public",
     "ranking": 162,
     "acceptanceRate": "24.6%",
     "averageGpa": 3.305271396091807,
@@ -4255,17 +4255,17 @@
     "offeredScholarships": [
       "sch-025"
     ],
-    "city": "Toronto",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni162.edu/",
-    "applicationUrl": "https://apply.globaluni162.edu/",
-    "region": "Asia",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-163",
-    "name": "Global University 163",
+    "name": "Harvard University",
     "country": "United States",
     "type": "private",
     "ranking": 163,
@@ -4281,17 +4281,17 @@
     "offeredScholarships": [
       "sch-038"
     ],
-    "city": "New York",
+    "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni163.edu/",
-    "applicationUrl": "https://apply.globaluni163.edu/",
-    "region": "Oceania",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-164",
-    "name": "Global University 164",
+    "name": "University of Tokyo",
     "country": "Japan",
     "type": "public",
     "ranking": 164,
@@ -4307,17 +4307,17 @@
     "offeredScholarships": [
       "sch-017"
     ],
-    "city": "Boston",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni164.edu/",
-    "applicationUrl": "https://apply.globaluni164.edu/",
-    "region": "North America",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-165",
-    "name": "Global University 165",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 165,
@@ -4333,17 +4333,17 @@
     "offeredScholarships": [
       "sch-031"
     ],
-    "city": "Boston",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni165.edu/",
-    "applicationUrl": "https://apply.globaluni165.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-166",
-    "name": "Global University 166",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 166,
@@ -4359,17 +4359,17 @@
     "offeredScholarships": [
       "sch-025"
     ],
-    "city": "Singapore",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni166.edu/",
-    "applicationUrl": "https://apply.globaluni166.edu/",
-    "region": "North America",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-167",
-    "name": "Global University 167",
+    "name": "University of Tokyo",
     "country": "Japan",
     "type": "public",
     "ranking": 167,
@@ -4385,17 +4385,17 @@
     "offeredScholarships": [
       "sch-043"
     ],
-    "city": "Singapore",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni167.edu/",
-    "applicationUrl": "https://apply.globaluni167.edu/",
-    "region": "Asia",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-168",
-    "name": "Global University 168",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 168,
@@ -4411,17 +4411,17 @@
     "offeredScholarships": [
       "sch-024"
     ],
-    "city": "Tokyo",
+    "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni168.edu/",
-    "applicationUrl": "https://apply.globaluni168.edu/",
-    "region": "North America",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-169",
-    "name": "Global University 169",
+    "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 169,
@@ -4437,17 +4437,17 @@
     "offeredScholarships": [
       "sch-031"
     ],
-    "city": "Chicago",
+    "city": "Zurich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni169.edu/",
-    "applicationUrl": "https://apply.globaluni169.edu/",
-    "region": "Oceania",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-170",
-    "name": "Global University 170",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 170,
@@ -4463,19 +4463,19 @@
     "offeredScholarships": [
       "sch-008"
     ],
-    "city": "Tokyo",
+    "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni170.edu/",
-    "applicationUrl": "https://apply.globaluni170.edu/",
-    "region": "Asia",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-171",
-    "name": "Global University 171",
+    "name": "ETH Zurich",
     "country": "Switzerland",
-    "type": "private",
+    "type": "public",
     "ranking": 171,
     "acceptanceRate": "45.6%",
     "averageGpa": 3.0105235019194856,
@@ -4489,19 +4489,19 @@
     "offeredScholarships": [
       "sch-013"
     ],
-    "city": "Singapore",
+    "city": "Zurich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni171.edu/",
-    "applicationUrl": "https://apply.globaluni171.edu/",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-172",
-    "name": "Global University 172",
+    "name": "Technical University of Munich",
     "country": "Germany",
-    "type": "private",
+    "type": "public",
     "ranking": 172,
     "acceptanceRate": "38.0%",
     "averageGpa": 3.1959156761637626,
@@ -4515,17 +4515,17 @@
     "offeredScholarships": [
       "sch-023"
     ],
-    "city": "Toronto",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni172.edu/",
-    "applicationUrl": "https://apply.globaluni172.edu/",
-    "region": "Asia",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-173",
-    "name": "Global University 173",
+    "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 173,
@@ -4541,17 +4541,17 @@
     "offeredScholarships": [
       "sch-044"
     ],
-    "city": "New York",
+    "city": "Zurich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni173.edu/",
-    "applicationUrl": "https://apply.globaluni173.edu/",
-    "region": "North America",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-174",
-    "name": "Global University 174",
+    "name": "Harvard University",
     "country": "United States",
     "type": "private",
     "ranking": 174,
@@ -4567,17 +4567,17 @@
     "offeredScholarships": [
       "sch-004"
     ],
-    "city": "Sydney",
+    "city": "Cambridge",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni174.edu/",
-    "applicationUrl": "https://apply.globaluni174.edu/",
-    "region": "Asia",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-175",
-    "name": "Global University 175",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 175,
@@ -4593,17 +4593,17 @@
     "offeredScholarships": [
       "sch-049"
     ],
-    "city": "Berlin",
+    "city": "Oxford",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni175.edu/",
-    "applicationUrl": "https://apply.globaluni175.edu/",
-    "region": "Asia",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-176",
-    "name": "Global University 176",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 176,
@@ -4619,19 +4619,19 @@
     "offeredScholarships": [
       "sch-021"
     ],
-    "city": "Tokyo",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni176.edu/",
-    "applicationUrl": "https://apply.globaluni176.edu/",
-    "region": "North America",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-177",
-    "name": "Global University 177",
+    "name": "Technical University of Munich",
     "country": "Germany",
-    "type": "private",
+    "type": "public",
     "ranking": 177,
     "acceptanceRate": "20.4%",
     "averageGpa": 3.6237081146054537,
@@ -4645,19 +4645,19 @@
     "offeredScholarships": [
       "sch-033"
     ],
-    "city": "Paris",
+    "city": "Munich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni177.edu/",
-    "applicationUrl": "https://apply.globaluni177.edu/",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-178",
-    "name": "Global University 178",
+    "name": "University of Melbourne",
     "country": "Australia",
-    "type": "private",
+    "type": "public",
     "ranking": 178,
     "acceptanceRate": "22.2%",
     "averageGpa": 3.196517269004859,
@@ -4671,17 +4671,17 @@
     "offeredScholarships": [
       "sch-021"
     ],
-    "city": "Toronto",
+    "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni178.edu/",
-    "applicationUrl": "https://apply.globaluni178.edu/",
-    "region": "Europe",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-179",
-    "name": "Global University 179",
+    "name": "University of Tokyo",
     "country": "Japan",
     "type": "public",
     "ranking": 179,
@@ -4697,17 +4697,17 @@
     "offeredScholarships": [
       "sch-032"
     ],
-    "city": "Chicago",
+    "city": "Tokyo",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni179.edu/",
-    "applicationUrl": "https://apply.globaluni179.edu/",
-    "region": "Asia",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-180",
-    "name": "Global University 180",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 180,
@@ -4723,17 +4723,17 @@
     "offeredScholarships": [
       "sch-025"
     ],
-    "city": "Toronto",
+    "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni180.edu/",
-    "applicationUrl": "https://apply.globaluni180.edu/",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
     "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-181",
-    "name": "Global University 181",
+    "name": "University of Oxford",
     "country": "United Kingdom",
     "type": "public",
     "ranking": 181,
@@ -4749,19 +4749,19 @@
     "offeredScholarships": [
       "sch-010"
     ],
-    "city": "Boston",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni181.edu/",
-    "applicationUrl": "https://apply.globaluni181.edu/",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-182",
-    "name": "Global University 182",
+    "name": "Sorbonne University",
     "country": "France",
-    "type": "private",
+    "type": "public",
     "ranking": 182,
     "acceptanceRate": "26.4%",
     "averageGpa": 3.066493647833856,
@@ -4775,17 +4775,17 @@
     "offeredScholarships": [
       "sch-017"
     ],
-    "city": "New York",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni182.edu/",
-    "applicationUrl": "https://apply.globaluni182.edu/",
-    "region": "Asia",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-183",
-    "name": "Global University 183",
+    "name": "Harvard University",
     "country": "United States",
     "type": "private",
     "ranking": 183,
@@ -4801,17 +4801,17 @@
     "offeredScholarships": [
       "sch-031"
     ],
-    "city": "Boston",
+    "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni183.edu/",
-    "applicationUrl": "https://apply.globaluni183.edu/",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
     "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-184",
-    "name": "Global University 184",
+    "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 184,
@@ -4827,19 +4827,19 @@
     "offeredScholarships": [
       "sch-000"
     ],
-    "city": "London",
+    "city": "Zurich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni184.edu/",
-    "applicationUrl": "https://apply.globaluni184.edu/",
-    "region": "North America",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-185",
-    "name": "Global University 185",
+    "name": "Technical University of Munich",
     "country": "Germany",
-    "type": "private",
+    "type": "public",
     "ranking": 185,
     "acceptanceRate": "31.4%",
     "averageGpa": 3.9570885037732006,
@@ -4853,19 +4853,19 @@
     "offeredScholarships": [
       "sch-025"
     ],
-    "city": "Toronto",
+    "city": "Munich",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni185.edu/",
-    "applicationUrl": "https://apply.globaluni185.edu/",
-    "region": "Oceania",
+    "website": "https://www.tum.de/",
+    "applicationUrl": "https://www.tum.de/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-186",
-    "name": "Global University 186",
+    "name": "University of Toronto",
     "country": "Canada",
-    "type": "private",
+    "type": "public",
     "ranking": 186,
     "acceptanceRate": "9.0%",
     "averageGpa": 3.39732639269789,
@@ -4879,17 +4879,17 @@
     "offeredScholarships": [
       "sch-038"
     ],
-    "city": "Zurich",
+    "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni186.edu/",
-    "applicationUrl": "https://apply.globaluni186.edu/",
-    "region": "Asia",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-187",
-    "name": "Global University 187",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 187,
@@ -4905,19 +4905,19 @@
     "offeredScholarships": [
       "sch-037"
     ],
-    "city": "Los Angeles",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni187.edu/",
-    "applicationUrl": "https://apply.globaluni187.edu/",
-    "region": "Oceania",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-188",
-    "name": "Global University 188",
+    "name": "University of Melbourne",
     "country": "Australia",
-    "type": "private",
+    "type": "public",
     "ranking": 188,
     "acceptanceRate": "49.4%",
     "averageGpa": 3.07383963251074,
@@ -4931,17 +4931,17 @@
     "offeredScholarships": [
       "sch-001"
     ],
-    "city": "Paris",
+    "city": "Melbourne",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni188.edu/",
-    "applicationUrl": "https://apply.globaluni188.edu/",
-    "region": "Asia",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-189",
-    "name": "Global University 189",
+    "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 189,
@@ -4957,19 +4957,19 @@
     "offeredScholarships": [
       "sch-025"
     ],
-    "city": "Sydney",
+    "city": "Zurich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni189.edu/",
-    "applicationUrl": "https://apply.globaluni189.edu/",
-    "region": "North America",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-190",
-    "name": "Global University 190",
+    "name": "University of Tokyo",
     "country": "Japan",
-    "type": "private",
+    "type": "public",
     "ranking": 190,
     "acceptanceRate": "32.0%",
     "averageGpa": 3.3008357144961806,
@@ -4983,19 +4983,19 @@
     "offeredScholarships": [
       "sch-003"
     ],
-    "city": "Paris",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni190.edu/",
-    "applicationUrl": "https://apply.globaluni190.edu/",
-    "region": "North America",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-191",
-    "name": "Global University 191",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 191,
     "acceptanceRate": "23.1%",
     "averageGpa": 3.905510421610502,
@@ -5009,17 +5009,17 @@
     "offeredScholarships": [
       "sch-016"
     ],
-    "city": "New York",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni191.edu/",
-    "applicationUrl": "https://apply.globaluni191.edu/",
-    "region": "North America",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-192",
-    "name": "Global University 192",
+    "name": "University of Toronto",
     "country": "Canada",
     "type": "public",
     "ranking": 192,
@@ -5037,17 +5037,17 @@
     ],
     "city": "Toronto",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni192.edu/",
-    "applicationUrl": "https://apply.globaluni192.edu/",
-    "region": "Asia",
+    "website": "https://www.utoronto.ca/",
+    "applicationUrl": "https://www.utoronto.ca/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-193",
-    "name": "Global University 193",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 193,
     "acceptanceRate": "28.0%",
     "averageGpa": 3.720521632692935,
@@ -5061,17 +5061,17 @@
     "offeredScholarships": [
       "sch-041"
     ],
-    "city": "Chicago",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni193.edu/",
-    "applicationUrl": "https://apply.globaluni193.edu/",
-    "region": "North America",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-194",
-    "name": "Global University 194",
+    "name": "Harvard University",
     "country": "United States",
     "type": "private",
     "ranking": 194,
@@ -5087,17 +5087,17 @@
     "offeredScholarships": [
       "sch-007"
     ],
-    "city": "Sydney",
+    "city": "Cambridge",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni194.edu/",
-    "applicationUrl": "https://apply.globaluni194.edu/",
-    "region": "Asia",
+    "website": "https://www.harvard.edu/",
+    "applicationUrl": "https://www.harvard.edu/apply",
+    "region": "North America",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-195",
-    "name": "Global University 195",
+    "name": "ETH Zurich",
     "country": "Switzerland",
     "type": "public",
     "ranking": 195,
@@ -5113,17 +5113,17 @@
     "offeredScholarships": [
       "sch-037"
     ],
-    "city": "New York",
+    "city": "Zurich",
     "hasOnCampusHousing": false,
-    "website": "https://www.globaluni195.edu/",
-    "applicationUrl": "https://apply.globaluni195.edu/",
-    "region": "North America",
+    "website": "https://ethz.ch/",
+    "applicationUrl": "https://ethz.ch/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-196",
-    "name": "Global University 196",
+    "name": "Sorbonne University",
     "country": "France",
     "type": "public",
     "ranking": 196,
@@ -5139,19 +5139,19 @@
     "offeredScholarships": [
       "sch-021"
     ],
-    "city": "Zurich",
+    "city": "Paris",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni196.edu/",
-    "applicationUrl": "https://apply.globaluni196.edu/",
+    "website": "https://www.sorbonne-universite.fr/",
+    "applicationUrl": "https://www.sorbonne-universite.fr/apply",
     "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-197",
-    "name": "Global University 197",
+    "name": "University of Oxford",
     "country": "United Kingdom",
-    "type": "private",
+    "type": "public",
     "ranking": 197,
     "acceptanceRate": "25.0%",
     "averageGpa": 3.2395155790377594,
@@ -5165,17 +5165,17 @@
     "offeredScholarships": [
       "sch-022"
     ],
-    "city": "Chicago",
+    "city": "Oxford",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni197.edu/",
-    "applicationUrl": "https://apply.globaluni197.edu/",
-    "region": "North America",
+    "website": "https://www.ox.ac.uk/",
+    "applicationUrl": "https://www.ox.ac.uk/apply",
+    "region": "Europe",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-198",
-    "name": "Global University 198",
+    "name": "National University of Singapore",
     "country": "Singapore",
     "type": "public",
     "ranking": 198,
@@ -5193,15 +5193,15 @@
     ],
     "city": "Singapore",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni198.edu/",
-    "applicationUrl": "https://apply.globaluni198.edu/",
-    "region": "Europe",
+    "website": "https://nus.edu.sg/",
+    "applicationUrl": "https://nus.edu.sg/apply",
+    "region": "Asia",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-199",
-    "name": "Global University 199",
+    "name": "University of Tokyo",
     "country": "Japan",
     "type": "public",
     "ranking": 199,
@@ -5217,17 +5217,17 @@
     "offeredScholarships": [
       "sch-015"
     ],
-    "city": "Zurich",
+    "city": "Tokyo",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni199.edu/",
-    "applicationUrl": "https://apply.globaluni199.edu/",
-    "region": "Asia",
+    "website": "https://www.u-tokyo.ac.jp/",
+    "applicationUrl": "https://www.u-tokyo.ac.jp/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },
   {
     "id": "uni-200",
-    "name": "Global University 200",
+    "name": "University of Melbourne",
     "country": "Australia",
     "type": "public",
     "ranking": 200,
@@ -5243,11 +5243,11 @@
     "offeredScholarships": [
       "sch-021"
     ],
-    "city": "Los Angeles",
+    "city": "Melbourne",
     "hasOnCampusHousing": true,
-    "website": "https://www.globaluni200.edu/",
-    "applicationUrl": "https://apply.globaluni200.edu/",
-    "region": "Oceania",
+    "website": "https://www.unimelb.edu.au/",
+    "applicationUrl": "https://www.unimelb.edu.au/apply",
+    "region": "Asia-Pacific",
     "lastVerified": "2026-07-01",
     "source": "official"
   },

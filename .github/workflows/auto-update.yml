@@ -15,14 +15,14 @@ jobs:
       - name: Setup Node.js Runtime Environment
         uses: actions/setup-node@v3
         with:
-          node-size: '18'
+          node-version: '18'
           cache: 'npm'
 
       - name: Install Base Project Dependencies
         run: npm ci --ignore-scripts || npm install
 
       - name: Execute Smart Database Expansion & Merging Script
-        run: node scripts/updateData.cjs
+        run: node scripts/updateData.js
 
       - name: Commit & Push Consolidated Updates
         run: |

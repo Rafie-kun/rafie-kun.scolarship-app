@@ -4,12 +4,14 @@ import { Profile } from '../types';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { dispatchProfileUpdate } from '../utils/events';
 import { useAuth } from '../context/AuthContext';
+import AcademicOnboardingWizard from './AcademicOnboardingWizard';
 
 export default function ProfileView() {
   const { authorizedFetch } = useAuth();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState('');
+  const [showWizard, setShowWizard] = useState(false);
 
   // Forms states
   const [fullName, setFullName] = useState('');
@@ -383,6 +385,8 @@ export default function ProfileView() {
           <Sparkles className="w-7 h-7 animate-spin text-[#ffff55]" />
           <span className="mc-text-shadow">SYNCHRONIZING HERO METRIC DATA...</span>
         </div>
+      ) : profile && (!profile.hasCompletedOnboarding || showWizard) ? (
+        <AcademicOnboardingWizard onComplete={() => { setShowWizard(false); fetchProfile(); }} />
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
@@ -528,6 +532,23 @@ export default function ProfileView() {
               {activeFormTab === 'academics' && (
                 <div className="space-y-4">
                   <h4 className="font-press text-[9px] text-[#ffff55] mc-text-shadow uppercase pb-2 border-b-2 border-black">ACADEMIC MATRIX VALUES</h4>
+                  
+                  {/* Step-by-step Scribe wizard launcher banner */}
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-[#1e1a18] border-2 border-[#ffaa00] p-4 gap-4 font-mono text-xs text-stone-200">
+                    <div className="space-y-1">
+                      <span className="font-press text-[8.5px] text-[#ffaa00] block mc-text-shadow">🧙‍♂️ Academic Scribe Wizard</span>
+                      <p className="text-[11px] text-stone-300 leading-relaxed max-w-lg">
+                        Run the step-by-step interactive onboarding to map courses, calculate weighted GPAs, and assess admissions compatibility.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => { playClickSound(); setShowWizard(true); }}
+                      className="mc-btn font-press text-[8px] py-2 px-3.5 shrink-0 uppercase text-[#ffff55]"
+                    >
+                      Launch Wizard
+                    </button>
+                  </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
                     

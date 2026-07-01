@@ -28,7 +28,7 @@ export default function MentorView() {
   const mentors: Mentor[] = [
     {
       id: "men-1",
-      name: "Tofael Islam",
+      name: "Dr. James Carter",
       role: "Ph.D. Compiler Engineer Research Fellowship",
       university: "Stanford University",
       scholarshipJoined: "Fulbright Scholar",
@@ -36,7 +36,7 @@ export default function MentorView() {
     },
     {
       id: "men-2",
-      name: "Nabila Tabassum",
+      name: "Sarah Jenkins, M.Sc.",
       role: "Graduate ML Infrastructure Engineer at EuroLabs",
       university: "Technical University of Munich",
       scholarshipJoined: "Erasmus Mundus Alumni",
@@ -44,7 +44,7 @@ export default function MentorView() {
     },
     {
       id: "men-3",
-      name: "Anas Ahmed",
+      name: "Robert Chen, Ph.D.",
       role: "Sustainable Dev Delegate / AI Ethics Advocate",
       university: "University of Cambridge",
       scholarshipJoined: "Commonwealth Fellow",
@@ -122,7 +122,10 @@ export default function MentorView() {
                 <span className="text-[10px] font-mono text-stone-400 font-semibold">{men.university}</span>
               </div>
 
-              <h4 className="font-press text-[10px] text-[#ffff55] mc-text-shadow leading-tight">{men.name}</h4>
+              <div className="flex items-center gap-2 pt-1">
+                <span className="bg-[#444] text-stone-300 border border-black font-press text-[6.5px] px-1 py-0.5 select-none shrink-0 tracking-wide">DEMO MENTOR</span>
+                <h4 className="font-press text-[10px] text-[#ffff55] mc-text-shadow leading-tight">{men.name}</h4>
+              </div>
               <p className="text-xs text-stone-300 font-sans leading-relaxed pt-1">{men.role}</p>
 
               <div className="pt-3 border-t border-stone-800 space-y-2">
