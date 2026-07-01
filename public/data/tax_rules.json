@@ -1,0 +1,39 @@
+{
+  "countries": {
+    "United States": {
+      "taxFreeAllowanceYearly": 14600,
+      "baseTaxRatePercent": 10,
+      "estimatedSocialContributionsPercent": 7.65,
+      "specialStudentRules": "F-1 non-residents are exempt from FICA (Social Security & Medicare) taxes for their first 5 years.",
+      "allowanceCurrency": "USD"
+    },
+    "United Kingdom": {
+      "taxFreeAllowanceYearly": 12570,
+      "baseTaxRatePercent": 20,
+      "estimatedSocialContributionsPercent": 8.0,
+      "specialStudentRules": "Full-time students do not pay National Insurance if earnings are below primary threshold.",
+      "allowanceCurrency": "GBP"
+    },
+    "Canada": {
+      "taxFreeAllowanceYearly": 15705,
+      "baseTaxRatePercent": 15,
+      "estimatedSocialContributionsPercent": 5.95,
+      "specialStudentRules": "Tuition tax credits can be used to offset future income taxes.",
+      "allowanceCurrency": "CAD"
+    },
+    "Germany": {
+      "taxFreeAllowanceYearly": 11604,
+      "baseTaxRatePercent": 14,
+      "estimatedSocialContributionsPercent": 9.3,
+      "specialStudentRules": "Mini-jobs (up to €538/month) are entirely tax-free and exempt from social security contributions.",
+      "allowanceCurrency": "EUR"
+    },
+    "Australia": {
+      "taxFreeAllowanceYearly": 18200,
+      "baseTaxRatePercent": 19,
+      "estimatedSocialContributionsPercent": 2.0,
+      "specialStudentRules": "Temporary residents may have different tax-free thresholds.",
+      "allowanceCurrency": "AUD"
+    }
+  }
+}

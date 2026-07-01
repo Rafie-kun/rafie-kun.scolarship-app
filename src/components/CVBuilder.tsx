@@ -574,7 +574,7 @@ export default function CVBuilder() {
                     type="text"
                     value={personalInfo.fullName}
                     onChange={(e) => setPersonalInfo({ ...personalInfo, fullName: e.target.value })}
-                    placeholder="e.g. Arif Rahaman"
+                    placeholder="e.g. Alex Carter"
                     className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
                   />
                 </div>

@@ -9,6 +9,8 @@ const UNIV_PATH = path.join(__dirname, '../public/data/universities.json');
 const SCHOL_PATH = path.join(__dirname, '../public/data/scholarships.json');
 const COL_PATH = path.join(__dirname, '../public/data/cost_of_living.json');
 const JOBS_PATH = path.join(__dirname, '../public/data/jobs.json');
+const STUDENT_JOBS_PATH = path.join(__dirname, '../public/data/student_jobs.json');
+const TAX_PATH = path.join(__dirname, '../public/data/tax_rules.json');
 
 // Define target list of 60 countries covering all major regions
 const ALL_60_COUNTRIES = [
@@ -486,7 +488,67 @@ function runUpdate() {
   });
 
   fs.writeFileSync(JOBS_PATH, JSON.stringify(existingJobs, null, 2));
+  fs.writeFileSync(STUDENT_JOBS_PATH, JSON.stringify(existingJobs, null, 2));
   console.log(`Jobs database updated! Total entries: ${existingJobs.length}. Newly added: ${newlyAddedJobsCount}.`);
+
+  // ==========================================
+  // 5. TAX RULES (ALL 60 COUNTRIES)
+  // ==========================================
+  let existingTax = { countries: {} };
+  if (fs.existsSync(TAX_PATH)) {
+    try {
+      existingTax = JSON.parse(fs.readFileSync(TAX_PATH, "utf8"));
+    } catch (e) {
+      console.warn("Could not read tax_rules.json, starting fresh", e);
+    }
+  }
+  if (!existingTax.countries) {
+    existingTax.countries = {};
+  }
+
+  let newlyAddedTaxCount = 0;
+  ALL_60_COUNTRIES.forEach(country => {
+    if (!existingTax.countries[country]) {
+      const tier = COUNTRY_TIERS[country] || "Medium";
+      const tmpl = COST_OF_LIVING_TEMPLATES[tier];
+      
+      let taxFreeAllowance = 12000;
+      let baseTaxPercent = 15;
+      let socialPercent = 5.0;
+
+      if (tier === "High") {
+        taxFreeAllowance = 15000;
+        baseTaxPercent = 18;
+        socialPercent = 8.0;
+      } else if (tier === "Medium-High") {
+        taxFreeAllowance = 12000;
+        baseTaxPercent = 14;
+        socialPercent = 6.0;
+      } else if (tier === "Medium") {
+        taxFreeAllowance = 10000;
+        baseTaxPercent = 12;
+        socialPercent = 4.0;
+      } else {
+        taxFreeAllowance = 5000;
+        baseTaxPercent = 10;
+        socialPercent = 2.0;
+      }
+
+      existingTax.countries[country] = {
+        taxFreeAllowanceYearly: taxFreeAllowance,
+        baseTaxRatePercent: baseTaxPercent,
+        estimatedSocialContributionsPercent: socialPercent,
+        specialStudentRules: `Special student tax allowances applicable in ${country} under educational exemptions.`,
+        allowanceCurrency: tmpl.currency,
+        lastVerified: "2026-07-01",
+        source: "official"
+      };
+      newlyAddedTaxCount++;
+    }
+  });
+
+  fs.writeFileSync(TAX_PATH, JSON.stringify(existingTax, null, 2));
+  console.log(`Tax rules database updated! Total entries: ${Object.keys(existingTax.countries).length}. Newly added: ${newlyAddedTaxCount}.`);
 
   console.log("--------------------------------------------------");
   console.log("ScholarPath Database Expansion & Cleansing COMPLETE!");

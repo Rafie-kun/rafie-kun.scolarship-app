@@ -1,37 +1,50 @@
-name: Weekly ScholarPath Intelligence Update
+name: Dynamic Scribe Database Auto-Update
 
 on:
   schedule:
-    - cron: '0 0 * * 0' # Run weekly on Sundays at midnight UTC
-  workflow_dispatch: # Enable manual run via GitHub Actions dashboard
+    - cron: '0 0 * * 0' # Weekly (Sunday at midnight)
+  workflow_dispatch: # On manual trigger
+
+permissions:
+  contents: write
 
 jobs:
-  update-scholarpath-database:
+  auto-update:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js Runtime Environment
-        uses: actions/setup-node@v3
+      - name: Setup Node.js Runtime environment
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 20
           cache: 'npm'
 
-      - name: Install Base Project Dependencies
-        run: npm ci --ignore-scripts || npm install
+      - name: Install Project Dependencies
+        run: npm ci || npm install
 
-      - name: Execute Smart Database Expansion & Merging Script
+      - name: Run Scribe Database Auto-Updater Script
         run: node scripts/updateData.js
 
-      - name: Commit & Push Consolidated Updates
+      - name: Run Live Exchange Rates Updates Script
+        run: node scripts/updateExchangeRates.js
+
+      - name: Check for Database Modifications
+        id: git-check
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions Bot"
+          git config user.name "ScholarPath Bot"
+          git config user.email "bot@scholarpath.org"
           git add public/data/
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "chore(data): auto-update global countries, cost of living, and jobs datasets"
-            git push origin main
+          git status --porcelain
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
           else
-            echo "No changes detected. Database is fully up-to-date."
+            echo "changes=false" >> $GITHUB_OUTPUT
           fi
+
+      - name: Commit & Push Verified Database Updates
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git commit -m "chore(data): automated weekly database refresh and exchange rate sync [skip ci]"
+          git push origin main

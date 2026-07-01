@@ -10,6 +10,7 @@ import { useAuth } from '../context/AuthContext';
 import { playClickSound } from '../utils/sound';
 import { getMockApplications } from '../services/mockDataService';
 import { Application } from '../types';
+import EmptyState from './EmptyState';
 
 interface GpaPoint {
   term: string;
@@ -192,30 +193,14 @@ export default function PerformanceAnalyticsView({ onNavigate }: { onNavigate?: 
           </p>
         </div>
 
-        {/* Empty State Banner Card */}
-        <div className="mc-window bg-[#2a2421] border-4 border-black p-10 text-center text-stone-200 [box-shadow:inset_-4px_-4px_0_#171412,inset_4px_4px_0_#433833] max-w-2xl mx-auto my-12 flex flex-col items-center justify-center gap-6">
-          <div className="w-16 h-16 bg-stone-900 border-4 border-black flex items-center justify-center rounded-none text-red-500 animate-pulse [box-shadow:inset_-3px_-3px_0_#141414,inset_3px_3px_0_#555]">
-            <Lock className="w-8 h-8 text-[#ff5555]" />
-          </div>
-          
-          <div className="space-y-2">
-            <h4 className="font-press text-[12px] text-[#ff5555] mc-text-shadow uppercase tracking-wider">
-              Admissions Analytics Locked
-            </h4>
-            <p className="text-stone-300 text-xs max-w-md mx-auto leading-relaxed font-sans">
-              Your academic profile is currently blank! The Scribe database requires you to complete the Academic Onboarding Wizard to build charts, historical curves, and compute custom competitiveness indices.
-            </p>
-          </div>
-
-          <button
-            onClick={() => {
-              playClickSound();
-              onNavigate?.('profile');
-            }}
-            className="mc-btn font-press text-[10px] py-3.5 px-6 uppercase text-[#ffff55] border-2 border-yellow-500 animate-bounce cursor-pointer hover:bg-stone-850"
-          >
-            ⛏️ Start Profile Onboarding Wizard
-          </button>
+        <div className="pt-6">
+          <EmptyState 
+            title="Admissions Analytics Locked"
+            description="Your academic profile is currently blank! The Scribe database requires you to complete the Academic Onboarding Wizard to build charts, historical curves, and compute custom competitiveness indices."
+            buttonText="Complete Academic Profile"
+            onAction={() => onNavigate?.('profile')}
+            icon={<Lock className="w-8 h-8 text-[#ff5555]" />}
+          />
         </div>
       </div>
     );

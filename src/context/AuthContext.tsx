@@ -23,14 +23,14 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const defaultProfile: Profile = {
-  fullName: 'Guest Explorer',
+  fullName: '',
   level: 1,
   points: 0,
-  gpa: 3.0,
+  gpa: 0.0,
   maxGpa: 4.0,
   educationLevel: 'undergraduate',
   intendedDegree: 'undergraduate',
-  intendedMajor: 'Computer Science',
+  intendedMajor: '',
   country: 'United States',
   nationality: 'American',
   badges: [],

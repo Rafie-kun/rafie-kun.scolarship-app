@@ -1,0 +1,124 @@
+{
+  "countries": {
+    "United States": [
+      {
+        "title": "Teaching Assistant (TA)",
+        "hourlyWage": 18.5,
+        "weeklyHourLimit": 20,
+        "estimatedMonthlyEarnings": 1480,
+        "taxDeductionPercent": 10,
+        "visaRestrictions": "F-1 visa students restricted to on-campus work only during terms.",
+        "typicalEmployers": "University Academic Departments",
+        "type": "on-campus"
+      },
+      {
+        "title": "Library Assistant",
+        "hourlyWage": 14.0,
+        "weeklyHourLimit": 20,
+        "estimatedMonthlyEarnings": 1120,
+        "taxDeductionPercent": 10,
+        "visaRestrictions": "On-campus employment only.",
+        "typicalEmployers": "University Libraries",
+        "type": "on-campus"
+      },
+      {
+        "title": "Retail / Coffee Barista",
+        "hourlyWage": 16.0,
+        "weeklyHourLimit": 20,
+        "estimatedMonthlyEarnings": 1280,
+        "taxDeductionPercent": 12,
+        "visaRestrictions": "F-1 requires off-campus CPT/OPT authorization.",
+        "typicalEmployers": "Local Coffee Shops, Retail Outlets",
+        "type": "off-campus"
+      }
+    ],
+    "United Kingdom": [
+      {
+        "title": "Campus Ambassador",
+        "hourlyWage": 13.5,
+        "weeklyHourLimit": 20,
+        "estimatedMonthlyEarnings": 1080,
+        "taxDeductionPercent": 0,
+        "visaRestrictions": "T4/Student Visa allows up to 20 hours/week off-campus/on-campus work.",
+        "typicalEmployers": "University Marketing",
+        "type": "on-campus"
+      },
+      {
+        "title": "Retail Associate",
+        "hourlyWage": 11.5,
+        "weeklyHourLimit": 20,
+        "estimatedMonthlyEarnings": 920,
+        "taxDeductionPercent": 0,
+        "visaRestrictions": "Max 20 hours/week during term-time.",
+        "typicalEmployers": "Supermarkets, apparel retailers",
+        "type": "off-campus"
+      }
+    ],
+    "Canada": [
+      {
+        "title": "Research Assistant (RA)",
+        "hourlyWage": 22.0,
+        "weeklyHourLimit": 20,
+        "estimatedMonthlyEarnings": 1760,
+        "taxDeductionPercent": 15,
+        "visaRestrictions": "Study Permit holders can work on or off campus.",
+        "typicalEmployers": "University Labs",
+        "type": "on-campus"
+      },
+      {
+        "title": "Food Service Barista",
+        "hourlyWage": 16.5,
+        "weeklyHourLimit": 20,
+        "estimatedMonthlyEarnings": 1320,
+        "taxDeductionPercent": 10,
+        "visaRestrictions": "Allowed off-campus up to 20 hours/week.",
+        "typicalEmployers": "Coffee Shops, Fast Food Franchises",
+        "type": "off-campus"
+      }
+    ],
+    "Germany": [
+      {
+        "title": "Studentische Hilfskraft (HiWi)",
+        "hourlyWage": 13.5,
+        "weeklyHourLimit": 19.5,
+        "estimatedMonthlyEarnings": 1053,
+        "taxDeductionPercent": 0,
+        "visaRestrictions": "Non-EU students can work 140 full days or 280 half days per year.",
+        "typicalEmployers": "University Departments & Institutes",
+        "type": "on-campus"
+      },
+      {
+        "title": "Werkstudent (Working Student in Tech)",
+        "hourlyWage": 17.0,
+        "weeklyHourLimit": 20,
+        "estimatedMonthlyEarnings": 1360,
+        "taxDeductionPercent": 9.3,
+        "visaRestrictions": "Exempt from pension insurance up to 20 hours/week.",
+        "typicalEmployers": "Tech Startups & Engineering firms",
+        "type": "off-campus"
+      }
+    ],
+    "Australia": [
+      {
+        "title": "Private Tutor",
+        "hourlyWage": 35.0,
+        "weeklyHourLimit": 24,
+        "estimatedMonthlyEarnings": 3360,
+        "taxDeductionPercent": 15,
+        "visaRestrictions": "Student Visa allows 48 hours per fortnight.",
+        "typicalEmployers": "Tutoring Agencies, Freelance",
+        "type": "off-campus"
+      },
+      {
+        "title": "Hospitality Waiter / Retailer",
+        "hourlyWage": 25.0,
+        "weeklyHourLimit": 24,
+        "estimatedMonthlyEarnings": 2400,
+        "taxDeductionPercent": 15,
+        "visaRestrictions": "Student Visa allows 48 hours per fortnight.",
+        "typicalEmployers": "Restaurants, Cafes, Supermarkets",
+        "type": "off-campus"
+      }
+    ]
+  }
+}

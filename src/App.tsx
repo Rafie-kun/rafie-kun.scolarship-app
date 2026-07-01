@@ -149,7 +149,7 @@ export default function App() {
   useEffect(() => {
     if (isLoggedIn && profile && !authLoading) {
       // Prevent showing the tour during transient loading states where profile is the placeholder defaultProfile
-      if (profile.fullName === 'Guest Explorer' && !isGuest) {
+      if (!profile.fullName && !isGuest) {
         return;
       }
       
@@ -461,7 +461,7 @@ export default function App() {
           <div className="hidden lg:flex items-center gap-4 font-mono text-xs bg-black/40 px-3.5 py-2 border-2 border-black rounded-none">
             <div className="text-left space-y-1">
               <span className="text-[#ffaa00] font-bold block text-[10px] leading-none uppercase">PLAYER IDENT:</span>
-              <span className="font-bold text-[#e1e1e1] block leading-none pt-1">{profile?.fullName ?? ""}</span>
+              <span className="font-bold text-[#e1e1e1] block leading-none pt-1">{profile?.fullName || "Unconfigured Player"}</span>
             </div>
             
             {/* Logout button */}

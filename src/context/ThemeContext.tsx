@@ -3,7 +3,9 @@ import { playClickSound } from '../utils/sound';
 
 export type ThemeId = 'overworld' | 'nether' | 'end' | 'aether';
 export type ThemeMode = 'light' | 'dark' | 'minecraft';
-export type CurrencyId = 'USD' | 'EUR' | 'GBP' | 'BDT' | 'CAD' | 'AUD' | 'INR';
+export type CurrencyId = 
+  | 'USD' | 'GBP' | 'EUR' | 'BDT' | 'CAD' | 'AUD' | 'INR' | 'JPY' 
+  | 'CHF' | 'SGD' | 'MYR' | 'NZD' | 'ZAR' | 'BRL' | 'MXN';
 
 interface ThemeContextType {
   themeMode: ThemeMode;
@@ -26,22 +28,38 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const DEFAULT_RATES: Record<CurrencyId, number> = {
   USD: 1.0,
-  EUR: 0.92,
   GBP: 0.79,
+  EUR: 0.92,
   BDT: 117.5,
   CAD: 1.37,
   AUD: 1.5,
-  INR: 83.5
+  INR: 83.5,
+  JPY: 161.0,
+  CHF: 0.90,
+  SGD: 1.35,
+  MYR: 4.70,
+  NZD: 1.63,
+  ZAR: 18.2,
+  BRL: 5.50,
+  MXN: 18.1
 };
 
 const CURRENCY_SYMBOLS: Record<CurrencyId, string> = {
   USD: '$',
-  EUR: '€',
   GBP: '£',
+  EUR: '€',
   BDT: '৳',
   CAD: 'C$',
   AUD: 'A$',
-  INR: '₹'
+  INR: '₹',
+  JPY: '¥',
+  CHF: 'Fr',
+  SGD: 'S$',
+  MYR: 'RM',
+  NZD: 'NZ$',
+  ZAR: 'R',
+  BRL: 'R$',
+  MXN: '$'
 };
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -81,12 +99,20 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
           if (data && data.rates) {
             setRates({
               USD: 1.0,
-              EUR: data.rates.EUR || DEFAULT_RATES.EUR,
               GBP: data.rates.GBP || DEFAULT_RATES.GBP,
+              EUR: data.rates.EUR || DEFAULT_RATES.EUR,
               BDT: data.rates.BDT || DEFAULT_RATES.BDT,
               CAD: data.rates.CAD || DEFAULT_RATES.CAD,
               AUD: data.rates.AUD || DEFAULT_RATES.AUD,
-              INR: data.rates.INR || DEFAULT_RATES.INR
+              INR: data.rates.INR || DEFAULT_RATES.INR,
+              JPY: data.rates.JPY || DEFAULT_RATES.JPY,
+              CHF: data.rates.CHF || DEFAULT_RATES.CHF,
+              SGD: data.rates.SGD || DEFAULT_RATES.SGD,
+              MYR: data.rates.MYR || DEFAULT_RATES.MYR,
+              NZD: data.rates.NZD || DEFAULT_RATES.NZD,
+              ZAR: data.rates.ZAR || DEFAULT_RATES.ZAR,
+              BRL: data.rates.BRL || DEFAULT_RATES.BRL,
+              MXN: data.rates.MXN || DEFAULT_RATES.MXN
             });
           }
         }

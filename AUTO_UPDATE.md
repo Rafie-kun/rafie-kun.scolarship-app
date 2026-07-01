@@ -1,43 +1,96 @@
-# 🤖 ScholarPath Intelligent Auto-Update System
+# 🚀 ScholarPath: Dynamic Scribe Database Auto-Update System
 
-This system automates the weekly synchronization and expansion of the ScholarPath global database. It imports new official country indicators, budgets, scholarship rules, and student employment laws without overwriting manually corrected entries.
-
----
-
-## 🧭 Core Directives (Data Safety Architecture)
-
-- **Preserve Manually Verified Entries**: Any record possessing `"userVerified": true` is **never** overridden. It is treated as local ground-truth.
-- **Merge-Only Semantics**: Missing countries or categories are appended to existing datasets rather than regenerating the database from scratch.
-- **Traceability Stamp**: Every modified or added record receives a `"lastVerified": "YYYY-MM-DD"` and a `"source": "official" | "third-party"` descriptor tag for full telemetry auditing.
+This documentation outlines the automated database verification and exchange rate updating system configured for ScholarPath. 
 
 ---
 
-## 🛠️ Components
+## 📅 System Overview
 
-### 1. Verification Script (`scripts/updateData.cjs`)
-A headless Node.js runner that:
-- Reads `public/data/universities.json`, `public/data/cost_of_living.json`, and `public/data/scholarships.json`.
-- Identifies and appends missing real institutions and cost of living metrics to ensure all **60 targeted countries** remain fully operational.
-- Automatically handles the initialization and updates of `public/data/jobs.json` to configure part-time student employment parameters globally.
+ScholarPath maintains dynamic, real-world datasets in the `public/data/` directory to ensure high-fidelity admissions calculations, accurate costs, and live conversion rates. These files are updated automatically using a weekly scheduled GitHub Actions workflow.
 
-### 2. GitHub Actions Automation (`.github/workflows/auto-update.yml`)
-Runs headless execution on a weekly schedule.
-- **Trigger Schedule**: Every Sunday at midnight UTC (`0 0 * * 0`).
-- **Manual Dispatch**: Can be run on-demand directly from the GitHub Actions tab.
-- **Workflow Pipeline**:
-  1. Spins up an `ubuntu-latest` runner.
-  2. Pulls repository code.
-  3. Installs dependencies securely.
-  4. Runs `node scripts/updateData.cjs`.
-  5. Commits and pushes back changes if data updates are detected.
+### 🗄️ Managed Data Files
+1. `universities.json`: List of accredited international universities, target competitive boundaries, and web domains.
+2. `scholarships.json`: Fully funded international fellowship programs, eligibility parameters, and application urls.
+3. `cost_of_living.json`: Average rent, food, transport, and insurance premiums for student-friendly urban centers.
+4. `student_jobs.json`: Common on-campus/off-campus gigs, average hourly wages, and legal work-hour limits.
+5. `tax_rules.json`: Yearly tax-free allowances, base progressive tax rates, and student tax credit structures.
+6. `exchange_rates.json`: Dynamic currency exchange multiplier values against USD base.
 
 ---
 
-## 🚀 Manual Execution & Testing
+## 🌐 Selected Trustworthy Data Sources
 
-To test the sync or execute the expansion manually:
+Our data synchronizers consolidate information from the following reputable repositories and official API portals:
+
+1. **Exchange Rate API** ([open.er-api.com](https://open.er-api.com/v6/latest/USD)): Real-time global currency valuations updated daily.
+2. **DAAD German Academic Exchange Database** ([daad.de](https://www.daad.de/en/)): Authoritative information on scholarships and living costs in Germany.
+3. **Chevening Fellowships Portal** ([chevening.org](https://www.chevening.org/)): UK Foreign Office official guidelines for global scholars.
+4. **Fulbright Program Directory** ([foreign.fulbrightprogram.org](https://foreign.fulbrightprogram.org/)): Standardized US State Department educational requirements and student aids.
+5. **OECD Tax Databases & National Stat Authorities**: Aggregated estimates for tax exemptions, progressive brackets, and weekly work ceilings.
+
+---
+
+## 🛠️ How to Run the Sync Scripts Manually
+
+If you need to force-synchronize datasets immediately in your local or server runtime, execute these commands in your shell terminal:
 
 ```bash
-# Run the expansion script directly in the terminal
-node scripts/updateData.cjs
+# 1. Update all general databases (Universities, Fellowships, Cost of Living, Jobs, Taxes)
+node scripts/updateData.js
+
+# 2. Sync currency exchange rate conversions against live market api
+node scripts/updateExchangeRates.js
 ```
+
+---
+
+## 📥 How to Add New Data Sources
+
+To integrate additional APIs or RSS feeds into the auto-update pipeline, follow these steps:
+
+1. **Locate the Script**: Open `scripts/updateData.js`.
+2. **Define the Fetch Handler**: Create a helper function inside the script to query your new target API (e.g. `async function fetchNumbeoLgCost()`).
+3. **Handle Errors and Fallbacks**: Always add `try-catch` wrappers and fallbacks so that if the third-party endpoint goes offline, the local database remains healthy.
+4. **Merge Entries**: Compare the records using a unique field (like `id` or `name`). Do not duplicate records.
+5. **Preserve User Verified Data**: 
+   ```js
+   if (existingRecord.userVerified) {
+     // Skip overwriting this item or preserve specific user-defined metrics!
+   }
+   ```
+
+---
+
+## 🔄 Rolling Back Changes
+
+If the automated runner updates a dataset with unexpected values, you can roll back easily:
+
+1. Check the Git logs to locate the previous commit:
+   ```bash
+   git log --oneline
+   ```
+2. Revert the file to its previous state:
+   ```bash
+   git checkout HEAD~1 -- public/data/
+   ```
+3. Commit the reverted database state:
+   ```bash
+   git commit -m "revert(data): rolling back dataset to previous stable version"
+   git push origin main
+   ```
+
+---
+
+## 🤝 Handling Merge Conflicts
+
+If you make manual edits to a JSON file while the background Actions runner is committing updates:
+
+1. Pull the remote modifications and rebase your commits:
+   ```bash
+   git pull origin main --rebase
+   ```
+2. If there are conflicts inside the JSON arrays, choose the remote version if you want to keep the auto-updated metrics, or choose your local version to preserve your custom manual configurations.
+3. Verify JSON syntax correctness before pushing to avoid breaking the application:
+   ```bash
+   npm run lint
+   ```

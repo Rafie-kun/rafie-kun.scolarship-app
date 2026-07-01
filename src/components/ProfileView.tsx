@@ -4,7 +4,7 @@ import { Profile } from '../types';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { dispatchProfileUpdate } from '../utils/events';
 import { useAuth } from '../context/AuthContext';
-import AcademicOnboardingWizard from './AcademicOnboardingWizard';
+import WizardContainer from './OnboardingWizard/WizardContainer';
 
 export default function ProfileView() {
   const { authorizedFetch } = useAuth();
@@ -386,7 +386,7 @@ export default function ProfileView() {
           <span className="mc-text-shadow">SYNCHRONIZING HERO METRIC DATA...</span>
         </div>
       ) : profile && (!profile.hasCompletedOnboarding || showWizard) ? (
-        <AcademicOnboardingWizard onComplete={() => { setShowWizard(false); fetchProfile(); }} />
+        <WizardContainer onComplete={() => { setShowWizard(false); fetchProfile(); }} />
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           

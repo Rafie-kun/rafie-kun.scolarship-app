@@ -5,12 +5,20 @@ import { motion, AnimatePresence } from 'motion/react';
 
 const CURRENCY_LABELS: Record<CurrencyId, { name: string; flag: string; symbol: string }> = {
   USD: { name: 'United States Dollar', flag: '🇺🇸', symbol: '$' },
-  EUR: { name: 'Euro', flag: '🇪🇺', symbol: '€' },
   GBP: { name: 'British Pound', flag: '🇬🇧', symbol: '£' },
+  EUR: { name: 'Euro', flag: '🇪🇺', symbol: '€' },
   BDT: { name: 'Bangladeshi Taka', flag: '🇧🇩', symbol: '৳' },
   CAD: { name: 'Canadian Dollar', flag: '🇨🇦', symbol: 'C$' },
   AUD: { name: 'Australian Dollar', flag: '🇦🇺', symbol: 'A$' },
-  INR: { name: 'Indian Rupee', flag: '🇮🇳', symbol: '₹' }
+  INR: { name: 'Indian Rupee', flag: '🇮🇳', symbol: '₹' },
+  JPY: { name: 'Japanese Yen', flag: '🇯🇵', symbol: '¥' },
+  CHF: { name: 'Swiss Franc', flag: '🇨🇭', symbol: 'Fr' },
+  SGD: { name: 'Singapore Dollar', flag: '🇸🇬', symbol: 'S$' },
+  MYR: { name: 'Malaysian Ringgit', flag: '🇲🇾', symbol: 'RM' },
+  NZD: { name: 'New Zealand Dollar', flag: '🇳🇿', symbol: 'NZ$' },
+  ZAR: { name: 'South African Rand', flag: '🇿🇦', symbol: 'R' },
+  BRL: { name: 'Brazilian Real', flag: '🇧🇷', symbol: 'R$' },
+  MXN: { name: 'Mexican Peso', flag: '🇲🇽', symbol: '$' }
 };
 
 export default function CurrencySwitcher() {

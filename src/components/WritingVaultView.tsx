@@ -75,7 +75,7 @@ export default function WritingVaultView() {
     playClickSound();
     const template = `Statement of Purpose & Career Plan for International Fellowship
 
-My name is Arif Rahaman. I am writing to express my interest in joining the graduate software research group. Since my childhood, I have always loved writing code. Throughout my undergraduate course, I scored okay marks. I managed to build a student open-source forum board that had various users, and it was quite successful.
+My name is Alex Carter. I am writing to express my interest in joining the graduate software research group. Since my childhood, I have always loved writing code. Throughout my undergraduate course, I scored okay marks. I managed to build a student open-source forum board that had various users, and it was quite successful.
 
 In my future career, I plan to research compilers, operating system architectures and automated telemetry databases. Since your highly regarded faculty contains prominent global academics, I am confident that joining your lab tracks will fulfill all my research objectives. Thank you.`;
     setEssayText(template);
