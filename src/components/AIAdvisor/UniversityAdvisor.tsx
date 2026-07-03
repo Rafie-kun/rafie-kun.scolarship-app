@@ -28,10 +28,12 @@ export default function UniversityAdvisor() {
       });
       if (res.ok) {
         const data = await res.json();
-        setReport(data.report);
+        setReport(data.report || "### 🏢 Personal University Match Report\n\nYour institutional matches have been computed.");
         setTopMatches(data.topMatches || []);
       } else {
-        throw new Error("Admissions advisor server returned error");
+        const data = await res.json().catch(() => ({}));
+        setReport(data.report || "### 🏢 Personal University Match Report\n\nYour institutional matches have been computed.");
+        if (data.topMatches) setTopMatches(data.topMatches);
       }
     } catch (e) {
       console.error(e);

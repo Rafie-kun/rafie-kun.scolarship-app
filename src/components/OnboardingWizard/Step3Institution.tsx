@@ -7,6 +7,7 @@ import { useTheme } from '../../context/ThemeContext';
 export default function Step3Institution() {
   const onboarding = useOnboarding();
   const { convertAmount } = useTheme();
+  const [customCountryInput, setCustomCountryInput] = React.useState('');
 
   return (
     <div className="space-y-4" id="wizard-step3">
@@ -51,6 +52,40 @@ export default function Step3Institution() {
             ))}
             <option value="Other">Other / Not Listed</option>
           </select>
+          {onboarding.country === 'Other' && (
+            <div className="mt-2 flex gap-2">
+              <input
+                type="text"
+                placeholder="Type custom country name..."
+                className="bg-[#1a1a1a] border border-stone-700 p-2 text-stone-200 text-xs w-full outline-none focus:border-[#ffff55]"
+                value={customCountryInput}
+                onChange={(e) => setCustomCountryInput(e.target.value)}
+              />
+              <button
+                type="button"
+                onClick={async () => {
+                  if (!customCountryInput) return;
+                  try {
+                    const res = await fetch('/api/countries/add', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ country: customCountryInput, continent: 'Global' })
+                    });
+                    if (res.ok) {
+                      const data = await res.json();
+                      onboarding.setCountry(data.country);
+                      alert(`Country "${data.country}" validated and registered!`);
+                    }
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+                className="mc-button px-3 py-1 text-[10px] whitespace-nowrap text-stone-900 bg-[#ffff55] font-bold"
+              >
+                Validate
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col gap-1.5">

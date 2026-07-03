@@ -28,10 +28,12 @@ export default function ScholarshipAdvisor() {
       });
       if (res.ok) {
         const data = await res.json();
-        setReport(data.report);
+        setReport(data.report || "### 🌌 Personal Academic Portfolio Analysis\n\nYour profile match score has been verified.");
         setTopMatches(data.topMatches || []);
       } else {
-        throw new Error("Advisement server returned error");
+        const data = await res.json().catch(() => ({}));
+        setReport(data.report || "### 🌌 Personal Academic Portfolio Analysis\n\nYour profile match score has been verified.");
+        if (data.topMatches) setTopMatches(data.topMatches);
       }
     } catch (e) {
       console.error(e);

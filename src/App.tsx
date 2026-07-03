@@ -4,7 +4,7 @@ import {
   Trophy, BookOpen, GraduationCap, Calculator, Award, ArrowRight, Save, User, Sparkles,
   Search, BookmarkCheck, Calendar, CheckSquare, Square, MessageSquare, Plus, CheckCircle,
   FolderDown, Building, Navigation, Globe, Menu, X, Coins, HelpCircle, Shield, Sword,
-  Undo, Settings, UserCog, FileText, TrendingUp, Compass
+  Undo, Settings, UserCog, FileText, TrendingUp, Compass, Briefcase
 } from 'lucide-react';
 
 import OverviewRecommendationsView from './components/OverviewRecommendationsView';
@@ -28,6 +28,7 @@ import PerformanceAnalyticsView from './components/PerformanceAnalyticsView';
 import CurrencySwitcher from './components/CurrencySwitcher';
 import AdvancedSearch from './components/AdvancedSearch';
 import VisaGuide from './components/VisaGuide';
+import InternshipExplorer from './components/InternshipExplorer';
 
 import LoginScreen from './components/LoginScreen';
 import { useAuth } from './context/AuthContext';
@@ -199,6 +200,7 @@ export default function App() {
     { id: 'overview', label: 'Quest Dashboard', mcName: 'Diamond Trophy', desc: 'View active targets, track scores, and claimed items', icon: Trophy, color: 'text-amber-400' },
     { id: 'analytics', label: 'Performance Analytics', mcName: 'Golden Redstone Gauge', desc: 'Visualize academic GPA trends and quest completions', icon: TrendingUp, color: 'text-[#55ff55]' },
     { id: 'scholarships', label: 'Loot Registry', mcName: 'Enchanted Golden Apple', desc: 'Browse matched international fellowships & stipends', icon: GraduationCap, color: 'text-yellow-400' },
+    { id: 'internships', label: 'Internship Vault', mcName: 'Golden Fellowship Chest', desc: 'Browse global paid internships, research posts & UN positions', icon: Briefcase, color: 'text-emerald-400 font-bold' },
     { id: 'universities', label: 'Target Keeps', mcName: 'Golden Citadel Spire', desc: 'Browse entry GPA benchmarks for global institutions', icon: Building, color: 'text-sky-400' },
     { id: 'search', label: 'Explorer Spyglass', mcName: 'Explorer Spyglass Tool', desc: 'High-precision cross-database query engine for loot and citadels', icon: Search, color: 'text-violet-400 font-bold' },
     { id: 'applications', label: 'Quest Book', mcName: 'Redstone Ledger Registry', desc: 'Manage your active application checkpoints and deadlines', icon: BookmarkCheck, color: 'text-red-400' },
@@ -225,6 +227,8 @@ export default function App() {
         return <PerformanceAnalyticsView onNavigate={handleTabChange} />;
       case 'scholarships':
         return <ScholarshipsView />;
+      case 'internships':
+        return <InternshipExplorer />;
       case 'universities':
         return <UniversitiesView />;
       case 'search':
