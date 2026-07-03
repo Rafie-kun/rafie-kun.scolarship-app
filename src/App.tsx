@@ -4,7 +4,7 @@ import {
   Trophy, BookOpen, GraduationCap, Calculator, Award, ArrowRight, Save, User, Sparkles,
   Search, BookmarkCheck, Calendar, CheckSquare, Square, MessageSquare, Plus, CheckCircle,
   FolderDown, Building, Navigation, Globe, Menu, X, Coins, HelpCircle, Shield, Sword,
-  Undo, Settings, UserCog, FileText, TrendingUp
+  Undo, Settings, UserCog, FileText, TrendingUp, Compass
 } from 'lucide-react';
 
 import OverviewRecommendationsView from './components/OverviewRecommendationsView';
@@ -27,6 +27,7 @@ import BudgetPlanner from './components/BudgetPlanner';
 import PerformanceAnalyticsView from './components/PerformanceAnalyticsView';
 import CurrencySwitcher from './components/CurrencySwitcher';
 import AdvancedSearch from './components/AdvancedSearch';
+import VisaGuide from './components/VisaGuide';
 
 import LoginScreen from './components/LoginScreen';
 import { useAuth } from './context/AuthContext';
@@ -206,6 +207,7 @@ export default function App() {
     { id: 'cv', label: 'Eminent CV Builder', mcName: 'Diamond Badge Emblem', desc: 'Synthesize custom admissions CV credentials & export PDF', icon: FileText, color: 'text-rose-450 font-bold' },
     { id: 'counselling', label: 'Wise Wizard', mcName: 'Tome of Guidance', desc: 'Speak to the librarian AI about ECTS matches', icon: BookOpen, color: 'text-emerald-400' },
     { id: 'budget', label: 'Budget Planner', mcName: 'Golden Coins', desc: 'Calculate study costs & part-time earnings', icon: Coins, color: 'text-[#2ecc71]' },
+    { id: 'visa', label: 'Visa Compass', mcName: 'Passport Compass', desc: 'Study visa requirements, proof of funds & work permits', icon: Compass, color: 'text-[#55ffff] font-bold' },
     { id: 'learning', label: 'Navigator Compass', mcName: 'Chronometer Compass', desc: 'Structured timeline maps for global admission stages', icon: Navigation, color: 'text-orange-400' },
     { id: 'community', label: 'Tavern Forum', mcName: 'Broadcasting Beacon', desc: 'Interact with fellow explorers regarding research meta', icon: MessageSquare, color: 'text-purple-400' },
     { id: 'mentors', label: 'Alumni Guild', mcName: 'Master Guide Scroll', desc: 'Consult with vetting alumni from top fellowship chains', icon: Award, color: 'text-pink-400' },
@@ -239,6 +241,8 @@ export default function App() {
         return <CounsellingView />;
       case 'budget':
         return <BudgetPlanner />;
+      case 'visa':
+        return <VisaGuide />;
       case 'community':
         return <CommunityView />;
       case 'learning':
