@@ -23,8 +23,8 @@ router.post('/', authenticateToken, (req: Request, res: Response) => {
   if (!currentProfile) {
     return res.status(404).json({ error: "Profile not found." });
   }
-  const updatedProfile = { ...currentProfile, ...req.body };
   saveProfile(username, req.body);
+  const updatedProfile = getProfileByUsername(username) || { ...currentProfile, ...req.body };
   res.json(updatedProfile);
 });
 

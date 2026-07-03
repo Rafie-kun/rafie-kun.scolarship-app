@@ -95,6 +95,15 @@ db.exec(`
     lastDailyCheckin TEXT,
     hasCompletedOnboarding INTEGER DEFAULT 0,
     customGeminiKey TEXT,
+    city TEXT,
+    bio TEXT,
+    heroTitle TEXT,
+    profileColor TEXT,
+    universityName TEXT,
+    degree TEXT,
+    fieldOfStudy TEXT,
+    academicStatus TEXT,
+    profileCompletion INTEGER,
     FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
   );
 
@@ -190,7 +199,16 @@ try {
     { name: 'profilePicture', type: 'TEXT' },
     { name: 'lastDailyCheckin', type: 'TEXT' },
     { name: 'hasCompletedOnboarding', type: 'INTEGER DEFAULT 0' },
-    { name: 'customGeminiKey', type: 'TEXT' }
+    { name: 'customGeminiKey', type: 'TEXT' },
+    { name: 'city', type: 'TEXT' },
+    { name: 'bio', type: 'TEXT' },
+    { name: 'heroTitle', type: 'TEXT' },
+    { name: 'profileColor', type: 'TEXT' },
+    { name: 'universityName', type: 'TEXT' },
+    { name: 'degree', type: 'TEXT' },
+    { name: 'fieldOfStudy', type: 'TEXT' },
+    { name: 'academicStatus', type: 'TEXT' },
+    { name: 'profileCompletion', type: 'INTEGER' }
   ];
 
   for (const col of profileColsToAdd) {
@@ -264,7 +282,16 @@ function deserializeProfile(row: any): Profile | null {
     profilePicture: row.profilePicture || undefined,
     lastDailyCheckin: row.lastDailyCheckin || undefined,
     hasCompletedOnboarding: row.hasCompletedOnboarding === 1 || row.hasCompletedOnboarding === '1' || row.hasCompletedOnboarding === true || row.hasCompletedOnboarding === 'true',
-    customGeminiKey: row.customGeminiKey || undefined
+    customGeminiKey: row.customGeminiKey || undefined,
+    city: row.city || undefined,
+    bio: row.bio || undefined,
+    heroTitle: row.heroTitle || undefined,
+    profileColor: row.profileColor || undefined,
+    universityName: row.universityName || undefined,
+    degree: row.degree || undefined,
+    fieldOfStudy: row.fieldOfStudy || undefined,
+    academicStatus: safeJsonParse(row.academicStatus),
+    profileCompletion: row.profileCompletion !== null && row.profileCompletion !== undefined ? row.profileCompletion : undefined
   };
 }
 
@@ -309,9 +336,10 @@ export function createNewUser(username: string, passwordHash: string, fullName: 
       projects, volunteerExperience, badges, educationLevel, highSchoolName, collegeName,
       primaryMajor, secondaryMajor, minor, graduationYear, additionalSkills, resumePdf,
       rewardedActions, oLevelSubjects, aLevelSubjects, satScore, profilePicture, lastDailyCheckin,
-      hasCompletedOnboarding, customGeminiKey
+      hasCompletedOnboarding, customGeminiKey, city, bio, heroTitle, profileColor,
+      universityName, degree, fieldOfStudy, academicStatus, profileCompletion
     ) VALUES (
-      ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+      ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
     )
   `);
 
@@ -352,7 +380,16 @@ export function createNewUser(username: string, passwordHash: string, fullName: 
       profile.profilePicture || null,
       profile.lastDailyCheckin || null,
       profile.hasCompletedOnboarding ? 1 : 0,
-      profile.customGeminiKey || null
+      profile.customGeminiKey || null,
+      profile.city || null,
+      profile.bio || null,
+      profile.heroTitle || null,
+      profile.profileColor || null,
+      profile.universityName || null,
+      profile.degree || null,
+      profile.fieldOfStudy || null,
+      JSON.stringify(profile.academicStatus || []),
+      profile.profileCompletion || null
     );
   });
 
@@ -375,7 +412,9 @@ export function saveProfile(username: string, updated: Partial<Profile>): void {
       secondaryMajor = ?, minor = ?, graduationYear = ?, additionalSkills = ?,
       resumePdf = ?, rewardedActions = ?, oLevelSubjects = ?, aLevelSubjects = ?,
       satScore = ?, profilePicture = ?, lastDailyCheckin = ?,
-      hasCompletedOnboarding = ?, customGeminiKey = ?
+      hasCompletedOnboarding = ?, customGeminiKey = ?, city = ?, bio = ?,
+      heroTitle = ?, profileColor = ?, universityName = ?, degree = ?,
+      fieldOfStudy = ?, academicStatus = ?, profileCompletion = ?
     WHERE LOWER(username) = LOWER(?)
   `);
 
@@ -412,6 +451,15 @@ export function saveProfile(username: string, updated: Partial<Profile>): void {
     merged.lastDailyCheckin || null,
     merged.hasCompletedOnboarding ? 1 : 0,
     merged.customGeminiKey || null,
+    merged.city || null,
+    merged.bio || null,
+    merged.heroTitle || null,
+    merged.profileColor || null,
+    merged.universityName || null,
+    merged.degree || null,
+    merged.fieldOfStudy || null,
+    JSON.stringify(merged.academicStatus || []),
+    merged.profileCompletion || null,
     username
   );
 }

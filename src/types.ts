@@ -38,6 +38,11 @@ export interface Profile {
   hasCompletedOnboarding?: boolean;
   customGeminiKey?: string;
   offlineMode?: boolean;
+  universityName?: string;
+  degree?: string;
+  fieldOfStudy?: string;
+  academicStatus?: string[];
+  profileCompletion?: number;
 }
 
 export interface Scholarship {

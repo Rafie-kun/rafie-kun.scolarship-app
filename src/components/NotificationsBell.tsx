@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Bell, Sparkles, AlertTriangle, CheckCircle, Info, Trash2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound } from '../utils/sound';
 import { AppNotification } from '../types';
@@ -84,51 +85,62 @@ export default function NotificationsBell() {
         )}
       </button>
 
-      {/* Retro Chest Style Dropdown container */}
-      {isOpen && (
-        <div className="absolute right-0 mt-2.5 w-80 bg-[#2c2927] border-4 border-black p-4 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555,0_10px_25px_rgba(0,0,0,0.8)] z-[200] rounded-none">
-          <div className="flex items-center justify-between border-b-2 border-black pb-2 mb-3">
-            <span className="font-press text-[9px] text-[#ffff55] uppercase flex items-center gap-1.5 mc-text-shadow">
-              <Sparkles className="w-4 h-4 text-[#ffff55]" /> Alerts & Logs
-            </span>
-            {unreadCount > 0 && (
-              <button
-                onClick={handleClearNotifications}
-                className="text-[9px] font-mono text-red-400 hover:text-red-300 flex items-center gap-1 uppercase underline cursor-pointer"
-              >
-                <Trash2 className="w-3.5 h-3.5" /> Sweep All
-              </button>
-            )}
-          </div>
-
-          <div className="max-h-[250px] overflow-y-auto space-y-2 pr-0.5 scrollbar-thin">
-            {notifications.length === 0 ? (
-              <div className="py-8 text-center text-stone-400 font-mono text-xs select-none">
-                No active notifications in your Quest Ledger.
-              </div>
-            ) : (
-              notifications.map((notif) => (
-                <div
-                  key={notif.id}
-                  className="bg-black/30 border-2 border-black p-2.5 flex gap-2.5 items-start hover:bg-black/45 transition-colors"
+      {/* Retro Chest Style Dropdown container with Motion Animations */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
+            className="absolute right-0 mt-2.5 w-80 bg-[#2c2927] border-4 border-black p-4 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555,0_10px_25px_rgba(0,0,0,0.8)] z-[200] rounded-none"
+          >
+            <div className="flex items-center justify-between border-b-2 border-black pb-2 mb-3">
+              <span className="font-press text-[9px] text-[#ffff55] uppercase flex items-center gap-1.5 mc-text-shadow">
+                <Sparkles className="w-4 h-4 text-[#ffff55]" /> Alerts & Logs
+              </span>
+              {unreadCount > 0 && (
+                <button
+                  onClick={handleClearNotifications}
+                  className="text-[9px] font-mono text-red-400 hover:text-red-300 flex items-center gap-1 uppercase underline cursor-pointer"
                 >
-                  <div className="mt-0.5 shrink-0">
-                    {getNotificationIcon(notif.type)}
-                  </div>
-                  <div className="space-y-1 flex-1">
-                    <p className="text-xs font-sans text-stone-200 leading-snug">
-                      {notif.message}
-                    </p>
-                    <span className="text-[9px] font-mono text-stone-500 block">
-                      ⏱️ {notif.timestamp}
-                    </span>
-                  </div>
+                  <Trash2 className="w-3.5 h-3.5" /> Sweep All
+                </button>
+              )}
+            </div>
+
+            <div className="max-h-[250px] overflow-y-auto space-y-2 pr-0.5 scrollbar-thin">
+              {notifications.length === 0 ? (
+                <div className="py-8 text-center text-stone-400 font-mono text-xs select-none">
+                  No active notifications in your Quest Ledger.
                 </div>
-              ))
-            )}
-          </div>
-        </div>
-      )}
+              ) : (
+                notifications.map((notif, idx) => (
+                  <motion.div
+                    key={notif.id || idx}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.04 }}
+                    className="bg-black/30 border-2 border-black p-2.5 flex gap-2.5 items-start hover:bg-black/45 transition-colors"
+                  >
+                    <div className="mt-0.5 shrink-0">
+                      {getNotificationIcon(notif.type)}
+                    </div>
+                    <div className="space-y-1 flex-1">
+                      <p className="text-xs font-sans text-stone-200 leading-snug">
+                        {notif.message}
+                      </p>
+                      <span className="text-[9px] font-mono text-stone-500 block">
+                        ⏱️ {notif.timestamp}
+                      </span>
+                    </div>
+                  </motion.div>
+                ))
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

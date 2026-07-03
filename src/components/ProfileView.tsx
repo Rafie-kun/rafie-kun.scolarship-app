@@ -7,12 +7,20 @@ import { useAuth } from '../context/AuthContext';
 import WizardContainer from './OnboardingWizard/WizardContainer';
 import XpProgressBar from './XpProgressBar';
 
-const AVATAR_PRESETS = [
+  const AVATAR_PRESETS = [
   { id: 'wizard', name: 'Mage Scholar', url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80' },
   { id: 'cyber', name: 'Cyber Student', url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80' },
   { id: 'researcher', name: 'Research Scholar', url: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=250&q=80' },
   { id: 'fellow', name: 'Fellowship Winner', url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80' },
   { id: 'pioneer', name: 'Quantum Pioneer', url: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=250&q=80' },
+];
+
+const ACADEMIC_STATUS_OPTIONS = [
+  'Currently Studying',
+  'Graduated',
+  'On Gap Year',
+  'Deferred',
+  'Other'
 ];
 
 export default function ProfileView() {
@@ -47,12 +55,38 @@ export default function ProfileView() {
   const [educationLevel, setEducationLevel] = useState('undergraduate');
   const [highSchoolName, setHighSchoolName] = useState('');
   const [collegeName, setCollegeName] = useState('');
+  const [universityName, setUniversityName] = useState('');
+  const [degree, setDegree] = useState('');
+  const [fieldOfStudy, setFieldOfStudy] = useState('');
+  const [academicStatus, setAcademicStatus] = useState<string[]>([]);
   const [primaryMajor, setPrimaryMajor] = useState('');
   const [secondaryMajor, setSecondaryMajor] = useState('');
   const [minor, setMinor] = useState('');
   const [graduationYear, setGraduationYear] = useState(2025);
   const [additionalSkills, setAdditionalSkills] = useState<string[]>([]);
   const [newSkillItem, setNewSkillItem] = useState('');
+
+  const calculateProfileCompletion = () => {
+    const checkList = [
+      fullName.trim() !== '',
+      heroTitle.trim() !== '',
+      country.trim() !== '',
+      city.trim() !== '',
+      bio.trim() !== '',
+      profilePicture !== '',
+      primaryMajor.trim() !== '',
+      (collegeName || universityName).trim() !== '',
+      gpa > 0,
+      educationLevel !== '',
+      degree.trim() !== '',
+      fieldOfStudy.trim() !== '',
+      academicStatus.length > 0,
+      additionalSkills.length > 0,
+      resumePdf !== ''
+    ];
+    const filled = checkList.filter(Boolean).length;
+    return Math.min(100, Math.round((filled / checkList.length) * 100));
+  };
 
   // 📄 CV/Resume PDF States 📄
   const [resumePdf, setResumePdf] = useState('');
@@ -144,7 +178,11 @@ export default function ProfileView() {
       // Hydrating dynamic custom fields
       setEducationLevel(data.educationLevel || 'undergraduate');
       setHighSchoolName(data.highSchoolName || '');
-      setCollegeName(data.collegeName || '');
+      setCollegeName(data.collegeName || data.universityName || '');
+      setUniversityName(data.universityName || data.collegeName || '');
+      setDegree(data.degree || '');
+      setFieldOfStudy(data.fieldOfStudy || '');
+      setAcademicStatus(data.academicStatus || []);
       setPrimaryMajor(data.primaryMajor || '');
       setSecondaryMajor(data.secondaryMajor || '');
       setMinor(data.minor || '');
@@ -205,6 +243,11 @@ export default function ProfileView() {
       educationLevel,
       highSchoolName,
       collegeName,
+      universityName: universityName || collegeName,
+      degree,
+      fieldOfStudy,
+      academicStatus,
+      profileCompletion: calculateProfileCompletion(),
       primaryMajor,
       secondaryMajor,
       minor,
@@ -449,6 +492,22 @@ export default function ProfileView() {
                   "{bio}"
                 </p>
               )}
+            </div>
+          </div>
+
+          {/* Profile Completion Bar */}
+          <div className="pt-2 border-t border-stone-800 space-y-1 font-mono">
+            <div className="flex justify-between items-center text-[10px] font-bold">
+              <span className="text-stone-300 uppercase flex items-center gap-1">
+                <BadgeCheck className="w-3.5 h-3.5 text-[#55ff55]" /> PROFILE COMPLETION METRIC:
+              </span>
+              <span className="text-[#55ff55] font-press text-[9px]">{calculateProfileCompletion()}%</span>
+            </div>
+            <div className="w-full bg-black border-2 border-black h-2.5 overflow-hidden [box-shadow:inset_-1px_-1px_0_#222]">
+              <div 
+                className="bg-emerald-500 h-full transition-all duration-500" 
+                style={{ width: `${calculateProfileCompletion()}%` }}
+              />
             </div>
           </div>
 
@@ -781,14 +840,77 @@ export default function ProfileView() {
                     </div>
 
                     <div className="flex flex-col gap-1.5 col-span-1">
-                      <span className="text-stone-300 uppercase text-[9px] font-bold">Academic Base institution (College Name):</span>
+                      <span className="text-stone-300 uppercase text-[9px] font-bold">University / College Name:</span>
                       <input
                         type="text"
-                        value={collegeName}
-                        onChange={(e) => setCollegeName(e.target.value)}
-                        className="bg-[#141414] border-2 border-black p-2 outline-none"
+                        value={universityName || collegeName}
+                        onChange={(e) => {
+                          setUniversityName(e.target.value);
+                          setCollegeName(e.target.value);
+                        }}
+                        className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
                         placeholder="e.g. Stanford University"
                       />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 col-span-1">
+                      <span className="text-stone-300 uppercase text-[9px] font-bold">Degree Program:</span>
+                      <input
+                        type="text"
+                        value={degree}
+                        onChange={(e) => setDegree(e.target.value)}
+                        className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
+                        placeholder="e.g. Bachelor of Science (B.S.)"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 col-span-1">
+                      <span className="text-stone-300 uppercase text-[9px] font-bold">Field of Study:</span>
+                      <input
+                        type="text"
+                        value={fieldOfStudy}
+                        onChange={(e) => setFieldOfStudy(e.target.value)}
+                        className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
+                        placeholder="e.g. Computer Science & AI"
+                      />
+                    </div>
+
+                    {/* Academic Status Checkboxes */}
+                    <div className="flex flex-col gap-1.5 col-span-full bg-black/40 p-3 border border-stone-800">
+                      <span className="text-stone-300 uppercase text-[9px] font-bold block">Academic Status Checkboxes:</span>
+                      <div className="flex flex-wrap gap-2.5 pt-1">
+                        {ACADEMIC_STATUS_OPTIONS.map((status) => {
+                          const isChecked = academicStatus.includes(status);
+                          return (
+                            <label
+                              key={status}
+                              className={`flex items-center gap-2 text-xs font-mono px-3 py-1.5 border cursor-pointer select-none transition-colors ${
+                                isChecked 
+                                  ? 'bg-[#3b3b8c] text-[#ffff55] border-[#ffff55]' 
+                                  : 'bg-[#141414] text-stone-400 border-stone-700 hover:border-stone-500'
+                              }`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                playClickSound();
+                                if (isChecked) {
+                                  setAcademicStatus(academicStatus.filter(s => s !== status));
+                                } else {
+                                  setAcademicStatus([...academicStatus, status]);
+                                }
+                              }}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={isChecked}
+                                onChange={() => {}}
+                                className="sr-only"
+                              />
+                              <span className="text-sm">{isChecked ? '☑' : '☐'}</span>
+                              <span>{status}</span>
+                            </label>
+                          );
+                        })}
+                      </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-2 col-span-1.5 bg-[#1a1a1a] p-2 border border-black/50">

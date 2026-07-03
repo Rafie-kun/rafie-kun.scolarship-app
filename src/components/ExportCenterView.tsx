@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Download, FileCode, FileText, CheckCircle, Sparkles, FolderDown, Award, Calendar } from 'lucide-react';
+import { Download, FileCode, FileText, CheckCircle, Sparkles, FolderDown, Award, Calendar, FileCheck } from 'lucide-react';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 import { Application, Profile } from '../types';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { useAuth } from '../context/AuthContext';
@@ -58,6 +60,100 @@ export default function ExportCenterView() {
     return () => window.removeEventListener('profile-updated', handleProfileUpdated);
   }, []);
 
+  const generateScholarSummaryPdf = async (p: Profile, apps: Application[]) => {
+    const container = document.createElement('div');
+    container.style.position = 'absolute';
+    container.style.left = '-9999px';
+    container.style.top = '-9999px';
+    container.style.width = '750px';
+    container.style.backgroundColor = '#18181b';
+    container.style.color = '#f5f5f4';
+    container.style.fontFamily = 'monospace';
+    container.style.padding = '28px';
+    container.style.border = '6px solid #000000';
+
+    container.innerHTML = `
+      <div style="border-bottom: 3px solid #eab308; padding-bottom: 14px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+          <h1 style="color: #fef08a; font-size: 20px; font-weight: bold; margin: 0; text-transform: uppercase; font-family: sans-serif;">SCHOLARPATH ADMISSIONS DOSSIER</h1>
+          <p style="color: #a8a29e; font-size: 11px; margin: 4px 0 0 0;">Candidate: ${p.fullName || 'Scholar Explorer'}</p>
+        </div>
+        <div style="text-align: right; font-size: 11px; color: #fef08a; font-weight: bold;">
+          <div>LEVEL ${p.level || 1} SCHOLAR</div>
+          <div style="color: #38bdf8;">${p.points || 0} XP ACCUMULATED</div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; background: #27272a; padding: 14px; border: 2px solid #3f3f46;">
+        <div>
+          <p style="color: #eab308; font-size: 10px; margin: 0 0 4px 0; font-weight: bold;">CANDIDATE METRICS</p>
+          <p style="margin: 2px 0; font-size: 11px;"><strong>Title:</strong> ${p.heroTitle || 'Fellowship Explorer'}</p>
+          <p style="margin: 2px 0; font-size: 11px;"><strong>Location:</strong> ${[p.city, p.country || p.nationality].filter(Boolean).join(', ') || 'Global'}</p>
+          <p style="margin: 2px 0; font-size: 11px;"><strong>Education Level:</strong> ${p.educationLevel || 'Undergraduate'}</p>
+          <p style="margin: 2px 0; font-size: 11px;"><strong>GPA:</strong> ${p.gpa || 3.0} / ${p.maxGpa || 4.0}</p>
+        </div>
+        <div>
+          <p style="color: #eab308; font-size: 10px; margin: 0 0 4px 0; font-weight: bold;">ACADEMIC PROFILE</p>
+          <p style="margin: 2px 0; font-size: 11px;"><strong>Primary Major:</strong> ${p.primaryMajor || p.intendedMajor || 'N/A'}</p>
+          <p style="margin: 2px 0; font-size: 11px;"><strong>University:</strong> ${p.universityName || p.collegeName || 'N/A'}</p>
+          <p style="margin: 2px 0; font-size: 11px;"><strong>Degree:</strong> ${p.degree || p.intendedDegree || 'N/A'}</p>
+          <p style="margin: 2px 0; font-size: 11px;"><strong>IELTS/TOEFL:</strong> ${p.ieltsScore || 'N/A'} | <strong>GRE:</strong> ${p.greScore || 'N/A'}</p>
+        </div>
+      </div>
+
+      ${p.additionalSkills && p.additionalSkills.length > 0 ? `
+        <div style="margin-bottom: 20px;">
+          <p style="color: #eab308; font-size: 10px; margin: 0 0 6px 0; font-weight: bold;">SKILL MATRIX TAGS</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            ${p.additionalSkills.map(s => `<span style="background: #3f3f46; color: #fef08a; padding: 3px 6px; border: 1px solid #71717a; font-size: 10px;">${s}</span>`).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      <div style="margin-bottom: 20px;">
+        <p style="color: #eab308; font-size: 10px; margin: 0 0 6px 0; font-weight: bold;">APPLICATION TRACKING LOGS (${apps.length})</p>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          ${apps.length === 0 ? `<p style="font-size: 10px; color: #a8a29e;">No application logs recorded yet.</p>` : apps.slice(0, 6).map(app => `
+            <div style="background: #27272a; padding: 6px 10px; border: 1px solid #3f3f46; display: flex; justify-content: space-between; font-size: 10px;">
+              <div>
+                <strong style="color: #fef08a;">${app.name}</strong> (${app.providerOrUni || 'Scholarship'})
+              </div>
+              <div style="color: #38bdf8;">
+                Status: ${app.status} | Deadline: ${app.deadline}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid #3f3f46; padding-top: 10px; margin-top: 16px; font-size: 9px; color: #71717a; text-align: center;">
+        ScholarPath Official Admissions Ledger • https://scholarpath.app
+      </div>
+    `;
+
+    document.body.appendChild(container);
+
+    try {
+      const canvas = await html2canvas(container, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#18181b'
+      });
+      
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`${p.fullName || 'Scholar'}_ScholarPath_Dossier.pdf`);
+    } catch (err) {
+      console.error("PDF generation error:", err);
+    } finally {
+      document.body.removeChild(container);
+    }
+  };
+
   const triggerDownload = (filename: string, content: string, mimeType: string) => {
     const blob = new Blob([content], { type: mimeType });
     const url = URL.createObjectURL(blob);
@@ -70,13 +166,12 @@ export default function ExportCenterView() {
     URL.revokeObjectURL(url);
   };
 
-  const handleExportData = async (type: 'applications' | 'essay' | 'resume' | 'portfolio') => {
+  const handleExportData = async (type: 'applications' | 'essay' | 'resume' | 'portfolio' | 'scholar_summary') => {
     playClickSound();
     setExporting(true);
     setSuccessMsg('');
 
-    // Wait 800ms to simulate official compile
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    await new Promise((resolve) => setTimeout(resolve, 600));
 
     if (!profile) {
       setExporting(false);
@@ -84,7 +179,9 @@ export default function ExportCenterView() {
     }
 
     try {
-      if (type === 'applications') {
+      if (type === 'scholar_summary' || (type === 'portfolio' && selectedFormat === 'pdf')) {
+        await generateScholarSummaryPdf(profile, applications);
+      } else if (type === 'applications') {
         const title = `${profile.fullName}_ScholarPath_Applications`;
         if (selectedFormat === 'json') {
           const content = JSON.stringify(applications, null, 2);
@@ -106,12 +203,11 @@ export default function ExportCenterView() {
           });
           triggerDownload(`${title}.md`, content, 'text/markdown');
         } else if (selectedFormat === 'docx') {
-          // Generate active HTML format Word document
           let html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>`;
           html += `<head><title>Applications Portfolio</title><style>body { font-family: Arial, sans-serif; }</style></head><body>`;
           html += `<h1>ScholarPath Applications Portfolio for ${profile.fullName}</h1>`;
           applications.forEach((app, i) => {
-            html += `<h2>${i + 1}. ${app.name}</h2>`;
+            html += `2. ${app.name}`;
             html += `<p><strong>Provider/Uni:</strong> ${app.providerOrUni}<br/>`;
             html += `<strong>Deadline:</strong> ${app.deadline}<br/>`;
             html += `<strong>Status:</strong> ${app.status}</p>`;
@@ -125,21 +221,7 @@ export default function ExportCenterView() {
           html += `</body></html>`;
           triggerDownload(`${title}.docx`, html, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
         } else {
-          // PDF Simulation layout (Styled HTML file suitable for print/view)
-          let pdfHtml = `<html><head><title>PDF Portfolio</title><style>body { font-family: Helvetica, sans-serif; padding: 40px; color: #292524; }</style></head><body>`;
-          pdfHtml += `<h1>ScholarPath PDF Portable Admissions Tracker</h1>`;
-          pdfHtml += `<p>Created for professional candidate: <strong>${profile.fullName}</strong></p><hr/>`;
-          applications.forEach((app) => {
-            pdfHtml += `<h3>${app.name}</h3>`;
-            pdfHtml += `<p>Deadline: ${app.deadline} | Status: ${app.status}</p>`;
-            pdfHtml += `<ul>`;
-            app.checklist.forEach(item => {
-              pdfHtml += `<li>${item.done ? '✅' : '⬜'} ${item.text}</li>`;
-            });
-            pdfHtml += `</ul>`;
-          });
-          pdfHtml += `</body></html>`;
-          triggerDownload(`${title}.html`, pdfHtml, 'text/html');
+          await generateScholarSummaryPdf(profile, applications);
         }
       } else if (type === 'essay') {
         const title = `${profile.fullName}_ScholarPath_Motivation_SOP`;
@@ -287,6 +369,26 @@ export default function ExportCenterView() {
               <span>Compiling structured assets... Please wait for folder generation...</span>
             </div>
           )}
+
+          {/* Featured Scholar Summary PDF Banner */}
+          <div className="bg-[#1a1816] border-4 border-[#ffaa00] p-4 rounded-none text-stone-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 [box-shadow:inset_-2px_-2px_0_#141414]">
+            <div className="space-y-1">
+              <span className="font-press text-[9px] text-[#ffaa00] uppercase block flex items-center gap-1.5">
+                <FileCheck className="w-4 h-4 text-[#ffaa00]" /> OFFICIAL SCHOLAR SUMMARY PDF
+              </span>
+              <p className="text-xs text-stone-300 font-mono leading-relaxed">
+                Compile a pixel-styled, high-density admissions dossier PDF containing candidate metrics, GPA standing, skills tags, and active application statuses.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => handleExportData('scholar_summary')}
+              disabled={exporting}
+              className="mc-btn font-press text-[8px] py-2.5 px-4 uppercase text-[#ffff55] shrink-0 flex items-center gap-1.5"
+            >
+              <Download className="w-3.5 h-3.5 text-[#ffff55]" /> Generate Dossier PDF
+            </button>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
