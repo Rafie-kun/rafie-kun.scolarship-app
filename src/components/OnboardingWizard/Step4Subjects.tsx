@@ -1,58 +1,57 @@
 import React, { useState } from 'react';
 import { CURRICULA_LIST } from '../../utils/curriculumData';
+import { useOnboarding } from '../../context/OnboardingContext';
 import { playClickSound } from '../../utils/sound';
-import { SubjectGrade } from '../../utils/calculations';
-import { ListTodo, Plus, Trash2 } from 'lucide-react';
+import { ListTodo, Plus, Trash2, GraduationCap } from 'lucide-react';
 
-interface Step4SubjectsProps {
-  selectedCurricula: string[];
-  subjects: SubjectGrade[];
-  onSubjectsChange: (subjects: SubjectGrade[]) => void;
-}
-
-export default function Step4Subjects({
-  selectedCurricula,
-  subjects,
-  onSubjectsChange
-}: Step4SubjectsProps) {
+export default function Step4Subjects() {
+  const onboarding = useOnboarding();
+  
   const [subjectName, setSubjectName] = useState('');
   const [category, setCategory] = useState<'stem' | 'humanities' | 'languages' | 'arts'>('stem');
   const [courseType, setCourseType] = useState<'standard' | 'ap' | 'ib' | 'honors'>('standard');
   const [grade, setGrade] = useState('A');
+  const [selectedPathForSubject, setSelectedPathForSubject] = useState(
+    onboarding.selectedPaths[0] || 'Full K-12 Route'
+  );
+
+  // Synchronize path selector if state is blank
+  React.useEffect(() => {
+    if (onboarding.selectedPaths.length > 0 && !onboarding.selectedPaths.includes(selectedPathForSubject)) {
+      setSelectedPathForSubject(onboarding.selectedPaths[0]);
+    }
+  }, [onboarding.selectedPaths, selectedPathForSubject]);
 
   // Aggregate standard subjects from selected curricula
   const suggestedSubjects = CURRICULA_LIST
-    .filter((c) => selectedCurricula.includes(c.id))
+    .filter((c) => onboarding.selectedCurricula.includes(c.id))
     .flatMap((c) => c.subjects);
 
-  // Fallback to all if none selected
   const displaySuggestions = suggestedSubjects.length > 0 
     ? suggestedSubjects 
     : CURRICULA_LIST.flatMap((c) => c.subjects);
 
-  // Unique suggestions
   const uniqueSuggestions = Array.from(new Set(displaySuggestions)).sort();
 
-  // Pick first curriculum grades
-  const primaryCurriculum = CURRICULA_LIST.find((c) => selectedCurricula.includes(c.id)) || CURRICULA_LIST[0];
+  const primaryCurriculum = CURRICULA_LIST.find((c) => onboarding.selectedCurricula.includes(c.id)) || CURRICULA_LIST[0];
   const gradesList = primaryCurriculum.grades;
 
   const handleAddSubject = () => {
     if (!subjectName.trim()) return;
     playClickSound();
 
-    // Check if courseType matches the curriculum
     let matchedType = courseType;
     if (primaryCurriculum.id === 'ib') matchedType = 'ib';
     if (primaryCurriculum.id === 'ap') matchedType = 'ap';
 
-    onSubjectsChange([
-      ...subjects,
+    onboarding.setSubjects([
+      ...onboarding.subjects,
       {
         subject: subjectName.trim(),
         category,
         type: matchedType,
-        grade
+        grade,
+        path: selectedPathForSubject
       }
     ]);
 
@@ -61,7 +60,7 @@ export default function Step4Subjects({
 
   const handleRemoveSubject = (idx: number) => {
     playClickSound();
-    onSubjectsChange(subjects.filter((_, i) => i !== idx));
+    onboarding.setSubjects(onboarding.subjects.filter((_, i) => i !== idx));
   };
 
   return (
@@ -73,24 +72,39 @@ export default function Step4Subjects({
         </h4>
       </div>
       <p className="font-mono text-stone-300 text-xs leading-relaxed">
-        Populate your active courses. Select standard courses from the auto-loader or type custom course labels.
+        Populate your course logs. Select standard courses from the loader, select the corresponding academic path, and record your expected final grades.
       </p>
 
       {/* Add Subject Builder */}
-      <div className="bg-black/35 border-2 border-black p-4 space-y-3 font-mono text-xs text-stone-200">
-        <span className="text-stone-400 uppercase text-[9px] font-bold block mb-1">
-          Add Subject Entry:
+      <div className="bg-black/35 border-2 border-black p-4 space-y-4 font-mono text-xs text-stone-200">
+        <span className="text-stone-400 uppercase text-[9px] font-bold block pb-1 border-b border-stone-850">
+          ⛏️ Record Subject Entry
         </span>
+        
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
-          <div className="sm:col-span-5 flex flex-col gap-1.5">
+          {/* Path selection */}
+          <div className="sm:col-span-4 flex flex-col gap-1.5">
+            <span className="text-stone-400 text-[8px] uppercase font-bold">Academic Path / Level:</span>
+            <select
+              value={selectedPathForSubject}
+              onChange={(e) => setSelectedPathForSubject(e.target.value)}
+              className="bg-[#141414] border border-stone-850 p-2.5 text-stone-200 outline-none w-full text-xs"
+            >
+              {onboarding.selectedPaths.map((pathOption, idx) => (
+                <option key={idx} value={pathOption}>{pathOption}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="sm:col-span-4 flex flex-col gap-1.5">
             <span className="text-stone-400 text-[8px] uppercase font-bold">Course Title:</span>
             <input
               type="text"
               list="subject-suggestions"
               value={subjectName}
               onChange={(e) => setSubjectName(e.target.value)}
-              placeholder="e.g., AP Chemistry or Linear Algebra"
-              className="bg-[#141414] border border-stone-800 p-2.5 text-stone-200 outline-none w-full text-xs"
+              placeholder="e.g., Mathematics, AP Chemistry, Physics"
+              className="bg-[#141414] border border-stone-850 p-2.5 text-stone-200 outline-none w-full text-xs"
             />
             <datalist id="subject-suggestions">
               {uniqueSuggestions.map((s) => (
@@ -99,12 +113,12 @@ export default function Step4Subjects({
             </datalist>
           </div>
 
-          <div className="sm:col-span-3 flex flex-col gap-1.5">
+          <div className="sm:col-span-2 flex flex-col gap-1.5">
             <span className="text-stone-400 text-[8px] uppercase font-bold">Category:</span>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value as any)}
-              className="bg-[#141414] border border-stone-800 p-2.5 text-stone-200 outline-none w-full text-xs"
+              className="bg-[#141414] border border-stone-850 p-2.5 text-stone-200 outline-none w-full text-xs"
             >
               <option value="stem">STEM / Math</option>
               <option value="humanities">Humanities</option>
@@ -114,11 +128,24 @@ export default function Step4Subjects({
           </div>
 
           <div className="sm:col-span-2 flex flex-col gap-1.5">
-            <span className="text-stone-400 text-[8px] uppercase font-bold">Weight Level:</span>
+            <span className="text-stone-400 text-[8px] uppercase font-bold">Grade Level:</span>
+            <select
+              value={grade}
+              onChange={(e) => setGrade(e.target.value)}
+              className="bg-[#141414] border border-stone-850 p-2.5 text-stone-200 outline-none w-full text-xs"
+            >
+              {gradesList.map((g) => (
+                <option key={g} value={g}>{g}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="sm:col-span-2 flex flex-col gap-1.5">
+            <span className="text-stone-400 text-[8px] uppercase font-bold">Course Weight:</span>
             <select
               value={courseType}
               onChange={(e) => setCourseType(e.target.value as any)}
-              className="bg-[#141414] border border-stone-800 p-2.5 text-stone-200 outline-none w-full text-xs"
+              className="bg-[#141414] border border-stone-850 p-2.5 text-stone-200 outline-none w-full text-xs"
             >
               <option value="standard">Standard</option>
               <option value="honors">Honors (+0.5)</option>
@@ -127,54 +154,76 @@ export default function Step4Subjects({
             </select>
           </div>
 
-          <div className="sm:col-span-2">
+          <div className="sm:col-span-10">
             <button
               type="button"
               onClick={handleAddSubject}
               className="mc-btn py-2 px-3 text-[10px] w-full h-10 flex items-center justify-center font-press text-[#55ff55]"
             >
-              <Plus className="w-4 h-4 mr-1 shrink-0" /> ADD
+              <Plus className="w-4 h-4 mr-1 shrink-0" /> ADD SUBJECT
             </button>
           </div>
         </div>
       </div>
 
-      {/* Added Subjects Ledger */}
-      <div className="space-y-2">
-        <span className="text-stone-400 font-mono uppercase text-[9px] font-bold block">
-          Current Course List ({subjects.length}):
-        </span>
-        <div className="max-h-[180px] overflow-y-auto space-y-2 border-2 border-black p-3 bg-black/40 scrollbar-thin">
-          {subjects.length === 0 ? (
-            <div className="text-center text-stone-500 font-mono text-xs py-6 uppercase">
-              No courses mapped yet. Add courses above to begin calculations.
-            </div>
-          ) : (
-            subjects.map((sub, idx) => (
-              <div 
-                key={idx} 
-                className="flex justify-between items-center bg-black/25 p-2.5 border border-stone-850 font-mono text-xs text-stone-300"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="text-[#ffff55] font-bold">📘 {sub.subject}</span>
-                  <span className="text-[9px] bg-stone-800 px-1.5 py-0.5 uppercase text-stone-400 font-bold">
-                    {sub.type}
-                  </span>
-                  <span className="text-[9px] text-stone-500 uppercase">({sub.category})</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => handleRemoveSubject(idx)}
-                  className="text-red-500 hover:text-red-400 cursor-pointer active:scale-90"
-                  title="Remove Subject"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
+      {/* Added Subjects Ledger grouped by selected Paths */}
+      <div className="space-y-4">
+        {onboarding.selectedPaths.map((pathName, pathIdx) => {
+          const pathSubjects = onboarding.subjects.filter(s => s.path === pathName);
+
+          return (
+            <div key={pathIdx} className="space-y-1.5 font-mono">
+              <span className="text-[#ffff55] uppercase text-[9.5px] font-bold block flex items-center gap-1.5">
+                <GraduationCap className="w-4 h-4 text-[#ffff55]" /> {pathName}
+              </span>
+              
+              <div className="border-2 border-black p-3 bg-black/45 space-y-2">
+                {pathSubjects.length === 0 ? (
+                  <div className="text-stone-500 text-[10.5px] italic py-3 text-center uppercase">
+                    No subjects recorded under this academic path.
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {pathSubjects.map((sub) => {
+                      // Find real index in parent list to delete correctly
+                      const originalIdx = onboarding.subjects.findIndex(
+                        s => s.subject === sub.subject && s.path === sub.path && s.grade === sub.grade
+                      );
+
+                      return (
+                        <div 
+                          key={originalIdx} 
+                          className="flex justify-between items-center bg-[#25211e] p-2 border border-stone-800 text-[11px] text-stone-300"
+                        >
+                          <div className="flex items-center gap-2 min-w-0">
+                            <span className="text-stone-100 font-bold truncate">📘 {sub.subject}</span>
+                            <span className="bg-black/40 border border-stone-900 text-[#55ff55] font-bold px-1.5 py-0.2 shrink-0">
+                              {sub.grade}
+                            </span>
+                            <span className="text-[8px] bg-stone-900 px-1 py-0.2 uppercase text-stone-500 rounded-none shrink-0">
+                              {sub.type}
+                            </span>
+                          </div>
+                          
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveSubject(originalIdx)}
+                            className="text-red-500 hover:text-red-400 cursor-pointer active:scale-90 shrink-0 ml-1.5"
+                            title="Remove Subject"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
-            ))
-          )}
-        </div>
+            </div>
+          );
+        })}
       </div>
+
     </div>
   );
 }

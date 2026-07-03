@@ -1,32 +1,13 @@
 import React from 'react';
 import { WORLD_COUNTRIES } from '../../utils/curriculumData';
-import { School, MapPin, Calendar, Award } from 'lucide-react';
+import { useOnboarding } from '../../context/OnboardingContext';
+import { School, MapPin, Sparkles } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
-interface Step3InstitutionProps {
-  institutionName: string;
-  onInstitutionNameChange: (name: string) => void;
-  country: string;
-  onCountryChange: (country: string) => void;
-  city: string;
-  onCityChange: (city: string) => void;
-  graduationYear: number;
-  onGraduationYearChange: (year: number) => void;
-  targetCountry: string;
-  onTargetCountryChange: (country: string) => void;
-}
+export default function Step3Institution() {
+  const onboarding = useOnboarding();
+  const { convertAmount } = useTheme();
 
-export default function Step3Institution({
-  institutionName,
-  onInstitutionNameChange,
-  country,
-  onCountryChange,
-  city,
-  onCityChange,
-  graduationYear,
-  onGraduationYearChange,
-  targetCountry,
-  onTargetCountryChange
-}: Step3InstitutionProps) {
   return (
     <div className="space-y-4" id="wizard-step3">
       <div className="flex items-center gap-2 pb-2 border-b border-black">
@@ -35,34 +16,35 @@ export default function Step3Institution({
           3. Institution Coordinates
         </h4>
       </div>
+      
       <p className="font-mono text-stone-300 text-xs leading-relaxed">
         Enter details about your active or most recent educational institution, and where you hope to study.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 font-mono">
         <div className="flex flex-col gap-1.5 sm:col-span-2">
-          <span className="text-stone-400 uppercase text-[9px] font-bold block font-mono">
+          <span className="text-stone-400 uppercase text-[9px] font-bold block">
             School / University Name:
           </span>
           <div className="relative">
             <input
               type="text"
-              value={institutionName}
-              onChange={(e) => onInstitutionNameChange(e.target.value)}
+              value={onboarding.institutionName}
+              onChange={(e) => onboarding.setInstitutionName(e.target.value)}
               placeholder="e.g., Maplewood Collegiate or Imperial Tech"
-              className="bg-[#141414] border-2 border-black p-3 text-stone-200 outline-none w-full focus:border-[#ffff55] text-xs font-mono"
+              className="bg-[#141414] border-2 border-black p-3 text-stone-200 outline-none w-full focus:border-[#ffff55] text-xs"
             />
           </div>
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <span className="text-stone-400 uppercase text-[9px] font-bold block font-mono">
+          <span className="text-stone-400 uppercase text-[9px] font-bold block">
             Institution Country:
           </span>
           <select
-            value={country}
-            onChange={(e) => onCountryChange(e.target.value)}
-            className="bg-[#141414] border-2 border-black p-3 text-stone-200 text-xs outline-none w-full font-mono"
+            value={onboarding.country}
+            onChange={(e) => onboarding.setCountry(e.target.value)}
+            className="bg-[#141414] border-2 border-black p-3 text-stone-200 text-xs outline-none w-full"
           >
             {WORLD_COUNTRIES.map((c) => (
               <option key={c} value={c}>{c}</option>
@@ -72,26 +54,26 @@ export default function Step3Institution({
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <span className="text-stone-400 uppercase text-[9px] font-bold block font-mono">
+          <span className="text-stone-400 uppercase text-[9px] font-bold block">
             City:
           </span>
           <input
             type="text"
-            value={city}
-            onChange={(e) => onCityChange(e.target.value)}
+            value={onboarding.city}
+            onChange={(e) => onboarding.setCity(e.target.value)}
             placeholder="e.g., Boston"
-            className="bg-[#141414] border-2 border-black p-3 text-stone-200 outline-none w-full focus:border-[#ffff55] text-xs font-mono"
+            className="bg-[#141414] border-2 border-black p-3 text-stone-200 outline-none w-full focus:border-[#ffff55] text-xs"
           />
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <span className="text-stone-400 uppercase text-[9px] font-bold block font-mono">
+          <span className="text-stone-400 uppercase text-[9px] font-bold block">
             Target Destination Country:
           </span>
           <select
-            value={targetCountry}
-            onChange={(e) => onTargetCountryChange(e.target.value)}
-            className="bg-[#141414] border-2 border-black p-3 text-stone-200 text-xs outline-none w-full font-mono"
+            value={onboarding.targetCountry}
+            onChange={(e) => onboarding.setTargetCountry(e.target.value)}
+            className="bg-[#141414] border-2 border-black p-3 text-stone-200 text-xs outline-none w-full"
           >
             {WORLD_COUNTRIES.map((c) => (
               <option key={c} value={c}>{c}</option>
@@ -100,19 +82,54 @@ export default function Step3Institution({
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <span className="text-stone-400 uppercase text-[9px] font-bold block font-mono">
+          <span className="text-stone-400 uppercase text-[9px] font-bold block">
             Expected Graduation Year:
           </span>
           <input
             type="number"
-            value={graduationYear}
+            value={onboarding.graduationYear}
             min={2020}
             max={2035}
-            onChange={(e) => onGraduationYearChange(Number(e.target.value))}
-            className="bg-[#141414] border-2 border-black p-3 text-stone-200 outline-none w-full focus:border-[#ffff55] text-xs font-mono"
+            onChange={(e) => onboarding.setGraduationYear(Number(e.target.value))}
+            className="bg-[#141414] border-2 border-black p-3 text-stone-200 outline-none w-full focus:border-[#ffff55] text-xs"
           />
         </div>
       </div>
+
+      {/* Dynamic University Recommendations inside Step 3 */}
+      <div className="mt-4 pt-3 border-t border-stone-850 font-mono">
+        <span className="text-[#ffff55] font-press text-[8.5px] uppercase block mb-2 mc-text-shadow flex items-center gap-1.5">
+          <Sparkles className="w-4 h-4 text-[#ffff55] animate-pulse" /> Smart Recommendations for {onboarding.targetCountry}
+        </span>
+        
+        {onboarding.recommendedTargetUnis.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            {onboarding.recommendedTargetUnis.map((uni) => (
+              <div 
+                key={uni.id} 
+                className="bg-black/35 border border-stone-800 p-2.5 space-y-1.5 text-[10.5px] hover:border-[#ffff55] transition-all"
+              >
+                <div className="flex justify-between items-start">
+                  <span className="font-bold text-stone-200 truncate block max-w-[80%]">{uni.name}</span>
+                  <span className="text-[9px] text-[#ffaa00] font-bold">#{uni.ranking}</span>
+                </div>
+                <div className="text-stone-400 text-[9.5px]">
+                  <span>Avg Tuition: </span>
+                  <span className="text-stone-300 font-semibold">{convertAmount(uni.tuitionMin)} - {convertAmount(uni.tuitionMax)} / yr</span>
+                </div>
+                <div className="text-stone-400 text-[9.5px] flex items-center gap-1">
+                  <MapPin className="w-3 h-3 text-stone-500" /> {uni.city}, {uni.country}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-stone-500 text-[10.5px] italic">
+            Configuring recommendations indices... Selected destination country does not have listed partners yet. Proceed to configure subject matrices.
+          </p>
+        )}
+      </div>
+
     </div>
   );
 }

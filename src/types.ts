@@ -31,6 +31,10 @@ export interface Profile {
   aLevelSubjects?: string[];
   satScore?: number | null;
   profilePicture?: string;
+  city?: string;
+  bio?: string;
+  heroTitle?: string;
+  profileColor?: string;
   hasCompletedOnboarding?: boolean;
   customGeminiKey?: string;
   offlineMode?: boolean;

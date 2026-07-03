@@ -579,4 +579,85 @@ _To activate active financial advice from the live Gemini AI engine, please make
   }
 });
 
+// 4. AI Wizard Assistant
+router.post("/wizard-assistant", authenticateToken, async (req: Request, res: Response) => {
+  const { question, onboardingState } = req.body;
+  if (!question) {
+    return res.status(400).json({ error: "Question parameter is required." });
+  }
+
+  const user = (req as any).user;
+  const username = user?.username || "guest";
+  const profile = getProfileByUsername(username);
+
+  const customKey = profile?.customGeminiKey;
+
+  try {
+    if (!hasGeminiKey(customKey)) {
+      throw new Error("Missing GEMINI_API_KEY");
+    }
+
+    const ai = getAIClient(customKey);
+    const prompt = `You are ScholarPath's premium AI Onboarding Assistant.
+The user is going through the academic onboarding wizard. 
+CURRENT ONBOARDING PROGRESS & CONTEXT:
+- Home Country: ${onboardingState?.country || 'Not specified'}
+- Current Education Level: ${onboardingState?.educationLevel || 'Not specified'}
+- Intended Curriculum: ${onboardingState?.selectedCurricula?.join(', ') || 'Not specified'}
+- Targeted Destination Country: ${onboardingState?.targetCountry || 'Not specified'}
+- Estimated GPA: ${onboardingState?.gpaResults?.estimatedGpa || 'N/A'}
+- Entered Academic Subjects: ${onboardingState?.subjects?.map((s: any) => `${s.subject} (${s.grade})`).join(', ') || 'None yet'}
+- Intended Major/Major affinity: ${onboardingState?.subjects?.[0]?.subject || 'Not specified'}
+- Estimated Monthly Budget: Rent ${onboardingState?.rent || 'N/A'}, Food ${onboardingState?.food || 'N/A'}, Monthly Net Job Wage ${onboardingState?.monthlyNetWage || '0'}
+
+User Question: "${question}"
+
+Provide a highly relevant, crisp, friendly, and expert answer (max 3-4 short paragraphs) to guide the student. Suggest subject selections, clarify cost parameters in their target country, or recommend scholarship/career tracks matching their entered profile. Use clear bullet points and bold headers in Markdown. No tech jargon. Keep it encouraging!`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash",
+      contents: prompt,
+    });
+
+    res.json({
+      answer: response.text || "I'm here to help you navigate your academic journey! Let me know what questions you have.",
+      source: "gemini"
+    });
+  } catch (err: any) {
+    console.log("AI Wizard Assistant falling back to heuristic answers.");
+    // Heuristic intelligent fallback responses
+    let answer = `I'm here to support your onboarding journey! Since I am operating offline, here is some tailored guidance based on your profile:
+
+- **Target Destination (${onboardingState?.targetCountry || 'Global'}):** Ensure you look into local cost of living averages. Rent typically forms about 50-60% of student budgets.
+- **Subject Selection:** Since you selected **${onboardingState?.subjects?.[0]?.subject || 'STEM tracks'}**, we suggest prioritizing critical prerequisite courses like Mathematics, Physics, and English to secure high eligibility scores for scholarships.
+- **Part-Time Work:** Most countries permit international students to work up to 20 hours per week during term-time, yielding extra support.
+
+*To activate live AI reasoning, please enter your personal GEMINI_API_KEY in the settings dashboard.*`;
+
+    // Try to match standard questions
+    const q = question.toLowerCase();
+    if (q.includes("germany") || q.includes("cost")) {
+      answer = `### 💶 Living and Study Costs in Germany (Offline Guide)
+      
+Germany is an exceptional study destination with **extremely low or free public tuition**!
+- **Estimated Expenses:** You can expect living costs around **EUR 800 - 1,000 per month**. Rent typically averages **EUR 350 - 500** for student flats (WG).
+- **Part-Time Work:** You can work up to 20 hours a week. Typical student jobs pay **EUR 13 - 15/hour**, which fully covers basic subsistence.
+- **Exemptions:** Earn under €11,700 per year and you are completely exempt from income tax!`;
+    } else if (q.includes("subject") || q.includes("computer science") || q.includes("major")) {
+      answer = `### 💻 Prerequisites for Computer Science & STEM Majors
+      
+For a robust application to top Computer Science programs:
+1. **Core Mathematics:** You absolutely need advanced mathematics (such as A-Level Maths, AP Calculus, or IB Higher Level Math).
+2. **Sciences:** Prioritize Physics or Computer Science classes if available.
+3. **Languages:** Securing an A or B grade in English Language is vital to skip extra foundation classes.
+4. **Weighted GPA:** Aim to complete AP or Honors components to inflate your weighted admission standing score.`;
+    }
+
+    res.json({
+      answer,
+      source: "heuristic"
+    });
+  }
+});
+
 export default router;

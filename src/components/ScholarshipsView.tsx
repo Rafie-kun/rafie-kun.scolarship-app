@@ -11,6 +11,19 @@ interface RecommendedScholarship {
   reasoning: string;
 }
 
+function getVisiblePageNumbers(current: number, total: number): number[] {
+  if (total <= 7) {
+    return Array.from({ length: total }, (_, i) => i + 1);
+  }
+  if (current <= 4) {
+    return [1, 2, 3, 4, 5, -1, total];
+  }
+  if (current >= total - 3) {
+    return [1, -1, total - 4, total - 3, total - 2, total - 1, total];
+  }
+  return [1, -1, current - 1, current, current + 1, -1, total];
+}
+
 export default function ScholarshipsView() {
   const { authorizedFetch, profile, rewardPoints } = useAuth();
   
@@ -707,33 +720,55 @@ export default function ScholarshipsView() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-1">
+                  <div className="pagination-container border-t border-stone-850 pt-2">
+                    <button
+                      disabled={page === 1}
+                      onClick={() => { playClickSound(); setPage(1); }}
+                      className="pagination-button mc-btn px-2 py-1 text-[9px] uppercase disabled:opacity-40"
+                    >
+                      « First
+                    </button>
                     <button
                       disabled={page === 1}
                       onClick={() => { playClickSound(); setPage(prev => Math.max(1, prev - 1)); }}
-                      className="mc-btn px-2.5 py-1 text-[9px] uppercase disabled:opacity-50"
+                      className="pagination-button mc-btn px-2.5 py-1 text-[9px] uppercase disabled:opacity-40"
                     >
-                      Prev
+                      ‹ Prev
                     </button>
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((pIdx) => (
-                      <button
-                        key={pIdx}
-                        onClick={() => { playClickSound(); setPage(pIdx); }}
-                        className={`px-2.5 py-1 text-[11px] font-bold border-2 ${
-                          page === pIdx 
-                            ? "bg-[#ffff55] border-black text-black" 
-                            : "bg-[#141414] border-stone-800 text-stone-300 hover:border-[#ffff55]"
-                        }`}
-                      >
-                        {pIdx}
-                      </button>
-                    ))}
+
+                    <div className="flex flex-wrap items-center gap-1">
+                      {getVisiblePageNumbers(page, totalPages).map((pVal, idx) => (
+                        pVal === -1 ? (
+                          <span key={`ellipsis-${idx}`} className="px-1 text-stone-500 font-mono text-xs">...</span>
+                        ) : (
+                          <button
+                            key={pVal}
+                            onClick={() => { playClickSound(); setPage(pVal); }}
+                            className={`pagination-button px-2.5 py-1 text-[9px] sm:text-[11px] font-bold border-2 shrink-0 ${
+                              page === pVal 
+                                ? "bg-[#ffff55] border-black text-black" 
+                                : "bg-[#141414] border-stone-800 text-stone-300 hover:border-[#ffff55]"
+                            }`}
+                          >
+                            {pVal}
+                          </button>
+                        )
+                      ))}
+                    </div>
+
                     <button
                       disabled={page === totalPages}
                       onClick={() => { playClickSound(); setPage(prev => Math.min(totalPages, prev + 1)); }}
-                      className="mc-btn px-2.5 py-1 text-[9px] uppercase disabled:opacity-50"
+                      className="pagination-button mc-btn px-2.5 py-1 text-[9px] uppercase disabled:opacity-40"
                     >
-                      Next
+                      Next ›
+                    </button>
+                    <button
+                      disabled={page === totalPages}
+                      onClick={() => { playClickSound(); setPage(totalPages); }}
+                      className="pagination-button mc-btn px-2 py-1 text-[9px] uppercase disabled:opacity-40"
+                    >
+                      Last »
                     </button>
                   </div>
                 </div>

@@ -13,6 +13,47 @@ export default function ApplicationsView() {
   const [newChecklistItem, setNewChecklistItem] = useState('');
   const [success, setSuccess] = useState('');
   const [usingLocalMock, setUsingLocalMock] = useState(false);
+  const [notesMode, setNotesMode] = useState<'edit' | 'preview'>('edit');
+
+  const insertFormatting = (prefix: string, suffix: string = '') => {
+    if (!selectedApp) return;
+    playClickSound();
+    const current = selectedApp.notes || '';
+    const updated = current + (current && !current.endsWith('\n') ? '\n' : '') + prefix + (suffix ? 'sample' + suffix : '');
+    handleNotesChange(updated);
+  };
+
+  const renderFormattedNotes = (text: string) => {
+    if (!text) return <p className="text-stone-500 italic">No notes or interview tips recorded yet.</p>;
+    return text.split('\n').map((line, idx) => {
+      if (line.startsWith('### ')) {
+        return <h4 key={idx} className="font-press text-[10px] text-[#ffff55] pt-1 pb-0.5 uppercase">{line.replace('### ', '')}</h4>;
+      }
+      if (line.includes('INTERVIEW TIP:') || line.startsWith('> 💡')) {
+        return (
+          <div key={idx} className="bg-amber-950/40 border-l-4 border-[#ffaa00] p-2 text-amber-200 font-bold my-1 text-[11px]">
+            {line}
+          </div>
+        );
+      }
+      if (line.includes('PROFESSOR CONTACT:') || line.startsWith('> 🎯')) {
+        return (
+          <div key={idx} className="bg-cyan-950/40 border-l-4 border-cyan-400 p-2 text-cyan-200 font-bold my-1 text-[11px]">
+            {line}
+          </div>
+        );
+      }
+      if (line.startsWith('• ') || line.startsWith('- ')) {
+        return (
+          <div key={idx} className="flex items-start gap-1.5 pl-2 text-stone-300">
+            <span className="text-[#55ff55] font-bold">•</span>
+            <span>{line.substring(2)}</span>
+          </div>
+        );
+      }
+      return <p key={idx} className="text-stone-300 min-h-[1.2rem]">{line}</p>;
+    });
+  };
 
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
@@ -434,17 +475,89 @@ export default function ApplicationsView() {
                 </div>
               </div>
 
-              {/* Research Notes panel */}
+              {/* Research Notes & Interview Tips panel */}
               <div className="space-y-2 font-mono text-xs">
-                <span className="font-press text-[9px] text-[#ffff55] uppercase flex items-center gap-1 mc-text-shadow">
-                  <Notebook className="w-4 h-4 text-[#55ffff]" /> Ledger Research Logbook
-                </span>
-                <textarea
-                  value={selectedApp.notes || ''}
-                  onChange={(e) => handleNotesChange(e.target.value)}
-                  placeholder="Record admissions faculty replies, professor portfolios, GRE syllabus indices, or document criteria here..."
-                  className="w-full bg-[#141414] border-2 border-black p-3 min-h-[100px] text-stone-350 focus:outline-none focus:border-[#ffff55]"
-                />
+                <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                  <span className="font-press text-[9px] text-[#ffff55] uppercase flex items-center gap-1.5 mc-text-shadow">
+                    <Notebook className="w-4 h-4 text-[#55ffff]" /> Ledger Research Logbook & Interview Tips
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => { playClickSound(); setNotesMode(notesMode === 'edit' ? 'preview' : 'edit'); }}
+                      className="px-2.5 py-1 text-[8.5px] uppercase font-bold bg-stone-800 border border-stone-600 text-stone-200 hover:text-white cursor-pointer select-none"
+                    >
+                      {notesMode === 'edit' ? '👁️ Preview Format' : '✏️ Edit Notes'}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Rich Text Quick Formatting Bar */}
+                {notesMode === 'edit' && (
+                  <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-black/40 border-2 border-black">
+                    <button
+                      type="button"
+                      onClick={() => insertFormatting('**', '**')}
+                      className="px-2 py-0.5 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white font-bold text-[10px] cursor-pointer"
+                      title="Bold text"
+                    >
+                      B
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => insertFormatting('*', '*')}
+                      className="px-2 py-0.5 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white italic text-[10px] cursor-pointer"
+                      title="Italic text"
+                    >
+                      I
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => insertFormatting('### ', '')}
+                      className="px-2 py-0.5 bg-stone-900 border border-stone-800 text-[#ffff55] font-bold text-[10px] cursor-pointer"
+                      title="Header"
+                    >
+                      H3
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => insertFormatting('• ', '')}
+                      className="px-2 py-0.5 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white text-[10px] cursor-pointer"
+                      title="Bullet list"
+                    >
+                      • List
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => insertFormatting('> 💡 INTERVIEW TIP: ', '')}
+                      className="px-2.5 py-0.5 bg-amber-950/60 border border-amber-600/50 text-[#ffaa00] font-bold text-[9.5px] cursor-pointer"
+                      title="Insert Interview Tip Callout"
+                    >
+                      💡 Interview Tip
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => insertFormatting('> 🎯 PROFESSOR CONTACT: ', '')}
+                      className="px-2.5 py-0.5 bg-cyan-950/60 border border-cyan-600/50 text-cyan-300 font-bold text-[9.5px] cursor-pointer"
+                      title="Insert Contact Log"
+                    >
+                      🎯 Contact Log
+                    </button>
+                  </div>
+                )}
+
+                {notesMode === 'edit' ? (
+                  <textarea
+                    value={selectedApp.notes || ''}
+                    onChange={(e) => handleNotesChange(e.target.value)}
+                    placeholder="Record admissions faculty replies, interview preparation tips, scholarship criteria, or research notes here..."
+                    className="w-full bg-[#141414] border-2 border-black p-3 min-h-[130px] text-stone-200 focus:outline-none focus:border-[#ffff55] font-mono leading-relaxed"
+                  />
+                ) : (
+                  <div className="w-full bg-[#141414] border-2 border-black p-3.5 min-h-[130px] text-stone-300 font-mono leading-relaxed overflow-y-auto max-h-[250px] space-y-2">
+                    {renderFormattedNotes(selectedApp.notes || '')}
+                  </div>
+                )}
               </div>
 
             </div>

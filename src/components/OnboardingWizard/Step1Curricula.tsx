@@ -1,23 +1,20 @@
 import React from 'react';
-import { CURRICULA_LIST, Curriculum } from '../../utils/curriculumData';
+import { CURRICULA_LIST } from '../../utils/curriculumData';
+import { useOnboarding } from '../../context/OnboardingContext';
 import { playClickSound } from '../../utils/sound';
 import { BookOpen } from 'lucide-react';
 
-interface Step1CurriculaProps {
-  selectedCurricula: string[];
-  onChange: (curricula: string[]) => void;
-}
+export default function Step1Curricula() {
+  const onboarding = useOnboarding();
 
-export default function Step1Curricula({ selectedCurricula, onChange }: Step1CurriculaProps) {
   const handleToggle = (id: string) => {
     playClickSound();
-    if (selectedCurricula.includes(id)) {
-      // Keep at least one selected
-      if (selectedCurricula.length > 1) {
-        onChange(selectedCurricula.filter(c => c !== id));
+    if (onboarding.selectedCurricula.includes(id)) {
+      if (onboarding.selectedCurricula.length > 1) {
+        onboarding.setSelectedCurricula(onboarding.selectedCurricula.filter(c => c !== id));
       }
     } else {
-      onChange([...selectedCurricula, id]);
+      onboarding.setSelectedCurricula([...onboarding.selectedCurricula, id]);
     }
   };
 
@@ -35,7 +32,7 @@ export default function Step1Curricula({ selectedCurricula, onChange }: Step1Cur
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
         {CURRICULA_LIST.map((cur) => {
-          const isSelected = selectedCurricula.includes(cur.id);
+          const isSelected = onboarding.selectedCurricula.includes(cur.id);
           return (
             <button
               key={cur.id}
@@ -44,7 +41,7 @@ export default function Step1Curricula({ selectedCurricula, onChange }: Step1Cur
               className={`p-4 border-4 text-left transition-all relative ${
                 isSelected 
                   ? 'border-[#ffff55] bg-yellow-500/10' 
-                  : 'border-black bg-stone-900/45 hover:border-stone-800'
+                  : 'border-black bg-stone-900/45 hover:border-stone-850'
               }`}
             >
               <div className="space-y-1.5">

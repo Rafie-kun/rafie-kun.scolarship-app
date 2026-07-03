@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { User, Award, Save, Sparkles, CheckCircle, Plus, Shield, Trophy, GraduationCap, Laptop, BadgeCheck, X } from 'lucide-react';
+import { User, Award, Save, Sparkles, CheckCircle, Plus, Shield, Trophy, GraduationCap, Laptop, BadgeCheck, X, MapPin, Palette } from 'lucide-react';
 import { Profile } from '../types';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { dispatchProfileUpdate } from '../utils/events';
 import { useAuth } from '../context/AuthContext';
 import WizardContainer from './OnboardingWizard/WizardContainer';
+import XpProgressBar from './XpProgressBar';
+
+const AVATAR_PRESETS = [
+  { id: 'wizard', name: 'Mage Scholar', url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80' },
+  { id: 'cyber', name: 'Cyber Student', url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80' },
+  { id: 'researcher', name: 'Research Scholar', url: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=250&q=80' },
+  { id: 'fellow', name: 'Fellowship Winner', url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80' },
+  { id: 'pioneer', name: 'Quantum Pioneer', url: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=250&q=80' },
+];
 
 export default function ProfileView() {
   const { authorizedFetch } = useAuth();
@@ -20,6 +29,11 @@ export default function ProfileView() {
   const [gpa, setGpa] = useState(0);
   const [maxGpa, setMaxGpa] = useState(4.0);
   const [nationality, setNationality] = useState('');
+  const [country, setCountry] = useState('');
+  const [city, setCity] = useState('');
+  const [bio, setBio] = useState('');
+  const [heroTitle, setHeroTitle] = useState('');
+  const [profileColor, setProfileColor] = useState('#ffff55');
   const [ielts, setIelts] = useState('');
   const [gre, setGre] = useState('');
   
@@ -148,6 +162,11 @@ export default function ProfileView() {
       setOLevelInput(data.oLevelSubjects ? data.oLevelSubjects.join(', ') : '');
       setALevelInput(data.aLevelSubjects ? data.aLevelSubjects.join(', ') : '');
       setProfilePicture(data.profilePicture || '');
+      setCountry(data.country || data.nationality || '');
+      setCity(data.city || '');
+      setBio(data.bio || '');
+      setHeroTitle(data.heroTitle || 'Scholarship Explorer');
+      setProfileColor(data.profileColor || '#ffff55');
     } catch (e) {
       console.error("Failed to load active user profile record:", e);
     } finally {
@@ -201,7 +220,12 @@ export default function ProfileView() {
       satScore: satScore !== '' ? Number(satScore) : null,
       oLevelSubjects: oLevelInput.split(',').map(item => item.trim()).filter(Boolean),
       aLevelSubjects: aLevelInput.split(',').map(item => item.trim()).filter(Boolean),
-      profilePicture
+      profilePicture,
+      country,
+      city,
+      bio,
+      heroTitle,
+      profileColor
     };
 
     try {
@@ -380,6 +404,64 @@ export default function ProfileView() {
         </div>
       )}
 
+      {/* Hero Skin Showcase Card */}
+      {profile && !showWizard && (
+        <div className="bg-[#1e1c1b] border-4 border-black p-5 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555] space-y-4">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+            <div className="w-20 h-20 bg-black border-4 border-[#ffff55] rounded-none flex items-center justify-center shrink-0 overflow-hidden relative shadow-lg">
+              {profilePicture ? (
+                <img 
+                  src={profilePicture} 
+                  alt={fullName || 'Hero Avatar'} 
+                  className="w-full h-full object-cover" 
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <div className="text-3xl select-none">🧙‍♂️</div>
+              )}
+            </div>
+
+            <div className="flex-1 text-center sm:text-left space-y-1.5 font-mono">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h2 className="font-press text-sm text-[#ffff55] mc-text-shadow uppercase">{fullName || 'Unregistered Scholar'}</h2>
+                  <p className="text-xs text-stone-300 font-bold tracking-wider">{heroTitle || 'Fellowship Explorer'}</p>
+                </div>
+                <div className="flex items-center justify-center sm:justify-end gap-2">
+                  <span className="font-press text-[9px] bg-amber-950 border-2 border-[#ffaa00] text-[#ffaa00] px-2.5 py-1 uppercase">
+                    Level {profile.level || 1}
+                  </span>
+                  <span className="font-press text-[9px] bg-cyan-950 border-2 border-[#55ffff] text-[#55ffff] px-2.5 py-1 uppercase">
+                    {profile.points || 0} XP
+                  </span>
+                </div>
+              </div>
+
+              {(city || country || nationality) && (
+                <div className="flex items-center justify-center sm:justify-start gap-1 text-[10px] text-stone-400">
+                  <MapPin className="w-3.5 h-3.5 text-[#55ff55]" />
+                  <span>{[city, country || nationality].filter(Boolean).join(', ')}</span>
+                </div>
+              )}
+
+              {bio && (
+                <p className="text-xs text-stone-300 font-sans italic bg-black/30 p-2 border border-stone-800 rounded-none">
+                  "{bio}"
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* XP Progress Bar Component */}
+          <div className="pt-2 border-t border-stone-800">
+            <XpProgressBar 
+              points={profile.points || 0} 
+              level={profile.level || 1} 
+            />
+          </div>
+        </div>
+      )}
+
       {loading ? (
         <div className="flex flex-col items-center justify-center py-20 font-press text-[11px] text-[#ffff55] gap-3">
           <Sparkles className="w-7 h-7 animate-spin text-[#ffff55]" />
@@ -435,44 +517,66 @@ export default function ProfileView() {
               {/* SECTION A: PRIMARY IDENTIFICATION ATTRIBUTES */}
               {activeFormTab === 'basics' && (
                 <div className="space-y-4">
-                  <h4 className="font-press text-[9px] text-[#ffff55] mc-text-shadow uppercase pb-2 border-b-2 border-black">PRIMARY DOSSIER CONFIG</h4>
+                  <h4 className="font-press text-[9px] text-[#ffff55] mc-text-shadow uppercase pb-2 border-b-2 border-black">PRIMARY DOSSIER & HERO SKIN CONFIG</h4>
                   
-                  {/* Portrait Avatar config */}
-                  <div className="flex flex-col sm:flex-row items-center gap-4 bg-black/35 p-3 border-2 border-black">
-                    <div className="w-16 h-16 bg-black border-4 border-stone-600 rounded-none flex items-center justify-center shrink-0 overflow-hidden relative">
-                      {profilePicture ? (
-                        <img 
-                          src={profilePicture} 
-                          alt="Applicant Portrait Avatar" 
-                          className="w-full h-full object-cover" 
-                          referrerPolicy="no-referrer"
-                        />
-                      ) : (
-                        <div className="text-[28px] select-none text-stone-500">👾</div>
-                      )}
-                    </div>
-                    <div className="flex-1 space-y-1 text-center sm:text-left font-mono">
-                      <span className="text-stone-300 font-bold uppercase text-[9px] block">CANDIDATE PORTRAIT AVATAR:</span>
-                      <p className="text-[10px] text-stone-400">Apply a portrait avatar or identity photo to finalize your passport dossier file.</p>
-                      <div className="flex flex-wrap gap-2 justify-center sm:justify-start pt-1.5">
-                        <label className="bg-stone-800 hover:bg-stone-750 border-2 border-black text-stone-200 text-[9px] uppercase font-bold py-1 px-2.5 cursor-pointer select-none leading-none inline-block font-sans rounded-none">
-                          Upload Portrait
-                          <input 
-                            type="file" 
-                            accept="image/*" 
-                            onChange={handlePfpChange} 
-                            className="hidden" 
+                  {/* Portrait Avatar config & Presets */}
+                  <div className="bg-black/35 p-3 border-2 border-black space-y-3 font-mono">
+                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                      <div className="w-16 h-16 bg-black border-4 border-stone-600 rounded-none flex items-center justify-center shrink-0 overflow-hidden relative">
+                        {profilePicture ? (
+                          <img 
+                            src={profilePicture} 
+                            alt="Applicant Portrait Avatar" 
+                            className="w-full h-full object-cover" 
+                            referrerPolicy="no-referrer"
                           />
-                        </label>
-                        {profilePicture && (
-                          <button
-                            type="button"
-                            onClick={handleDeletePfp}
-                            className="bg-red-950/45 hover:bg-red-900/60 border border-red-500 text-red-100 text-[9px] uppercase font-bold py-1 px-2.5 cursor-pointer select-none rounded-none font-sans"
-                          >
-                            Delete
-                          </button>
+                        ) : (
+                          <div className="text-[28px] select-none text-stone-500">👾</div>
                         )}
+                      </div>
+                      <div className="flex-1 space-y-1 text-center sm:text-left">
+                        <span className="text-stone-300 font-bold uppercase text-[9px] block">CANDIDATE PORTRAIT AVATAR:</span>
+                        <p className="text-[10px] text-stone-400">Choose a preset avatar or upload a custom image for your passport dossier file.</p>
+                        <div className="flex flex-wrap gap-2 justify-center sm:justify-start pt-1.5">
+                          <label className="bg-stone-800 hover:bg-stone-750 border-2 border-black text-stone-200 text-[9px] uppercase font-bold py-1 px-2.5 cursor-pointer select-none leading-none inline-block font-sans rounded-none">
+                            Upload Portrait
+                            <input 
+                              type="file" 
+                              accept="image/*" 
+                              onChange={handlePfpChange} 
+                              className="hidden" 
+                            />
+                          </label>
+                          {profilePicture && (
+                            <button
+                              type="button"
+                              onClick={handleDeletePfp}
+                              className="bg-red-950/45 hover:bg-red-900/60 border border-red-500 text-red-100 text-[9px] uppercase font-bold py-1 px-2.5 cursor-pointer select-none rounded-none font-sans"
+                            >
+                              Delete
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Preset Avatars Row */}
+                    <div className="space-y-1 pt-2 border-t border-stone-800">
+                      <span className="text-[9px] font-bold text-stone-400 uppercase">Preset Avatars:</span>
+                      <div className="flex flex-wrap gap-2">
+                        {AVATAR_PRESETS.map((preset) => (
+                          <button
+                            key={preset.id}
+                            type="button"
+                            onClick={() => { playClickSound(); setProfilePicture(preset.url); }}
+                            className={`flex items-center gap-1.5 p-1 bg-[#141414] border-2 cursor-pointer ${
+                              profilePicture === preset.url ? 'border-[#ffff55] bg-stone-800' : 'border-stone-800 hover:border-stone-600'
+                            }`}
+                          >
+                            <img src={preset.url} alt={preset.name} className="w-6 h-6 object-cover" referrerPolicy="no-referrer" />
+                            <span className="text-[9px] text-stone-300 pr-1">{preset.name}</span>
+                          </button>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -485,18 +589,55 @@ export default function ProfileView() {
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
+                        placeholder="e.g. Alex Mercer"
                         required
                       />
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                      <span className="text-stone-300 uppercase text-[9px] font-bold">Nationality (Eligibility Land):</span>
+                      <span className="text-stone-300 uppercase text-[9px] font-bold">Hero Title / Tagline:</span>
                       <input
                         type="text"
-                        value={nationality}
-                        onChange={(e) => setNationality(e.target.value)}
+                        value={heroTitle}
+                        onChange={(e) => setHeroTitle(e.target.value)}
                         className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
+                        placeholder="e.g. AI Research Scholar | Erasmus Fellow"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <span className="text-stone-300 uppercase text-[9px] font-bold">Country / Nationality:</span>
+                      <input
+                        type="text"
+                        value={country}
+                        onChange={(e) => {
+                          setCountry(e.target.value);
+                          setNationality(e.target.value);
+                        }}
+                        className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
+                        placeholder="e.g. Germany"
                         required
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <span className="text-stone-300 uppercase text-[9px] font-bold">City / Region:</span>
+                      <input
+                        type="text"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        className="bg-[#141414] border-2 border-black p-2 outline-none focus:border-[#ffff55]"
+                        placeholder="e.g. Berlin"
+                      />
+                    </div>
+
+                    <div className="sm:col-span-2 flex flex-col gap-1.5">
+                      <span className="text-stone-300 uppercase text-[9px] font-bold">Personal Bio / Statement:</span>
+                      <textarea
+                        value={bio}
+                        onChange={(e) => setBio(e.target.value)}
+                        className="bg-[#141414] border-2 border-black p-2 min-h-[70px] outline-none focus:border-[#ffff55]"
+                        placeholder="Brief summary of your academic trajectory and fellowship goals..."
                       />
                     </div>
 
