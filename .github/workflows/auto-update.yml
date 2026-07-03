@@ -1,50 +1,31 @@
-name: Dynamic Scribe Database Auto-Update
+name: Auto-Update Data
 
 on:
   schedule:
-    - cron: '0 0 * * 0' # Weekly (Sunday at midnight)
-  workflow_dispatch: # On manual trigger
-
-permissions:
-  contents: write
+    - cron: '0 0 * * 0' # Run weekly on Sunday at midnight
+  workflow_dispatch: # Allow manual trigger
 
 jobs:
-  auto-update:
+  update-data:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js Runtime environment
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install Project Dependencies
-        run: npm ci || npm install
-
-      - name: Run Scribe Database Auto-Updater Script
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Run update script
         run: node scripts/updateData.js
-
-      - name: Run Live Exchange Rates Updates Script
-        run: node scripts/updateExchangeRates.js
-
-      - name: Check for Database Modifications
-        id: git-check
+        
+      - name: Commit and push changes
         run: |
-          git config user.name "ScholarPath Bot"
-          git config user.email "bot@scholarpath.org"
-          git add public/data/
-          git status --porcelain
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "changes=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Commit & Push Verified Database Updates
-        if: steps.git-check.outputs.changes == 'true'
-        run: |
-          git commit -m "chore(data): automated weekly database refresh and exchange rate sync [skip ci]"
-          git push origin main
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add public/data/*.json
+          git commit -m "Auto-update data files" || exit 0
+          git push
