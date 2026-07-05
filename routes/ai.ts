@@ -1,12 +1,44 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, NextFunction } from "express";
 import fs from "fs";
 import path from "path";
 import { GoogleGenAI } from "@google/genai";
-import { authenticateToken } from "./auth.js";
-import { scholarshipsData, universitiesData } from "./db.js";
+import jwt from "jsonwebtoken";
+import { JWT_SECRET, scholarshipsData, universitiesData } from "./db.js";
 import { getProfileByUsername } from "../db/index.js";
 
 const router = express.Router();
+
+// Permissive auth middleware: parses token if present, otherwise provides a default guest profile
+function optionalAuth(req: Request, res: Response, next: NextFunction) {
+  const cookieString = req.headers.cookie || '';
+  let tokenFromCookie = '';
+  const match = cookieString.match(/(?:^|; )token=([^;]*)/);
+  if (match) {
+    tokenFromCookie = decodeURIComponent(match[1]);
+  }
+  
+  const authHeader = req.headers['authorization'];
+  const token = tokenFromCookie || (authHeader && authHeader.split(' ')[1]);
+
+  if (token) {
+    try {
+      const decoded: any = jwt.verify(token, JWT_SECRET);
+      (req as any).user = {
+        username: decoded.username || "arif",
+        isGuest: !!decoded.isGuest
+      };
+      return next();
+    } catch {
+      // Fallback to guest if token is invalid or expired
+    }
+  }
+
+  (req as any).user = {
+    username: "arif",
+    isGuest: true
+  };
+  next();
+}
 
 // Simple in-memory cache
 interface CacheEntry {
@@ -71,7 +103,7 @@ function loadCostOfLiving(): any[] {
 }
 
 // 1. AI Scholarship Advisor
-router.post("/scholarship-recommendations", authenticateToken, async (req: Request, res: Response) => {
+router.post("/scholarship-recommendations", optionalAuth, async (req: Request, res: Response) => {
   try {
     const user = (req as any).user;
     const username = user?.username || "arif";
@@ -257,7 +289,7 @@ _Note: For live real-time AI insights, configure a GEMINI_API_KEY in your custom
 });
 
 // 2. AI University Advisor
-router.post("/university-recommendations", authenticateToken, async (req: Request, res: Response) => {
+router.post("/university-recommendations", optionalAuth, async (req: Request, res: Response) => {
   try {
     const user = (req as any).user;
     const username = user?.username || "arif";
@@ -621,7 +653,7 @@ _To activate active financial advice from the live Gemini AI engine, please make
 });
 
 // 4. AI Wizard Assistant
-router.post("/wizard-assistant", authenticateToken, async (req: Request, res: Response) => {
+router.post("/wizard-assistant", optionalAuth, async (req: Request, res: Response) => {
   const { question, onboardingState } = req.body;
   if (!question) {
     return res.status(400).json({ error: "Question parameter is required." });

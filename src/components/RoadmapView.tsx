@@ -64,33 +64,75 @@ export default function RoadmapView() {
     }
   });
 
-  const handleUnlockSkill = async (nodeId: string) => {
+  const handleToggleSkill = async (nodeId: string) => {
     const node = skillTree.find(n => n.id === nodeId);
-    if (!node || node.unlocked) return;
+    if (!node) return;
 
-    // Check prerequisites
-    const prereqsMet = node.prereqs.every(reqId => {
-      const reqNode = skillTree.find(n => n.id === reqId);
-      return reqNode && reqNode.unlocked;
-    });
-
-    if (!prereqsMet) {
+    if (node.unlocked) {
+      // Untick/lock node
       playClickSound();
-      alert("Prerequisite skills locked! Complete earlier skill nodes first.");
-      return;
+      // Check if dependent nodes are unlocked
+      const dependentUnlocked = skillTree.some(n => n.unlocked && n.prereqs.includes(nodeId));
+      if (dependentUnlocked) {
+        if (!confirm(`Warning: Unticking "${node.title}" will also lock dependent downstream skills. Proceed?`)) {
+          return;
+        }
+      }
+
+      // Relock node and any dependent nodes
+      const relockedIds = new Set<string>([nodeId]);
+      let changed = true;
+      while (changed) {
+        changed = false;
+        skillTree.forEach(n => {
+          if (!relockedIds.has(n.id) && n.prereqs.some(req => relockedIds.has(req))) {
+            relockedIds.add(n.id);
+            changed = true;
+          }
+        });
+      }
+
+      const updatedTree = skillTree.map(n => relockedIds.has(n.id) ? { ...n, unlocked: false } : n);
+      setSkillTree(updatedTree);
+      localStorage.setItem('scholarpath_skill_tree', JSON.stringify(updatedTree));
+      setSuccess(`Locked skill: "${node.title}".`);
+      setTimeout(() => setSuccess(''), 3000);
+    } else {
+      // Check prerequisites
+      const prereqsMet = node.prereqs.every(reqId => {
+        const reqNode = skillTree.find(n => n.id === reqId);
+        return reqNode && reqNode.unlocked;
+      });
+
+      if (!prereqsMet) {
+        playClickSound();
+        alert("Prerequisite skills locked! Complete earlier skill nodes first.");
+        return;
+      }
+
+      playAdvancementSound();
+      const updatedTree = skillTree.map(n => n.id === nodeId ? { ...n, unlocked: true } : n);
+      setSkillTree(updatedTree);
+      localStorage.setItem('scholarpath_skill_tree', JSON.stringify(updatedTree));
+
+      if (rewardPoints) {
+        await rewardPoints(node.xpReward, `Unlocked Skill Node: "${node.title}"`, "Master Scholar");
+      }
+
+      setSuccess(`🎉 Unlocked Skill: "${node.title}" (+${node.xpReward} XP)!`);
+      setTimeout(() => setSuccess(''), 4000);
     }
+  };
 
-    playAdvancementSound();
-    const updatedTree = skillTree.map(n => n.id === nodeId ? { ...n, unlocked: true } : n);
-    setSkillTree(updatedTree);
-    localStorage.setItem('scholarpath_skill_tree', JSON.stringify(updatedTree));
-
-    if (rewardPoints) {
-      await rewardPoints(node.xpReward, `Unlocked Skill Node: "${node.title}"`, "Master Scholar");
+  const handleUntickAll = () => {
+    playClickSound();
+    if (confirm("Are you sure you want to lock and untick all skill nodes in the matrix?")) {
+      const resetTree = DEFAULT_SKILL_TREE.map(n => ({ ...n, unlocked: n.id === 'gpa_base' }));
+      setSkillTree(resetTree);
+      localStorage.setItem('scholarpath_skill_tree', JSON.stringify(resetTree));
+      setSuccess("Reset all skill tree matrix nodes to default baseline.");
+      setTimeout(() => setSuccess(''), 3000);
     }
-
-    setSuccess(`🎉 Unlocked Skill: "${node.title}" (+${node.xpReward} XP)!`);
-    setTimeout(() => setSuccess(''), 4000);
   };
 
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
@@ -264,16 +306,25 @@ export default function RoadmapView() {
         /* Skill Tree Matrix Container */
         <div className="space-y-6">
           <div className="bg-[#2c2c2c] border-4 border-black p-4 space-y-2 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]">
-            <div className="flex justify-between items-center border-b border-stone-700 pb-2">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-stone-700 pb-2 gap-2">
               <span className="font-press text-[10px] text-[#ffaa00] uppercase flex items-center gap-2">
                 <Network className="w-4 h-4 text-[#ffaa00]" /> SCHOLAR SKILL TREE
               </span>
-              <span className="font-mono text-xs text-[#55ff55]">
-                Unlocked: {skillTree.filter(n => n.unlocked).length} / {skillTree.length} Nodes
-              </span>
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-xs text-[#55ff55]">
+                  Unlocked: {skillTree.filter(n => n.unlocked).length} / {skillTree.length} Nodes
+                </span>
+                <button
+                  type="button"
+                  onClick={handleUntickAll}
+                  className="font-press text-[8px] bg-stone-800 hover:bg-stone-700 text-stone-300 border border-stone-600 px-2.5 py-1 uppercase cursor-pointer"
+                >
+                  <RotateCcw className="w-3 h-3 inline mr-1 text-amber-400" /> Untick All
+                </button>
+              </div>
             </div>
             <p className="text-xs font-mono text-stone-300">
-              Click available nodes to unlock candidate achievements and award XP. Prerequisites must be completed in order.
+              Click any node to toggle (unlock or untick). Prerequisites must be completed in order.
             </p>
           </div>
 
@@ -290,15 +341,15 @@ export default function RoadmapView() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {tierNodes.map(node => {
                       const reqsMet = node.prereqs.every(reqId => skillTree.find(n => n.id === reqId)?.unlocked);
-                      const isClickable = !node.unlocked && reqsMet;
+                      const isClickable = node.unlocked || reqsMet;
 
                       return (
                         <div
                           key={node.id}
-                          onClick={() => handleUnlockSkill(node.id)}
+                          onClick={() => handleToggleSkill(node.id)}
                           className={`border-4 border-black p-4 flex flex-col justify-between space-y-3 transition-all ${
                             node.unlocked
-                              ? 'bg-emerald-950/40 border-emerald-500 text-stone-200 [box-shadow:inset_-3px_-3px_0_#064e3b,inset_3px_3px_0_#10b981]'
+                              ? 'bg-emerald-950/40 border-emerald-500 text-stone-200 cursor-pointer hover:border-emerald-400 [box-shadow:inset_-3px_-3px_0_#064e3b,inset_3px_3px_0_#10b981]'
                               : isClickable
                               ? 'bg-amber-950/30 border-amber-500 text-stone-200 cursor-pointer hover:scale-[1.02] [box-shadow:inset_-3px_-3px_0_#78350f,inset_3px_3px_0_#f59e0b]'
                               : 'bg-black/40 border-stone-800 text-stone-500 opacity-60 cursor-not-allowed'

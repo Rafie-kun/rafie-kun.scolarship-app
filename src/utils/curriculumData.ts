@@ -177,5 +177,13 @@ export const EDUCATION_PATH_OPTIONS = [
 export const WORLD_COUNTRIES = [
   'United States', 'United Kingdom', 'Canada', 'Germany', 'Australia', 
   'Japan', 'Singapore', 'Netherlands', 'Switzerland', 'France', 
-  'Bangladesh', 'India', 'Pakistan', 'Malaysia', 'New Zealand', 'South Africa'
+  'Bangladesh', 'India', 'Pakistan', 'Malaysia', 'New Zealand', 'South Africa',
+  'Argentina', 'Austria', 'Belgium', 'Brazil', 'Chile', 'China', 'Colombia',
+  'Czech Republic', 'Denmark', 'Egypt', 'Estonia', 'Finland', 'Georgia', 'Ghana',
+  'Greece', 'Hong Kong', 'Hungary', 'Indonesia', 'Ireland', 'Israel', 'Italy',
+  'Kenya', 'Kuwait', 'Latvia', 'Lithuania', 'Luxembourg', 'Mexico', 'Morocco',
+  'Nepal', 'Nigeria', 'Norway', 'Oman', 'Peru', 'Philippines', 'Poland',
+  'Portugal', 'Qatar', 'Romania', 'Saudi Arabia', 'South Korea', 'Spain',
+  'Sri Lanka', 'Sweden', 'Taiwan', 'Thailand', 'Turkey', 'Ukraine',
+  'United Arab Emirates', 'Uruguay', 'Vietnam'
 ];

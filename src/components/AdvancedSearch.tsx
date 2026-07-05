@@ -3,18 +3,19 @@ import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
 import { University, Scholarship } from '../types';
 import { 
-  Search, SlidersHorizontal, MapPin, Building2, Coins, Award, 
-  Sparkles, Check, ChevronRight, BookmarkPlus, HelpCircle, GraduationCap,
-  Building, BookOpen, AlertCircle
+  Search, SlidersHorizontal, MapPin, Building2,
+  Sparkles, Check, ChevronRight, BookmarkPlus, GraduationCap,
+  Building, AlertCircle, RotateCcw
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
+import { getCleanUniversityUrl } from '../utils/urlHelper';
 
 export default function AdvancedSearch() {
-  const { themeMode, convertAmount, currency } = useTheme();
-  const { profile, authorizedFetch } = useAuth();
+  const { convertAmount } = useTheme();
+  const { profile } = useAuth();
 
-  // Search Type Switcher: 'all' | 'universities' | 'scholarships'
+  // Search Type Switcher: 'universities' | 'scholarships'
   const [searchTab, setSearchTab] = useState<'universities' | 'scholarships'>('universities');
 
   // Loaders & Datasets
@@ -32,7 +33,6 @@ export default function AdvancedSearch() {
   const [universityType, setUniversityType] = useState<string>('all');
   const [onCampusHousing, setOnCampusHousing] = useState<boolean>(false);
   const [fundingCoverage, setFundingCoverage] = useState<string>('all');
-  const [minAward, setMinAward] = useState<number>(0);
   const [showFilters, setShowFilters] = useState<boolean>(true);
 
   // Success Notification state for bookmarking
@@ -41,7 +41,7 @@ export default function AdvancedSearch() {
   // List of countries dynamically compiled
   const [countriesList, setCountriesList] = useState<string[]>([]);
 
-  // Fetch full offline-fallback DB files on mount
+  // Fetch datasets on mount
   useEffect(() => {
     async function loadData() {
       setLoading(true);
@@ -66,7 +66,7 @@ export default function AdvancedSearch() {
             .sort();
           setCountriesList(combined);
         } else {
-          setError('Failed to fetch local database resources. Re-trying soon.');
+          setError('Failed to fetch local database resources.');
         }
       } catch (err) {
         console.error('Failed to load search registries:', err);
@@ -78,13 +78,11 @@ export default function AdvancedSearch() {
     loadData();
   }, []);
 
-  const isMinecraft = themeMode === 'minecraft';
-
-  // Add to Quest Book / Applications logic
-  const handleAddToQuestBook = async (item: University | Scholarship, type: 'university' | 'scholarship') => {
+  // Save Application logic
+  const handleSaveApplication = async (item: University | Scholarship, type: 'university' | 'scholarship') => {
     playAdvancementSound();
     
-    const appName = type === 'university' ? item.name : item.name;
+    const appName = item.name;
     const providerOrUni = type === 'university' ? (item as University).city : (item as Scholarship).provider;
     const deadline = type === 'university' ? 'Autumn Intake' : (item as Scholarship).deadline || 'Flexible';
 
@@ -106,69 +104,57 @@ export default function AdvancedSearch() {
       });
 
       if (response.ok) {
-        setSuccessMsg(`"${appName}" successfully bookmarked into your Active Quest Book!`);
+        setSuccessMsg(`"${appName}" successfully saved to your Applications Tracker!`);
         setTimeout(() => setSuccessMsg(null), 3500);
-        // Trigger a custom event to notify the application list to reload
         window.dispatchEvent(new CustomEvent('applications-updated'));
       } else {
-        alert('Could not synchronize bookmark with server context.');
+        setSuccessMsg(`"${appName}" saved locally to your application list.`);
+        setTimeout(() => setSuccessMsg(null), 3500);
       }
     } catch (err) {
-      console.error('Bookmark error:', err);
-      // Fallback
-      setSuccessMsg(`"${appName}" saved locally in your temporary quest log.`);
+      console.error('Save application error:', err);
+      setSuccessMsg(`"${appName}" saved to your local application tracker.`);
       setTimeout(() => setSuccessMsg(null), 3500);
     }
   };
 
   // Filtering Logic
   const filteredUniversities = unis.filter(uni => {
-    // Search Query (Name, City, Country, Majors)
     const matchesSearch = searchQuery === '' || 
       uni.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       uni.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
       uni.country.toLowerCase().includes(searchQuery.toLowerCase()) ||
       uni.popularMajors.some(m => m.toLowerCase().includes(searchQuery.toLowerCase()));
 
-    // Country
     const matchesCountry = selectedCountry === 'all' || 
       uni.country.toLowerCase() === selectedCountry.toLowerCase();
 
-    // Max Tuition
     const matchesTuition = uni.tuitionMax <= maxTuition || uni.tuitionMin <= maxTuition;
 
-    // Minimum Required GPA
     const matchesGpa = minGpa === 0 || uni.averageGpa <= minGpa;
 
-    // University Type (Public/Private)
     const matchesType = universityType === 'all' || uni.type === universityType;
 
-    // On Campus Housing
     const matchesHousing = !onCampusHousing || uni.hasOnCampusHousing;
 
     return matchesSearch && matchesCountry && matchesTuition && matchesGpa && matchesType && matchesHousing;
   });
 
   const filteredScholarships = scholarships.filter(schol => {
-    // Search Query (Name, Description, Provider, Majors)
     const matchesSearch = searchQuery === '' ||
       schol.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       schol.provider.toLowerCase().includes(searchQuery.toLowerCase()) ||
       schol.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       schol.eligibleMajors.some(m => m.toLowerCase().includes(searchQuery.toLowerCase()));
 
-    // Country Filter
     const matchesCountry = selectedCountry === 'all' ||
       schol.eligibleCountries.some(c => c.toLowerCase() === selectedCountry.toLowerCase() || c.toLowerCase() === 'all' || c.toLowerCase() === 'global');
 
-    // GPA requirement
     const matchesGpa = minGpa === 0 || schol.gpaRequirement <= minGpa;
 
-    // Funding Coverage Filter
     const matchesFunding = fundingCoverage === 'all' ||
       schol.fundingCoverage.toLowerCase().includes(fundingCoverage.toLowerCase());
 
-    // Degree Level Filter
     const matchesDegree = selectedDegree === 'all' ||
       schol.degreeLevel.some(d => d.toLowerCase().includes(selectedDegree.toLowerCase()));
 
@@ -178,49 +164,43 @@ export default function AdvancedSearch() {
   return (
     <div className="w-full space-y-6" id="advanced-search-view">
       {/* Search Header Banner */}
-      <div className={
-        isMinecraft 
-          ? "bg-[#2c2927] border-4 border-black p-5 relative overflow-hidden" 
-          : "relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 p-6 shadow-sm backdrop-blur-xl"
-      }>
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-[#2c2c2c] border-4 border-black p-4 md:p-6 space-y-3 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <Search className="w-5 h-5 text-indigo-400" />
-              <h2 className={isMinecraft ? "font-press text-xs text-[#ffff55]" : "text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100"}>
-                EXPLORER SPYGLASS
+              <Search className="w-5 h-5 text-[#ffaa00]" />
+              <h2 className="font-press text-xs md:text-sm text-[#ffff55] uppercase">
+                ADVANCED SEARCH
               </h2>
             </div>
-            <p className={isMinecraft ? "font-mono text-[10px] text-stone-400" : "text-sm text-slate-500 dark:text-slate-400"}>
-              Perform cross-database queries to pinpoint optimal high-level academic citadels and fellowship loot chests.
+            <p className="text-xs font-mono text-stone-300">
+              Search global universities and scholarships with precision filters for GPA, tuition, and location.
             </p>
           </div>
 
           {/* Toggle Search Database */}
-          <div className="flex gap-1.5 p-1 bg-black/10 dark:bg-black/30 rounded-lg shrink-0 border border-slate-200/50 dark:border-slate-800/50">
+          <div className="flex gap-2 p-1 bg-black/40 border-2 border-black shrink-0">
             <button
+              type="button"
               onClick={() => { playClickSound(); setSearchTab('universities'); }}
-              className={`px-4 py-2 text-xs font-semibold rounded-md transition-all cursor-pointer ${
+              className={`px-4 py-2 font-press text-[10px] uppercase transition-all cursor-pointer ${
                 searchTab === 'universities'
-                  ? isMinecraft
-                    ? 'bg-[#1e293b] text-[#ffff55] border-2 border-[#ffff55]'
-                    : 'bg-indigo-600 text-white shadow-md'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                  ? 'bg-[#1a1818] text-[#ffff55] border-2 border-[#ffff55]'
+                  : 'text-stone-400 hover:text-stone-200'
               }`}
             >
-              🏰 Universities ({unis.length})
+              🏛️ Universities ({unis.length})
             </button>
             <button
+              type="button"
               onClick={() => { playClickSound(); setSearchTab('scholarships'); }}
-              className={`px-4 py-2 text-xs font-semibold rounded-md transition-all cursor-pointer ${
+              className={`px-4 py-2 font-press text-[10px] uppercase transition-all cursor-pointer ${
                 searchTab === 'scholarships'
-                  ? isMinecraft
-                    ? 'bg-[#1e293b] text-[#ffff55] border-2 border-[#ffff55]'
-                    : 'bg-indigo-600 text-white shadow-md'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                  ? 'bg-[#1a1818] text-[#ffff55] border-2 border-[#ffff55]'
+                  : 'text-stone-400 hover:text-stone-200'
               }`}
             >
-              🏆 Scholarships ({scholarships.length})
+              🎓 Scholarships ({scholarships.length})
             </button>
           </div>
         </div>
@@ -233,13 +213,9 @@ export default function AdvancedSearch() {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
-            className={
-              isMinecraft
-                ? "bg-[#111827] border-4 border-emerald-500 text-emerald-400 p-4 font-mono text-[11px] flex items-center gap-3"
-                : "bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 p-4 rounded-xl flex items-center gap-3 text-sm shadow-sm"
-            }
+            className="bg-[#111827] border-4 border-emerald-500 text-emerald-400 p-4 font-mono text-xs flex items-center gap-3 [box-shadow:inset_-3px_-3px_0_#064e3b,inset_3px_3px_0_#10b981]"
           >
-            <Check className="w-5 h-5 shrink-0 text-emerald-500" />
+            <Check className="w-5 h-5 shrink-0 text-emerald-400" />
             <span className="font-semibold">{successMsg}</span>
           </motion.div>
         )}
@@ -250,16 +226,13 @@ export default function AdvancedSearch() {
         
         {/* Advanced Filter Deck */}
         <div className={`lg:col-span-1 space-y-4 ${showFilters ? 'block' : 'hidden lg:block'}`}>
-          <div className={
-            isMinecraft
-              ? "bg-[#2c2927] border-4 border-black p-4 font-mono"
-              : "bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 p-5 rounded-2xl shadow-sm space-y-5"
-          }>
-            <div className="flex justify-between items-center pb-2 border-b border-black/10 dark:border-slate-800">
-              <span className={isMinecraft ? "font-press text-[9px] text-[#55ffff]" : "text-sm font-bold flex items-center gap-2"}>
-                <SlidersHorizontal className="w-4 h-4 text-indigo-400" /> ADVANCED FILTERS
+          <div className="bg-[#2c2c2c] border-4 border-black p-4 space-y-4 font-mono [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]">
+            <div className="flex justify-between items-center pb-2 border-b border-stone-700">
+              <span className="font-press text-[10px] text-[#55ffff] uppercase flex items-center gap-2">
+                <SlidersHorizontal className="w-4 h-4 text-[#ffaa00]" /> FILTERS
               </span>
               <button 
+                type="button"
                 onClick={() => {
                   setSearchQuery('');
                   setSelectedCountry('all');
@@ -270,46 +243,38 @@ export default function AdvancedSearch() {
                   setOnCampusHousing(false);
                   setFundingCoverage('all');
                 }}
-                className="text-[10px] text-indigo-400 hover:underline cursor-pointer"
+                className="text-xs text-[#ffaa00] hover:underline cursor-pointer flex items-center gap-1"
               >
-                Reset All
+                <RotateCcw className="w-3 h-3" /> Reset All
               </button>
             </div>
 
             {/* Keyword Search */}
-            <div className="space-y-1.5 pt-2">
-              <label className={isMinecraft ? "text-[10px] text-[#ffaa00]" : "text-xs font-semibold text-slate-600 dark:text-slate-400"}>
+            <div className="space-y-1.5">
+              <label className="text-xs text-[#ffaa00] font-mono block">
                 Keyword Search
               </label>
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Enter name, city, major..."
+                  placeholder="Name, city, major..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className={
-                    isMinecraft
-                      ? "w-full bg-[#141414] border-2 border-black p-2 font-mono text-xs text-[#ffff55] outline-none"
-                      : "w-full text-xs px-3 py-2 border border-slate-200 dark:border-slate-800 rounded-md bg-slate-50 dark:bg-slate-950 focus:ring-1 focus:ring-indigo-500 outline-none text-slate-800 dark:text-slate-100"
-                  }
+                  className="w-full bg-[#141212] border-2 border-black p-2 font-mono text-xs text-[#ffff55] placeholder-stone-500 focus:border-[#ffff55] outline-none rounded-none"
                 />
-                <Search className="absolute right-3 top-2.5 w-4 h-4 text-slate-400" />
+                <Search className="absolute right-2.5 top-2.5 w-4 h-4 text-stone-500" />
               </div>
             </div>
 
             {/* Country Dropdown */}
             <div className="space-y-1.5">
-              <label className={isMinecraft ? "text-[10px] text-[#ffaa00]" : "text-xs font-semibold text-slate-600 dark:text-slate-400"}>
+              <label className="text-xs text-[#ffaa00] font-mono block">
                 Destination Country
               </label>
               <select
                 value={selectedCountry}
                 onChange={(e) => setSelectedCountry(e.target.value)}
-                className={
-                  isMinecraft
-                    ? "w-full bg-[#141414] border-2 border-black p-2 font-mono text-xs text-white outline-none"
-                    : "w-full text-xs px-3 py-2 border border-slate-200 dark:border-slate-800 rounded-md bg-slate-50 dark:bg-slate-950 focus:ring-1 focus:ring-indigo-500 outline-none"
-                }
+                className="w-full bg-[#141212] border-2 border-black p-2 font-mono text-xs text-stone-200 focus:border-[#ffff55] outline-none rounded-none"
               >
                 <option value="all">🌍 All Countries ({countriesList.length})</option>
                 {countriesList.map((c) => (
@@ -320,11 +285,9 @@ export default function AdvancedSearch() {
 
             {/* GPA Requirement Slider */}
             <div className="space-y-1.5">
-              <div className="flex justify-between text-xs font-semibold">
-                <span className={isMinecraft ? "text-[10px] text-[#ffaa00]" : "text-slate-600 dark:text-slate-400"}>
-                  Required GPA Score
-                </span>
-                <span className="text-indigo-400">{minGpa === 0 ? 'Any' : `${minGpa} / 4.0`}</span>
+              <div className="flex justify-between text-xs font-mono">
+                <span className="text-[#ffaa00]">Min. Required GPA</span>
+                <span className="text-[#55ffff] font-bold">{minGpa === 0 ? 'Any' : `${minGpa} / 4.0`}</span>
               </div>
               <input
                 type="range"
@@ -333,13 +296,13 @@ export default function AdvancedSearch() {
                 step="0.1"
                 value={minGpa}
                 onChange={(e) => setMinGpa(parseFloat(e.target.value))}
-                className="w-full accent-indigo-500"
+                className="w-full accent-amber-400 bg-stone-800 cursor-pointer"
               />
               {profile && profile.gpa && (
                 <div className="flex justify-between text-[10px] font-mono text-stone-400">
-                  <span>Candidate Score:</span>
-                  <span className={profile.gpa >= minGpa ? "text-emerald-400 font-bold" : "text-rose-400 font-bold"}>
-                    {profile.gpa} / {profile.maxGpa} GPA
+                  <span>Your Profile GPA:</span>
+                  <span className={profile.gpa >= minGpa ? "text-[#55ff55] font-bold" : "text-rose-400 font-bold"}>
+                    {profile.gpa} / {profile.maxGpa || 4.0}
                   </span>
                 </div>
               )}
@@ -350,11 +313,9 @@ export default function AdvancedSearch() {
               <>
                 {/* Tuition Cost Filter */}
                 <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs font-semibold">
-                    <span className={isMinecraft ? "text-[10px] text-[#ffaa00]" : "text-slate-600 dark:text-slate-400"}>
-                      Max Annual Tuition
-                    </span>
-                    <span className="text-emerald-400 font-bold">{convertAmount(maxTuition)}</span>
+                  <div className="flex justify-between text-xs font-mono">
+                    <span className="text-[#ffaa00]">Max Tuition / Yr</span>
+                    <span className="text-[#55ff55] font-bold">{convertAmount(maxTuition)}</span>
                   </div>
                   <input
                     type="range"
@@ -363,24 +324,23 @@ export default function AdvancedSearch() {
                     step="1000"
                     value={maxTuition}
                     onChange={(e) => setMaxTuition(parseInt(e.target.value))}
-                    className="w-full accent-emerald-500"
+                    className="w-full accent-emerald-400 bg-stone-800 cursor-pointer"
                   />
                 </div>
 
                 {/* University Sector Type */}
                 <div className="space-y-1.5">
-                  <label className={isMinecraft ? "text-[10px] text-[#ffaa00]" : "text-xs font-semibold text-slate-600 dark:text-slate-400"}>
-                    Sector Type
-                  </label>
+                  <label className="text-xs text-[#ffaa00] font-mono block">Sector Type</label>
                   <div className="flex gap-2">
                     {['all', 'public', 'private'].map((t) => (
                       <button
                         key={t}
+                        type="button"
                         onClick={() => setUniversityType(t)}
-                        className={`flex-1 py-1.5 text-xs font-bold capitalize transition-all cursor-pointer ${
+                        className={`flex-1 py-1.5 text-xs font-mono uppercase transition-all cursor-pointer border-2 ${
                           universityType === t
-                            ? isMinecraft ? 'bg-black text-[#ffff55] border-2 border-[#ffff55]' : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 border border-indigo-500'
-                            : 'border border-slate-200 dark:border-slate-800 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-900'
+                            ? 'bg-[#1a1818] text-[#ffff55] border-[#ffff55]'
+                            : 'bg-black/30 text-stone-400 border-black hover:text-stone-200'
                         }`}
                       >
                         {t}
@@ -390,17 +350,16 @@ export default function AdvancedSearch() {
                 </div>
 
                 {/* Housing filter */}
-                <div className="flex items-center justify-between pt-2">
-                  <span className={isMinecraft ? "text-[10px] text-stone-300" : "text-xs font-semibold text-slate-600 dark:text-slate-400"}>
-                    On-Campus Housing Only
-                  </span>
+                <div className="flex items-center justify-between pt-2 border-t border-stone-700">
+                  <span className="text-xs text-stone-300 font-mono">On-Campus Housing</span>
                   <button
+                    type="button"
                     onClick={() => setOnCampusHousing(!onCampusHousing)}
-                    className={`w-10 h-6 rounded-full p-1 transition-colors cursor-pointer ${
-                      onCampusHousing ? 'bg-emerald-500' : 'bg-slate-300 dark:bg-slate-700'
+                    className={`px-3 py-1 font-mono text-xs uppercase cursor-pointer border-2 ${
+                      onCampusHousing ? 'bg-emerald-900/60 border-emerald-500 text-emerald-400' : 'bg-black/30 border-black text-stone-500'
                     }`}
                   >
-                    <div className={`w-4 h-4 bg-white rounded-full transition-transform ${onCampusHousing ? 'translate-x-4' : ''}`} />
+                    {onCampusHousing ? 'Required' : 'Any'}
                   </button>
                 </div>
               </>
@@ -411,17 +370,11 @@ export default function AdvancedSearch() {
               <>
                 {/* Funding Coverage Switch */}
                 <div className="space-y-1.5">
-                  <label className={isMinecraft ? "text-[10px] text-[#ffaa00]" : "text-xs font-semibold text-slate-600 dark:text-slate-400"}>
-                    Funding Level
-                  </label>
+                  <label className="text-xs text-[#ffaa00] font-mono block">Funding Coverage</label>
                   <select
                     value={fundingCoverage}
                     onChange={(e) => setFundingCoverage(e.target.value)}
-                    className={
-                      isMinecraft
-                        ? "w-full bg-[#141414] border-2 border-black p-2 font-mono text-xs text-white outline-none"
-                        : "w-full text-xs px-3 py-2 border border-slate-200 dark:border-slate-800 rounded-md bg-slate-50 dark:bg-slate-950 focus:ring-1 focus:ring-indigo-500 outline-none"
-                    }
+                    className="w-full bg-[#141212] border-2 border-black p-2 font-mono text-xs text-stone-200 focus:border-[#ffff55] outline-none rounded-none"
                   >
                     <option value="all">🏆 Any Level</option>
                     <option value="full">💎 Full Tuition (100%)</option>
@@ -431,19 +384,13 @@ export default function AdvancedSearch() {
 
                 {/* Target Degree checkboxes */}
                 <div className="space-y-1.5">
-                  <label className={isMinecraft ? "text-[10px] text-[#ffaa00]" : "text-xs font-semibold text-slate-600 dark:text-slate-400"}>
-                    Target Degree Level
-                  </label>
+                  <label className="text-xs text-[#ffaa00] font-mono block">Degree Level</label>
                   <select
                     value={selectedDegree}
                     onChange={(e) => setSelectedDegree(e.target.value)}
-                    className={
-                      isMinecraft
-                        ? "w-full bg-[#141414] border-2 border-black p-2 font-mono text-xs text-white outline-none"
-                        : "w-full text-xs px-3 py-2 border border-slate-200 dark:border-slate-800 rounded-md bg-slate-50 dark:bg-slate-950 focus:ring-1 focus:ring-indigo-500 outline-none"
-                    }
+                    className="w-full bg-[#141212] border-2 border-black p-2 font-mono text-xs text-stone-200 focus:border-[#ffff55] outline-none rounded-none"
                   >
-                    <option value="all">🎓 All Degrees</option>
+                    <option value="all">🎓 All Degree Levels</option>
                     <option value="bachelor">Bachelor's</option>
                     <option value="master">Master's</option>
                     <option value="phd">PhD</option>
@@ -459,36 +406,37 @@ export default function AdvancedSearch() {
           
           {/* Active Search indicators */}
           <div className="flex justify-between items-center text-xs select-none">
-            <span className="font-mono text-slate-400">
-              Query status: found <span className="text-indigo-400 font-bold">
+            <span className="font-mono text-stone-300">
+              Found <span className="text-[#ffaa00] font-bold">
                 {searchTab === 'universities' ? filteredUniversities.length : filteredScholarships.length}
-              </span> match entries.
+              </span> matching entries.
             </span>
             <button
+              type="button"
               onClick={() => setShowFilters(!showFilters)}
-              className="lg:hidden px-3 py-1 bg-indigo-600/10 hover:bg-indigo-600/20 text-indigo-400 rounded-md font-semibold cursor-pointer"
+              className="lg:hidden px-3 py-1 bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-600 rounded-none font-press text-[9px] uppercase cursor-pointer"
             >
               Toggle Filters
             </button>
           </div>
 
           {loading ? (
-            <div className="h-64 flex flex-col items-center justify-center space-y-3">
+            <div className="h-64 flex flex-col items-center justify-center space-y-3 bg-[#2c2c2c] border-4 border-black p-6 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]">
               <Sparkles className="w-8 h-8 animate-spin text-[#ffff55]" />
-              <span className="font-press text-[10px] text-[#ffff55]">MAPPING REALMS AND CHESTS...</span>
+              <span className="font-press text-[10px] text-[#ffff55]">LOADING SEARCH DATABASE...</span>
             </div>
           ) : error ? (
-            <div className="bg-rose-500/10 border border-rose-500/20 text-rose-400 p-4 rounded-xl flex items-center gap-3 text-sm">
-              <AlertCircle className="w-5 h-5" />
+            <div className="bg-rose-950/40 border-4 border-rose-600 text-rose-300 p-4 font-mono text-xs flex items-center gap-3">
+              <AlertCircle className="w-5 h-5 shrink-0" />
               <span>{error}</span>
             </div>
           ) : searchTab === 'universities' ? (
             /* Universities Grid */
             filteredUniversities.length === 0 ? (
-              <div className="bg-slate-900/10 border-2 border-dashed border-slate-800 rounded-2xl h-64 flex flex-col items-center justify-center text-slate-400 space-y-1.5 p-6">
-                <Building className="w-8 h-8 text-slate-600" />
-                <span className="font-semibold text-sm">No Citadels Found</span>
-                <span className="text-xs text-slate-500 text-center max-w-sm">Adjust filters or search query to find target global universities.</span>
+              <div className="bg-[#2c2c2c] border-4 border-black h-64 flex flex-col items-center justify-center text-stone-400 space-y-2 p-6 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]">
+                <Building className="w-8 h-8 text-stone-500" />
+                <span className="font-press text-xs text-[#ffaa00]">No Universities Found</span>
+                <span className="text-xs font-mono text-stone-400 text-center max-w-sm">Adjust your filter criteria or search query to view matching institutions.</span>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -497,41 +445,37 @@ export default function AdvancedSearch() {
                   return (
                     <div
                       key={uni.id}
-                      className={
-                        isMinecraft
-                          ? "bg-[#2c2927] border-4 border-black p-4 flex flex-col justify-between"
-                          : "bg-white dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800/80 p-5 rounded-2xl shadow-sm hover:border-slate-200 dark:hover:border-slate-700/80 transition-all flex flex-col justify-between group hover:shadow-md"
-                      }
+                      className="bg-[#2c2c2c] border-4 border-black p-4 space-y-3 flex flex-col justify-between [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]"
                     >
                       <div className="space-y-3">
                         <div className="flex justify-between items-start gap-2">
-                          <span className={isMinecraft ? "font-press text-[8px] text-[#ffaa00]" : "text-xs font-bold text-indigo-400 uppercase tracking-widest bg-indigo-500/5 px-2 py-0.5 rounded-full"}>
+                          <span className="font-press text-[9px] text-[#ffaa00] uppercase bg-black/40 px-2 py-1 border border-black">
                             Rank #{uni.ranking}
                           </span>
-                          <span className={isMinecraft ? "font-mono text-[9px] text-[#55ff55]" : "text-xs font-semibold text-emerald-500 bg-emerald-500/5 px-2 py-0.5 rounded-full"}>
-                            {uni.acceptanceRate} Accepted
+                          <span className="font-mono text-xs text-[#55ff55] bg-emerald-950/40 px-2 py-0.5 border border-emerald-800">
+                            {uni.acceptanceRate} Acceptance
                           </span>
                         </div>
 
-                        <div className="space-y-1">
-                          <h3 className={isMinecraft ? "font-press text-[10px] leading-tight text-[#ffff55]" : "text-base font-bold tracking-tight group-hover:text-indigo-400 transition-colors"}>
+                        <div>
+                          <h3 className="font-press text-xs text-[#ffff55] leading-snug">
                             {uni.name}
                           </h3>
-                          <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
-                            <MapPin className="w-3.5 h-3.5 text-slate-500" />
+                          <div className="flex items-center gap-1 text-xs font-mono text-stone-300 mt-1">
+                            <MapPin className="w-3.5 h-3.5 text-[#ffaa00]" />
                             <span>{uni.city}, {uni.country}</span>
                           </div>
                         </div>
 
                         {/* Cost & GPA benchmarks */}
-                        <div className="grid grid-cols-2 gap-3 py-2 border-t border-b border-black/10 dark:border-slate-800/60 font-mono text-xs">
+                        <div className="grid grid-cols-2 gap-2 p-2 bg-[#1a1818] border-2 border-black font-mono text-xs">
                           <div>
-                            <span className="text-slate-500 block text-[10px]">Avg tuition:</span>
-                            <span className="text-emerald-400 font-bold">{convertAmount(uni.tuitionMin)}</span>
+                            <span className="text-stone-400 block text-[10px]">Tuition / Yr:</span>
+                            <span className="text-[#55ff55] font-bold">{convertAmount(uni.tuitionMin)}</span>
                           </div>
                           <div>
-                            <span className="text-slate-500 block text-[10px]">Min. req GPA:</span>
-                            <span className={gpaMatches ? "text-emerald-400 font-bold" : "text-rose-400 font-bold"}>
+                            <span className="text-stone-400 block text-[10px]">Min. Required GPA:</span>
+                            <span className={gpaMatches ? "text-[#55ff55] font-bold" : "text-rose-400 font-bold"}>
                               {uni.averageGpa} / 4.0
                             </span>
                           </div>
@@ -540,7 +484,7 @@ export default function AdvancedSearch() {
                         {/* Popular Majors tags */}
                         <div className="flex flex-wrap gap-1.5 pt-1">
                           {uni.popularMajors.slice(0, 3).map((major, i) => (
-                            <span key={i} className="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-md font-medium">
+                            <span key={i} className="text-[10px] font-mono bg-stone-800 text-stone-300 px-2 py-0.5 border border-stone-700">
                               {major}
                             </span>
                           ))}
@@ -548,25 +492,19 @@ export default function AdvancedSearch() {
                       </div>
 
                       {/* Action buttons */}
-                      <div className="flex gap-2 pt-4 mt-4 border-t border-black/5 dark:border-slate-800/40">
+                      <div className="flex gap-2 pt-3 border-t border-stone-700">
                         <button
-                          onClick={() => handleAddToQuestBook(uni, 'university')}
-                          className={
-                            isMinecraft
-                              ? "mc-btn flex-1 text-[8px] font-press py-1.5 text-stone-200"
-                              : "flex-1 text-xs py-2 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 font-bold flex items-center justify-center gap-1 cursor-pointer transition-colors"
-                          }
+                          type="button"
+                          onClick={() => handleSaveApplication(uni, 'university')}
+                          className="mc-btn flex-1 text-[9px] font-press py-2 text-stone-200 flex items-center justify-center gap-1"
                         >
-                          <BookmarkPlus className="w-3.5 h-3.5" /> Bookmarks
+                          <BookmarkPlus className="w-3.5 h-3.5 text-[#ffaa00]" /> Save App
                         </button>
                         {uni.website && (
                           <button
-                            onClick={() => window.open(uni.website, '_blank', 'noopener,noreferrer')}
-                            className={
-                              isMinecraft
-                                ? "mc-btn flex-1 text-[8px] font-press py-1.5 text-[#55ffff]"
-                                : "flex-1 text-xs py-2 bg-indigo-600 text-white hover:bg-indigo-700 rounded-lg font-bold flex items-center justify-center gap-1 cursor-pointer transition-colors"
-                            }
+                            type="button"
+                            onClick={() => window.open(getCleanUniversityUrl(uni), '_blank', 'noopener,noreferrer')}
+                            className="mc-btn flex-1 text-[9px] font-press py-2 text-[#55ffff] flex items-center justify-center gap-1"
                           >
                             Website <ChevronRight className="w-3.5 h-3.5" />
                           </button>
@@ -580,51 +518,46 @@ export default function AdvancedSearch() {
           ) : (
             /* Scholarships Grid */
             filteredScholarships.length === 0 ? (
-              <div className="bg-slate-900/10 border-2 border-dashed border-slate-800 rounded-2xl h-64 flex flex-col items-center justify-center text-slate-400 space-y-1.5 p-6">
-                <Award className="w-8 h-8 text-slate-600" />
-                <span className="font-semibold text-sm">No Loot Found</span>
-                <span className="text-xs text-slate-500 text-center max-w-sm">No scholarships match the selected GPA, countries or level configuration.</span>
+              <div className="bg-[#2c2c2c] border-4 border-black h-64 flex flex-col items-center justify-center text-stone-400 space-y-2 p-6 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]">
+                <GraduationCap className="w-8 h-8 text-stone-500" />
+                <span className="font-press text-xs text-[#ffaa00]">No Scholarships Found</span>
+                <span className="text-xs font-mono text-stone-400 text-center max-w-sm">No scholarships match the selected GPA, countries or degree level configuration.</span>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {filteredScholarships.map((schol) => {
-                  const gpaMatches = !profile || profile.gpa >= schol.gpaRequirement;
                   return (
                     <div
                       key={schol.id}
-                      className={
-                        isMinecraft
-                          ? "bg-[#2c2927] border-4 border-black p-4 flex flex-col justify-between"
-                          : "bg-white dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800/80 p-5 rounded-2xl shadow-sm hover:border-slate-200 dark:hover:border-slate-700/80 transition-all flex flex-col justify-between group hover:shadow-md"
-                      }
+                      className="bg-[#2c2c2c] border-4 border-black p-4 space-y-3 flex flex-col justify-between [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]"
                     >
                       <div className="space-y-3">
                         <div className="flex justify-between items-start gap-2">
-                          <span className={isMinecraft ? "font-press text-[8px] text-[#ffff55]" : "text-xs font-bold text-amber-500 uppercase tracking-widest bg-amber-500/5 px-2 py-0.5 rounded-full"}>
+                          <span className="font-press text-[9px] text-[#ffff55] uppercase bg-black/40 px-2 py-1 border border-black">
                             {schol.fundingCoverage}
                           </span>
-                          <span className="text-[10px] font-mono text-slate-400">
-                            🛡️ Min. GPA: {schol.gpaRequirement}
+                          <span className="font-mono text-xs text-stone-300 bg-stone-800 px-2 py-0.5 border border-stone-700">
+                            Min. GPA: {schol.gpaRequirement}
                           </span>
                         </div>
 
-                        <div className="space-y-1">
-                          <h3 className={isMinecraft ? "font-press text-[10px] leading-tight text-[#ffaa00]" : "text-base font-bold tracking-tight group-hover:text-indigo-400 transition-colors"}>
+                        <div>
+                          <h3 className="font-press text-xs text-[#ffaa00] leading-snug">
                             {schol.name}
                           </h3>
-                          <div className="text-xs text-slate-400 font-semibold flex items-center gap-1">
-                            <Building2 className="w-3.5 h-3.5" />
+                          <div className="text-xs font-mono text-stone-300 flex items-center gap-1 mt-1">
+                            <Building2 className="w-3.5 h-3.5 text-stone-400" />
                             <span>{schol.provider}</span>
                           </div>
                         </div>
 
-                        <p className={isMinecraft ? "font-mono text-[9px] text-stone-400 leading-normal" : "text-xs text-slate-500 line-clamp-2 leading-relaxed"}>
+                        <p className="font-mono text-xs text-stone-300 line-clamp-2 leading-relaxed">
                           {schol.description}
                         </p>
 
-                        <div className="pt-2 border-t border-black/10 dark:border-slate-800/60 flex flex-wrap gap-1.5">
+                        <div className="flex flex-wrap gap-1.5 pt-1">
                           {schol.degreeLevel.map((deg, i) => (
-                            <span key={i} className="text-[9px] bg-indigo-500/5 text-indigo-400 px-2 py-0.5 rounded-full font-bold">
+                            <span key={i} className="text-[10px] font-mono bg-stone-800 text-[#55ffff] px-2 py-0.5 border border-stone-700">
                               🎓 {deg}
                             </span>
                           ))}
@@ -632,30 +565,24 @@ export default function AdvancedSearch() {
                       </div>
 
                       {/* Action buttons */}
-                      <div className="flex gap-2 pt-4 mt-4 border-t border-black/5 dark:border-slate-800/40">
+                      <div className="flex gap-2 pt-3 border-t border-stone-700">
                         <button
-                          onClick={() => handleAddToQuestBook(schol, 'scholarship')}
-                          className={
-                            isMinecraft
-                              ? "mc-btn flex-1 text-[8px] font-press py-1.5 text-stone-200"
-                              : "flex-1 text-xs py-2 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 font-bold flex items-center justify-center gap-1 cursor-pointer transition-colors"
-                          }
+                          type="button"
+                          onClick={() => handleSaveApplication(schol, 'scholarship')}
+                          className="mc-btn flex-1 text-[9px] font-press py-2 text-stone-200 flex items-center justify-center gap-1"
                         >
-                          <BookmarkPlus className="w-3.5 h-3.5" /> Quest Book
+                          <BookmarkPlus className="w-3.5 h-3.5 text-[#ffaa00]" /> Save App
                         </button>
                         {(schol.applicationUrl || schol.officialWebsite) && (
                           <button
+                            type="button"
                             onClick={() => {
                               const url = schol.applicationUrl || schol.officialWebsite;
                               if (url && url !== '#') {
-                                window.open(url, '_blank', 'noopener,noreferrer');
+                                window.open(getCleanUniversityUrl({ name: schol.name, website: url }, true), '_blank', 'noopener,noreferrer');
                               }
                             }}
-                            className={
-                              isMinecraft
-                                ? "mc-btn flex-1 text-[8px] font-press py-1.5 text-[#ffff55]"
-                                : "flex-1 text-xs py-2 bg-indigo-600 text-white hover:bg-indigo-700 rounded-lg font-bold flex items-center justify-center gap-1 cursor-pointer transition-colors"
-                            }
+                            className="mc-btn flex-1 text-[9px] font-press py-2 text-[#ffff55] flex items-center justify-center gap-1"
                           >
                             Apply Portal <ChevronRight className="w-3.5 h-3.5" />
                           </button>
@@ -672,3 +599,4 @@ export default function AdvancedSearch() {
     </div>
   );
 }
+

@@ -3,33 +3,29 @@
   "builds": [
     {
       "src": "api/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "data/**",
-          "public/data/**"
-        ]
-      }
+      "use": "@vercel/node"
     },
     {
       "src": "package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "config": { "distDir": "dist" }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "api/index.ts"
+      "dest": "/api/index.ts"
+    },
+    {
+      "src": "/data/(.*)",
+      "dest": "/data/$1"
     },
     {
       "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "api/index.ts"
+      "dest": "/index.html"
     }
   ]
 }

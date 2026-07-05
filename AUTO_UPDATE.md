@@ -1,18 +1,23 @@
-# ScholarPath Auto-Update System
+# 🔄 ScholarPath Auto-Update System
 
-The auto-update system ensures that scholarship data, university rankings, and employment guidelines stay current without manual intervention.
+ScholarPath includes an automated data sync and update pipeline.
 
-## Components
-1. **GitHub Actions Workflow** (`.github/workflows/auto-update.yml`): Runs weekly to fetch new data.
-2. **Update Script** (`scripts/updateData.js`): Deep-merges new data, validates URLs, and preserves `userVerified` flags.
-3. **Data Files**: 
-   - `public/data/jobs.json`
+## Features
 
-## Manual Run
-To run the update script manually:
+- **Automated Scraping & Deep Merging**: Scrapes updated university rankings, scholarship deadlines, and exchange rates.
+- **User Verification Preservation**: Preserves user-verified and manually corrected records while updating outdated data.
+- **GitHub Actions Integration**: Runs on schedule every Sunday at midnight UTC or on manual dispatch.
+
+## Usage
+
+Run manually at any time:
+
 ```bash
 node scripts/updateData.js
 ```
 
-## Rollback Procedures
-Since updates are committed to the repository, you can rollback by reverting the auto-update commit in git.
+Or trigger full dataset re-seeding:
+
+```bash
+node scripts/seedAll.js
+```

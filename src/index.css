@@ -2,60 +2,60 @@
 @import "tailwindcss";
 
 :root {
-  /* Default Theme: Minecraft */
-  --bg-primary: #110f0d;
-  --bg-secondary: #2c2927;
-  --bg-tertiary: #141414;
-  --text-primary: #e0e0e0;
-  --text-secondary: #ffff55;
-  --text-tertiary: #ffaa00;
-  --border-color: #000000;
-  --border-style: 4px solid #000000;
+  /* Default Theme: Minecraft (Craft) */
+  --bg-primary: #1a1512;
+  --bg-secondary: #2c2824;
+  --bg-tertiary: #1f1a16;
+  --text-primary: #f0e8d8;
+  --text-secondary: #c8bca8;
+  --text-muted: #9a8e7a;
+  --border-color: #3d3530;
+  --border-style: 3px solid #3d3530;
   --font-heading: "Press Start 2P", monospace;
-  --font-body: "JetBrains Mono", monospace;
-  --box-shadow: inset -4px -4px 0 #141414, inset 4px 4px 0 #555;
+  --font-body: "Inter", sans-serif;
+  --box-shadow: inset -3px -3px 0 #141210, inset 3px 3px 0 #4a423c;
 }
 
-.theme-mode-minecraft {
-  --bg-primary: #110f0d;
-  --bg-secondary: #2c2927;
-  --bg-tertiary: #141414;
-  --text-primary: #e0e0e0;
-  --text-secondary: #ffff55;
-  --text-tertiary: #ffaa00;
-  --border-color: #000000;
-  --border-style: 4px solid #000000;
+.theme-mode-minecraft, .craft-mode {
+  --bg-primary: #1a1512;
+  --bg-secondary: #2c2824;
+  --bg-tertiary: #1f1a16;
+  --text-primary: #f0e8d8;
+  --text-secondary: #c8bca8;
+  --text-muted: #9a8e7a;
+  --border-color: #3d3530;
+  --border-style: 3px solid #3d3530;
   --font-heading: "Press Start 2P", monospace;
-  --font-body: "JetBrains Mono", monospace;
-  --box-shadow: inset -4px -4px 0 #141414, inset 4px 4px 0 #555;
+  --font-body: "Inter", sans-serif;
+  --box-shadow: inset -3px -3px 0 #141210, inset 3px 3px 0 #4a423c;
 }
 
-.theme-mode-light {
-  --bg-primary: #fafafa;
+.theme-mode-light, .light-mode {
+  --bg-primary: #f8f6f2;
   --bg-secondary: #ffffff;
-  --bg-tertiary: #f1f5f9;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-tertiary: #64748b;
-  --border-color: #cbd5e1;
-  --border-style: 2px solid #cbd5e1;
+  --bg-tertiary: #f0ede8;
+  --text-primary: #1a1a1a;
+  --text-secondary: #3a3a3a;
+  --text-muted: #5a5a5a;
+  --border-color: #d0ccc6;
+  --border-style: 2px solid #d0ccc6;
   --font-heading: "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
-  --box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+  --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.theme-mode-dark {
-  --bg-primary: #0b0f19;
-  --bg-secondary: #111827;
-  --bg-tertiary: #1e293b;
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-tertiary: #94a3b8;
-  --border-color: #334155;
-  --border-style: 2px solid #334155;
+.theme-mode-dark, .dark-mode {
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #1e1e1e;
+  --text-primary: #e8e6e0;
+  --text-secondary: #b8b5ad;
+  --text-muted: #8a8780;
+  --border-color: #2a2a2a;
+  --border-style: 2px solid #2a2a2a;
   --font-heading: "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
-  --box-shadow: 0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -2px rgba(0,0,0,0.5);
+  --box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 @theme {

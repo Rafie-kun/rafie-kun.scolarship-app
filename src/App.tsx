@@ -29,6 +29,9 @@ import CurrencySwitcher from './components/CurrencySwitcher';
 import AdvancedSearch from './components/AdvancedSearch';
 import VisaGuide from './components/VisaGuide';
 import InternshipExplorer from './components/InternshipExplorer';
+import GlobalSearch from './components/GlobalSearch';
+import Tooltip from './components/Tooltip';
+import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 
 import LoginScreen from './components/LoginScreen';
 import { useAuth } from './context/AuthContext';
@@ -145,6 +148,25 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('overview');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  // Global Keyboard Shortcuts (Ctrl+K to toggle search, Esc to close search)
+  useKeyboardShortcuts([
+    {
+      key: 'k',
+      ctrl: true,
+      action: () => setIsSearchOpen(prev => !prev),
+      description: 'Open Quick Search'
+    },
+    {
+      key: 'escape',
+      action: () => {
+        setIsSearchOpen(false);
+        setMobileMenuOpen(false);
+      },
+      description: 'Close Modals'
+    }
+  ]);
 
   const [showTour, setShowTour] = useState(false);
 
@@ -197,25 +219,25 @@ export default function App() {
 
   // Navigations directory menu hotbar mappings
   const navItems = [
-    { id: 'overview', label: 'Quest Dashboard', mcName: 'Diamond Trophy', desc: 'View active targets, track scores, and claimed items', icon: Trophy, color: 'text-amber-400' },
-    { id: 'analytics', label: 'Performance Analytics', mcName: 'Golden Redstone Gauge', desc: 'Visualize academic GPA trends and quest completions', icon: TrendingUp, color: 'text-[#55ff55]' },
-    { id: 'scholarships', label: 'Loot Registry', mcName: 'Enchanted Golden Apple', desc: 'Browse matched international fellowships & stipends', icon: GraduationCap, color: 'text-yellow-400' },
-    { id: 'internships', label: 'Internship Vault', mcName: 'Golden Fellowship Chest', desc: 'Browse global paid internships, research posts & UN positions', icon: Briefcase, color: 'text-emerald-400 font-bold' },
-    { id: 'universities', label: 'Target Keeps', mcName: 'Golden Citadel Spire', desc: 'Browse entry GPA benchmarks for global institutions', icon: Building, color: 'text-sky-400' },
-    { id: 'search', label: 'Explorer Spyglass', mcName: 'Explorer Spyglass Tool', desc: 'High-precision cross-database query engine for loot and citadels', icon: Search, color: 'text-violet-400 font-bold' },
-    { id: 'applications', label: 'Quest Book', mcName: 'Redstone Ledger Registry', desc: 'Manage your active application checkpoints and deadlines', icon: BookmarkCheck, color: 'text-red-400' },
-    { id: 'simulator', label: 'Alchemist Lab', mcName: 'Admissions Cauldron Brew', desc: 'Forecast acceptances margins with custom parameters', icon: Calculator, color: 'text-indigo-400' },
-    { id: 'writing', label: 'Scroll Vault', mcName: 'Golden Writing Quill', desc: 'Evaluate & draft professional Statement documents', icon: Save, color: 'text-cyan-400' },
-    { id: 'cv', label: 'Eminent CV Builder', mcName: 'Diamond Badge Emblem', desc: 'Synthesize custom admissions CV credentials & export PDF', icon: FileText, color: 'text-rose-450 font-bold' },
-    { id: 'counselling', label: 'Wise Wizard', mcName: 'Tome of Guidance', desc: 'Speak to the librarian AI about ECTS matches', icon: BookOpen, color: 'text-emerald-400' },
-    { id: 'budget', label: 'Budget Planner', mcName: 'Golden Coins', desc: 'Calculate study costs & part-time earnings', icon: Coins, color: 'text-[#2ecc71]' },
-    { id: 'visa', label: 'Visa Compass', mcName: 'Passport Compass', desc: 'Study visa requirements, proof of funds & work permits', icon: Compass, color: 'text-[#55ffff] font-bold' },
-    { id: 'learning', label: 'Navigator Compass', mcName: 'Chronometer Compass', desc: 'Structured timeline maps for global admission stages', icon: Navigation, color: 'text-orange-400' },
-    { id: 'community', label: 'Tavern Forum', mcName: 'Broadcasting Beacon', desc: 'Interact with fellow explorers regarding research meta', icon: MessageSquare, color: 'text-purple-400' },
-    { id: 'mentors', label: 'Alumni Guild', mcName: 'Master Guide Scroll', desc: 'Consult with vetting alumni from top fellowship chains', icon: Award, color: 'text-pink-400' },
-    { id: 'customize', label: 'Skins & Biomes', mcName: 'Active Shader Pack', desc: 'Mute sounds, tune layout densities & change biomes', icon: Sparkles, color: 'text-[#ffff55] animate-pulse' },
-    { id: 'export', label: 'Export Blueprints', mcName: 'Empty Map Atlas Scroll', desc: 'Convert applicant records into persistent backups', icon: FolderDown, color: 'text-stone-300' },
-    { id: 'profile', label: 'Hero Skin Name', mcName: 'Player Badge Slate', desc: 'Configure candidate GPAs, nationality and certifications', icon: User, color: 'text-teal-400' }
+    { id: 'overview', label: 'Overview', mcName: 'Dashboard', desc: 'View active targets, track progress scores, and application milestones', icon: Trophy, color: 'text-amber-400' },
+    { id: 'analytics', label: 'Performance Analytics', mcName: 'Analytics', desc: 'Visualize academic GPA trends and target milestone completions', icon: TrendingUp, color: 'text-[#55ff55]' },
+    { id: 'scholarships', label: 'Scholarship Finder', mcName: 'Scholarships', desc: 'Browse matched international fellowships & fully funded stipends', icon: GraduationCap, color: 'text-yellow-400' },
+    { id: 'internships', label: 'Internship Finder', mcName: 'Internships', desc: 'Browse global paid internships, research posts & UN positions', icon: Briefcase, color: 'text-emerald-400 font-bold' },
+    { id: 'universities', label: 'Universities', mcName: 'Universities Directory', desc: 'Browse entry GPA benchmarks for global institutions', icon: Building, color: 'text-sky-400' },
+    { id: 'search', label: 'Advanced Search', mcName: 'Search Engine', desc: 'High-precision cross-database query engine for scholarships and universities', icon: Search, color: 'text-violet-400 font-bold' },
+    { id: 'applications', label: 'Applications Tracker', mcName: 'Applications Ledger', desc: 'Manage your active application checkpoints, tasks, and deadlines', icon: BookmarkCheck, color: 'text-red-400' },
+    { id: 'simulator', label: 'Admissions Calculator', mcName: 'Admission Chances', desc: 'Forecast acceptance margins with custom GPA and profile parameters', icon: Calculator, color: 'text-indigo-400' },
+    { id: 'writing', label: 'Document Center', mcName: 'Statements & Documents', desc: 'Evaluate & draft professional Statement of Purpose documents', icon: Save, color: 'text-cyan-400' },
+    { id: 'cv', label: 'CV Builder', mcName: 'Academic CV', desc: 'Synthesize custom admissions CV credentials & export PDF', icon: FileText, color: 'text-rose-450 font-bold' },
+    { id: 'counselling', label: 'AI Chat Assistant', mcName: 'AI Advisor', desc: 'Speak to the AI student assistant about ECTS and scholarship matches', icon: BookOpen, color: 'text-emerald-400' },
+    { id: 'budget', label: 'Budget Planner', mcName: 'Finances', desc: 'Calculate study costs, living expenses & part-time earnings', icon: Coins, color: 'text-[#2ecc71]' },
+    { id: 'visa', label: 'Visa Guide', mcName: 'Visa & Immigration', desc: 'Study visa requirements, proof of funds & work permits', icon: Compass, color: 'text-[#55ffff] font-bold' },
+    { id: 'learning', label: 'Roadmap', mcName: 'Timeline Maps', desc: 'Structured timeline maps for global admission stages', icon: Navigation, color: 'text-orange-400' },
+    { id: 'community', label: 'Community Forum', mcName: 'Student Forum', desc: 'Interact with fellow students regarding admissions and visa advice', icon: MessageSquare, color: 'text-purple-400' },
+    { id: 'mentors', label: 'Mentors', mcName: 'Alumni Mentors', desc: 'Consult with vetted alumni from top university fellowship programs', icon: Award, color: 'text-pink-400' },
+    { id: 'customize', label: 'Theme Settings', mcName: 'Appearance & Themes', desc: 'Mute sounds, tune layout densities & customize visual themes', icon: Sparkles, color: 'text-[#ffff55]' },
+    { id: 'export', label: 'Export Center', mcName: 'Data Backups', desc: 'Convert applicant records into persistent JSON backups', icon: FolderDown, color: 'text-stone-300' },
+    { id: 'profile', label: 'Profile', mcName: 'User Profile', desc: 'Configure candidate GPAs, nationality, degree, and credentials', icon: User, color: 'text-teal-400' }
   ];
 
   // Map active Tab to visual layouts
@@ -378,6 +400,17 @@ export default function App() {
             >
               {mobileMenuOpen ? <X className="w-4 h-4 ml-1" /> : <Menu className="w-4 h-4 ml-1" />}
             </button>
+
+            {/* Quick Search Ctrl+K Button */}
+            <button
+              onClick={() => { playClickSound(); setIsSearchOpen(true); }}
+              className="hidden sm:flex items-center gap-2 bg-black/50 border-2 border-stone-700 hover:border-[#ffff55] px-2.5 py-1.5 text-[11px] font-mono text-stone-300 cursor-pointer transition-colors"
+              title="Quick Search (Ctrl+K)"
+            >
+              <Search className="w-3.5 h-3.5 text-[#ffff55]" />
+              <span className="hidden lg:inline text-stone-400">Search...</span>
+              <kbd className="px-1.5 py-0.5 text-[9px] bg-stone-800 text-stone-300 border border-stone-600 font-press">Ctrl+K</kbd>
+            </button>
             
             <div className="flex items-center gap-4">
               <button
@@ -515,20 +548,21 @@ export default function App() {
                 const IconComp = item.icon;
                 const isActive = activeTab === item.id;
                 return (
-                  <button
-                    key={item.id}
-                    onClick={() => handleTabChange(item.id)}
-                    onMouseEnter={() => setHoveredItem(item.id)}
-                    onMouseLeave={() => setHoveredItem(null)}
-                    className={`w-full flex items-center gap-3 p-2 cursor-pointer text-left font-mono border-2 transition-all rounded-none ${
-                      isActive 
-                        ? 'bg-black/50 border-[#ffff55] text-[#ffff55] [box-shadow:0_0_8px_rgba(255,255,85,0.2)] font-bold' 
-                        : 'bg-black/15 border-transparent hover:bg-black/30 hover:border-stone-700 text-stone-300'
-                    }`}
-                  >
-                    <IconComp className={`w-5 h-5 shrink-0 ${isActive ? 'text-[#ffff55]' : item.color} drop-shadow-md`} />
-                    <span className="text-[11.5px] truncate font-sans tracking-wide">{item.label}</span>
-                  </button>
+                  <Tooltip key={item.id} content={`${item.label}: ${item.desc}`} position="right">
+                    <button
+                      onClick={() => handleTabChange(item.id)}
+                      onMouseEnter={() => setHoveredItem(item.id)}
+                      onMouseLeave={() => setHoveredItem(null)}
+                      className={`w-full flex items-center gap-3 p-2 cursor-pointer text-left font-mono border-2 transition-all rounded-none ${
+                        isActive 
+                          ? 'bg-black/50 border-[#ffff55] text-[#ffff55] [box-shadow:0_0_8px_rgba(255,255,85,0.2)] font-bold' 
+                          : 'bg-black/15 border-transparent hover:bg-black/30 hover:border-stone-700 text-stone-300'
+                      }`}
+                    >
+                      <IconComp className={`w-5 h-5 shrink-0 ${isActive ? 'text-[#ffff55]' : item.color} drop-shadow-md`} />
+                      <span className="text-[11.5px] truncate font-sans tracking-wide">{item.label}</span>
+                    </button>
+                  </Tooltip>
                 );
               })}
             </div>
@@ -661,6 +695,13 @@ export default function App() {
         </main>
 
       </div>
+
+      {/* Global Search Modal Popup */}
+      <GlobalSearch
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        onNavigate={handleTabChange}
+      />
 
       {/* Floating Dynamic AI Navigation Assistant */}
       {isLoggedIn && profile && (
