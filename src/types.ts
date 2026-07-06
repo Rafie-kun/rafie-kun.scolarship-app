@@ -1,3 +1,12 @@
+export interface SubjectGradeItem {
+  subject: string;
+  grade: string;
+  type: 'standard' | 'ap' | 'ib' | 'honors';
+  category: 'stem' | 'humanities' | 'languages' | 'arts';
+  credits?: number;
+  semester?: string;
+}
+
 export interface Profile {
   fullName: string;
   level: number;
@@ -14,6 +23,7 @@ export interface Profile {
   projects: string[];
   volunteerExperience: string[];
   badges: string[];
+  subjects?: SubjectGradeItem[];
 
   // 🚨 NEW FIELDS FOR INTEGRATED SCHOLARPATH DATABASE 🚨
   educationLevel?: string; // 'high_school' | 'college' | 'undergraduate' | 'graduate' | 'phd'

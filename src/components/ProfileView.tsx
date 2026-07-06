@@ -7,7 +7,10 @@ import {
   MapPin, Globe, Linkedin, Github, ExternalLink, Upload, Trash2, 
   FileText, Award, BookOpen, Calculator, Check, ShieldCheck, BadgeCheck, Download
 } from 'lucide-react';
-import { Profile } from '../types';
+import { Profile, SubjectGradeItem } from '../types';
+import { calculateAcademicProfile, SubjectGrade } from '../utils/calculations';
+import CertificateAnalyzer from './CertificateAnalyzer';
+import { showToast } from './Toast';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { dispatchProfileUpdate } from '../utils/events';
 import { useAuth } from '../context/AuthContext';
@@ -90,6 +93,23 @@ export default function ProfileView() {
   const [resumePdfName, setResumePdfName] = useState('');
   const [pdfUploading, setPdfUploading] = useState(false);
   const [pdfStatusMessage, setPdfStatusMessage] = useState('');
+
+  // Interactive Academic Subject Ledger State
+  const [subjects, setSubjects] = useState<SubjectGradeItem[]>([
+    { subject: 'Advanced Mathematics', grade: 'A*', type: 'ap', category: 'stem', credits: 4, semester: 'Senior Year' },
+    { subject: 'Physics & Electromagnetism', grade: 'A', type: 'ap', category: 'stem', credits: 4, semester: 'Senior Year' },
+    { subject: 'English Literature', grade: 'A', type: 'standard', category: 'languages', credits: 3, semester: 'Senior Year' },
+    { subject: 'General Chemistry', grade: 'B', type: 'honors', category: 'stem', credits: 4, semester: 'Senior Year' },
+  ]);
+  const [showAnalyzer, setShowAnalyzer] = useState(false);
+
+  // Form state for adding new subject
+  const [newSubName, setNewSubName] = useState('');
+  const [newSubGrade, setNewSubGrade] = useState('A');
+  const [newSubWeight, setNewSubWeight] = useState<'standard' | 'ap' | 'ib' | 'honors'>('standard');
+  const [newSubCategory, setNewSubCategory] = useState<'stem' | 'humanities' | 'languages' | 'arts'>('stem');
+  const [newSubCredits, setNewSubCredits] = useState<number>(3);
+  const [newSubSemester, setNewSubSemester] = useState('Current Term');
 
   // GPA Calculator Modal State
   const [showGpaCalc, setShowGpaCalc] = useState(false);
@@ -176,7 +196,28 @@ export default function ProfileView() {
         setOLevelInput(data.oLevelSubjects ? data.oLevelSubjects.join(', ') : '');
         setALevelInput(data.aLevelSubjects ? data.aLevelSubjects.join(', ') : '');
 
-        setAdditionalSkills(data.additionalSkills || []);
+        if (data.subjects && Array.isArray(data.subjects) && data.subjects.length > 0) {
+          setSubjects(data.subjects);
+          const computed = calculateAcademicProfile(data.subjects);
+          if (computed.estimatedGpa > 0) {
+            setGpa(computed.estimatedGpa);
+          }
+        } else {
+          // Check local storage for subjects
+          const savedSubs = localStorage.getItem(`scholarpath_subjects_${data.fullName || 'guest'}`);
+          if (savedSubs) {
+            try {
+              const parsed = JSON.parse(savedSubs);
+              if (Array.isArray(parsed) && parsed.length > 0) {
+                setSubjects(parsed);
+                const computed = calculateAcademicProfile(parsed);
+                if (computed.estimatedGpa > 0) setGpa(computed.estimatedGpa);
+              }
+            } catch (e) {
+              console.error(e);
+            }
+          }
+        }
         setProjects(data.projects || []);
         setLeadership(data.leadershipExperience || []);
         setResumePdf(data.resumePdf || '');
@@ -204,6 +245,63 @@ export default function ProfileView() {
     window.addEventListener('profile-tab-switch', handleSwitchTab);
     return () => window.removeEventListener('profile-tab-switch', handleSwitchTab);
   }, []);
+
+  // Subject Ledger Handlers
+  const handleAddSubject = () => {
+    if (!newSubName.trim()) {
+      showToast('Please enter a valid subject name', 'info');
+      return;
+    }
+    playClickSound();
+
+    const newSubjectItem: SubjectGradeItem = {
+      subject: newSubName.trim(),
+      grade: newSubGrade,
+      type: newSubWeight,
+      category: newSubCategory,
+      credits: Number(newSubCredits) || 3,
+      semester: newSubSemester.trim() || 'Current Term'
+    };
+
+    const updatedSubjects = [...subjects, newSubjectItem];
+    setSubjects(updatedSubjects);
+
+    // Calculate GPA
+    const computed = calculateAcademicProfile(updatedSubjects);
+    if (computed.estimatedGpa > 0) {
+      setGpa(computed.estimatedGpa);
+    }
+
+    setNewSubName('');
+    showToast(`Added "${newSubjectItem.subject}" to Academic Ledger!`, 'success');
+  };
+
+  const handleRemoveSubject = (index: number) => {
+    playClickSound();
+    const updatedSubjects = subjects.filter((_, idx) => idx !== index);
+    setSubjects(updatedSubjects);
+
+    const computed = calculateAcademicProfile(updatedSubjects);
+    setGpa(computed.estimatedGpa || 3.0);
+    showToast('Removed subject from ledger', 'info');
+  };
+
+  const handleImportFromAnalyzer = (extractedSubjects: SubjectGradeItem[], calculatedGpa?: number) => {
+    playClickSound();
+    playAdvancementSound();
+
+    const merged = [...subjects, ...extractedSubjects];
+    setSubjects(merged);
+
+    const computed = calculateAcademicProfile(merged);
+    const finalGpa = calculatedGpa || computed.estimatedGpa;
+    if (finalGpa > 0) {
+      setGpa(finalGpa);
+    }
+
+    setShowAnalyzer(false);
+    showToast(`Successfully imported ${extractedSubjects.length} subjects from Certificate! GPA: ${finalGpa}`, 'success');
+  };
 
   // Save changes handler for BOTH Personal & Academic records
   const handleSaveProfile = async (e?: React.FormEvent) => {
@@ -237,6 +335,7 @@ export default function ProfileView() {
 
       gpa: Number(gpa) || 3.0,
       maxGpa: Number(maxGpa) || 4.0,
+      subjects: subjects,
       satScore: satScore !== '' ? Number(satScore) : null,
       greScore,
       ieltsScore,
@@ -950,6 +1049,178 @@ export default function ProfileView() {
                       </button>
                     ))}
                   </div>
+                </div>
+
+                {/* Certificate & Transcript Analyzer Banner */}
+                <div className="bg-[#1e1c1b] border-2 border-black p-4 space-y-3 font-mono">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                      <h5 className="font-press text-xs text-[#ffff55] uppercase flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-[#ffff55]" /> Certificate & Grade Report Analyzer
+                      </h5>
+                      <p className="text-stone-300 text-xs mt-1">
+                        Upload your official grade report card, diploma, or transcript to auto-extract subjects and calculate your GPA with Gemini AI.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => { playClickSound(); setShowAnalyzer(!showAnalyzer); }}
+                      className="mc-btn font-press text-[9px] py-2 px-4 text-[#55ff55] flex items-center gap-1.5 uppercase cursor-pointer shrink-0"
+                    >
+                      <Upload className="w-3.5 h-3.5" /> {showAnalyzer ? 'Close AI Scanner' : '📜 Scan Report Card / Certificate'}
+                    </button>
+                  </div>
+
+                  {showAnalyzer && (
+                    <div className="pt-3 border-t border-stone-800">
+                      <CertificateAnalyzer 
+                        onImportSubjects={handleImportFromAnalyzer} 
+                        onClose={() => setShowAnalyzer(false)} 
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* Interactive Academic Subject & Grade Ledger */}
+                <div className="bg-[#1e1c1b] border-2 border-black p-4 space-y-4 font-mono">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-stone-800 pb-3">
+                    <div>
+                      <h5 className="font-press text-xs text-[#55ffff] uppercase flex items-center gap-2">
+                        <BookOpen className="w-4 h-4 text-[#55ffff]" /> Academic Subject & Grade Ledger
+                      </h5>
+                      <p className="text-stone-300 text-xs mt-1">
+                        Add individual subjects, select letter/numerical grades, and specify course weighting (AP/IB/Honors).
+                      </p>
+                    </div>
+                    
+                    {/* Live GPA Calculations Banner */}
+                    {subjects.length > 0 && (
+                      <div className="flex items-center gap-2 bg-black/60 p-2 border border-stone-700 text-xs">
+                        <div className="text-right">
+                          <span className="text-[10px] text-stone-400 block uppercase">Calculated GPA:</span>
+                          <span className="font-press text-sm text-[#55ff55]">
+                            {calculateAcademicProfile(subjects).estimatedGpa} / 4.0
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const comp = calculateAcademicProfile(subjects);
+                            if (comp.estimatedGpa > 0) {
+                              setGpa(comp.estimatedGpa);
+                              showToast(`Synced GPA (${comp.estimatedGpa}) to profile!`, 'success');
+                            }
+                          }}
+                          className="mc-btn font-press text-[8px] py-1 px-2 text-[#ffff55] uppercase cursor-pointer"
+                        >
+                          Sync to GPA
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Subject Entry Form */}
+                  <div className="grid grid-cols-1 sm:grid-cols-6 gap-2 bg-black/40 p-3 border border-stone-800 text-xs">
+                    <div className="sm:col-span-2">
+                      <label className="text-[10px] text-stone-400 uppercase font-bold block mb-1">Subject Name:</label>
+                      <input
+                        type="text"
+                        value={newSubName}
+                        onChange={(e) => setNewSubName(e.target.value)}
+                        placeholder="e.g. Organic Chemistry"
+                        className="bg-[#141414] border border-stone-700 p-2 text-stone-200 text-xs w-full outline-none focus:border-[#55ffff]"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-[10px] text-stone-400 uppercase font-bold block mb-1">Grade:</label>
+                      <select
+                        value={newSubGrade}
+                        onChange={(e) => setNewSubGrade(e.target.value)}
+                        className="bg-[#141414] border border-stone-700 p-2 text-stone-200 text-xs w-full outline-none"
+                      >
+                        <option value="A*">A* / 90-100%</option>
+                        <option value="A">A / 80-89%</option>
+                        <option value="B">B / 70-79%</option>
+                        <option value="C">C / 60-69%</option>
+                        <option value="D">D / 50-59%</option>
+                        <option value="F">F / Below 50%</option>
+                        <option value="7">IB 7 (High Dist.)</option>
+                        <option value="6">IB 6 (Distinction)</option>
+                        <option value="5">IB 5 (Merit)</option>
+                        <option value="4">IB 4 (Pass)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="text-[10px] text-stone-400 uppercase font-bold block mb-1">Weighting:</label>
+                      <select
+                        value={newSubWeight}
+                        onChange={(e) => setNewSubWeight(e.target.value as any)}
+                        className="bg-[#141414] border border-stone-700 p-2 text-stone-200 text-xs w-full outline-none"
+                      >
+                        <option value="standard">Standard (Unweighted)</option>
+                        <option value="ap">AP (+1.0 Weighted)</option>
+                        <option value="ib">IB (+1.0 Weighted)</option>
+                        <option value="honors">Honors (+0.5 Weighted)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="text-[10px] text-stone-400 uppercase font-bold block mb-1">Credits:</label>
+                      <input
+                        type="number"
+                        min="1"
+                        max="10"
+                        value={newSubCredits}
+                        onChange={(e) => setNewSubCredits(Number(e.target.value))}
+                        className="bg-[#141414] border border-stone-700 p-2 text-stone-200 text-xs w-full outline-none"
+                      />
+                    </div>
+
+                    <div className="flex items-end">
+                      <button
+                        type="button"
+                        onClick={handleAddSubject}
+                        className="mc-btn font-press text-[9px] py-2 px-3 text-[#55ff55] w-full uppercase cursor-pointer flex items-center justify-center gap-1"
+                      >
+                        <Plus className="w-3.5 h-3.5" /> Add
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* List of Entered Subjects */}
+                  {subjects.length > 0 ? (
+                    <div className="space-y-1.5 max-h-60 overflow-y-auto pr-1">
+                      {subjects.map((item, idx) => (
+                        <div key={idx} className="bg-[#141414] border border-stone-800 p-2 flex items-center justify-between text-xs font-mono">
+                          <div className="flex items-center gap-3">
+                            <span className="font-press text-[9px] bg-amber-950 border border-amber-600 text-[#ffaa00] px-2 py-0.5 uppercase">
+                              {item.grade}
+                            </span>
+                            <div>
+                              <span className="text-stone-200 font-bold block">{item.subject}</span>
+                              <span className="text-[10px] text-stone-400 uppercase">
+                                {item.type} • {item.credits} Credits • {item.semester || 'Current Term'}
+                              </span>
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveSubject(idx)}
+                            className="text-red-400 hover:text-red-300 p-1 cursor-pointer"
+                            title="Remove Subject"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center p-4 bg-black/30 border border-dashed border-stone-800 text-stone-400 text-xs">
+                      No subjects entered yet. Add your courses above or scan your grade report with AI.
+                    </div>
+                  )}
                 </div>
 
                 {/* GPA & GPA Converter */}

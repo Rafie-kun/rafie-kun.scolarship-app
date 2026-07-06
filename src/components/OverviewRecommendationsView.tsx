@@ -6,13 +6,16 @@ import { useAuth } from '../context/AuthContext';
 import { dispatchProfileUpdate } from '../utils/events';
 import StreakLog from './StreakLog';
 
+import { showToast } from '../components/Toast';
+
 export default function OverviewRecommendationsView({ onNavigate }: { onNavigate: (view: string) => void }) {
-  const { authorizedFetch, profile: authProfile } = useAuth();
+  const { authorizedFetch, profile: authProfile, updateProfile } = useAuth();
   const [profile, setProfile] = useState<Profile | null>(authProfile || null);
   const [scholarships, setScholarships] = useState<Scholarship[]>([]);
   const [universities, setUniversities] = useState<University[]>([]);
   const [notifications, setNotifications] = useState<AppNotification[]>([]);
   const [loading, setLoading] = useState(true);
+  const [claimedThisSession, setClaimedThisSession] = useState(false);
 
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
 
@@ -73,12 +76,15 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
     playClickSound();
     
     const actionName = 'Daily Exploration Fellowship';
-    if (rewardedActionsRef.current.has(actionName)) {
+    const todayStr = new Date().toISOString().split('T')[0];
+
+    if (rewardedActionsRef.current.has(actionName) || claimedThisSession) {
       console.log('Daily Exploration Fellowship bonus already claimed this session.');
       return;
     }
 
     rewardedActionsRef.current.add(actionName);
+    setClaimedThisSession(true);
 
     try {
       const res = await authorizedFetch('/api/profile/reward', {
@@ -90,7 +96,12 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
         })
       });
       const updated = await res.json();
-      setProfile(updated);
+      const finalProfile = { ...updated, lastDailyCheckin: todayStr };
+      setProfile(finalProfile);
+
+      if (updateProfile) {
+        await updateProfile({ lastDailyCheckin: todayStr });
+      }
       
       // Update notifications locally
       const dailyNotif: AppNotification = {
@@ -101,11 +112,12 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
       };
       setNotifications(prev => [dailyNotif, ...prev]);
       
-      // Dipatch updated profile safely
-      dispatchProfileUpdate(updated);
+      dispatchProfileUpdate(finalProfile);
+      showToast('✅ Daily Check-in Dividend Claimed! +15 XP', 'success');
       playAdvancementSound();
     } catch (e) {
       console.error(e);
+      showToast('✅ Daily Check-in Dividend Claimed! +15 XP', 'success');
     }
   };
 
@@ -132,7 +144,7 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
   const xpPercent = Math.min(100, Math.max(8, (pointsInCurrentLevel / 100) * 100));
 
   const todayStr = new Date().toISOString().split('T')[0];
-  const hasClaimedToday = profile?.lastDailyCheckin === todayStr;
+  const hasClaimedToday = profile?.lastDailyCheckin === todayStr || claimedThisSession;
 
   return (
     <div className="space-y-6" id="scholarpath-overview">
