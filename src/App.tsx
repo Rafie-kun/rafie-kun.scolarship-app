@@ -206,8 +206,9 @@ export default function App() {
 
   const handlePickaxeClick = () => {
     playClickSound();
-    const modes: ('light' | 'dark' | 'minecraft')[] = ['light', 'dark', 'minecraft'];
-    const nextIdx = (modes.indexOf(themeMode) + 1) % modes.length;
+    const modes: ('dark' | 'minecraft')[] = ['dark', 'minecraft'];
+    const currentIdx = modes.indexOf(themeMode as any);
+    const nextIdx = currentIdx === 0 ? 1 : 0;
     setThemeMode(modes[nextIdx]);
   };
 
@@ -457,21 +458,9 @@ export default function App() {
           {/* Global Currency Switcher Selector */}
           <CurrencySwitcher />
 
-          {/* Working Theme Switcher Toggle (Light, Dark, Minecraft) */}
+          {/* Working Theme Switcher Toggle (Dark, Craft) */}
           <div className="flex items-center gap-1.5 bg-black/50 p-1.5 border-2 border-black rounded-none">
             <span className="text-[8px] font-press text-[#ffaa00] px-1 select-none hidden xl:inline">THEME:</span>
-            <button
-              onClick={() => setThemeMode('light')}
-              className={`px-2 py-1 text-[8px] font-press uppercase cursor-pointer rounded-none transition-all ${
-                themeMode === 'light'
-                  ? 'bg-blue-600 text-white font-bold border-2 border-blue-400'
-                  : 'bg-stone-800 text-stone-400 border border-stone-900 hover:text-stone-200'
-              }`}
-              title="Switch to Modern Light theme"
-              id="theme-btn-light"
-            >
-              ☀️ Light
-            </button>
             <button
               onClick={() => setThemeMode('dark')}
               className={`px-2 py-1 text-[8px] font-press uppercase cursor-pointer rounded-none transition-all ${

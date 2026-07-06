@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { playClickSound } from '../utils/sound';
 
 export type ThemeId = 'overworld' | 'nether' | 'end' | 'aether';
-export type ThemeMode = 'light' | 'dark' | 'minecraft';
+export type ThemeMode = 'dark' | 'minecraft';
 export type CurrencyId = 
   | 'USD' | 'GBP' | 'EUR' | 'BDT' | 'CAD' | 'AUD' | 'INR' | 'JPY' 
   | 'CHF' | 'SGD' | 'MYR' | 'NZD' | 'ZAR' | 'BRL' | 'MXN';
@@ -64,7 +64,9 @@ const CURRENCY_SYMBOLS: Record<CurrencyId, string> = {
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [themeMode, setThemeModeState] = useState<ThemeMode>(() => {
-    return (localStorage.getItem('scholarpath_theme_mode') as ThemeMode) || 'minecraft';
+    const stored = localStorage.getItem('scholarpath_theme_mode');
+    if (stored === 'light') return 'dark';
+    return (stored as ThemeMode) || 'minecraft';
   });
 
   const [theme, setThemeState] = useState<ThemeId>(() => {
@@ -149,19 +151,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       root.style.setProperty('--font-heading', '"Press Start 2P", monospace');
       root.style.setProperty('--font-body', '"JetBrains Mono", monospace');
       root.style.setProperty('--box-shadow', 'inset -4px -4px 0 #141414, inset 4px 4px 0 #555');
-    } else if (themeMode === 'light') {
-      root.style.setProperty('--bg-primary', '#fafafa');
-      root.style.setProperty('--bg-secondary', '#ffffff');
-      root.style.setProperty('--bg-tertiary', '#f1f5f9');
-      root.style.setProperty('--text-primary', '#0f172a');
-      root.style.setProperty('--text-secondary', '#475569');
-      root.style.setProperty('--text-tertiary', '#64748b');
-      root.style.setProperty('--border-color', '#cbd5e1');
-      root.style.setProperty('--border-style', '2px solid #cbd5e1');
-      root.style.setProperty('--font-heading', '"Inter", sans-serif');
-      root.style.setProperty('--font-body', '"Inter", sans-serif');
-      root.style.setProperty('--box-shadow', '0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05)');
-    } else if (themeMode === 'dark') {
+    } else {
       root.style.setProperty('--bg-primary', '#0b0f19');
       root.style.setProperty('--bg-secondary', '#111827');
       root.style.setProperty('--bg-tertiary', '#1e293b');

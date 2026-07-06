@@ -189,21 +189,10 @@ export default function CustomizeView() {
           </h4>
 
           <div className="space-y-4 font-mono text-xs">
-            {/* Theme Mode Toggle (Light vs Dark vs Minecraft) */}
+            {/* Theme Mode Toggle (Dark vs Minecraft) */}
             <div className="bg-[#1c1a19] border-2 border-black p-3 space-y-2 [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
               <span className="text-[9px] uppercase text-stone-400 font-bold block">ACTIVE DESIGN THEME</span>
-              <div className="flex gap-1">
-                <button
-                  type="button"
-                  onClick={() => setThemeMode('light')}
-                  className={`flex-1 py-2 text-center font-mono text-[9px] border-2 cursor-pointer transition-all ${
-                    themeMode === 'light'
-                      ? 'bg-blue-900/40 border-blue-500 text-blue-300 font-bold'
-                      : 'bg-black/30 border-stone-800 text-stone-400 hover:text-stone-200'
-                  }`}
-                >
-                  ☀️ LIGHT
-                </button>
+              <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={() => setThemeMode('dark')}
@@ -213,7 +202,7 @@ export default function CustomizeView() {
                       : 'bg-black/30 border-stone-800 text-stone-400 hover:text-stone-200'
                   }`}
                 >
-                  🌙 DARK
+                  🌙 DARK MODE
                 </button>
                 <button
                   type="button"
@@ -224,11 +213,11 @@ export default function CustomizeView() {
                       : 'bg-black/30 border-stone-800 text-stone-400 hover:text-stone-200'
                   }`}
                 >
-                  ⛏️ MC RETRO
+                  ⛏️ CRAFT MODE
                 </button>
               </div>
               <p className="text-[10px] text-stone-400 font-sans leading-normal pt-1">
-                Toggle between light Cupertino sheets, dark cosmic slates, and blocky retro craft grids.
+                Toggle between dark cosmic slates and blocky retro craft grids.
               </p>
             </div>
 

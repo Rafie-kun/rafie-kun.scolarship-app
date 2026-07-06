@@ -46,12 +46,6 @@ export default function ThreeScene() {
       particleCount = 55;
     }
 
-    // Light mode contrast correction
-    if (themeMode === 'light') {
-      nodeColor = theme === 'nether' ? '#c2410c' : theme === 'end' ? '#7e22ce' : theme === 'aether' ? '#0369a1' : '#15803d';
-      lineColor = 'rgba(100, 116, 139, 0.08)';
-    }
-
     interface Particle {
       x: number;
       y: number;
@@ -183,7 +177,7 @@ export default function ThreeScene() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-[1]"
-      style={{ mixBlendMode: themeMode === 'light' ? 'multiply' : 'screen' }}
+      style={{ mixBlendMode: 'screen' }}
     />
   );
 }

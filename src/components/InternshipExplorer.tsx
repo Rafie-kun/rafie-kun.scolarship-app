@@ -66,12 +66,13 @@ export default function InternshipExplorer() {
     return matchesSearch && matchesRegion && matchesType && matchesRemote;
   });
 
-  const handleApplyClick = (url: string) => {
+  const handleApplyClick = (url: string, name?: string) => {
     playClickSound();
     if (url && url !== '#' && !url.includes('placeholder')) {
       window.open(url, '_blank', 'noopener,noreferrer');
     } else {
-      alert("Application portal link currently under verification.");
+      const searchUrl = `https://www.google.com/search?q=${encodeURIComponent((name || 'Internship') + ' apply official website')}`;
+      window.open(searchUrl, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -223,7 +224,7 @@ export default function InternshipExplorer() {
 
                 <div className="pt-2 border-t border-stone-800">
                   <button
-                    onClick={() => handleApplyClick(item.applicationUrl || item.officialWebsite)}
+                    onClick={() => handleApplyClick(item.applicationUrl || item.officialWebsite, item.name)}
                     className="w-full bg-[#55ff55] hover:bg-green-400 text-black border-2 border-black font-press text-[9px] py-2.5 uppercase flex items-center justify-center gap-2 cursor-pointer shadow-md"
                   >
                     <ExternalLink className="w-4 h-4" /> Apply On Official Portal

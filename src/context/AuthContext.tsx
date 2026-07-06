@@ -692,6 +692,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const updateProfile = async (updatedData: Partial<Profile>): Promise<boolean> => {
+    // Merge into local current profile immediately for instant UI updates
+    const currentProfile = profile || defaultProfile;
+    const mergedLocal = {
+      ...currentProfile,
+      ...updatedData
+    };
+
+    setProfile(mergedLocal);
+    localStorage.setItem('scholarpath_user', JSON.stringify(mergedLocal));
+    localStorage.setItem('scholarpath_guest_profile', JSON.stringify(mergedLocal));
+    window.dispatchEvent(new CustomEvent('profile-updated', { detail: mergedLocal }));
+
     try {
       const res = await authorizedFetch('/api/profile', {
         method: 'POST',
@@ -700,43 +712,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       });
       if (res.ok) {
         const data = await res.json();
-        
-        // Clear any pending offline profile updates since we are back online
         localStorage.removeItem('scholarpath_pending_profile_update');
 
-        // Always persist to local storage
-        if (profile) {
-          const mergedProfile = {
-            ...profile,
-            ...data,
-            offlineMode: false // Explicitly clear offline mode
-          };
-          localStorage.setItem('scholarpath_user', JSON.stringify(mergedProfile));
-          setProfile(mergedProfile);
-        } else {
-          setProfile(data);
-        }
-
-        window.dispatchEvent(new CustomEvent('profile-updated', { detail: data }));
+        const finalMerged = {
+          ...mergedLocal,
+          ...data,
+          offlineMode: false
+        };
+        localStorage.setItem('scholarpath_user', JSON.stringify(finalMerged));
+        localStorage.setItem('scholarpath_guest_profile', JSON.stringify(finalMerged));
+        setProfile(finalMerged);
+        window.dispatchEvent(new CustomEvent('profile-updated', { detail: finalMerged }));
         return true;
       }
-      return false;
+      return true;
     } catch (e) {
-      console.warn("Failed to sync profile with server, updating locally & queueing for sync:", e);
-      // Save pending update in queue
+      console.warn("Server profile update sync skipped/queued, using local state:", e);
       try {
         const existingPending = JSON.parse(localStorage.getItem('scholarpath_pending_profile_update') || '{}');
         const mergedPending = { ...existingPending, ...updatedData };
         localStorage.setItem('scholarpath_pending_profile_update', JSON.stringify(mergedPending));
       } catch (err) {
         console.error("Failed to queue pending profile updates:", err);
-      }
-
-      if (profile) {
-        const localUpdate = { ...profile, ...updatedData, offlineMode: true };
-        localStorage.setItem('scholarpath_user', JSON.stringify(localUpdate));
-        setProfile(localUpdate);
-        window.dispatchEvent(new CustomEvent('profile-updated', { detail: localUpdate }));
       }
       return true;
     }

@@ -24,7 +24,7 @@ interface WizardContainerProps {
 }
 
 function WizardContent({ onComplete }: { onComplete: () => void }) {
-  const { profile, updateProfile, rewardPoints } = useAuth();
+  const { profile, updateProfile, rewardPoints, authorizedFetch } = useAuth();
   const onboarding = useOnboarding();
 
   const handleNext = () => {
@@ -42,44 +42,79 @@ function WizardContent({ onComplete }: { onComplete: () => void }) {
     try {
       const updatedData = {
         hasCompletedOnboarding: true,
+        onboardingCompleted: true,
         educationLevel: onboarding.educationLevel,
-        graduationYear: Number(onboarding.graduationYear),
+        graduationYear: Number(onboarding.graduationYear) || 2026,
         highSchoolName: onboarding.educationLevel === 'high_school' ? onboarding.institutionName : undefined,
         collegeName: onboarding.educationLevel !== 'high_school' ? onboarding.institutionName : undefined,
-        gpa: onboarding.gpaResults.estimatedGpa,
+        universityName: onboarding.institutionName || profile?.universityName,
+        gpa: onboarding.gpaResults?.estimatedGpa || profile?.gpa || 3.0,
         maxGpa: 4.0,
-        country: onboarding.targetCountry,
-        nationality: onboarding.country,
-        intendedMajor: onboarding.subjects[0]?.subject || 'Undecided',
-        portfolioDescription: `Completed subjects in ${onboarding.selectedCurricula.join(', ')}: ${onboarding.subjects.map(s => `${s.subject} (${s.grade})`).join(', ')}`
+        country: onboarding.targetCountry || profile?.country || 'Worldwide',
+        nationality: onboarding.country || profile?.nationality || 'Global Explorer',
+        intendedMajor: onboarding.subjects[0]?.subject || profile?.intendedMajor || 'Computer Science',
+        primaryMajor: onboarding.subjects[0]?.subject || profile?.primaryMajor || 'Computer Science'
       };
 
       if (updateProfile) {
         await updateProfile(updatedData);
       }
 
-      // Save full subject payload in local storage for performance matrix
-      localStorage.setItem(`scholarpath_subjects_${profile?.fullName || 'guest'}`, JSON.stringify(onboarding.subjects));
+      if (authorizedFetch) {
+        try {
+          await authorizedFetch('/api/academic/profile', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedData)
+          });
+        } catch (err) {
+          console.warn("Direct POST to /api/academic/profile fallback:", err);
+        }
+      }
+
+      // Save in local storage
+      localStorage.setItem(`scholarpath_subjects_${profile?.fullName || 'guest'}`, JSON.stringify(onboarding.subjects || []));
       localStorage.setItem(`scholarpath_onboarding_completed_${profile?.fullName || 'guest'}`, 'true');
 
       // Trigger XP Particle Celebration Event
       window.dispatchEvent(new CustomEvent('scholarpath-milestone-achieved'));
 
-      // Award XP bounty (50 XP)
+      // Award XP bounty (+50 XP)
       if (rewardPoints) {
-        const freshProfile = await rewardPoints(50, 'Completed Comprehensive Academic & Financial Onboarding Wizard', 'Onboarding Legend');
-        dispatchProfileUpdate(freshProfile);
+        await rewardPoints(50, 'Completed Academic Profile Onboarding', 'Onboarding Legend');
+      } else if (authorizedFetch) {
+        try {
+          const resReward = await authorizedFetch('/api/profile/reward', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              points: 50,
+              actionName: 'Completed Academic Profile Onboarding',
+              badgeToUnlock: 'Onboarding Legend'
+            })
+          });
+          const fresh = await resReward.json();
+          dispatchProfileUpdate(fresh);
+        } catch (err) {
+          console.error("Reward call error:", err);
+        }
       }
 
       onComplete();
     } catch (e) {
-      console.error("Failed to complete comprehensive academic onboarding wizard:", e);
+      console.error("Failed to complete academic onboarding wizard:", e);
       onComplete();
     }
   };
 
   return (
-    <div className="mc-window bg-[#322d29] border-4 border-black p-6 font-mono text-stone-200 [box-shadow:inset_-4px_-4px_0_#1a1918,inset_4px_4px_0_#555] space-y-6" id="comprehensive-academic-wizard">
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.25 }}
+      className="mc-window bg-[#322d29] border-4 border-black p-6 font-mono text-stone-200 [box-shadow:inset_-4px_-4px_0_#1a1918,inset_4px_4px_0_#555] space-y-6"
+      id="comprehensive-academic-wizard"
+    >
       
       {/* Header Panel */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-2 border-black pb-4 gap-4">
@@ -153,7 +188,7 @@ function WizardContent({ onComplete }: { onComplete: () => void }) {
       {/* Floating Interactive AI Guidance Assistant corner widget */}
       <OnboardingAIAssistant />
 
-    </div>
+    </motion.div>
   );
 }
 

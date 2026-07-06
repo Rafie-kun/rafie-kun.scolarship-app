@@ -36,6 +36,7 @@ export interface Profile {
   heroTitle?: string;
   profileColor?: string;
   hasCompletedOnboarding?: boolean;
+  onboardingCompleted?: boolean;
   customGeminiKey?: string;
   offlineMode?: boolean;
   universityName?: string;
@@ -43,6 +44,10 @@ export interface Profile {
   fieldOfStudy?: string;
   academicStatus?: string[];
   profileCompletion?: number;
+  linkedin?: string;
+  github?: string;
+  portfolio?: string;
+  resumePdfName?: string;
 }
 
 export interface Scholarship {

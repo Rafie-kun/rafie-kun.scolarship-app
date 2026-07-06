@@ -207,6 +207,8 @@ app.get("/api/check-gemini-key", (req, res) => {
 app.use("/api/roadmap", roadmapRouter);
 app.use("/api/universities", universitiesRouter);
 app.use("/api/profile", profileRouter);
+app.use("/api/academic/profile", profileRouter);
+app.use("/api/academic", profileRouter);
 app.use("/api/community", communityRouter);
 app.use("/api/jobs", jobsRouter);
 app.use("/api/ai", aiRouter);
