@@ -1,9 +1,24 @@
 // Web Audio API Retro Sound Effects Synthesizer
 let audioCtx: AudioContext | null = null;
 
+let isMutedState = false;
+
+if (typeof window !== 'undefined') {
+  isMutedState = window.localStorage.getItem('scholarpath_sound_muted') === 'true' || window.localStorage.getItem('scholarpath_sounds') === 'false';
+  window.addEventListener('sound-toggle', (e: any) => {
+    if (e.detail && typeof e.detail.muted === 'boolean') {
+      isMutedState = e.detail.muted;
+    }
+  });
+}
+
 function isSoundEnabled() {
   if (typeof window === 'undefined') return false;
-  return window.localStorage.getItem('scholarpath_sounds') !== 'false';
+  if (isMutedState) return false;
+  const soundsSetting = window.localStorage.getItem('scholarpath_sounds');
+  const soundMutedSetting = window.localStorage.getItem('scholarpath_sound_muted');
+  if (soundsSetting === 'false' || soundMutedSetting === 'true') return false;
+  return true;
 }
 
 function getAudioContext() {

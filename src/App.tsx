@@ -32,6 +32,7 @@ import InternshipExplorer from './components/InternshipExplorer';
 import GlobalSearch from './components/GlobalSearch';
 import Tooltip from './components/Tooltip';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
+import { useBackgroundSync } from './hooks/useBackgroundSync';
 
 import LoginScreen from './components/LoginScreen';
 import { useAuth } from './context/AuthContext';
@@ -40,6 +41,7 @@ import { playClickSound, playAdvancementSound } from './utils/sound';
 import ErrorBoundary from './components/ErrorBoundary';
 import NotificationsBell from './components/NotificationsBell';
 import SyncStatusDrawer from './components/SyncStatusDrawer';
+import ToastContainer from './components/Toast';
 
 // Dictionary containing styling palettes for unlockable Biomes (themes)
 const getThemeStyling = (themeId: string) => {
@@ -127,6 +129,8 @@ const getThemeStyling = (themeId: string) => {
 export default function App() {
   const { user, isLoggedIn, profile: authProfile, authLoading, isGuest, logout, rewardPoints, refreshProfile, updateProfile } = useAuth();
   const { theme, themeMode, setThemeMode, currency, setCurrency } = useTheme();
+
+  useBackgroundSync(25000);
 
   const [profile, setProfile] = useState(authProfile);
 
@@ -726,6 +730,9 @@ export default function App() {
           }}
         />
       )}
+
+      {/* Global Toast Container */}
+      <ToastContainer />
     </div>
     </ErrorBoundary>
   );

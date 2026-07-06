@@ -8,6 +8,7 @@ export default function Step4Subjects() {
   const onboarding = useOnboarding();
   
   const [subjectName, setSubjectName] = useState('');
+  const [subjectSearch, setSubjectSearch] = useState('');
   const [category, setCategory] = useState<'stem' | 'humanities' | 'languages' | 'arts'>('stem');
   const [courseType, setCourseType] = useState<'standard' | 'ap' | 'ib' | 'honors'>('standard');
   const [grade, setGrade] = useState('A');
@@ -32,6 +33,10 @@ export default function Step4Subjects() {
     : CURRICULA_LIST.flatMap((c) => c.subjects);
 
   const uniqueSuggestions = Array.from(new Set(displaySuggestions)).sort();
+
+  const filteredSuggestions = uniqueSuggestions.filter((s) =>
+    s.toLowerCase().includes(subjectSearch.toLowerCase())
+  );
 
   const primaryCurriculum = CURRICULA_LIST.find((c) => onboarding.selectedCurricula.includes(c.id)) || CURRICULA_LIST[0];
   const gradesList = primaryCurriculum.grades;
@@ -74,6 +79,46 @@ export default function Step4Subjects() {
       <p className="font-mono text-stone-300 text-xs leading-relaxed">
         Populate your course logs. Select standard courses from the loader, select the corresponding academic path, and record your expected final grades.
       </p>
+
+      {/* Search & Quick Pick Subject Bank */}
+      <div className="bg-[#1e1c1b] border-2 border-black p-3 space-y-2 font-mono text-xs">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <span className="text-stone-300 uppercase text-[9px] font-bold flex items-center gap-1.5">
+            🔍 Quick Course Search & Select Filter:
+          </span>
+          <input
+            type="text"
+            value={subjectSearch}
+            onChange={(e) => setSubjectSearch(e.target.value)}
+            placeholder="Search curriculum subjects (e.g. Physics, Calculus)..."
+            className="bg-[#141414] border border-stone-700 px-2.5 py-1 text-stone-200 text-xs outline-none w-full sm:w-64"
+          />
+        </div>
+
+        <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto p-1 bg-black/40 border border-stone-800">
+          {filteredSuggestions.length > 0 ? (
+            filteredSuggestions.map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  setSubjectName(s);
+                }}
+                className={`text-[10px] px-2 py-0.5 border cursor-pointer transition-all ${
+                  subjectName === s
+                    ? 'bg-[#ffff55] text-black font-bold border-[#ffff55]'
+                    : 'bg-[#141414] text-stone-300 border-stone-700 hover:border-[#ffff55]'
+                }`}
+              >
+                + {s}
+              </button>
+            ))
+          ) : (
+            <span className="text-stone-500 text-[10px] italic py-1">No subjects matching "{subjectSearch}"</span>
+          )}
+        </div>
+      </div>
 
       {/* Add Subject Builder */}
       <div className="bg-black/35 border-2 border-black p-4 space-y-4 font-mono text-xs text-stone-200">

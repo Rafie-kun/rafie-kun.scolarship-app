@@ -183,6 +183,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const nextState = !soundEnabled;
     setSoundEnabled(nextState);
     localStorage.setItem('scholarpath_sounds', String(nextState));
+    localStorage.setItem('scholarpath_sound_muted', String(!nextState));
+    window.dispatchEvent(new CustomEvent('sound-toggle', { detail: { muted: !nextState } }));
     if (nextState) {
       playClickSound();
     }

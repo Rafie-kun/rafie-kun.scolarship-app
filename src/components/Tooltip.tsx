@@ -1,13 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface TooltipProps {
   content: string;
   position?: 'top' | 'right' | 'bottom' | 'left';
   children: React.ReactNode;
+  delay?: number;
 }
 
-export default function Tooltip({ content, position = 'right', children }: TooltipProps) {
+export default function Tooltip({ content, position = 'right', children, delay = 300 }: TooltipProps) {
   const [visible, setVisible] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      setVisible(true);
+    }, delay);
+  };
+
+  const handleMouseLeave = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setVisible(false);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   const positionClasses = {
     top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',
@@ -19,19 +40,25 @@ export default function Tooltip({ content, position = 'right', children }: Toolt
   return (
     <div 
       className="relative inline-block w-full"
-      onMouseEnter={() => setVisible(true)}
-      onMouseLeave={() => setVisible(false)}
-      onFocus={() => setVisible(true)}
-      onBlur={() => setVisible(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocus={handleMouseEnter}
+      onBlur={handleMouseLeave}
     >
       {children}
-      {visible && content && (
-        <div 
-          className={`absolute z-50 pointer-events-none whitespace-normal max-w-xs bg-[#1a1816] text-[#ffff55] border-2 border-stone-700 px-2.5 py-1.5 text-[10.5px] font-mono leading-tight shadow-xl ${positionClasses[position]} animate-in fade-in zoom-in-95 duration-100`}
-        >
-          {content}
-        </div>
-      )}
+      <AnimatePresence>
+        {visible && content && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: position === 'bottom' ? -4 : position === 'top' ? 4 : 0 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.15 }}
+            className={`absolute z-50 pointer-events-none whitespace-normal max-w-xs bg-[#1a1816] text-[#ffff55] border-2 border-stone-700 px-2.5 py-1.5 text-[10.5px] font-mono leading-tight shadow-xl ${positionClasses[position]}`}
+          >
+            {content}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

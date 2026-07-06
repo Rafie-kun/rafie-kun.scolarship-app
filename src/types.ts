@@ -48,6 +48,7 @@ export interface Profile {
   github?: string;
   portfolio?: string;
   resumePdfName?: string;
+  soundMuted?: boolean;
 }
 
 export interface Scholarship {

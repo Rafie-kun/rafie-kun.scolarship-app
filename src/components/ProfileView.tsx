@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import { 
   User, Save, Sparkles, CheckCircle, Plus, GraduationCap, 
   MapPin, Globe, Linkedin, Github, ExternalLink, Upload, Trash2, 
-  FileText, Award, BookOpen, Calculator, Check, ShieldCheck, BadgeCheck
+  FileText, Award, BookOpen, Calculator, Check, ShieldCheck, BadgeCheck, Download
 } from 'lucide-react';
 import { Profile } from '../types';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
@@ -444,6 +446,38 @@ export default function ProfileView() {
     setShowGpaCalc(false);
   };
 
+  // Download Academic Profile as PDF
+  const [downloadingPdf, setDownloadingPdf] = useState(false);
+
+  const handleDownloadPdf = async () => {
+    playClickSound();
+    const element = document.getElementById('scholarpath-candidate-profile');
+    if (!element) return;
+
+    setDownloadingPdf(true);
+    try {
+      const canvas = await html2canvas(element, { 
+        scale: 2, 
+        useCORS: true, 
+        backgroundColor: '#1e1c1b' 
+      });
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`${(fullName || 'Scholar').replace(/\s+/g, '_')}_Academic_Profile.pdf`);
+      playAdvancementSound();
+      setSuccess('PDF Dossier exported successfully!');
+      setTimeout(() => setSuccess(''), 3000);
+    } catch (err) {
+      console.error("PDF export failed:", err);
+    } finally {
+      setDownloadingPdf(false);
+    }
+  };
+
   return (
     <div className="space-y-6" id="scholarpath-candidate-profile">
       
@@ -462,13 +496,24 @@ export default function ProfileView() {
           </p>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setShowWizard(!showWizard)}
-          className="mc-btn font-press text-[9px] py-2 px-3 text-[#ffff55] flex items-center gap-1.5 uppercase shrink-0"
-        >
-          <GraduationCap className="w-4 h-4" /> {showWizard ? 'Close Scribe Wizard' : 'Launch Wizard'}
-        </button>
+        <div className="flex flex-wrap items-center gap-2 shrink-0">
+          <button
+            type="button"
+            disabled={downloadingPdf}
+            onClick={handleDownloadPdf}
+            className="mc-btn font-press text-[9px] py-2 px-3 text-[#55ff55] flex items-center gap-1.5 uppercase cursor-pointer disabled:opacity-50"
+          >
+            <Download className="w-4 h-4" /> {downloadingPdf ? 'Exporting PDF...' : 'Download Academic Profile (PDF)'}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setShowWizard(!showWizard)}
+            className="mc-btn font-press text-[9px] py-2 px-3 text-[#ffff55] flex items-center gap-1.5 uppercase cursor-pointer"
+          >
+            <GraduationCap className="w-4 h-4" /> {showWizard ? 'Close Scribe Wizard' : 'Launch Wizard'}
+          </button>
+        </div>
       </motion.div>
 
       {/* Success Alert Banner */}
