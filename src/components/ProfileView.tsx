@@ -5,7 +5,7 @@ import html2canvas from 'html2canvas';
 import { 
   User, Save, Sparkles, CheckCircle, Plus, GraduationCap, 
   MapPin, Globe, Linkedin, Github, ExternalLink, Upload, Trash2, 
-  FileText, Award, BookOpen, Calculator, Check, ShieldCheck, BadgeCheck, Download
+  FileText, Award, BookOpen, Calculator, Check, ShieldCheck, BadgeCheck, Download, Trophy
 } from 'lucide-react';
 import { Profile, SubjectGradeItem } from '../types';
 import { calculateAcademicProfile, SubjectGrade } from '../utils/calculations';
@@ -44,8 +44,11 @@ export default function ProfileView() {
   const [success, setSuccess] = useState('');
   const [showWizard, setShowWizard] = useState(false);
 
-  // Active Tab: 'personal' or 'academics'
-  const [activeTab, setActiveTab] = useState<'personal' | 'academics'>('personal');
+  // Active Tab: 'personal', 'academics', or 'achievements'
+  const [activeTab, setActiveTab] = useState<'personal' | 'academics' | 'achievements'>('personal');
+
+  const [appsCount, setAppsCount] = useState(0);
+  const [checklistTasksDone, setChecklistTasksDone] = useState(0);
 
   // Personal Profile Fields
   const [fullName, setFullName] = useState('');
@@ -230,8 +233,90 @@ export default function ProfileView() {
     }
   };
 
+  const fetchAppsData = async () => {
+    const localUser = localStorage.getItem('scholarpath_user');
+    let username = 'guest';
+    if (localUser) {
+      try {
+        const parsed = JSON.parse(localUser);
+        username = parsed.username || 'guest';
+      } catch (e) {}
+    }
+    
+    try {
+      const res = await authorizedFetch('/api/applications');
+      let data = [];
+      if (res.ok) {
+        data = await res.json();
+      }
+      
+      if (!data || data.length === 0) {
+        const key = `scholarpath_mock_applications_${username}`;
+        const localData = localStorage.getItem(key);
+        if (localData) {
+          data = JSON.parse(localData);
+        }
+      }
+
+      if (Array.isArray(data)) {
+        setAppsCount(data.length);
+        let doneCount = 0;
+        data.forEach(app => {
+          if (app.checklist && Array.isArray(app.checklist)) {
+            doneCount += app.checklist.filter((item: any) => item.done).length;
+          }
+        });
+        setChecklistTasksDone(doneCount);
+      }
+    } catch (e) {
+      console.warn("Failed to fetch applications count:", e);
+    }
+  };
+
+  const handleLogLabHours = async (hoursToAdd: number) => {
+    playClickSound();
+    if (!profile) return;
+    const currentHours = profile.labHours || 0;
+    const updatedHours = currentHours + hoursToAdd;
+    
+    // Update local profile state
+    setProfile(prev => prev ? { ...prev, labHours: updatedHours } : null);
+    
+    // Sync to profile via updateProfile
+    if (updateProfile) {
+      await updateProfile({ labHours: updatedHours });
+    }
+
+    // Award XP points: +15 XP per hour of study!
+    const xpPoints = hoursToAdd * 15;
+    const actionName = `${hoursToAdd} Hour${hoursToAdd > 1 ? 's' : ''} Writing Lab Study Session`;
+    
+    try {
+      const res = await authorizedFetch('/api/profile/reward', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          points: xpPoints,
+          actionName,
+          badgeToUnlock: updatedHours >= 10 ? 'Admissions Archmage' : updatedHours >= 5 ? 'Research Chemist' : updatedHours >= 1 ? 'Lab Newcomer' : undefined
+        })
+      });
+      if (res.ok) {
+        const updatedProfileFromServer = await res.json();
+        setProfile(updatedProfileFromServer);
+      }
+    } catch (err) {
+      console.warn("Local reward fallback:", err);
+    }
+    
+    playAdvancementSound();
+    setSuccess(`Logged +${hoursToAdd} Hour${hoursToAdd > 1 ? 's' : ''} in the SOP Writing Lab! Awarded +${xpPoints} XP!`);
+    setTimeout(() => setSuccess(''), 4000);
+  };
+
   useEffect(() => {
     fetchProfile();
+    fetchAppsData();
 
     const handleSwitchTab = (e: Event) => {
       const customEvent = e as CustomEvent;
@@ -721,12 +806,12 @@ export default function ProfileView() {
       ) : (
         <div className="space-y-6">
           
-          {/* TWO PRIMARY TAB BUTTONS: PERSONAL vs ACADEMIC */}
-          <div className="flex border-4 border-black bg-[#1a1918] p-1.5 gap-2 font-press text-[10px]">
+          {/* THREE PRIMARY TAB BUTTONS: PERSONAL, ACADEMIC, ACHIEVEMENTS */}
+          <div className="flex flex-col sm:flex-row border-4 border-black bg-[#1a1918] p-1.5 gap-2 font-press text-[9px] sm:text-[10px]">
             <button
               type="button"
               onClick={() => { playClickSound(); setActiveTab('personal'); }}
-              className={`flex-1 py-3 px-4 uppercase transition-all flex items-center justify-center gap-2 cursor-pointer ${
+              className={`flex-1 py-3 px-2 sm:px-4 uppercase transition-all flex items-center justify-center gap-2 cursor-pointer ${
                 activeTab === 'personal'
                   ? 'bg-[#322d29] text-[#ffff55] border-2 border-black [box-shadow:inset_-2px_-2px_0_#1a1918,inset_2px_2px_0_#555]'
                   : 'text-stone-400 hover:text-stone-200 hover:bg-[#252220]'
@@ -738,13 +823,25 @@ export default function ProfileView() {
             <button
               type="button"
               onClick={() => { playClickSound(); setActiveTab('academics'); }}
-              className={`flex-1 py-3 px-4 uppercase transition-all flex items-center justify-center gap-2 cursor-pointer ${
+              className={`flex-1 py-3 px-2 sm:px-4 uppercase transition-all flex items-center justify-center gap-2 cursor-pointer ${
                 activeTab === 'academics'
                   ? 'bg-[#322d29] text-[#ffff55] border-2 border-black [box-shadow:inset_-2px_-2px_0_#1a1918,inset_2px_2px_0_#555]'
                   : 'text-stone-400 hover:text-stone-200 hover:bg-[#252220]'
               }`}
             >
               <BookOpen className="w-4 h-4" /> Academic Records
+            </button>
+
+            <button
+              type="button"
+              onClick={() => { playClickSound(); setActiveTab('achievements'); }}
+              className={`flex-1 py-3 px-2 sm:px-4 uppercase transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                activeTab === 'achievements'
+                  ? 'bg-[#322d29] text-[#ffff55] border-2 border-black [box-shadow:inset_-2px_-2px_0_#1a1918,inset_2px_2px_0_#555]'
+                  : 'text-stone-400 hover:text-stone-200 hover:bg-[#252220]'
+              }`}
+            >
+              <Trophy className="w-4 h-4 text-amber-400" /> Achievements
             </button>
           </div>
 
@@ -948,7 +1045,7 @@ export default function ProfileView() {
                   </button>
                 </div>
               </motion.form>
-            ) : (
+            ) : activeTab === 'academics' ? (
               <motion.form 
                 key="tab-academics"
                 initial={{ opacity: 0, y: 10 }}
@@ -1494,6 +1591,176 @@ export default function ProfileView() {
                   </button>
                 </div>
               </motion.form>
+            ) : (
+              <motion.div
+                key="tab-achievements"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.15 }}
+                className="bg-[#2c2c2c] border-4 border-black p-6 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555] space-y-6 text-stone-200"
+              >
+                <div className="flex items-center gap-2 pb-3 border-b-2 border-black">
+                  <Trophy className="w-5 h-5 text-amber-400" />
+                  <h4 className="font-press text-xs text-[#ffff55] uppercase">Milestone Achievements & Trophy Room</h4>
+                </div>
+
+                {/* RPG Stat summary */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-[#141414] border-2 border-black p-4 font-mono text-xs">
+                  <div className="text-center space-y-1.5 border-b sm:border-b-0 sm:border-r border-stone-800 pb-3 sm:pb-0">
+                    <span className="text-stone-400 uppercase text-[10px] font-bold block">UNIVERSITY CHANNELS:</span>
+                    <span className="font-press text-xs text-[#55ffff]">{appsCount} Sent</span>
+                    <span className="text-[10px] text-stone-500 block">Active admissions slots</span>
+                  </div>
+                  <div className="text-center space-y-1.5 border-b sm:border-b-0 sm:border-r border-stone-800 pb-3 sm:pb-0">
+                    <span className="text-stone-400 uppercase text-[10px] font-bold block">CHECKPOINT METRICS:</span>
+                    <span className="font-press text-xs text-[#55ff55]">{checklistTasksDone} Complete</span>
+                    <span className="text-[10px] text-stone-500 block">Admissions steps completed</span>
+                  </div>
+                  <div className="text-center space-y-1.5">
+                    <span className="text-stone-400 uppercase text-[10px] font-bold block">LAB RESEARCH:</span>
+                    <span className="font-press text-xs text-fuchsia-400">{profile?.labHours || 0} Hours</span>
+                    <span className="text-[10px] text-stone-500 block">Time in Document Center</span>
+                  </div>
+                </div>
+
+                {/* SOP STUDY LAB CONTROLS */}
+                <div className="bg-[#1e1c1b] border-2 border-black p-5 space-y-4 font-mono">
+                  <div>
+                    <h5 className="font-press text-[11px] text-[#55ffff] uppercase flex items-center gap-2">
+                      🧪 SOP EVALUATION LAB WORKBENCH
+                    </h5>
+                    <p className="text-stone-300 text-xs mt-1.5 leading-relaxed">
+                      Spend high-focus hours inside the admissions document evaluation lab writing, revising, and verifying ECTS points and Statement of Purpose drafts. Log your active study sessions below to level up and claim milestone titles!
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-3 pt-1">
+                    <button
+                      type="button"
+                      onClick={() => handleLogLabHours(1)}
+                      className="mc-btn flex-1 py-3 text-[10.5px] text-[#55ff55] font-bold uppercase flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      🧪 Log 1 Hour Study (+15 XP)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleLogLabHours(3)}
+                      className="mc-btn flex-1 py-3 text-[10.5px] text-[#ffff55] font-bold uppercase flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      🔬 3-Hour Lab Sprint (+45 XP)
+                    </button>
+                  </div>
+                </div>
+
+                {/* THE BADGES GRID */}
+                <div className="space-y-3">
+                  <span className="font-press text-[10px] text-[#ffaa00] block uppercase tracking-wider">
+                    🏆 UNLOCKED MILESTONES & BADGES
+                  </span>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      {
+                        id: 'app_apprentice',
+                        name: 'App Apprentice',
+                        description: 'Your first university application has been sent out to the global board!',
+                        requirement: 'Submit at least 1 university application',
+                        icon: '💼',
+                        unlocked: appsCount >= 1,
+                        color: 'border-emerald-600 bg-emerald-950/20 text-emerald-300'
+                      },
+                      {
+                        id: 'app_overlord',
+                        name: 'App Overlord',
+                        description: 'Commanding multiple active target application checkpoints with absolute precision.',
+                        requirement: 'Submit 3 or more university applications',
+                        icon: '👑',
+                        unlocked: appsCount >= 3,
+                        color: 'border-yellow-600 bg-yellow-950/20 text-yellow-300'
+                      },
+                      {
+                        id: 'checklist_tracker',
+                        name: 'Checklist Tracker',
+                        description: 'Checked off your first major checkpoint milestone!',
+                        requirement: 'Complete at least 1 checklist task in applications',
+                        icon: '📋',
+                        unlocked: checklistTasksDone >= 1,
+                        color: 'border-stone-500 bg-stone-900/40 text-stone-300'
+                      },
+                      {
+                        id: 'task_master',
+                        name: 'Task Master',
+                        description: 'Methodically completing admission checkpoints. Your organization is flawless!',
+                        requirement: 'Complete 5 or more checklist tasks',
+                        icon: '🎯',
+                        unlocked: checklistTasksDone >= 5,
+                        color: 'border-orange-600 bg-orange-950/20 text-orange-400'
+                      },
+                      {
+                        id: 'lab_newcomer',
+                        name: 'Lab Newcomer',
+                        description: 'Began drafting your admissions credentials in the Statement of Purpose evaluation lab.',
+                        requirement: 'Spend at least 1 hour of registered study in the lab',
+                        icon: '🧪',
+                        unlocked: (profile?.labHours || 0) >= 1,
+                        color: 'border-sky-600 bg-sky-950/20 text-sky-300'
+                      },
+                      {
+                        id: 'research_chemist',
+                        name: 'Research Chemist',
+                        description: 'Drafted, revised, and optimized complex admissions documents over multiple hours.',
+                        requirement: 'Spend at least 5 hours of study in the lab',
+                        icon: '🔬',
+                        unlocked: (profile?.labHours || 0) >= 5,
+                        color: 'border-purple-600 bg-purple-950/20 text-purple-300'
+                      },
+                      {
+                        id: 'admissions_archmage',
+                        name: 'Admissions Archmage',
+                        description: 'An elite academic pioneer with exceptional work ethic, fully prepared for top admissions reviews.',
+                        requirement: 'Reach 10 hours in lab, 5 checklist tasks done, and 1 application sent',
+                        icon: '🌟',
+                        unlocked: (profile?.labHours || 0) >= 10 && checklistTasksDone >= 5 && appsCount >= 1,
+                        color: 'border-fuchsia-600 bg-fuchsia-950/30 text-fuchsia-300 font-bold'
+                      }
+                    ].map((badge) => (
+                      <div 
+                        key={badge.id}
+                        className={`border-4 p-4 flex gap-4 transition-all relative ${
+                          badge.unlocked 
+                            ? `${badge.color} border-double shadow-[0_0_10px_rgba(255,255,255,0.05)]` 
+                            : 'border-stone-900 bg-black/40 opacity-40 select-none grayscale'
+                        }`}
+                      >
+                        {/* Lock / Badge Icon slot */}
+                        <div className={`w-14 h-14 shrink-0 border-4 flex items-center justify-center text-3xl shadow-inner ${
+                          badge.unlocked ? 'border-[#ffaa00] bg-black/60' : 'border-stone-800 bg-black/80'
+                        }`}>
+                          {badge.unlocked ? badge.icon : '🔒'}
+                        </div>
+
+                        <div className="font-mono text-xs leading-relaxed space-y-1">
+                          <div className="flex items-center gap-2">
+                            <h6 className="font-press text-[9.5px] uppercase tracking-wide">
+                              {badge.name}
+                            </h6>
+                            {badge.unlocked && (
+                              <span className="text-[9px] bg-emerald-950 border border-emerald-500 text-emerald-400 px-1 py-0.5 rounded-none leading-none uppercase font-bold">
+                                ACTIVE
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-stone-300 font-sans leading-relaxed">{badge.description}</p>
+                          <p className="text-[9px] text-[#ffaa00] uppercase font-bold pt-1">
+                            Req: {badge.requirement}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
             )}
           </AnimatePresence>
 

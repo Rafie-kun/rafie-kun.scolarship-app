@@ -4,6 +4,7 @@ import { Application } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { getMockApplications, saveMockApplications } from '../services/mockDataService';
+import ConfettiExplosion from './ConfettiExplosion';
 
 export default function ApplicationsView() {
   const { authorizedFetch, rewardPoints, profile, user } = useAuth();
@@ -14,6 +15,7 @@ export default function ApplicationsView() {
   const [success, setSuccess] = useState('');
   const [usingLocalMock, setUsingLocalMock] = useState(false);
   const [notesMode, setNotesMode] = useState<'edit' | 'preview'>('edit');
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const insertFormatting = (prefix: string, suffix: string = '') => {
     if (!selectedApp) return;
@@ -141,21 +143,35 @@ export default function ApplicationsView() {
     playClickSound();
     if (!selectedApp) return;
     
+    const wasAllDoneBefore = selectedApp.checklist.length > 0 && selectedApp.checklist.every(item => item.done);
     const checklist = [...selectedApp.checklist];
     checklist[idx].done = !checklist[idx].done;
+    const isAllDoneNow = checklist.length > 0 && checklist.every(item => item.done);
     
     if (checklist[idx].done) {
       playAdvancementSound();
-      setSuccess(`Completed step: "${checklist[idx].text}"! (+5 Fellowship XP!)`);
       
-      const actionName = `Admissions Step Done: ${checklist[idx].text}`;
-      if (!rewardedActionsRef.current.has(actionName)) {
-        rewardedActionsRef.current.add(actionName);
-        await rewardPoints(5, actionName);
+      if (!wasAllDoneBefore && isAllDoneNow) {
+        setShowConfetti(true);
+        setSuccess(`🎉 QUEST COMPLETE! You completed all checklist tasks for ${selectedApp.name}! 🎉 (+50 XP BONUS!)`);
+        
+        const actionName = `Admissions Quest Complete: ${selectedApp.name}`;
+        if (!rewardedActionsRef.current.has(actionName)) {
+          rewardedActionsRef.current.add(actionName);
+          await rewardPoints(50, actionName, "Admissions Master");
+        }
+      } else {
+        setSuccess(`Completed step: "${checklist[idx].text}"! (+5 Fellowship XP!)`);
+        
+        const actionName = `Admissions Step Done: ${checklist[idx].text}`;
+        if (!rewardedActionsRef.current.has(actionName)) {
+          rewardedActionsRef.current.add(actionName);
+          await rewardPoints(5, actionName);
+        }
       }
       
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => setSuccess(''), 4000);
+      timeoutRef.current = setTimeout(() => setSuccess(''), 6000);
     }
 
     handleUpdateApp({ ...selectedApp, checklist });
@@ -569,6 +585,7 @@ export default function ApplicationsView() {
 
         </div>
       )}
+      {showConfetti && <ConfettiExplosion onComplete={() => setShowConfetti(false)} />}
     </div>
   );
 }

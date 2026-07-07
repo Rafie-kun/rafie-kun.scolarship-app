@@ -206,28 +206,40 @@ export default function AIAssistant({ currentPage, profile, onNavigateTab }: AIA
       <AnimatePresence>
         {!isOpen && assistantNotification && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, x: 20 }}
+            initial={{ opacity: 0, scale: 0.85, x: 15 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="fixed bottom-24 right-6 z-[9998] bg-[#ffff55] text-black text-[10px] font-mono p-3 border-4 border-black font-semibold max-w-xs cursor-pointer select-none [box-shadow:inset_-2px_-2px_0_#9a9a33,inset_2px_2px_0_#ff9,0_5px_15px_rgba(0,0,0,0.5)]"
+            className="fixed right-16 top-[40%] -translate-y-1/2 z-[9998] bg-[#222120] text-stone-200 text-[10.5px] font-mono p-3.5 border-4 border-black max-w-[220px] cursor-pointer select-none [box-shadow:inset_-2px_-2px_0_#121110,inset_2px_2px_0_#555,0_8px_24px_rgba(0,0,0,0.6)]"
             onClick={handleToggle}
           >
-            <div className="flex items-center gap-1.5 font-press text-[8px] border-b border-black/20 pb-1 mb-1 text-black/70 uppercase">
-              <Bot className="w-3.5 h-3.5" /> Navigation Navigator:
+            {/* Arrow tail pointing right to the sidebar tab */}
+            <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-black" />
+            <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-[#222120] z-10" />
+
+            <div className="flex items-center gap-1.5 font-press text-[8px] border-b border-stone-800 pb-1.5 mb-1.5 text-[#ffff55] uppercase">
+              <Bot className="w-3.5 h-3.5" /> AI Navigator
             </div>
-            {assistantNotification}
+            <p className="leading-relaxed text-stone-300">{assistantNotification}</p>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Floating button */}
+      {/* Floating vertical sidebar tab button */}
       <button
         onClick={handleToggle}
         id="persistent-ai-navigator-btn"
-        className="fixed bottom-6 right-6 z-[9998] cursor-pointer mc-btn p-4 bg-[#ffff55] text-black border-4 border-black [box-shadow:inset_-3px_-3px_0_#b2b212,inset_3px_3px_0_#fff,0_6px_20px_rgba(0,0,0,0.4)] hover:scale-105 transition-transform"
+        className="fixed right-0 top-[40%] -translate-y-1/2 z-[9998] cursor-pointer mc-btn p-3 bg-[#ffff55] text-black border-4 border-r-0 border-black [box-shadow:inset_-3px_-3px_0_#b2b212,inset_3px_3px_0_#fff,-4px_4px_12px_rgba(0,0,0,0.3)] hover:-translate-x-1 transition-all duration-200"
         title="Consult AI Navigation Assistant"
       >
-        <Bot className="w-6 h-6" />
+        <div className="relative">
+          <Bot className="w-6 h-6" />
+          {!isOpen && (
+            <span className="absolute -top-1.5 -right-1.5 flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#55ff55] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-[#55ff55] border border-black"></span>
+            </span>
+          )}
+        </div>
       </button>
 
       {/* Chat window */}
@@ -237,7 +249,7 @@ export default function AIAssistant({ currentPage, profile, onNavigateTab }: AIA
             initial={{ opacity: 0, scale: 0.95, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 30 }}
-            className="fixed bottom-24 right-6 z-[9999] w-[380px] max-w-[calc(100vw-2.5rem)] bg-[#2c2c2c] border-4 border-black shadow-2xl flex flex-col [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555,0_12px_40px_rgba(0,0,0,0.6)]"
+            className="fixed bottom-6 right-16 z-[9999] w-[380px] max-w-[calc(100vw-2.5rem)] bg-[#2c2c2c] border-4 border-black shadow-2xl flex flex-col [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555,0_12px_40px_rgba(0,0,0,0.6)]"
             style={{ height: '480px' }}
           >
             {/* Header */}

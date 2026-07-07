@@ -59,6 +59,8 @@ export interface Profile {
   portfolio?: string;
   resumePdfName?: string;
   soundMuted?: boolean;
+  labHours?: number;
+  quickNotes?: string;
 }
 
 export interface Scholarship {

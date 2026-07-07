@@ -31,6 +31,8 @@ import VisaGuide from './components/VisaGuide';
 import InternshipExplorer from './components/InternshipExplorer';
 import GlobalSearch from './components/GlobalSearch';
 import Tooltip from './components/Tooltip';
+import QuickNotesWidget from './components/QuickNotesWidget';
+import LevelUpModal from './components/LevelUpModal';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { useBackgroundSync } from './hooks/useBackgroundSync';
 
@@ -427,7 +429,7 @@ export default function App() {
               </button>
               <div className="space-y-1">
                 <h1 className="font-press text-xs sm:text-sm tracking-widest text-[#ffff55] mc-text-shadow leading-tight flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                  SCHOLARPATH <span className="font-sans text-[9px] sm:text-[10px] uppercase font-bold text-[#aaaaaa] tracking-normal">Minecraft Edition</span>
+                  SCHOLARPATH <span className="font-sans text-[9px] sm:text-[10px] uppercase font-bold text-[#aaaaaa] tracking-normal">Minecraft Edition v3.9.2</span>
                 </h1>
                 <span className="text-[10px] sm:text-[12px] font-mono text-stone-350 leading-none block font-semibold">
                   Biome: <span className="text-[#a586ff] font-bold">{currentThemeConfig.tagline}</span>
@@ -537,15 +539,23 @@ export default function App() {
             
             {/* Nav Slot elements styled as clean vertical lists with both icons and labels side-by-side */}
             <div className="space-y-1.5 pb-4 border-b-4 border-black border-stone-850 h-[38vh] overflow-y-auto pr-1">
-              {navItems.map((item) => {
+              {navItems.map((item, index) => {
                 const IconComp = item.icon;
                 const isActive = activeTab === item.id;
                 return (
                   <Tooltip key={item.id} content={`${item.label}: ${item.desc}`} position="right">
-                    <button
+                    <motion.button
                       onClick={() => handleTabChange(item.id)}
                       onMouseEnter={() => setHoveredItem(item.id)}
                       onMouseLeave={() => setHoveredItem(null)}
+                      initial={{ scale: 0.9, y: 15, opacity: 0 }}
+                      animate={{ scale: 1, y: 0, opacity: 1 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 240,
+                        damping: 12,
+                        delay: index * 0.02
+                      }}
                       className={`w-full flex items-center gap-3 p-2 cursor-pointer text-left font-mono border-2 transition-all rounded-none ${
                         isActive 
                           ? 'bg-black/50 border-[#ffff55] text-[#ffff55] [box-shadow:0_0_8px_rgba(255,255,85,0.2)] font-bold' 
@@ -554,7 +564,7 @@ export default function App() {
                     >
                       <IconComp className={`w-5 h-5 shrink-0 ${isActive ? 'text-[#ffff55]' : item.color} drop-shadow-md`} />
                       <span className="text-[11.5px] truncate font-sans tracking-wide">{item.label}</span>
-                    </button>
+                    </motion.button>
                   </Tooltip>
                 );
               })}
@@ -733,6 +743,17 @@ export default function App() {
 
       {/* Global Toast Container */}
       <ToastContainer />
+
+      {/* Global Quick Notes Widget */}
+      {isLoggedIn && <QuickNotesWidget />}
+
+      {/* Global Level Up Modal */}
+      {isLoggedIn && profile && (
+        <LevelUpModal 
+          currentLevel={profile.level || 1} 
+          points={profile.points || 0} 
+        />
+      )}
     </div>
     </ErrorBoundary>
   );
