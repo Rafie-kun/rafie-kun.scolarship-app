@@ -6,6 +6,52 @@ import { Scholarship, University } from '../../src/types';
 
 // Write to the canonical dataset that routes/db.ts loads on boot
 const scholarshipsPath = path.join(process.cwd(), 'public', 'data', 'scholarships.json');
+const internshipsPath = path.join(process.cwd(), 'public', 'data', 'internships.json');
+
+// Merge scraped internships into the canonical dataset (dedup by normalized name)
+export function mergeScrapedInternships(newItems: any[]): { added: number; total: number } {
+  if (newItems.length === 0) {
+    const existing = loadInternships();
+    return { added: 0, total: existing.length };
+  }
+
+  console.log(`[💾] Merging ${newItems.length} discovered internships...`);
+  const current = loadInternships();
+  const seen = new Set(current.map(i => normalizeKey(i.name)));
+  let added = 0;
+
+  for (const item of newItems) {
+    const key = normalizeKey(item.name);
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    current.push(item);
+    added++;
+  }
+
+  try {
+    fs.writeFileSync(internshipsPath, JSON.stringify(current, null, 2), 'utf-8');
+    console.log(`[OK] internships.json updated: +${added} new (total ${current.length}).`);
+  } catch (err: any) {
+    console.error('[⚠️] Failed to write internships file:', err.message);
+  }
+  return { added, total: current.length };
+}
+
+function loadInternships(): any[] {
+  try {
+    if (fs.existsSync(internshipsPath)) {
+      const raw = fs.readFileSync(internshipsPath, 'utf-8');
+      if (raw.trim()) return JSON.parse(raw);
+    }
+  } catch (err: any) {
+    console.error('[⚠️] Failed to read internships file:', err.message);
+  }
+  return [];
+}
+
+function normalizeKey(name: unknown): string {
+  return String(name || '').toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 120);
+}
 
 export function saveNewScholarships(newSchs: Scholarship[]) {
   if (newSchs.length === 0) return;

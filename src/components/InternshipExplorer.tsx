@@ -35,23 +35,66 @@ export default function InternshipExplorer() {
   const [selectedType, setSelectedType] = useState('all');
   const [showRemoteOnly, setShowRemoteOnly] = useState(false);
 
-  useEffect(() => {
-    const fetchInternships = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch('/data/internships.json');
-        if (res.ok) {
-          const data = await res.json();
-          setInternships(data);
-        }
-      } catch (err) {
-        console.error("Failed to load internships catalog:", err);
-      } finally {
-        setLoading(false);
+  // Data freshness / auto-update status
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const timeAgo = (iso: string | null): string => {
+    if (!iso) return 'unknown';
+    const diffMs = Date.now() - new Date(iso).getTime();
+    const mins = Math.floor(diffMs / 60000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return `${mins} min ago`;
+    const hours = Math.floor(mins / 60);
+    if (hours < 24) return `${hours} hr${hours > 1 ? 's' : ''} ago`;
+    const days = Math.floor(hours / 24);
+    return `${days} day${days > 1 ? 's' : ''} ago`;
+  };
+
+  const fetchInternships = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/data/internships.json');
+      if (res.ok) {
+        const data = await res.json();
+        setInternships(data);
       }
-    };
+    } catch (err) {
+      console.error("Failed to load internships catalog:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchFreshness = async () => {
+    try {
+      const res = await fetch('/api/jobs/internships/meta');
+      if (res.ok) {
+        const meta = await res.json();
+        setLastUpdated(meta.lastUpdated || null);
+      }
+    } catch {
+      // Non-critical
+    }
+  };
+
+  useEffect(() => {
     fetchInternships();
+    fetchFreshness();
   }, []);
+
+  const handleRefreshData = async () => {
+    playClickSound();
+    setRefreshing(true);
+    try {
+      await fetch('/api/scraper/trigger', { method: 'POST', credentials: 'include' });
+    } catch {
+      // Scraper may take a while; refresh whatever we have afterwards
+    }
+    await fetchInternships();
+    await fetchFreshness();
+    setRefreshing(false);
+  };
 
   const filteredInternships = internships.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -84,16 +127,26 @@ export default function InternshipExplorer() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <div>
             <h3 className="font-press text-[12px] text-[#55ff55] uppercase flex items-center gap-2 mc-text-shadow">
-              <Briefcase className="w-5 h-5 text-[#55ff55]" /> GLOBAL FELLOWSHIP & INTERNSHIP VAULT
+              <Briefcase className="w-5 h-5 text-[#55ff55]" /> INTERNSHIP & FELLOWSHIP FINDER
             </h3>
             <p className="text-xs text-stone-350 font-mono mt-1">
-              Curated paid technical internships, research fellowships, CERN labs, UN diplomatic posts, and corporate industry residencies.
+              Paid technical internships, research fellowships, CERN labs, UN posts, and industry residencies — with stipends shown in your currency.
             </p>
           </div>
-          <span className="bg-emerald-950 border-2 border-[#55ff55] text-[#55ff55] font-press text-[8px] px-2.5 py-1 uppercase shrink-0">
-            💼 Verified Opportunities
-          </span>
+          <button
+            onClick={handleRefreshData}
+            disabled={refreshing}
+            className="mc-btn px-3 py-1.5 text-[9px] font-mono uppercase font-bold text-[#ffff55] flex items-center gap-2 disabled:opacity-60 shrink-0"
+            title="Check for newly listed internships right now"
+          >
+            <Calendar className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
+            {refreshing ? 'Checking...' : 'Check for new listings'}
+          </button>
         </div>
+        <p className="text-[10px] text-[#55ff55] font-mono mt-2 flex items-center gap-2">
+          <span className="inline-block w-2 h-2 bg-[#55ff55] animate-pulse" />
+          {internships.length} opportunities · Auto-updates hourly · Last updated: {timeAgo(lastUpdated)}
+        </p>
       </div>
 
       {/* Filter Controls */}
@@ -116,9 +169,11 @@ export default function InternshipExplorer() {
             className="bg-[#3a3a3a] border-4 border-black text-stone-200 text-xs font-mono px-3 py-2 outline-none select-none"
           >
             <option value="all">🌐 All Regions</option>
+            <option value="Global">🌍 Global / Multiple</option>
             <option value="North America">North America</option>
             <option value="Europe">Europe</option>
             <option value="Asia">Asia</option>
+            <option value="Africa">Africa</option>
             <option value="Oceania">Oceania</option>
           </select>
 
@@ -149,7 +204,7 @@ export default function InternshipExplorer() {
       {loading ? (
         <div className="flex flex-col items-center justify-center py-20 font-press text-[11px] text-[#ffff55] gap-3">
           <Sparkles className="w-8 h-8 animate-spin text-[#ffff55]" />
-          <span className="mc-text-shadow">FETCHING GLOBAL INTERNSHIP REGISTRY...</span>
+          <span className="mc-text-shadow">LOADING INTERNSHIPS...</span>
         </div>
       ) : (
         <div className="space-y-4">
@@ -193,7 +248,11 @@ export default function InternshipExplorer() {
                     <div className="bg-black/30 border border-stone-800 p-2 text-stone-300 flex items-center gap-1.5">
                       <DollarSign className="w-3.5 h-3.5 text-[#55ff55]" />
                       <span className="truncate font-bold text-[#55ff55]">
-                        {item.stipend ? `${item.stipend} ${item.stipendCurrency}` : 'Supported'}
+                        {item.stipend
+                          ? (item.stipendCurrency === 'USD'
+                              ? convertAmount(item.stipend)
+                              : `${item.stipend} ${item.stipendCurrency}`)
+                          : 'Supported (see listing)'}
                       </span>
                     </div>
 

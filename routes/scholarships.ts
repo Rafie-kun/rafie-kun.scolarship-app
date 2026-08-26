@@ -1,7 +1,33 @@
 import express, { Request, Response } from 'express';
+import fs from 'fs';
+import path from 'path';
 import { scholarshipsData } from './db.js';
 
 const router = express.Router();
+
+// Freshness metadata so users can see how current the listings are
+router.get('/meta', (req: Request, res: Response) => {
+  let lastUpdated: string | null = null;
+  const candidates = [
+    path.join(process.cwd(), 'public', 'data', 'scholarships.json'),
+    path.join(process.cwd(), 'data', 'scholarships.json')
+  ];
+  for (const p of candidates) {
+    try {
+      if (fs.existsSync(p)) {
+        lastUpdated = fs.statSync(p).mtime.toISOString();
+        break;
+      }
+    } catch {
+      // ignore and try next candidate
+    }
+  }
+  res.json({
+    total: scholarshipsData.length,
+    lastUpdated,
+    scraperEnabled: !process.env.VERCEL
+  });
+});
 
 router.get('/', (req: Request, res: Response) => {
   try {

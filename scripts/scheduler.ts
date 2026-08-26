@@ -2,12 +2,14 @@ import cron from 'node-cron';
 import { checkRSSFeeds } from './scrapers/rssFeeder';
 import { scrapeScholarships } from './scrapers/scholarshipScraper';
 import { scrapeUniversities } from './scrapers/universityScraper';
+import { scrapeInternships } from './scrapers/internshipScraper';
 import { compareScholarships, compareUniversities } from './services/updateChecker';
 import {
   saveNewScholarships,
   saveNewUniversities,
   updateExistingScholarships,
   updateExistingUniversities,
+  mergeScrapedInternships,
 } from './services/saveEntries';
 import {
   notifyNewScholarship,
@@ -32,6 +34,8 @@ export async function runScraperImmediately() {
     discoveredUniversities: 0,
     newUniversities: 0,
     updatedUniversities: 0,
+    discoveredInternships: 0,
+    newInternships: 0,
   };
 
   try {
@@ -93,6 +97,16 @@ export async function runScraperImmediately() {
     // Notify for universities
     for (const item of uniResults.newItems) {
       notifyNewUniversity(item.name, item.country, item.ranking);
+    }
+
+    // 5. Scrape Internships & Fellowships (merged into public/data/internships.json)
+    try {
+      const rawInternships = await scrapeInternships();
+      stats.discoveredInternships = rawInternships.length;
+      const mergeResult = mergeScrapedInternships(rawInternships);
+      stats.newInternships = mergeResult.added;
+    } catch (intErr: any) {
+      console.error('[⚠️] Internship scraping failed (non-fatal):', intErr.message);
     }
 
     console.log('[🏁] Scraper pipeline sequence executed successfully.');

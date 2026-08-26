@@ -36,6 +36,49 @@ export default function ScholarshipsView() {
   const [loading, setLoading] = useState(true);
   const [recLoading, setRecLoading] = useState(false);
 
+  // Data freshness / auto-update status
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+  const [totalCount, setTotalCount] = useState<number>(0);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const timeAgo = (iso: string | null): string => {
+    if (!iso) return 'unknown';
+    const diffMs = Date.now() - new Date(iso).getTime();
+    const mins = Math.floor(diffMs / 60000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return `${mins} min ago`;
+    const hours = Math.floor(mins / 60);
+    if (hours < 24) return `${hours} hr${hours > 1 ? 's' : ''} ago`;
+    const days = Math.floor(hours / 24);
+    return `${days} day${days > 1 ? 's' : ''} ago`;
+  };
+
+  const fetchFreshness = async () => {
+    try {
+      const res = await authorizedFetch('/api/scholarships/meta');
+      if (res.ok) {
+        const meta = await res.json();
+        setLastUpdated(meta.lastUpdated || null);
+        setTotalCount(meta.total || 0);
+      }
+    } catch {
+      // Non-critical
+    }
+  };
+
+  const handleRefreshData = async () => {
+    playClickSound();
+    setRefreshing(true);
+    try {
+      await authorizedFetch('/api/scraper/trigger', { method: 'POST' });
+    } catch {
+      // Scraper may take a while; still refresh what we have
+    }
+    await fetchScholarships();
+    await fetchFreshness();
+    setRefreshing(false);
+  };
+
   // Search/Filters states
   const [search, setSearch] = useState('');
   const [gpaMin, setGpaMin] = useState('');
@@ -91,6 +134,7 @@ export default function ScholarshipsView() {
   useEffect(() => {
     fetchTrackedApps();
     fetchUniversitiesList();
+    fetchFreshness();
   }, [profile]);
 
   // UI state
@@ -372,11 +416,26 @@ export default function ScholarshipsView() {
       
       {/* Page Title Header Block */}
       <div className="mc-window-dark border-4 border-black text-stone-200">
-        <h3 className="font-press text-[11px] text-[#55ff55] uppercase flex items-center gap-2 mc-text-shadow">
-          <Trophy className="w-5 h-5 text-[#55ff55]" /> LOOT REGISTRY (SCHOLARSHIPS DIRECTORY)
-        </h3>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <h3 className="font-press text-[11px] text-[#55ff55] uppercase flex items-center gap-2 mc-text-shadow">
+            <Trophy className="w-5 h-5 text-[#55ff55]" /> SCHOLARSHIP FINDER
+          </h3>
+          <button
+            onClick={handleRefreshData}
+            disabled={refreshing}
+            className="mc-btn px-3 py-1.5 text-[9px] font-mono uppercase font-bold text-[#ffff55] flex items-center gap-2 disabled:opacity-60"
+            title="Check for newly listed scholarships right now"
+          >
+            <Clock className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
+            {refreshing ? 'Checking...' : 'Check for new listings'}
+          </button>
+        </div>
         <p className="text-xs text-stone-350 font-mono mt-2 pl-0.5 leading-relaxed">
-          Search, evaluate, and target fully-funded master stipends, global fellowships, and research grants. Check entry compatibility margins matching your player scores in real-time.
+          Browse fully funded master's stipends, fellowships, and research grants — matched to your GPA and field.
+        </p>
+        <p className="text-[10px] text-[#55ff55] font-mono mt-2 pl-0.5 flex items-center gap-2">
+          <span className="inline-block w-2 h-2 bg-[#55ff55] animate-pulse" />
+          {totalCount > 0 ? `${totalCount} scholarships` : 'Loading scholarships...'} · Auto-updates hourly · Last updated: {timeAgo(lastUpdated)}
         </p>
       </div>
 
@@ -398,7 +457,7 @@ export default function ScholarshipsView() {
               : 'bg-[#555] text-stone-300'
           }`}
         >
-          🏆 All Scholarship Loot Pools
+          🏆 All Scholarships
         </button>
         <button
           onClick={() => { playClickSound(); setActiveTab('recommender'); fetchRecommendedSchs(); }}
@@ -408,7 +467,7 @@ export default function ScholarshipsView() {
               : 'bg-[#555] text-stone-300'
           }`}
         >
-          🔮 Best Matches for You
+          🔮 Best Matches for Me
         </button>
       </div>
 
