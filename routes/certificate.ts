@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express';
 import { GoogleGenAI } from '@google/genai';
 import { calculateAcademicProfile, SubjectGrade } from '../src/utils/calculations.js';
 
+import { GEMINI_MODEL } from './aiConfig.js';
+
 const router = express.Router();
 
 let aiClient: GoogleGenAI | null = null;
@@ -48,7 +50,7 @@ Extract all subjects and grades. Return a JSON object with:
 }`;
 
         const response = await ai.models.generateContent({
-          model: "gemini-2.5-flash",
+          model: GEMINI_MODEL,
           contents: prompt,
           config: {
             responseMimeType: "application/json",

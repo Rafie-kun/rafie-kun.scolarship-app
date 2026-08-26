@@ -6,6 +6,8 @@ import jwt from "jsonwebtoken";
 import { JWT_SECRET, scholarshipsData, universitiesData, DEFAULT_ANON_PROFILE } from "./db.js";
 import { getProfileByUsername } from "../db/index.js";
 
+import { GEMINI_MODEL } from './aiConfig.js';
+
 const router = express.Router();
 
 // Permissive auth middleware: parses token if present, otherwise marks the
@@ -229,7 +231,7 @@ The report must include:
 Use clear Markdown headers, bold accents, and bullet points. Deliver an inspiring yet realistic academic advising tone.`;
 
         const response = await ai.models.generateContent({
-          model: "gemini-2.5-flash",
+          model: GEMINI_MODEL,
           contents: prompt,
         });
 
@@ -406,7 +408,7 @@ The report must include:
 Format beautifully with clean Markdown headings, bold keywords, and bullet points. Keep it highly practical and encouraging.`;
 
         const response = await ai.models.generateContent({
-          model: "gemini-2.5-flash",
+          model: GEMINI_MODEL,
           contents: prompt,
         });
 
@@ -554,7 +556,7 @@ The report must include:
 Use clean Markdown formatting, professional bold styling, and bullet points. Ensure all calculations are explained transparently.`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash", // Standard reasoning task
+      model: GEMINI_MODEL,
       contents: prompt,
     });
 
@@ -689,7 +691,7 @@ User Question: "${question}"
 Provide a highly relevant, crisp, friendly, and expert answer (max 3-4 short paragraphs) to guide the student. Suggest subject selections, clarify cost parameters in their target country, or recommend scholarship/career tracks matching their entered profile. Use clear bullet points and bold headers in Markdown. No tech jargon. Keep it encouraging!`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: GEMINI_MODEL,
       contents: prompt,
     });
 

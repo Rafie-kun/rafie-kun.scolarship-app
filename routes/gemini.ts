@@ -5,6 +5,8 @@ import { authenticateToken } from './auth.js';
 import { JWT_SECRET, DEFAULT_ANON_PROFILE } from './db.js';
 import { getProfileByUsername } from '../db/index.js';
 
+import { GEMINI_MODEL } from './aiConfig.js';
+
 const router = express.Router();
 
 // Clients registry cached by API key to avoid re-instantiation
@@ -100,7 +102,7 @@ Provide a gorgeous, highly detailed structure-critique review containing:
 Respond in clean, modern formatting.`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: GEMINI_MODEL,
       contents: prompt,
     });
 
@@ -162,7 +164,7 @@ CANDIDATE PROFILE CONTEXT:
     ];
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: GEMINI_MODEL,
       contents,
       config: {
         systemInstruction: systemContext
@@ -224,7 +226,7 @@ Candidate response: "${message || 'I am ready to begin'}"
 Keep your response limited to 2-3 short, highly structured paragraphs. Act strictly in-character as the lead panel interviewer.`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: GEMINI_MODEL,
       contents: prompt,
     });
 
@@ -260,7 +262,7 @@ router.post('/budget-tips', authenticateToken, async (req: Request, res: Respons
     Format your response in clean Markdown with bullet points.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: GEMINI_MODEL,
       contents: prompt,
     });
 

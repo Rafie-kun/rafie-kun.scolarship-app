@@ -4,6 +4,8 @@ import { authenticateToken } from './auth.js';
 import { DEFAULT_ANON_PROFILE } from './db.js';
 import { getProfileByUsername, getRoadmap, saveRoadmap } from '../db/index.js';
 
+import { GEMINI_MODEL } from './aiConfig.js';
+
 const router = express.Router();
 
 let aiClient: GoogleGenAI | null = null;
@@ -68,7 +70,7 @@ Format your response as a strict, clean, valid JSON array of exactly 4 objects. 
 Provide outstanding, customized tasks directly applicable to their major, e.g., if Computer Science, refer to coding nodes/GitHub, or if Public Policy, refer to writing samples. Keep JSON clean.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
+        model: GEMINI_MODEL,
         contents: prompt,
       });
 

@@ -3,6 +3,8 @@ import { authenticateToken } from './auth.js';
 import { getProfileByUsername, saveProfile } from '../db/index.js';
 import { GoogleGenAI, Type } from '@google/genai';
 
+import { GEMINI_MODEL } from './aiConfig.js';
+
 const router = express.Router();
 
 let aiClient: GoogleGenAI | null = null;
@@ -54,7 +56,7 @@ Provide standard, realistic data if details are scarce.
 Ensure GPA is between 0.0 and 4.0.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
+        model: GEMINI_MODEL,
         contents: prompt,
         config: {
           responseMimeType: "application/json",

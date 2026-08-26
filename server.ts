@@ -21,6 +21,7 @@ import countriesRouter from "./routes/countries.js";
 import certificateRouter from "./routes/certificate.js";
 
 import { scholarshipsData } from "./routes/db.js";
+import { GEMINI_MODEL } from "./routes/aiConfig.js";
 import { getNotifications, addNotification } from "./db/index.js";
 
 const app = express();
@@ -307,7 +308,7 @@ Keep the speech natural, conversational, and limited to 2-3 sentences.`;
 
       if (hasKey) {
         const response = await ai.models.generateContent({
-          model: "gemini-3.5-flash",
+          model: GEMINI_MODEL,
           contents: prompt,
         });
         res.json({ question: response.text });
@@ -329,7 +330,7 @@ Only return raw JSON. No markdown backticks, no markdown fence block, no "json" 
 
       if (hasKey) {
         const response = await ai.models.generateContent({
-          model: "gemini-3.5-flash",
+          model: GEMINI_MODEL,
           contents: prompt,
         });
         
