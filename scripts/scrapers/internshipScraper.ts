@@ -1,10 +1,11 @@
 import Parser from 'rss-parser';
 
-// Sources focused on internships & fellowships for international students.
+// Sources focused on internships, fellowships & part-time student jobs.
 const INTERNSHIP_SOURCES = [
   'https://news.google.com/rss/search?q=paid+internship+international+students+2026&hl=en-US&gl=US&ceid=US:en',
   'https://news.google.com/rss/search?q=research+internship+fellowship+undergraduate+abroad&hl=en-US&gl=US&ceid=US:en',
-  'https://news.google.com/rss/search?q=%22internship%22+UN+OR+CERN+OR+EMBL+OR+World+Bank+students&hl=en-US&gl=US&ceid=US:en'
+  'https://news.google.com/rss/search?q=%22internship%22+UN+OR+CERN+OR+EMBL+OR+World+Bank+students&hl=en-US&gl=US&ceid=US:en',
+  'https://news.google.com/rss/search?q=part-time+student+job+on-campus+university+international&hl=en-US&gl=US&ceid=US:en'
 ];
 
 const MAJOR_KEYWORDS: Array<[string, string[]]> = [
@@ -85,6 +86,11 @@ export async function scrapeInternships(): Promise<ScrapedInternship[]> {
           : (item.creator || 'Industry Partner');
         const cleanTitle = dashParts.length >= 2 ? dashParts.slice(0, -1).join(' - ') : title;
 
+        const lowerTitle = title.toLowerCase();
+        const itemType = lowerTitle.includes('part-time') || lowerTitle.includes('part time')
+          ? 'part-time'
+          : (lowerTitle.includes('research') ? 'research' : 'paid');
+
         results.push({
           id: `int-scraped-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
           name: cleanTitle.slice(0, 180),
@@ -92,7 +98,7 @@ export async function scrapeInternships(): Promise<ScrapedInternship[]> {
           description: (item.contentSnippet || item.content || item.description || 'No description provided.').slice(0, 600),
           officialWebsite: item.link || '#',
           applicationUrl: item.link || '#',
-          type: title.toLowerCase().includes('research') ? 'research' : 'paid',
+          type: itemType,
           duration: 'Not specified',
           stipend: title.toLowerCase().includes('paid') ? 1500 : 0,
           stipendCurrency: 'USD',

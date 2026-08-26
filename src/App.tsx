@@ -330,6 +330,9 @@ export default function App() {
 
   const currentWeapon = getEquipmentWeapon();
 
+  // XP progress within the current level (each level = 100 XP)
+  const xpInLevel = Math.max(0, Math.min(100, (profile?.points ?? 0) - ((profile?.level ?? 1) - 1) * 100));
+
   return (
     <ErrorBoundary>
       <div className={`min-h-screen flex flex-col font-sans transition-all duration-300 tex-dirt-dark text-stone-200 ${currentThemeConfig.bodyBg}`} id="scholarpath-main-container">
@@ -401,13 +404,13 @@ export default function App() {
               <span className="font-press text-[8px] sm:text-[9px] text-[#ffea00] mc-text-shadow flex items-center gap-1 leading-none pt-1">
                 <Trophy className="w-3.5 h-3.5" /> Level {profile?.level ?? 1}
               </span>
-              <span>{profile?.points ?? 0} / {(profile?.level ?? 1) * 100} XP</span>
+              <span>{xpInLevel} / 100 XP to Level {(profile?.level ?? 1) + 1}</span>
             </div>
-            
+
             <div className="w-full mc-xp-bar border-4 border-black max-h-[16px] h-3">
-              <div 
-                className={`${currentThemeConfig.hudXpFill} h-full transition-all duration-700 ease-out`} 
-                style={{ width: `${Math.min(100, Math.max(4, (((profile?.points ?? 0) % 100) / 100 * 100)))}%` }} 
+              <div
+                className={`${currentThemeConfig.hudXpFill} h-full transition-all duration-700 ease-out`}
+                style={{ width: `${Math.min(100, Math.max(4, xpInLevel))}%` }}
               />
             </div>
           </div>

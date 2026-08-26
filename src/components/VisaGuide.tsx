@@ -33,6 +33,24 @@ export default function VisaGuide() {
   // Checklist state saved locally per visa
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
 
+  // Where the student is applying FROM (personalizes guidance)
+  const [originCountry, setOriginCountry] = useState(() => localStorage.getItem('scholarpath_origin_country') || '');
+
+  useEffect(() => {
+    if (originCountry) localStorage.setItem('scholarpath_origin_country', originCountry);
+  }, [originCountry]);
+
+  // Standard step-by-step visa application timeline (relative to course start)
+  const visaTimeline = [
+    { when: '6+ months before intake', what: 'Receive your admission letter and check the exact visa category for your course.' },
+    { when: '5-6 months before', what: 'Prepare your passport (valid 6+ months beyond stay) and order certified translations of academic documents if needed.' },
+    { when: '4-5 months before', what: 'Gather proof of funds - bank statements or scholarship letter meeting this country\'s threshold shown below.' },
+    { when: '3-4 months before', what: 'Book any required biometrics / embassy appointment early - slots fill fast in peak season (May-August).' },
+    { when: '2-3 months before', what: `Submit the official visa application from ${originCountry ? originCountry : 'your country'} and pay the fee.` },
+    { when: '1-3 months before', what: `Attend the interview/biometrics, then track processing (this country: typically ${activeVisa?.processingTime || 'several weeks'}).` },
+    { when: 'After approval', what: 'Check your visa sticker dates, arrange health insurance if required, and book flights after the entry date is confirmed.' }
+  ];
+
   useEffect(() => {
     const fetchVisaData = async () => {
       setLoading(true);
@@ -106,11 +124,23 @@ export default function VisaGuide() {
           </div>
 
           <select
+            value={originCountry}
+            onChange={(e) => { playClickSound(); setOriginCountry(e.target.value); }}
+            className="bg-[#3a3a3a] border-4 border-black text-stone-200 text-xs font-mono px-3 py-2 outline-none select-none"
+            title="Used to personalize your visa timeline"
+          >
+            <option value="">🛂 Your citizenship (optional)</option>
+            {['Bangladesh','India','Pakistan','Nepal','Nigeria','Ghana','Kenya','Vietnam','Indonesia','Philippines','Egypt','Turkey','Brazil','Mexico','Colombia','China','Sri Lanka','Ethiopia','Tanzania','Uganda'].map(c => (
+              <option key={c} value={c}>{c}</option>
+            ))}
+          </select>
+
+          <select
             value={selectedCountry}
             onChange={(e) => { playClickSound(); setSelectedCountry(e.target.value); }}
             className="bg-[#3a3a3a] border-4 border-black text-stone-200 text-xs font-mono px-3 py-2 outline-none select-none"
           >
-            <option value="all">🌐 All Target Destinations ({visas.length})</option>
+            <option value="all">🌐 All Destinations ({visas.length})</option>
             {visas.map((v) => (
               <option key={v.id} value={v.country}>{v.country}</option>
             ))}
@@ -234,6 +264,28 @@ export default function VisaGuide() {
                   </span>
                   <p className="text-stone-300 leading-relaxed">{activeVisa.postStudyWorkVisa}</p>
                 </div>
+              </div>
+
+              {/* Step-by-step application timeline */}
+              <div className="space-y-3 bg-black/30 border-2 border-stone-800 p-4">
+                <h4 className="font-press text-[10px] text-[#55ff55] uppercase flex items-center gap-1.5">
+                  <Clock className="w-4 h-4 text-[#55ff55]" /> Your step-by-step visa plan
+                  {originCountry ? <span className="font-mono text-[10px] text-stone-400 normal-case">· applying from {originCountry}</span> : null}
+                </h4>
+                <ol className="space-y-2">
+                  {visaTimeline.map((s, i) => (
+                    <li key={i} className="flex items-start gap-3 p-2.5 bg-stone-900 border border-stone-800 font-mono text-xs">
+                      <span className="w-6 h-6 shrink-0 flex items-center justify-center bg-black border-2 border-[#55ff55] text-[#55ff55] font-press text-[9px]">{i + 1}</span>
+                      <div className="space-y-0.5">
+                        <span className="text-[#ffaa00] font-bold uppercase text-[10px] block">{s.when}</span>
+                        <p className="text-stone-300 leading-relaxed">{s.what}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                {!originCountry && (
+                  <p className="text-[10px] font-mono text-stone-500">Tip: select your citizenship above so the plan mentions your application route.</p>
+                )}
               </div>
 
               {/* Document Checklist */}

@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import { authenticateToken } from './auth.js';
 import { getProfileByUsername, saveProfile } from '../db/index.js';
 import { GoogleGenAI, Type } from '@google/genai';
-
+import { PDFParse } from 'pdf-parse';
 import { GEMINI_MODEL } from './aiConfig.js';
 
 const router = express.Router();
@@ -29,8 +29,12 @@ router.post('/upload-pdf', authenticateToken, async (req: Request, res: Response
   const username = user.username;
   const { filename, base64 } = req.body;
 
-  if (!base64) {
+  if (!base64 || typeof base64 !== 'string') {
     return res.status(400).json({ error: "Missing file payload" });
+  }
+  // ~8MB base64 ceiling (matches express.json limit with headroom)
+  if (base64.length > 10 * 1024 * 1024) {
+    return res.status(413).json({ error: "File too large. Maximum PDF size is around 7MB." });
   }
 
   const currentProfile = getProfileByUsername(username);
@@ -38,22 +42,38 @@ router.post('/upload-pdf', authenticateToken, async (req: Request, res: Response
     return res.status(404).json({ error: "Profile not found." });
   }
 
+  // Extract real text from the uploaded PDF so AI works from actual content
+  let resumeText = '';
+  try {
+    const buffer = Buffer.from(base64.replace(/^data:[^;]+;base64,/, ''), 'base64');
+    const parser = new PDFParse({ data: new Uint8Array(buffer) });
+    const result = await parser.getText();
+    resumeText = (result.text || '').replace(/\s+/g, ' ').trim().slice(0, 12000); // cap tokens
+    await parser.destroy();
+  } catch {
+    resumeText = ''; // encrypted/scanned/image-only PDFs fall back to offline mode
+  }
+
   // Persist PDF base64 string to Profile
   currentProfile.resumePdf = base64;
   saveProfile(username, currentProfile);
 
   let parsedInfo: any = {};
+  let summary = '';
   const hasKey = !!process.env.GEMINI_API_KEY;
 
   try {
-    if (hasKey) {
+    if (hasKey && resumeText.length > 80) {
       const ai = getAI();
-      const prompt = `You are an expert ATS (Applicant Tracking System) parser and academic recommender.
-Review the candidate's CV metadata/filename "${filename}". Generate structured resume details to prefill our CV builder form.
-Extract and suggest items for Work Experience, Internships, Projects, Skills, Certifications, and Extracurriculars based on the context of the filename or candidate role.
 
-Provide standard, realistic data if details are scarce.
-Ensure GPA is between 0.0 and 4.0.`;
+      // 1) Structured extraction from REAL resume text
+      const prompt = `You are an expert ATS resume parser for academic admissions.
+Extract structured details from the candidate's actual resume text below. Only use information present in the text - do NOT invent employers, dates or numbers. Leave fields empty when not found.
+
+RESUME TEXT:
+"""
+${resumeText}
+"""`;
 
       const response = await ai.models.generateContent({
         model: GEMINI_MODEL,
@@ -66,10 +86,7 @@ Ensure GPA is between 0.0 and 4.0.`;
               fullName: { type: Type.STRING },
               primaryMajor: { type: Type.STRING },
               gpa: { type: Type.NUMBER },
-              skills: {
-                type: Type.ARRAY,
-                items: { type: Type.STRING }
-              },
+              skills: { type: Type.ARRAY, items: { type: Type.STRING } },
               workExperience: {
                 type: Type.ARRAY,
                 items: {
@@ -108,14 +125,8 @@ Ensure GPA is between 0.0 and 4.0.`;
                   required: ["name", "description", "link"]
                 }
               },
-              certifications: {
-                type: Type.ARRAY,
-                items: { type: Type.STRING }
-              },
-              extracurriculars: {
-                type: Type.ARRAY,
-                items: { type: Type.STRING }
-              }
+              certifications: { type: Type.ARRAY, items: { type: Type.STRING } },
+              extracurriculars: { type: Type.ARRAY, items: { type: Type.STRING } }
             },
             required: ["fullName", "primaryMajor", "gpa", "skills", "workExperience", "internships", "projects", "certifications", "extracurriculars"]
           }
@@ -123,66 +134,50 @@ Ensure GPA is between 0.0 and 4.0.`;
       });
 
       if (response.text) {
-        let txt = response.text.trim();
-        parsedInfo = JSON.parse(txt);
+        parsedInfo = JSON.parse(response.text.trim());
       }
+
+      // 2) Short human-readable summary for the profile page
+      const summaryResp = await ai.models.generateContent({
+        model: GEMINI_MODEL,
+        contents: `Summarize this student's resume in exactly 3 short bullet points for a scholarship advisor: strongest academic area, most impressive experience, and one gap to improve. Plain text bullets starting with "- ".\n\nRESUME:\n"""\n${resumeText.slice(0, 6000)}\n"""`
+      });
+      summary = (summaryResp.text || '').trim().slice(0, 900);
     } else {
-      // High-quality fallback when key is not provided in preview mode
+      // Offline / no-text fallback: neutral prefill, clearly marked as unverified
       parsedInfo = {
         fullName: currentProfile.fullName,
-        primaryMajor: currentProfile.primaryMajor || "Computer Science",
-        gpa: currentProfile.gpa || 3.8,
-        skills: ["Algorithms", "Machine Learning", "System Design", "Technical Writing", "React", "Python"],
-        workExperience: [
-          {
-            jobTitle: "Software Engineering Intern",
-            company: "TechNexus Solutions",
-            dates: "June 2025 - August 2025",
-            description: "Developed reactive UI dashboards using React, speeding up API data render pathways by 25%. Collaborated with agile staff."
-          }
-        ],
-        internships: [
-          {
-            title: "Research Assistant",
-            organization: "National Innovation Lab",
-            dates: "September 2024 - May 2025",
-            description: "Co-authored comparative study on cloud database systems, preparing technical documentation for European Grant proposals."
-          }
-        ],
-        projects: [
-          {
-            name: "ScholarPath Matrix Engine",
-            description: "An automated academic planning pipeline processing eligibility indices using local heuristics and responsive charts.",
-            link: "https://github.com/scholarpath/matrix"
-          }
-        ],
-        certifications: ["Google Cloud Certified Associate", "AWS Developer Associate"],
-        extracurriculars: ["Treasury Head at Student Computing Club", "Volunteer at Youth Code Camp"]
+        primaryMajor: currentProfile.primaryMajor || "",
+        gpa: currentProfile.gpa || null,
+        skills: [],
+        workExperience: [],
+        internships: [],
+        projects: [],
+        certifications: [],
+        extracurriculars: []
       };
+      summary = hasKey
+        ? "- Could not read text from this PDF (it may be a scanned image).\n- Re-upload a text-based PDF to unlock AI analysis.\n- Your file is still saved to your profile."
+        : "- File saved to your profile.\n- Add a server GEMINI_API_KEY (or your own key in Settings) to unlock AI resume analysis.";
     }
   } catch (err) {
-    console.warn("Gemini resume parsing failed. Falling back to offline structure.", err);
+    console.warn("Gemini resume parsing failed:", err);
     parsedInfo = {
       fullName: currentProfile.fullName,
-      primaryMajor: currentProfile.primaryMajor || "Computer Science",
-      gpa: currentProfile.gpa || 3.8,
-      skills: ["Problem Solving", "Java", "Python", "Web Foundations"],
-      workExperience: [],
-      internships: [],
-      projects: [],
-      certifications: [],
-      extracurriculars: []
+      primaryMajor: currentProfile.primaryMajor || "",
+      gpa: currentProfile.gpa || null,
+      skills: [], workExperience: [], internships: [], projects: [], certifications: [], extracurriculars: []
     };
+    summary = "";
   }
 
-  // NOTE: The parser only receives a filename, so its output is speculative.
-  // Return it as CV-builder suggestions but never overwrite real profile fields
-  // (fullName / primaryMajor / gpa) with generated data.
   saveProfile(username, currentProfile);
 
   res.json({
     success: true,
     fileSaved: true,
+    textExtracted: resumeText.length > 80,
+    summary,
     parsed: parsedInfo
   });
 });

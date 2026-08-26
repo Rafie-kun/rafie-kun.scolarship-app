@@ -48,6 +48,22 @@ export default function UniversitiesView() {
   // Specific detail modal
   const [selectedUni, setSelectedUni] = useState<University | null>(null);
 
+  // Cost-of-living dataset for the detail modal
+  const [costData, setCostData] = useState<any[]>([]);
+  useEffect(() => {
+    fetch('/data/cost_of_living.json')
+      .then(res => (res.ok ? res.json() : []))
+      .then(setCostData)
+      .catch(() => setCostData([]));
+  }, []);
+
+  const livingCost = selectedUni
+    ? costData.find(c => c.country?.toLowerCase() === selectedUni.country?.toLowerCase()) || null
+    : null;
+  const totalMonthlyLiving = livingCost
+    ? Math.round(livingCost.rentMonthly + livingCost.foodMonthly + livingCost.transportMonthly + livingCost.healthInsuranceMonthly + livingCost.miscMonthly)
+    : 0;
+
   // Load all universities
   const fetchAllUnis = async () => {
     setLoading(true);
@@ -753,6 +769,30 @@ export default function UniversitiesView() {
                   ))}
                 </div>
               </div>
+
+              {/* Estimated living costs (dorm vs private) from cost-of-living dataset */}
+              {livingCost && (
+                <div className="space-y-2">
+                  <span className="text-[10px] font-press text-stone-400 uppercase block">Estimated monthly living costs in {livingCost.country}:</span>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="p-2.5 bg-stone-900 border border-stone-800 space-y-1">
+                      <span className="text-[10px] text-[#55ff55] font-bold uppercase block">Student dorm (avg)</span>
+                      <span className="text-[#ffff55] font-bold text-sm">{convertAmount(Math.round(livingCost.rentMonthly * 0.6))}</span>
+                      <span className="text-[10px] text-stone-400 block">rent only</span>
+                    </div>
+                    <div className="p-2.5 bg-stone-900 border border-stone-800 space-y-1">
+                      <span className="text-[10px] text-[#ffaa00] font-bold uppercase block">Private flat (avg)</span>
+                      <span className="text-[#ffff55] font-bold text-sm">{convertAmount(livingCost.rentMonthly + 150)}</span>
+                      <span className="text-[10px] text-stone-400 block">incl. utilities</span>
+                    </div>
+                    <div className="col-span-2 p-2.5 bg-black/35 border border-stone-800 text-stone-300 text-[11px] leading-relaxed">
+                      Food ~{convertAmount(livingCost.foodMonthly)} · Transport ~{convertAmount(livingCost.transportMonthly)} · Health insurance ~{convertAmount(livingCost.healthInsuranceMonthly)} · Other ~{convertAmount(livingCost.miscMonthly)}.
+                      <strong className="text-stone-100"> Total budget: about {convertAmount(totalMonthlyLiving)} / month</strong> ({convertAmount(totalMonthlyLiving * 12)} / year).
+                      Part-time legal work: up to {livingCost.workHoursPerWeek}h/week at ~{convertAmount(livingCost.hourlyWage)}/h.
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="flex gap-2 border-t border-stone-700 pt-3.5">

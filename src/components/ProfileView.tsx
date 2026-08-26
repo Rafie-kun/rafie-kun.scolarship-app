@@ -533,18 +533,29 @@ export default function ProfileView() {
       const base64 = reader.result as string;
       setResumePdf(base64);
       setResumePdfName(file.name);
+      setPdfStatusMessage('Analyzing your document with AI...');
 
+      let summaryText = '';
       try {
-        await authorizedFetch('/api/upload-pdf', {
+        const res = await authorizedFetch('/api/upload-pdf', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ filename: file.name, base64 })
         });
+        if (res.ok) {
+          const data = await res.json();
+          summaryText = data.summary || '';
+          if (!data.textExtracted && data.summary) summaryText = data.summary;
+        }
       } catch (err) {
         console.warn("Local PDF store fallback:", err);
       }
 
-      setPdfStatusMessage(`✅ Document "${file.name}" uploaded successfully!`);
+      if (summaryText) {
+        setPdfStatusMessage(`✅ "${file.name}" uploaded. AI Summary:\n${summaryText}`);
+      } else {
+        setPdfStatusMessage(`✅ Document "${file.name}" uploaded successfully!`);
+      }
       setPdfUploading(false);
       playAdvancementSound();
     };
@@ -1577,7 +1588,7 @@ export default function ProfileView() {
                   )}
 
                   {pdfStatusMessage && (
-                    <p className="text-[10px] text-[#55ff55]">{pdfStatusMessage}</p>
+                    <p className="text-[10px] text-[#55ff55] whitespace-pre-line leading-relaxed">{pdfStatusMessage}</p>
                   )}
                 </div>
 

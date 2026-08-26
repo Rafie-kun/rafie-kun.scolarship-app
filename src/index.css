@@ -6,10 +6,10 @@
 /* ------------------------------------------------------------------ */
 
 .tex-dirt-dark {
-  background-color: #110f0d;
+  background-color: #0d0f12;
   background-image:
-    linear-gradient(rgba(8, 6, 4, 0.82), rgba(8, 6, 4, 0.86)),
-    url('/textures/dirt.png');
+    linear-gradient(rgba(6, 8, 12, 0.88), rgba(6, 8, 12, 0.92)),
+    url('/textures/deepslate.png');
   background-size: auto, 64px 64px;
   image-rendering: pixelated;
 }

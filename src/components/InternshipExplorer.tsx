@@ -182,9 +182,11 @@ export default function InternshipExplorer() {
             onChange={(e) => { playClickSound(); setSelectedType(e.target.value); }}
             className="bg-[#3a3a3a] border-4 border-black text-stone-200 text-xs font-mono px-3 py-2 outline-none select-none"
           >
-            <option value="all">💰 All Compensation</option>
-            <option value="paid">Fully Paid</option>
+            <option value="all">💼 All Opportunities</option>
+            <option value="paid">Paid Internship</option>
             <option value="stipend">Stipend Supported</option>
+            <option value="research">Research Position</option>
+            <option value="part-time">Part-Time Student Job</option>
           </select>
         </div>
 
