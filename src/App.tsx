@@ -31,6 +31,7 @@ const CurrencySwitcher = lazy(() => import('./components/CurrencySwitcher'));
 const AdvancedSearch = lazy(() => import('./components/AdvancedSearch'));
 const VisaGuide = lazy(() => import('./components/VisaGuide'));
 const InternshipExplorer = lazy(() => import('./components/InternshipExplorer'));
+const AdmissionWizard = lazy(() => import('./components/AdmissionWizard'));
 
 import GlobalSearch from './components/GlobalSearch';
 import Tooltip from './components/Tooltip';
@@ -78,6 +79,7 @@ const navItems = [
   { id: 'search', label: 'Advanced Search', mcName: 'Search Engine', desc: 'High-precision cross-database query engine for scholarships and universities', icon: Search, color: 'text-violet-400 font-bold' },
   { id: 'applications', label: 'Applications Tracker', mcName: 'Applications Ledger', desc: 'Manage your active application checkpoints, tasks, and deadlines', icon: BookmarkCheck, color: 'text-red-400' },
   { id: 'simulator', label: 'Admissions Calculator', mcName: 'Admission Chances', desc: 'Forecast acceptance margins with custom GPA and profile parameters', icon: Calculator, color: 'text-indigo-400' },
+    { id: 'chances', label: 'Will I Get In?', mcName: 'Chance Wizard', desc: 'Enter your grades and see which universities are likely, a match, or a reach - plus how to improve', icon: Target, color: 'text-[#55ff55] font-bold' },
   { id: 'writing', label: 'Document Center', mcName: 'Statements & Documents', desc: 'Evaluate & draft professional Statement of Purpose documents', icon: Save, color: 'text-cyan-400' },
   { id: 'cv', label: 'CV Builder', mcName: 'Academic CV', desc: 'Synthesize custom admissions CV credentials & export PDF', icon: FileText, color: 'text-rose-450 font-bold' },
   { id: 'counselling', label: 'AI Chat Assistant', mcName: 'AI Advisor', desc: 'Speak to the AI student assistant about ECTS and scholarship matches', icon: BookOpen, color: 'text-emerald-400' },
@@ -221,6 +223,8 @@ export default function App() {
         return <ApplicationsView />;
       case 'simulator':
         return <DreamUniversityView />;
+      case 'chances':
+        return <AdmissionWizard />;
       case 'writing':
         return <WritingVaultView />;
       case 'cv':
