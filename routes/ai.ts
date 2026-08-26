@@ -3,12 +3,13 @@ import fs from "fs";
 import path from "path";
 import { GoogleGenAI } from "@google/genai";
 import jwt from "jsonwebtoken";
-import { JWT_SECRET, scholarshipsData, universitiesData } from "./db.js";
+import { JWT_SECRET, scholarshipsData, universitiesData, DEFAULT_ANON_PROFILE } from "./db.js";
 import { getProfileByUsername } from "../db/index.js";
 
 const router = express.Router();
 
-// Permissive auth middleware: parses token if present, otherwise provides a default guest profile
+// Permissive auth middleware: parses token if present, otherwise marks the
+// request as anonymous (no identity is assumed).
 function optionalAuth(req: Request, res: Response, next: NextFunction) {
   const cookieString = req.headers.cookie || '';
   let tokenFromCookie = '';
@@ -24,17 +25,17 @@ function optionalAuth(req: Request, res: Response, next: NextFunction) {
     try {
       const decoded: any = jwt.verify(token, JWT_SECRET);
       (req as any).user = {
-        username: decoded.username || "arif",
+        username: String(decoded.username || ''),
         isGuest: !!decoded.isGuest
       };
       return next();
     } catch {
-      // Fallback to guest if token is invalid or expired
+      // Invalid or expired token: treat as anonymous
     }
   }
 
   (req as any).user = {
-    username: "arif",
+    username: '',
     isGuest: true
   };
   next();
@@ -106,8 +107,8 @@ function loadCostOfLiving(): any[] {
 router.post("/scholarship-recommendations", optionalAuth, async (req: Request, res: Response) => {
   try {
     const user = (req as any).user;
-    const username = user?.username || "arif";
-    const rawProfile = getProfileByUsername(username) || getProfileByUsername("arif");
+    const username = user?.username || "";
+    const rawProfile = getProfileByUsername(username) || DEFAULT_ANON_PROFILE;
 
     const profile = {
       fullName: rawProfile?.fullName || username || "Pathfinder Student",
@@ -292,8 +293,8 @@ _Note: For live real-time AI insights, configure a GEMINI_API_KEY in your custom
 router.post("/university-recommendations", optionalAuth, async (req: Request, res: Response) => {
   try {
     const user = (req as any).user;
-    const username = user?.username || "arif";
-    const rawProfile = getProfileByUsername(username) || getProfileByUsername("arif");
+    const username = user?.username || "";
+    const rawProfile = getProfileByUsername(username) || DEFAULT_ANON_PROFILE;
 
     const profile = {
       fullName: rawProfile?.fullName || username || "Pathfinder Student",

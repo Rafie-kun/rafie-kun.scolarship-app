@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
 import { GoogleGenAI } from "@google/genai";
 import { authenticateToken } from './auth.js';
+import { JWT_SECRET, DEFAULT_ANON_PROFILE } from './db.js';
 import { getProfileByUsername } from '../db/index.js';
 
 const router = express.Router();
@@ -39,9 +41,8 @@ router.get('/check-gemini-key', (req: Request, res: Response) => {
     const token = authHeader.split(' ')[1];
     if (token) {
       try {
-        const jwt = require('jsonwebtoken');
-        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret-jwt-key');
-        const profile = getProfileByUsername(decoded.username);
+        const decoded = jwt.verify(token, JWT_SECRET) as { username?: string };
+        const profile = getProfileByUsername(String(decoded.username || ''));
         if (profile?.customGeminiKey) {
           customKey = profile.customGeminiKey;
           hasKey = hasGeminiKey(customKey);
@@ -56,7 +57,7 @@ router.get('/check-gemini-key', (req: Request, res: Response) => {
 router.post('/review-document', authenticateToken, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
-  const profile = getProfileByUsername(username) || getProfileByUsername('arif');
+  const profile = getProfileByUsername(username) || DEFAULT_ANON_PROFILE;
   if (!profile) {
     return res.status(404).json({ error: "Candidate profile not found." });
   }
@@ -116,7 +117,7 @@ Respond in clean, modern formatting.`;
 router.post('/study-chat', authenticateToken, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
-  const profile = getProfileByUsername(username) || getProfileByUsername('arif');
+  const profile = getProfileByUsername(username) || DEFAULT_ANON_PROFILE;
   if (!profile) {
     return res.status(404).json({ error: "Candidate profile not found." });
   }
@@ -196,7 +197,7 @@ CANDIDATE PROFILE CONTEXT:
 router.post('/mock-interview', authenticateToken, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
-  const profile = getProfileByUsername(username) || getProfileByUsername('arif');
+  const profile = getProfileByUsername(username) || DEFAULT_ANON_PROFILE;
   if (!profile) {
     return res.status(404).json({ error: "Candidate profile not found." });
   }
@@ -235,8 +236,8 @@ Keep your response limited to 2-3 short, highly structured paragraphs. Act stric
   }
 });
 
-// 5. Budget tips endpoint
-router.post('/budget-tips', async (req: Request, res: Response) => {
+// 5. Budget tips endpoint (auth required: consumes server AI quota)
+router.post('/budget-tips', authenticateToken, async (req: Request, res: Response) => {
   const { country, university, totalCost, yearlyEarnings, netCost, currency, hourlyWage, workHours } = req.body;
   
   try {

@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { authenticateToken } from './auth.js';
 import { getProfileByUsername, saveProfile, getCVData, saveCVData, addNotification } from '../db/index.js';
+import type { Profile } from '../src/types.js';
 
 const router = express.Router();
 
@@ -15,6 +16,31 @@ router.get('/', authenticateToken, (req: Request, res: Response) => {
   res.json(profile);
 });
 
+// Fields a client may update directly. Points, level, rewardedActions and
+// identity fields are server-managed to prevent tampering.
+const EDITABLE_PROFILE_FIELDS = [
+  'fullName', 'intendedMajor', 'intendedDegree', 'country', 'nationality',
+  'gpa', 'maxGpa', 'ieltsScore', 'greScore',
+  'leadershipExperience', 'projects', 'volunteerExperience', 'badges',
+  'educationLevel', 'highSchoolName', 'collegeName', 'primaryMajor',
+  'secondaryMajor', 'minor', 'graduationYear', 'additionalSkills',
+  'resumePdf', 'oLevelSubjects', 'aLevelSubjects', 'satScore',
+  'profilePicture', 'lastDailyCheckin', 'hasCompletedOnboarding',
+  'customGeminiKey', 'city', 'bio', 'heroTitle', 'profileColor',
+  'universityName', 'degree', 'fieldOfStudy', 'academicStatus',
+  'profileCompletion'
+] as const;
+
+function sanitizeProfileUpdate(body: any): Partial<Profile> {
+  const clean: Record<string, unknown> = {};
+  for (const field of EDITABLE_PROFILE_FIELDS) {
+    if (body[field] !== undefined) {
+      clean[field] = body[field];
+    }
+  }
+  return clean as Partial<Profile>;
+}
+
 // Update candidate profile
 router.post('/', authenticateToken, (req: Request, res: Response) => {
   const user = (req as any).user;
@@ -23,8 +49,8 @@ router.post('/', authenticateToken, (req: Request, res: Response) => {
   if (!currentProfile) {
     return res.status(404).json({ error: "Profile not found." });
   }
-  saveProfile(username, req.body);
-  const updatedProfile = getProfileByUsername(username) || { ...currentProfile, ...req.body };
+  saveProfile(username, sanitizeProfileUpdate(req.body));
+  const updatedProfile = getProfileByUsername(username) || { ...currentProfile, ...sanitizeProfileUpdate(req.body) };
   res.json(updatedProfile);
 });
 
@@ -61,6 +87,17 @@ router.post('/reward', authenticateToken, (req: Request, res: Response) => {
   const username = user.username;
   const { points, actionName, badgeToUnlock } = req.body;
 
+  // Server-side cap: rewards are small quest bonuses (max legit reward is 50 XP)
+  const MAX_REWARD_PER_ACTION = 100;
+  const requestedPoints = parseInt(points, 10);
+  const safePoints = Number.isFinite(requestedPoints)
+    ? Math.max(0, Math.min(MAX_REWARD_PER_ACTION, requestedPoints))
+    : 0;
+
+  if (!actionName || typeof actionName !== 'string' || actionName.length > 200) {
+    return res.status(400).json({ error: "A valid actionName (max 200 chars) is required for rewards." });
+  }
+
   const profile = getProfileByUsername(username);
   if (!profile) {
     return res.status(404).json({ error: "Profile not found for reward." });
@@ -76,7 +113,7 @@ router.post('/reward', authenticateToken, (req: Request, res: Response) => {
   }
 
   profile.rewardedActions.push(actionName);
-  profile.points = (profile.points || 0) + parseInt(points || 0);
+  profile.points = (profile.points || 0) + safePoints;
 
   // Level Up Check: Each level requires 100 points
   const newLevel = Math.floor(profile.points / 100) + 1;
@@ -103,7 +140,7 @@ router.post('/reward', authenticateToken, (req: Request, res: Response) => {
   addNotification({
     id: "reward-notif-" + Date.now(),
     type: "success",
-    message: `Completed achievement: "${actionName || 'Academic Quest'}" (+${points} XP Awarded!)`,
+    message: `Completed achievement: "${actionName || 'Academic Quest'}" (+${safePoints} XP Awarded!)`,
     timestamp: "Just now"
   });
 

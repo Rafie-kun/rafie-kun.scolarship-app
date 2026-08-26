@@ -4,7 +4,8 @@ import { db } from '../../db/index';
 import { scholarshipsData, universitiesData } from '../../routes/db';
 import { Scholarship, University } from '../../src/types';
 
-const scholarshipsPath = path.join(process.cwd(), 'data', 'scholarships.json');
+// Write to the canonical dataset that routes/db.ts loads on boot
+const scholarshipsPath = path.join(process.cwd(), 'public', 'data', 'scholarships.json');
 
 export function saveNewScholarships(newSchs: Scholarship[]) {
   if (newSchs.length === 0) return;

@@ -4,8 +4,7 @@ import path from 'path';
 import bcrypt from 'bcryptjs';
 import type { Profile, Application, AppNotification, CommunityPost, CVData } from '../src/types.js';
 
-const __filename = import.meta.url ? new URL(import.meta.url).pathname : '';
-const __dirname = __filename ? path.dirname(__filename) : process.cwd();
+const __dirname = process.cwd();
 
 // Ensure data folder exists
 const isVercel = !!process.env.VERCEL;

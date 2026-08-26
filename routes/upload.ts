@@ -173,10 +173,9 @@ Ensure GPA is between 0.0 and 4.0.`;
     };
   }
 
-  // Update profile metrics with parsed insights
-  if (parsedInfo.fullName) currentProfile.fullName = parsedInfo.fullName;
-  if (parsedInfo.primaryMajor) currentProfile.primaryMajor = parsedInfo.primaryMajor;
-  if (parsedInfo.gpa) currentProfile.gpa = parseFloat(parsedInfo.gpa);
+  // NOTE: The parser only receives a filename, so its output is speculative.
+  // Return it as CV-builder suggestions but never overwrite real profile fields
+  // (fullName / primaryMajor / gpa) with generated data.
   saveProfile(username, currentProfile);
 
   res.json({

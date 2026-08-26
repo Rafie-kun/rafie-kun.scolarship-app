@@ -1,74 +1,56 @@
-import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import { db } from '../db/index.js';
 import type { Profile, Scholarship, University, Application, AppNotification, CommunityPost } from '../src/types.js';
 
-// JWT Configuration & salt-hashing
-export const JWT_SECRET = process.env.JWT_SECRET || "scholarpath_cybermatrix_gold_2026_xyz";
-
-// User database structures with updated fields
-export const profilesMap: Record<string, Profile> = {
-  "arif": {
-    fullName: "Arif Rahaman",
-    level: 2,
-    points: 150,
-    intendedMajor: "Computer Science",
-    intendedDegree: "Master's Degree",
-    country: "United States",
-    nationality: "Bangladesh",
-    gpa: 3.82,
-    maxGpa: 4.0,
-    ieltsScore: "7.5",
-    greScore: "318",
-    leadershipExperience: ["Student Computing Club Treasurer", "Bangladesh OpenSource Advocate"],
-    projects: ["Retro Game Canvas", "ScholarPath Matrix Mock Engine"],
-    volunteerExperience: ["Youth Programming Workshop Mentor"],
-    badges: ["Scholar Pathfinder", "Exotic Architect"],
-    educationLevel: "undergraduate",
-    highSchoolName: "Dhaka Residency School",
-    collegeName: "Dhaka College",
-    primaryMajor: "Computer Science",
-    secondaryMajor: "Mathematics",
-    minor: "Statistics",
-    graduationYear: 2024,
-    additionalSkills: ["Python", "C++", "TypeScript", "Linear Algebra", "Data Structures", "Pytorch"],
-    resumePdf: "",
-    rewardedActions: []
-  },
-  "guest": {
-    fullName: "Guest Pathfinder",
-    level: 1,
-    points: 40,
-    intendedMajor: "Information Technology",
-    intendedDegree: "Master's Degree",
-    country: "Canada",
-    nationality: "Explorer Space",
-    gpa: 3.50,
-    maxGpa: 4.0,
-    ieltsScore: "7.0",
-    greScore: "310",
-    leadershipExperience: ["Novice Camp Counselor"],
-    projects: ["Procedural Map Builder"],
-    volunteerExperience: ["Local Highschool Coding Club Support"],
-    badges: ["Fresh Spawn"],
-    educationLevel: "high_school",
-    highSchoolName: "Explorer Secondary Academy",
-    collegeName: "",
-    primaryMajor: "Information Technology",
-    secondaryMajor: "",
-    minor: "",
-    graduationYear: 2026,
-    additionalSkills: ["Java", "HTML/CSS", "Python Basics"],
-    resumePdf: "",
-    rewardedActions: []
+// JWT Configuration - never fall back to a public secret.
+function resolveJwtSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (secret && secret.length >= 16) return secret;
+  // Serverless platforms: boot with an ephemeral secret rather than hard-crashing
+  // every invocation. Sessions stay valid within a warm instance, but set
+  // JWT_SECRET in the platform dashboard for stable cross-instance sessions.
+  if (process.env.VERCEL || process.env.RENDER || process.env.RAILWAY_ENVIRONMENT) {
+    console.warn('[AUTH] JWT_SECRET not set - using an ephemeral secret. Set JWT_SECRET in your hosting dashboard for stable sessions.');
+    return crypto.randomBytes(32).toString('hex');
   }
-};
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('JWT_SECRET environment variable must be set to a strong random value (32+ chars) in production.');
+  }
+  console.warn('[AUTH] JWT_SECRET not set - generating an ephemeral secret. All sessions invalidate on server restart (dev only).');
+  return crypto.randomBytes(32).toString('hex');
+}
+export const JWT_SECRET = resolveJwtSecret();
 
-// In-memory passwords registry (key: username, value: salted hash)
-export const passwordsMap: Record<string, string> = {
-  "arif": bcrypt.hashSync("password123", 8),
-  "guest": bcrypt.hashSync("guest123", 8)
+// Generic template profile used to personalize AI responses for users whose
+// profile cannot be loaded - contains no real personal data.
+export const DEFAULT_ANON_PROFILE: Profile = {
+  fullName: "Guest Pathfinder",
+  level: 1,
+  points: 0,
+  intendedMajor: "",
+  intendedDegree: "",
+  country: "",
+  nationality: "",
+  gpa: 3.5,
+  maxGpa: 4.0,
+  ieltsScore: "",
+  greScore: "",
+  leadershipExperience: [],
+  projects: [],
+  volunteerExperience: [],
+  badges: [],
+  educationLevel: "undergraduate",
+  highSchoolName: "",
+  collegeName: "",
+  primaryMajor: "",
+  secondaryMajor: "",
+  minor: "",
+  graduationYear: new Date().getFullYear() + 1,
+  additionalSkills: [],
+  resumePdf: "",
+  rewardedActions: []
 };
 
 // --- DYNAMIC DATA LOAD FROM JSON CHANNELS ---
@@ -76,8 +58,7 @@ export let scholarshipsData: Scholarship[] = [];
 export let universitiesData: University[] = [];
 
 try {
-  const __filename = import.meta.url ? new URL(import.meta.url).pathname : '';
-  const __dirname = __filename ? path.dirname(__filename) : process.cwd();
+  const __dirname = process.cwd();
   
   const searchPaths = [
     path.join(process.cwd(), 'public', 'data', 'scholarships.json'),
@@ -142,8 +123,8 @@ try {
         official = "https://si.se/en/apply/scholarships/";
         apply = "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/";
       } else if (provider.includes("australia awards") || name.includes("australia awards")) {
-        official = "https://www.dfat.gov.uk/people-to-people/australia-awards/australia-awards-scholarships-aas";
-        apply = "https://www.dfat.gov.uk/people-to-people/australia-awards/australia-awards-scholarships-aas";
+        official = "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships-aas";
+        apply = "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships-aas";
       } else if (provider.includes("mext") || name.includes("mext")) {
         official = "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1418721.htm";
         apply = "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1418721.htm";
@@ -200,8 +181,7 @@ try {
       generatedApplicationUrl: row.generatedApplicationUrl || undefined
     }));
   } else {
-    const __filename = import.meta.url ? new URL(import.meta.url).pathname : '';
-    const __dirname = __filename ? path.dirname(__filename) : process.cwd();
+    const __dirname = process.cwd();
     
     const searchPaths = [
       path.join(process.cwd(), 'public', 'data', 'universities.json'),
@@ -228,8 +208,7 @@ try {
   }
 } catch (err) {
   console.error("Failed to load universities from SQL database, fallback to file", err);
-  const __filename = import.meta.url ? new URL(import.meta.url).pathname : '';
-  const __dirname = __filename ? path.dirname(__filename) : process.cwd();
+  const __dirname = process.cwd();
   
   const searchPaths = [
     path.join(process.cwd(), 'public', 'data', 'universities.json'),
@@ -284,11 +263,6 @@ export const mockApplications: Application[] = [
     ]
   }
 ];
-
-export const userApplicationsMap: Record<string, Application[]> = {
-  "arif": [...mockApplications],
-  "guest": []
-};
 
 export const notificationsData: AppNotification[] = [
   {

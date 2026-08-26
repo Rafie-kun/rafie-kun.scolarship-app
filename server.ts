@@ -1,4 +1,5 @@
 import express from "express";
+import crypto from "crypto";
 import path from "path";
 import fs from "fs";
 import { GoogleGenAI } from "@google/genai";
@@ -25,7 +26,24 @@ import { getNotifications, addNotification } from "./db/index.js";
 const app = express();
 const PORT = 3000;
 
-app.use(express.json());
+app.use(express.json({ limit: "10mb" })); // bounded: resume PDF uploads are base64-encoded
+
+// Escape untrusted (scraped/user) content before interpolating into HTML
+function escapeHtml(value: unknown): string {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// Only allow http(s) URLs to be rendered as links
+function safeExternalUrl(url: unknown): string {
+  const raw = String(url ?? "").trim();
+  if (/^https?:\/\//i.test(raw)) return escapeHtml(raw);
+  return "";
+}
 
 // --- HEALTH CHECK ENDPOINT ---
 app.get("/api/health", (req, res) => {
@@ -62,11 +80,12 @@ app.get("/fellowships/:id/apply", (req, res) => {
       if (targetUrl.includes("scholarpath-portal.org") || targetUrl === "#") {
         targetUrl = `https://www.google.com/search?q=${encodeURIComponent(scholarship.name + " official website apply")}`;
       }
+      const safeTargetUrl = safeExternalUrl(targetUrl);
       return res.send(`
         <!DOCTYPE html>
         <html>
           <head>
-            <title>Apply for ${scholarship.name}</title>
+            <title>Apply for ${escapeHtml(scholarship.name)}</title>
             <style>
               body { 
                 font-family: 'Inter', system-ui, -apple-system, sans-serif; 
@@ -137,25 +156,25 @@ app.get("/fellowships/:id/apply", (req, res) => {
           </head>
           <body>
             <div class="card">
-              <h1>🏆 Apply for ${scholarship.name}</h1>
-              <p><strong>Provider:</strong> ${scholarship.provider}</p>
-              <p><strong>Funding Class:</strong> ${scholarship.fundingCoverage}</p>
-              <p><strong>Application Deadline:</strong> ${scholarship.deadline}</p>
+              <h1>🏆 Apply for ${escapeHtml(scholarship.name)}</h1>
+              <p><strong>Provider:</strong> ${escapeHtml(scholarship.provider)}</p>
+              <p><strong>Funding Class:</strong> ${escapeHtml(scholarship.fundingCoverage)}</p>
+              <p><strong>Application Deadline:</strong> ${escapeHtml(scholarship.deadline)}</p>
               
               <h2>📝 APPLICATION PROCESS</h2>
               <ol>
                 ${(scholarship.applicationSteps && scholarship.applicationSteps.length > 0)
-                  ? scholarship.applicationSteps.map((step: string) => `<li>${step}</li>`).join('')
+                  ? scholarship.applicationSteps.map((step: string) => `<li>${escapeHtml(step)}</li>`).join('')
                   : '<li>Check eligibility requirements and prepare academic folders</li><li>Verify required reference logs and SOP drafts</li><li>Submit details through the official board gateway</li>'
                 }
               </ol>
               
-              <p style="margin-top: 15px;"><strong>Required Documents:</strong> ${(scholarship.requiredDocuments || ["Transcripts", "Statement of Purpose", "Recommendation Letters"]).join(', ')}</p>
+              <p style="margin-top: 15px;"><strong>Required Documents:</strong> ${(scholarship.requiredDocuments || ["Transcripts", "Statement of Purpose", "Recommendation Letters"]).map((doc: string) => escapeHtml(doc)).join(', ')}</p>
               
               <div style="margin-top: 30px;">
-                <a href="${targetUrl}" target="_blank" rel="noopener noreferrer">
+                ${safeTargetUrl ? `<a href="${safeTargetUrl}" target="_blank" rel="noopener noreferrer nofollow">
                   <button class="btn">LAUNCH OFFICIAL PORTAL</button>
-                </a>
+                </a>` : '<span style="color:#999;">No verified application portal available - search the provider name online.</span>'}
               </div>
               
               <br>
@@ -220,10 +239,12 @@ app.use("/api", recommenderRouter);
 
 // --- ADMIN UNIVERSITY IMPORT ENDPOINT ---
 app.post("/api/admin/import-universities", async (req, res) => {
-  const token = req.headers['x-admin-token'] || req.query.token;
-  const expectedToken = process.env.ADMIN_TOKEN || "scholarpath_cybermatrix_gold_2026_xyz";
-  
-  if (token !== expectedToken) {
+  const token = req.headers['x-admin-token'];
+  const expectedToken = process.env.ADMIN_TOKEN;
+
+  if (!expectedToken || typeof token !== 'string' ||
+      token.length !== expectedToken.length ||
+      !crypto.timingSafeEqual(Buffer.from(token), Buffer.from(expectedToken))) {
     return res.status(403).json({ error: "Access denied. Invalid or missing high-privilege admin security token." });
   }
 
@@ -271,8 +292,8 @@ app.post("/api/admin/import-universities", async (req, res) => {
 });
 
 
-// --- INTERVIEW SIMULATION API ENDPOINT ---
-app.post("/api/ai/interview", async (req, res) => {
+// --- INTERVIEW SIMULATION API ENDPOINT (auth required: consumes server AI quota) ---
+app.post("/api/ai/interview", authenticateToken, async (req, res) => {
   const { scholarshipName, step, userResponse, questionContext } = req.body;
   
   try {
@@ -359,8 +380,8 @@ app.get("/api/notifications", (req, res) => {
   res.json(getNotifications());
 });
 
-// Manual scraper trigger route for instant validation checking
-app.post("/api/scraper/trigger", async (req, res) => {
+// Manual scraper trigger route for instant validation checking (auth required)
+app.post("/api/scraper/trigger", authenticateToken, async (req, res) => {
   try {
     const scheduler = await import("./scripts/scheduler.js");
     const result = await scheduler.runScraperImmediately();

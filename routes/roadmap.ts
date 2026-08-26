@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { GoogleGenAI } from "@google/genai";
 import { authenticateToken } from './auth.js';
+import { DEFAULT_ANON_PROFILE } from './db.js';
 import { getProfileByUsername, getRoadmap, saveRoadmap } from '../db/index.js';
 
 const router = express.Router();
@@ -29,7 +30,7 @@ function hasGeminiKey(): boolean {
 router.post('/', authenticateToken, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
-  const profile = getProfileByUsername(username) || getProfileByUsername('arif');
+  const profile = getProfileByUsername(username) || DEFAULT_ANON_PROFILE;
   if (!profile) {
     return res.status(404).json({ error: "Profile not found" });
   }

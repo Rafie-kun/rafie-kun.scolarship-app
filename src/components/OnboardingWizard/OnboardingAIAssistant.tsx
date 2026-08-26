@@ -49,7 +49,7 @@ export default function OnboardingAIAssistant() {
     setLoading(true);
 
     try {
-      const token = localStorage.getItem('scholarpath_token');
+      const token = localStorage.getItem('scholarpath_jwt_token');
       const response = await fetch('/api/ai/wizard-assistant', {
         method: 'POST',
         headers: {

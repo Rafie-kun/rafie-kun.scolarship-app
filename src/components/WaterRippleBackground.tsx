@@ -76,45 +76,36 @@ export default function WaterRippleBackground() {
 
     // Gradient properties based on themes
     const getThemeColors = () => {
-      if (themeMode === 'light') {
+      // Dark/Cosmic Spec
+      if (theme === 'nether') {
         return {
-          bg1: '#f5f7fb',
-          bg2: '#eaf0f9',
-          rippleColor: 'rgba(129, 140, 248, 0.08)',
-          gridColor: 'rgba(15, 43, 91, 0.02)',
+          bg1: '#0f0505',
+          bg2: '#200808',
+          rippleColor: 'rgba(239, 68, 68, 0.06)',
+          gridColor: 'rgba(239, 68, 68, 0.015)',
         };
-      } else {
-        // Dark/Cosmic Spec
-        if (theme === 'nether') {
-          return {
-            bg1: '#0f0505',
-            bg2: '#200808',
-            rippleColor: 'rgba(239, 68, 68, 0.06)',
-            gridColor: 'rgba(239, 68, 68, 0.015)',
-          };
-        } else if (theme === 'end') {
-          return {
-            bg1: '#090312',
-            bg2: '#160824',
-            rippleColor: 'rgba(192, 38, 211, 0.06)',
-            gridColor: 'rgba(192, 38, 211, 0.015)',
-          };
-        } else if (theme === 'aether') {
-          return {
-            bg1: '#020d1a',
-            bg2: '#081c33',
-            rippleColor: 'rgba(6, 182, 212, 0.06)',
-            gridColor: 'rgba(6, 182, 212, 0.015)',
-          };
-        }
-        // Overworld/Default Dark
+      } else if (theme === 'end') {
         return {
-          bg1: '#080a10',
-          bg2: '#0e1220',
-          rippleColor: 'rgba(59, 130, 246, 0.06)',
-          gridColor: 'rgba(59, 130, 246, 0.015)',
+          bg1: '#090312',
+          bg2: '#160824',
+          rippleColor: 'rgba(192, 38, 211, 0.06)',
+          gridColor: 'rgba(192, 38, 211, 0.015)',
+        };
+      } else if (theme === 'aether') {
+        return {
+          bg1: '#020d1a',
+          bg2: '#081c33',
+          rippleColor: 'rgba(6, 182, 212, 0.06)',
+          gridColor: 'rgba(6, 182, 212, 0.015)',
         };
       }
+      // Overworld/Default Dark
+      return {
+        bg1: '#080a10',
+        bg2: '#0e1220',
+        rippleColor: 'rgba(59, 130, 246, 0.06)',
+        gridColor: 'rgba(59, 130, 246, 0.015)',
+      };
     };
 
     const draw = () => {

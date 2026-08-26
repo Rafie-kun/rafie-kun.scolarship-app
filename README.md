@@ -48,9 +48,12 @@ Copy the dotenv example:
 ```bash
 cp .env.example .env
 ```
-Populate `.env` with your dedicated secret:
+Populate `.env` with your dedicated secrets:
 ```env
 GEMINI_API_KEY="AIzaSy..."
+# REQUIRED in production - generate with: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+JWT_SECRET="your-long-random-secret"
+ADMIN_TOKEN="optional-admin-token"
 ```
 
 ### Installation

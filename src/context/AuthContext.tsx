@@ -475,25 +475,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return false;
       }
 
-      console.warn("API Login failed, falling back to local storage:", e);
-      const fallbackProfile = { 
-        ...defaultProfile,
-        username, 
-        fullName: username, 
-        level: 1, 
-        points: 0, 
-        gpa: 3.0, 
-        isGuest: false,
-        offlineMode: true 
-      };
-      localStorage.setItem('scholarpath_user', JSON.stringify(fallbackProfile));
-      setUser(username);
-      setProfile(fallbackProfile as any);
-      setIsGuest(false);
-      setIsLoggedIn(true);
-      
-      playAdvancementSound();
-      return true;
+      // Server unreachable: do NOT fake a login (any password would "work").
+      setAuthError("Cannot reach the ScholarPath server. Please check your connection and try again.");
+      return false;
     } finally {
       setAuthLoading(false);
     }
@@ -556,26 +540,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       playAdvancementSound();
       return true;
     } catch (e: any) {
-      console.warn("API Register failed, falling back to local storage:", e);
-      const fallbackProfile = { 
-        ...defaultProfile,
-        username, 
-        fullName, 
-        level: 1, 
-        points: 0, 
-        gpa: parseFloat(gpa) || 3.0, 
-        primaryMajor: major,
-        isGuest: false,
-        offlineMode: true 
-      };
-      localStorage.setItem('scholarpath_user', JSON.stringify(fallbackProfile));
-      setUser(username);
-      setProfile(fallbackProfile as any);
-      setIsGuest(false);
-      setIsLoggedIn(true);
-      
-      playAdvancementSound();
-      return true;
+      // Registration requires the server (it owns the user database).
+      setAuthError(e.message === "Failed to fetch"
+        ? "Cannot reach the ScholarPath server. Please check your connection and try again."
+        : (e.message || "Register failed"));
+      return false;
     } finally {
       setAuthLoading(false);
     }
@@ -614,50 +583,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       playAdvancementSound();
       return true;
     } catch (e) {
-      console.warn("API Guest spawn failed, falling back to local storage:", e);
-      
-      const fallbackGuestUser = `guest_${Math.floor(1000 + Math.random() * 9000)}`;
-      const fallbackGuestProfile = {
-        ...defaultProfile,
-        username: fallbackGuestUser,
-        fullName: `Guest Explorer #${fallbackGuestUser.split('_')[1]}`,
-        level: 1,
-        points: 0,
-        intendedMajor: "",
-        intendedDegree: "",
-        country: "",
-        nationality: "",
-        gpa: 4.0,
-        maxGpa: 4.0,
-        ieltsScore: "",
-        greScore: "",
-        leadershipExperience: [],
-        projects: [],
-        volunteerExperience: [],
-        badges: [],
-        educationLevel: "undergraduate",
-        highSchoolName: "",
-        collegeName: "",
-        primaryMajor: "",
-        secondaryMajor: "",
-        minor: "",
-        graduationYear: 2026,
-        additionalSkills: [],
-        resumePdf: "",
-        rewardedActions: [],
-        hasCompletedOnboarding: false,
-        isGuest: true,
-        offlineMode: true
-      };
-
-      localStorage.setItem('scholarpath_user', JSON.stringify(fallbackGuestProfile));
-      setUser(fallbackGuestUser);
-      setProfile(fallbackGuestProfile as any);
-      setIsGuest(true);
-      setIsLoggedIn(true);
-      
-      playAdvancementSound();
-      return true;
+      // Guest sessions are created server-side; without the server there is
+      // nothing to spawn, so fail honestly instead of faking a local session.
+      setAuthError("Cannot reach the ScholarPath server to spawn a guest session. Please try again later.");
+      return false;
     } finally {
       setAuthLoading(false);
     }

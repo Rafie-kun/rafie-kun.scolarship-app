@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Trophy, BookOpen, GraduationCap, Calculator, Award, ArrowRight, Save, User, Sparkles,
@@ -7,28 +7,31 @@ import {
   Undo, Settings, UserCog, FileText, TrendingUp, Compass, Briefcase
 } from 'lucide-react';
 
-import OverviewRecommendationsView from './components/OverviewRecommendationsView';
-import ScholarshipsView from './components/ScholarshipsView';
-import UniversitiesView from './components/UniversitiesView';
-import ApplicationsView from './components/ApplicationsView';
-import WritingVaultView from './components/WritingVaultView';
-import CounsellingView from './components/CounsellingView';
-import CommunityView from './components/CommunityView';
-import RoadmapView from './components/RoadmapView';
-import MentorView from './components/MentorView';
-import ProfileView from './components/ProfileView';
-import ExportCenterView from './components/ExportCenterView';
-import DreamUniversityView from './components/DreamUniversityView';
-import CustomizeView from './components/CustomizeView';
-import OnboardingTour from './components/OnboardingTour';
-import AIAssistant from './components/AIAssistant';
-import CVBuilder from './components/CVBuilder';
-import BudgetPlanner from './components/BudgetPlanner';
-import PerformanceAnalyticsView from './components/PerformanceAnalyticsView';
-import CurrencySwitcher from './components/CurrencySwitcher';
-import AdvancedSearch from './components/AdvancedSearch';
-import VisaGuide from './components/VisaGuide';
-import InternshipExplorer from './components/InternshipExplorer';
+// Views are lazily loaded so each heavy view (jspdf, html2canvas, recharts...)
+// lands in its own chunk and the initial bundle stays small.
+const OverviewRecommendationsView = lazy(() => import('./components/OverviewRecommendationsView'));
+const ScholarshipsView = lazy(() => import('./components/ScholarshipsView'));
+const UniversitiesView = lazy(() => import('./components/UniversitiesView'));
+const ApplicationsView = lazy(() => import('./components/ApplicationsView'));
+const WritingVaultView = lazy(() => import('./components/WritingVaultView'));
+const CounsellingView = lazy(() => import('./components/CounsellingView'));
+const CommunityView = lazy(() => import('./components/CommunityView'));
+const RoadmapView = lazy(() => import('./components/RoadmapView'));
+const MentorView = lazy(() => import('./components/MentorView'));
+const ProfileView = lazy(() => import('./components/ProfileView'));
+const ExportCenterView = lazy(() => import('./components/ExportCenterView'));
+const DreamUniversityView = lazy(() => import('./components/DreamUniversityView'));
+const CustomizeView = lazy(() => import('./components/CustomizeView'));
+const OnboardingTour = lazy(() => import('./components/OnboardingTour'));
+const AIAssistant = lazy(() => import('./components/AIAssistant'));
+const CVBuilder = lazy(() => import('./components/CVBuilder'));
+const BudgetPlanner = lazy(() => import('./components/BudgetPlanner'));
+const PerformanceAnalyticsView = lazy(() => import('./components/PerformanceAnalyticsView'));
+const CurrencySwitcher = lazy(() => import('./components/CurrencySwitcher'));
+const AdvancedSearch = lazy(() => import('./components/AdvancedSearch'));
+const VisaGuide = lazy(() => import('./components/VisaGuide'));
+const InternshipExplorer = lazy(() => import('./components/InternshipExplorer'));
+
 import GlobalSearch from './components/GlobalSearch';
 import Tooltip from './components/Tooltip';
 import QuickNotesWidget from './components/QuickNotesWidget';
@@ -128,6 +131,38 @@ const getThemeStyling = (themeId: string) => {
   }
 };
 
+// Navigations directory menu hotbar mappings
+const navItems = [
+  { id: 'overview', label: 'Overview', mcName: 'Dashboard', desc: 'View active targets, track progress scores, and application milestones', icon: Trophy, color: 'text-amber-400' },
+  { id: 'analytics', label: 'Performance Analytics', mcName: 'Analytics', desc: 'Visualize academic GPA trends and target milestone completions', icon: TrendingUp, color: 'text-[#55ff55]' },
+  { id: 'scholarships', label: 'Scholarship Finder', mcName: 'Scholarships', desc: 'Browse matched international fellowships & fully funded stipends', icon: GraduationCap, color: 'text-yellow-400' },
+  { id: 'internships', label: 'Internship Finder', mcName: 'Internships', desc: 'Browse global paid internships, research posts & UN positions', icon: Briefcase, color: 'text-emerald-400 font-bold' },
+  { id: 'universities', label: 'Universities', mcName: 'Universities Directory', desc: 'Browse entry GPA benchmarks for global institutions', icon: Building, color: 'text-sky-400' },
+  { id: 'search', label: 'Advanced Search', mcName: 'Search Engine', desc: 'High-precision cross-database query engine for scholarships and universities', icon: Search, color: 'text-violet-400 font-bold' },
+  { id: 'applications', label: 'Applications Tracker', mcName: 'Applications Ledger', desc: 'Manage your active application checkpoints, tasks, and deadlines', icon: BookmarkCheck, color: 'text-red-400' },
+  { id: 'simulator', label: 'Admissions Calculator', mcName: 'Admission Chances', desc: 'Forecast acceptance margins with custom GPA and profile parameters', icon: Calculator, color: 'text-indigo-400' },
+  { id: 'writing', label: 'Document Center', mcName: 'Statements & Documents', desc: 'Evaluate & draft professional Statement of Purpose documents', icon: Save, color: 'text-cyan-400' },
+  { id: 'cv', label: 'CV Builder', mcName: 'Academic CV', desc: 'Synthesize custom admissions CV credentials & export PDF', icon: FileText, color: 'text-rose-450 font-bold' },
+  { id: 'counselling', label: 'AI Chat Assistant', mcName: 'AI Advisor', desc: 'Speak to the AI student assistant about ECTS and scholarship matches', icon: BookOpen, color: 'text-emerald-400' },
+  { id: 'budget', label: 'Budget Planner', mcName: 'Finances', desc: 'Calculate study costs, living expenses & part-time earnings', icon: Coins, color: 'text-[#2ecc71]' },
+  { id: 'visa', label: 'Visa Guide', mcName: 'Visa & Immigration', desc: 'Study visa requirements, proof of funds & work permits', icon: Compass, color: 'text-[#55ffff] font-bold' },
+  { id: 'learning', label: 'Roadmap', mcName: 'Timeline Maps', desc: 'Structured timeline maps for global admission stages', icon: Navigation, color: 'text-orange-400' },
+  { id: 'community', label: 'Community Forum', mcName: 'Student Forum', desc: 'Interact with fellow students regarding admissions and visa advice', icon: MessageSquare, color: 'text-purple-400' },
+  { id: 'mentors', label: 'Mentors', mcName: 'Alumni Mentors', desc: 'Consult with vetted alumni from top university fellowship programs', icon: Award, color: 'text-pink-400' },
+  { id: 'customize', label: 'Theme Settings', mcName: 'Appearance & Themes', desc: 'Mute sounds, tune layout densities & customize visual themes', icon: Sparkles, color: 'text-[#ffff55]' },
+  { id: 'export', label: 'Export Center', mcName: 'Data Backups', desc: 'Convert applicant records into persistent JSON backups', icon: FolderDown, color: 'text-stone-300' },
+  { id: 'profile', label: 'Profile', mcName: 'User Profile', desc: 'Configure candidate GPAs, nationality, degree, and credentials', icon: User, color: 'text-teal-400' }
+];
+
+const VALID_TAB_IDS = new Set(navItems.map(item => item.id));
+
+// Hash-based routing: tabs are addressable via #/scholarships etc., enabling
+// deep links, back/forward navigation, and shareable views.
+function getTabFromHash(): string {
+  const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+  return VALID_TAB_IDS.has(hash) ? hash : 'overview';
+}
+
 export default function App() {
   const { user, isLoggedIn, profile: authProfile, authLoading, isGuest, logout, rewardPoints, refreshProfile, updateProfile } = useAuth();
   const { theme, themeMode, setThemeMode, currency, setCurrency } = useTheme();
@@ -151,10 +186,26 @@ export default function App() {
     return () => window.removeEventListener('profile-updated', handleProfileUpdated);
   }, []);
 
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTabState] = useState<string>(getTabFromHash);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  // Keep the URL hash in sync with the active tab
+  const setActiveTab = (tabId: string) => {
+    setActiveTabState(tabId);
+    const targetHash = `#/${tabId}`;
+    if (window.location.hash !== targetHash) {
+      window.history.replaceState(null, '', targetHash);
+    }
+  };
+
+  // React to browser back/forward and external deep links (#/scholarships)
+  useEffect(() => {
+    const onHashChange = () => setActiveTabState(getTabFromHash());
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
 
   // Global Keyboard Shortcuts (Ctrl+K to toggle search, Esc to close search)
   useKeyboardShortcuts([
@@ -210,43 +261,6 @@ export default function App() {
     setMobileMenuOpen(false);
   };
 
-  const handlePickaxeClick = () => {
-    playClickSound();
-    const modes: ('dark' | 'minecraft')[] = ['dark', 'minecraft'];
-    const currentIdx = modes.indexOf(themeMode as any);
-    const nextIdx = currentIdx === 0 ? 1 : 0;
-    setThemeMode(modes[nextIdx]);
-  };
-
-  const handleLogoutClick = () => {
-    playClickSound();
-    logout();
-    setActiveTab('overview');
-  };
-
-  // Navigations directory menu hotbar mappings
-  const navItems = [
-    { id: 'overview', label: 'Overview', mcName: 'Dashboard', desc: 'View active targets, track progress scores, and application milestones', icon: Trophy, color: 'text-amber-400' },
-    { id: 'analytics', label: 'Performance Analytics', mcName: 'Analytics', desc: 'Visualize academic GPA trends and target milestone completions', icon: TrendingUp, color: 'text-[#55ff55]' },
-    { id: 'scholarships', label: 'Scholarship Finder', mcName: 'Scholarships', desc: 'Browse matched international fellowships & fully funded stipends', icon: GraduationCap, color: 'text-yellow-400' },
-    { id: 'internships', label: 'Internship Finder', mcName: 'Internships', desc: 'Browse global paid internships, research posts & UN positions', icon: Briefcase, color: 'text-emerald-400 font-bold' },
-    { id: 'universities', label: 'Universities', mcName: 'Universities Directory', desc: 'Browse entry GPA benchmarks for global institutions', icon: Building, color: 'text-sky-400' },
-    { id: 'search', label: 'Advanced Search', mcName: 'Search Engine', desc: 'High-precision cross-database query engine for scholarships and universities', icon: Search, color: 'text-violet-400 font-bold' },
-    { id: 'applications', label: 'Applications Tracker', mcName: 'Applications Ledger', desc: 'Manage your active application checkpoints, tasks, and deadlines', icon: BookmarkCheck, color: 'text-red-400' },
-    { id: 'simulator', label: 'Admissions Calculator', mcName: 'Admission Chances', desc: 'Forecast acceptance margins with custom GPA and profile parameters', icon: Calculator, color: 'text-indigo-400' },
-    { id: 'writing', label: 'Document Center', mcName: 'Statements & Documents', desc: 'Evaluate & draft professional Statement of Purpose documents', icon: Save, color: 'text-cyan-400' },
-    { id: 'cv', label: 'CV Builder', mcName: 'Academic CV', desc: 'Synthesize custom admissions CV credentials & export PDF', icon: FileText, color: 'text-rose-450 font-bold' },
-    { id: 'counselling', label: 'AI Chat Assistant', mcName: 'AI Advisor', desc: 'Speak to the AI student assistant about ECTS and scholarship matches', icon: BookOpen, color: 'text-emerald-400' },
-    { id: 'budget', label: 'Budget Planner', mcName: 'Finances', desc: 'Calculate study costs, living expenses & part-time earnings', icon: Coins, color: 'text-[#2ecc71]' },
-    { id: 'visa', label: 'Visa Guide', mcName: 'Visa & Immigration', desc: 'Study visa requirements, proof of funds & work permits', icon: Compass, color: 'text-[#55ffff] font-bold' },
-    { id: 'learning', label: 'Roadmap', mcName: 'Timeline Maps', desc: 'Structured timeline maps for global admission stages', icon: Navigation, color: 'text-orange-400' },
-    { id: 'community', label: 'Community Forum', mcName: 'Student Forum', desc: 'Interact with fellow students regarding admissions and visa advice', icon: MessageSquare, color: 'text-purple-400' },
-    { id: 'mentors', label: 'Mentors', mcName: 'Alumni Mentors', desc: 'Consult with vetted alumni from top university fellowship programs', icon: Award, color: 'text-pink-400' },
-    { id: 'customize', label: 'Theme Settings', mcName: 'Appearance & Themes', desc: 'Mute sounds, tune layout densities & customize visual themes', icon: Sparkles, color: 'text-[#ffff55]' },
-    { id: 'export', label: 'Export Center', mcName: 'Data Backups', desc: 'Convert applicant records into persistent JSON backups', icon: FolderDown, color: 'text-stone-300' },
-    { id: 'profile', label: 'Profile', mcName: 'User Profile', desc: 'Configure candidate GPAs, nationality, degree, and credentials', icon: User, color: 'text-teal-400' }
-  ];
-
   // Map active Tab to visual layouts
   const renderSandbox = () => {
     switch (activeTab) {
@@ -292,6 +306,20 @@ export default function App() {
       default:
         return <OverviewRecommendationsView onNavigate={(view) => setActiveTab(view)} />;
     }
+  };
+
+  const handlePickaxeClick = () => {
+    playClickSound();
+    const modes: ('dark' | 'minecraft')[] = ['dark', 'minecraft'];
+    const currentIdx = modes.indexOf(themeMode as any);
+    const nextIdx = currentIdx === 0 ? 1 : 0;
+    setThemeMode(modes[nextIdx]);
+  };
+
+  const handleLogoutClick = () => {
+    playClickSound();
+    logout();
+    setActiveTab('overview');
   };
 
   // Heart bars graphics representing student scores
@@ -462,7 +490,9 @@ export default function App() {
           <SyncStatusDrawer />
 
           {/* Global Currency Switcher Selector */}
-          <CurrencySwitcher />
+          <Suspense fallback={null}>
+            <CurrencySwitcher />
+          </Suspense>
 
           {/* Working Theme Switcher Toggle (Dark, Craft) */}
           <div className="flex items-center gap-1.5 bg-black/50 p-1.5 border-2 border-black rounded-none">
@@ -690,7 +720,14 @@ export default function App() {
                 transition={{ duration: 0.15, ease: 'easeOut' }}
               >
                 <ErrorBoundary>
-                  {renderSandbox()}
+                  <Suspense fallback={
+                    <div className="flex flex-col items-center justify-center py-24 gap-3 font-press text-[10px] text-[#ffff55]">
+                      <Sparkles className="w-6 h-6 animate-spin text-[#ffff55]" />
+                      <span className="mc-text-shadow">LOADING WORLD...</span>
+                    </div>
+                  }>
+                    {renderSandbox()}
+                  </Suspense>
                 </ErrorBoundary>
               </motion.div>
             </AnimatePresence>
@@ -708,16 +745,19 @@ export default function App() {
 
       {/* Floating Dynamic AI Navigation Assistant */}
       {isLoggedIn && profile && (
-        <AIAssistant
-          currentPage={activeTab}
-          profile={profile}
-          onNavigateTab={handleTabChange}
-        />
+        <Suspense fallback={null}>
+          <AIAssistant
+            currentPage={activeTab}
+            profile={profile}
+            onNavigateTab={handleTabChange}
+          />
+        </Suspense>
       )}
 
       {/* --- INTERACTIVE ONBOARDING TOUR OVERLAY --- */}
       {showTour && isLoggedIn && profile && (
-        <OnboardingTour
+        <Suspense fallback={null}>
+          <OnboardingTour
           onComplete={async (totalXP) => {
             localStorage.setItem(`scholarpath_onboarding_completed_${user || 'guest'}`, 'true');
             if (updateProfile) {
@@ -738,7 +778,8 @@ export default function App() {
           onNavigateTab={(tabId) => {
             setActiveTab(tabId);
           }}
-        />
+          />
+        </Suspense>
       )}
 
       {/* Global Toast Container */}
