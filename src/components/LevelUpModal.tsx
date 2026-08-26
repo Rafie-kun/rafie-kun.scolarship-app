@@ -166,7 +166,7 @@ export default function LevelUpModal({ currentLevel, points }: LevelUpModalProps
 
             {/* Motivation statement */}
             <p className="font-sans text-xs text-stone-400 mt-5 leading-relaxed italic">
-              "Your intellectual armor grows thicker as you advance through the academic biome."
+              "Your intellectual armor grows thicker as you advance through your academic journey."
             </p>
 
             {/* Minecraft Close Button */}

@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { playClickSound } from '../utils/sound';
 
-export type ThemeId = 'overworld' | 'nether' | 'end' | 'aether';
-export type ThemeMode = 'dark' | 'minecraft';
+// ScholarPath uses a single official Minecraft-inspired theme.
+// The legacy multi-theme API is preserved for compatibility but is fixed.
+export type ThemeId = 'overworld';
+export type ThemeMode = 'minecraft';
 export type CurrencyId = 
   | 'USD' | 'GBP' | 'EUR' | 'BDT' | 'CAD' | 'AUD' | 'INR' | 'JPY' 
   | 'CHF' | 'SGD' | 'MYR' | 'NZD' | 'ZAR' | 'BRL' | 'MXN';
@@ -63,16 +65,6 @@ const CURRENCY_SYMBOLS: Record<CurrencyId, string> = {
 };
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [themeMode, setThemeModeState] = useState<ThemeMode>(() => {
-    const stored = localStorage.getItem('scholarpath_theme_mode');
-    if (stored === 'light') return 'dark';
-    return (stored as ThemeMode) || 'minecraft';
-  });
-
-  const [theme, setThemeState] = useState<ThemeId>(() => {
-    return (localStorage.getItem('scholarpath_active_theme') as ThemeId) || 'overworld';
-  });
-
   const [soundEnabled, setSoundEnabled] = useState<boolean>(() => {
     return localStorage.getItem('scholarpath_sounds') !== 'false';
   });
@@ -125,59 +117,32 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     fetchRates();
   }, []);
 
-  // Apply theme to HTML classList and set CSS variables on the root element
+  // Apply the single Minecraft theme to the document root
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(
       'theme-overworld', 'theme-nether', 'theme-end', 'theme-aether',
       'theme-mode-modern', 'theme-mode-minecraft', 'theme-mode-light', 'theme-mode-dark'
     );
-    root.classList.add(`theme-${theme}`);
-    root.classList.add(`theme-mode-${themeMode}`);
-    if (themeMode !== 'minecraft') {
-      root.classList.add('theme-mode-modern');
-    }
+    root.classList.add('theme-overworld');
+    root.classList.add('theme-mode-minecraft');
+    localStorage.removeItem('scholarpath_active_theme');
+    localStorage.removeItem('scholarpath_theme_mode');
 
-    // Set CSS custom properties on root dynamically based on themeMode
-    if (themeMode === 'minecraft') {
-      root.style.setProperty('--bg-primary', '#110f0d');
-      root.style.setProperty('--bg-secondary', '#2c2927');
-      root.style.setProperty('--bg-tertiary', '#141414');
-      root.style.setProperty('--text-primary', '#e0e0e0');
-      root.style.setProperty('--text-secondary', '#ffff55');
-      root.style.setProperty('--text-tertiary', '#ffaa00');
-      root.style.setProperty('--border-color', '#000000');
-      root.style.setProperty('--border-style', '4px solid #000000');
-      root.style.setProperty('--font-heading', '"Press Start 2P", monospace');
-      root.style.setProperty('--font-body', '"JetBrains Mono", monospace');
-      root.style.setProperty('--box-shadow', 'inset -4px -4px 0 #141414, inset 4px 4px 0 #555');
-    } else {
-      root.style.setProperty('--bg-primary', '#0b0f19');
-      root.style.setProperty('--bg-secondary', '#111827');
-      root.style.setProperty('--bg-tertiary', '#1e293b');
-      root.style.setProperty('--text-primary', '#f8fafc');
-      root.style.setProperty('--text-secondary', '#cbd5e1');
-      root.style.setProperty('--text-tertiary', '#94a3b8');
-      root.style.setProperty('--border-color', '#334155');
-      root.style.setProperty('--border-style', '2px solid #334155');
-      root.style.setProperty('--font-heading', '"Inter", sans-serif');
-      root.style.setProperty('--font-body', '"Inter", sans-serif');
-      root.style.setProperty('--box-shadow', '0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -2px rgba(0,0,0,0.5)');
-    }
+    root.style.setProperty('--bg-primary', '#110f0d');
+    root.style.setProperty('--bg-secondary', '#2c2927');
+    root.style.setProperty('--bg-tertiary', '#141414');
+    root.style.setProperty('--text-primary', '#e0e0e0');
+    root.style.setProperty('--text-secondary', '#ffff55');
+    root.style.setProperty('--text-tertiary', '#ffaa00');
+    root.style.setProperty('--border-color', '#000000');
+    root.style.setProperty('--border-style', '4px solid #000000');
+    root.style.setProperty('--font-heading', '"Press Start 2P", monospace');
+    root.style.setProperty('--font-body', '"JetBrains Mono", monospace');
+    root.style.setProperty('--box-shadow', 'inset -4px -4px 0 #141414, inset 4px 4px 0 #555');
+  }, []);
 
-    localStorage.setItem('scholarpath_active_theme', theme);
-    localStorage.setItem('scholarpath_theme_mode', themeMode);
-  }, [theme, themeMode]);
-
-  const setThemeMode = (nextMode: ThemeMode) => {
-    playClickSound();
-    setThemeModeState(nextMode);
-  };
-
-  const setTheme = (nextTheme: ThemeId) => {
-    playClickSound();
-    setThemeState(nextTheme);
-  };
+  const noopThemeSetter = () => {};
 
   const toggleSound = () => {
     const nextState = !soundEnabled;
@@ -217,23 +182,20 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     // Nice layout formatter (e.g. 15,200 € or ৳ 1,75,000)
     const formattedNum = multiplied.toLocaleString();
-    if (currency === 'BDT') {
-      return `${symbol} ${formattedNum}`;
-    }
     return `${symbol}${formattedNum}`;
   };
 
   return (
     <ThemeContext.Provider value={{
-      themeMode,
-      theme,
+      themeMode: 'minecraft',
+      theme: 'overworld',
       soundEnabled,
       textGlow,
       currency,
       rates,
       threeDActive,
-      setThemeMode,
-      setTheme,
+      setThemeMode: noopThemeSetter,
+      setTheme: noopThemeSetter,
       toggleSound,
       toggleGlow,
       setCurrency,

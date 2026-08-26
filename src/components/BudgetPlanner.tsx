@@ -228,7 +228,7 @@ export default function BudgetPlanner() {
           <Coins className="w-4.5 h-4.5 text-[#ffff55]" /> Treasury Budget Planner
         </h3>
         <p className="text-stone-300 text-xs mt-1.5 leading-normal">
-          Evaluate admissions costs, model local progressive student taxes, and simulate part-time jobs income legally authorized in your destination biome.
+          Evaluate admissions costs, model local progressive student taxes, and simulate part-time job income legally allowed in your destination country.
         </p>
       </div>
 
@@ -247,7 +247,7 @@ export default function BudgetPlanner() {
       <div className="mc-window bg-[#2a2421] border-4 border-black p-5 [box-shadow:inset_-4px_-4px_0_#171412,inset_4px_4px_0_#433833] space-y-5">
         <div className="flex flex-col sm:flex-row gap-4 font-mono text-xs">
           <div className="flex-1 flex flex-col gap-1.5">
-            <span className="text-stone-400 uppercase text-[9px] font-bold">Target Evaluation Biome (Country):</span>
+            <span className="text-stone-400 uppercase text-[9px] font-bold">Destination country:</span>
             <select
               value={selectedCountry}
               onChange={(e) => { playClickSound(); setSelectedCountry(e.target.value); }}

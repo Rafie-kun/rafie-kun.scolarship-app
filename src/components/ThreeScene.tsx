@@ -3,12 +3,11 @@ import { useTheme } from '../context/ThemeContext';
 
 /**
  * 🌠 ThreeScene - A fully modular, ultra-high-performance 3D canvas constellation
- * rendering engine. Color spectra, velocities, and link distances dynamically respond 
- * to active academic unlockable Biomes (Overworld, Nether, End, Aether).
+ * rendering engine using the ScholarPath green palette.
  * Respects user's preferences by toggling on/off instantly.
  */
 export default function ThreeScene() {
-  const { theme, threeDActive, themeMode } = useTheme();
+  const { threeDActive } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -22,29 +21,12 @@ export default function ThreeScene() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Dynamic configuration variables based on Biomes
+    // Visual configuration
     let nodeColor = '#55ff55';
     let lineColor = 'rgba(85, 255, 85, 0.15)';
     let particleCount = 65;
     let maxDistance = 145;
     let speedMultiplier = 1;
-
-    if (theme === 'nether') {
-      nodeColor = '#ff5555';
-      lineColor = 'rgba(255, 85, 85, 0.18)';
-      speedMultiplier = 1.6;
-      particleCount = 75;
-    } else if (theme === 'end') {
-      nodeColor = '#ff55ff';
-      lineColor = 'rgba(255, 85, 255, 0.16)';
-      speedMultiplier = 0.8;
-      maxDistance = 180;
-    } else if (theme === 'aether') {
-      nodeColor = '#55ffff';
-      lineColor = 'rgba(85, 255, 255, 0.2)';
-      speedMultiplier = 1.1;
-      particleCount = 55;
-    }
 
     interface Particle {
       x: number;
@@ -131,7 +113,7 @@ export default function ThreeScene() {
         ctx.beginPath();
         ctx.arc(projX, projY, Math.max(0.5, projSize), 0, Math.PI * 2);
         ctx.fillStyle = nodeColor;
-        ctx.shadowBlur = themeMode === 'minecraft' ? 0 : 4;
+        ctx.shadowBlur = 0;
         ctx.shadowColor = nodeColor;
         ctx.fill();
 
@@ -169,7 +151,7 @@ export default function ThreeScene() {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [theme, threeDActive, themeMode]);
+  }, [threeDActive]);
 
   if (!threeDActive) return null;
 

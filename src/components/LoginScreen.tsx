@@ -35,7 +35,6 @@ const EDUCATION_LEVELS = [
 
 export default function LoginScreen() {
   const { login, register, guestLogin, authLoading, authError } = useAuth();
-  const { themeMode, setThemeMode } = useTheme();
   
   const [activeTab, setActiveTab] = useState<'signin' | 'register'>('signin');
   const [username, setUsername] = useState('');
@@ -71,18 +70,12 @@ export default function LoginScreen() {
 
   const [localError, setLocalError] = useState('');
 
-  const isRetro = themeMode === 'minecraft';
+  const isRetro = true;
 
   const handleTabChange = (tab: 'signin' | 'register') => {
     playClickSound();
     setActiveTab(tab);
     setLocalError('');
-  };
-
-  const handleThemeToggle = () => {
-    playClickSound();
-    const nextMode = isRetro ? 'dark' : 'minecraft';
-    setThemeMode(nextMode);
   };
 
   const handleMajorDropdownChange = (val: string) => {
@@ -225,31 +218,6 @@ export default function LoginScreen() {
       {/* Dynamic 3D Environment Background */}
       <MinecraftWorld />
 
-      {/* Floating Theme Mode Switcher in top right corner */}
-      <div className="absolute top-4 right-4 z-20 flex gap-2">
-        <button
-          type="button"
-          onClick={handleThemeToggle}
-          className={`flex items-center gap-2 text-[10px] uppercase font-bold py-2 px-3 tracking-wide cursor-pointer transition-all ${
-            isRetro
-              ? 'mc-btn text-[#55ffff]'
-              : 'bg-slate-900/80 backdrop-blur-md border border-indigo-500/30 text-indigo-300 hover:bg-slate-800'
-          }`}
-        >
-          {isRetro ? (
-            <>
-              <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-              <span>🛰️ MODERN COMPASS SKIN</span>
-            </>
-          ) : (
-            <>
-              <Laptop className="w-3.5 h-3.5 text-[#ffff55]" />
-              <span className="font-mono text-xs">📦 MINECRAFT RETRO COMPASS</span>
-            </>
-          )}
-        </button>
-      </div>
-
       {/* Main Container Card panel */}
       <div className={`relative w-full max-w-xl z-10 transition-all duration-300 ${
         isRetro 
@@ -269,7 +237,7 @@ export default function LoginScreen() {
               ? 'font-press text-[9px] text-[#ffaa00] animate-pulse'
               : 'text-xs text-indigo-400 bg-indigo-950/50 py-1 px-3 border border-indigo-900/40 w-fit mx-auto'
           }`}>
-            🌌 ScholarPath Pathfinder Hub v3.7.6
+            Scholarship & Internship Finder
           </span>
           <h1 className={`tracking-wider relative inline-block select-none ${
             isRetro
@@ -763,12 +731,12 @@ export default function LoginScreen() {
           >
             {authLoading ? (
               <span className="flex items-center justify-center gap-2">
-                <Sparkles className="w-4 h-4 animate-spin text-[#ffff55]" /> Booting Matrix Environment...
+                <Sparkles className="w-4 h-4 animate-spin text-[#ffff55]" /> Loading...
               </span>
             ) : (
               <span className="flex items-center justify-center gap-2">
                 <Play className={`w-3.5 h-3.5 shrink-0 ${isRetro ? 'fill-[#ffff55]' : 'fill-white'}`} />
-                {activeTab === 'signin' ? 'LOG IN & SPAWN CHARACTER' : 'SPAWN ACTIVE PATHFINDER'}
+                {activeTab === 'signin' ? 'LOG IN' : 'CREATE MY FREE ACCOUNT'}
               </span>
             )}
           </button>
@@ -784,22 +752,27 @@ export default function LoginScreen() {
           }`}>OR</span>
         </div>
 
+        {/* Guest / demo mode */}
         <button
           type="button"
           onClick={() => { playClickSound(); guestLogin(); }}
+          disabled={authLoading}
           className={`w-full py-3.5 px-4 font-bold uppercase transition-all tracking-wide cursor-pointer ${
             isRetro
               ? 'mc-btn text-[#55ffff] font-press text-[9px]'
               : 'w-full bg-slate-950 hover:bg-slate-900 text-[#55ffff] border border-[#55ffff]/30 shadow-lg font-sans text-xs tracking-wider'
           }`}
         >
-          🎮 SPAWN INSTANTLY AS GUEST
+          🎮 TRY THE DEMO (NO SIGN-UP)
         </button>
+        <p className="text-center text-[10px] text-stone-400 mt-2 leading-relaxed">
+          The demo walks you through every feature — scholarship matching, the budget planner, and the AI advisor — using sample data. A guided tour starts automatically.
+        </p>
 
         <p className={`text-center font-mono mt-4 leading-normal ${
           isRetro ? 'text-[9px] text-[#ffdd55] uppercase' : 'text-[11px] text-[#ffdd55]/80'
         }`}>
-          *Registered players gain full cloud persistency, XP character levels, custom equipment badges, and live application tracking!
+          *Free accounts save your progress, XP, tracked scholarships, applications, and budget plans to your profile.
         </p>
       </div>
 

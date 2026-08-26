@@ -17,7 +17,7 @@ export default function EnhancedWizardProgress({
   const steps = [
     { id: 1, name: "Curriculum", icon: Compass, color: "text-blue-400" },
     { id: 2, name: "History", icon: Map, color: "text-purple-400" },
-    { id: 3, name: "Biome Info", icon: BookOpen, color: "text-[#ffaa00]" },
+    { id: 3, name: "Country & Field", icon: BookOpen, color: "text-[#ffaa00]" },
     { id: 4, name: "Subjects", icon: Calculator, color: "text-emerald-400" },
     { id: 5, name: "Analytics", icon: Sparkles, color: "text-[#ffff55]" },
     { id: 6, name: "Budget", icon: Coins, color: "text-red-400" },

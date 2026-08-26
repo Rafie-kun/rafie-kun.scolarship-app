@@ -78,7 +78,7 @@ export default function AIAssistant({ currentPage, profile, onNavigateTab }: AIA
       case 'counselling': return 'Wise Wizard Chat';
       case 'learning': return 'Navigator Compass';
       case 'community': return 'Tavern Forum';
-      case 'customize': return 'Skins & Biomes';
+      case 'customize': return 'Settings';
       case 'profile': return 'Hero Skin Profile';
       default: return 'Active Map Location';
     }

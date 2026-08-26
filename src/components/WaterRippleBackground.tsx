@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useTheme } from '../context/ThemeContext';
 
 export default function WaterRippleBackground() {
-  const { theme, themeMode } = useTheme();
+  const { themeMode } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -74,32 +74,8 @@ export default function WaterRippleBackground() {
       }
     }, 2800);
 
-    // Gradient properties based on themes
+    // Gradient properties for the single Minecraft theme
     const getThemeColors = () => {
-      // Dark/Cosmic Spec
-      if (theme === 'nether') {
-        return {
-          bg1: '#0f0505',
-          bg2: '#200808',
-          rippleColor: 'rgba(239, 68, 68, 0.06)',
-          gridColor: 'rgba(239, 68, 68, 0.015)',
-        };
-      } else if (theme === 'end') {
-        return {
-          bg1: '#090312',
-          bg2: '#160824',
-          rippleColor: 'rgba(192, 38, 211, 0.06)',
-          gridColor: 'rgba(192, 38, 211, 0.015)',
-        };
-      } else if (theme === 'aether') {
-        return {
-          bg1: '#020d1a',
-          bg2: '#081c33',
-          rippleColor: 'rgba(6, 182, 212, 0.06)',
-          gridColor: 'rgba(6, 182, 212, 0.015)',
-        };
-      }
-      // Overworld/Default Dark
       return {
         bg1: '#080a10',
         bg2: '#0e1220',
@@ -195,7 +171,7 @@ export default function WaterRippleBackground() {
       clearInterval(dropInterval);
       cancelAnimationFrame(animationId);
     };
-  }, [theme, themeMode]);
+  }, [themeMode]);
 
   return (
     <canvas
