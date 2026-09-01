@@ -650,7 +650,18 @@ export default function ScholarshipsView() {
               <div className="space-y-4">
                 {scholarships.map((sch) => {
                   const daysLeft = getRemainingDays(sch.deadline);
-                  const gpaMatch = profile ? profile.gpa >= sch.gpaRequirement : true;
+                  // --- Eligibility auto-checker (#1) ---
+                  const gpaVal = profile?.gpa ?? 0;
+                  const gpaReq = sch.gpaRequirement ?? 0;
+                  const gpaGap = gpaVal - gpaReq;
+                  const gpaEligible = !profile || gpaVal >= gpaReq;
+                  const gpaBorderline = !gpaEligible && gpaGap >= -0.3;
+                  const countryEligible = !profile || !sch.eligibleCountries?.length ||
+                    sch.eligibleCountries.some((c: string) => c.toLowerCase() === 'worldwide' || c.toLowerCase() === (profile.nationality || '').toLowerCase() || c.toLowerCase() === (profile.country || '').toLowerCase());
+                  const degreeEligible = !profile || !sch.degreeLevel?.length ||
+                    sch.degreeLevel.some((d: string) => d.toLowerCase() === (profile.intendedDegree || '').toLowerCase());
+                  const overallEligible = gpaEligible && countryEligible && degreeEligible;
+                  const overallStatus = !profile ? 'unknown' : overallEligible ? 'eligible' : gpaBorderline ? 'conditional' : 'not_eligible';
 
                   return (
                     <div 
@@ -663,6 +674,12 @@ export default function ScholarshipsView() {
                           <span className="text-[10px] font-bold text-[#55ff55] bg-black/40 px-2.5 py-0.5 border border-[#55ff55]/20 font-mono">
                             💰 {sch.fundingCoverage}
                           </span>
+                          {/* Eligibility badge */}
+                          {profile && (
+                            <span className={`text-[8px] font-press px-2 py-0.5 border flex items-center gap-1 ${overallStatus === 'eligible' ? 'bg-emerald-950 text-[#55ff55] border-[#55ff55]' : overallStatus === 'conditional' ? 'bg-amber-950 text-[#ffaa00] border-[#ffaa00]' : 'bg-red-950 text-red-300 border-red-600'}`}>
+                              {overallStatus === 'eligible' ? '✅ Eligible' : overallStatus === 'conditional' ? '⚠️ Within 0.3 GPA' : '❌ Check Requirements'}
+                            </span>
+                          )}
                           {daysLeft <= 90 && (
                             <span className="text-[9px] font-bold bg-red-950 text-red-300 px-2 py-0.5 border border-red-800/20 font-mono flex items-center gap-1">
                               <Clock className="w-3.5 h-3.5" /> Urgent: {daysLeft} Days Left!
@@ -678,13 +695,15 @@ export default function ScholarshipsView() {
                             <span className="text-stone-400 block text-[9px] uppercase">GPA REQUIREMENT:</span>
                             <span className="font-bold flex items-center gap-1.5 mt-0.5">
                               <Target className="w-4 h-4 text-purple-400" />
-                              <span className={gpaMatch ? "text-[#55ff55]" : "text-[#ff5555]"}>
+                              <span className={gpaEligible ? "text-[#55ff55]" : gpaBorderline ? "text-[#ffaa00]" : "text-[#ff5555]"}>
                                 ≥ {(sch.gpaRequirement ?? 3.0).toFixed(2)}
                               </span>
-                              {gpaMatch ? (
-                                <span className="text-[9px] text-[#55ff55] bg-emerald-950 px-1 border border-emerald-500/20 rounded-none">Eligible</span>
+                              {gpaEligible ? (
+                                <span className="text-[9px] text-[#55ff55] bg-emerald-950 px-1 border border-emerald-500/20">Eligible</span>
+                              ) : gpaBorderline ? (
+                                <span className="text-[9px] text-[#ffaa00] bg-amber-950 px-1 border border-amber-600/30">Within 0.3 - Conditional</span>
                               ) : (
-                                <span className="text-[9px] text-[#ff5555] bg-red-950 px-1 border border-red-500/20 rounded-none">Insufficient</span>
+                                <span className="text-[9px] text-[#ff5555] bg-red-950 px-1 border border-red-500/20">Need {gpaReq.toFixed(2)}, you have {gpaVal.toFixed(2)}</span>
                               )}
                             </span>
                           </div>
@@ -696,9 +715,25 @@ export default function ScholarshipsView() {
                             </span>
                           </div>
 
-                          <div className="col-span-1 md:col-span-2 border-t border-stone-800 pt-2 text-[11px] text-stone-300">
+                          <div className="col-span-1 md:col-span-2 border-t border-stone-800 pt-2 text-[11px] text-stone-300 space-y-1">
                             <span className="text-stone-400 block text-[9px] uppercase">Eligible Nationalities & Lands:</span>
-                            <span className="mt-0.5 text-[#55ffff] font-semibold">{sch.eligibleCountries?.join(", ") ?? "Any"}</span>
+                            <span className="mt-0.5 font-semibold flex items-center gap-2">
+                              <span className={countryEligible ? "text-[#55ff55]" : "text-[#ff5555]"}>{sch.eligibleCountries?.join(", ") ?? "Any"}</span>
+                              {profile && (
+                                <span className={`text-[8px] px-1.5 py-0.5 border ${countryEligible ? 'bg-emerald-950 text-emerald-300 border-emerald-800' : 'bg-red-950 text-red-300 border-red-800'}`}>
+                                  {countryEligible ? '✓ Your nationality eligible' : '✗ Check nationality requirement'}
+                                </span>
+                              )}
+                            </span>
+                            {profile && sch.degreeLevel?.length > 0 && (
+                              <span className="flex items-center gap-2">
+                                <span className="text-stone-400 text-[9px] uppercase">Degree:</span>
+                                <span className={degreeEligible ? "text-[#55ff55] text-[10px]" : "text-[#ffaa00] text-[10px]"}>{sch.degreeLevel.join(", ")}</span>
+                                <span className={`text-[8px] px-1.5 py-0.5 border ${degreeEligible ? 'bg-emerald-950 text-emerald-300 border-emerald-800' : 'bg-amber-950 text-amber-300 border-amber-700'}`}>
+                                  {degreeEligible ? '✓ Degree matches' : '⚠ Different degree levels'}
+                                </span>
+                              </span>
+                            )}
                           </div>
                         </div>
 
