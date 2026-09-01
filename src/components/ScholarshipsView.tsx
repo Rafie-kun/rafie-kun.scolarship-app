@@ -81,6 +81,9 @@ export default function ScholarshipsView() {
     setRefreshing(false);
   };
 
+  const getRedditUrl = (sch: any) => `https://www.reddit.com/search/?q=${encodeURIComponent(sch.name + ' scholarship')}&type=comment&sort=new`;
+  const getOfficialSourceUrl = (sch: any) => sch.officialWebsite || sch.applicationUrl || `https://www.google.com/search?q=${encodeURIComponent(sch.name + ' official')}`;
+
   // Search/Filters states
   const [search, setSearch] = useState('');
   const [gpaMin, setGpaMin] = useState('');
@@ -745,6 +748,12 @@ export default function ScholarshipsView() {
                                 </span>
                               </span>
                             )}
+                            <div className="flex flex-wrap gap-3 text-[10px] font-mono pt-1 border-t border-stone-800">
+                              <a href={getOfficialSourceUrl(sch)} target="_blank" rel="noopener noreferrer" className="text-[#55ffff] hover:underline flex items-center gap-1">
+                                <ExternalLink className="w-3 h-3" /> Official source
+                              </a>
+                              <a href={getRedditUrl(sch)} target="_blank" rel="noopener noreferrer" className="text-[#ffaa00] hover:underline">Discuss on Reddit →</a>
+                            </div>
                           </div>
                         </div>
 

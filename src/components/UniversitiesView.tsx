@@ -66,6 +66,50 @@ export default function UniversitiesView() {
     ? Math.round(livingCost.rentMonthly + livingCost.foodMonthly + livingCost.transportMonthly + livingCost.healthInsuranceMonthly + livingCost.miscMonthly)
     : 0;
 
+  // University reviews (by internationals)
+  const [uniReviews, setUniReviews] = useState<any[]>([]);
+  const [uniAvgRating, setUniAvgRating] = useState<string | null>(null);
+  const [newReviewRating, setNewReviewRating] = useState(5);
+  const [newReviewText, setNewReviewText] = useState('');
+  const [reviewSubmitting, setReviewSubmitting] = useState(false);
+
+  const fetchUniReviews = async (uniName: string) => {
+    try {
+      const res = await fetch(`/api/university-reviews?university=${encodeURIComponent(uniName)}`);
+      if (res.ok) {
+        const data = await res.json();
+        setUniReviews(data.reviews || []);
+        setUniAvgRating(data.average);
+      }
+    } catch {}
+  };
+
+  useEffect(() => {
+    if (selectedUni) fetchUniReviews(selectedUni.name);
+    else { setUniReviews([]); setUniAvgRating(null); }
+  }, [selectedUni?.name]);
+
+  const handleSubmitReview = async () => {
+    if (!selectedUni || newReviewText.trim().length < 10) return;
+    playClickSound();
+    setReviewSubmitting(true);
+    try {
+      const res = await authorizedFetch('/api/university-reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ university: selectedUni.name, rating: newReviewRating, text: newReviewText.trim() })
+      });
+      if (res.ok) {
+        setNewReviewText('');
+        await fetchUniReviews(selectedUni.name);
+        playAdvancementSound();
+      }
+    } catch {}
+    setReviewSubmitting(false);
+  };
+
+  const getUniversityRedditUrl = (uni: any) => `https://www.reddit.com/search/?q=${encodeURIComponent(uni.name + ' international students')}&type=comment&sort=new`;
+
   // Load all universities
   const fetchAllUnis = async () => {
     setLoading(true);
@@ -795,6 +839,43 @@ export default function UniversitiesView() {
                   </div>
                 </div>
               )}
+
+              {/* Curated links: Discuss on Reddit + official source */}
+              <div className="flex flex-wrap gap-3 text-[11px] font-mono">
+                <a href={getUniversityRedditUrl(selectedUni)} target="_blank" rel="noopener noreferrer" className="text-[#ffaa00] hover:underline">Discuss on Reddit →</a>
+                <a href={selectedUni.website || selectedUni.applicationUrl || '#'} target="_blank" rel="noopener noreferrer" className="text-[#55ffff] hover:underline">Official site →</a>
+              </div>
+
+              {/* Student Reviews by Internationals */}
+              <div className="space-y-3 border-t border-stone-700 pt-4">
+                <h4 className="font-press text-[10px] text-[#ffff55] uppercase flex items-center gap-2">
+                  Student Reviews by Internationals {uniAvgRating ? <span className="text-stone-300 font-mono text-[10px]">· {uniAvgRating} ★ avg ({uniReviews.length})</span> : null}
+                </h4>
+                <div className="space-y-2 max-h-[220px] overflow-y-auto pr-1">
+                  {uniReviews.length === 0 ? (
+                    <p className="text-xs font-mono text-stone-500">No reviews yet — be the first to share your experience!</p>
+                  ) : uniReviews.map((rev: any) => (
+                    <div key={rev.id} className="bg-stone-900 border border-stone-800 p-3 space-y-1">
+                      <div className="flex items-center gap-2 text-[11px] font-mono">
+                        <span className="font-bold text-stone-200">{rev.author}</span>
+                        <span className="text-[#ffaa00]">{'★'.repeat(rev.rating)}{'☆'.repeat(5-rev.rating)}</span>
+                        <span className="text-stone-500">{new Date(rev.createdAt).toLocaleDateString()}</span>
+                      </div>
+                      <p className="text-xs font-mono text-stone-300 leading-relaxed">{rev.text}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-black/30 border-2 border-stone-800 p-3 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono text-stone-400 uppercase">Your rating:</span>
+                    {[1,2,3,4,5].map(n => (
+                      <button key={n} onClick={() => setNewReviewRating(n)} className={`w-7 h-7 border-2 flex items-center justify-center text-xs ${newReviewRating >= n ? 'bg-[#ffaa00] border-black text-black' : 'bg-stone-800 border-stone-700 text-stone-400'}`}>★</button>
+                    ))}
+                  </div>
+                  <textarea value={newReviewText} onChange={e=>setNewReviewText(e.target.value)} placeholder="Share your honest experience as an international student (costs, visa wait, campus life)..." className="w-full bg-black/40 border-2 border-stone-800 text-stone-200 p-2 text-xs font-mono min-h-[70px] focus:border-[#ffff55] outline-none" />
+                  <button onClick={handleSubmitReview} disabled={reviewSubmitting || newReviewText.trim().length < 10} className="mc-btn px-4 py-2 text-[9px] disabled:opacity-50">Post Review</button>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-2 border-t border-stone-700 pt-3.5">

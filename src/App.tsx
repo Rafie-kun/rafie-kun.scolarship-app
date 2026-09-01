@@ -32,6 +32,7 @@ const AdvancedSearch = lazy(() => import('./components/AdvancedSearch'));
 const VisaGuide = lazy(() => import('./components/VisaGuide'));
 const InternshipExplorer = lazy(() => import('./components/InternshipExplorer'));
 const AdmissionWizard = lazy(() => import('./components/AdmissionWizard'));
+const CountryMatcherQuiz = lazy(() => import('./components/CountryMatcherQuiz'));
 
 import GlobalSearch from './components/GlobalSearch';
 import Tooltip from './components/Tooltip';
@@ -76,6 +77,7 @@ const navItems = [
   { id: 'scholarships', label: 'Scholarship Finder', mcName: 'Scholarships', desc: 'Browse matched international fellowships & fully funded stipends', icon: GraduationCap, color: 'text-yellow-400' },
   { id: 'internships', label: 'Internship Finder', mcName: 'Internships', desc: 'Browse global paid internships, research posts & UN positions', icon: Briefcase, color: 'text-emerald-400 font-bold' },
   { id: 'universities', label: 'Universities', mcName: 'Universities Directory', desc: 'Browse entry GPA benchmarks for global institutions', icon: Building, color: 'text-sky-400' },
+  { id: 'matcher', label: 'Country Matcher', mcName: 'Country Finder', desc: 'Answer 5 questions to find your best-fit countries with living costs and visa info', icon: Compass, color: 'text-[#ffaa00] font-bold' },
   { id: 'search', label: 'Advanced Search', mcName: 'Search Engine', desc: 'High-precision cross-database query engine for scholarships and universities', icon: Search, color: 'text-violet-400 font-bold' },
   { id: 'applications', label: 'Applications Tracker', mcName: 'Applications Ledger', desc: 'Manage your active application checkpoints, tasks, and deadlines', icon: BookmarkCheck, color: 'text-red-400' },
   { id: 'simulator', label: 'Admissions Calculator', mcName: 'Admission Chances', desc: 'Forecast acceptance margins with custom GPA and profile parameters', icon: Calculator, color: 'text-indigo-400' },
@@ -217,6 +219,8 @@ export default function App() {
         return <InternshipExplorer />;
       case 'universities':
         return <UniversitiesView />;
+      case 'matcher':
+        return <CountryMatcherQuiz />;
       case 'search':
         return <AdvancedSearch />;
       case 'applications':
