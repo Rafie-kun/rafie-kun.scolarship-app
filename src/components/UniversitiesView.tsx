@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { getCleanUniversityUrl } from '../utils/urlHelper';
 import ProfessorFinder from './ProfessorFinder';
+import HousingBoard from './HousingBoard';
 
 interface RecommendedUni {
   university: University;
@@ -845,6 +846,8 @@ export default function UniversitiesView() {
                 <a href={getUniversityRedditUrl(selectedUni)} target="_blank" rel="noopener noreferrer" className="text-[#ffaa00] hover:underline">Discuss on Reddit →</a>
                 <a href={selectedUni.website || selectedUni.applicationUrl || '#'} target="_blank" rel="noopener noreferrer" className="text-[#55ffff] hover:underline">Official site →</a>
               </div>
+
+              <HousingBoard country={selectedUni.country} universityName={selectedUni.name} />
 
               {/* Student Reviews by Internationals */}
               <div className="space-y-3 border-t border-stone-700 pt-4">

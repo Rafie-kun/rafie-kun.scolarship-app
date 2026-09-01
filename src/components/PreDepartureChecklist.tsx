@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Plane, Home, Heart, Building2, FileCheck, CheckCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound } from '../utils/sound';
+import FlightPriceWatcher from './FlightPriceWatcher';
 
 type VisaItem = { country: string; visaType: string; officialUrl: string };
 type Progress = Record<string, boolean>;
@@ -97,6 +98,8 @@ export default function PreDepartureChecklist() {
           );
         })}
       </div>
+
+      {selected && <FlightPriceWatcher country={selected} />}
 
       <div className="bg-amber-950/30 border-2 border-amber-700 p-3 flex items-start gap-2">
         <CheckCircle className="w-4 h-4 text-[#ffaa00] shrink-0 mt-0.5" />

@@ -248,7 +248,38 @@ Keep your response limited to 2-3 short, highly structured paragraphs. Act stric
   }
 });
 
-// 5. Budget tips endpoint (auth required: consumes server AI quota)
+// 5. Plagiarism / AI pattern check for SOPs (auth required)
+router.post('/plagiarism-check', authenticateToken, async (req: Request, res: Response) => {
+  const user = (req as any).user;
+  const username = user.username;
+  const profile = getProfileByUsername(username) || DEFAULT_ANON_PROFILE;
+  const { documentText } = req.body;
+  if (!documentText || String(documentText).trim().length < 50) {
+    return res.status(400).json({ error: 'Please paste at least 50 characters of essay text.' });
+  }
+  const customKey = (req.headers['x-gemini-key'] as string) || profile?.customGeminiKey;
+  try {
+    if (!hasGeminiKey(customKey)) throw new Error('Missing GEMINI_API_KEY');
+    const ai = getAIClient(customKey);
+    const prompt = `You are an academic integrity checker for university Statements of Purpose.
+Analyze this SOP draft for:
+1. Overused / generic phrases (e.g., "Since my childhood I have been passionate", "I want to change the world") - list them.
+2. Likely AI-generated patterns (repetitive sentence starts, overly formal, lack of personal specifics) - give 1-3 examples.
+3. Originality score 0-100 (100 = highly original, personal, specific).
+4. One concrete rewrite tip to make it more personal.
+
+Be concise, bullet-pointed, supportive. Text to check:
+"""
+${String(documentText).slice(0, 8000)}
+"""`;
+    const response = await ai.models.generateContent({ model: GEMINI_MODEL, contents: prompt });
+    res.json({ result: response.text });
+  } catch (err: any) {
+    res.json({ result: `**Offline Plagiarism Check**\n\n- No Gemini key configured, so this is a heuristic check.\n- Your essay is ${String(documentText).length} characters. Tip: Replace generic openers like "Since my childhood" with a specific anecdote from a project or course. Mention one professor or lab by name.\n- Add a GEMINI_API_KEY in Settings for a full AI-powered check.` });
+  }
+});
+
+// 6. Budget tips endpoint (auth required: consumes server AI quota)
 router.post('/budget-tips', authenticateToken, async (req: Request, res: Response) => {
   const { country, university, totalCost, yearlyEarnings, netCost, currency, hourlyWage, workHours } = req.body;
   

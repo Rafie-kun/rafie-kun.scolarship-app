@@ -14,6 +14,8 @@ export default function WritingVaultView() {
   const [review, setReview] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
+  const [plagiarismResult, setPlagiarismResult] = useState('');
+  const [plagiarismLoading, setPlagiarismLoading] = useState(false);
 
   const rewardedActionsRef = React.useRef<Set<string>>(new Set());
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
@@ -68,6 +70,29 @@ export default function WritingVaultView() {
       setReview('System Offline: Failed to evaluate admissions document. Verify secure connection.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handlePlagiarismCheck = async () => {
+    playClickSound();
+    if (!essayText.trim() || essayText.trim().length < 50) {
+      setPlagiarismResult('Please paste at least 50 characters before checking.');
+      return;
+    }
+    setPlagiarismLoading(true);
+    setPlagiarismResult('');
+    try {
+      const res = await authorizedFetch('/api/gemini/plagiarism-check', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ documentText: essayText })
+      });
+      const data = await res.json();
+      setPlagiarismResult(data.result || data.error || 'No result.');
+    } catch {
+      setPlagiarismResult('Plagiarism check failed. Try again.');
+    } finally {
+      setPlagiarismLoading(false);
     }
   };
 
@@ -154,6 +179,21 @@ In my future career, I plan to research compilers, operating system architecture
             >
               {loading ? 'Evaluating Core Chunks...' : 'ANALYZE ADMISSIONS MOTIVATIONS'}
             </button>
+            <button
+              type="button"
+              onClick={handlePlagiarismCheck}
+              disabled={plagiarismLoading || !essayText.trim()}
+              className="w-full bg-amber-950/40 border-2 border-[#ffaa00]/50 text-[#ffaa00] py-2.5 text-[9px] font-press uppercase hover:bg-amber-900/30 disabled:opacity-50"
+            >
+              {plagiarismLoading ? 'Checking...' : 'Check Plagiarism / AI Patterns'}
+            </button>
+            {plagiarismResult && (
+              <div className="bg-black/40 border-2 border-amber-600/30 p-3 max-h-[260px] overflow-y-auto">
+                <div className="prose prose-invert max-w-none text-xs font-mono leading-relaxed">
+                  <ReactMarkdown>{plagiarismResult}</ReactMarkdown>
+                </div>
+              </div>
+            )}
           </form>
         </div>
 
