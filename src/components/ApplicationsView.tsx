@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, CheckSquare, Square, Notebook, CheckCircle, Plus, ClipboardList, Trash2, ArrowRight, Sparkles, Shield, LayoutGrid, Columns3 } from 'lucide-react';
+import { Calendar, CheckSquare, Square, Notebook, CheckCircle, Plus, ClipboardList, Trash2, ArrowRight, Sparkles, Shield, LayoutGrid, Columns3, FileText } from 'lucide-react';
+import { getTemplateForCountry } from '../utils/documentTemplates';
 import { Application } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
@@ -691,11 +692,34 @@ export default function ApplicationsView() {
       )}
 
       {/* Global Merged Document Checklist - always visible */}
-      {apps.length > 0 && (
+      {apps.length > 0 && (() => {
+        const topCountry = (() => {
+          const counts: Record<string, number> = {};
+          for (const a of apps) {
+            // try to infer country from providerOrUni or name
+            const txt = `${a.providerOrUni} ${a.name}`.toLowerCase();
+            for (const c of ['Germany','United States','United Kingdom','Canada','Australia','France','Netherlands']) {
+              if (txt.includes(c.toLowerCase())) counts[c] = (counts[c]||0)+1;
+            }
+          }
+          const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+          return sorted[0]?.[0];
+        })();
+        const tpl = getTemplateForCountry(topCountry);
+        return (
         <div className="bg-[#2c2c2c] border-4 border-black p-4 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555] space-y-3">
           <h4 className="font-press text-[9px] text-[#ffff55] uppercase flex items-center gap-2">
             <ClipboardList className="w-4 h-4" /> Master Document Checklist (merged from {apps.length} tracked)
           </h4>
+          <div className="bg-amber-950/20 border border-amber-700/30 p-2.5 flex items-start gap-2">
+            <FileText className="w-4 h-4 text-[#ffaa00] shrink-0 mt-0.5" />
+            <div>
+              <span className="text-[11px] font-mono text-[#ffaa00] font-bold">Country template: {tpl.name}</span>
+              <ul className="text-[11px] font-mono text-stone-300 list-disc list-inside mt-1 space-y-0.5">
+                {tpl.items.map(it=> <li key={it}>{it}</li>)}
+              </ul>
+            </div>
+          </div>
           {mergedChecklist.length === 0 ? (
             <p className="text-xs font-mono text-stone-500">No checklist items yet.</p>
           ) : (
@@ -713,7 +737,8 @@ export default function ApplicationsView() {
             </div>
           )}
         </div>
-      )}
+        )
+        })()}
 
       {showConfetti && <ConfettiExplosion onComplete={() => setShowConfetti(false)} />}
     </div>

@@ -1,102 +1,79 @@
-# ScholarPath 🎓🚀
+# ScholarPath 🎓 — Scholarship, University & Internship Finder for International Students
 
-ScholarPath is an AI-powered student success ecosystem designed to connect international students with global university admissions, fully funded scholarship programs, and advanced application coaching.
+ScholarPath is an **AI-powered, Minecraft-inspired** platform that helps international students discover **scholarships, universities, internships and part-time jobs**, check eligibility, plan budgets, prepare visas, and track applications — all in one dark night-mode workspace.
 
-Rather than a simple listing index, ScholarPath represents a comprehensive workstation and workspace built upon a gamified adventure theme, providing high-efficiency guidance for students from Bangladesh, India, and across the globe.
-
----
-
-## 🛠️ The Two-Panel Paradigm
-
-ScholarPath is structured into two dedicated panels of operation designed to optimize student focus and workflow productivity:
-
-### 1. 🏡 Panel 1: Student Homepage
-An atmospheric, high-impact adventure launchpad tailored to discover top-fund opportunities and engage with the student cohort:
-* **The Plains Overlook Grid**: Review live, bespoke scholarship recommendations and high-ranking comparable university databases centered on student GPAs and degree majors.
-* **The Town Square Forum**: Share admission tips, DAAD curriculum analysis advice, and Chevening essay strategies in our community subreddits.
-* **Alumni Mentorship Registry**: Request dynamic booking sessions with certified alumni who won fully funded slots at Cambridge, Stanford, or Munich.
-* **The Wise Librarian (AI Study Copilot)**: A full-featured Chat terminal integrating server-side RAG to help students analyze and resolve eligibility checks instantly.
-
-### 2. 💻 Panel 2: ScholarPath Studio
-An elite, workspace-inspired lab built to craft, tailor, and prepare documents for admission reviews:
-* **The Admissions planner tracker**: Track application checklists, update notes, and manage application states (Saved, In Progress, Submitted, Winner!).
-* **The Alchemy Simulator (Dream University Lab)**: Hypothesize GPA tweaks, project additions, and essay hook focus topics to run admission simulations using historic international admissions vectors.
-* **The Redstone Forge (AI Personalized Path)**: Generate gamified, step-by-step custom activity checklists, online courses, and skills schemas over multi-month timescales.
-* **The Document Upload & Review Center**: Review personal SOP statements or full profile resumes for immediate line-level critical markup, grammar ratings, and high-impact hook generation via the Gemini API.
-* **Mock Interview Training**: Engage in voice-like simulations with our conversational panel board. Try out challenging admissions queries!
-* **The Portfolio Exporter**: Export timelines, application checklists, CV summaries, or essays to .docx, .md, .html, or .json schemas instantly.
+Live: `https://rafie-kun-scolarship-app.vercel.app` (Vercel) — for persistent accounts use Docker/Render (see Deployment).
 
 ---
 
-## 🏗️ Technology Architecture
+## Features
 
-* **Frontend**: React 19 + TypeScript, styled via modern high-contrast Tailwind CSS v4, utilizing motion layout transitions.
-* **Backend**: Express (Node.js) proxy server executing full-stack routing models to keep keys hidden from client bundles.
-* **Artificial Intelligence**: Integrates the official `@google/genai` TypeScript SDK utilizing `gemini-3.5-flash` for high-efficiency, evidence-based counseling, matching, and editing operations.
-* **Packaging**: Configured for lightweight multi-stage Docker compilation, binding to port `3000` internally.
+**Find your path**
+- **Scholarship Finder** — hundreds of scholarships with eligibility badges (GPA / country / degree), funding, deadlines, official apply links, Reddit discussion links, auto-updates hourly
+- **Internship & Part-Time Job Finder** — paid internships, research positions and student jobs, with stipends shown in your selected currency, auto-updated via RSS
+- **University Directory** — search by country/tuition/rank, detail cards show official website + apply portal, admitted GPA, acceptance rate, **dorm vs private living costs** + **housing board**, student reviews
+- **Will I Get In? wizard** — enter grades (4.0/5.0/percentage) + goals → see universities grouped into Likely Admit / Good Match / Reach with % estimates + personalized improvement tips
+- **Country Matcher Quiz** — 5 questions → ranked countries with living costs and visa info
+
+**Plan & prepare**
+- **Budget Planner** — tuition + living costs + visa + flight − scholarship − part-time income = your real number, in 15 currencies
+- **Visa Guide** — destination guides (fees, proof-of-funds, work rights, post-study permits) with citizenship selector + step-by-step timeline; includes **Mock Visa Interview** (AI-scored, country-specific)
+- **IELTS/TOEFL Drill** — 10-min practice test with band estimate
+- **Pre-Departure Checklist** — per-country tasks (passport → flight) with local progress + **Flight Price Watcher** (cheapest months to fly)
+- **Success Stories Wall** — verified winners share GPA + essay tips
+
+**Apply & track**
+- **Applications Kanban** — drag cards between Saved / In Progress / Submitted / Accepted / Won (persists via `POST /api/applications`)
+- **Master Document Checklist** — deduplicated across all tracked apps + per-country templates (e.g., Germany blocked account)
+- **Deadlines Calendar** — list + month-grid view, `Download .ICS` and per-item `Add to Google Calendar`
+- **Study Groups** — see how many others track the same scholarship, Join creates a community post
+- **Document Center** — paste SOP → AI review + **Plagiarism / AI pattern check**; upload CV PDF → real text extraction + 3-bullet summary
+- **CV Builder & Export Center**, **Community Forum**, **Professor Finder** (per-university, keyword search via Gemini)
+
+**Platform**
+- **AI Advisor (Wise Librarian)** — strictly academic-only (admissions, letters, ECTS transfer, bachelor→master pathways, visas)
+- **Eligibility auto-checker** on every scholarship card
+- **PWA** — installable, offline shell cache, 14-day deadline push via Notification API
+- **Dark Minecraft night theme** — real game textures (`deepslate.png`, `stone.png`, `oak_planks.png`, `dirt.png`) via `public/textures/`
 
 ---
 
-## 🚀 Installation & Local Launch
+## Tech Stack
 
-### Prerequisites
-* Node.js v20+ with NPM
-* A validated Google Gemini API Key
+- **Frontend**: React 19 + TypeScript, Vite 6, Tailwind v4 (`@tailwindcss/vite`), `motion`, `recharts`, `react-markdown`
+- **Backend**: Express 4 + `better-sqlite3` (file DB, `/tmp` on Vercel) + optional `@libsql/client` for Turso persistence, `pdf-parse` (lazy-loaded), `web-push` for PWA push, `node-cron` schedulers
+- **AI**: `@google/genai` via shared `GEMINI_MODEL` env var (default `gemini-3.6-flash`)
+- **Build**: `vite build` + `esbuild` bundle to `dist/server.cjs` + `scripts/copy-data.js`
 
-### Setup Variables
-Copy the dotenv example:
+---
+
+## Quick Start
+
 ```bash
-cp .env.example .env
-```
-Populate `.env` with your dedicated secrets:
-```env
-GEMINI_API_KEY="AIzaSy..."
-# REQUIRED in production - generate with: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-JWT_SECRET="your-long-random-secret"
-ADMIN_TOKEN="optional-admin-token"
-```
-
-### Installation
-```bash
-# Install NPM items
+cp .env.example .env   # fill GEMINI_API_KEY, JWT_SECRET (32+ hex chars), optional ADMIN_TOKEN, GEMINI_MODEL, VAPID keys, TURSO_*
 npm install
+npm run dev            # http://localhost:3000
+# or production:
+npm run build && NODE_ENV=production JWT_SECRET=... node dist/server.cjs
 ```
 
-### Run Local Development Server
-```bash
-# Runs full-stack hot-reload server (Express + Vite)
-npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Test each feature per `future.md` "How to test each locally" section.
 
 ---
 
-## 🐳 Running with Docker Container
+## Deployment
 
-Compile and run the entire localized stack cleanly in isolated environments:
+- **Docker (recommended for persistent DB):** `docker compose up --build` (set env in `.env` or compose)
+- **Render/Railway:** Build `npm ci && npm run build`, Start `node dist/server.cjs`, set env vars
+- **Vercel:** Works for UI + ephemeral DB (`persistence: ephemeral-tmp` in `/api/health`); for true persistence set `TURSO_DATABASE_URL` + `TURSO_AUTH_TOKEN`
 
-### Using Docker Compose
-```bash
-docker-compose up --build
-```
-
-### Or using Docker CLI directly
-```bash
-docker build -t scholarpath .
-docker run -p 3000:3000 --env-file .env scholarpath
-```
+See `DEPLOYMENT.md` and `Guide.md` for details. Auto-update runs hourly + on-boot + weekly GitHub Action (`auto-update.yml`).
 
 ---
 
-## ☁️ Production Deployment Guide
+## Security
 
-ScholarPath is built with standard portability in mind and can be easily hosted online:
-
-### 🌐 Frontend Hosting (Static Assets)
-The static files compile directly to `dist/` on build:
-* **GitHub Pages / Vercel**: Import and point to the static `dist/` root directory.
-
-### ⚙️ Full-Stack / Backend Hosting (Docker & Express API)
-To support active AI matching, document analysis, and PDF/DOCX compiler loops, deploy the server container directly:
-* **Railway / Render**: Connect your GitHub repository, assign your `GEMINI_API_KEY` environment secret, and deployment will automatically launch standard Dockerfile builds on port `3500` or `3000`!
-* **Google Cloud Run**: Execute clean cluster deployments utilizing standard container engines.
+- User-isolated: every private route reads `username` from verified JWT only
+- Profile updates field-whitelisted, XP capped server-side (≤100/action)
+- PDF uploads limited to ~7MB, resume text extracted server-side, never overwrites name/major/GPA with hallucinated data
+- Security headers via `vercel.json` + Express middleware

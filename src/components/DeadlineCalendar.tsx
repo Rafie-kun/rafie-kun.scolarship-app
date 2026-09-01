@@ -103,6 +103,25 @@ export default function DeadlineCalendar({ open, onClose }: { open: boolean; onC
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
+  const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
+
+  // Month grid helpers
+  const now = new Date();
+  const [gridMonth, setGridMonth] = useState(new Date(now.getFullYear(), now.getMonth(), 1));
+  const monthName = gridMonth.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+  const daysInMonth = new Date(gridMonth.getFullYear(), gridMonth.getMonth() + 1, 0).getDate();
+  const firstWeekday = new Date(gridMonth.getFullYear(), gridMonth.getMonth(), 1).getDay();
+  const deadlinesByDay: Record<number, TrackedApp[]> = {};
+  for (const a of apps) {
+    if (!a.deadline) continue;
+    const d = new Date(a.deadline);
+    if (d.getMonth() === gridMonth.getMonth() && d.getFullYear() === gridMonth.getFullYear()) {
+      const day = d.getDate();
+      if (!deadlinesByDay[day]) deadlinesByDay[day] = [];
+      deadlinesByDay[day].push(a);
+    }
+  }
+
   if (!open) return null;
 
   return (
@@ -113,9 +132,15 @@ export default function DeadlineCalendar({ open, onClose }: { open: boolean; onC
           <h3 className="font-press text-[11px] text-[#55ff55] flex items-center gap-2">
             <CalIcon className="w-5 h-5" /> DEADLINE CALENDAR
           </h3>
-          <button onClick={onClose} className="w-8 h-8 bg-stone-800 border-2 border-black flex items-center justify-center hover:bg-stone-700">
-            <X className="w-4 h-4 text-stone-300" />
-          </button>
+          <div className="flex items-center gap-2">
+            <div className="flex border-2 border-black bg-black/20">
+              <button onClick={()=>setViewMode('list')} className={`px-2 py-1 text-[8px] font-press ${viewMode==='list' ? 'bg-[#ffff55] text-black' : 'text-stone-400'}`}>List</button>
+              <button onClick={()=>setViewMode('grid')} className={`px-2 py-1 text-[8px] font-press ${viewMode==='grid' ? 'bg-[#ffff55] text-black' : 'text-stone-400'}`}>Month Grid</button>
+            </div>
+            <button onClick={onClose} className="w-8 h-8 bg-stone-800 border-2 border-black flex items-center justify-center hover:bg-stone-700">
+              <X className="w-4 h-4 text-stone-300" />
+            </button>
+          </div>
         </div>
 
         <p className="text-xs font-mono text-stone-400">
@@ -138,31 +163,56 @@ export default function DeadlineCalendar({ open, onClose }: { open: boolean; onC
               <span className="text-[10px] font-mono text-stone-500 self-center">Import this file into Google Calendar via Settings → Import & Export.</span>
             </div>
 
-            <div className="space-y-2">
-              {apps
-                .slice()
-                .sort((a, b) => new Date(a.deadline || 0).getTime() - new Date(b.deadline || 0).getTime())
-                .map(app => {
-                  const d = new Date(app.deadline || '');
-                  const isPast = d.getTime() < Date.now();
-                  const isSoon = !isPast && d.getTime() - Date.now() < 14 * 24 * 3600 * 1000;
-                  return (
-                    <div key={app.id} className={`p-3 border-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${isPast ? 'bg-red-950/30 border-red-900 opacity-60' : isSoon ? 'bg-amber-950/30 border-amber-700' : 'bg-stone-900 border-stone-800'}`}>
-                      <div className="space-y-0.5">
-                        <span className="font-bold text-stone-100 text-xs block">{app.name}</span>
-                        {app.providerOrUni && <span className="text-[10px] font-mono text-stone-400">{app.providerOrUni}</span>}
-                        <span className={`text-[10px] font-mono flex items-center gap-1 ${isPast ? 'text-red-300' : isSoon ? 'text-[#ffaa00]' : 'text-stone-400'}`}>
-                          <Clock className="w-3 h-3" /> {app.deadline} {isPast ? '· Passed' : isSoon ? '· Due soon!' : ''}
-                          {app.status && <span className="ml-2 px-1.5 py-0.5 bg-black/40 border border-stone-700 text-[9px]">{app.status}</span>}
-                        </span>
+            {viewMode === 'grid' ? (
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <button onClick={()=>setGridMonth(new Date(gridMonth.getFullYear(), gridMonth.getMonth()-1, 1))} className="px-2 py-1 bg-stone-800 border-2 border-black text-stone-200 text-xs">‹ Prev</button>
+                  <span className="font-press text-[10px] text-[#ffff55]">{monthName}</span>
+                  <button onClick={()=>setGridMonth(new Date(gridMonth.getFullYear(), gridMonth.getMonth()+1, 1))} className="px-2 py-1 bg-stone-800 border-2 border-black text-stone-200 text-xs">Next ›</button>
+                </div>
+                <div className="grid grid-cols-7 gap-1 text-center">
+                  {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d=> <span key={d} className="text-[9px] font-press text-stone-500 py-1">{d}</span>)}
+                  {Array.from({ length: firstWeekday }).map((_,i)=> <span key={`e-${i}`} />)}
+                  {Array.from({ length: daysInMonth }).map((_,i)=>{
+                    const day = i+1;
+                    const items = deadlinesByDay[day] || [];
+                    return (
+                      <div key={day} className={`min-h-[54px] p-1 border-2 text-left ${items.length ? 'bg-amber-950/40 border-amber-700' : 'bg-stone-900 border-stone-800'}`}>
+                        <span className="text-[10px] font-mono text-stone-400">{day}</span>
+                        {items.slice(0,2).map(it=> <span key={it.id} className="block text-[8px] font-mono text-stone-200 truncate mt-0.5" title={it.name}>{it.name.slice(0,18)}</span>)}
+                        {items.length > 2 && <span className="text-[8px] text-stone-500">+{items.length-2} more</span>}
                       </div>
-                      <button onClick={() => handleGoogleCalendar(app)} className="mc-btn px-3 py-2 text-[8px] shrink-0 flex items-center gap-1.5">
-                        <CalIcon className="w-3.5 h-3.5" /> Add to Google Calendar
-                      </button>
-                    </div>
-                  );
-                })}
-            </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                {apps
+                  .slice()
+                  .sort((a, b) => new Date(a.deadline || 0).getTime() - new Date(b.deadline || 0).getTime())
+                  .map(app => {
+                    const d = new Date(app.deadline || '');
+                    const isPast = d.getTime() < Date.now();
+                    const isSoon = !isPast && d.getTime() - Date.now() < 14 * 24 * 3600 * 1000;
+                    return (
+                      <div key={app.id} className={`p-3 border-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${isPast ? 'bg-red-950/30 border-red-900 opacity-60' : isSoon ? 'bg-amber-950/30 border-amber-700' : 'bg-stone-900 border-stone-800'}`}>
+                        <div className="space-y-0.5">
+                          <span className="font-bold text-stone-100 text-xs block">{app.name}</span>
+                          {app.providerOrUni && <span className="text-[10px] font-mono text-stone-400">{app.providerOrUni}</span>}
+                          <span className={`text-[10px] font-mono flex items-center gap-1 ${isPast ? 'text-red-300' : isSoon ? 'text-[#ffaa00]' : 'text-stone-400'}`}>
+                            <Clock className="w-3 h-3" /> {app.deadline} {isPast ? '· Passed' : isSoon ? '· Due soon!' : ''}
+                            {app.status && <span className="ml-2 px-1.5 py-0.5 bg-black/40 border border-stone-700 text-[9px]">{app.status}</span>}
+                          </span>
+                        </div>
+                        <button onClick={() => handleGoogleCalendar(app)} className="mc-btn px-3 py-2 text-[8px] shrink-0 flex items-center gap-1.5">
+                          <CalIcon className="w-3.5 h-3.5" /> Add to Google Calendar
+                        </button>
+                      </div>
+                    );
+                  })}
+              </div>
+            )}
           </>
         )}
       </div>

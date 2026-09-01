@@ -23,6 +23,8 @@ import professorRouter from "./routes/professor.js";
 import universityReviewsRouter from "./routes/universityReviews.js";
 import mockVisaRouter from "./routes/mockVisa.js";
 import studyGroupsRouter from "./routes/studyGroups.js";
+import successStoriesRouter from "./routes/successStories.js";
+import pushRouter from "./routes/push.js";
 
 import { scholarshipsData } from "./routes/db.js";
 import { GEMINI_MODEL } from "./routes/aiConfig.js";
@@ -253,6 +255,8 @@ app.use("/api/professors", professorRouter);
 app.use("/api/university-reviews", universityReviewsRouter);
 app.use("/api/mock-visa", mockVisaRouter);
 app.use("/api/study-groups", studyGroupsRouter);
+app.use("/api/success-stories", successStoriesRouter);
+app.use("/api/push", pushRouter);
 app.use("/api", uploadRouter); // Mount on /api/upload-pdf
 app.use("/api", recommenderRouter);
 

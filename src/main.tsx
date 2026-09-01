@@ -33,6 +33,7 @@ if (typeof window !== 'undefined') {
 
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 // PWA: register service worker for offline shell caching
 if ('serviceWorker' in navigator) {
@@ -72,9 +73,11 @@ if ('Notification' in window) {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </LanguageProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
