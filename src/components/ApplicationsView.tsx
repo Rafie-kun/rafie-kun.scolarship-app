@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, CheckSquare, Square, Notebook, CheckCircle, Plus, ClipboardList, Trash2, ArrowRight, Sparkles, Shield } from 'lucide-react';
+import { Calendar, CheckSquare, Square, Notebook, CheckCircle, Plus, ClipboardList, Trash2, ArrowRight, Sparkles, Shield, LayoutGrid, Columns3 } from 'lucide-react';
 import { Application } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
@@ -16,6 +16,23 @@ export default function ApplicationsView() {
   const [usingLocalMock, setUsingLocalMock] = useState(false);
   const [notesMode, setNotesMode] = useState<'edit' | 'preview'>('edit');
   const [showConfetti, setShowConfetti] = useState(false);
+  const [viewMode, setViewMode] = useState<'list' | 'kanban'>('kanban');
+  const [draggedId, setDraggedId] = useState<string | null>(null);
+
+  // Document checklist merger (#8) - deduplicated master list across all tracked apps
+  const mergedChecklist = (() => {
+    const seen = new Map<string, { text: string; done: boolean; sources: string[] }>();
+    for (const app of apps) {
+      for (const item of app.checklist || []) {
+        const key = item.text.toLowerCase().trim();
+        if (!seen.has(key)) seen.set(key, { text: item.text, done: true, sources: [app.name] });
+        const entry = seen.get(key)!;
+        entry.done = entry.done && item.done;
+        if (!entry.sources.includes(app.name)) entry.sources.push(app.name);
+      }
+    }
+    return Array.from(seen.values());
+  })();
 
   const insertFormatting = (prefix: string, suffix: string = '') => {
     if (!selectedApp) return;
@@ -208,6 +225,21 @@ export default function ApplicationsView() {
     handleUpdateApp({ ...selectedApp, status });
   };
 
+  const handleKanbanStatusChange = async (appId: string, newStatus: Application['status']) => {
+    const app = apps.find(a => a.id === appId);
+    if (!app || app.status === newStatus) return;
+    playClickSound();
+    if (newStatus === 'Won' || newStatus === 'Accepted') {
+      playAdvancementSound();
+      const actionName = `Fellowship Accepted: ${app.name}`;
+      if (!rewardedActionsRef.current.has(actionName)) {
+        rewardedActionsRef.current.add(actionName);
+        await rewardPoints(50, actionName, "Fellowship Winner");
+      }
+    }
+    await handleUpdateApp({ ...app, status: newStatus });
+  };
+
   const handleNotesChange = (notes: string) => {
     if (!selectedApp) return;
     handleUpdateApp({ ...selectedApp, notes });
@@ -347,15 +379,25 @@ export default function ApplicationsView() {
             <ClipboardList className="w-5 h-5 text-stone-900" /> QUEST BOOK (APPLICATIONS)
           </h3>
           <p className="text-xs text-stone-700 font-sans mt-2 leading-relaxed">
-            Configure application deadlines, manage checklist steps, customize logs, and track admission checkpoints to advance through status registers.
+            Drag cards between columns to update status. Your merged document checklist is below the board.
           </p>
         </div>
-        <button
-          onClick={handleCreateNewAppManual}
-          className="mc-btn px-4 py-2.5 text-[9px] uppercase font-bold text-[#ffff55]"
-        >
-          Add Custom Track
-        </button>
+        <div className="flex gap-2 shrink-0">
+          <div className="flex border-2 border-black bg-black/20">
+            <button onClick={() => { playClickSound(); setViewMode('list'); }} className={`px-3 py-2 text-[9px] font-press flex items-center gap-1 ${viewMode === 'list' ? 'bg-[#ffff55] text-black' : 'text-stone-400 hover:text-stone-200'}`} title="List view">
+              <LayoutGrid className="w-3.5 h-3.5" /> List
+            </button>
+            <button onClick={() => { playClickSound(); setViewMode('kanban'); }} className={`px-3 py-2 text-[9px] font-press flex items-center gap-1 ${viewMode === 'kanban' ? 'bg-[#ffff55] text-black' : 'text-stone-400 hover:text-stone-200'}`} title="Kanban board">
+              <Columns3 className="w-3.5 h-3.5" /> Kanban
+            </button>
+          </div>
+          <button
+            onClick={handleCreateNewAppManual}
+            className="mc-btn px-4 py-2.5 text-[9px] uppercase font-bold text-[#ffff55]"
+          >
+            Add Custom Track
+          </button>
+        </div>
       </div>
 
       {success && (
@@ -370,6 +412,68 @@ export default function ApplicationsView() {
           <Sparkles className="w-7 h-7 animate-spin text-[#ffff55]" />
           <span className="mc-text-shadow">LOADING ADMISSIONS BOOK...</span>
         </div>
+      ) : viewMode === 'kanban' ? (
+        <>
+          {/* Kanban Board */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            {(['Saved','In Progress','Submitted','Accepted','Won'] as const).map(status => {
+              const colApps = apps.filter(a => a.status === status);
+              const colColor: Record<string, string> = {
+                Saved: 'border-stone-700', 'In Progress': 'border-[#ffaa00]', Submitted: 'border-sky-600', Accepted: 'border-[#55ff55]', Won: 'border-[#ffff55]'
+              };
+              return (
+                <div
+                  key={status}
+                  onDragOver={e => e.preventDefault()}
+                  onDrop={e => handleKanbanStatusChange(draggedId!, status)}
+                  className={`bg-[#1e1c1b] border-4 ${colColor[status]} p-3 min-h-[280px] space-y-2`}
+                >
+                  <h4 className="font-press text-[8px] text-stone-300 uppercase flex items-center justify-between">
+                    {status} <span className="bg-black/40 px-1.5 py-0.5 text-[9px]">{colApps.length}</span>
+                  </h4>
+                  <div className="space-y-2 min-h-[200px]">
+                    {colApps.map(app => (
+                      <div
+                        key={app.id}
+                        draggable
+                        onDragStart={() => setDraggedId(app.id)}
+                        onDragEnd={() => setDraggedId(null)}
+                        onClick={() => { setSelectedApp(app); playClickSound(); }}
+                        className={`p-2.5 border-2 bg-[#2c2c2c] cursor-grab active:cursor-grabbing text-left ${draggedId === app.id ? 'opacity-50 border-[#ffff55]' : 'border-black hover:border-stone-600'} ${selectedApp?.id === app.id ? 'ring-2 ring-[#ffff55]/50' : ''}`}
+                      >
+                        <span className="text-[8px] font-mono text-stone-400 uppercase block truncate">{app.providerOrUni}</span>
+                        <span className="text-xs font-bold text-stone-200 block line-clamp-2 leading-tight">{app.name}</span>
+                        <span className="text-[9px] font-mono text-stone-500">Due: {app.deadline}</span>
+                      </div>
+                    ))}
+                    {colApps.length === 0 && <p className="text-[9px] font-mono text-stone-600 text-center py-6">Drop cards here</p>}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Selected app detail when in kanban */}
+          {selectedApp && (
+            <div className="bg-[#2c2c2c] border-4 border-black p-5 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555] space-y-5">
+              <div className="border-b-2 border-black pb-3 flex justify-between items-center">
+                <h4 className="font-press text-[12px] text-[#ffff55] leading-normal mc-text-shadow line-clamp-1">{selectedApp.name}</h4>
+                <button onClick={() => setSelectedApp(null)} className="text-[9px] font-mono text-stone-400 hover:text-stone-200 border border-stone-700 px-2 py-1">Close</button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+                <div className="space-y-1"><span className="text-stone-400 text-[9px] uppercase">Provider</span><span className="text-stone-200 font-bold">{selectedApp.providerOrUni}</span></div>
+                <div className="space-y-1"><span className="text-stone-400 text-[9px] uppercase">Deadline</span><span className="text-stone-200 font-bold">{selectedApp.deadline}</span></div>
+                <div className="space-y-1"><span className="text-stone-400 text-[9px] uppercase">Status</span><span className="text-[#55ff55] font-bold">{selectedApp.status}</span></div>
+                <div className="space-y-1"><span className="text-stone-400 text-[9px] uppercase">Checklist</span><span className="text-stone-300">{selectedApp.checklist.filter(c=>c.done).length} / {selectedApp.checklist.length} done</span></div>
+              </div>
+              <div className="flex gap-2">
+                {(['Saved','In Progress','Submitted','Accepted','Won'] as const).map(st => (
+                  <button key={st} onClick={() => handleKanbanStatusChange(selectedApp.id, st)} className={`px-2 py-1 text-[8px] font-press border ${selectedApp.status===st ? 'bg-[#ffff55] text-black border-black' : 'bg-black/30 text-stone-400 border-stone-700'}`}>{st}</button>
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           
@@ -585,6 +689,32 @@ export default function ApplicationsView() {
 
         </div>
       )}
+
+      {/* Global Merged Document Checklist - always visible */}
+      {apps.length > 0 && (
+        <div className="bg-[#2c2c2c] border-4 border-black p-4 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555] space-y-3">
+          <h4 className="font-press text-[9px] text-[#ffff55] uppercase flex items-center gap-2">
+            <ClipboardList className="w-4 h-4" /> Master Document Checklist (merged from {apps.length} tracked)
+          </h4>
+          {mergedChecklist.length === 0 ? (
+            <p className="text-xs font-mono text-stone-500">No checklist items yet.</p>
+          ) : (
+            <div className="space-y-1.5">
+              {mergedChecklist.map((item, i) => (
+                <div key={i} className={`p-2.5 border-2 flex items-start justify-between gap-3 ${item.done ? 'bg-emerald-950/30 border-[#55ff55]/30' : 'bg-black/30 border-stone-800'}`}>
+                  <div className="flex items-start gap-2">
+                    <span className={`mt-0.5 w-4 h-4 border-2 flex items-center justify-center shrink-0 text-[9px] ${item.done ? 'bg-[#55ff55] border-[#55ff55] text-black' : 'border-stone-600 bg-black'}`}>{item.done ? '✓' : ''}</span>
+                    <span className={`text-xs font-mono ${item.done ? 'line-through text-stone-500' : 'text-stone-200'}`}>{item.text}</span>
+                  </div>
+                  <span className="text-[8px] font-mono text-stone-500 shrink-0 max-w-[140px] truncate" title={item.sources.join(', ')}>{item.sources.length > 1 ? `${item.sources.length} sources` : item.sources[0]}</span>
+                </div>
+              ))}
+              <p className="text-[10px] font-mono text-stone-500 pt-1">{mergedChecklist.filter(c=>c.done).length} / {mergedChecklist.length} unique requirements done</p>
+            </div>
+          )}
+        </div>
+      )}
+
       {showConfetti && <ConfettiExplosion onComplete={() => setShowConfetti(false)} />}
     </div>
   );
