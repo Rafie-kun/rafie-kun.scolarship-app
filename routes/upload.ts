@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express';
 import { authenticateToken } from './auth.js';
 import { getProfileByUsername, saveProfile } from '../db/index.js';
 import { GoogleGenAI, Type } from '@google/genai';
-import { PDFParse } from 'pdf-parse';
 import { GEMINI_MODEL } from './aiConfig.js';
 
 const router = express.Router();
@@ -46,12 +45,13 @@ router.post('/upload-pdf', authenticateToken, async (req: Request, res: Response
   let resumeText = '';
   try {
     const buffer = Buffer.from(base64.replace(/^data:[^;]+;base64,/, ''), 'base64');
+    const { PDFParse } = await import('pdf-parse');
     const parser = new PDFParse({ data: new Uint8Array(buffer) });
     const result = await parser.getText();
     resumeText = (result.text || '').replace(/\s+/g, ' ').trim().slice(0, 12000); // cap tokens
     await parser.destroy();
   } catch {
-    resumeText = ''; // encrypted/scanned/image-only PDFs fall back to offline mode
+    resumeText = ''; // scanned/encrypted PDFs or missing native deps -> offline mode
   }
 
   // Persist PDF base64 string to Profile
