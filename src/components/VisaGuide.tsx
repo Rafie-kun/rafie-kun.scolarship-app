@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Compass, Globe, DollarSign, Clock, FileText, CheckCircle, ExternalLink, ShieldCheck, Search, AlertCircle, Sparkles, Briefcase } from 'lucide-react';
+import { Compass, Globe, DollarSign, Clock, FileText, CheckCircle, ExternalLink, ShieldCheck, Search, AlertCircle, Sparkles, Briefcase, MessageSquare } from 'lucide-react';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
+import MockVisaInterview from './MockVisaInterview';
 
 export interface VisaItem {
   id: string;
@@ -29,6 +30,8 @@ export default function VisaGuide() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCountry, setSelectedCountry] = useState<string>('all');
   const [activeVisa, setActiveVisa] = useState<VisaItem | null>(null);
+
+  const [activeTab, setActiveTab] = useState<'guide' | 'interview'>('guide');
 
   // Checklist state saved locally per visa
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
@@ -109,6 +112,16 @@ export default function VisaGuide() {
         </div>
       </div>
 
+      {/* Tabs */}
+      <div className="flex gap-2">
+        <button onClick={() => { playClickSound(); setActiveTab('guide'); }} className={`px-4 py-2 font-press text-[9px] border-4 border-black ${activeTab === 'guide' ? 'bg-[#ffff55] text-black' : 'bg-stone-800 text-stone-300'}`}>Visa Guide</button>
+        <button onClick={() => { playClickSound(); setActiveTab('interview'); }} className={`px-4 py-2 font-press text-[9px] border-4 border-black flex items-center gap-1 ${activeTab === 'interview' ? 'bg-[#ffff55] text-black' : 'bg-stone-800 text-stone-300'}`}><MessageSquare className="w-3.5 h-3.5" /> Mock Visa Interview</button>
+      </div>
+
+      {activeTab === 'interview' ? (
+        <MockVisaInterview />
+      ) : (
+        <>
       {/* Search & Filter Controls */}
       <div className="bg-[#2c2c2c] border-4 border-black p-4 space-y-3 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]">
         <div className="flex flex-col md:flex-row gap-3">
@@ -331,6 +344,8 @@ export default function VisaGuide() {
           ) : null}
 
         </div>
+      )}
+        </>
       )}
 
     </div>
