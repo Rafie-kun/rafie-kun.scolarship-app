@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Trophy, Filter, ArrowRight, Award, Target, Sparkles, CheckCircle, Clock, SlidersHorizontal, Mail, ExternalLink, ShieldCheck, HelpCircle, FileText, Globe, Coins } from 'lucide-react';
+import { Search, Trophy, Filter, ArrowRight, Award, Target, Sparkles, CheckCircle, Clock, SlidersHorizontal, Mail, ExternalLink, ShieldCheck, HelpCircle, FileText, Globe, Coins, Calendar } from 'lucide-react';
+import DeadlineCalendar from './DeadlineCalendar';
 import { Scholarship, Profile } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
@@ -40,6 +41,7 @@ export default function ScholarshipsView() {
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const [totalCount, setTotalCount] = useState<number>(0);
   const [refreshing, setRefreshing] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
 
   const timeAgo = (iso: string | null): string => {
     if (!iso) return 'unknown';
@@ -420,15 +422,24 @@ export default function ScholarshipsView() {
           <h3 className="font-press text-[11px] text-[#55ff55] uppercase flex items-center gap-2 mc-text-shadow">
             <Trophy className="w-5 h-5 text-[#55ff55]" /> SCHOLARSHIP FINDER
           </h3>
-          <button
-            onClick={handleRefreshData}
-            disabled={refreshing}
-            className="mc-btn px-3 py-1.5 text-[9px] font-mono uppercase font-bold text-[#ffff55] flex items-center gap-2 disabled:opacity-60"
-            title="Check for newly listed scholarships right now"
-          >
-            <Clock className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
-            {refreshing ? 'Checking...' : 'Check for new listings'}
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={() => { playClickSound(); setShowCalendar(true); }}
+              className="mc-btn px-3 py-1.5 text-[9px] font-mono uppercase font-bold text-[#55ff55] flex items-center gap-2"
+              title="View deadlines on a calendar and export to Google Calendar"
+            >
+              <Calendar className="w-3.5 h-3.5" /> Deadlines Calendar
+            </button>
+            <button
+              onClick={handleRefreshData}
+              disabled={refreshing}
+              className="mc-btn px-3 py-1.5 text-[9px] font-mono uppercase font-bold text-[#ffff55] flex items-center gap-2 disabled:opacity-60"
+              title="Check for newly listed scholarships right now"
+            >
+              <Clock className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
+              {refreshing ? 'Checking...' : 'Check for new listings'}
+            </button>
+          </div>
         </div>
         <p className="text-xs text-stone-350 font-mono mt-2 pl-0.5 leading-relaxed">
           Browse fully funded master's stipends, fellowships, and research grants — matched to your GPA and field.
@@ -1406,6 +1417,8 @@ export default function ScholarshipsView() {
           </div>
         </div>
       )}
+
+      <DeadlineCalendar open={showCalendar} onClose={() => setShowCalendar(false)} />
 
     </div>
   );
