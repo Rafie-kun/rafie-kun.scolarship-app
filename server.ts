@@ -30,6 +30,15 @@ const PORT = 3000;
 
 app.use(express.json({ limit: "10mb" })); // bounded: resume PDF uploads are base64-encoded
 
+// Security headers for all responses (API + static via Express)
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+});
+
 // Escape untrusted (scraped/user) content before interpolating into HTML
 function escapeHtml(value: unknown): string {
   return String(value ?? "")
@@ -47,9 +56,10 @@ function safeExternalUrl(url: unknown): string {
   return "";
 }
 
-// --- HEALTH CHECK ENDPOINT ---
+// --- HEALTH CHECK ENDPOINT --- (never depends on DB - always 200)
 app.get("/api/health", (req, res) => {
-  res.json({ status: "ok", timestamp: new Date().toISOString() });
+  const persistence = process.env.TURSO_DATABASE_URL ? 'turso' : (process.env.VERCEL ? 'ephemeral-tmp' : 'file');
+  res.json({ status: "ok", timestamp: new Date().toISOString(), persistence });
 });
 
 // Initialize AI Client

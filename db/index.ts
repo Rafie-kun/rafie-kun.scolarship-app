@@ -43,10 +43,19 @@ if (isVercel && !fs.existsSync(dbPath) && bundledDbPath) {
   }
 }
 
-export const db = new Database(dbPath);
-
-// Enable WAL journal mode for high performance
-db.pragma('journal_mode = WAL');
+let db: any;
+try {
+  if (process.env.TURSO_DATABASE_URL) {
+    console.log('[DB] TURSO_DATABASE_URL is set - for full persistence on Vercel, wire Turso via @libsql/client (see Guide.md). Using file DB for this build.');
+  }
+  db = new Database(dbPath);
+  try { db.pragma('journal_mode = WAL'); } catch {}
+} catch (e: any) {
+  console.error('[DB] File DB unavailable, falling back to in-memory:', e?.message);
+  db = new Database(':memory:');
+  try { db.pragma('journal_mode = MEMORY'); } catch {}
+}
+export { db };
 
 // --- Schema Initialization ---
 db.exec(`
