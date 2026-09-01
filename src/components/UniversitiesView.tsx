@@ -5,6 +5,7 @@ import { playClickSound, playAdvancementSound } from '../utils/sound';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { getCleanUniversityUrl } from '../utils/urlHelper';
+import ProfessorFinder from './ProfessorFinder';
 
 interface RecommendedUni {
   university: University;
@@ -47,6 +48,7 @@ export default function UniversitiesView() {
   
   // Specific detail modal
   const [selectedUni, setSelectedUni] = useState<University | null>(null);
+  const [showProfFinder, setShowProfFinder] = useState(false);
 
   // Cost-of-living dataset for the detail modal
   const [costData, setCostData] = useState<any[]>([]);
@@ -795,13 +797,13 @@ export default function UniversitiesView() {
               )}
             </div>
 
-            <div className="flex gap-2 border-t border-stone-700 pt-3.5">
+            <div className="flex flex-wrap gap-2 border-t border-stone-700 pt-3.5">
               <button
                 onClick={() => {
                   playClickSound();
                   window.open(getCleanUniversityUrl(selectedUni, false), '_blank', 'noopener,noreferrer');
                 }}
-                className="flex-1 mc-btn bg-[#3b3b8c] text-[#ffff55] py-2 text-[10px] font-press"
+                className="flex-1 mc-btn bg-[#3b3b8c] text-[#ffff55] py-2 text-[10px] font-press min-w-[110px]"
                 title="Launch Official University Website"
               >
                 🌐 Website
@@ -811,14 +813,21 @@ export default function UniversitiesView() {
                   playClickSound();
                   window.open(getCleanUniversityUrl(selectedUni, true), '_blank', 'noopener,noreferrer');
                 }}
-                className="flex-1 mc-btn bg-emerald-950 text-[#55ff55] py-2 text-[10px] font-press"
+                className="flex-1 mc-btn bg-emerald-950 text-[#55ff55] py-2 text-[10px] font-press min-w-[110px]"
                 title="Launch Official University Application Portal"
               >
                 📝 Apply Portal
               </button>
               <button
+                onClick={() => { playClickSound(); setShowProfFinder(true); }}
+                className="flex-1 mc-btn bg-amber-950 text-[#ffaa00] py-2 text-[10px] font-press min-w-[110px]"
+                title="Find professors at this university by research keyword"
+              >
+                🔍 Find Professor
+              </button>
+              <button
                 onClick={() => { playClickSound(); setSelectedUni(null); }}
-                className="flex-1 mc-btn text-white py-2 text-[10px] font-press"
+                className="flex-1 mc-btn text-white py-2 text-[10px] font-press min-w-[80px]"
               >
                 Return
               </button>
@@ -826,6 +835,14 @@ export default function UniversitiesView() {
 
           </div>
         </div>
+      )}
+
+      {showProfFinder && selectedUni && (
+        <ProfessorFinder
+          university={selectedUni.name}
+          country={selectedUni.country}
+          onClose={() => setShowProfFinder(false)}
+        />
       )}
 
     </div>
