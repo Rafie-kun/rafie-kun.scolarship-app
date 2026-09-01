@@ -4,7 +4,7 @@ import {
   Trophy, BookOpen, GraduationCap, Calculator, Award, ArrowRight, Save, User, Sparkles,
   Search, BookmarkCheck, Calendar, CheckSquare, Square, MessageSquare, Plus, CheckCircle,
   FolderDown, Building, Navigation, Globe, Menu, X, Coins, HelpCircle, Shield, Sword,
-  Undo, Settings, UserCog, FileText, TrendingUp, Compass, Briefcase, Target
+  Undo, Settings, UserCog, FileText, TrendingUp, Compass, Briefcase, Target, Users, Plane
 } from 'lucide-react';
 
 // Views are lazily loaded so each heavy view (jspdf, html2canvas, recharts...)
@@ -35,6 +35,8 @@ const AdmissionWizard = lazy(() => import('./components/AdmissionWizard'));
 const CountryMatcherQuiz = lazy(() => import('./components/CountryMatcherQuiz'));
 const IeltsToeflPractice = lazy(() => import('./components/IeltsToeflPractice'));
 const MockVisaInterview = lazy(() => import('./components/MockVisaInterview'));
+const StudyGroupFinder = lazy(() => import('./components/StudyGroupFinder'));
+const PreDepartureChecklist = lazy(() => import('./components/PreDepartureChecklist'));
 
 import GlobalSearch from './components/GlobalSearch';
 import Tooltip from './components/Tooltip';
@@ -92,6 +94,8 @@ const navItems = [
   { id: 'visa', label: 'Visa Guide', mcName: 'Visa & Immigration', desc: 'Study visa requirements, proof of funds & work permits', icon: Compass, color: 'text-[#55ffff] font-bold' },
   { id: 'learning', label: 'Roadmap', mcName: 'Timeline Maps', desc: 'Structured timeline maps for global admission stages', icon: Navigation, color: 'text-orange-400' },
   { id: 'community', label: 'Community Forum', mcName: 'Student Forum', desc: 'Interact with fellow students regarding admissions and visa advice', icon: MessageSquare, color: 'text-purple-400' },
+  { id: 'study-groups', label: 'Study Groups', mcName: 'Study Groups', desc: 'Find others applying to the same scholarship and join a group', icon: Users, color: 'text-emerald-400' },
+  { id: 'predeparture', label: 'Pre-Departure', mcName: 'Departure Checklist', desc: 'City registration, health insurance, bank account by destination country', icon: Plane, color: 'text-sky-400' },
   { id: 'mentors', label: 'Mentors', mcName: 'Alumni Mentors', desc: 'Consult with vetted alumni from top university fellowship programs', icon: Award, color: 'text-pink-400' },
   { id: 'customize', label: 'Theme Settings', mcName: 'Appearance & Themes', desc: 'Mute sounds, tune layout densities & customize visual themes', icon: Sparkles, color: 'text-[#ffff55]' },
   { id: 'export', label: 'Export Center', mcName: 'Data Backups', desc: 'Convert applicant records into persistent JSON backups', icon: FolderDown, color: 'text-stone-300' },
@@ -228,6 +232,10 @@ export default function App() {
         return <IeltsToeflPractice />;
       case 'mock-visa':
         return <MockVisaInterview />;
+      case 'study-groups':
+        return <StudyGroupFinder />;
+      case 'predeparture':
+        return <PreDepartureChecklist />;
       case 'search':
         return <AdvancedSearch />;
       case 'applications':

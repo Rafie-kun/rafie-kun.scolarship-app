@@ -21,6 +21,8 @@ import countriesRouter from "./routes/countries.js";
 import certificateRouter from "./routes/certificate.js";
 import professorRouter from "./routes/professor.js";
 import universityReviewsRouter from "./routes/universityReviews.js";
+import mockVisaRouter from "./routes/mockVisa.js";
+import studyGroupsRouter from "./routes/studyGroups.js";
 
 import { scholarshipsData } from "./routes/db.js";
 import { GEMINI_MODEL } from "./routes/aiConfig.js";
@@ -249,6 +251,8 @@ app.use("/api/countries", countriesRouter);
 app.use("/api/analyze-certificate", certificateRouter);
 app.use("/api/professors", professorRouter);
 app.use("/api/university-reviews", universityReviewsRouter);
+app.use("/api/mock-visa", mockVisaRouter);
+app.use("/api/study-groups", studyGroupsRouter);
 app.use("/api", uploadRouter); // Mount on /api/upload-pdf
 app.use("/api", recommenderRouter);
 

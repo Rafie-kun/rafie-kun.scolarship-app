@@ -34,6 +34,41 @@ if (typeof window !== 'undefined') {
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 
+// PWA: register service worker for offline shell caching
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+
+// Lightweight 14-day deadline reminder (client-side, no server push needed)
+if ('Notification' in window) {
+  const checkDeadlines = async () => {
+    try {
+      const res = await fetch('/api/applications', { credentials: 'include' });
+      if (!res.ok) return;
+      const apps: any[] = await res.json();
+      const soon = apps.filter(a => {
+        if (!a.deadline) return false;
+        const d = new Date(a.deadline).getTime();
+        const now = Date.now();
+        return d > now && d - now < 14 * 24 * 3600 * 1000;
+      });
+      if (soon.length === 0) return;
+      if (Notification.permission === 'default') await Notification.requestPermission().catch(()=>{});
+      if (Notification.permission === 'granted') {
+        const reg = await navigator.serviceWorker?.ready.catch(()=>null);
+        const title = `ScholarPath: ${soon.length} deadline${soon.length>1?'s':''} within 14 days`;
+        const body = soon.slice(0,3).map(a=>`${a.name} — ${a.deadline}`).join('\n');
+        if (reg) reg.showNotification(title, { body, icon: '/favicon.svg', badge: '/favicon.svg' } as any);
+        else new Notification(title, { body } as any);
+      }
+    } catch {}
+  };
+  // Run once a day after login, debounced
+  setTimeout(checkDeadlines, 8000);
+}
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider>

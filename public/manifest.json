@@ -1,0 +1,17 @@
+{
+  "name": "ScholarPath",
+  "short_name": "ScholarPath",
+  "description": "Scholarship, university, internship and visa planning for international students",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0f12",
+  "theme_color": "#0d0f12",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
