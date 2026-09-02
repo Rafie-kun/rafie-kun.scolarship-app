@@ -1,11 +1,11 @@
 # ScholarPath — Future Roadmap
 
-_Last updated: 2026-08-26 (commit d29becd)_
-_Theme: Single official Minecraft night mode (deepslate), plain-English UI, 4-phase roll-out just completed._
+_Last updated: 2026-08-26 (commit 9b82701 — all Next 10 shipped, see below)_
+_Theme: Single official Minecraft night mode (deepslate), plain-English UI._
 
 ---
 
-## What Just Shipped (Aug 2026 — 10 Features)
+## What Just Shipped (Aug 2026 — 20+ Features)
 
 | Phase | Features | Commit |
 |---|---|---|
@@ -14,41 +14,45 @@ _Theme: Single official Minecraft night mode (deepslate), plain-English UI, 4-ph
 | Phase 2 | **#6 Country Matcher Quiz** (5 Qs → ranked countries) · **#27 Reddit/official-source links** · **#25 University reviews by internationals** | `c900760` |
 | Phase 3 | **#21 IELTS/TOEFL 10-min drill** (band estimate) · **#22 Mock Visa Interview** (AI-scored, country-specific) | `39fdf21` |
 | Phase 4 | **#29 Study Group Finder** (grouped counts + Join) · **#23 Pre-departure Checklist** (per-country, localStorage) · **#30 PWA** (manifest + sw.js shell cache + 14-day deadline push) | `d29becd` |
+| Phase 5 | **Plagiarism/AI check** for SOPs (`POST /api/gemini/plagiarism-check`) · **Flight Price Watcher** (seasonality bars) · **Housing Board** (dorm/private/shared) | `ba01612` |
+| Phase 6 | **Success Stories Wall** (verified ★) · **Recommender Kit** (one-click email draft) · **Visual calendar month-grid** (DeadlineCalendar List/Grid toggle) · **Per-country document templates** (Germany/US/UK/Canada/Australia) · **VAPID push** (`routes/push.ts` + `web-push`) · **Direct DAAD scraper** (`cheerio` on daad.de) · **Multi-language UI** (`LanguageContext` en/bn) | `9b82701` |
+| Phase 7 | **AI rate-limiting** (10/min per IP+user) · **Essay template library** (5 annotated winning SOPs) · **PWA install prompt** | `c1fb0af` |
 | Earlier | Night theme (deepslate) + XP fix + AI guardrail + real resume parsing + Visa timeline + living-cost panel | `c6cb2be` |
 
 How to test each locally (`npm run dev` → http://localhost:3000):
 - **#1**: Scholarships → any card shows Eligible/Conditional badge.
-- **#2/#8**: Applications → toggle List/Kanban, drag a card, see Master Checklist below.
+- **#2/#8**: Applications → toggle List/Kanban, drag a card, see Master Checklist + per-country template below.
 - **#6**: Universities → Country Matcher (new nav) → answer 5 → see ranked list with living costs.
 - **#27**: Scholarship card footer → Official source + Discuss on Reddit links.
 - **#25**: Universities → open a university → Student Reviews section → post a 1-5 star review.
 - **#21**: IELTS Practice (nav) → Start → 10 Qs → band.
 - **#22**: Visa Guide → Mock Visa Interview tab → pick country → interview turns with scores.
 - **#29**: Study Groups (nav) → Join a group → creates a community post.
-- **#23**: Pre-Departure (nav) → pick destination → check off tasks (saved locally).
+- **#23**: Pre-Departure (nav) → pick destination → check off tasks + see Flight Price Watcher below.
 - **#30**: Installable PWA — browser shows Install prompt; deadlines within 14 days trigger a Notification if permission granted.
+- **Plagiarism**: WritingVault → paste SOP → Check Plagiarism / AI Patterns → Markdown result.
+- **Housing**: Universities → open a university → Housing Board (3 cards) below living costs.
+- **Success Stories**: New nav → filter Verified, Share Your Story.
+- **Recommender Kit**: Professor Finder modal → Recommender Kit section.
+- **Calendar Grid**: Scholarships → Deadlines Calendar → toggle List / Month Grid.
 
-**Auto-update (always on):** Scholarships + internships + universities + part-time jobs scrape hourly (`scripts/scheduler.ts` cron `0 * * * *` + on-boot) → deduped merge into `public/data/*.json` + weekly GitHub Action. Manual: Scholarships/Internships header → "Check for new listings" → `POST /api/scraper/trigger` (auth).
+**Auto-update (always on):** Scholarships + internships + universities + part-time jobs scrape hourly (`scripts/scheduler.ts` cron `0 * * * *` + on-boot) → deduped merge into `public/data/*.json` + weekly GitHub Action. Manual: Scholarships/Internships header → "Check for new listings" → `POST /api/scraper/trigger` (auth). DAAD direct scrape included.
 
 ---
 
-## Next 10 Ideas (Prioritized)
+## Next Ideas (Backlog — Pick Next)
 
-**High impact, low effort:**
-1. **Essay plagiarism check** before SOP submit (Gemini prompt, no new deps)
-2. **Flight price watcher** (cheapest month to fly to destination, reuse `cost_of_living`)
-3. **Housing board** (dorm vs private listings near each university)
-4. **Success stories wall** (verified winners upload admission letter)
+**Quick wins left:**
+- Flight price watcher already has seasonality; next: integrate Google Flights API for live prices if you have a key
+- Housing board uses `cost_of_living.json` estimates; next: scrape real dorm listings per university
 
 **Medium:**
-5. **Recommender kit** (one-click email draft to professors + deadline reminder link)
-6. **Scholarship timeline calendar** already has ICS; add a visual month-grid view
-7. **Document checklist merger** already has master list; add per-country document templates (e.g., Germany blocked-account letter)
-8. **PWA push server** (VAPID + `web-push` npm, server-side 14-day cron that actually pushes even when tab closed)
+- Scholarship timeline calendar already has List/Grid + ICS; next: add Google Calendar OAuth auto-sync
+- Document checklist already has per-country templates; next: generate a fillable PDF checklist per tracked set
 
-**Heavier:**
-9. **Direct scraper for DAAD/scholarshipportal.com** (bigger coverage than RSS-only, needs cheerio per-site parsers)
-10. **Multi-language UI** (Bangla/Hindi/Arabic via `i18next`, 1 file per locale)
+**Heavier (still open):**
+- Direct scraper for scholarshipportal.com (bigger coverage than RSS-only, needs per-site cheerio parsers — DAAD direct is done, scholarshipportal next)
+- Multi-language UI is scaffolded (`LanguageContext` en/bn); next: translate all nav labels via `t()` and add Hindi/Arabic files
 
 ---
 

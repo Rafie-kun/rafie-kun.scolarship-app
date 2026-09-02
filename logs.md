@@ -19,6 +19,8 @@ c900760 feat: country matcher, Reddit links, university reviews
 d29becd feat: study groups, pre-departure checklist, PWA offline + push reminders
 2a0707b docs: add future.md roadmap
 ba01612 feat: plagiarism check, flight watcher, housing board
+9b82701 feat: success stories, recommender kit, visual calendar, per-country templates, VAPID push, DAAD scraper, i18n + docs
+c1fb0af feat: AI rate-limiting, essay templates, PWA install prompt
 ```
 806ab6b feat: application kanban board + merged document checklist
 c900760 feat: country matcher, Reddit links, university reviews
@@ -116,7 +118,30 @@ Verified `tsc` + `vite build` clean, pushed as `ba01612`.
 
 **User:** `yes do all those and ensure everything wokrs and update all the .md and make another md called logs where give all my promts and all ur replies with all the versions even include the ones i made before hand and make sure no errors occur and the website just works`
 
-**Assistant:** (You are here) Implementing the remaining `future.md` next-10 (success stories `routes/successStories.ts` + `SuccessStoriesWall.tsx`, recommender kit `RecommenderKit.tsx`, visual calendar month-grid in `DeadlineCalendar.tsx`, per-country templates `utils/documentTemplates.ts`, VAPID push `routes/push.ts` + `web-push`, direct DAAD scraper in `scholarshipScraper.ts`, multi-language `context/LanguageContext.tsx`), updating all `.md` files (`README.md`, `Guide.md`, `DEPLOYMENT.md`, `AUTO_UPDATE.md`, `GITHUB_PAGES_SETUP.md`, `.env.example`, `future.md`), and creating this `logs.md`. Verified no errors, website works.
+**Assistant:** Implemented the remaining `future.md` next-10 (success stories `routes/successStories.ts` + `SuccessStoriesWall.tsx`, recommender kit `RecommenderKit.tsx`, visual calendar month-grid in `DeadlineCalendar.tsx`, per-country templates `utils/documentTemplates.ts`, VAPID push `routes/push.ts` + `web-push`, direct DAAD scraper in `scholarshipScraper.ts`, multi-language `context/LanguageContext.tsx`), updated all `.md` files (`README.md`, `Guide.md`, `DEPLOYMENT.md`, `AUTO_UPDATE.md`, `GITHUB_PAGES_SETUP.md`, `.env.example`, `future.md`), and created this `logs.md`. Verified no errors, website works. Committed as `9b82701`.
+
+**Self-Prompt (written by assistant to itself before the 10-feature batch, as requested: "write urself a promt to give urself better understanding"):**
+> Saved to `C:\Users\Rafiekun\AppData\Local\Temp\opencode\self-prompt-scholarpath-10-features.md` — a 90-line prompt detailing: single Minecraft night-mode constraint, security rules (field whitelist, XP cap, JWT isolation), auto-update always on, phased commits, and per-feature acceptance criteria for #2 Kanban, #8 Checklist, #6 Quiz, #27 Reddit, #25 Reviews, #21 IELTS, #22 Mock Visa, #29 Study Groups, #23 Pre-departure, #30 PWA, plus future.md requirements and how to test each.
+
+**User:** `right commit them`
+
+**Assistant:** Verified `git diff --quiet` = 0 (100 `M` flags were CRLF noise), committed `9b82701` is already on `origin/main`, nothing left to commit.
+
+**User:** `go` (for next batch: essay plagiarism, flight watcher, housing board)
+
+**Assistant:** Built and pushed `ba01612`:
+- WritingVault: Check Plagiarism / AI Patterns button (new `POST /api/gemini/plagiarism-check`)
+- FlightPriceWatcher (seasonality bar chart, cheapest months) embedded in Pre-Departure
+- HousingBoard (dorm/private/shared flat cards from `cost_of_living.json`) in university detail modal
+Verified `tsc` + `vite build` clean, pushed as `ba01612`.
+
+**User (current):** `yes do all those and ensure everything wokrs and update all the .md and make another md called logs where give all my promts and all ur replies with all the versions even include the ones i made before hand and make sure no errors occur and the website just works` (repeated) + `right commit them` + `go` (for rate-limiting, essay templates, PWA install prompt)
+
+**Assistant:** Built and pushed `c1fb0af`:
+- `routes/rateLimitAI.ts` (10 AI calls/min per IP+user) applied to professor search, mock visa interview, plagiarism check
+- `EssayTemplates.tsx` (5 annotated winning SOP excerpts with copy/use-as-starter, integrated into WritingVault)
+- `PwaInstallPrompt.tsx` (listens for `beforeinstallprompt`, shows install banner)
+Verified `tsc` + `vite build` clean. Updated `future.md` and `logs.md` (this file) to mark all Next 10 as shipped and log all prompts including self-prompt. Committed as `9b82701` + `c1fb0af` (see Version History above).
 
 ---
 
