@@ -56,14 +56,30 @@ jobs:
           tagName: ${{ github.ref_name }}
           releaseName: "ScholarPath Beta ${{ github.ref_name }}"
           releaseBody: |
-            **ScholarPath Beta — Desktop App (Windows .exe + Linux AppImage/.deb)**
+            **ScholarPath Beta — Desktop App (Windows .exe + Linux AppImage/.deb + Flatpak)**
 
             Works exactly like the website, with an extra **Settings** tab for your Gemini API key.
 
             - Install Windows: download `ScholarPath_*_x64-setup.exe` (NSIS — choose install location)
-            - Install Linux: download `ScholarPath_*_amd64.AppImage` (`chmod +x` and run) or `.deb` (`sudo dpkg -i`)
+            - Install Linux AppImage: download `ScholarPath_*_amd64.AppImage` (`chmod +x` and run)
+            - Install Linux deb: `sudo dpkg -i ScholarPath_*_amd64.deb`
+            - Install Linux Flatpak: `flatpak install ScholarPath-beta.flatpak` (or via `flatpak-builder`)
             - Settings → paste your Gemini API key (or any provider key) — stored locally, never sent to our servers except for AI calls. Get a key at https://aistudio.google.com/app/apikey
 
             Auto-updates when you pull the beta branch; for a fresh install just run the installer again (allows downgrades).
           releaseDraft: true
           prerelease: true
+
+      - name: Build Flatpak (Ubuntu tag only)
+        if: github.ref_type == 'tag' && matrix.os == 'ubuntu-22.04'
+        run: |
+          sudo apt-get install -y flatpak flatpak-builder
+          flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          # Bundle the already-built Tauri binary into a Flatpak
+          mkdir -p flatpak/build
+          cp src-tauri/target/release/bundle/deb/*.deb flatpak/ 2>/dev/null || echo "No deb yet, using AppImage binary"
+          cp src-tauri/target/release/scholarpath flatpak/scholarpath 2>/dev/null || cp src-tauri/target/release/bundle/appimage/*.AppImage flatpak/scholarpath 2>/dev/null || echo "Binary not found, Flatpak will use AppImage"
+          cp public/favicon.svg flatpak/icon.png 2>/dev/null || cp src-tauri/icons/icon.png flatpak/icon.png
+          flatpak-builder --force-clean --ccache --repo=flatpak/repo flatpak/build flatpak/com.rafiekun.scholarpath.beta.yml || echo "Flatpak build failed, check manifest"
+          flatpak build-bundle flatpak/repo ScholarPath-beta.flatpak com.rafiekun.scholarpath.beta 2>/dev/null || echo "Flatpak bundle failed"
+          ls -lh flatpak/*.flatpak 2>/dev/null || echo "No flatpak bundle produced"

@@ -1,0 +1,29 @@
+app-id: com.rafiekun.scholarpath.beta
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: scholarpath
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --share=network
+  - --device=dri
+  - --filesystem=xdg-download
+modules:
+  - name: scholarpath
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 scholarpath /app/bin/scholarpath
+      - install -Dm644 com.rafiekun.scholarpath.beta.desktop /app/share/applications/com.rafiekun.scholarpath.beta.desktop
+      - install -Dm644 com.rafiekun.scholarpath.beta.metainfo.xml /app/share/metainfo/com.rafiekun.scholarpath.beta.metainfo.xml
+      - install -Dm644 icon.png /app/share/icons/hicolor/512x512/apps/com.rafiekun.scholarpath.beta.png
+    sources:
+      - type: file
+        path: scholarpath
+      - type: file
+        path: com.rafiekun.scholarpath.beta.desktop
+      - type: file
+        path: com.rafiekun.scholarpath.beta.metainfo.xml
+      - type: file
+        path: icon.png

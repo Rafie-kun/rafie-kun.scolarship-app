@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ScholarPath Beta
+Comment=Scholarship, University & Internship Finder for International Students
+Exec=scholarpath
+Icon=com.rafiekun.scholarpath.beta
+Terminal=false
+Type=Application
+Categories=Education;
+StartupWMClass=ScholarPath Beta
