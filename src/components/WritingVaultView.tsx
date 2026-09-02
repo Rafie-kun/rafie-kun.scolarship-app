@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { FileText, Sparkles, CheckCircle, ArrowRight, BookOpen, AlertCircle } from 'lucide-react';
+import { FileText, Sparkles, CheckCircle, ArrowRight, BookOpen, AlertCircle, Library } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import EssayTemplates from './EssayTemplates';
 import { useAuth } from '../context/AuthContext';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
 
@@ -115,9 +116,11 @@ In my future career, I plan to research compilers, operating system architecture
           <FileText className="w-5 h-5 text-stone-900 shrink-0" /> SCROLL VAULT (SOP WORKBENCH)
         </h3>
         <p className="text-xs text-stone-700 font-sans mt-2 leading-relaxed">
-          Paste your Statement of Purpose (SOP), Research Fellowship draft, or Resume. The Advisory Alchemist reviews admissions metrics, checking eligibility criteria, ECTS, and returns formatted Markdown refactor suggestions.
+          Paste your SOP, get an AI review, check for AI patterns, or study 5 winning excerpts. The advisor checks eligibility, ECTS, and returns Markdown suggestions.
         </p>
       </div>
+
+      <EssayTemplates onUse={(text)=> setEssayText(text)} />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         

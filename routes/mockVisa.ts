@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import { authenticateToken } from './auth.js';
 import { GoogleGenAI, Type } from '@google/genai';
 import { GEMINI_MODEL } from './aiConfig.js';
+import { aiRateLimiter } from './rateLimitAI.js';
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ function getAI() {
 function hasKey(): boolean { return !!process.env.GEMINI_API_KEY; }
 
 // POST /api/mock-visa/interview  { country, visaType, userAnswer, history }
-router.post('/interview', authenticateToken, async (req: Request, res: Response) => {
+router.post('/interview', authenticateToken, aiRateLimiter, async (req: Request, res: Response) => {
   const { country, visaType, userAnswer, history } = req.body;
   if (!country) return res.status(400).json({ error: 'country is required' });
 

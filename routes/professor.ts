@@ -3,6 +3,7 @@ import { authenticateToken } from './auth.js';
 import { GoogleGenAI, Type } from '@google/genai';
 import { GEMINI_MODEL } from './aiConfig.js';
 import { getUniversitiesFromDb } from '../db/index.js';
+import { aiRateLimiter } from './rateLimitAI.js';
 
 const router = express.Router();
 
@@ -22,7 +23,7 @@ function hasGeminiKey(): boolean {
 }
 
 // POST /api/professors/search  { university, country, keyword, degreeLevel }
-router.post('/search', authenticateToken, async (req: Request, res: Response) => {
+router.post('/search', authenticateToken, aiRateLimiter, async (req: Request, res: Response) => {
   const { university, country, keyword, degreeLevel } = req.body;
 
   if (!university || !keyword) {

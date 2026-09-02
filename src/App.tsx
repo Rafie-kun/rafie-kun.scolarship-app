@@ -42,6 +42,7 @@ import GlobalSearch from './components/GlobalSearch';
 import Tooltip from './components/Tooltip';
 import QuickNotesWidget from './components/QuickNotesWidget';
 import LevelUpModal from './components/LevelUpModal';
+import PwaInstallPrompt from './components/PwaInstallPrompt';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { useBackgroundSync } from './hooks/useBackgroundSync';
 
@@ -717,6 +718,8 @@ export default function App() {
           points={profile.points || 0} 
         />
       )}
+
+      <PwaInstallPrompt />
     </div>
     </ErrorBoundary>
   );

@@ -4,6 +4,7 @@ import { GoogleGenAI } from "@google/genai";
 import { authenticateToken } from './auth.js';
 import { JWT_SECRET, DEFAULT_ANON_PROFILE } from './db.js';
 import { getProfileByUsername } from '../db/index.js';
+import { aiRateLimiter } from './rateLimitAI.js';
 
 import { GEMINI_MODEL } from './aiConfig.js';
 
@@ -249,7 +250,7 @@ Keep your response limited to 2-3 short, highly structured paragraphs. Act stric
 });
 
 // 5. Plagiarism / AI pattern check for SOPs (auth required)
-router.post('/plagiarism-check', authenticateToken, async (req: Request, res: Response) => {
+router.post('/plagiarism-check', authenticateToken, aiRateLimiter, async (req: Request, res: Response) => {
   const user = (req as any).user;
   const username = user.username;
   const profile = getProfileByUsername(username) || DEFAULT_ANON_PROFILE;
