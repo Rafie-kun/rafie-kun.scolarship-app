@@ -1,0 +1,69 @@
+name: Tauri Beta — Desktop App
+
+on:
+  push:
+    branches: [beta/desktop-app]
+    tags: ['beta-v*']
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            args: ''
+          - os: ubuntu-22.04
+            args: ''
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install Linux deps
+        if: matrix.os == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf libasound2-dev
+
+      - name: Install frontend deps
+        run: npm ci
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Build Tauri bundles (branch, no release)
+        if: github.ref_type == 'branch'
+        run: npm run build && npx tauri build --debug
+
+      - name: Tauri build + Release (tag)
+        if: github.ref_type == 'tag'
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: "ScholarPath Beta ${{ github.ref_name }}"
+          releaseBody: |
+            **ScholarPath Beta — Desktop App (Windows .exe + Linux AppImage/.deb)**
+
+            Works exactly like the website, with an extra **Settings** tab for your Gemini API key.
+
+            - Install Windows: download `ScholarPath_*_x64-setup.exe` (NSIS — choose install location)
+            - Install Linux: download `ScholarPath_*_amd64.AppImage` (`chmod +x` and run) or `.deb` (`sudo dpkg -i`)
+            - Settings → paste your Gemini API key (or any provider key) — stored locally, never sent to our servers except for AI calls. Get a key at https://aistudio.google.com/app/apikey
+
+            Auto-updates when you pull the beta branch; for a fresh install just run the installer again (allows downgrades).
+          releaseDraft: true
+          prerelease: true
