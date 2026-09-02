@@ -38,14 +38,14 @@ jobs:
           sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf libasound2-dev
 
       - name: Install frontend deps
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Build frontend
         run: npm run build
 
       - name: Build Tauri bundles (branch, no release)
         if: github.ref_type == 'branch'
-        run: npm run build && npx tauri build --debug
+        run: npx tauri build --debug
 
       - name: Tauri build + Release (tag)
         if: github.ref_type == 'tag'
