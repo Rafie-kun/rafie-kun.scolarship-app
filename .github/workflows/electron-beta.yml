@@ -1,4 +1,4 @@
-name: Electron Beta — Windows .exe
+name: Electron Beta — Desktop App (JS only, no Rust)
 
 permissions:
   contents: write
@@ -9,8 +9,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-win:
-    runs-on: windows-latest
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            args: --win nsis
+            pattern: '*.exe'
+          - os: ubuntu-22.04
+            args: --linux AppImage deb
+            pattern: '*.{AppImage,deb}'
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,19 +28,22 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - run: npm run build
-      - name: Build Windows installer
-        run: npx electron-builder --win nsis --publish never
+      - name: Build Electron (${{ matrix.os }})
+        run: npx electron-builder ${{ matrix.args }} --publish never
       - name: List built files
-        run: Get-ChildItem -Recurse -Filter *.exe | Select-Object FullName, Length | Format-Table -AutoSize
+        run: |
+          echo "=== dist ==="; Get-ChildItem -Recurse dist -ErrorAction SilentlyContinue | Select-Object FullName, Length | Format-Table -AutoSize
+          echo "=== release ==="; Get-ChildItem -Recurse release -ErrorAction SilentlyContinue | Select-Object FullName, Length | Format-Table -AutoSize
+          echo "=== out ==="; Get-ChildItem -Recurse out -ErrorAction SilentlyContinue | Select-Object FullName, Length | Format-Table -AutoSize
         shell: pwsh
       - name: Upload to Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            dist/**/*.exe
-            release/**/*.exe
-            out/**/*.exe
-            **/ScholarPath*.exe
+            dist/**/*${{ matrix.pattern }}
+            release/**/*${{ matrix.pattern }}
+            out/**/*${{ matrix.pattern }}
+            **/ScholarPath*${{ matrix.pattern }}
           fail_on_unmatched_files: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
