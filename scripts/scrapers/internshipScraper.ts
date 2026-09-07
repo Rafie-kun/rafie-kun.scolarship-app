@@ -77,7 +77,7 @@ export async function scrapeInternships(): Promise<ScrapedInternship[]> {
       console.log(`[OK] Retrieved ${feed.items.length} records from: ${url}`);
       for (const item of feed.items) {
         const title = item.title || '';
-        if (!title.toLowerCase().includes('intern')) continue; // only true internship listings
+        if (!/intern|fellow|placement/i.test(title)) continue; // internships, fellowships, placements
 
         // Google News titles end with " - SourceName"; prefer that as the provider
         const dashParts = title.split(' - ');

@@ -7,20 +7,7 @@ function copyData() {
     fs.mkdirSync(distData, { recursive: true });
   }
 
-  const srcData = path.join(process.cwd(), 'public', 'data');
-  if (fs.existsSync(srcData)) {
-    const files = fs.readdirSync(srcData);
-    for (const file of files) {
-      if (file.endsWith('.json') || file.endsWith('.db')) {
-        fs.copyFileSync(
-          path.join(srcData, file),
-          path.join(distData, file)
-        );
-      }
-    }
-  }
-
-  // Also copy from root data/ if present
+  // Root data first (legacy fallback), then public/data overwrites as canonical
   const rootData = path.join(process.cwd(), 'data');
   if (fs.existsSync(rootData)) {
     const files = fs.readdirSync(rootData);
@@ -28,6 +15,19 @@ function copyData() {
       if (file.endsWith('.json') || file.endsWith('.db')) {
         fs.copyFileSync(
           path.join(rootData, file),
+          path.join(distData, file)
+        );
+      }
+    }
+  }
+
+  const srcData = path.join(process.cwd(), 'public', 'data');
+  if (fs.existsSync(srcData)) {
+    const files = fs.readdirSync(srcData);
+    for (const file of files) {
+      if (file.endsWith('.json') || file.endsWith('.db')) {
+        fs.copyFileSync(
+          path.join(srcData, file),
           path.join(distData, file)
         );
       }

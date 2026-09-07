@@ -15,29 +15,36 @@ async function scrapeDaadDirect(): Promise<any[]> {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const html = await res.text();
     const $ = cheerio.load(html);
-    // DAAD lists scholarships in cards; extract up to 5
-    $('a').each((_, el) => {
-      const text = $(el).text().trim();
-      const href = $(el).attr('href') || '';
-      if (text.length > 20 && text.length < 120 && /scholarship|stipend|grant/i.test(text) && href.includes('daad.de')) {
-        const fullUrl = href.startsWith('http') ? href : `https://www.daad.de${href}`;
-        out.push({
-          name: text.slice(0, 120),
-          provider: 'German Academic Exchange Service (DAAD)',
-          description: 'DAAD-funded scholarship for international students — extracted directly from daad.de.',
-          eligibleMajors: ['All Fields'],
-          eligibleCountries: ['Worldwide'],
-          fundingCoverage: 'Fully Funded',
-          competitivenessScore: 88,
-          gpaRequirement: 3.2,
-          degreeLevel: ["Master's Degree"],
-          deadline: '2026-11-30',
-          officialWebsite: 'https://www.daad.de/en/',
-          applicationUrl: fullUrl
-        });
-        if (out.length >= 5) return false;
-      }
-    });
+    // DAAD lists scholarships in cards; try specific selectors first, fallback to global
+    let found = 0;
+    const selectors = ['.scholarship-card a', '.search-result a', '.result-list a', 'a'];
+    for (const sel of selectors) {
+      if (found >= 5) break;
+      $(sel).each((_, el) => {
+        const text = $(el).text().trim();
+        const href = $(el).attr('href') || '';
+        if (text.length > 20 && text.length < 120 && /scholarship|stipend|grant/i.test(text) && href.includes('daad.de')) {
+          const fullUrl = href.startsWith('http') ? href : `https://www.daad.de${href}`;
+          out.push({
+            name: text.slice(0, 120),
+            provider: 'German Academic Exchange Service (DAAD)',
+            description: 'DAAD-funded scholarship for international students — extracted directly from daad.de.',
+            eligibleMajors: ['All Fields'],
+            eligibleCountries: ['Worldwide'],
+            fundingCoverage: 'Fully Funded',
+            competitivenessScore: 88,
+            gpaRequirement: 3.2,
+            degreeLevel: ["Master's Degree"],
+            deadline: '2026-11-30',
+            officialWebsite: 'https://www.daad.de/en/',
+            applicationUrl: fullUrl
+          });
+          found++;
+          if (found >= 5) return false;
+        }
+      });
+      if (found >= 5) break;
+    }
     console.log(`[OK] DAAD direct scrape found ${out.length} listings`);
   } catch (err: any) {
     console.warn(`[⚠️] DAAD direct scrape failed: ${err.message}`);

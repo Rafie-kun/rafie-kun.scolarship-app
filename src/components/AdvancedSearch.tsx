@@ -13,7 +13,7 @@ import { getCleanUniversityUrl } from '../utils/urlHelper';
 
 export default function AdvancedSearch() {
   const { convertAmount } = useTheme();
-  const { profile } = useAuth();
+  const { profile, authorizedFetch, isLoggedIn } = useAuth();
 
   // Search Type Switcher: 'universities' | 'scholarships'
   const [searchTab, setSearchTab] = useState<'universities' | 'scholarships'>('universities');
@@ -87,19 +87,21 @@ export default function AdvancedSearch() {
     const deadline = type === 'university' ? 'Autumn Intake' : (item as Scholarship).deadline || 'Flexible';
 
     try {
-      const response = await fetch('/api/applications', {
+      const response = await authorizedFetch('/api/applications', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: appName,
-          providerOrUni: providerOrUni,
-          deadline: deadline,
-          status: 'Saved',
-          checklist: [
-            { text: 'Prepare Academic Transcripts', done: false },
-            { text: 'Verify English Proficiency tests', done: false },
-            { text: 'Finalize SOP / Statement drafts', done: false }
-          ]
+          app: {
+            name: appName,
+            providerOrUni: providerOrUni,
+            deadline: deadline,
+            status: 'Saved',
+            checklist: [
+              { text: 'Prepare Academic Transcripts', done: false },
+              { text: 'Verify English Proficiency tests', done: false },
+              { text: 'Finalize SOP / Statement drafts', done: false }
+            ]
+          }
         })
       });
 
@@ -107,6 +109,9 @@ export default function AdvancedSearch() {
         setSuccessMsg(`"${appName}" successfully saved to your Applications Tracker!`);
         setTimeout(() => setSuccessMsg(null), 3500);
         window.dispatchEvent(new CustomEvent('applications-updated'));
+      } else if (response.status === 401) {
+        setSuccessMsg(`"${appName}" — Sign in to track. Saved locally for this session only.`);
+        setTimeout(() => setSuccessMsg(null), 4000);
       } else {
         setSuccessMsg(`"${appName}" saved locally to your application list.`);
         setTimeout(() => setSuccessMsg(null), 3500);

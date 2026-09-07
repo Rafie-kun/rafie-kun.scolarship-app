@@ -48,16 +48,17 @@ const DEFAULT_SKILL_TREE: SkillNode[] = [
 ];
 
 export default function RoadmapView() {
-  const { authorizedFetch, profile, rewardPoints } = useAuth();
+  const { authorizedFetch, profile, rewardPoints, user } = useAuth();
   const [roadmap, setRoadmap] = useState<Milestone[]>([]);
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState('');
   const [generating, setGenerating] = useState(false);
 
   const [activeViewTab, setActiveViewTab] = useState<'timeline' | 'skilltree'>('timeline');
+  const storageKey = `scholarpath_skill_tree_${user || 'guest'}`;
   const [skillTree, setSkillTree] = useState<SkillNode[]>(() => {
     try {
-      const saved = localStorage.getItem('scholarpath_skill_tree');
+  const saved = localStorage.getItem(storageKey);
       return saved ? JSON.parse(saved) : DEFAULT_SKILL_TREE;
     } catch {
       return DEFAULT_SKILL_TREE;
@@ -94,7 +95,7 @@ export default function RoadmapView() {
 
       const updatedTree = skillTree.map(n => relockedIds.has(n.id) ? { ...n, unlocked: false } : n);
       setSkillTree(updatedTree);
-      localStorage.setItem('scholarpath_skill_tree', JSON.stringify(updatedTree));
+      localStorage.setItem(storageKey, JSON.stringify(updatedTree));
       setSuccess(`Locked skill: "${node.title}".`);
       setTimeout(() => setSuccess(''), 3000);
     } else {
@@ -113,7 +114,7 @@ export default function RoadmapView() {
       playAdvancementSound();
       const updatedTree = skillTree.map(n => n.id === nodeId ? { ...n, unlocked: true } : n);
       setSkillTree(updatedTree);
-      localStorage.setItem('scholarpath_skill_tree', JSON.stringify(updatedTree));
+      localStorage.setItem(storageKey, JSON.stringify(updatedTree));
 
       if (rewardPoints) {
         await rewardPoints(node.xpReward, `Unlocked Skill Node: "${node.title}"`, "Master Scholar");
@@ -129,7 +130,7 @@ export default function RoadmapView() {
     if (confirm("Are you sure you want to lock and untick all skill nodes in the matrix?")) {
       const resetTree = DEFAULT_SKILL_TREE.map(n => ({ ...n, unlocked: n.id === 'gpa_base' }));
       setSkillTree(resetTree);
-      localStorage.setItem('scholarpath_skill_tree', JSON.stringify(resetTree));
+      localStorage.setItem(storageKey, JSON.stringify(resetTree));
       setSuccess("Reset all skill tree matrix nodes to default baseline.");
       setTimeout(() => setSuccess(''), 3000);
     }
