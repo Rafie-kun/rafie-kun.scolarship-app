@@ -6,8 +6,9 @@ permissions:
 on:
   push:
     branches: [beta/desktop-app]
-    tags: ['beta-v*']
   workflow_dispatch:
+  # tags intentionally NOT triggering Tauri - Electron builds use beta-v* tags (see electron-beta.yml)
+  # To release Tauri again, push to beta/desktop-app branch or add tag trigger back
 
 jobs:
   build:
