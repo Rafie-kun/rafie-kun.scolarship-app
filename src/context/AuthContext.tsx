@@ -468,6 +468,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setIsGuest(false);
       setIsLoggedIn(true);
       playAdvancementSound();
+      setTimeout(checkGuestMigration, 800);
       return true;
     } catch (e: any) {
       if (e.message === "Authentication failed" || e.message === "Invalid credentials") {
@@ -538,6 +539,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setIsGuest(false);
       setIsLoggedIn(true);
       playAdvancementSound();
+      setTimeout(checkGuestMigration, 800);
       return true;
     } catch (e: any) {
       // Registration requires the server (it owns the user database).
@@ -590,6 +592,41 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setAuthLoading(false);
     }
+  };
+
+  const [showMigrateModal, setShowMigrateModal] = useState(false);
+  const [guestAppsToMigrate, setGuestAppsToMigrate] = useState<any[]>([]);
+
+  const checkGuestMigration = () => {
+    if (localStorage.getItem('scholarpath_guest_migrate_choice') === 'never') return;
+    try {
+      const raw = localStorage.getItem('scholarpath_mock_applications_guest');
+      if (!raw) return;
+      const guestApps = JSON.parse(raw);
+      if (!Array.isArray(guestApps) || guestApps.length === 0) return;
+      setGuestAppsToMigrate(guestApps);
+      setShowMigrateModal(true);
+    } catch {}
+  };
+
+  const handleMigrateGuestData = async (choice: 'migrate' | 'keep' | 'never') => {
+    if (choice === 'never') localStorage.setItem('scholarpath_guest_migrate_choice', 'never');
+    if (choice === 'migrate' && guestAppsToMigrate.length > 0) {
+      for (const app of guestAppsToMigrate) {
+        try {
+          await authorizedFetch('/api/applications', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ app })
+          });
+        } catch {}
+      }
+      localStorage.removeItem('scholarpath_mock_applications_guest');
+    } else if (choice === 'keep') {
+      // keep separate, do nothing
+    }
+    setShowMigrateModal(false);
+    setGuestAppsToMigrate([]);
   };
 
   const logout = async () => {
@@ -805,6 +842,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       authorizedFetch
     }}>
       {children}
+      {showMigrateModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/80" onClick={() => handleMigrateGuestData('keep')} />
+          <div className="relative bg-[#1a1817] border-4 border-black p-6 max-w-md w-full space-y-4 [box-shadow:inset_-4px_-4px_0_#111,inset_4px_4px_0_#555]">
+            <h3 className="font-press text-[11px] text-[#ffff55]">Migrate Guest Data?</h3>
+            <p className="text-xs font-mono text-stone-300">
+              You have {guestAppsToMigrate.length} tracked scholarship{guestAppsToMigrate.length !== 1 ? 's' : ''} as guest. Move them to your new account?
+            </p>
+            <p className="text-[10px] font-mono text-stone-500">Your guest data is stored locally as <code>scholarpath_applications_guest</code>. Migration copies each to <code>/api/applications</code> with your new login.</p>
+            <div className="flex flex-col gap-2">
+              <button onClick={() => handleMigrateGuestData('migrate')} className="mc-btn w-full py-2.5 text-[9px]">Migrate to My Account</button>
+              <button onClick={() => handleMigrateGuestData('keep')} className="w-full py-2 text-[10px] font-mono text-stone-300 border-2 border-stone-700 hover:border-stone-500">Keep Separate (guest data stays)</button>
+              <button onClick={() => handleMigrateGuestData('never')} className="text-[10px] font-mono text-stone-500 hover:text-stone-300">Don't ask again</button>
+            </div>
+          </div>
+        </div>
+      )}
     </AuthContext.Provider>
   );
 }

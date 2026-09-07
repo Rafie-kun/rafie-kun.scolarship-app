@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Briefcase, Search, Globe, DollarSign, Calendar, Sparkles, ExternalLink, ShieldCheck, MapPin, Building, Filter } from 'lucide-react';
 import { playClickSound, playAdvancementSound } from '../utils/sound';
+import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 
 export interface InternshipItem {
@@ -27,6 +28,7 @@ export interface InternshipItem {
 
 export default function InternshipExplorer() {
   const { convertAmount } = useTheme();
+  const { authorizedFetch } = useAuth();
 
   const [internships, setInternships] = useState<InternshipItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -38,6 +40,7 @@ export default function InternshipExplorer() {
   // Data freshness / auto-update status
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
+  const [refreshMsg, setRefreshMsg] = useState('');
 
   const timeAgo = (iso: string | null): string => {
     if (!iso) return 'unknown';
@@ -86,8 +89,13 @@ export default function InternshipExplorer() {
   const handleRefreshData = async () => {
     playClickSound();
     setRefreshing(true);
+    setRefreshMsg('');
     try {
-      await fetch('/api/scraper/trigger', { method: 'POST', credentials: 'include' });
+      const res = await authorizedFetch('/api/scraper/trigger', { method: 'POST' });
+      if (res.status === 401) {
+        setRefreshMsg('Sign in to check for new listings — showing cached data for now.');
+        setTimeout(()=>setRefreshMsg(''), 4000);
+      }
     } catch {
       // Scraper may take a while; refresh whatever we have afterwards
     }
@@ -147,6 +155,11 @@ export default function InternshipExplorer() {
           <span className="inline-block w-2 h-2 bg-[#55ff55] animate-pulse" />
           {internships.length} opportunities · Auto-updates hourly · Last updated: {timeAgo(lastUpdated)}
         </p>
+        {refreshMsg && (
+          <div className="mt-2 bg-amber-950/40 border border-amber-700 text-amber-200 text-xs font-mono p-2">
+            {refreshMsg}
+          </div>
+        )}
       </div>
 
       {/* Filter Controls */}

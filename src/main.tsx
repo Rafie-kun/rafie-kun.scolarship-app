@@ -35,6 +35,20 @@ import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 
+// Tauri desktop: route /api/* to hosted API so the app works exactly like the website
+if (typeof window !== 'undefined' && (window as any).__TAURI__) {
+  const origFetch = window.fetch.bind(window);
+  window.fetch = ((input: RequestInfo | URL, init?: RequestInit) => {
+    let url = typeof input === 'string' ? input : input instanceof URL ? input.toString() : (input as Request).url;
+    if (typeof url === 'string' && url.startsWith('/api/')) {
+      url = `https://rafie-kun-scolarship-app.vercel.app${url}`;
+      if (typeof input === 'string') input = url as any;
+      else if (input instanceof Request) input = new Request(url, input as any) as any;
+    }
+    return origFetch(input as any, init);
+  }) as any;
+}
+
 // PWA: register service worker for offline shell caching
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
