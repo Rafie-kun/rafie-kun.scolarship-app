@@ -1,5 +1,8 @@
 name: Tauri Beta — Desktop App
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: [beta/desktop-app]
