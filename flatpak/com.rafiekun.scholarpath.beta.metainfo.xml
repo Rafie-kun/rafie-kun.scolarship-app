@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>com.rafiekun.scholarpath.beta</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>ScholarPath Beta</name>
+  <summary>Scholarship, University &amp; Internship Finder for International Students</summary>
+  <description>
+    <p>ScholarPath helps international students discover scholarships, universities, internships and part-time jobs, check eligibility, plan budgets, prepare visas, and track applications — with an official Minecraft-inspired dark theme.</p>
+    <p>Beta: works exactly like the website at https://rafie-kun-scolarship-app.vercel.app — includes Settings tab for your Gemini API key.</p>
+  </description>
+  <launchable type="desktop-id">com.rafiekun.scholarpath.beta.desktop</launchable>
+  <provides>
+    <id>com.rafiekun.scholarpath.beta.desktop</id>
+  </provides>
+  <url type="homepage">https://github.com/Rafie-kun/rafie-kun.scolarship-app</url>
+  <screenshots>
+    <screenshot type="default" width="1280" height="800"/>
+  </screenshots>
+  <releases>
+    <release version="4.0.0-beta.1" date="2026-09-02">
+      <description><p>First beta desktop release — Windows .exe + Linux AppImage/.deb + Flatpak</p></description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1" />
+</component>

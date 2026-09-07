@@ -2,11 +2,25 @@
   "name": "scholarpath-app",
   "version": "4.0.0",
   "type": "module",
+  "main": "electron/main.cjs",
   "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs && node scripts/copy-data.js",
     "start": "node dist/server.cjs",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "tauri": "tauri",
+    "electron": "electron .",
+    "electron:build": "electron-builder --win --publish never",
+    "electron:build:win": "electron-builder --win --publish never"
+  },
+  "build": {
+    "appId": "com.rafiekun.scholarpath.beta",
+    "productName": "ScholarPath Beta",
+    "files": ["dist/**/*", "electron/**/*"],
+    "directories": { "buildResources": "public" },
+    "win": { "target": "nsis", "icon": "public/favicon.svg" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "perMachine": false },
+    "linux": { "target": ["AppImage", "deb"], "icon": "public/favicon.svg", "category": "Education" }
   },
   "dependencies": {
     "@google/genai": "^2.8.0",
@@ -31,6 +45,7 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0-beta.8",
+    "@tauri-apps/cli": "^2.11.4",
     "@types/bcryptjs": "^2.4.6",
     "@types/better-sqlite3": "^7.6.13",
     "@types/express": "^5.0.6",
@@ -39,6 +54,8 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^44.2.0",
+    "electron-builder": "^26.15.3",
     "esbuild": "^0.24.0",
     "tsx": "^4.19.1",
     "typescript": "^5.5.4",
