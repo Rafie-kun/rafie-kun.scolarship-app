@@ -1,0 +1,37 @@
+name: Electron Beta — Windows .exe
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags: ['beta-v*']
+  workflow_dispatch:
+
+jobs:
+  build-win:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - name: Build Windows installer
+        run: npx electron-builder --win nsis --publish never
+      - name: List built files
+        run: Get-ChildItem -Recurse -Filter *.exe | Select-Object FullName, Length | Format-Table -AutoSize
+        shell: pwsh
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/**/*.exe
+            release/**/*.exe
+            out/**/*.exe
+            **/ScholarPath*.exe
+          fail_on_unmatched_files: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
