@@ -1,8 +1,18 @@
-import Database from 'better-sqlite3';
 import fs from 'fs';
 import path from 'path';
 import bcrypt from 'bcryptjs';
+import { createRequire } from 'module';
 import type { Profile, Application, AppNotification, CommunityPost, CVData } from '../src/types.js';
+
+const require = createRequire(import.meta.url);
+let Database: any = null;
+let databaseLoadError: string | null = null;
+try {
+  Database = require('better-sqlite3');
+} catch (e: any) {
+  databaseLoadError = e?.message || String(e);
+  console.warn('[DB] better-sqlite3 native module not available, using JS fallback:', databaseLoadError);
+}
 
 const __dirname = process.cwd();
 
@@ -43,19 +53,75 @@ if (isVercel && !fs.existsSync(dbPath) && bundledDbPath) {
   }
 }
 
+// JS fallback store (used when better-sqlite3 unavailable on serverless)
+let useJsFallback = false;
+const jsStore: {
+  users: Map<string, any>;
+  profilesByUserId: Map<string, any>;
+  profilesByUsername: Map<string, any>;
+  applications: Map<string, any[]>; // user_id -> Application[]
+  notifications: AppNotification[];
+  community_posts: CommunityPost[];
+  cv_data: Map<string, CVData>;
+  roadmaps: Map<string, any[]>;
+  universities: any[];
+} = {
+  users: new Map(),
+  profilesByUserId: new Map(),
+  profilesByUsername: new Map(),
+  applications: new Map(),
+  notifications: [],
+  community_posts: [],
+  cv_data: new Map(),
+  roadmaps: new Map(),
+  universities: [],
+};
+
 let db: any;
-try {
-  if (process.env.TURSO_DATABASE_URL) {
-    console.log('[DB] TURSO_DATABASE_URL is set - for full persistence on Vercel, wire Turso via @libsql/client (see Guide.md). Using file DB for this build.');
+if (Database) {
+  try {
+    if (process.env.TURSO_DATABASE_URL) {
+      console.log('[DB] TURSO_DATABASE_URL is set - for full persistence on Vercel, wire Turso via @libsql/client (see Guide.md). Using file DB for this build.');
+    }
+    db = new Database(dbPath);
+    try { db.pragma('journal_mode = WAL'); } catch {}
+  } catch (e: any) {
+    console.error('[DB] File DB unavailable, falling back to in-memory:', e?.message);
+    try {
+      db = new Database(':memory:');
+      try { db.pragma('journal_mode = MEMORY'); } catch {}
+    } catch (inner: any) {
+      console.error('[DB] even :memory: failed, switching to JS fallback:', inner?.message);
+      useJsFallback = true;
+    }
   }
-  db = new Database(dbPath);
-  try { db.pragma('journal_mode = WAL'); } catch {}
-} catch (e: any) {
-  console.error('[DB] File DB unavailable, falling back to in-memory:', e?.message);
-  db = new Database(':memory:');
-  try { db.pragma('journal_mode = MEMORY'); } catch {}
+} else {
+  useJsFallback = true;
+}
+
+if (useJsFallback) {
+  console.warn('[DB] Using ephemeral JS fallback store (data resets on cold start). Set TURSO_DATABASE_URL for persistence.');
+  // Minimal shim so db.exec / db.prepare calls don't crash during init
+  db = {
+    exec: () => {},
+    pragma: () => {},
+    prepare: (sql: string) => {
+      const lower = sql.toLowerCase();
+      return {
+        get: (...params: any[]) => {
+          if (lower.includes('count(*) as count from users')) return { count: jsStore.users.size };
+          if (lower.includes('count(*) as count from universities')) return { count: jsStore.universities.length };
+          return undefined;
+        },
+        all: (...params: any[]) => [],
+        run: (...params: any[]) => ({ changes: 0 }),
+      };
+    },
+    transaction: (fn: any) => (...args: any[]) => fn(...args),
+  };
 }
 export { db };
+export const isJsFallback = () => useJsFallback;
 
 // --- Schema Initialization ---
 db.exec(`
@@ -185,7 +251,8 @@ db.exec(`
 
 `);
 
-// --- Dynamic Schema Migration for Pre-existing Databases ---
+// --- Dynamic Schema Migration for Pre-existing Databases (skip on JS fallback) ---
+if (!useJsFallback) {
 try {
   const profileTableInfo = db.prepare("PRAGMA table_info(profiles)").all() as { name: string }[];
   const existingProfileCols = new Set(profileTableInfo.map(col => col.name));
@@ -242,6 +309,7 @@ try {
   }
 } catch (migrationErr) {
   console.error("[SQLite Migration Error]: Failed to align pre-existing datatypes:", migrationErr);
+}
 }
 
 // --- Type Converter Helpers ---
@@ -307,27 +375,52 @@ function deserializeProfile(row: any): Profile | null {
 // --- Query Database Helper Functions ---
 
 export function getUserByUsername(username: string): any {
+  if (useJsFallback) {
+    for (const u of jsStore.users.values()) {
+      if (u.username.toLowerCase() === username.toLowerCase()) return u;
+    }
+    return undefined;
+  }
   const stmt = db.prepare('SELECT * FROM users WHERE LOWER(username) = LOWER(?)');
   return stmt.get(username);
 }
 
 export function getUserByEmail(email: string): any {
+  if (useJsFallback) {
+    for (const u of jsStore.users.values()) {
+      if (u.email && u.email.toLowerCase() === email.toLowerCase()) return u;
+    }
+    return undefined;
+  }
   const stmt = db.prepare('SELECT * FROM users WHERE LOWER(email) = LOWER(?)');
   return stmt.get(email);
 }
 
 export function getUserByUserId(id: string): any {
+  if (useJsFallback) {
+    return jsStore.users.get(id);
+  }
   const stmt = db.prepare('SELECT * FROM users WHERE id = ?');
   return stmt.get(id);
 }
 
 export function getProfileByUserId(userId: string): Profile | null {
+  if (useJsFallback) {
+    const raw = jsStore.profilesByUserId.get(userId);
+    if (!raw) return null;
+    return deserializeProfile(raw);
+  }
   const stmt = db.prepare('SELECT * FROM profiles WHERE user_id = ?');
   const row = stmt.get(userId);
   return deserializeProfile(row);
 }
 
 export function getProfileByUsername(username: string): Profile | null {
+  if (useJsFallback) {
+    const raw = jsStore.profilesByUsername.get(username.toLowerCase());
+    if (!raw) return null;
+    return deserializeProfile(raw);
+  }
   const stmt = db.prepare('SELECT * FROM profiles WHERE LOWER(username) = LOWER(?)');
   const row = stmt.get(username);
   return deserializeProfile(row);
@@ -337,6 +430,60 @@ export function createNewUser(username: string, passwordHash: string, fullName: 
   const userId = 'usr-' + Date.now() + Math.random().toString(36).substr(2, 4);
   const profileId = 'prf-' + Date.now() + Math.random().toString(36).substr(2, 4);
   
+  if (useJsFallback) {
+    const userRow = { id: userId, username, email: email || null, password: passwordHash, createdAt: new Date().toISOString() };
+    const profileRow: any = {
+      id: profileId,
+      user_id: userId,
+      username,
+      fullName,
+      level: profile.level || 1,
+      points: profile.points || 0,
+      intendedMajor: profile.intendedMajor || '',
+      intendedDegree: profile.intendedDegree || '',
+      country: profile.country || 'Worldwide',
+      nationality: profile.nationality || 'Global Explorer',
+      gpa: profile.gpa || 3.0,
+      maxGpa: profile.maxGpa || 4.0,
+      ieltsScore: profile.ieltsScore || null,
+      greScore: profile.greScore || null,
+      leadershipExperience: JSON.stringify(profile.leadershipExperience || []),
+      projects: JSON.stringify(profile.projects || []),
+      volunteerExperience: JSON.stringify(profile.volunteerExperience || []),
+      badges: JSON.stringify(profile.badges || []),
+      educationLevel: profile.educationLevel || null,
+      highSchoolName: profile.highSchoolName || null,
+      collegeName: profile.collegeName || null,
+      primaryMajor: profile.primaryMajor || null,
+      secondaryMajor: profile.secondaryMajor || null,
+      minor: profile.minor || null,
+      graduationYear: profile.graduationYear || null,
+      additionalSkills: JSON.stringify(profile.additionalSkills || []),
+      resumePdf: profile.resumePdf || null,
+      rewardedActions: JSON.stringify(profile.rewardedActions || []),
+      oLevelSubjects: JSON.stringify(profile.oLevelSubjects || []),
+      aLevelSubjects: JSON.stringify(profile.aLevelSubjects || []),
+      satScore: profile.satScore || null,
+      profilePicture: profile.profilePicture || null,
+      lastDailyCheckin: profile.lastDailyCheckin || null,
+      hasCompletedOnboarding: profile.hasCompletedOnboarding ? 1 : 0,
+      customGeminiKey: profile.customGeminiKey || null,
+      city: profile.city || null,
+      bio: profile.bio || null,
+      heroTitle: profile.heroTitle || null,
+      profileColor: profile.profileColor || null,
+      universityName: profile.universityName || null,
+      degree: profile.degree || null,
+      fieldOfStudy: profile.fieldOfStudy || null,
+      academicStatus: JSON.stringify(profile.academicStatus || []),
+      profileCompletion: profile.profileCompletion || null
+    };
+    jsStore.users.set(userId, userRow);
+    jsStore.profilesByUserId.set(userId, profileRow);
+    jsStore.profilesByUsername.set(username.toLowerCase(), profileRow);
+    return userId;
+  }
+
   const insertUser = db.prepare('INSERT INTO users (id, username, email, password, createdAt) VALUES (?, ?, ?, ?, ?)');
   const insertProfile = db.prepare(`
     INSERT INTO profiles (
@@ -412,6 +559,59 @@ export function saveProfile(username: string, updated: Partial<Profile>): void {
 
   const merged = { ...current, ...updated };
 
+  if (useJsFallback) {
+    const existing = jsStore.profilesByUsername.get(username.toLowerCase());
+    if (!existing) return;
+    const userId = existing.user_id;
+    const updatedRow: any = {
+      ...existing,
+      fullName: merged.fullName,
+      level: merged.level,
+      points: merged.points,
+      intendedMajor: merged.intendedMajor,
+      intendedDegree: merged.intendedDegree,
+      country: merged.country,
+      nationality: merged.nationality,
+      gpa: merged.gpa,
+      maxGpa: merged.maxGpa,
+      ieltsScore: merged.ieltsScore || null,
+      greScore: merged.greScore || null,
+      leadershipExperience: JSON.stringify(merged.leadershipExperience || []),
+      projects: JSON.stringify(merged.projects || []),
+      volunteerExperience: JSON.stringify(merged.volunteerExperience || []),
+      badges: JSON.stringify(merged.badges || []),
+      educationLevel: merged.educationLevel || null,
+      highSchoolName: merged.highSchoolName || null,
+      collegeName: merged.collegeName || null,
+      primaryMajor: merged.primaryMajor || null,
+      secondaryMajor: merged.secondaryMajor || null,
+      minor: merged.minor || null,
+      graduationYear: merged.graduationYear || null,
+      additionalSkills: JSON.stringify(merged.additionalSkills || []),
+      resumePdf: merged.resumePdf || null,
+      rewardedActions: JSON.stringify(merged.rewardedActions || []),
+      oLevelSubjects: JSON.stringify(merged.oLevelSubjects || []),
+      aLevelSubjects: JSON.stringify(merged.aLevelSubjects || []),
+      satScore: merged.satScore || null,
+      profilePicture: merged.profilePicture || null,
+      lastDailyCheckin: merged.lastDailyCheckin || null,
+      hasCompletedOnboarding: merged.hasCompletedOnboarding || merged.onboardingCompleted ? 1 : 0,
+      customGeminiKey: merged.customGeminiKey || null,
+      city: merged.city || null,
+      bio: merged.bio || null,
+      heroTitle: merged.heroTitle || null,
+      profileColor: merged.profileColor || null,
+      universityName: merged.universityName || null,
+      degree: merged.degree || null,
+      fieldOfStudy: merged.fieldOfStudy || null,
+      academicStatus: JSON.stringify(merged.academicStatus || []),
+      profileCompletion: merged.profileCompletion || null
+    };
+    jsStore.profilesByUserId.set(userId, updatedRow);
+    jsStore.profilesByUsername.set(username.toLowerCase(), updatedRow);
+    return;
+  }
+
   const stmt = db.prepare(`
     UPDATE profiles SET
       fullName = ?, level = ?, points = ?, intendedMajor = ?, intendedDegree = ?,
@@ -476,7 +676,10 @@ export function saveProfile(username: string, updated: Partial<Profile>): void {
 export function getUserApplications(username: string): Application[] {
   const user = getUserByUsername(username);
   if (!user) return [];
-
+  if (useJsFallback) {
+    const list = jsStore.applications.get(user.id) || [];
+    return list as Application[];
+  }
   const stmt = db.prepare('SELECT * FROM applications WHERE user_id = ?');
   const rows = stmt.all(user.id);
   
@@ -494,7 +697,14 @@ export function getUserApplications(username: string): Application[] {
 export function saveApplication(username: string, app: Application): void {
   const user = getUserByUsername(username);
   if (!user) return;
-
+  if (useJsFallback) {
+    const list = jsStore.applications.get(user.id) || [];
+    const idx = list.findIndex((a: any) => a.id === app.id);
+    if (idx !== -1) list[idx] = app;
+    else list.push(app);
+    jsStore.applications.set(user.id, list);
+    return;
+  }
   const checkStmt = db.prepare('SELECT id FROM applications WHERE user_id = ? AND id = ?');
   const existing = checkStmt.get(user.id, app.id);
 
@@ -535,7 +745,11 @@ export function saveApplication(username: string, app: Application): void {
 export function deleteApplication(username: string, appId: string): void {
   const user = getUserByUsername(username);
   if (!user) return;
-
+  if (useJsFallback) {
+    const list = (jsStore.applications.get(user.id) || []).filter((a: any) => a.id !== appId);
+    jsStore.applications.set(user.id, list);
+    return;
+  }
   const stmt = db.prepare('DELETE FROM applications WHERE user_id = ? AND id = ?');
   stmt.run(user.id, appId);
 }
@@ -543,7 +757,9 @@ export function deleteApplication(username: string, appId: string): void {
 export function getRoadmap(username: string): any[] | null {
   const user = getUserByUsername(username);
   if (!user) return null;
-
+  if (useJsFallback) {
+    return jsStore.roadmaps.get(user.id) || null;
+  }
   const stmt = db.prepare('SELECT roadmap FROM roadmaps WHERE user_id = ?');
   const row = stmt.get(user.id);
   if (!row) return null;
@@ -553,12 +769,18 @@ export function getRoadmap(username: string): any[] | null {
 export function saveRoadmap(username: string, roadmap: any[]): void {
   const user = getUserByUsername(username);
   if (!user) return;
-
+  if (useJsFallback) {
+    jsStore.roadmaps.set(user.id, roadmap);
+    return;
+  }
   const stmt = db.prepare('INSERT INTO roadmaps (user_id, roadmap) VALUES (?, ?) ON CONFLICT(user_id) DO UPDATE SET roadmap = EXCLUDED.roadmap');
   stmt.run(user.id, JSON.stringify(roadmap));
 }
 
 export function getNotifications(): AppNotification[] {
+  if (useJsFallback) {
+    return [...jsStore.notifications].reverse();
+  }
   const stmt = db.prepare('SELECT * FROM notifications ORDER BY ROWID DESC');
   const rows = stmt.all();
 
@@ -571,11 +793,18 @@ export function getNotifications(): AppNotification[] {
 }
 
 export function addNotification(notification: AppNotification): void {
+  if (useJsFallback) {
+    jsStore.notifications.push(notification as any);
+    return;
+  }
   const stmt = db.prepare('INSERT INTO notifications (id, type, message, timestamp) VALUES (?, ?, ?, ?)');
   stmt.run(notification.id, notification.type, notification.message, notification.timestamp);
 }
 
 export function getCommunityPosts(): CommunityPost[] {
+  if (useJsFallback) {
+    return [...jsStore.community_posts].reverse();
+  }
   const stmt = db.prepare('SELECT * FROM community_posts ORDER BY ROWID DESC');
   const rows = stmt.all();
 
@@ -592,6 +821,10 @@ export function getCommunityPosts(): CommunityPost[] {
 }
 
 export function addCommunityPost(post: CommunityPost): void {
+  if (useJsFallback) {
+    jsStore.community_posts.push(post as any);
+    return;
+  }
   const stmt = db.prepare(`
     INSERT INTO community_posts (id, author, title, content, category, votes, commentsCount, createdAt)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
@@ -609,6 +842,11 @@ export function addCommunityPost(post: CommunityPost): void {
 }
 
 export function voteCommunityPost(postId: string): void {
+  if (useJsFallback) {
+    const p = jsStore.community_posts.find(c => c.id === postId);
+    if (p) p.votes = (p.votes || 0) + 1;
+    return;
+  }
   const stmt = db.prepare('UPDATE community_posts SET votes = votes + 1 WHERE id = ?');
   stmt.run(postId);
 }
@@ -626,7 +864,16 @@ export function getCVData(username: string): CVData {
       extracurriculars: []
     };
   }
-
+  if (useJsFallback) {
+    return jsStore.cv_data.get(user.id) || {
+      workExperience: [],
+      internships: [],
+      projects: [],
+      skills: [],
+      certifications: [],
+      extracurriculars: []
+    };
+  }
   const stmt = db.prepare('SELECT * FROM cv_data WHERE user_id = ?');
   const row = stmt.get(user.id);
   
@@ -654,7 +901,10 @@ export function getCVData(username: string): CVData {
 export function saveCVData(username: string, data: CVData): void {
   const user = getUserByUsername(username);
   if (!user) return;
-
+  if (useJsFallback) {
+    jsStore.cv_data.set(user.id, data);
+    return;
+  }
   const stmt = db.prepare(`
     INSERT INTO cv_data (user_id, workExperience, internships, projects, skills, certifications, extracurriculars)
     VALUES (?, ?, ?, ?, ?, ?, ?)
@@ -680,10 +930,17 @@ export function saveCVData(username: string, data: CVData): void {
 
 // --- One-Time Migration Database Seeder ---
 export function seedDatabaseIfEmpty(): void {
-  const count = db.prepare('SELECT COUNT(*) as count FROM users').get() as { count: number };
-  if (count.count > 0) {
-    console.log('[SQLite DB] Database already contains records. Skipping initial seeding.');
-    return;
+  if (useJsFallback) {
+    if (jsStore.users.size > 0) {
+      console.log('[SQLite DB] JS fallback already seeded. Skipping.');
+      return;
+    }
+  } else {
+    const count = db.prepare('SELECT COUNT(*) as count FROM users').get() as { count: number };
+    if (count.count > 0) {
+      console.log('[SQLite DB] Database already contains records. Skipping initial seeding.');
+      return;
+    }
   }
 
   console.log('[SQLite DB] Initializing fresh database table seeds...');
@@ -863,18 +1120,67 @@ export function seedDatabaseIfEmpty(): void {
 
 // Function to seed universities on first load or if empty
 export function seedUniversitiesIfEmpty(): void {
+  if (useJsFallback) {
+    if (jsStore.universities.length > 0) {
+      console.log('[SQLite DB] JS fallback universities already seeded.');
+      return;
+    }
+    console.log('[SQLite DB] Seeding JS fallback universities from JSON...');
+    const searchPaths = [
+      path.join(process.cwd(), 'public', 'data', 'universities.json'),
+      path.join(process.cwd(), 'data', 'universities.json'),
+      path.join(process.cwd(), 'dist', 'data', 'universities.json'),
+      path.join(__dirname, '..', 'public', 'data', 'universities.json'),
+      path.join(__dirname, '..', 'data', 'universities.json'),
+      path.join(__dirname, '../../public/data', 'universities.json'),
+      path.join(__dirname, '../../data', 'universities.json'),
+      path.join('/var/task', 'public', 'data', 'universities.json'),
+      path.join('/var/task', 'data', 'universities.json'),
+      path.join('/var/task', 'dist', 'data', 'universities.json')
+    ];
+    let universitiesPath = '';
+    for (const p of searchPaths) if (fs.existsSync(p)) { universitiesPath = p; break; }
+    if (universitiesPath) {
+      try {
+        const rawUnis = JSON.parse(fs.readFileSync(universitiesPath, 'utf-8'));
+        jsStore.universities = rawUnis.map((u: any) => ({
+          id: u.id || ('uni-' + Math.random().toString(36).substr(2, 9)),
+          name: u.name,
+          country: u.country || 'Worldwide',
+          ranking: u.ranking !== undefined ? u.ranking : 9999,
+          acceptanceRate: u.acceptanceRate || 'N/A',
+          averageGpa: u.averageGpa !== undefined ? u.averageGpa : 3.0,
+          popularMajors: u.popularMajors || [],
+          type: u.type || 'public',
+          tuitionMin: u.tuitionMin !== undefined ? u.tuitionMin : 0,
+          tuitionMax: u.tuitionMax !== undefined ? u.tuitionMax : 0,
+          offeredScholarships: u.offeredScholarships || [],
+          city: u.city || 'N/A',
+          hasOnCampusHousing: !!u.hasOnCampusHousing,
+          website: u.website || null,
+          applicationUrl: u.applicationUrl || null,
+          domain: u.domain || null,
+          generatedApplicationUrl: u.generatedApplicationUrl || null
+        }));
+        console.log(`[SQLite DB] JS fallback seeded ${jsStore.universities.length} universities.`);
+      } catch (err) { console.error("[Seeding Universities Error] JS fallback:", err); }
+    }
+    return;
+  }
   const countUnis = db.prepare('SELECT COUNT(*) as count FROM universities').get() as { count: number };
   if (countUnis.count === 0) {
     console.log('[SQLite DB] Seeding universities table from raw json stream...');
     const searchPaths = [
       path.join(process.cwd(), 'public', 'data', 'universities.json'),
       path.join(process.cwd(), 'data', 'universities.json'),
+      path.join(process.cwd(), 'dist', 'data', 'universities.json'),
       path.join(__dirname, '..', 'public', 'data', 'universities.json'),
       path.join(__dirname, '..', 'data', 'universities.json'),
       path.join(__dirname, '../../public/data', 'universities.json'),
       path.join(__dirname, '../../data', 'universities.json'),
       path.join('/var/task', 'public', 'data', 'universities.json'),
-      path.join('/var/task', 'data', 'universities.json')
+      path.join('/var/task', 'data', 'universities.json'),
+      path.join('/var/task', 'dist', 'data', 'universities.json')
     ];
     let universitiesPath = '';
     for (const p of searchPaths) {
@@ -937,6 +1243,56 @@ export interface GetUniversitiesOptions {
 }
 
 export function getUniversitiesFromDb(options: GetUniversitiesOptions): { total: number; universities: any[] } {
+  if (useJsFallback) {
+    let filtered = [...jsStore.universities];
+    if (options.search) {
+      const s = options.search.toLowerCase();
+      filtered = filtered.filter((u: any) => u.name.toLowerCase().includes(s) || u.city.toLowerCase().includes(s) || JSON.stringify(u.popularMajors).toLowerCase().includes(s) || u.country.toLowerCase().includes(s));
+    }
+    if (options.country && options.country !== 'all') {
+      filtered = filtered.filter((u: any) => u.country.toLowerCase() === options.country!.toLowerCase());
+    }
+    if (options.type && options.type !== 'all') {
+      filtered = filtered.filter((u: any) => u.type === options.type);
+    }
+    if (options.onCampusHousing) {
+      filtered = filtered.filter((u: any) => !!u.hasOnCampusHousing);
+    }
+    if (options.sortBy) {
+      if (options.sortBy === 'ranking_asc') filtered.sort((a: any, b: any) => a.ranking - b.ranking);
+      else if (options.sortBy === 'tuition_asc') filtered.sort((a: any, b: any) => a.tuitionMin - b.tuitionMin);
+      else if (options.sortBy === 'tuition_desc') filtered.sort((a: any, b: any) => b.tuitionMin - a.tuitionMin);
+      else if (options.sortBy === 'gpa_desc') filtered.sort((a: any, b: any) => b.averageGpa - a.averageGpa);
+      else if (options.sortBy === 'alphabetical') filtered.sort((a: any, b: any) => a.name.localeCompare(b.name));
+      else filtered.sort((a: any, b: any) => a.ranking - b.ranking);
+    } else {
+      filtered.sort((a: any, b: any) => a.ranking - b.ranking);
+    }
+    const total = filtered.length;
+    const page = Math.max(1, options.page);
+    const limit = Math.max(1, options.limit);
+    const offset = (page - 1) * limit;
+    const universities = filtered.slice(offset, offset + limit).map((row: any) => ({
+      id: row.id,
+      name: row.name,
+      country: row.country,
+      ranking: row.ranking,
+      acceptanceRate: row.acceptanceRate,
+      averageGpa: row.averageGpa,
+      popularMajors: Array.isArray(row.popularMajors) ? row.popularMajors : safeJsonParse(row.popularMajors),
+      type: row.type,
+      tuitionMin: row.tuitionMin,
+      tuitionMax: row.tuitionMax,
+      offeredScholarships: Array.isArray(row.offeredScholarships) ? row.offeredScholarships : safeJsonParse(row.offeredScholarships),
+      city: row.city,
+      hasOnCampusHousing: !!row.hasOnCampusHousing,
+      website: row.website,
+      applicationUrl: row.applicationUrl,
+      domain: row.domain || undefined,
+      generatedApplicationUrl: row.generatedApplicationUrl || undefined
+    }));
+    return { total, universities };
+  }
   let query = 'SELECT * FROM universities WHERE 1=1';
   let countQuery = 'SELECT COUNT(*) as total FROM universities WHERE 1=1';
   const params: any[] = [];
