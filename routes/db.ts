@@ -63,12 +63,14 @@ try {
   const searchPaths = [
     path.join(process.cwd(), 'public', 'data', 'scholarships.json'),
     path.join(process.cwd(), 'data', 'scholarships.json'),
+    path.join(process.cwd(), 'dist', 'data', 'scholarships.json'),
     path.join(__dirname, '..', 'public', 'data', 'scholarships.json'),
     path.join(__dirname, '..', 'data', 'scholarships.json'),
     path.join(__dirname, '../../public/data', 'scholarships.json'),
     path.join(__dirname, '../../data', 'scholarships.json'),
     path.join('/var/task', 'public', 'data', 'scholarships.json'),
-    path.join('/var/task', 'data', 'scholarships.json')
+    path.join('/var/task', 'data', 'scholarships.json'),
+    path.join('/var/task', 'dist', 'data', 'scholarships.json')
   ];
   
   let scholarshipsPath = '';
@@ -159,39 +161,48 @@ try {
 }
 
 try {
-  const rows = db.prepare('SELECT * FROM universities').all() as any[];
-  if (rows && rows.length > 0) {
-    universitiesData = rows.map(row => ({
-      id: row.id,
-      name: row.name,
-      country: row.country,
-      ranking: row.ranking,
-      acceptanceRate: row.acceptanceRate,
-      averageGpa: row.averageGpa,
-      popularMajors: JSON.parse(row.popularMajors || '[]'),
-      type: row.type || 'public',
-      tuitionMin: row.tuitionMin,
-      tuitionMax: row.tuitionMax,
-      offeredScholarships: JSON.parse(row.offeredScholarships || '[]'),
-      city: row.city,
-      hasOnCampusHousing: !!row.hasOnCampusHousing,
-      website: row.website,
-      applicationUrl: row.applicationUrl,
-      domain: row.domain || undefined,
-      generatedApplicationUrl: row.generatedApplicationUrl || undefined
-    }));
-  } else {
+  let loadedFromDb = false;
+  try {
+    const rows = db.prepare('SELECT * FROM universities').all() as any[];
+    if (rows && rows.length > 0) {
+      universitiesData = rows.map(row => ({
+        id: row.id,
+        name: row.name,
+        country: row.country,
+        ranking: row.ranking,
+        acceptanceRate: row.acceptanceRate,
+        averageGpa: row.averageGpa,
+        popularMajors: JSON.parse(row.popularMajors || '[]'),
+        type: row.type || 'public',
+        tuitionMin: row.tuitionMin,
+        tuitionMax: row.tuitionMax,
+        offeredScholarships: JSON.parse(row.offeredScholarships || '[]'),
+        city: row.city,
+        hasOnCampusHousing: !!row.hasOnCampusHousing,
+        website: row.website,
+        applicationUrl: row.applicationUrl,
+        domain: row.domain || undefined,
+        generatedApplicationUrl: row.generatedApplicationUrl || undefined
+      }));
+      loadedFromDb = true;
+    }
+  } catch (inner) {
+    console.warn("University DB read failed, will try file fallback", inner);
+  }
+  if (!loadedFromDb) {
     const __dirname = process.cwd();
     
     const searchPaths = [
       path.join(process.cwd(), 'public', 'data', 'universities.json'),
       path.join(process.cwd(), 'data', 'universities.json'),
+      path.join(process.cwd(), 'dist', 'data', 'universities.json'),
       path.join(__dirname, '..', 'public', 'data', 'universities.json'),
       path.join(__dirname, '..', 'data', 'universities.json'),
       path.join(__dirname, '../../public/data', 'universities.json'),
       path.join(__dirname, '../../data', 'universities.json'),
       path.join('/var/task', 'public', 'data', 'universities.json'),
-      path.join('/var/task', 'data', 'universities.json')
+      path.join('/var/task', 'data', 'universities.json'),
+      path.join('/var/task', 'dist', 'data', 'universities.json')
     ];
     
     let universitiesPath = '';
@@ -213,6 +224,7 @@ try {
   const searchPaths = [
     path.join(process.cwd(), 'public', 'data', 'universities.json'),
     path.join(process.cwd(), 'data', 'universities.json'),
+    path.join(process.cwd(), 'dist', 'data', 'universities.json'),
     path.join(__dirname, '..', 'public', 'data', 'universities.json'),
     path.join(__dirname, '..', 'data', 'universities.json'),
     path.join(__dirname, '../../public/data', 'universities.json'),

@@ -414,8 +414,10 @@ app.post("/api/scraper/trigger", authenticateToken, async (req, res) => {
   }
 });
 
-// --- VITE DEV MIDDLEWARE & DEPLOYMENT STATIC COMPILING ---
-if (process.env.NODE_ENV === "production" || process.env.VERCEL) {
+// --- STATIC COMPILING ---
+// On Vercel, static files are served by Vercel's CDN from outputDirectory (dist).
+// Serving via Express there would conflict with Vercel rewrites and waste lambda time.
+if (process.env.NODE_ENV === "production" && !process.env.VERCEL) {
   const distPath = path.join(process.cwd(), "dist");
   app.use(express.static(distPath));
   app.get("*", (req, res) => {

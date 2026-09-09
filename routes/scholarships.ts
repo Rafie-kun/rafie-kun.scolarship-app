@@ -10,7 +10,10 @@ router.get('/meta', (req: Request, res: Response) => {
   let lastUpdated: string | null = null;
   const candidates = [
     path.join(process.cwd(), 'public', 'data', 'scholarships.json'),
-    path.join(process.cwd(), 'data', 'scholarships.json')
+    path.join(process.cwd(), 'data', 'scholarships.json'),
+    path.join(process.cwd(), 'dist', 'data', 'scholarships.json'),
+    path.join('/var/task', 'public', 'data', 'scholarships.json'),
+    path.join('/var/task', 'dist', 'data', 'scholarships.json')
   ];
   for (const p of candidates) {
     try {
