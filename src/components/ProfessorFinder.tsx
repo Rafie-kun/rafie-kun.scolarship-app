@@ -79,7 +79,7 @@ export default function ProfessorFinder({ university, country, onClose }: { univ
         {meta?.domain && (
           <p className="text-[10px] font-mono text-stone-500">
             Email pattern at this university: <span className="text-stone-300">{meta.domain ? `firstname.lastname@${meta.domain}` : 'Check department site'}</span>
-            {meta.offline && <span className="ml-2 text-amber-300">(offline preview - add GEMINI_API_KEY on server for live AI results)</span>}
+            {meta.offline && <span className="ml-2 text-amber-300">(offline preview - add GEMINI_API_KEY on server for live results)</span>}
           </p>
         )}
 

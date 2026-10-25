@@ -53,7 +53,7 @@ export default function ScholarshipAdvisor() {
     if (isXpClaimed) return;
     playAdvancementSound();
     setIsXpClaimed(true);
-    await rewardPoints(30, "Completed AI Scholarship Advisor Consultation");
+    await rewardPoints(30, "Completed Scholarship Advisor Consultation");
     setXpSuccess("Loot Claimed! +30 Fellowship XP points added to your score!");
     setTimeout(() => setXpSuccess(""), 5000);
   };
@@ -76,7 +76,7 @@ export default function ScholarshipAdvisor() {
           </div>
           <div>
             <h3 className="font-press text-[11px] uppercase text-[#ffff55] tracking-wider mc-text-shadow">
-              AI Fellowship Advisor
+              Fellowship Advisor
             </h3>
             <p className="text-xs text-stone-300 font-mono mt-1">
               Deep-learning matrix analyzing eligibility matches for fully funded international stipends.

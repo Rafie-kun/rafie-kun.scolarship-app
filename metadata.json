@@ -1,6 +1,6 @@
 {
-  "name": "ScholarPath",
-  "description": "An AI-powered academic success ecosystem containing admissions checklists, entrance simulations, SOP writing evaluation labs, and mentorship boards.",
+  "name": "Somnia",
+  "description": "A quiet, dreamlike workspace for international students: scholarships, universities, budgets, visas, and applications in one place.",
   "requestFramePermissions": [
     "microphone"
   ],

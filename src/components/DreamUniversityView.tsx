@@ -138,7 +138,7 @@ export default function DreamUniversityView() {
     } else if (!hasResearchProject && selectedUni.ranking < 25) {
       criticalGap = `High-tier institutes heavily prioritize research profiles. We recommend launching an engineering project.`;
     } else if (essayFocusPercent < 70) {
-      criticalGap = `Weak statement of purpose draft coefficient. Refine the structure in the Scroll Vault under AI guidelines.`;
+      criticalGap = `Weak statement of purpose draft coefficient. Refine the structure in the Scroll Vault with the writing guide.`;
     }
 
     setOutcome({

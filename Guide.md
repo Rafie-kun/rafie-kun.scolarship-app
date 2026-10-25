@@ -1,6 +1,6 @@
-# ScholarPath - Complete User & Developer Guide
+# Somnia - Complete User & Developer Guide
 
-ScholarPath is an AI-powered scholarship, university, internship and visa planning platform for international students, styled with an official Minecraft-inspired night theme.
+Somnia is an AI-powered scholarship, university, internship and visa planning platform for international students, styled with an official Minecraft-inspired night theme.
 
 ---
 

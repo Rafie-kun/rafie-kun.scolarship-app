@@ -9,7 +9,7 @@ export default function OnboardingAIAssistant() {
   const [messages, setMessages] = useState<Array<{ id: string; text: string; sender: 'user' | 'bot' }>>([
     { 
       id: 'init-1', 
-      text: `Hello! I am your ScholarPath AI Academic Guide. I see you are configuring your profile. How can I help you optimize your academic paths or estimate study costs today?`, 
+      text: `Hello! I am your Somnia academic guide. I see you are configuring your profile. How can I help you optimize your academic paths or estimate study costs today?`, 
       sender: 'bot' 
     }
   ]);
@@ -104,7 +104,7 @@ export default function OnboardingAIAssistant() {
           className="bg-stone-900 border-4 border-black p-3 text-[#ffff55] hover:text-[#55ff55] hover:border-[#ffff55] transition-all flex items-center gap-2 [box-shadow:inset_-2px_-2px_0_#141414,inset_2px_2px_0_#555] active:scale-95 cursor-pointer shadow-2xl animate-bounce"
         >
           <Sparkles className="w-5 h-5 text-[#ffff55]" />
-          <span className="font-press text-[9px] uppercase tracking-wider hidden sm:inline">Ask AI Scribe</span>
+          <span className="font-press text-[9px] uppercase tracking-wider hidden sm:inline">Ask Somnia</span>
         </button>
       )}
 
@@ -117,7 +117,7 @@ export default function OnboardingAIAssistant() {
             <div className="flex items-center gap-2">
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
               <h4 className="font-press text-[9px] text-[#ffff55] uppercase mc-text-shadow flex items-center gap-1.5">
-                <Bot className="w-4 h-4 text-[#ffff55]" /> AI Advisor Companion
+                <Bot className="w-4 h-4 text-[#ffff55]" /> Somnia Companion
               </h4>
             </div>
             <button 
@@ -162,7 +162,7 @@ export default function OnboardingAIAssistant() {
             {loading && (
               <div className="flex gap-2 items-center text-[#ffff55] font-press text-[8px] animate-pulse py-1">
                 <Sparkles className="w-3.5 h-3.5 animate-spin text-[#ffff55]" />
-                <span>AI IS TRANSLATING LEDGERS...</span>
+                <span>READING THE LEDGERS...</span>
               </div>
             )}
             <div ref={messagesEndRef} />

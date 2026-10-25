@@ -1,4 +1,4 @@
-# ScholarPath — Full Prompts & Replies Log
+# Somnia — Full Prompts & Replies Log
 
 _This file archives every user prompt and assistant reply (with versions) from the initial import through all feature batches. Timestamps are from commit history._
 
@@ -40,7 +40,7 @@ Plus earlier overhaul (commit 81737af):
 ### 1. Initial Import
 **User:** `I have a github page for a scolarship and i want to imrpove this as much as possible can u js import this https://github.com/Rafie-kun/rafie-kun.scolarship-app`
 
-**Assistant:** Imported the repo into `D:\Testing\Scolarhsip`, explored the codebase (ScholarPath: React 19 + Vite + Tailwind v4 frontend, Express + SQLite backend, Gemini AI), identified critical issues (1,300 duplicate files, committed DB, hardcoded JWT fallback, mass assignment, XSS, monolithic bundle, no routing), and asked about overhaul scope + hosting target via `question` tool.
+**Assistant:** Imported the repo into `D:\Testing\Scolarhsip`, explored the codebase (Somnia: React 19 + Vite + Tailwind v4 frontend, Express + SQLite backend, Gemini AI), identified critical issues (1,300 duplicate files, committed DB, hardcoded JWT fallback, mass assignment, XSS, monolithic bundle, no routing), and asked about overhaul scope + hosting target via `question` tool.
 
 ### 2. Scope Selection
 **User (via question tool):** Scope = `Full overhaul (Recommended)`, Hosting = `Server hosting`

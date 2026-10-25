@@ -19,7 +19,7 @@ export default async function HomePage() {
     <div className="container">
       <div className="topbar" style={{ position: 'static', marginBottom: '1.5rem' }}>
         <div className="topbar-inner" style={{ paddingLeft: 0, paddingRight: 0 }}>
-          <span className="brand">ScholarPath</span>
+          <span className="brand">Somnia</span>
           <Link href="/scholarships" className="navlink">
             Scholarships
           </Link>

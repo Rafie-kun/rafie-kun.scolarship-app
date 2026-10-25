@@ -47,10 +47,10 @@ const REAL_UNIVERSITIES = {
   "Pakistan": { name: "Quaid-i-Azam University", city: "Islamabad", region: "Asia", website: "https://qau.edu.pk/", type: "public" },
   "Sri Lanka": { name: "University of Colombo", city: "Colombo", region: "Asia", website: "https://cmb.ac.lk/", type: "public" },
   "Nepal": { name: "Tribhuvan University", city: "Kathmandu", region: "Asia", website: "https://tribhuvan-university.edu.np/", type: "public" },
-  "Brazil": { name: "University of São Paulo", city: "São Paulo", region: "Latin America", website: "https://www.usp.br/", type: "public" },
+  "Brazil": { name: "University of SÃ£o Paulo", city: "SÃ£o Paulo", region: "Latin America", website: "https://www.usp.br/", type: "public" },
   "Argentina": { name: "University of Buenos Aires", city: "Buenos Aires", region: "Latin America", website: "https://www.uba.ar/", type: "public" },
   "Chile": { name: "Pontifical Catholic University of Chile", city: "Santiago", region: "Latin America", website: "https://www.uc.cl/", type: "private" },
-  "Colombia": { name: "National University of Colombia", city: "Bogotá", region: "Latin America", website: "https://unal.edu.co/", type: "public" },
+  "Colombia": { name: "National University of Colombia", city: "BogotÃ¡", region: "Latin America", website: "https://unal.edu.co/", type: "public" },
   "Mexico": { name: "National Autonomous University of Mexico", city: "Mexico City", region: "Latin America", website: "https://www.unam.mx/", type: "public" },
   "Peru": { name: "National University of San Marcos", city: "Lima", region: "Latin America", website: "https://unmsm.edu.pe/", type: "public" },
   "South Africa": { name: "University of Cape Town", city: "Cape Town", region: "Middle East & Africa", website: "https://www.uct.ac.za/", type: "public" },
@@ -68,7 +68,7 @@ const REAL_UNIVERSITIES = {
   "Portugal": { name: "University of Lisbon", city: "Lisbon", region: "Europe", website: "https://www.ulisboa.pt/", type: "public" },
   "Poland": { name: "University of Warsaw", city: "Warsaw", region: "Europe", website: "https://www.uw.edu.pl/", type: "public" },
   "Czech Republic": { name: "Charles University", city: "Prague", region: "Europe", website: "https://cuni.cz/", type: "public" },
-  "Hungary": { name: "Eötvös Loránd University", city: "Budapest", region: "Europe", website: "https://www.elte.hu/", type: "public" },
+  "Hungary": { name: "EÃ¶tvÃ¶s LorÃ¡nd University", city: "Budapest", region: "Europe", website: "https://www.elte.hu/", type: "public" },
   "Ukraine": { name: "Taras Shevchenko National University of Kyiv", city: "Kyiv", region: "Europe", website: "http://www.univ.kiev.ua/", type: "public" },
   "Romania": { name: "University of Bucharest", city: "Bucharest", region: "Europe", website: "https://unibuc.ro/", type: "public" },
   "Thailand": { name: "Chulalongkorn University", city: "Bangkok", region: "Asia", website: "https://www.chula.ac.th/", type: "public" },
@@ -104,7 +104,7 @@ const CURR_CONV = { "USD": 1.0, "EUR": 0.92, "GBP": 0.79, "BDT": 117.5, "INR": 8
 
 function runUpdate() {
   console.log("--------------------------------------------------");
-  console.log("Starting ScholarPath Global Database expansion...");
+  console.log("Starting Somnia Global Database expansion...");
   console.log("--------------------------------------------------");
 
   // ==========================================
@@ -300,7 +300,7 @@ function runUpdate() {
   console.log(`Scholarships database verified! Total entries: ${existingSchol.length}.`);
 
   console.log("--------------------------------------------------");
-  console.log("ScholarPath Database Expansion COMPLETE!");
+  console.log("Somnia Database Expansion COMPLETE!");
   console.log("--------------------------------------------------");
 }
 

@@ -66,7 +66,7 @@ export interface ScrapedInternship {
 }
 
 export async function scrapeInternships(): Promise<ScrapedInternship[]> {
-  const parser = new Parser({ headers: { 'User-Agent': 'ScholarPath-Bot/1.0' } });
+  const parser = new Parser({ headers: { 'User-Agent': 'Somnia-Bot/1.0' } });
   const results: ScrapedInternship[] = [];
   const now = new Date().toISOString().slice(0, 10);
 

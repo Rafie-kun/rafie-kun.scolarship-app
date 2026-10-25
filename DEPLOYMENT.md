@@ -1,6 +1,6 @@
-# 🚀 ScholarPath Deployment Guide
+# 🚀 Somnia Deployment Guide
 
-ScholarPath is a **full-stack application** (Express API + SQLite + static frontend served from one process). The simplest deployments run it as a single web service.
+Somnia is a **full-stack application** (Express API + SQLite + static frontend served from one process). The simplest deployments run it as a single web service.
 
 ---
 

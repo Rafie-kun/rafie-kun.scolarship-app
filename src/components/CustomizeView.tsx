@@ -63,7 +63,7 @@ export default function CustomizeView() {
           <Layers className="w-5 h-5 text-stone-950 shrink-0" /> Settings & Preferences
         </h3>
         <p className="text-xs text-stone-700 font-sans mt-2 leading-relaxed">
-          Manage your AI assistant connection, sounds, and replay the guided tour. Your progress and XP are saved automatically.
+          Manage your assistant connection, sounds, and replay the guided tour. Your progress and XP are saved automatically.
         </p>
       </div>
 
@@ -114,12 +114,12 @@ export default function CustomizeView() {
           <div className="bg-[#1c1a19] border-2 border-black p-3 space-y-2 [box-shadow:inset_-2px_-2px_0_rgba(0,0,0,0.3)]">
             <span className="text-[9px] uppercase text-stone-400 font-bold block">🔑 YOUR GEMINI API KEY (OPTIONAL)</span>
             <p className="text-[10px] text-stone-400 leading-normal">
-              Add your own Google Gemini key to power the AI assistant with your personal quota. Get one free at aistudio.google.com.
+              Add your own Google Gemini key to power the assistant with your personal quota. Get one free at aistudio.google.com.
             </p>
             <div className="space-y-2">
               <input
                 type="password"
-                placeholder="Paste your Gemini AI key..."
+                placeholder="Paste your Gemini key..."
                 value={customKeyInput}
                 onChange={(e) => setCustomKeyInput(e.target.value)}
                 className="w-full bg-black/40 border-2 border-black p-2 text-stone-150 font-mono text-xs focus:outline-none focus:border-[#ffff55] rounded-none"

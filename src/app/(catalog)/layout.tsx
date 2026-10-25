@@ -6,7 +6,7 @@ export default function CatalogLayout({ children }: { children: React.ReactNode 
       <header className="topbar">
         <div className="topbar-inner">
           <Link href="/" className="brand">
-            ScholarPath
+            Somnia
           </Link>
           <Link href="/scholarships" className="navlink">
             Scholarships

@@ -1,6 +1,6 @@
-# OPEN CODE — SCHOLARPATH IMPLEMENTATION SPECIFICATION
+# OPEN CODE — SOMNIA IMPLEMENTATION SPECIFICATION
 
-You are a senior full-stack engineer, database architect, UX engineer and technical lead working inside the existing ScholarPath repository. This document is your complete brief. Read it fully before touching code.
+You are a senior full-stack engineer, database architect, UX engineer and technical lead working inside the existing Somnia repository. This document is your complete brief. Read it fully before touching code.
 
 ---
 
@@ -14,7 +14,7 @@ You are a senior full-stack engineer, database architect, UX engineer and techni
 
 0.4 **Preserve before you replace.** The existing app is the starting point, not scrap. Section 2 requires a full audit first. Every existing feature must end up as PRESERVED, IMPROVED, REBUILT, MERGED, REPLACED or REMOVED, with a written reason. Nothing disappears silently.
 
-0.5 **Data trust is the highest-priority rule in this product.** ScholarPath deals with education, money, deadlines and visas. You must never invent authoritative-looking data. Specifically, never fabricate scholarships, deadlines, fees, visa requirements, university/program requirements, tuition figures or application URLs. See section 36 and section 47 for the seed-data policy. If you cannot verify something from an official source you can actually reach, leave the field empty/unknown or mark the record `estimated` / `needs_review`. An honest empty state is always better than a plausible-looking fake.
+0.5 **Data trust is the highest-priority rule in this product.** Somnia deals with education, money, deadlines and visas. You must never invent authoritative-looking data. Specifically, never fabricate scholarships, deadlines, fees, visa requirements, university/program requirements, tuition figures or application URLs. See section 36 and section 47 for the seed-data policy. If you cannot verify something from an official source you can actually reach, leave the field empty/unknown or mark the record `estimated` / `needs_review`. An honest empty state is always better than a plausible-looking fake.
 
 0.6 **No fake UI.** No decorative charts with made-up numbers, no buttons that do nothing, no "Coming soon" placeholders in navigation, no hard-coded demo data shown to real users as if it were real. If a feature's data does not exist yet, show a real empty state that explains what is missing and what the user (or an admin) can do.
 
@@ -32,7 +32,7 @@ You are a senior full-stack engineer, database architect, UX engineer and techni
 
 ## 1. PROJECT CONTEXT
 
-**Product:** ScholarPath — currently an AI-powered scholarship and university-admissions prototype, deployed at `https://rafie-kun-scolarship-app.vercel.app/`.
+**Product:** Somnia — currently an AI-powered scholarship and university-admissions prototype, deployed at `https://rafie-kun-scolarship-app.vercel.app/`.
 
 **Vision:** a global student command center for university discovery, scholarship discovery, admissions planning, study-abroad planning, academic profile analysis, country selection, program discovery, budget planning, visa preparation, application tracking, document management, internship/opportunity discovery, AI guidance and deadline management.
 
@@ -43,7 +43,7 @@ You are a senior full-stack engineer, database architect, UX engineer and techni
 **Primary audience:** secondary-school students and graduates applying internationally, with a first focus on students on British-style qualifications (O Level / IGCSE / AS / A Level), IB, AP, and national curricula, including students in South Asia. Support for master's/PhD applicants is required by the data model from day one.
 
 **Known facts about the current app (UNVERIFIED — confirm in Phase 1):**
-- The live site is a client-rendered SPA; its HTML title is "ScholarPath - AI-Powered Scholarship & Admissions Platform" and its meta description mentions fully funded scholarships, global university admissions, AI application coaching, SOP reviews, admission simulators and mock interview training. Theme color `#110f0d`.
+- The live site is a client-rendered SPA; its HTML title is "Somnia - AI-Powered Scholarship & Admissions Platform" and its meta description mentions fully funded scholarships, global university admissions, AI application coaching, SOP reviews, admission simulators and mock interview training. Theme color `#110f0d`.
 - The stack is believed to be TypeScript with Next.js and an Express API, using `better-sqlite3` and Gemini for AI. Serverless filesystems are ephemeral, so SQLite on Vercel cannot be a durable production store; this is a major reason for the move to PostgreSQL.
 - The UI is dark, warm-black, with a bright yellow accent, a textured background, beveled/game-inventory-style chrome (visible on the scrollbar and the selected-nav outline) and per-section colored icons.
 - The sidebar contains at least these 12 items, in this order (see section 2 for the full table): Overview, Performance Analytics, Scholarship Finder, Internship Finder, Universities, Country Matcher, Applications Tracker, Admissions Calculator, Will I Get In?, Document Center, CV Builder, AI Chat Assistant. The sidebar scrolls, so there may be more items below.
@@ -470,7 +470,7 @@ Legacy routes (from audit) must 301/redirect to the equivalents above. Unknown r
 - **Route:** `/app/advisor`, `/app/advisor/[sessionId]`. Modes: General advisor, SOP/essay reviewer, Mock interview. Preserve any existing AI features and their intent.
 - **Server-side only.** The LLM provider (Gemini currently in the prototype; confirm) sits behind an `AiProvider` interface so it can be swapped. The API key never reaches the client. Streaming responses via server route.
 - **Grounding (mandatory):** the advisor answers factual questions only through tool calls into the database, never from the model's memory. Tools: `get_profile_summary`, `search_programs`, `get_program`, `evaluate_program_match`, `search_scholarships`, `evaluate_scholarship_eligibility`, `get_deadlines`, `get_applications`, `get_missing_documents`, `calculate_budget`, `get_visa_guide`, `get_country`. Each tool returns records with ids, `source`, `source_url`, `last_verified`, `verification_status`.
-- **Response contract:** every factual claim is attached to citations (record id + source). The UI renders three label types: **Verified data**, **Estimated data**, **AI recommendation** (and "Not in database" when nothing is found). If the data is not in ScholarPath, the advisor says so ("I don't have verified information on that") and points to the official site if known; it must not guess deadlines, fees, requirements or visa rules.
+- **Response contract:** every factual claim is attached to citations (record id + source). The UI renders three label types: **Verified data**, **Estimated data**, **AI recommendation** (and "Not in database" when nothing is found). If the data is not in Somnia, the advisor says so ("I don't have verified information on that") and points to the official site if known; it must not guess deadlines, fees, requirements or visa rules.
 - **Questions it must handle well:** Which universities/scholarships fit me? What should I apply to first? What am I missing? How much will this cost? What documents do I need? Why do I not match this scholarship? Which country fits my budget? How do I apply?
 - **Safety:** prompt-injection defense (treat user-uploaded text, document content and web content as untrusted data); never reveal system prompts or other users' data; outputs avoid admission guarantees; legal/immigration disclaimers on visa topics; rate limits per user; token/usage budget; moderation for abuse; PII minimization (send only needed profile fields).
 - **SOP/essay reviewer:** user pastes text or selects a document version; response structured (clarity, structure, specificity, prompt fit, length vs limit); never rewrites the entire essay unless asked; labeled as AI feedback.

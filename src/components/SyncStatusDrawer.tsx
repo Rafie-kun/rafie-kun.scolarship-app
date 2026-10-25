@@ -32,7 +32,7 @@ export default function SyncStatusDrawer() {
             id: 'sync-seed-1',
             timestamp: new Date(Date.now() - 3600000).toLocaleTimeString() + " " + new Date().toLocaleDateString(),
             type: 'System Init Link',
-            details: ['Establish telemetry session with Central ScholarPath DB', 'Verify credentials handshakes', 'Sync 12 core matched scholarships rules'],
+            details: ['Establish telemetry session with Central Somnia DB', 'Verify credentials handshakes', 'Sync 12 core matched scholarships rules'],
             points: 0,
             status: 'success'
           }
@@ -154,7 +154,7 @@ export default function SyncStatusDrawer() {
                   <p className="text-[11px] font-sans text-stone-300 leading-relaxed">
                     {isOnline 
                       ? "All local accomplishments are being synced in real-time. Changes are permanently persisted on the central database server."
-                      : "We are temporarily saving changes to your offline inventory. These will automatically upload as soon as a link is re-established."
+                      : "We are temporarily saving changes to your offline cache. These will automatically upload as soon as a connection is re-established."
                     }
                   </p>
                 </div>

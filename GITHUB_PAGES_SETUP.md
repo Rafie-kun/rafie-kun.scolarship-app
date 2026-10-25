@@ -1,8 +1,8 @@
-# 🚀 GitHub Pages Deploy Guide (ScholarPath Minecraft Edition)
+# 🚀 GitHub Pages Deploy Guide (Somnia Minecraft Edition)
 
-> **Note:** For the full ScholarPath experience (accounts, AI, real-time application tracking), use **Docker, Render, or Vercel** (see `DEPLOYMENT.md`). GitHub Pages is **static-only** — it cannot run the Express API or SQLite. This guide is for a static demo that falls back to local JSON data.
+> **Note:** For the full Somnia experience (accounts, AI, real-time application tracking), use **Docker, Render, or Vercel** (see `DEPLOYMENT.md`). GitHub Pages is **static-only** — it cannot run the Express API or SQLite. This guide is for a static demo that falls back to local JSON data.
 
-GitHub Pages hosts **pure static web applications** (HTML, CSS, JS) directly from a GitHub repository. Because GitHub Pages does not run active Node.js/Express servers, this guide outlines how to easily deploy and run ScholarPath statically natively on GitHub Pages by serving data locally or using a serverless approach.
+GitHub Pages hosts **pure static web applications** (HTML, CSS, JS) directly from a GitHub repository. Because GitHub Pages does not run active Node.js/Express servers, this guide outlines how to easily deploy and run Somnia statically natively on GitHub Pages by serving data locally or using a serverless approach.
 
 ---
 
@@ -55,7 +55,7 @@ Avoid compiling assets locally! You can configure a workflow that triggers a fre
 
 ```yaml
 # .github/workflows/deploy.yml
-name: Deploy ScholarPath to GitHub Pages
+name: Deploy Somnia to GitHub Pages
 
 on:
   push:

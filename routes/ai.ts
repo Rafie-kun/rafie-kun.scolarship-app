@@ -195,7 +195,7 @@ router.post("/scholarship-recommendations", optionalAuth, async (req: Request, r
     if (hasGeminiKey(customKey)) {
       try {
         const ai = getAIClient(customKey);
-        const prompt = `You are ScholarPath's expert AI Scholarship Advisor.
+        const prompt = `You are Somnia's expert AI Scholarship Advisor.
 You are evaluating a candidate profile and providing personalized strategies for their top matched scholarships.
 
 CANDIDATE BIODATA CONTEXT:
@@ -226,7 +226,7 @@ The report must include:
 2. **Personalized Scholarship Roadmap**: For each of the top matched scholarships listed above:
    - Identify the primary hurdle or competitive bottleneck (e.g., GPA margin, essay expectations, test scores).
    - Write a specific, actionable, 1-2 sentence preparation strategy tailored to this scholarship.
-3. **ScholarPath Portfolio Action Steps**: Give 3-4 concrete portfolio enhancement guidelines.
+3. **Somnia Portfolio Action Steps**: Give 3-4 concrete portfolio enhancement guidelines.
 
 Use clear Markdown headers, bold accents, and bullet points. Deliver an inspiring yet realistic academic advising tone.`;
 
@@ -250,7 +250,7 @@ Use clear Markdown headers, bold accents, and bullet points. Deliver an inspirin
     }
 
     // Detailed local heuristic fallback
-    const fallbackReport = `### 🌌 Personal Academic Portfolio Analysis (ScholarPath Advisor Matrix)
+    const fallbackReport = `### 🌌 Personal Academic Portfolio Analysis (Somnia Advisor Matrix)
 
 Welcome, **${profile.fullName}**! Here is an automated strategic report based on your profile credentials (GPA **${profile.gpa}** in **${profile.intendedMajor}**):
 
@@ -267,7 +267,7 @@ ${topMatches
   )
   .join("\n")}
 
-#### 🛡️ ScholarPath Action Steps
+#### 🛡️ Somnia Action Steps
 1. **Flesh out Leadership Details**: Add more entries to your leadership log. Highlight project coordination and financial responsibility.
 2. **Quantify Project Descriptions**: In your CV builder, rewrite achievements to follow the STAR methodology (Situation, Task, Action, Result).
 3. **Verify Standardized Test Dates**: Schedule your IELTS/TOEFL to secure a score above 7.0.
@@ -370,7 +370,7 @@ router.post("/university-recommendations", optionalAuth, async (req: Request, re
     if (hasGeminiKey(customKey)) {
       try {
         const ai = getAIClient(customKey);
-        const prompt = `You are ScholarPath's expert AI University Admissions Consultant.
+        const prompt = `You are Somnia's expert AI University Admissions Consultant.
 Analyze the following candidate profile and provide customized admissions advice for their top matching universities.
 
 CANDIDATE BIODATA CONTEXT:
@@ -426,7 +426,7 @@ Format beautifully with clean Markdown headings, bold keywords, and bullet point
       }
     }
 
-    const fallbackReport = `### 🏢 Personal University Match Report (ScholarPath Matrix Engine)
+    const fallbackReport = `### 🏢 Personal University Match Report (Somnia Matrix Engine)
 
 Welcome, **${profile.fullName}**! Here is your structured matching analysis based on the universities indexed in our system for your major in **${profile.intendedMajor}**:
 
@@ -524,7 +524,7 @@ router.post("/budget-advisor", async (req: Request, res: Response) => {
 
   try {
     const ai = getAIClient();
-    const prompt = `You are ScholarPath's expert AI Student Financial Advisor.
+    const prompt = `You are Somnia's expert AI Student Financial Advisor.
 Provide a highly detailed financial advising report explaining student budget calculations, cost-saving strategies, and job opportunities.
 
 STUDENT PROFILE & CALCULATIONS:
@@ -674,7 +674,7 @@ router.post("/wizard-assistant", optionalAuth, async (req: Request, res: Respons
     }
 
     const ai = getAIClient(customKey);
-    const prompt = `You are ScholarPath's premium AI Onboarding Assistant.
+    const prompt = `You are Somnia's premium AI Onboarding Assistant.
 The user is going through the academic onboarding wizard. 
 CURRENT ONBOARDING PROGRESS & CONTEXT:
 - Home Country: ${onboardingState?.country || 'Not specified'}

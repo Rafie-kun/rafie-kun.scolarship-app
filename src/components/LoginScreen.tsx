@@ -6,7 +6,7 @@ import {
   Trash2, Check, ArrowRight, Eye, EyeOff, Sparkle, Layers, GraduationCap, Laptop 
 } from 'lucide-react';
 import { playClickSound } from '../utils/sound';
-import MinecraftWorld from './MinecraftWorld';
+import OmoriBackdrop from './OmoriBackdrop';
 
 const COMMON_MAJORS = [
   "Computer Science",
@@ -213,15 +213,15 @@ export default function LoginScreen() {
 
   return (
     <div className={`relative min-h-screen flex items-center justify-center overflow-auto py-12 px-4 select-none ${
-      isRetro ? 'font-mono' : 'font-sans bg-slate-950 text-slate-100'
+      isRetro ? 'font-sans' : 'font-sans bg-slate-950 text-slate-100'
     }`}>
-      {/* Dynamic 3D Environment Background */}
-      <MinecraftWorld />
+      {/* Dreamscape backdrop */}
+      <OmoriBackdrop />
 
       {/* Main Container Card panel */}
       <div className={`relative w-full max-w-xl z-10 transition-all duration-300 ${
         isRetro 
-          ? 'bg-[#2c2c2c] border-[6px] border-black p-6 [box-shadow:inset_-6px_-6px_0_#141414,inset_6px_6px_0_#555,0_20px_40px_rgba(0,0,0,0.8)]'
+          ? 'omori-login-card'
           : 'bg-slate-900/85 backdrop-blur-xl border border-slate-800/80 p-8 shadow-2xl shadow-indigo-950/40 relative'
       }`}>
         
@@ -234,22 +234,22 @@ export default function LoginScreen() {
         <div className="text-center mb-6 space-y-2">
           <span className={`block font-bold uppercase tracking-widest text-center ${
             isRetro 
-              ? 'font-press text-[9px] text-[#ffaa00] animate-pulse'
+              ? 'font-press text-[9px] text-[#cbb7f2] animate-pulse'
               : 'text-xs text-indigo-400 bg-indigo-950/50 py-1 px-3 border border-indigo-900/40 w-fit mx-auto'
           }`}>
             Scholarship & Internship Finder
           </span>
-          <h1 className={`tracking-wider relative inline-block select-none ${
+          <h1 className={`omori-login-title tracking-wider relative inline-block select-none ${
             isRetro
-              ? 'font-press text-2xl text-[#ffff55] drop-shadow-[0_4px_0_#3f3f00]'
+              ? 'font-press text-2xl text-[#f4f0e8]'
               : 'text-3xl font-extrabold tracking-tight bg-gradient-to-r from-yellow-300 via-indigo-200 to-teal-200 bg-clip-text text-transparent filter drop-shadow-md'
           }`}>
-            SCHOLARPATH
+            SOMNIA
           </h1>
           <p className={`uppercase ${
             isRetro ? 'text-[10px] text-stone-300' : 'text-xs text-slate-400 tracking-normal'
           }`}>
-            Gamified Multi-User Fellowship Companion
+            A quiet companion for your scholarship journey
           </p>
         </div>
 
@@ -282,7 +282,7 @@ export default function LoginScreen() {
                 : 'text-stone-400 hover:text-stone-200 bg-transparent'
             } ${isRetro ? 'font-press text-[9px]' : 'font-sans text-xs'}`}
           >
-            Create Pathfinder
+            Create Account
           </button>
         </div>
 
@@ -293,7 +293,7 @@ export default function LoginScreen() {
               ? 'bg-red-950/40 border-[#ff5555] text-red-200'
               : 'bg-rose-950/30 border-rose-800 text-rose-200'
           }`}>
-            ⚠️ [CRITICAL ERROR] - {localError || authError}
+            ⚠️ Could not continue — {localError || authError}
           </div>
         )}
 
@@ -303,7 +303,7 @@ export default function LoginScreen() {
             {/* Username input */}
             <div className="space-y-1">
               <label className={`block uppercase font-bold ${isRetro ? 'text-[9px] text-stone-300' : 'text-xs text-slate-300'}`}>
-                Player Username ID:
+                Username:
               </label>
               <input
                 type="text"
@@ -311,7 +311,7 @@ export default function LoginScreen() {
                 maxLength={22}
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="e.g. Steve_Jobs, Jobs2025"
+                placeholder="e.g. dreamer_01"
                 className={`w-full focus:outline-none focus:ring-1 ${
                   isRetro
                     ? 'bg-[#141414] border-4 border-black p-2.5 text-stone-100 focus:border-[#ffff55] text-xs font-mono uppercase'
@@ -323,7 +323,7 @@ export default function LoginScreen() {
             {/* Password input */}
             <div className="space-y-1">
               <label className={`block uppercase font-bold relative ${isRetro ? 'text-[9px] text-stone-300' : 'text-xs text-slate-300'}`}>
-                Credential Key:
+                Password:
               </label>
               <div className="relative">
                 <input
@@ -723,7 +723,7 @@ export default function LoginScreen() {
           <button
             type="submit"
             disabled={authLoading}
-            className={`w-full mt-6 py-4 px-5 text-[10px] uppercase font-bold transition-all relative flex items-center justify-center cursor-pointer ${
+            className={`omori-cta w-full mt-6 py-4 px-5 text-[10px] uppercase font-bold transition-all relative flex items-center justify-center cursor-pointer ${
               isRetro
                 ? 'mc-btn text-[#ffff55] font-press text-[9px]'
                 : 'w-full text-white font-semibold shadow-xl border border-slate-800 bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-700 hover:brightness-110 active:scale-[0.99] text-xs uppercase tracking-wider'
@@ -766,7 +766,7 @@ export default function LoginScreen() {
           🎮 TRY THE DEMO (NO SIGN-UP)
         </button>
         <p className="text-center text-[10px] text-stone-400 mt-2 leading-relaxed">
-          The demo walks you through every feature — scholarship matching, the budget planner, and the AI advisor — using sample data. A guided tour starts automatically.
+          The demo walks you through every feature — scholarship matching, the budget planner, and the study advisor — using sample data. A guided tour starts automatically.
         </p>
 
         <p className={`text-center font-mono mt-4 leading-normal ${

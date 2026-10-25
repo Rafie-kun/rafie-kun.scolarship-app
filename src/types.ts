@@ -25,7 +25,7 @@ export interface Profile {
   badges: string[];
   subjects?: SubjectGradeItem[];
 
-  // 🚨 NEW FIELDS FOR INTEGRATED SCHOLARPATH DATABASE 🚨
+  // 🚨 NEW FIELDS FOR INTEGRATED SOMNIA DATABASE 🚨
   educationLevel?: string; // 'high_school' | 'college' | 'undergraduate' | 'graduate' | 'phd'
   highSchoolName?: string;
   collegeName?: string;

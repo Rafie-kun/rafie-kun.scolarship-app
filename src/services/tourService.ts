@@ -10,7 +10,7 @@ export interface TourStep {
 export const tourSteps: TourStep[] = [
   {
     id: 'welcome',
-    title: '👋 Welcome to ScholarPath!',
+    title: '👋 Welcome to Somnia!',
     description: 'Your AI-powered journey to find and win scholarships starts here. Let\'s explore the features together!',
     page: 'overview',
     targetSelector: '#app-header',

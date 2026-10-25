@@ -517,7 +517,7 @@ export default function CVBuilder() {
       }
 
       // Save document out
-      doc.save(`ScholarPath_CV_${personalInfo.fullName.replace(/\s+/g, '_') || 'adventurer'}.pdf`);
+      doc.save(`Somnia_CV_${personalInfo.fullName.replace(/\s+/g, '_') || 'adventurer'}.pdf`);
     } catch (err) {
       console.error(err);
       alert('Error building local PDF blueprint.');

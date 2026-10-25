@@ -24,7 +24,7 @@ export default function HousingBoard({ country, universityName }: { country: str
   if (!cost) {
     return (
       <div className="bg-[#2c2c2c] border-4 border-black p-4 text-center">
-        <p className="text-xs font-mono text-stone-400">Housing data for {country} is being added. Check back soon or ask the AI Advisor.</p>
+        <p className="text-xs font-mono text-stone-400">Housing data for {country} is being added. Check back soon or ask the Study Advisor.</p>
       </div>
     );
   }

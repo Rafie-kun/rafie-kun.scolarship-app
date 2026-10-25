@@ -1,4 +1,4 @@
-# ScholarPath — Architecture (ARCHITECTURE.md)
+# Somnia — Architecture (ARCHITECTURE.md)
 
 > Phase 1 · Branch `scholarpath-v2` · Status: DECIDED, implementation starts Phase 2
 > Read with: `docs/SPEC.md`, `docs/AUDIT.md`, `docs/MIGRATION.md`

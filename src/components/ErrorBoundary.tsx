@@ -25,7 +25,7 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("Uncaught exception inside ScholarPath sandbox:", error, errorInfo);
+    console.error("Uncaught exception inside Somnia sandbox:", error, errorInfo);
   }
 
   private handleReset = () => {
@@ -56,7 +56,7 @@ export default class ErrorBoundary extends Component<Props, State> {
             <div className="bg-[#141212] border-2 border-dashed border-red-900/60 p-4 text-left rounded-none overflow-x-auto text-xs font-mono text-red-300 max-h-[140px] select-all">
               <strong>Error Trace:</strong>
               <div className="mt-1 font-mono text-[10.5px] leading-relaxed">
-                {this.state.error?.toString() || "Unknown error detected during inventory paint."}
+                {this.state.error?.toString() || "Unknown error detected while drawing the page."}
               </div>
             </div>
 

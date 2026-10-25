@@ -1,6 +1,8 @@
 {
-  "name": "scholarpath-app",
+  "name": "somnia",
   "version": "4.0.0",
+  "description": "A quiet, dreamlike workspace for scholarships, universities, budgets, visas, and applications.",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",

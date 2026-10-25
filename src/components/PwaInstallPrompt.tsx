@@ -30,7 +30,7 @@ export default function PwaInstallPrompt() {
   return (
     <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-sm bg-[#2c2c2c] border-4 border-black p-4 flex items-start justify-between gap-3 z-50 [box-shadow:0_8px_24px_rgba(0,0,0,0.6)]">
       <div className="space-y-1">
-        <span className="font-press text-[9px] text-[#ffff55] uppercase">Install ScholarPath</span>
+        <span className="font-press text-[9px] text-[#ffff55] uppercase">Install Somnia</span>
         <p className="text-xs font-mono text-stone-300">Add to your home screen for offline access and deadline reminders.</p>
       </div>
       <div className="flex flex-col gap-2 shrink-0">

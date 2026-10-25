@@ -268,13 +268,13 @@ export const notificationsData: AppNotification[] = [
   {
     id: "notif-1",
     type: "info",
-    message: "ScholarPath update: DAAD EPOS eligibility GPA index updated. Minimum requirements now configured to 3.0.",
+    message: "Somnia update: DAAD EPOS eligibility GPA index updated. Minimum requirements now configured to 3.0.",
     timestamp: "2 hours ago"
   },
   {
     id: "notif-2",
     type: "warning",
-    message: "Fulbright Student application deadline is in 100 days! Submit your drafts to ScholarPath essay evaluation engine.",
+    message: "Fulbright Student application deadline is in 100 days! Submit your drafts to Somnia essay evaluation engine.",
     timestamp: "1 day ago"
   }
 ];

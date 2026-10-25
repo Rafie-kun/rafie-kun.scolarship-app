@@ -62,7 +62,7 @@ export default function MockVisaInterview() {
           <h3 className="font-press text-[11px] text-[#55ff55] flex items-center gap-2">
             <MessageSquare className="w-5 h-5" /> MOCK VISA INTERVIEW
           </h3>
-          <p className="text-xs font-mono text-stone-400 mt-1">Practice with an AI visa officer for your destination country. Get scored after each answer.</p>
+          <p className="text-xs font-mono text-stone-400 mt-1">Practice with a mock visa officer for your destination country. Get scored after each answer.</p>
         </div>
         <div className="bg-[#2c2c2c] border-4 border-black p-5 space-y-4">
           <label className="block font-mono text-[11px] text-stone-300 uppercase font-bold">Destination country</label>

@@ -1132,7 +1132,7 @@ export default function ScholarshipsView() {
                     {/* Required Inventory items */}
                     <div className="space-y-1.5 pt-1">
                       <span className="text-[10px] text-stone-400 font-bold block uppercase flex items-center gap-1">
-                        <FileText className="w-3.5 h-3.5 text-stone-300" /> Required inventory documents:
+                        <FileText className="w-3.5 h-3.5 text-stone-300" /> Required documents:
                       </span>
                       <ul className="list-none space-y-1 pl-1">
                         {modalReqDocs.map((doc: string, dIdx: number) => (
@@ -1239,7 +1239,7 @@ export default function ScholarshipsView() {
               ) : (
                 <div className="space-y-4">
                   <div className="bg-indigo-950/20 border border-indigo-500/30 p-3 text-stone-200 text-xs rounded-none">
-                    🏛️ **ScholarPath Unified Intelligence Match**: Here are the global universities offering or matching this scholarship. Launch their portal or website with a single click.
+                    🏛️ **Somnia Unified Intelligence Match**: Here are the global universities offering or matching this scholarship. Launch their portal or website with a single click.
                   </div>
 
                   <div className="space-y-3">

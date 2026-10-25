@@ -157,7 +157,7 @@ export default function OverviewRecommendationsView({ onNavigate }: { onNavigate
               <Trophy className="w-4 h-4 text-[#ffff55] shrink-0 animate-bounce" /> CURRENT HERO PROGRESS
             </h3>
             <p className="text-stone-300 text-xs mt-1.5 leading-normal">
-              Accumulate points to reach your dream international university! Earn additional status buffs by using our checklist, writing toolkits, or talking to the Wizard Assistant.
+              Accumulate points to reach your dream international university! Earn additional status buffs by using our checklist, writing toolkits, or talking to the Somnia Guide.
             </p>
           </div>
           <div className="flex flex-row flex-nowrap items-center gap-3 text-right bg-black/40 p-2.5 border-2 border-stone-800 shrink-0 whitespace-nowrap">

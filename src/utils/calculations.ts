@@ -1,7 +1,7 @@
 import { Profile, Scholarship, University } from '../types';
 
 /**
- * ScholarPath Academic calculations engine.
+ * Somnia Academic calculations engine.
  * Houses GPA conversion, weighting, competitiveness indexing, and admissions prediction models.
  */
 

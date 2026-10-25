@@ -32,9 +32,9 @@ self.addEventListener('fetch', (event) => {
 
 // Simple push handler (server push can be added later with VAPID)
 self.addEventListener('push', (event) => {
-  const data = event.data ? event.data.json() : { title: 'ScholarPath', body: 'A scholarship deadline is approaching!' };
+  const data = event.data ? event.data.json() : { title: 'Somnia', body: 'A scholarship deadline is approaching!' };
   event.waitUntil(
-    self.registration.showNotification(data.title || 'ScholarPath', {
+    self.registration.showNotification(data.title || 'Somnia', {
       body: data.body || 'Check your deadlines',
       icon: '/favicon.svg',
       badge: '/favicon.svg'

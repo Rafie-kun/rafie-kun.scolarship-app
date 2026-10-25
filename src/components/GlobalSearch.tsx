@@ -41,7 +41,7 @@ export default function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSear
     { id: 'applications', title: 'Applications Tracker', category: 'Tracking', description: 'Track active application checkpoints and deadlines', tabId: 'applications', icon: BookmarkCheck, color: 'text-red-400' },
     { id: 'simulator', title: 'Admissions Calculator', category: 'Admissions', description: 'Estimate admission chances with custom parameters', tabId: 'simulator', icon: Calculator, color: 'text-indigo-400' },
     { id: 'writing', title: 'Document Center', category: 'Documents', description: 'Manage and review Statements of Purpose and essays', tabId: 'writing', icon: Save, color: 'text-cyan-400' },
-    { id: 'counselling', title: 'AI Chat Assistant', category: 'AI Support', description: 'Get 24/7 AI-powered academic and scholarship guidance', tabId: 'counselling', icon: BookOpen, color: 'text-emerald-400' },
+    { id: 'counselling', title: 'Study Advisor', category: 'Guidance', description: 'Get calm, always-available academic and scholarship guidance', tabId: 'counselling', icon: BookOpen, color: 'text-emerald-400' },
     { id: 'roadmap', title: 'Roadmap', category: 'Guidance', description: 'Structured timeline maps for global admission stages', tabId: 'learning', icon: Compass, color: 'text-orange-400' },
     { id: 'visa', title: 'Visa Guide', category: 'Immigration', description: 'Student visa requirements, proof of funds and embassy checklists', tabId: 'visa', icon: Compass, color: 'text-cyan-400' },
     { id: 'budget', title: 'Budget Planner', category: 'Finance', description: 'Estimate tuition, living costs and part-time earnings', tabId: 'budget', icon: Briefcase, color: 'text-green-400' },
@@ -157,7 +157,7 @@ export default function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSear
             <kbd className="px-1 bg-stone-800 border border-stone-700">↵</kbd>
           </span>
           <span className="font-press text-[8px] text-[#ffff55]">
-            SCHOLARPATH QUICKSPY ENGINE
+            SOMNIA QUICKSPY ENGINE
           </span>
         </div>
       </div>
