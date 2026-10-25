@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
+import './omori-theme.css';
 
 // Safely suppress expected websocket connection failures inside our sandboxed environment
 if (typeof window !== 'undefined') {
@@ -59,7 +60,7 @@ if ('Notification' in window) {
       if (Notification.permission === 'default') await Notification.requestPermission().catch(()=>{});
       if (Notification.permission === 'granted') {
         const reg = await navigator.serviceWorker?.ready.catch(()=>null);
-        const title = `ScholarPath: ${soon.length} deadline${soon.length>1?'s':''} within 14 days`;
+        const title = `Somnia: ${soon.length} deadline${soon.length>1?'s':''} within 14 days`;
         const body = soon.slice(0,3).map(a=>`${a.name} — ${a.deadline}`).join('\n');
         if (reg) reg.showNotification(title, { body, icon: '/favicon.svg', badge: '/favicon.svg' } as any);
         else new Notification(title, { body } as any);

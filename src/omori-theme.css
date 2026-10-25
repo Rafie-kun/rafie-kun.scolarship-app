@@ -1,0 +1,1343 @@
+/* ==========================================================================
+   Somnia — "Dreamscape" theme
+   An original, OMORI-inspired palette: black-space night skies, soft lavender
+   light, butter-yellow highlights and pastel mint accents. No game assets are
+   used; everything here is CSS gradients, type and motion.
+
+   This file is imported AFTER index.css so it can soften the legacy pixel
+   chrome without touching application logic or layout geometry.
+   ========================================================================== */
+
+html.theme-mode-omori {
+  --omori-void: #08070d;
+  --omori-night: #0e0b17;
+  --omori-deep: #131020;
+  --omori-panel: #191428;
+  --omori-panel-2: #201a31;
+  --omori-panel-3: #292140;
+  --omori-line: #332b4a;
+  --omori-line-soft: #262038;
+  --omori-white: #f4f0e8;
+  --omori-dim: #c8c0d8;
+  --omori-muted: #9a93ad;
+  --omori-lav: #cbb7f2;
+  --omori-lav-strong: #a98fe6;
+  --omori-gold: #f3dfa2;
+  --omori-mint: #a9e8c8;
+  --omori-sky: #a9d8e8;
+  --omori-coral: #ef9a9a;
+  --omori-rose: #e9a9c8;
+
+  /* Typography ----------------------------------------------------------- */
+  --font-sans: "Nunito", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-press: "Pixelify Sans", "VT323", "Press Start 2P", monospace;
+  --font-pixel: "Pixelify Sans", "VT323", monospace;
+
+  /* Tailwind palette → dreamscape palette -------------------------------- */
+  --color-stone-50: #faf7ef;
+  --color-stone-100: #f4f0e8;
+  --color-stone-200: #e8e2d6;
+  --color-stone-300: #cfc6d8;
+  --color-stone-400: #a9a0b8;
+  --color-stone-500: #8a8199;
+  --color-stone-600: #6b627c;
+  --color-stone-700: #504862;
+  --color-stone-800: #383049;
+  --color-stone-900: #251f35;
+  --color-stone-950: #14111f;
+
+  --color-slate-50: #f7f5fc;
+  --color-slate-100: #eeeaf8;
+  --color-slate-200: #ddd6ee;
+  --color-slate-300: #c8c0d8;
+  --color-slate-400: #a99fbd;
+  --color-slate-500: #8a8098;
+  --color-slate-600: #6c6280;
+  --color-slate-700: #524a63;
+  --color-slate-800: #3a3350;
+  --color-slate-900: #262038;
+  --color-slate-950: #14111f;
+
+  --color-zinc-50: #f7f5fc;
+  --color-zinc-100: #eeeaf8;
+  --color-zinc-200: #ddd6ee;
+  --color-zinc-300: #c8c0d8;
+  --color-zinc-400: #a99fbd;
+  --color-zinc-500: #8a8098;
+  --color-zinc-600: #6c6280;
+  --color-zinc-700: #524a63;
+  --color-zinc-800: #3a3350;
+  --color-zinc-900: #262038;
+  --color-zinc-950: #14111f;
+
+  --color-gray-50: #f7f5fc;
+  --color-gray-100: #eeeaf8;
+  --color-gray-200: #ddd6ee;
+  --color-gray-300: #c8c0d8;
+  --color-gray-400: #a99fbd;
+  --color-gray-500: #8a8098;
+  --color-gray-600: #6c6280;
+  --color-gray-700: #524a63;
+  --color-gray-800: #3a3350;
+  --color-gray-900: #262038;
+  --color-gray-950: #14111f;
+
+  --color-neutral-50: #f7f5fc;
+  --color-neutral-100: #eeeaf8;
+  --color-neutral-200: #ddd6ee;
+  --color-neutral-300: #c8c0d8;
+  --color-neutral-400: #a99fbd;
+  --color-neutral-500: #8a8098;
+  --color-neutral-600: #6c6280;
+  --color-neutral-700: #524a63;
+  --color-neutral-800: #3a3350;
+  --color-neutral-900: #262038;
+  --color-neutral-950: #14111f;
+
+  --color-red-50: #fdf3f3;
+  --color-red-100: #fbe7e7;
+  --color-red-200: #f7d0d0;
+  --color-red-300: #f2b6b6;
+  --color-red-400: #ef9a9a;
+  --color-red-500: #e07f7f;
+  --color-red-600: #c56666;
+  --color-red-700: #a14d4d;
+  --color-red-800: #7c3a3a;
+  --color-red-900: #5c2b2b;
+  --color-red-950: #351818;
+
+  --color-amber-50: #fdf9ec;
+  --color-amber-100: #fbf3d6;
+  --color-amber-200: #f7e8ad;
+  --color-amber-300: #f3dfa2;
+  --color-amber-400: #edcf7f;
+  --color-amber-500: #d9b65e;
+  --color-amber-600: #b8933f;
+  --color-amber-700: #8f6f2c;
+  --color-amber-800: #6b5223;
+  --color-amber-900: #4c3a1b;
+  --color-amber-950: #2a1f0e;
+
+  --color-yellow-50: #fdf9ec;
+  --color-yellow-100: #fbf3d6;
+  --color-yellow-200: #f7e8ad;
+  --color-yellow-300: #f3dfa2;
+  --color-yellow-400: #edcf7f;
+  --color-yellow-500: #d9b65e;
+  --color-yellow-600: #b8933f;
+  --color-yellow-700: #8f6f2c;
+  --color-yellow-800: #6b5223;
+  --color-yellow-900: #4c3a1b;
+  --color-yellow-950: #2a1f0e;
+
+  --color-orange-50: #fdf5ee;
+  --color-orange-100: #fbe9d8;
+  --color-orange-200: #f5d2b8;
+  --color-orange-300: #f0bd97;
+  --color-orange-400: #f0b98f;
+  --color-orange-500: #dfa172;
+  --color-orange-600: #bf8457;
+  --color-orange-700: #966640;
+  --color-orange-800: #704d32;
+  --color-orange-900: #503825;
+  --color-orange-950: #2a1a12;
+
+  --color-emerald-50: #f1fcf6;
+  --color-emerald-100: #def7ea;
+  --color-emerald-200: #bdf0d6;
+  --color-emerald-300: #a9e8c8;
+  --color-emerald-400: #84d6b0;
+  --color-emerald-500: #5cbb92;
+  --color-emerald-600: #3f9a74;
+  --color-emerald-700: #2e775a;
+  --color-emerald-800: #245c46;
+  --color-emerald-900: #1c4636;
+  --color-emerald-950: #0f2a20;
+
+  --color-green-50: #f1fcf5;
+  --color-green-100: #def7e8;
+  --color-green-200: #bdf0d3;
+  --color-green-300: #a9e8c4;
+  --color-green-400: #8ed7ac;
+  --color-green-500: #63c39b;
+  --color-green-600: #45a377;
+  --color-green-700: #347f5c;
+  --color-green-800: #286248;
+  --color-green-900: #1f4b38;
+  --color-green-950: #10281f;
+
+  --color-teal-50: #eefcf9;
+  --color-teal-100: #d6f7ef;
+  --color-teal-200: #b6efe2;
+  --color-teal-300: #a9e8dc;
+  --color-teal-400: #84d6c8;
+  --color-teal-500: #5cbbae;
+  --color-teal-600: #3f9a90;
+  --color-teal-700: #2e7770;
+  --color-teal-800: #245c57;
+  --color-teal-900: #1c4642;
+  --color-teal-950: #0f2a27;
+
+  --color-cyan-50: #f1fbfd;
+  --color-cyan-100: #def4f9;
+  --color-cyan-200: #bde9f3;
+  --color-cyan-300: #a9d8e8;
+  --color-cyan-400: #86c6dd;
+  --color-cyan-500: #63aac6;
+  --color-cyan-600: #4a88a3;
+  --color-cyan-700: #3a6b80;
+  --color-cyan-800: #2e5465;
+  --color-cyan-900: #23404d;
+  --color-cyan-950: #122530;
+
+  --color-sky-50: #f1fafd;
+  --color-sky-100: #ddf2fa;
+  --color-sky-200: #c0e6f3;
+  --color-sky-300: #a9d8e8;
+  --color-sky-400: #8ac5dd;
+  --color-sky-500: #67aac6;
+  --color-sky-600: #4d88a3;
+  --color-sky-700: #3d6b80;
+  --color-sky-800: #305465;
+  --color-sky-900: #25404d;
+  --color-sky-950: #132530;
+
+  --color-blue-50: #f2f7fd;
+  --color-blue-100: #e2edfa;
+  --color-blue-200: #c8dcf3;
+  --color-blue-300: #a9c8e8;
+  --color-blue-400: #9fc4e8;
+  --color-blue-500: #7fa8d6;
+  --color-blue-600: #6289b8;
+  --color-blue-700: #4c6d94;
+  --color-blue-800: #3b5573;
+  --color-blue-900: #2d4258;
+  --color-blue-950: #152338;
+
+  --color-indigo-50: #f5f2fc;
+  --color-indigo-100: #ebe4fa;
+  --color-indigo-200: #d9cbf7;
+  --color-indigo-300: #cbb7f2;
+  --color-indigo-400: #b49ce6;
+  --color-indigo-500: #9a7fd6;
+  --color-indigo-600: #7f63bc;
+  --color-indigo-700: #654e99;
+  --color-indigo-800: #4f3d78;
+  --color-indigo-900: #3a2d5a;
+  --color-indigo-950: #211a35;
+
+  --color-violet-50: #f6f3fc;
+  --color-violet-100: #ede6fa;
+  --color-violet-200: #dccff7;
+  --color-violet-300: #cbb7f2;
+  --color-violet-400: #b9a6e6;
+  --color-violet-500: #9f89d6;
+  --color-violet-600: #836cbc;
+  --color-violet-700: #685699;
+  --color-violet-800: #514478;
+  --color-violet-900: #3c335a;
+  --color-violet-950: #221c35;
+
+  --color-purple-50: #f7f2fc;
+  --color-purple-100: #efe4fa;
+  --color-purple-200: #e0ccf7;
+  --color-purple-300: #cbb7f2;
+  --color-purple-400: #bfa4ea;
+  --color-purple-500: #a987de;
+  --color-purple-600: #8c6ac2;
+  --color-purple-700: #6f529e;
+  --color-purple-800: #55407a;
+  --color-purple-900: #3f305c;
+  --color-purple-950: #241a3d;
+
+  --color-rose-50: #fdf3f7;
+  --color-rose-100: #fbe7ef;
+  --color-rose-200: #f7d0e0;
+  --color-rose-300: #f0b8d0;
+  --color-rose-400: #e9a9c8;
+  --color-rose-500: #d98bb0;
+  --color-rose-600: #bf6f95;
+  --color-rose-700: #9c5678;
+  --color-rose-800: #7a4460;
+  --color-rose-900: #5b3448;
+  --color-rose-950: #2f1827;
+
+  --color-pink-50: #fdf3f8;
+  --color-pink-100: #fbe7f1;
+  --color-pink-200: #f7d0e3;
+  --color-pink-300: #f0b8d4;
+  --color-pink-400: #e9a9c8;
+  --color-pink-500: #d98bb2;
+  --color-pink-600: #bf6f97;
+  --color-pink-700: #9c567a;
+  --color-pink-800: #7a4461;
+  --color-pink-900: #5b3449;
+  --color-pink-950: #2f1828;
+
+  --color-fuchsia-50: #fcf3fd;
+  --color-fuchsia-100: #f9e7fb;
+  --color-fuchsia-200: #f3d0f7;
+  --color-fuchsia-300: #e9b8ef;
+  --color-fuchsia-400: #dca9e9;
+  --color-fuchsia-500: #c48bd9;
+  --color-fuchsia-600: #a56fbf;
+  --color-fuchsia-700: #86569c;
+  --color-fuchsia-800: #69447a;
+  --color-fuchsia-900: #4f345b;
+  --color-fuchsia-950: #29182f;
+}
+
+/* --------------------------------------------------------------------------
+   Base canvas
+   -------------------------------------------------------------------------- */
+
+html.theme-mode-omori,
+html.theme-mode-omori body {
+  background-color: var(--omori-void) !important;
+  color: var(--omori-white);
+}
+
+html.theme-mode-omori body {
+  background-image:
+    radial-gradient(1100px 620px at 12% -12%, rgba(169, 143, 230, 0.18), transparent 62%),
+    radial-gradient(900px 520px at 96% 4%, rgba(169, 216, 232, 0.09), transparent 60%),
+    radial-gradient(900px 700px at 55% 118%, rgba(233, 169, 200, 0.07), transparent 62%),
+    linear-gradient(180deg, #0b0912 0%, #0d0a16 44%, #08070d 100%) !important;
+  background-attachment: fixed !important;
+  font-family: var(--font-sans);
+  letter-spacing: 0.008em;
+  line-height: 1.65;
+}
+
+html.theme-mode-omori ::selection {
+  background: rgba(203, 183, 242, 0.85);
+  color: #171126;
+}
+
+html.theme-mode-omori :focus-visible {
+  outline: 2px solid var(--omori-lav);
+  outline-offset: 2px;
+}
+
+html.theme-mode-omori a {
+  color: var(--omori-lav);
+}
+
+html.theme-mode-omori h1,
+html.theme-mode-omori h2,
+html.theme-mode-omori h3,
+html.theme-mode-omori h4 {
+  letter-spacing: 0.01em;
+}
+
+html.theme-mode-omori .font-press {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Scrollbars --------------------------------------------------------------- */
+
+html.theme-mode-omori ::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #0c0a14 !important;
+  border: 0 !important;
+}
+
+html.theme-mode-omori ::-webkit-scrollbar-track {
+  background: #0c0a14 !important;
+}
+
+html.theme-mode-omori ::-webkit-scrollbar-thumb {
+  background: #3b3157 !important;
+  border: 2px solid #0c0a14 !important;
+  border-radius: 999px !important;
+}
+
+html.theme-mode-omori ::-webkit-scrollbar-thumb:hover {
+  background: #6f5ca8 !important;
+}
+
+html.theme-mode-omori {
+  scrollbar-color: #3b3157 #0c0a14;
+  scrollbar-width: thin;
+}
+
+/* --------------------------------------------------------------------------
+   Texture classes → layered night-sky gradients
+   -------------------------------------------------------------------------- */
+
+html.theme-mode-omori .tex-dirt-dark,
+html.theme-mode-omori .tex-dirt,
+html.theme-mode-omori .tex-stone,
+html.theme-mode-omori .tex-planks {
+  background-color: transparent !important;
+  background-image: none !important;
+  background-size: auto !important;
+  image-rendering: auto !important;
+}
+
+html.theme-mode-omori .tex-dirt-dark {
+  background-color: var(--omori-void) !important;
+  background-image:
+    radial-gradient(900px 520px at 18% -8%, rgba(169, 143, 230, 0.16), transparent 60%),
+    radial-gradient(760px 460px at 92% 2%, rgba(169, 216, 232, 0.07), transparent 58%),
+    linear-gradient(180deg, #0b0912 0%, #0c0a15 50%, #08070d 100%) !important;
+  background-attachment: fixed !important;
+}
+
+html.theme-mode-omori .tex-stone {
+  background-color: var(--omori-night) !important;
+  background-image: none !important;
+}
+
+html.theme-mode-omori .tex-planks {
+  background-color: var(--omori-panel) !important;
+  background-image: none !important;
+}
+
+html.theme-mode-omori .tex-grass {
+  height: 2px !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(169, 216, 232, 0.65) 22%,
+    rgba(203, 183, 242, 0.95) 50%,
+    rgba(233, 169, 200, 0.6) 78%,
+    transparent 100%
+  ) !important;
+  background-size: 100% 100% !important;
+  border: 0 !important;
+  box-shadow: none;
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   Structural zones
+   -------------------------------------------------------------------------- */
+
+html.theme-mode-omori #scholarpath-main-container {
+  background-color: var(--omori-void) !important;
+  background-image:
+    radial-gradient(1100px 620px at 12% -12%, rgba(169, 143, 230, 0.14), transparent 62%),
+    radial-gradient(900px 520px at 96% 4%, rgba(169, 216, 232, 0.07), transparent 60%),
+    radial-gradient(900px 700px at 55% 118%, rgba(233, 169, 200, 0.06), transparent 62%),
+    linear-gradient(180deg, #0b0912 0%, #0d0a16 45%, #08070d 100%) !important;
+  background-attachment: fixed !important;
+  color: var(--omori-white) !important;
+}
+
+html.theme-mode-omori header {
+  background-color: #141024 !important;
+  background-image: none !important;
+  border-bottom: 2px solid #0a0812 !important;
+  box-shadow: none !important;
+  backdrop-filter: none;
+}
+
+html.theme-mode-omori header h1 {
+  text-shadow: none !important;
+}
+
+html.theme-mode-omori #scholarpath-main-container h1.omori-brand {
+  color: var(--omori-lav) !important;
+  text-shadow: 2px 2px 0 rgba(8, 7, 13, 0.9) !important;
+}
+
+html.theme-mode-omori #scholarpath-main-container aside.tex-stone {
+  background-color: var(--omori-night) !important;
+  background-image: none !important;
+  border-right: 2px solid #0a0812 !important;
+  box-shadow: none !important;
+}
+
+html.theme-mode-omori #scholarpath-main-container main {
+  background: transparent !important;
+}
+
+html.theme-mode-omori main .mc-window {
+  border-radius: 8px !important;
+}
+
+html.theme-mode-omori #scholarpath-main-container footer {
+  border-color: var(--omori-line) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Minecraft-era primitives → soft dream panels
+   -------------------------------------------------------------------------- */
+
+html.theme-mode-omori .mc-window,
+html.theme-mode-omori .mc-window-dark {
+  background-color: var(--omori-panel) !important;
+  background-image: none !important;
+  background-size: auto !important;
+  border: 2px solid #0a0812 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  padding: 20px;
+  image-rendering: auto !important;
+}
+
+html.theme-mode-omori .mc-btn {
+  background-color: var(--omori-panel-2) !important;
+  background-image: none !important;
+  background-size: auto !important;
+  border: 2px solid rgba(203, 183, 242, 0.4) !important;
+  border-radius: 6px !important;
+  color: var(--omori-white) !important;
+  text-shadow: none !important;
+  font-family: var(--font-press) !important;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  image-rendering: auto !important;
+  box-shadow: 2px 2px 0 rgba(8, 7, 13, 0.55) !important;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease,
+    box-shadow 160ms ease, transform 160ms ease;
+}
+
+/* Tailwind's `.hidden` utilities are layered, so the unlayered legacy
+   `.mc-btn { display: inline-flex }` in index.css would otherwise win and
+   keep mobile-only buttons visible. Restore the responsive display rules. */
+html.theme-mode-omori .mc-btn.hidden {
+  display: none !important;
+}
+
+@media (min-width: 640px) {
+  html.theme-mode-omori .mc-btn.hidden.sm\:flex,
+  html.theme-mode-omori .mc-btn.hidden.sm\:inline-flex {
+    display: inline-flex !important;
+  }
+}
+
+@media (min-width: 768px) {
+  html.theme-mode-omori .mc-btn.hidden.md\:flex,
+  html.theme-mode-omori .mc-btn.hidden.md\:inline-flex {
+    display: inline-flex !important;
+  }
+
+  html.theme-mode-omori .mc-btn.md\:hidden {
+    display: none !important;
+  }
+}
+
+html.theme-mode-omori .mc-btn:hover:not(:disabled) {
+  background-color: var(--omori-lav) !important;
+  background-image: none !important;
+  border-color: #0a0812 !important;
+  color: #171126 !important;
+  text-shadow: none !important;
+  box-shadow: 2px 2px 0 rgba(8, 7, 13, 0.55) !important;
+}
+
+html.theme-mode-omori .mc-btn:active:not(:disabled) {
+  transform: translateY(1px) scale(0.995);
+  border-color: rgba(244, 240, 232, 0.45) !important;
+}
+
+html.theme-mode-omori .mc-btn:disabled {
+  background-color: #171327 !important;
+  background-image: none !important;
+  border-color: rgba(154, 147, 173, 0.22) !important;
+  color: rgba(200, 192, 216, 0.45) !important;
+  box-shadow: none !important;
+  opacity: 0.75;
+}
+
+html.theme-mode-omori .mc-slot {
+  background-color: rgba(12, 10, 20, 0.7) !important;
+  border: 1px solid var(--omori-line) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  transition: all 160ms ease-in-out;
+}
+
+html.theme-mode-omori .mc-slot.active {
+  border-color: rgba(203, 183, 242, 0.8) !important;
+  background-color: rgba(203, 183, 242, 0.14) !important;
+  box-shadow: 2px 2px 0 rgba(8, 7, 13, 0.55) !important;
+}
+
+html.theme-mode-omori .mc-slot:hover:not(.active) {
+  background-color: rgba(203, 183, 242, 0.08) !important;
+  border-color: rgba(203, 183, 242, 0.45) !important;
+}
+
+html.theme-mode-omori .mc-text-shadow {
+  text-shadow: 1px 1px 0 rgba(8, 7, 13, 0.8) !important;
+}
+
+html.theme-mode-omori .mc-text-yellow {
+  color: var(--omori-lav) !important;
+  text-shadow: 1px 1px 0 rgba(8, 7, 13, 0.8) !important;
+}
+
+html.theme-mode-omori .mc-text-green {
+  color: var(--omori-mint) !important;
+  text-shadow: 1px 1px 0 rgba(8, 7, 13, 0.8) !important;
+}
+
+html.theme-mode-omori .mc-text-gold {
+  color: var(--omori-gold) !important;
+  text-shadow: 1px 1px 0 rgba(8, 7, 13, 0.8) !important;
+}
+
+html.theme-mode-omori .mc-text-red {
+  color: var(--omori-coral) !important;
+  text-shadow: 1px 1px 0 rgba(8, 7, 13, 0.8) !important;
+}
+
+html.theme-mode-omori .mc-text-grey {
+  color: var(--omori-muted) !important;
+  text-shadow: none !important;
+}
+
+html.theme-mode-omori .mc-xp-bar {
+  background-color: rgba(10, 8, 16, 0.8) !important;
+  border: 1px solid var(--omori-line) !important;
+  border-radius: 999px !important;
+  height: 12px;
+  overflow: hidden;
+}
+
+html.theme-mode-omori .mc-xp-fill {
+  background-color: var(--omori-mint) !important;
+  background-image: none !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Form controls
+   -------------------------------------------------------------------------- */
+
+html.theme-mode-omori input[type="text"],
+html.theme-mode-omori input[type="email"],
+html.theme-mode-omori input[type="password"],
+html.theme-mode-omori input[type="number"],
+html.theme-mode-omori input[type="search"],
+html.theme-mode-omori input[type="date"],
+html.theme-mode-omori input[type="url"],
+html.theme-mode-omori select,
+html.theme-mode-omori textarea {
+  background-color: rgba(12, 10, 20, 0.72) !important;
+  color: var(--omori-white) !important;
+  border: 1px solid var(--omori-line) !important;
+  border-radius: 10px !important;
+  padding: 0.6rem 0.75rem !important;
+  font-family: var(--font-sans) !important;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.35);
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+html.theme-mode-omori input[type="text"]:focus,
+html.theme-mode-omori input[type="email"]:focus,
+html.theme-mode-omori input[type="password"]:focus,
+html.theme-mode-omori input[type="number"]:focus,
+html.theme-mode-omori input[type="search"]:focus,
+html.theme-mode-omori input[type="date"]:focus,
+html.theme-mode-omori input[type="url"]:focus,
+html.theme-mode-omori select:focus,
+html.theme-mode-omori textarea:focus {
+  border-color: rgba(203, 183, 242, 0.8) !important;
+  box-shadow:
+    0 0 0 3px rgba(203, 183, 242, 0.16),
+    inset 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+  outline: none !important;
+}
+
+html.theme-mode-omori input::placeholder,
+html.theme-mode-omori textarea::placeholder {
+  color: rgba(154, 147, 173, 0.7) !important;
+}
+
+html.theme-mode-omori input[type="checkbox"],
+html.theme-mode-omori input[type="radio"] {
+  accent-color: var(--omori-lav-strong);
+}
+
+html.theme-mode-omori input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-content: center;
+  background-color: rgba(12, 10, 20, 0.8) !important;
+  border: 1px solid var(--omori-line) !important;
+  border-radius: 5px !important;
+  padding: 0 !important;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+html.theme-mode-omori input[type="checkbox"]::before {
+  content: "";
+  width: 0.58rem;
+  height: 0.58rem;
+  transform: scale(0);
+  transition: transform 120ms ease;
+  box-shadow: inset 1rem 1rem var(--omori-lav);
+  clip-path: polygon(14% 44%, 0 65%, 40% 100%, 100% 16%, 82% 0%, 38% 62%);
+}
+
+html.theme-mode-omori input[type="checkbox"]:checked {
+  background-color: rgba(203, 183, 242, 0.16) !important;
+  border-color: rgba(203, 183, 242, 0.75) !important;
+  box-shadow: 0 0 12px -2px rgba(203, 183, 242, 0.45);
+}
+
+html.theme-mode-omori input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+html.theme-mode-omori input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: 0 0 auto;
+  background-color: rgba(12, 10, 20, 0.8);
+  border: 1px solid var(--omori-line) !important;
+  border-radius: 999px !important;
+  padding: 0 !important;
+  cursor: pointer;
+}
+
+html.theme-mode-omori input[type="radio"]:checked {
+  border-color: rgba(203, 183, 242, 0.8) !important;
+  box-shadow: inset 0 0 0 3px #171126, inset 0 0 0 8px var(--omori-lav);
+}
+
+html.theme-mode-omori select option {
+  background: #14111f;
+  color: var(--omori-white);
+}
+
+html.theme-mode-omori kbd {
+  font-family: "JetBrains Mono", ui-monospace, monospace !important;
+  background: rgba(12, 10, 20, 0.85) !important;
+  border: 1px solid var(--omori-line) !important;
+  border-radius: 6px !important;
+  color: var(--omori-dim) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Soften legacy pixel geometry (works because this file is unlayered)
+   -------------------------------------------------------------------------- */
+
+html.theme-mode-omori .border-4,
+html.theme-mode-omori .border-\[6px\],
+html.theme-mode-omori .border-8,
+html.theme-mode-omori .border-t-4,
+html.theme-mode-omori .border-b-4,
+html.theme-mode-omori .border-l-4,
+html.theme-mode-omori .border-r-4,
+html.theme-mode-omori .border-b-8 {
+  border-width: 1px !important;
+}
+
+html.theme-mode-omori .border-2,
+html.theme-mode-omori .border-t-2,
+html.theme-mode-omori .border-b-2 {
+  border-width: 1px !important;
+}
+
+html.theme-mode-omori .rounded-none {
+  border-radius: 10px !important;
+}
+
+html.theme-mode-omori [class*="border-black"] {
+  border-color: rgba(203, 183, 242, 0.18) !important;
+}
+
+html.theme-mode-omori .border-stone-900,
+html.theme-mode-omori .border-stone-850,
+html.theme-mode-omori .border-stone-800,
+html.theme-mode-omori .border-stone-700 {
+  border-color: var(--omori-line) !important;
+}
+
+/* Replace the old chunky inset bevels with a flat pixel offset. */
+html.theme-mode-omori [class*="box-shadow:inset_-"],
+html.theme-mode-omori [class*="box-shadow:inset_"] {
+  box-shadow: 2px 2px 0 rgba(8, 7, 13, 0.5) !important;
+}
+
+html.theme-mode-omori .shadow-2xl,
+html.theme-mode-omori .shadow-xl,
+html.theme-mode-omori .shadow-inner {
+  box-shadow: 2px 2px 0 rgba(8, 7, 13, 0.5) !important;
+}
+
+html.theme-mode-omori .shadow-inner {
+  box-shadow: none !important;
+}
+
+html.theme-mode-omori [class*="drop-shadow-["] {
+  filter: none !important;
+}
+
+html.theme-mode-omori .pixel-grid {
+  background-image:
+    linear-gradient(to right, rgba(203, 183, 242, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(203, 183, 242, 0.06) 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
+}
+
+/* --------------------------------------------------------------------------
+   Hard-coded legacy accent colors → palette mapping
+   (attribute substring selectors cover hover:/group-hover: variants too)
+   -------------------------------------------------------------------------- */
+
+/* Lavender — primary accent (#ffff55 / #a586ff) */
+html.theme-mode-omori [class*="text-[#ffff55]"],
+html.theme-mode-omori [class*="text-[#a586ff]"],
+html.theme-mode-omori [class*="text-[#e3e33b]"] {
+  color: var(--omori-lav) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#ffff55]"],
+html.theme-mode-omori [class*="bg-[#a586ff]"] {
+  background-color: var(--omori-lav) !important;
+}
+
+html.theme-mode-omori [class*="border-[#ffff55]"],
+html.theme-mode-omori [class*="border-[#a586ff]"],
+html.theme-mode-omori [class*="ring-[#ffff55]"] {
+  border-color: rgba(203, 183, 242, 0.65) !important;
+}
+
+/* Butter / gold */
+html.theme-mode-omori [class*="text-[#ffaa00]"],
+html.theme-mode-omori [class*="text-[#ffea00]"],
+html.theme-mode-omori [class*="text-[#ffdd55]"],
+html.theme-mode-omori [class*="text-[#d4d440]"] {
+  color: var(--omori-gold) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#ffaa00]"],
+html.theme-mode-omori [class*="bg-[#ffea00]"] {
+  background-color: var(--omori-gold) !important;
+}
+
+html.theme-mode-omori [class*="border-[#ffaa00]"] {
+  border-color: rgba(243, 223, 162, 0.5) !important;
+}
+
+/* Mint */
+html.theme-mode-omori [class*="text-[#55ff55]"],
+html.theme-mode-omori [class*="text-[#40dd40]"],
+html.theme-mode-omori [class*="text-[#2ecc71]"],
+html.theme-mode-omori [class*="text-[#27ae60]"] {
+  color: var(--omori-mint) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#55ff55]"],
+html.theme-mode-omori [class*="bg-[#2ecc71]"],
+html.theme-mode-omori [class*="bg-[#27ae60]"] {
+  background-color: var(--omori-mint) !important;
+}
+
+html.theme-mode-omori [class*="border-[#55ff55]"],
+html.theme-mode-omori [class*="border-[#2ecc71]"] {
+  border-color: rgba(169, 232, 200, 0.42) !important;
+}
+
+/* Sky */
+html.theme-mode-omori [class*="text-[#55ffff]"],
+html.theme-mode-omori [class*="text-[#64e3ff]"],
+html.theme-mode-omori [class*="text-[#33ffff]"],
+html.theme-mode-omori [class*="text-[#3ec4c4]"] {
+  color: var(--omori-sky) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#55ffff]"],
+html.theme-mode-omori [class*="bg-[#64e3ff]"] {
+  background-color: var(--omori-sky) !important;
+}
+
+html.theme-mode-omori [class*="border-[#55ffff]"],
+html.theme-mode-omori [class*="border-[#64e3ff]"] {
+  border-color: rgba(169, 216, 232, 0.42) !important;
+}
+
+/* Coral / alert */
+html.theme-mode-omori [class*="text-[#ff5555]"],
+html.theme-mode-omori [class*="text-[#ff5552]"],
+html.theme-mode-omori [class*="text-[#f25252]"],
+html.theme-mode-omori [class*="text-[#f25255]"],
+html.theme-mode-omori [class*="text-[#ff4f4f]"],
+html.theme-mode-omori [class*="text-[#ff3f3f]"],
+html.theme-mode-omori [class*="text-[#f34545]"] {
+  color: var(--omori-coral) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#ff5555]"],
+html.theme-mode-omori [class*="bg-[#f25252]"] {
+  background-color: var(--omori-coral) !important;
+}
+
+html.theme-mode-omori [class*="border-[#ff5555]"],
+html.theme-mode-omori [class*="border-[#f34545]"] {
+  border-color: rgba(239, 154, 154, 0.5) !important;
+}
+
+/* Dark neutral surfaces */
+html.theme-mode-omori [class*="bg-[#141414]"],
+html.theme-mode-omori [class*="bg-[#181818]"],
+html.theme-mode-omori [class*="bg-[#18181b]"],
+html.theme-mode-omori [class*="bg-[#1a1818]"],
+html.theme-mode-omori [class*="bg-[#141212]"] {
+  background-color: var(--omori-night) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#2c2c2c]"],
+html.theme-mode-omori [class*="bg-[#2c2927]"],
+html.theme-mode-omori [class*="bg-[#2e2e2e]"],
+html.theme-mode-omori [class*="bg-[#2a2a2a]"],
+html.theme-mode-omori [class*="bg-[#2d2a29]"],
+html.theme-mode-omori [class*="bg-[#25211e]"],
+html.theme-mode-omori [class*="bg-[#242220]"] {
+  background-color: var(--omori-panel) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#322d29]"],
+html.theme-mode-omori [class*="bg-[#2a2421]"],
+html.theme-mode-omori [class*="bg-[#2c2420]"],
+html.theme-mode-omori [class*="bg-[#252220]"],
+html.theme-mode-omori [class*="bg-[#222120]"],
+html.theme-mode-omori [class*="bg-[#292140]"] {
+  background-color: var(--omori-panel-2) !important;
+}
+
+html.theme-mode-omori [class*="border-l-[#222120]"] {
+  border-left-color: var(--omori-panel-2) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#3a3a3a]"],
+html.theme-mode-omori [class*="bg-[#3e3e3e]"],
+html.theme-mode-omori [class*="bg-[#3b3b3b]"],
+html.theme-mode-omori [class*="bg-[#4c4c4c]"],
+html.theme-mode-omori [class*="bg-[#4d4d4d]"],
+html.theme-mode-omori [class*="bg-[#343434]"],
+html.theme-mode-omori [class*="bg-[#525252]"] {
+  background-color: var(--omori-panel-3) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#110f0d]"],
+html.theme-mode-omori [class*="bg-[#120f0d]"],
+html.theme-mode-omori [class*="bg-[#1e1c1b]"],
+html.theme-mode-omori [class*="bg-[#1c1a19]"],
+html.theme-mode-omori [class*="bg-[#1a1817]"],
+html.theme-mode-omori [class*="bg-[#1a1816]"],
+html.theme-mode-omori [class*="bg-[#1a1918]"],
+html.theme-mode-omori [class*="bg-[#1c1a18]"],
+html.theme-mode-omori [class*="bg-[#1a1412]"],
+html.theme-mode-omori [class*="bg-[#221c19]"],
+html.theme-mode-omori [class*="bg-[#211612]"],
+html.theme-mode-omori [class*="bg-[#2a2725]"],
+html.theme-mode-omori [class*="bg-[#323232]"] {
+  background-color: var(--omori-deep) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#4d3224]"],
+html.theme-mode-omori [class*="bg-[#3b2d24]"],
+html.theme-mode-omori [class*="bg-[#4a2e22]"],
+html.theme-mode-omori [class*="bg-[#38302b]"] {
+  background-color: var(--omori-panel-2) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#5c4033]"] {
+  background-color: var(--omori-panel-3) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#4d4d4d]"] {
+  background-color: var(--omori-panel-3) !important;
+}
+
+/* Text neutrals that are baked into arbitrary classes */
+html.theme-mode-omori [class*="text-[#e1e1e1]"],
+html.theme-mode-omori [class*="text-[#e5e5e5]"],
+html.theme-mode-omori [class*="text-[#e0e0e0]"],
+html.theme-mode-omori [class*="text-[#aaaaaa]"],
+html.theme-mode-omori [class*="text-[#aaa]"],
+html.theme-mode-omori [class*="text-[#a8a29e]"] {
+  color: var(--omori-dim) !important;
+}
+
+/* Dark text utilities from the old light-on-dark layout ------------------ */
+html.theme-mode-omori .text-stone-600,
+html.theme-mode-omori .text-slate-600,
+html.theme-mode-omori .text-gray-600,
+html.theme-mode-omori .text-zinc-600 {
+  color: var(--omori-muted) !important;
+}
+
+html.theme-mode-omori .text-stone-700,
+html.theme-mode-omori .text-stone-800,
+html.theme-mode-omori .text-slate-700,
+html.theme-mode-omori .text-slate-800,
+html.theme-mode-omori .text-gray-700,
+html.theme-mode-omori .text-gray-800,
+html.theme-mode-omori .text-zinc-700,
+html.theme-mode-omori .text-zinc-800 {
+  color: var(--omori-dim) !important;
+}
+
+html.theme-mode-omori .text-stone-900,
+html.theme-mode-omori .text-stone-950,
+html.theme-mode-omori .text-slate-900,
+html.theme-mode-omori .text-slate-950,
+html.theme-mode-omori .text-gray-900,
+html.theme-mode-omori .text-gray-950,
+html.theme-mode-omori .text-zinc-900,
+html.theme-mode-omori .text-zinc-950 {
+  color: var(--omori-white) !important;
+}
+
+/* Keep dark text readable on the pale gold/amber selected states. */
+html.theme-mode-omori [class*="bg-amber-500"].text-stone-950,
+html.theme-mode-omori [class*="bg-amber-500"] .text-stone-950,
+html.theme-mode-omori [class*="bg-[#ffff55]"].text-black,
+html.theme-mode-omori [class*="bg-[#ffff55]"] .text-black {
+  color: #171126 !important;
+}
+
+/* Legacy purple/grey fills that predate the palette ---------------------- */
+html.theme-mode-omori [class*="bg-[#3b3b8c]"] {
+  background-color: #332b4a !important;
+}
+
+html.theme-mode-omori [class*="hover:bg-[#4d4db8]"]:hover {
+  background-color: #3f3660 !important;
+}
+
+html.theme-mode-omori [class*="bg-[#555]"] {
+  background-color: #241e38 !important;
+}
+
+html.theme-mode-omori [class*="hover:bg-[#888]"]:hover {
+  background-color: #3b3157 !important;
+}
+
+html.theme-mode-omori [class*="bg-[#1b3d1b]"] {
+  background-color: rgba(169, 232, 200, 0.12) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#c6c6c6]"] {
+  background-color: var(--omori-panel) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#2c2c2c]"] {
+  background-color: var(--omori-panel) !important;
+}
+
+html.theme-mode-omori [class*="bg-[#3a3a3a]"] {
+  background-color: #221c36 !important;
+}
+
+html.theme-mode-omori [class*="border-t-[#c9c9ff]"] {
+  border-top-color: rgba(203, 183, 242, 0.75) !important;
+}
+
+html.theme-mode-omori [class*="border-l-[#c9c9ff]"] {
+  border-left-color: rgba(203, 183, 242, 0.75) !important;
+}
+
+html.theme-mode-omori [class*="border-[#3e3e3e]"] {
+  border-color: var(--omori-line-soft) !important;
+}
+
+/* Border neutrals and old wood trim */
+html.theme-mode-omori [class*="border-[#3b271c]"],
+html.theme-mode-omori [class*="border-[#476e27]"],
+html.theme-mode-omori [class*="border-[#3a3535]"],
+html.theme-mode-omori [class*="border-[#1b1918]"],
+html.theme-mode-omori [class*="border-[#3b3b8c]"],
+html.theme-mode-omori [class*="border-[#555]"],
+html.theme-mode-omori [class*="border-[#444]"],
+html.theme-mode-omori [class*="border-[#333]"] {
+  border-color: var(--omori-line) !important;
+}
+
+/* Gradient stops used by decorative panels */
+html.theme-mode-omori [class*="from-[#ffff55]"] {
+  --tw-gradient-from: var(--omori-lav) !important;
+}
+html.theme-mode-omori [class*="to-[#ffff55]"] {
+  --tw-gradient-to: var(--omori-lav) !important;
+}
+html.theme-mode-omori [class*="from-[#55ff55]"] {
+  --tw-gradient-from: var(--omori-mint) !important;
+}
+html.theme-mode-omori [class*="to-[#55ff55]"] {
+  --tw-gradient-to: var(--omori-mint) !important;
+}
+html.theme-mode-omori [class*="from-[#55ffff]"] {
+  --tw-gradient-from: var(--omori-sky) !important;
+}
+html.theme-mode-omori [class*="to-[#55ffff]"] {
+  --tw-gradient-to: var(--omori-sky) !important;
+}
+html.theme-mode-omori [class*="from-[#ffaa00]"] {
+  --tw-gradient-from: var(--omori-gold) !important;
+}
+html.theme-mode-omori [class*="to-[#ffaa00]"] {
+  --tw-gradient-to: var(--omori-gold) !important;
+}
+
+/* Opacity variants should keep their transparency */
+html.theme-mode-omori [class*="bg-[#141414]/50"] {
+  background-color: rgba(20, 17, 31, 0.5) !important;
+}
+html.theme-mode-omori [class*="bg-[#55ff55]/10"] {
+  background-color: rgba(169, 232, 200, 0.1) !important;
+}
+html.theme-mode-omori [class*="bg-[#eab308]/20"] {
+  background-color: rgba(243, 223, 162, 0.14) !important;
+}
+html.theme-mode-omori [class*="bg-[#33ffff]/20"] {
+  background-color: rgba(169, 216, 232, 0.14) !important;
+}
+html.theme-mode-omori [class*="bg-[#1e1816]/75"] {
+  background-color: rgba(26, 21, 48, 0.75) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Focus / interaction accents
+   -------------------------------------------------------------------------- */
+
+html.theme-mode-omori #header-profile-shortcut:hover {
+  border-color: rgba(203, 183, 242, 0.8) !important;
+  box-shadow:
+    0 0 0 1px rgba(203, 183, 242, 0.28),
+    0 0 20px rgba(203, 183, 242, 0.45) !important;
+}
+
+html.theme-mode-omori #header-profile-shortcut:active {
+  box-shadow: 0 0 8px rgba(203, 183, 242, 0.3) !important;
+}
+
+@keyframes omori-tour-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px rgba(203, 183, 242, 0.9), 0 0 22px rgba(203, 183, 242, 0.35);
+    border-color: rgba(203, 183, 242, 0.9);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(243, 223, 162, 0.85), 0 0 38px rgba(243, 223, 162, 0.45);
+    border-color: rgba(243, 223, 162, 0.9);
+  }
+}
+
+html.theme-mode-omori .animate-tour-glow {
+  animation: omori-tour-glow 2.4s infinite ease-in-out !important;
+}
+
+/* Sidebar navigation items */
+html.theme-mode-omori #scholarpath-main-container aside button[class*="border-transparent"] {
+  border-color: transparent !important;
+}
+
+html.theme-mode-omori #scholarpath-main-container aside button[class*="bg-black/15"]:hover {
+  background-color: rgba(203, 183, 242, 0.08) !important;
+}
+
+/* Keep the active nav slot readable and dreamy */
+html.theme-mode-omori #scholarpath-main-container aside button[class*="bg-black/50"][class*="text-[#ffff55]"] {
+  background-color: rgba(203, 183, 242, 0.12) !important;
+  border-color: rgba(203, 183, 242, 0.55) !important;
+  box-shadow: 0 0 18px -6px rgba(203, 183, 242, 0.45) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Login screen — Dreamscape backdrop
+   -------------------------------------------------------------------------- */
+
+.omori-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: #08070d;
+  background-image:
+    radial-gradient(1000px 620px at 18% 8%, rgba(169, 143, 230, 0.34), transparent 62%),
+    radial-gradient(820px 520px at 86% 16%, rgba(169, 216, 232, 0.18), transparent 62%),
+    radial-gradient(900px 680px at 60% 108%, rgba(233, 169, 200, 0.18), transparent 64%),
+    linear-gradient(180deg, #0a0811 0%, #0d0a17 48%, #08070d 100%);
+}
+
+.omori-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 46%, rgba(5, 4, 9, 0.55) 100%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.01) 0 1px, transparent 1px 3px);
+  mix-blend-mode: multiply;
+}
+
+.omori-orb {
+  position: absolute;
+  top: 8%;
+  right: 12%;
+  width: min(38vw, 420px);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 42% 38%, rgba(244, 240, 232, 0.95), rgba(203, 183, 242, 0.62) 34%, rgba(169, 143, 230, 0.16) 62%, transparent 72%);
+  filter: blur(1px);
+  opacity: 0.7;
+  box-shadow: 0 0 120px 40px rgba(203, 183, 242, 0.22);
+  animation: omori-drift 16s ease-in-out infinite alternate;
+}
+
+.omori-orb--small {
+  top: auto;
+  right: auto;
+  bottom: 12%;
+  left: 7%;
+  width: min(22vw, 220px);
+  opacity: 0.5;
+  background:
+    radial-gradient(circle at 45% 40%, rgba(233, 169, 200, 0.9), rgba(233, 169, 200, 0.22) 52%, transparent 70%);
+  box-shadow: 0 0 100px 30px rgba(233, 169, 200, 0.18);
+  animation-duration: 22s;
+  animation-direction: alternate-reverse;
+}
+
+.omori-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 12% 22%, rgba(244, 240, 232, 0.95), transparent 100%),
+    radial-gradient(1.5px 1.5px at 27% 68%, rgba(203, 183, 242, 0.95), transparent 100%),
+    radial-gradient(2px 2px at 44% 14%, rgba(244, 240, 232, 0.85), transparent 100%),
+    radial-gradient(1.5px 1.5px at 61% 42%, rgba(169, 216, 232, 0.95), transparent 100%),
+    radial-gradient(2px 2px at 74% 76%, rgba(244, 240, 232, 0.9), transparent 100%),
+    radial-gradient(1.5px 1.5px at 88% 28%, rgba(233, 169, 200, 0.95), transparent 100%),
+    radial-gradient(1.5px 1.5px at 52% 88%, rgba(244, 240, 232, 0.85), transparent 100%),
+    radial-gradient(1.5px 1.5px at 35% 46%, rgba(203, 183, 242, 0.85), transparent 100%),
+    radial-gradient(2px 2px at 8% 82%, rgba(169, 216, 232, 0.9), transparent 100%),
+    radial-gradient(1.5px 1.5px at 93% 62%, rgba(244, 240, 232, 0.85), transparent 100%),
+    radial-gradient(1.5px 1.5px at 4% 38%, rgba(244, 240, 232, 0.8), transparent 100%),
+    radial-gradient(1.5px 1.5px at 80% 90%, rgba(203, 183, 242, 0.85), transparent 100%);
+  animation: omori-twinkle 7s ease-in-out infinite alternate;
+}
+
+.omori-spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: rgba(244, 240, 232, 0.8);
+  box-shadow: 0 0 10px rgba(203, 183, 242, 0.8);
+  opacity: 0;
+  animation: omori-float 12s ease-in-out infinite;
+}
+
+@keyframes omori-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-18px, 22px, 0) scale(1.04);
+  }
+}
+
+@keyframes omori-twinkle {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes omori-float {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.6);
+  }
+  20% {
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(14px, -70px, 0) scale(1.1);
+  }
+}
+
+.omori-login-card {
+  background-color: #191428 !important;
+  background-image: none !important;
+  border: 2px solid #0a0812 !important;
+  border-radius: 10px !important;
+  padding: 1.75rem !important;
+  box-shadow: 6px 6px 0 rgba(8, 7, 13, 0.55) !important;
+  backdrop-filter: none;
+}
+
+.omori-login-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(203, 183, 242, 0.12);
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.omori-login-title {
+  font-family: var(--font-press) !important;
+  color: var(--omori-white) !important;
+  text-shadow: 3px 3px 0 rgba(8, 7, 13, 0.75) !important;
+}
+
+html.theme-mode-omori .omori-cta.mc-btn {
+  background-color: var(--omori-lav) !important;
+  background-image: none !important;
+  border-color: #0a0812 !important;
+  color: #171126 !important;
+  letter-spacing: 0.08em;
+  box-shadow: 3px 3px 0 rgba(8, 7, 13, 0.65) !important;
+}
+
+html.theme-mode-omori .omori-cta.mc-btn:hover:not(:disabled) {
+  background-color: #e3d7fb !important;
+  background-image: none !important;
+  transform: translateY(-1px);
+  box-shadow: 4px 4px 0 rgba(8, 7, 13, 0.7) !important;
+}
+
+html.theme-mode-omori .omori-cta svg {
+  color: #171126 !important;
+  fill: #171126 !important;
+}
+
+html.theme-mode-omori .omori-cta .animate-spin {
+  color: #171126 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Motion preferences
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-mode-omori *,
+  .omori-backdrop *,
+  .omori-orb,
+  .omori-stars,
+  .omori-spark {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

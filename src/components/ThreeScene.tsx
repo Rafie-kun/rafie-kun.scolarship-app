@@ -3,7 +3,7 @@ import { useTheme } from '../context/ThemeContext';
 
 /**
  * 🌠 ThreeScene - A fully modular, ultra-high-performance 3D canvas constellation
- * rendering engine using the ScholarPath green palette.
+ * rendering engine using the Somnia dreamscape palette.
  * Respects user's preferences by toggling on/off instantly.
  */
 export default function ThreeScene() {

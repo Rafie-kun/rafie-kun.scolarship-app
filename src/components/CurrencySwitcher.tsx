@@ -32,7 +32,7 @@ export default function CurrencySwitcher() {
     setIsOpen(false);
   };
 
-  const isMinecraft = themeMode === 'minecraft';
+  const isOmori = themeMode === 'omori';
 
   return (
     <div className="relative inline-block text-left" id="currency-switcher-root">
@@ -40,7 +40,7 @@ export default function CurrencySwitcher() {
       <button
         onClick={toggleDropdown}
         className={
-          isMinecraft
+          isOmori
             ? "mc-btn font-press text-[9px] py-2 px-3 flex items-center gap-1.5 min-w-[105px] justify-between uppercase"
             : "px-3 py-1.5 border border-slate-200 dark:border-slate-800 rounded-md bg-white dark:bg-slate-950 text-xs font-medium flex items-center gap-2 justify-between hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer text-slate-700 dark:text-slate-200"
         }
@@ -58,12 +58,12 @@ export default function CurrencySwitcher() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: isMinecraft ? 0 : 5 }}
+            initial={{ opacity: 0, y: isOmori ? 0 : 5 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: isMinecraft ? 0 : 5 }}
+            exit={{ opacity: 0, y: isOmori ? 0 : 5 }}
             transition={{ duration: 0.15 }}
             className={
-              isMinecraft
+              isOmori
                 ? "absolute right-0 mt-2 w-72 bg-[#2a2421] border-4 border-black text-stone-200 font-mono z-[100] p-1.5 shadow-2xl [box-shadow:inset_-4px_-4px_0_#171412,inset_4px_4px_0_#433833]"
                 : "absolute right-0 mt-2 w-72 rounded-lg bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xl dark:shadow-2xl z-[100] py-1.5"
             }
@@ -77,7 +77,7 @@ export default function CurrencySwitcher() {
                   key={id}
                   onClick={() => handleSelect(id)}
                   className={
-                    isMinecraft
+                    isOmori
                       ? `w-full text-left font-mono text-[10px] p-2 flex items-center justify-between uppercase cursor-pointer transition-all duration-100 ${
                           selected
                             ? 'bg-stone-950 text-[#ffff55] border-2 border-[#ffff55] font-bold [box-shadow:0_0_8px_rgba(255,255,85,0.4)]'
@@ -94,13 +94,13 @@ export default function CurrencySwitcher() {
                     <span className="text-base shrink-0">{details.flag}</span>
                     <span className="truncate">
                       <span className="font-bold">{id}</span>
-                      <span className={isMinecraft ? "text-stone-400 font-sans" : "text-slate-400 font-normal"}>
+                      <span className={isOmori ? "text-stone-400 font-sans" : "text-slate-400 font-normal"}>
                         {" — "}{details.name} ({details.symbol})
                       </span>
                     </span>
                   </span>
                   {selected && (
-                    <Check className={isMinecraft ? "w-3 h-3 text-[#ffff55] shrink-0" : "w-3.5 h-3.5 text-indigo-500 shrink-0"} />
+                    <Check className={isOmori ? "w-3 h-3 text-[#ffff55] shrink-0" : "w-3.5 h-3.5 text-indigo-500 shrink-0"} />
                   )}
                 </button>
               );
