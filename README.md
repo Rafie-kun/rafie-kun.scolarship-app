@@ -77,3 +77,26 @@ See `DEPLOYMENT.md` and `Guide.md` for details. Auto-update runs hourly + on-boo
 - Profile updates field-whitelisted, XP capped server-side (≤100/action)
 - PDF uploads limited to ~7MB, resume text extracted server-side, never overwrites name/major/GPA with hallucinated data
 - Security headers via `vercel.json` + Express middleware
+
+---
+
+## Next.js v2 app (Phase 2, in progress)
+
+A new Next.js + Postgres app is being built alongside the legacy Vite/Express app.
+The legacy app remains the deployed app until the v2 cutover phase.
+
+Command | Purpose
+--- | ---
+`npm run dev:next` | Next.js dev server (http://localhost:3000)
+`npm run build:next` / `npm run start:next` | Build and serve the Next.js app
+`docker compose up -d scholarpath_db` | Local Postgres for v2
+`npx drizzle-kit migrate` | Apply database migrations
+`npm run sync:catalog` | Import/refresh universities, scholarships, internships, admissions guides
+`npm run lint` | TypeScript check for both apps
+
+- Public pages: `/scholarships`, `/scholarships/[slug]`, `/opportunities`, `/apply`, `/apply/[slug]`
+- Catalog sync is idempotent, deduplicates duplicate legacy rows, prunes removed imports,
+  and never overwrites records a human has verified.
+- Cron: `GET /api/v1/cron/sync` with `Authorization: Bearer \` (see `vercel.next.json`).
+- Env names: see `.env.example`. Never commit values.
+- Phase details and verification evidence: `docs/phases/phase-02.md`.
