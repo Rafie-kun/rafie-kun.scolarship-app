@@ -476,7 +476,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       // Server unreachable: do NOT fake a login (any password would "work").
-      setAuthError("Cannot reach the ScholarPath server. Please check your connection and try again.");
+      setAuthError("Cannot reach the Somnia server. Please check your connection and try again.");
       return false;
     } finally {
       setAuthLoading(false);
@@ -542,7 +542,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (e: any) {
       // Registration requires the server (it owns the user database).
       setAuthError(e.message === "Failed to fetch"
-        ? "Cannot reach the ScholarPath server. Please check your connection and try again."
+        ? "Cannot reach the Somnia server. Please check your connection and try again."
         : (e.message || "Register failed"));
       return false;
     } finally {
@@ -585,7 +585,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (e) {
       // Guest sessions are created server-side; without the server there is
       // nothing to spawn, so fail honestly instead of faking a local session.
-      setAuthError("Cannot reach the ScholarPath server to spawn a guest session. Please try again later.");
+      setAuthError("Cannot reach the Somnia server to spawn a guest session. Please try again later.");
       return false;
     } finally {
       setAuthLoading(false);

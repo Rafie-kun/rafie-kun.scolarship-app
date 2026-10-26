@@ -1,63 +1,60 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/* Official Minecraft texture backgrounds (from the game's assets)     */
-/* Textures live in /public/textures and are tiled at pixel scale.     */
+/* Surface helpers                                                     */
+/* Somnia draws its dreamscape with gradients and flat colour, so the */
+/* old tiled texture backgrounds are now CSS-only. No third-party game */
+/* assets are shipped or referenced.                                  */
 /* ------------------------------------------------------------------ */
 
 .tex-dirt-dark {
-  background-color: #0d0f12;
-  background-image:
-    linear-gradient(rgba(6, 8, 12, 0.88), rgba(6, 8, 12, 0.92)),
-    url('/textures/deepslate.png');
-  background-size: auto, 64px 64px;
-  image-rendering: pixelated;
+  background-color: #08070d;
+  background-image: linear-gradient(180deg, #0b0912 0%, #0c0a15 50%, #08070d 100%);
+  background-size: auto;
 }
 
 .tex-dirt {
-  background-image: url('/textures/dirt.png');
-  background-size: 64px 64px;
-  image-rendering: pixelated;
+  background-color: #08070d;
+  background-image: none;
 }
 
 .tex-stone {
-  background-color: #2c2927;
-  background-image:
-    linear-gradient(rgba(20, 18, 16, 0.72), rgba(20, 18, 16, 0.72)),
-    url('/textures/stone.png');
-  background-size: auto, 64px 64px;
-  image-rendering: pixelated;
+  background-color: #0e0b17;
+  background-image: none;
 }
 
 .tex-planks {
-  background-color: #4d3224;
-  background-image:
-    linear-gradient(rgba(30, 18, 10, 0.55), rgba(30, 18, 10, 0.55)),
-    url('/textures/oak_planks.png');
-  background-size: auto, 96px 96px;
-  image-rendering: pixelated;
+  background-color: #191428;
+  background-image: none;
 }
 
 .tex-grass {
-  background-image: url('/textures/grass_block_side.png');
-  background-size: auto 100%;
-  background-repeat: repeat-x;
-  image-rendering: pixelated;
+  background-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(169, 216, 232, 0.65) 22%,
+    rgba(203, 183, 242, 0.95) 50%,
+    rgba(233, 169, 200, 0.6) 78%,
+    transparent 100%
+  );
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
 }
 
 :root {
-  /* Default Theme: Minecraft (Craft) */
-  --bg-primary: #1a1512;
-  --bg-secondary: #2c2824;
-  --bg-tertiary: #1f1a16;
-  --text-primary: #f0e8d8;
-  --text-secondary: #c8bca8;
-  --text-muted: #9a8e7a;
-  --border-color: #3d3530;
-  --border-style: 3px solid #3d3530;
-  --font-heading: "Press Start 2P", monospace;
-  --font-body: "Inter", sans-serif;
-  --box-shadow: inset -3px -3px 0 #141210, inset 3px 3px 0 #4a423c;
+  /* Default theme: Somnia dreamscape */
+  --bg-primary: #08070d;
+  --bg-secondary: #191428;
+  --bg-tertiary: #0e0b17;
+  --text-primary: #f4f0e8;
+  --text-secondary: #c8c0d8;
+  --text-muted: #9a93ad;
+  --border-color: #332b4a;
+  --border-style: 1px solid #332b4a;
+  --font-heading: "Pixelify Sans", "VT323", monospace;
+  --font-body: "Nunito", system-ui, sans-serif;
+  --box-shadow: 2px 2px 0 rgba(8, 7, 13, 0.55);
 }
 
 .theme-mode-minecraft, .craft-mode {

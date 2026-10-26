@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { playClickSound } from '../utils/sound';
 
-// ScholarPath uses a single official Minecraft-inspired theme.
+// Somnia uses a single dreamlike, OMORI-inspired theme.
 // The legacy multi-theme API is preserved for compatibility but is fixed.
 export type ThemeId = 'overworld';
-export type ThemeMode = 'minecraft';
+export type ThemeMode = 'omori';
 export type CurrencyId = 
   | 'USD' | 'GBP' | 'EUR' | 'BDT' | 'CAD' | 'AUD' | 'INR' | 'JPY' 
   | 'CHF' | 'SGD' | 'MYR' | 'NZD' | 'ZAR' | 'BRL' | 'MXN';
@@ -117,29 +117,30 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     fetchRates();
   }, []);
 
-  // Apply the single Minecraft theme to the document root
+  // Apply the single dreamscape theme to the document root
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(
       'theme-overworld', 'theme-nether', 'theme-end', 'theme-aether',
-      'theme-mode-modern', 'theme-mode-minecraft', 'theme-mode-light', 'theme-mode-dark'
+      'theme-mode-modern', 'theme-mode-minecraft', 'theme-mode-omori',
+      'theme-mode-light', 'theme-mode-dark'
     );
     root.classList.add('theme-overworld');
-    root.classList.add('theme-mode-minecraft');
+    root.classList.add('theme-mode-omori');
     localStorage.removeItem('scholarpath_active_theme');
     localStorage.removeItem('scholarpath_theme_mode');
 
-    root.style.setProperty('--bg-primary', '#110f0d');
-    root.style.setProperty('--bg-secondary', '#2c2927');
-    root.style.setProperty('--bg-tertiary', '#141414');
-    root.style.setProperty('--text-primary', '#e0e0e0');
-    root.style.setProperty('--text-secondary', '#ffff55');
-    root.style.setProperty('--text-tertiary', '#ffaa00');
-    root.style.setProperty('--border-color', '#000000');
-    root.style.setProperty('--border-style', '4px solid #000000');
-    root.style.setProperty('--font-heading', '"Press Start 2P", monospace');
-    root.style.setProperty('--font-body', '"JetBrains Mono", monospace');
-    root.style.setProperty('--box-shadow', 'inset -4px -4px 0 #141414, inset 4px 4px 0 #555');
+    root.style.setProperty('--bg-primary', '#08070d');
+    root.style.setProperty('--bg-secondary', '#191428');
+    root.style.setProperty('--bg-tertiary', '#0e0b17');
+    root.style.setProperty('--text-primary', '#f4f0e8');
+    root.style.setProperty('--text-secondary', '#c8c0d8');
+    root.style.setProperty('--text-tertiary', '#9a93ad');
+    root.style.setProperty('--border-color', '#332b4a');
+    root.style.setProperty('--border-style', '1px solid #332b4a');
+    root.style.setProperty('--font-heading', '"Pixelify Sans", "VT323", monospace');
+    root.style.setProperty('--font-body', '"Nunito", system-ui, sans-serif');
+    root.style.setProperty('--box-shadow', '0 24px 60px -30px rgba(0, 0, 0, 0.9)');
   }, []);
 
   const noopThemeSetter = () => {};
@@ -187,7 +188,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ThemeContext.Provider value={{
-      themeMode: 'minecraft',
+      themeMode: 'omori',
       theme: 'overworld',
       soundEnabled,
       textGlow,

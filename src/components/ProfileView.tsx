@@ -24,7 +24,7 @@ const AVATAR_PRESETS = [
   { id: 'cyber', emoji: '👨‍💻', name: 'Cyber Student' },
   { id: 'scientist', emoji: '👩‍🔬', name: 'Research Scholar' },
   { id: 'hero', emoji: '🦸', name: 'Quantum Pioneer' },
-  { id: 'robot', emoji: '🤖', name: 'AI Specialist' },
+  { id: 'robot', emoji: '🤖', name: 'Tech Specialist' },
   { id: 'elf', emoji: '🧝', name: 'Quest Finder' },
   { id: 'alien', emoji: '👽', name: 'Deep Space Explorer' },
 ];
@@ -533,7 +533,7 @@ export default function ProfileView() {
       const base64 = reader.result as string;
       setResumePdf(base64);
       setResumePdfName(file.name);
-      setPdfStatusMessage('Analyzing your document with AI...');
+      setPdfStatusMessage('Reading your document...');
 
       let summaryText = '';
       try {
@@ -552,7 +552,7 @@ export default function ProfileView() {
       }
 
       if (summaryText) {
-        setPdfStatusMessage(`✅ "${file.name}" uploaded. AI Summary:\n${summaryText}`);
+        setPdfStatusMessage(`✅ "${file.name}" uploaded. Summary:\n${summaryText}`);
       } else {
         setPdfStatusMessage(`✅ Document "${file.name}" uploaded successfully!`);
       }
@@ -687,7 +687,7 @@ export default function ProfileView() {
             <User className="w-5 h-5 text-stone-900 shrink-0" /> CANDIDATE PROFILE PORTFOLIO
           </h3>
           <p className="text-xs text-stone-700 font-sans mt-1">
-            Manage your personal identity, avatar image, bio, and academic credentials for AI scholarship matching.
+            Manage your personal identity, avatar image, bio, and academic credentials for scholarship matching.
           </p>
         </div>
 
@@ -959,7 +959,7 @@ export default function ProfileView() {
                       type="text"
                       value={heroTitle}
                       onChange={(e) => setHeroTitle(e.target.value)}
-                      placeholder="e.g. Future AI Researcher & Scholar"
+                      placeholder="e.g. Future Researcher & Scholar"
                       className="bg-[#141414] border-2 border-black p-2.5 outline-none focus:border-[#ffff55] text-stone-200"
                     />
                   </div>
@@ -1167,7 +1167,7 @@ export default function ProfileView() {
                         <Sparkles className="w-4 h-4 text-[#ffff55]" /> Certificate & Grade Report Analyzer
                       </h5>
                       <p className="text-stone-300 text-xs mt-1">
-                        Upload your official grade report card, diploma, or transcript to auto-extract subjects and calculate your GPA with Gemini AI.
+                        Upload your official grade report card, diploma, or transcript to auto-extract subjects and calculate your GPA automatically.
                       </p>
                     </div>
                     <button
@@ -1175,7 +1175,7 @@ export default function ProfileView() {
                       onClick={() => { playClickSound(); setShowAnalyzer(!showAnalyzer); }}
                       className="mc-btn font-press text-[9px] py-2 px-4 text-[#55ff55] flex items-center gap-1.5 uppercase cursor-pointer shrink-0"
                     >
-                      <Upload className="w-3.5 h-3.5" /> {showAnalyzer ? 'Close AI Scanner' : '📜 Scan Report Card / Certificate'}
+                      <Upload className="w-3.5 h-3.5" /> {showAnalyzer ? 'Close Scanner' : '📜 Scan Report Card / Certificate'}
                     </button>
                   </div>
 
@@ -1326,7 +1326,7 @@ export default function ProfileView() {
                     </div>
                   ) : (
                     <div className="text-center p-4 bg-black/30 border border-dashed border-stone-800 text-stone-400 text-xs">
-                      No subjects entered yet. Add your courses above or scan your grade report with AI.
+                      No subjects entered yet. Add your courses above or scan your grade report.
                     </div>
                   )}
                 </div>

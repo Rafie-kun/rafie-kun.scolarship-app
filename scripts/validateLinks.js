@@ -40,7 +40,7 @@ async function validateFile(filename) {
 }
 
 async function run() {
-  console.log("=== SCHOLARPATH LINK VALIDATION CRAWLER ===");
+  console.log("=== SOMNIA LINK VALIDATION CRAWLER ===");
   const files = ['universities.json', 'scholarships.json', 'internships.json', 'visa_guide.json', 'cost_of_living.json'];
   for (const f of files) {
     await validateFile(f);

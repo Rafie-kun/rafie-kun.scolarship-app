@@ -1,4 +1,4 @@
-# ScholarPath — Migration skeleton (MIGRATION.md)
+# Somnia — Migration skeleton (MIGRATION.md)
 
 > Phase 1 skeleton per SPEC §50. Field-level mapping + counts + report land in later phases. DO NOT delete legacy code/data until cutover is verified.
 

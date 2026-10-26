@@ -1,4 +1,4 @@
-# ScholarPath — Future Roadmap
+# Somnia — Future Roadmap
 
 _Last updated: 2026-08-26 (commit 9b82701 — all Next 10 shipped, see below)_
 _Theme: Single official Minecraft night mode (deepslate), plain-English UI._

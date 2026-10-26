@@ -76,7 +76,7 @@ export default function UniversityAdvisor() {
           </div>
           <div>
             <h3 className="font-press text-[11px] uppercase text-[#55ffff] tracking-wider mc-text-shadow">
-              AI Admissions Consultant
+              Admissions Consultant
             </h3>
             <p className="text-xs text-stone-300 font-mono mt-1">
               Deep analysis comparing your current academic profile to incoming average standards of global universities.

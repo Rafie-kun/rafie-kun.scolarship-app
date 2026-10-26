@@ -9,7 +9,7 @@ async function scrapeDaadDirect(): Promise<any[]> {
   const out: any[] = [];
   try {
     const res = await fetch('https://www.daad.de/en/study-and-research-in-germany/scholarships/daad-scholarships/', {
-      headers: { 'User-Agent': 'ScholarPath-Bot/1.0' },
+      headers: { 'User-Agent': 'Somnia-Bot/1.0' },
       signal: AbortSignal.timeout(8000)
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);

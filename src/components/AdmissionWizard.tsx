@@ -174,7 +174,7 @@ export default function AdmissionWizard() {
     if (myGpa4 && myGpa4 < 3.3) tips.push('Raise your GPA this semester - even +0.1 moves several "Reach" schools into "Match".');
     if (myGpa4 >= 3.3 && myGpa4 < 3.7) tips.push('Your GPA clears most minimums. Add one strong research project or publication to stand out.');
     if (major.trim()) tips.push(`Take a free online course in ${major.trim()} (Coursera / edX) and mention it in your SOP.`);
-    tips.push('Draft your Statement of Purpose early - use the Document Center for a free AI review.');
+    tips.push('Draft your Statement of Purpose early - use the Document Center for a free writing review.');
     tips.push('Ask two professors for recommendation letters at least 6 weeks before deadlines.');
     if (!gpaInput) tips.push('Enter your grades above to unlock personalized chances.');
     return tips.slice(0, 4);

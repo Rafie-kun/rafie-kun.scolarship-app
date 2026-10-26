@@ -127,7 +127,7 @@ export default function CertificateAnalyzer({ onImportSubjects, onClose }: Certi
         <div className="flex items-center gap-2">
           <FileCheck className="w-5 h-5 text-[#55ff55]" />
           <h3 className="font-press text-[10px] text-[#ffff55] uppercase mc-text-shadow">
-            AI CERTIFICATE & REPORT CARD ANALYZER
+            CERTIFICATE & REPORT CARD ANALYZER
           </h3>
         </div>
         {onClose && (
@@ -143,7 +143,7 @@ export default function CertificateAnalyzer({ onImportSubjects, onClose }: Certi
       {!analysisResult ? (
         <div className="space-y-4">
           <p className="text-stone-300 text-xs leading-relaxed">
-            Upload your grade transcript, report card, or academic certificate (PDF, PNG, JPG). Our AI scanner will read course names, letter grades, and curriculum weights to populate your GPA ledger automatically.
+            Upload your grade transcript, report card, or academic certificate (PDF, PNG, JPG). The scanner will read course names, letter grades, and curriculum weights to populate your GPA ledger automatically.
           </p>
 
           <div className="border-2 border-dashed border-stone-700 hover:border-[#ffff55] bg-black/40 p-6 text-center cursor-pointer transition-all">
@@ -182,7 +182,7 @@ export default function CertificateAnalyzer({ onImportSubjects, onClose }: Certi
               </>
             ) : (
               <>
-                <Sparkles className="w-4 h-4 text-[#ffff55]" /> ANALYZE DOCUMENT WITH GEMINI
+                <Sparkles className="w-4 h-4 text-[#ffff55]" /> ANALYZE DOCUMENT
               </>
             )}
           </button>

@@ -43,7 +43,7 @@ const DEFAULT_SKILL_TREE: SkillNode[] = [
 
   // Tier 3
   { id: 'scholar_app', title: 'Loot Registry Submissions', category: 'Mastery', tier: 3, description: 'Submit 3+ fully-funded scholarship applications.', xpReward: 50, unlocked: false, prereqs: ['sop_draft', 'lor_sec'], icon: '🏆' },
-  { id: 'interview_prep', title: 'Panel Defense Prep', category: 'Mastery', tier: 3, description: 'Practice live mock interviews with AI Copilot.', xpReward: 40, unlocked: false, prereqs: ['sop_draft'], icon: '🎙️' },
+  { id: 'interview_prep', title: 'Panel Defense Prep', category: 'Mastery', tier: 3, description: 'Practice live mock interviews with Study Companion.', xpReward: 40, unlocked: false, prereqs: ['sop_draft'], icon: '🎙️' },
   { id: 'award_claimed', title: 'Fellowship Awarded', category: 'Mastery', tier: 3, description: 'Claim fellowship or full-ride university scholarship offer!', xpReward: 100, unlocked: false, prereqs: ['scholar_app', 'interview_prep'], icon: '🌟' },
 ];
 
@@ -166,7 +166,7 @@ export default function RoadmapView() {
         setRoadmap(data.roadmap || []);
         if (forceRegenerate) {
           playAdvancementSound();
-          setSuccess("AI Companion recalculated your personalized target path successfully!");
+          setSuccess("Your path was recalculated your personalized target path successfully!");
           setTimeout(() => setSuccess(''), 4000);
         }
       }
@@ -417,7 +417,7 @@ export default function RoadmapView() {
               className="mc-btn shrink-0 py-2.5 text-[8.5px] font-press uppercase text-amber-300 flex items-center gap-1.5"
             >
               <RotateCcw className="w-3.5 h-3.5" /> 
-              {generating ? "Calibrating..." : "Regenerate AI Map"}
+              {generating ? "Calibrating..." : "Rebuild Map"}
             </button>
           </div>
 

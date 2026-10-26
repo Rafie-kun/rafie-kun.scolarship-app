@@ -116,7 +116,7 @@ In my future career, I plan to research compilers, operating system architecture
           <FileText className="w-5 h-5 text-stone-900 shrink-0" /> SCROLL VAULT (SOP WORKBENCH)
         </h3>
         <p className="text-xs text-stone-700 font-sans mt-2 leading-relaxed">
-          Paste your SOP, get an AI review, check for AI patterns, or study 5 winning excerpts. The advisor checks eligibility, ECTS, and returns Markdown suggestions.
+          Paste your SOP, get a writing review, check for AI patterns, or study 5 winning excerpts. The advisor checks eligibility, ECTS, and returns Markdown suggestions.
         </p>
       </div>
 

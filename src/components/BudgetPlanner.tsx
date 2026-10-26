@@ -38,7 +38,7 @@ interface TaxRuleEntry {
 }
 
 export default function BudgetPlanner() {
-  const { convertAmount, rates, themeMode } = useTheme();
+  const { convertAmount, rates } = useTheme();
   const { profile } = useAuth();
 
   // Loaded JSON Data
@@ -217,8 +217,6 @@ export default function BudgetPlanner() {
   // Warnings checks
   const hourLimitExceeded = selectedJob && hoursPerWeek > selectedJob.weeklyHourLimit;
   const deficitOccurred = totalMonthlyExpenses > totalMonthlyIncome;
-
-  const isMinecraft = themeMode === 'minecraft';
 
   return (
     <div className="space-y-6" id="scholarpath-budget-planner">
@@ -566,7 +564,7 @@ export default function BudgetPlanner() {
 
             </div>
 
-            {/* High-quality Minecraft-themed progress bar */}
+            {/* Glowing budget progress bar */}
             <div className="bg-[#141414] border-2 border-black p-4.5 font-mono">
               <div className="flex justify-between items-center pb-2 text-[10px] uppercase font-bold text-stone-300">
                 <span>Expense Ratio Visualizer:</span>

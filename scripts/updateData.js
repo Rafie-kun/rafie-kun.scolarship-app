@@ -62,7 +62,7 @@ function mergeRecords(existingRecords, incomingRecords) {
 }
 
 async function main() {
-  console.log('🔄 Launching ScholarPath Smart Merge Data Synchronizer...');
+  console.log('🔄 Launching Somnia Smart Merge Data Synchronizer...');
 
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });

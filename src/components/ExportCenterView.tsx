@@ -75,7 +75,7 @@ export default function ExportCenterView() {
     container.innerHTML = `
       <div style="border-bottom: 3px solid #eab308; padding-bottom: 14px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end;">
         <div>
-          <h1 style="color: #fef08a; font-size: 20px; font-weight: bold; margin: 0; text-transform: uppercase; font-family: sans-serif;">SCHOLARPATH ADMISSIONS DOSSIER</h1>
+          <h1 style="color: #fef08a; font-size: 20px; font-weight: bold; margin: 0; text-transform: uppercase; font-family: sans-serif;">SOMNIA ADMISSIONS DOSSIER</h1>
           <p style="color: #a8a29e; font-size: 11px; margin: 4px 0 0 0;">Candidate: ${p.fullName || 'Scholar Explorer'}</p>
         </div>
         <div style="text-align: right; font-size: 11px; color: #fef08a; font-weight: bold;">
@@ -127,7 +127,7 @@ export default function ExportCenterView() {
       </div>
 
       <div style="border-top: 1px solid #3f3f46; padding-top: 10px; margin-top: 16px; font-size: 9px; color: #71717a; text-align: center;">
-        ScholarPath Official Admissions Ledger • https://scholarpath.app
+        Somnia Admissions Ledger • Generated locally
       </div>
     `;
 
@@ -146,7 +146,7 @@ export default function ExportCenterView() {
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save(`${p.fullName || 'Scholar'}_ScholarPath_Dossier.pdf`);
+      pdf.save(`${p.fullName || 'Scholar'}_Somnia_Dossier.pdf`);
     } catch (err) {
       console.error("PDF generation error:", err);
     } finally {
@@ -182,12 +182,12 @@ export default function ExportCenterView() {
       if (type === 'scholar_summary' || (type === 'portfolio' && selectedFormat === 'pdf')) {
         await generateScholarSummaryPdf(profile, applications);
       } else if (type === 'applications') {
-        const title = `${profile.fullName}_ScholarPath_Applications`;
+        const title = `${profile.fullName}_Somnia_Applications`;
         if (selectedFormat === 'json') {
           const content = JSON.stringify(applications, null, 2);
           triggerDownload(`${title}.json`, content, 'application/json');
         } else if (selectedFormat === 'md') {
-          let content = `# ScholarPath Applications Guide for ${profile.fullName}\n`;
+          let content = `# Somnia Applications Guide for ${profile.fullName}\n`;
           content += `Generated on ${new Date().toLocaleDateString()}\n\n`;
           applications.forEach((app, i) => {
             content += `## ${i + 1}. ${app.name}\n`;
@@ -205,7 +205,7 @@ export default function ExportCenterView() {
         } else if (selectedFormat === 'docx') {
           let html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>`;
           html += `<head><title>Applications Portfolio</title><style>body { font-family: Arial, sans-serif; }</style></head><body>`;
-          html += `<h1>ScholarPath Applications Portfolio for ${profile.fullName}</h1>`;
+          html += `<h1>Somnia Applications Portfolio for ${profile.fullName}</h1>`;
           applications.forEach((app, i) => {
             html += `2. ${app.name}`;
             html += `<p><strong>Provider/Uni:</strong> ${app.providerOrUni}<br/>`;
@@ -224,7 +224,7 @@ export default function ExportCenterView() {
           await generateScholarSummaryPdf(profile, applications);
         }
       } else if (type === 'essay') {
-        const title = `${profile.fullName}_ScholarPath_Motivation_SOP`;
+        const title = `${profile.fullName}_Somnia_Motivation_SOP`;
         const testEssay = `Personal Statement & Statement of Purpose for International Admissions\nTarget major: ${profile.intendedMajor}\nDegree level: ${profile.intendedDegree}\n\n` + 
           `My name is ${profile.fullName}. My core study objective is to excel at fully-funded graduate computing initiatives. Dual-pipelines of software development teach us that robust coding resolves human tracking matrices...\n\n` +
           `Through my background in Bangladesh as a developer finalist and managing resource clubs, I intend to bridge systemic gaps. Pursuing research under global advisors aligns directly with my ambitions. Thank you for your review.`;
@@ -241,7 +241,7 @@ export default function ExportCenterView() {
           triggerDownload(`${title}.html`, html, 'text/html');
         }
       } else if (type === 'resume') {
-        const title = `${profile.fullName}_ScholarPath_Curriculum_Vitae`;
+        const title = `${profile.fullName}_Somnia_Curriculum_Vitae`;
         let resumeMd = `# Curriculum Vitae (CV) - ${profile.fullName}\n`;
         resumeMd += `Nationality: ${profile.nationality} | Target Major: ${profile.intendedMajor}\n\n`;
         resumeMd += `## Academic Metrics\n- **GPA**: ${profile.gpa} / ${profile.maxGpa}\n- **IELTS Score**: ${profile.ieltsScore || '7.5'}\n- **GRE Score**: ${profile.greScore || '318'}\n\n`;
@@ -264,13 +264,13 @@ export default function ExportCenterView() {
           triggerDownload(`${title}.html`, html, 'text/html');
         }
       } else if (type === 'portfolio') {
-        const title = `${profile.fullName}_Complete_ScholarPath_Admissions_Artifacts`;
+        const title = `${profile.fullName}_Complete_Somnia_Admissions_Artifacts`;
         const fullPortfolio = {
           profile,
           applications,
           timeline: [
             { stage: 1, name: "Mineral Foundations", goal: "Acquire standardized test bands" },
-            { stage: 2, name: "SOP Sabbatical", goal: "Submit drafts to ScholarPath AI analysis feedback" }
+            { stage: 2, name: "SOP Sabbatical", goal: "Submit drafts to Somnia writing feedback" }
           ]
         };
         const content = JSON.stringify(fullPortfolio, null, 2);

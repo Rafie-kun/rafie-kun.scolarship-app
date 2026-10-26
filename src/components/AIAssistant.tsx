@@ -47,7 +47,7 @@ export default function AIAssistant({ currentPage, profile, onNavigateTab }: AIA
           promptText = `Ask about the local handbook, alumni advice, or forum threads.`;
           break;
         default:
-          promptText = `Greetings, candidate! Need help navigating the ScholarPath matrix?`;
+          promptText = `Greetings, candidate! Need help navigating the Somnia matrix?`;
           break;
       }
       setAssistantNotification(promptText);
@@ -183,7 +183,7 @@ export default function AIAssistant({ currentPage, profile, onNavigateTab }: AIA
     } catch (err) {
       setMessages(prev => [...prev, { 
         role: 'assistant', 
-        content: "🔌 Wise Wizard Link Interrupted! Please ensure a correct GEMINI_API_KEY is active in Skins & Biomes (Customize tab) or under Secure Settings, and retry." 
+        content: "🔌 The guide lost its connection. Add a valid GEMINI_API_KEY in Preferences (Customize tab) or under Secure Settings, then try again." 
       }]);
     } finally {
       setLoading(false);
@@ -217,7 +217,7 @@ export default function AIAssistant({ currentPage, profile, onNavigateTab }: AIA
             <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-[#222120] z-10" />
 
             <div className="flex items-center gap-1.5 font-press text-[8px] border-b border-stone-800 pb-1.5 mb-1.5 text-[#ffff55] uppercase">
-              <Bot className="w-3.5 h-3.5" /> AI Navigator
+              <Bot className="w-3.5 h-3.5" /> Somnia Guide
             </div>
             <p className="leading-relaxed text-stone-300">{assistantNotification}</p>
           </motion.div>
@@ -229,7 +229,7 @@ export default function AIAssistant({ currentPage, profile, onNavigateTab }: AIA
         onClick={handleToggle}
         id="persistent-ai-navigator-btn"
         className="fixed right-0 top-[40%] -translate-y-1/2 z-[9998] cursor-pointer mc-btn p-3 bg-[#ffff55] text-black border-4 border-r-0 border-black [box-shadow:inset_-3px_-3px_0_#b2b212,inset_3px_3px_0_#fff,-4px_4px_12px_rgba(0,0,0,0.3)] hover:-translate-x-1 transition-all duration-200"
-        title="Consult AI Navigation Assistant"
+        title="Consult the Somnia guide"
       >
         <div className="relative">
           <Bot className="w-6 h-6" />
@@ -257,7 +257,7 @@ export default function AIAssistant({ currentPage, profile, onNavigateTab }: AIA
               <div className="flex items-center gap-2">
                 <Bot className="w-5 h-5 text-[#ffff55] animate-bounce" />
                 <div>
-                  <span className="font-press text-[9px] text-[#ffff55] block">AI MAP NAVIGATOR</span>
+                  <span className="font-press text-[9px] text-[#ffff55] block">DREAM MAP GUIDE</span>
                   <span className="text-[8px] font-mono text-stone-400 block uppercase">
                     Location: {getFriendlyPageName(currentPage)}
                   </span>
@@ -313,7 +313,7 @@ export default function AIAssistant({ currentPage, profile, onNavigateTab }: AIA
                         : 'bg-[#141414] border-stone-850 text-stone-200'
                     }`}>
                       <div className="text-[8px] font-press uppercase text-[#ffaa00] mb-1">
-                        {msg.role === 'user' ? '👤 Candidate User' : '🤖 AI NAVIGATOR'}
+                        {msg.role === 'user' ? '👤 Candidate User' : '🤖 SOMNIA GUIDE'}
                       </div>
                       <p className="whitespace-pre-wrap">{msg.content}</p>
                     </div>

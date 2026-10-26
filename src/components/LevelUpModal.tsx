@@ -38,7 +38,7 @@ export default function LevelUpModal({ currentLevel, points }: LevelUpModalProps
 
   const rewards = [
     "+1 Active Application Slot",
-    "Enhanced SOP AI Critique Speed",
+    "Faster SOP critique",
     "Premium Skin Cosmetics Unlocked",
     "Admissions Armor Durability Maxed!"
   ];

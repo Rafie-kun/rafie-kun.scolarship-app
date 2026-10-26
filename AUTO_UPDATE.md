@@ -1,6 +1,6 @@
-# 🔄 ScholarPath Auto-Update System
+# 🔄 Somnia Auto-Update System
 
-ScholarPath keeps **scholarships, internships + part-time jobs, universities, cost-of-living, exchange rates, and visa data** fresh automatically.
+Somnia keeps **scholarships, internships + part-time jobs, universities, cost-of-living, exchange rates, and visa data** fresh automatically.
 
 - **Hourly + on-boot scraper** (`scripts/scheduler.ts` cron `0 * * * *`): RSS + direct DAAD scrape for scholarships, RSS for internships/part-time, web source for universities. Results are deduped and merged into `public/data/*.json` (scholarships/internships) or SQLite (universities). Manual trigger: `POST /api/scraper/trigger` (auth) or the "Check for new listings" buttons in the Scholarships/Internships headers.
 - **Weekly GitHub Action** (`.github/workflows/auto-update.yml`): Runs `node scripts/updateData.js` every Sunday at midnight UTC, commits new/updated entries. Preserves any entry with `"userVerified": true`.

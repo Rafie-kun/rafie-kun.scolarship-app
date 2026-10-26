@@ -706,7 +706,7 @@ export function seedDatabaseIfEmpty(): void {
         ieltsScore: "7.5",
         greScore: "318",
         leadershipExperience: ["Student Computing Club Treasurer", "Open Source Community Advocate"],
-        projects: ["Retro Game Canvas", "ScholarPath Matrix Mock Engine"],
+        projects: ["Retro Game Canvas", "Somnia Matrix Mock Engine"],
         volunteerExperience: ["Youth Programming Workshop Mentor"],
         badges: ["Scholar Pathfinder", "Exotic Architect"],
         educationLevel: "undergraduate",
@@ -815,13 +815,13 @@ export function seedDatabaseIfEmpty(): void {
     {
       id: "notif-1",
       type: "info" as const,
-      message: "ScholarPath update: DAAD EPOS eligibility GPA index updated. Minimum requirements now configured to 3.0.",
+      message: "Somnia update: DAAD EPOS eligibility GPA index updated. Minimum requirements now configured to 3.0.",
       timestamp: "2 hours ago"
     },
     {
       id: "notif-2",
       type: "warning" as const,
-      message: "Fulbright Student application deadline is in 100 days! Submit your drafts to ScholarPath essay evaluation engine.",
+      message: "Fulbright Student application deadline is in 100 days! Submit your drafts to Somnia essay evaluation engine.",
       timestamp: "1 day ago"
     }
   ];

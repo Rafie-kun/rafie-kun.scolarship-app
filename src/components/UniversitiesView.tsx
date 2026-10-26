@@ -247,7 +247,7 @@ export default function UniversitiesView() {
           <School className="w-5 h-5 text-[#ffff55]" /> TARGET KEEPS (UNIVERSITIES PORTAL)
         </h3>
         <p className="text-xs text-stone-350 font-mono mt-2">
-          Explore elite global academies, benchmark admittance GPAs, calculate tuition rates, and unlock custom AI-matched recommendation criteria based on your active stats.
+          Explore elite global academies, benchmark admittance GPAs, calculate tuition rates, and unlock recommendations matched to your stats based on your active stats.
         </p>
       </div>
 

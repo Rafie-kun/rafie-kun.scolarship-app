@@ -173,7 +173,7 @@ export default function CounsellingView() {
               : 'text-stone-400 hover:text-stone-200'
           }`}
         >
-          🎓 AI Copilot
+          🎓 Study Companion
         </button>
         <button
           onClick={() => { setActiveSubTab('interview'); playClickSound(); }}
@@ -193,7 +193,7 @@ export default function CounsellingView() {
               : 'text-stone-400 hover:text-stone-200'
           }`}
         >
-          🏆 Scholarship AI
+          🏆 Scholarship Advisor
         </button>
         <button
           onClick={() => { setActiveSubTab('university'); playClickSound(); }}
@@ -203,7 +203,7 @@ export default function CounsellingView() {
               : 'text-stone-400 hover:text-stone-200'
           }`}
         >
-          🏢 University AI
+          🏢 University Advisor
         </button>
         <button
           onClick={() => { setActiveSubTab('budget'); playClickSound(); }}
@@ -213,7 +213,7 @@ export default function CounsellingView() {
               : 'text-stone-400 hover:text-stone-200'
           }`}
         >
-          💰 Budget AI
+          💰 Budget Advisor
         </button>
       </div>
 

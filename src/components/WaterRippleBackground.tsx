@@ -177,7 +177,7 @@ export default function WaterRippleBackground() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full pointer-events-none z-0 mix-blend-normal transition-opacity duration-500"
-      style={{ opacity: themeMode === 'minecraft' ? 0 : 1 }}
+      style={{ opacity: themeMode === 'omori' ? 0 : 1 }}
     />
   );
 }

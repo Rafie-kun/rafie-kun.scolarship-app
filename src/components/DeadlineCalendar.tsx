@@ -23,7 +23,7 @@ function buildIcs(apps: TrackedApp[]): string {
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//ScholarPath//Deadline Calendar//EN',
+    'PRODID:-//Somnia//Deadline Calendar//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
   ];
@@ -99,7 +99,7 @@ export default function DeadlineCalendar({ open, onClose }: { open: boolean; onC
     const start = new Date(app.deadline);
     const end = new Date(start); end.setHours(end.getHours() + 1);
     const fmt = (d: Date) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(app.name + ' Deadline')}&dates=${fmt(start)}/${fmt(end)}&details=${encodeURIComponent((app.providerOrUni || '') + ' - Tracked via ScholarPath')}&ctz=UTC`;
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(app.name + ' Deadline')}&dates=${fmt(start)}/${fmt(end)}&details=${encodeURIComponent((app.providerOrUni || '') + ' - Tracked via Somnia')}&ctz=UTC`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 

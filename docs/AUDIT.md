@@ -1,4 +1,4 @@
-# ScholarPath — Phase 1 Repository Audit (AUDIT.md)
+# Somnia — Phase 1 Repository Audit (AUDIT.md)
 
 > Branch: `scholarpath-v2` · Date: 2026-10-09 · Auditor: OpenCode (Muse Spark)
 > Method: static source read (no edits) + 4 parallel subagent sweeps (frontend / backend / AI+matching+data / config+build) + hash verification of `docs/SPEC.md`.
@@ -9,7 +9,7 @@
 
 | SPEC claim | Finding |
 |---|---|
-| Client-rendered SPA, title "ScholarPath - AI-Powered Scholarship & Admissions Platform", meta mentions fully-funded/scholarships/coaching/SOP/simulator/mock-interview, theme `#110f0d` | CONFIRMED — `index.html` SPA `src=/src/main.tsx`, SEO/OG/Twitter, `theme-color #110f0d` |
+| Client-rendered SPA, title "Somnia - AI-Powered Scholarship & Admissions Platform", meta mentions fully-funded/scholarships/coaching/SOP/simulator/mock-interview, theme `#110f0d` | CONFIRMED — `index.html` SPA `src=/src/main.tsx`, SEO/OG/Twitter, `theme-color #110f0d` |
 | TS + Next.js + Express API, `better-sqlite3`, Gemini | CORRECTED — **no Next.js**. Stack is **React 19 SPA (Vite 6) + Express 4 API in one process** (`server.ts`, bundled to `dist/server.cjs`). `better-sqlite3` YES, `@google/genai` YES (Gemini). `api/index.ts` is a 3-line Vercel shim importing `../server.js` |
 | SQLite on Vercel ephemeral → move to Postgres | CONFIRMED — `db/index.ts` uses file `data/app.db`, `/tmp/scholarpath-data/app.db` on Vercel, `:memory:` fallback. `TURSO_*` env is stub-log only, not wired. Docker/Render with persistent disk is the durable path today |
 | Dark warm-black + yellow accent, textured bg, beveled chrome, scrollbar + selected-nav outline, per-section colored icons | CONFIRMED — `src/App.tsx` Minecraft HUD/sidebar, `src/index.css`, `ThemeContext` fixed `minecraft/overworld` theme |

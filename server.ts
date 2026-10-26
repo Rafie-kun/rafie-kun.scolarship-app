@@ -195,7 +195,7 @@ app.get("/fellowships/:id/apply", (req, res) => {
               </div>
               
               <br>
-              <a href="/#/scholarships" class="back-link">← Return to ScholarPath</a>
+              <a href="/#/scholarships" class="back-link">← Return to Somnia</a>
             </div>
           </body>
         </html>
@@ -209,7 +209,7 @@ app.get("/fellowships/:id/apply", (req, res) => {
       <body style="background: #1a1512; color: #fff; font-family: monospace; text-align: center; padding-top: 50px;">
         <h1>404 Fellowship Registry Not Found</h1>
         <p>The requested scholarship parameters are not indexed in our active database.</p>
-        <a href="/#/scholarships" style="color: #ffff55;">Go back to ScholarPath</a>
+        <a href="/#/scholarships" style="color: #ffff55;">Go back to Somnia</a>
       </body>
     </html>
   `);
@@ -440,7 +440,7 @@ async function startServer() {
 
   if (!process.env.VERCEL) {
     app.listen(PORT, "0.0.0.0", () => {
-      console.log(`[OK] ScholarPath secure SQLite matrix synced on http://0.0.0.0:${PORT}`);
+      console.log(`[OK] Somnia secure SQLite matrix synced on http://0.0.0.0:${PORT}`);
       
       // Initialize scheduled admissions & scholarship crawler
       import("./scripts/scheduler.js").then(m => m.startScheduler()).catch(err => {

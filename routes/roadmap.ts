@@ -114,7 +114,7 @@ Provide outstanding, customized tasks directly applicable to their major, e.g., 
           tasks: [
             { text: "Draft Statement of Purpose (SOP) with quantitative STAR bullet points", done: false },
             { text: "Reach out to 3 potential academic professors to secure commitment for recommendation letters", done: false },
-            { text: "Upload drafts to ScholarPath AI Document Evaluation Engine for professional review", done: false }
+            { text: "Upload drafts to Somnia AI Document Evaluation Engine for professional review", done: false }
           ],
           tips: "Focus recommendations on specific technical projects instead of general descriptions of your good behavior."
         },
@@ -124,7 +124,7 @@ Provide outstanding, customized tasks directly applicable to their major, e.g., 
           description: "Execute structured submissions and practice active interview loops.",
           tasks: [
             { text: "Submit final application packets before target closing lines", done: false },
-            { text: "Practice 15 mock sessions in ScholarPath Interview simulator terminal", done: false },
+            { text: "Practice 15 mock sessions in Somnia Interview simulator terminal", done: false },
             { text: "Prepare certification copies and portfolio slides for live presentations", done: false }
           ],
           tips: "Complete applications at least 2 weeks before the deadline to accommodate potential system server overloads."

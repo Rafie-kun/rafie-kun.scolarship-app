@@ -1,11 +1,11 @@
 {
-  "name": "ScholarPath",
-  "short_name": "ScholarPath",
-  "description": "Scholarship, university, internship and visa planning for international students",
+  "name": "Somnia",
+  "short_name": "Somnia",
+  "description": "A quiet, dreamlike workspace for scholarships, universities, budgets, visas, and applications.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0d0f12",
-  "theme_color": "#0d0f12",
+  "background_color": "#08070d",
+  "theme_color": "#08070d",
   "icons": [
     {
       "src": "/favicon.svg",

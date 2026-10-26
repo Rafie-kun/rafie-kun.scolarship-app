@@ -62,7 +62,7 @@ export default function LearningPathView() {
           month: "Phase 3: Admissions Sabbatical (Month 5-6)",
           focus: "Submit polished documents and prepare for oral committee reviews.",
           tasks: [
-            { text: "Paste Statement of Purpose (SOP) into ScholarPath AI Writing Vault for marking", done: false },
+            { text: "Paste Statement of Purpose (SOP) into Somnia Writing Vault for marking", done: false },
             { text: "Collect 2 signed academic letters of recommendation from deans", done: false },
             { text: "Perform 4 test trials inside mock panel interviewer chatbot trainer", done: false }
           ]
@@ -149,7 +149,7 @@ export default function LearningPathView() {
       <div className="mc-window border-4 border-black p-5 text-stone-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h3 className="font-press text-xs text-stone-900 uppercase flex items-center gap-2">
-            <Compass className="w-5 h-5 text-stone-900 shrink-0" /> AI PERSONALIZED PATHWAY GENERATOR
+            <Compass className="w-5 h-5 text-stone-900 shrink-0" /> PERSONAL PATHWAY BUILDER
           </h3>
           <p className="text-xs text-stone-700 font-sans mt-2 leading-relaxed">
             Analyzing academic standings, intended degrees, GPAs, and target careers to compile a structured, multi-month milestone activity checklist pipeline.

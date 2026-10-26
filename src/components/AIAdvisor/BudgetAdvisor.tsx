@@ -90,7 +90,7 @@ export default function BudgetAdvisor() {
     if (isXpClaimed) return;
     playAdvancementSound();
     setIsXpClaimed(true);
-    await rewardPoints(30, "Completed AI Budget Consultant Review");
+    await rewardPoints(30, "Completed Budget Consultant Review");
     setXpSuccess("Loot Claimed! +30 Fellowship XP points added to your score!");
     setTimeout(() => setXpSuccess(""), 5000);
   };
@@ -105,7 +105,7 @@ export default function BudgetAdvisor() {
           </div>
           <div>
             <h3 className="font-press text-[11px] uppercase text-[#2ecc71] tracking-wider mc-text-shadow">
-              AI Budget Consultant
+              Budget Consultant
             </h3>
             <p className="text-xs text-stone-300 font-mono mt-1">
               Deep budget analysis and legal work-study advice for prospective international students.
@@ -352,7 +352,7 @@ export default function BudgetAdvisor() {
             </div>
           </div>
 
-          {/* AI Advisor report */}
+          {/* Study Advisor report */}
           <div className="lg:col-span-7">
             <div className="bg-[#2c2c2c] border-4 border-black p-5 [box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555] min-h-[460px] flex flex-col">
               <h4 className="font-press text-[9px] text-[#2ecc71] uppercase mb-4 tracking-wider border-b border-stone-700 pb-2 flex items-center gap-2 mc-text-shadow">

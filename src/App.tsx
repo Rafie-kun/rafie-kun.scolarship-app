@@ -55,24 +55,24 @@ import NotificationsBell from './components/NotificationsBell';
 import SyncStatusDrawer from './components/SyncStatusDrawer';
 import ToastContainer from './components/Toast';
 
-// Single official Minecraft-inspired palette for the whole app
+// Single dreamlike palette for the whole app (OMORI-inspired)
 const THEME_STYLING = {
-  headerBg: 'bg-[#4d3224]',
-  headerBorder: 'border-[#3b271c]',
-  fringeBg: 'bg-[#5c8e32]',
-  fringeBorder: 'border-[#476e27]',
-  bodyBg: 'bg-[#110f0d]',
-  panelBg: 'bg-[#2c2927]',
-  boxShadow: '[box-shadow:inset_-4px_-4px_0_#141414,inset_4px_4px_0_#555]',
-  accentText: 'text-[#ffff55]',
-  accentBgClass: 'bg-[#ffff55]',
-  brandColor: 'text-[#ffff55]',
-  hudXpFill: 'bg-[#55ff55]',
-  hudColor: 'text-[#55ff55]',
-  sidebarBorder: 'border-[#1b1918]',
-  cardHover: 'hover:border-[#ffff55]',
-  activeSlot: 'border-[#ffff55] bg-[#33ffff]/20',
-  tagline: 'ScholarPath Adventure'
+  headerBg: 'bg-[#171327]',
+  headerBorder: 'border-[#332b4a]',
+  fringeBg: 'bg-[#a9d8e8]',
+  fringeBorder: 'border-[#332b4a]',
+  bodyBg: 'bg-[#08070d]',
+  panelBg: 'bg-[#191428]',
+  boxShadow: '[box-shadow:inset_0_1px_0_rgba(255,255,255,0.05)]',
+  accentText: 'text-[#cbb7f2]',
+  accentBgClass: 'bg-[#cbb7f2]',
+  brandColor: 'text-[#cbb7f2]',
+  hudXpFill: 'bg-[#a9e8c8]',
+  hudColor: 'text-[#a9e8c8]',
+  sidebarBorder: 'border-[#332b4a]',
+  cardHover: 'hover:border-[#cbb7f2]',
+  activeSlot: 'border-[#cbb7f2] bg-[#cbb7f2]/15',
+  tagline: 'Somnia Dreamscape'
 };
 
 // Navigations directory menu hotbar mappings
@@ -90,7 +90,7 @@ const navItems = [
     { id: 'chances', label: 'Will I Get In?', mcName: 'Chance Wizard', desc: 'Enter your grades and see which universities are likely, a match, or a reach - plus how to improve', icon: Target, color: 'text-[#55ff55] font-bold' },
   { id: 'writing', label: 'Document Center', mcName: 'Statements & Documents', desc: 'Evaluate & draft professional Statement of Purpose documents', icon: Save, color: 'text-cyan-400' },
   { id: 'cv', label: 'CV Builder', mcName: 'Academic CV', desc: 'Synthesize custom admissions CV credentials & export PDF', icon: FileText, color: 'text-rose-450 font-bold' },
-  { id: 'counselling', label: 'AI Chat Assistant', mcName: 'AI Advisor', desc: 'Speak to the AI student assistant about ECTS and scholarship matches', icon: BookOpen, color: 'text-emerald-400' },
+  { id: 'counselling', label: 'Study Advisor', mcName: 'Study Advisor', desc: 'Speak to the study assistant about ECTS and scholarship matches', icon: BookOpen, color: 'text-emerald-400' },
   { id: 'budget', label: 'Budget Planner', mcName: 'Finances', desc: 'Calculate study costs, living expenses & part-time earnings', icon: Coins, color: 'text-[#2ecc71]' },
   { id: 'visa', label: 'Visa Guide', mcName: 'Visa & Immigration', desc: 'Study visa requirements, proof of funds & work permits', icon: Compass, color: 'text-[#55ffff] font-bold' },
   { id: 'learning', label: 'Roadmap', mcName: 'Timeline Maps', desc: 'Structured timeline maps for global admission stages', icon: Navigation, color: 'text-orange-400' },
@@ -357,14 +357,14 @@ export default function App() {
     <ErrorBoundary>
       <div className={`min-h-screen flex flex-col font-sans transition-all duration-300 tex-dirt-dark text-stone-200 ${currentThemeConfig.bodyBg}`} id="scholarpath-main-container">
       
-      {/* Minecraft Block Header Band */}
+      {/* Dreamscape header band */}
       <header className={`${currentThemeConfig.headerBg} border-b-8 ${currentThemeConfig.headerBorder} text-stone-100 sticky top-0 z-50 select-none pb-1 shadow-2xl`}>
         
-        {/* Grass fringe at the very top of the header */}
+        {/* Aurora light-line at the very top of the header */}
         <div className={`h-3 w-full tex-grass border-b ${currentThemeConfig.fringeBorder}`} />
         
-        <div className="px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-3">
+        <div className="px-4 sm:px-6 py-3 md:py-4 flex flex-wrap md:flex-nowrap justify-between items-center gap-3 md:gap-4">
+          <div className="flex items-center gap-3 min-w-0">
             {/* Player Profile / Spec Settings direct shortcut */}
             <button
               onClick={() => handleTabChange('profile')}
@@ -399,17 +399,17 @@ export default function App() {
               <kbd className="px-1.5 py-0.5 text-[9px] bg-stone-800 text-stone-300 border border-stone-600 font-press">Ctrl+K</kbd>
             </button>
             
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4 min-w-0">
               <button
                 onClick={() => handleTabChange('customize')}
-                className="w-12 h-12 bg-stone-800 border-4 border-black hover:bg-stone-750 flex items-center justify-center text-xs shadow-inner active:scale-95 transition-all cursor-pointer [box-shadow:inset_-3px_-3px_0_#141414,inset_3px_3px_0_#555]"
+                className="hidden sm:flex w-12 h-12 bg-stone-800 border-4 border-black hover:bg-stone-750 items-center justify-center text-xs shadow-inner active:scale-95 transition-all cursor-pointer [box-shadow:inset_-3px_-3px_0_#141414,inset_3px_3px_0_#555]"
                 title="Settings & Preferences"
               >
                 ⚙️
               </button>
-              <div className="space-y-1">
-                <h1 className="font-press text-xs sm:text-sm tracking-widest text-[#ffff55] mc-text-shadow leading-tight flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                  SCHOLARPATH <span className="font-sans text-[9px] sm:text-[10px] uppercase font-bold text-[#aaaaaa] tracking-normal">Scholarship & Internship Finder</span>
+              <div className="space-y-1 min-w-0">
+                <h1 className="omori-brand font-press text-xs sm:text-sm tracking-widest text-[#cbb7f2] mc-text-shadow leading-tight flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                  SOMNIA <span className="hidden sm:inline font-sans text-[9px] sm:text-[10px] uppercase font-bold text-[#aaaaaa] tracking-normal">Scholarship & Internship Finder</span>
                 </h1>
                 <span className="text-[10px] sm:text-[12px] font-mono text-stone-350 leading-none block font-semibold">
                   <span className="text-[#a586ff] font-bold">Find funding. Plan your future.</span>
@@ -419,7 +419,7 @@ export default function App() {
           </div>
 
           {/* XP / Level progress bar */}
-          <div className="flex flex-col items-center gap-2 w-full max-w-sm shrink-0">
+          <div className="order-last md:order-none flex flex-col items-center gap-2 w-full md:max-w-sm shrink-0">
             <div className="flex justify-between w-full text-[10px] sm:text-[12px] font-mono text-[#55ff55] font-bold uppercase select-none gap-2">
               <span className="font-press text-[8px] sm:text-[9px] text-[#ffea00] mc-text-shadow flex items-center gap-1 leading-none pt-1">
                 <Trophy className="w-3.5 h-3.5" /> Level {profile?.level ?? 1}
@@ -435,16 +435,19 @@ export default function App() {
             </div>
           </div>
 
-          {/* Notifications Bell Icon */}
-          <NotificationsBell />
+          {/* Compact utility cluster */}
+          <div className="flex items-center gap-2 shrink-0">
+            {/* Notifications Bell Icon */}
+            <NotificationsBell />
 
-          {/* Sync Status Drawer Icon */}
-          <SyncStatusDrawer />
+            {/* Sync Status Drawer Icon */}
+            <SyncStatusDrawer />
 
-          {/* Currency selector (amounts across the app follow this) */}
-          <Suspense fallback={null}>
-            <CurrencySwitcher />
-          </Suspense>
+            {/* Currency selector (amounts across the app follow this) */}
+            <Suspense fallback={null}>
+              <CurrencySwitcher />
+            </Suspense>
+          </div>
 
           {/* Signed-in user info + logout */}
           <div className="hidden lg:flex items-center gap-4 font-mono text-xs bg-black/40 px-3.5 py-2 border-2 border-black rounded-none">
@@ -457,7 +460,7 @@ export default function App() {
             <button
               onClick={handleLogoutClick}
               className="bg-red-950 hover:bg-red-900 border-2 border-black px-2 py-1 text-[9px] text-red-200 uppercase font-black tracking-wider shadow-inner rounded-none cursor-pointer flex items-center gap-1 ml-2"
-              title="Log out of ScholarPath"
+              title="Log out of Somnia"
             >
               <Undo className="w-3 h-3 text-red-400" /> Log Out
             </button>
@@ -477,7 +480,7 @@ export default function App() {
       {/* Main Panel Content matrix */}
       <div className="flex-1 flex flex-col md:flex-row relative">
         
-        {/* Left Side menu Panel (Minecraft Inventory Layout style) */}
+        {/* Left side navigation panel (dream journal layout) */}
         <aside className={`
           ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
           fixed md:sticky top-[86px] left-0 h-[calc(100vh-86px)]
@@ -624,7 +627,7 @@ export default function App() {
           />
         )}
 
-        {/* Right Active sandbox environment panel view - Wrapped inside an authentic Minecraft Chest Popup Window! */}
+        {/* Active workspace view, wrapped in a soft dream panel */}
         <main className="flex-1 p-4 md:p-6 overflow-x-hidden min-h-[calc(100vh-86px)] bg-[#110f0d]">
           <div className="mc-window max-w-6xl mx-auto min-h-full">
             
