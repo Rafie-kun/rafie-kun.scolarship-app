@@ -1,0 +1,56 @@
+name: Feature request
+description: Suggest an improvement or a new idea.
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for thinking about Somnia. Start with the problem, not the implementation — it helps us find the best solution.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      placeholder: As an international student, I find it hard to ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: What would you like to see?
+      placeholder: A short description of your idea.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you have considered
+      placeholder: Other ways to solve the same problem.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Scholarships
+        - Universities
+        - Budget / finances
+        - Visas / pre-departure
+        - Applications / documents
+        - Community / mentors
+        - Theme / accessibility
+        - Developer experience
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Quick checks
+      options:
+        - label: I searched existing issues for a similar request.
+          required: true
